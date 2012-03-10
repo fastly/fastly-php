@@ -67,7 +67,7 @@ class FastlyAPI {
 		if( !empty($this->_auth['key']) ) {
 			$this->_curlheaders[] = "X-Fastly-Key: " . $this->_auth['key'];
 		}
-		
+
 		curl_setopt($this->_ch, CURLOPT_POST, 1);
 
 		# are we actually posting SOMETHING?
@@ -319,19 +319,25 @@ class FastlyAPI {
 	 * purge a url from the service
 	 * Requires engineer permissions
 	 * example: /purge/http://www.example.com/some/path.html
-	 * NOTE: may support using API_KEY authentication
+	 * NOTE: may support using API_KEY authentication (but doesnt seems to require it?)
+	 * DEV: tested OK
 	 */
 	public function API_purge($url) {
 		$ret = $this->_post( '/purge/' . $url, null);
-		var_dump($ret);
 	
 		if( $ret === false ) {
 			return false;
 		}
-		
-		$this->_laststatus = $ret->status;
-		if( $ret->status == 'ok' ) {
-			return true;
+
+		# did it give us a status?
+		if( !empty($ret->status) ) {
+			# stash it
+			$this->_laststatus = $ret->status;
+			# is it what we wanted?
+			if( $ret->status == 'ok' ) {
+				# woo!
+				return true;
+			}
 		}
 		
 		return false;
@@ -342,34 +348,25 @@ class FastlyAPI {
 	 * Purge everything from a service
 	 * Requires engineer permissions
 	 * example: POST /service/SU1Z0isxPaozGVKXdv0eY/purge_all
-	 * NOTE: may support using API_KEY authentication
+	 * NOTE: may support using API_KEY authentication?
+	 * DEV: untested
 	 */
 	public function API_purge_all( $service ) {
 		return $this->_post( '/service/' . $service . '/purge_all', null);
 	}
 	
 	/*
-	 * POST /service/<id>/purge/<key>
+	 * POST /service/<servid>/purge/<surkey>
 	 * Purge groups of content by referring to the key that they hold in common.
 	 * PERMISSIONS: unknown
 	 * example: /service/SU1Z0isxPaozGVKXdv0eY/purge/foo
 	 *
 	 * NOTE: BETA feature, not universally available
 	 * SEE http://www.fastly.com/docs/api#Surrogate_Keys
+	 * DEV: untested
 	 */
 	public function API_purge_key( $service, $key ) {
-		$ret = $this->_post( '/service/' . $service . '/purge_all', null);
-		
-		if( $ret === false ) {
-			return false;
-		}
-
-		$this->_laststatus = $ret->status;
-		if( $ret->status == 'ok' ) {
-			return true;
-		}
-		
-		return false;
+		return $this->_post( '/service/' . $service . '/purge/' . $key, null);
 	}
 
 }

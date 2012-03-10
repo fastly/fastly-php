@@ -1,0 +1,14 @@
+Fastly PHP Client
+
+Example:
+require_once "fastly_api.php";
+
+$fastly = new FastlyAPI();
+$fastly->AuthKey( 'yourAPIhexKEY0000000000000000000' );
+$fastly->API_purge( 'http://example.com/page.html' );
+
+TODO:
+docs
+consistantly formatted docs
+rest of the API functions
+unit test files
