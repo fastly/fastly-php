@@ -8,9 +8,10 @@ class FastlyAPI {
 	private $_lastmsg = null;
 	private $_laststatus = null;
 	private $_user = null;
+	private $_customer = null;
 
 	private	$apphost = 'https://app.fastly.com';
-	private $cookie_file = "./cookiejar.txt";
+	private $cookie_file = "./fastly.cookie";
 
 	public function __construct () {
 		$this->_ch = curl_init();
@@ -50,16 +51,16 @@ class FastlyAPI {
 
 		$url = $this->apphost . $path;
 		curl_setopt($this->_ch, CURLOPT_URL, $url);
-		
+
 		curl_setopt($this->_ch, CURLOPT_HTTPGET, 1);
 
 		return $this->_curl();
 	}
-	
+
 	private function _post ( $path, $payload ) {
 		// print "POST {$path}\n";
 		$this->_curl_init();
-	
+
 		$url = $this->apphost . $path;
 		curl_setopt($this->_ch, CURLOPT_URL, $url);
 
@@ -90,7 +91,7 @@ class FastlyAPI {
 	private function _put ( $path, $payload ) {
 		// print "PUT {$path}\n";
 		$this->_curl_init();
-	
+
 		$url = $this->apphost . $path;
 		curl_setopt($this->_ch, CURLOPT_URL, $url);
 
@@ -109,7 +110,7 @@ class FastlyAPI {
 	private function _delete ( $path, $payload ) {
 		// print "DELETE {$path}\n";
 		$this->_curl_init();
-	
+
 		$url = $this->apphost . $path;
 		curl_setopt($this->_ch, CURLOPT_URL, $url);
 
@@ -124,8 +125,8 @@ class FastlyAPI {
 
 		return $this->_curl();
 	}
-	
-	private function _curl_init() {
+
+	private function _curl_init () {
 		$this->_ch = curl_init();
 		$this->_curlheaders = array();
 	}
@@ -135,7 +136,7 @@ class FastlyAPI {
 			caller must set URL
 			caller must set GET or POST
 		*/
-	
+
 		curl_setopt($this->_ch, CURLOPT_COOKIEJAR, $this->cookie_file);
 		curl_setopt($this->_ch, CURLOPT_COOKIEFILE, $this->cookie_file);
 
@@ -143,8 +144,8 @@ class FastlyAPI {
 		curl_setopt($this->_ch, CURLOPT_RETURNTRANSFER, 1);
 
 		if( !empty($this->_curlheaders ) ) {
-			var_dump( $this->_curlheaders );
-			curl_setopt($this->_ch, CURLOPT_HTTPHEADER, $this->_curlheaders); 
+			// print "we havz headers!\n"; var_dump( $this->_curlheaders );
+			curl_setopt($this->_ch, CURLOPT_HTTPHEADER, $this->_curlheaders);
 		}
 
 		# On *nix systems, the cURL library /should/ pickup the system CA files,
@@ -158,26 +159,26 @@ class FastlyAPI {
 		if( strtolower( substr(PHP_OS,0,3) ) == 'win' ) {
 			curl_setopt($this->_ch, CURLOPT_SSL_VERIFYPEER, false);
 		}
-		
+
 		# ----------------------------------------------------------
 
 		# go get it
 		$ret = curl_exec( $this->_ch );
-		
+
 		# save this, for debuging reasons
 		$this->_lastcgi = curl_getinfo( $this->_ch );
 
 		# ------------------------------------------
 		# start looking at what we got
-		
+
 		# easy JSON mime detection
 		if( $this->_lastcgi['content_type'] == 'text/json' ) {
 			return json_decode($ret);
 		}
-		
+
 		#more tricky JSON mime
 		list($ct,) = explode(';', $this->_lastcgi['content_type'], 2);
-		
+
 		if( $ct == 'application/json' ) {
 			return json_decode($ret);
 		}
@@ -204,13 +205,24 @@ class FastlyAPI {
 		$this->_auth = array();
 	}
 
+	public function KeyFromCustomer () {
+		if( empty($this->_customer) ) {
+			return false;
+		}
+		if( empty($this->_customer->raw_api_key) ) {
+			return false;
+		}
+		$this->AuthKey( $this->_customer->raw_api_key );
+		return true;
+	}
+
 	# =================================================================
 	/*
 	 * POST /login
 	 * -requires having user/pass
 	 * return: ?
 	 */
-	public function API_login() {
+	public function API_login () {
 		# TODO: check to see if auth has U/P
 
 		# not sure if order matters, but docs did this order, so i too :)
@@ -218,61 +230,73 @@ class FastlyAPI {
 			'password' => $this->_auth['password'],
 			    'user' => $this->_auth['user']
 			);
-		
+
 		/* TODO: cache return and analyze.
-			- on fail, return false, stash [msg] in some sort of ->lastmsg() var
 			- /login return contains [customer] object with COMPANY info
 			- /login return contains [user] object with MY info
 				- this [user] is 99% (100?) same as doing a /current_user
 				- this has an important [role] key we can use to pre-check canDo() actions
-			
+
 		*/
-		
+
 		$ret = $this->_post( '/login', $payload );
-		
+
+		#check for curl hard fail
 		if( $ret === false ) {
 			return false;
 		}
 
-		# has a msg?
+		# did we get a msg back?
 		if( !empty($ret->msg) ) {
 			# cache it
 			$this->_lastmsg = $ret->msg;
-		
-			# does it say we're wrong?
-			if( $ret->msg == 'Invalid username or password') {
-				# fail out
-				return false;
-			}
-			
-			print "dumping unhandled return from /login\n";
-			print_r( $ret );
-			
+		}
+
+		# check for denied http status
+		if( $this->lastcgi['http_code'] == '403' ) {
 			return false;
 		}
 
-		# ok?
+		# i think we're ok here? maybe
+
+		# mark that we're now properly logged in
+		$this->_meta['login'] = true;
+
+		# cache these out of the return
 		$this->_user = $ret->user;
 		$this->_customer = $ret->customer;
-		
+
 		return true;
 	}
 
 	/*
 	 * GET /current_user
 	 *	-Get the logged in user
+	 *	TODO: check for logged in bit, and use cached data rather then query server
+	 *	TODO: once cached data is checked, add optional force parameter to function
 	 */
-	public function API_current_user() {
-		# TODO: check for fail (how? not logged in), and return false
-		# TODO: cache [user] info internally (overwriting cached [user] from /login?)
+	public function API_current_user () {
 		$ret = $this->_get( '/current_user' );
-		
+
+		# check for hard curl fail
 		if( $ret === false ) {
-			var_dump($ret);
+			// var_dump($ret);
 			return false;
 		}
-		
+
+		# check not allowed
+		if( $this->lastcgi['http_code'] == '403' ) {
+			# stash fail text
+			$this->_msg = $ret->msg;
+			return false;
+		}
+
+		# TODO: other ways this can fail?
+
+		#cache data
 		$this->_user = $ret;
+
+		# also return it back
 		return $ret;
 	}
 
@@ -291,25 +315,47 @@ class FastlyAPI {
 	 *	getting a user in your CUSTOMER requires [role=superuser]
 	 *  can always get YOUR id (mimics doing /current_user ?)
 	 */
-	public function API_user($id=null) {
-	
+	public function API_user ( $id=null ) {
+
 		if( empty($id) ) {
 			return $this->_get( '/user' );
 		} else {
 			return $this->_get( '/user/' . $id );
 		}
-	}	
+	}
 
-	public function API_current_customer() {
-		# TODO: check for fail (how? not logged in), and return false
+	/*
+	 * GET /current_customer
+	 *	-Get the logged in customer info
+	 *	TODO: check for logged in bit, and use cached data rather then query server
+	 *	TODO: once cached data is checked, add optional force parameter to function
+	 */
+	public function API_current_customer () {
+		$this->_lastmsg = null;
+
 		$ret = $this->_get( '/current_customer' );
-		
+
+		# check for hard curl fail
 		if( $ret === false ) {
-			var_dump($ret);
 			return false;
 		}
-		
+
+		if( !empty($this->_lastmsg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check not allowed
+		if( $this->lastcgi['http_code'] == '403' ) {
+			# stash fail text
+			return false;
+		}
+
+		# TODO: other ways this can fail?
+
+		#cache data
 		$this->_customer = $ret;
+
+		# also return it back
 		return $ret;
 	}
 
@@ -319,12 +365,62 @@ class FastlyAPI {
 	 * purge a url from the service
 	 * Requires engineer permissions
 	 * example: /purge/http://www.example.com/some/path.html
-	 * NOTE: may support using API_KEY authentication (but doesnt seems to require it?)
+	 * NOTE: does not require any authentication to use
 	 * DEV: tested OK
+	 * on fail check ->laststatus;
 	 */
-	public function API_purge($url) {
+	public function API_purge ( $url ) {
+		$this->_laststatus = null;
+
+		#prevent stupid
+		if( empty($url) ) {
+			return false;
+		}
+
 		$ret = $this->_post( '/purge/' . $url, null);
-	
+
+		#check for hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did it give us a status?
+		if( empty($ret->status) ) {
+			return false;
+		}
+
+		# stash it
+		$this->_laststatus = $ret->status;
+
+		# is it what we wanted?
+		if( $ret->status != 'ok' ) {
+			# /purge didnt return 'ok' ? how is that even possible?
+			return false;
+		}
+
+		# woo!
+		return true;
+	}
+
+	/*
+	 * POST /service/<id>/purge_all
+	 * Purge everything from a service
+	 * Requires >= engineer permissions
+	 * example: POST /service/SU1Z0isxPaozGVKXdv0eY/purge_all
+	 * NOTE: may support using API_KEY authentication?
+	 * on fail check ->laststatus;
+	 */
+	public function API_purge_all ( $service ) {
+		$this->_laststatus = null;
+
+		#prevent stupid
+		if( empty($service) ) {
+			return false;
+		}
+
+		$ret = $this->_post( '/service/' . $service . '/purge_all', null);
+
+		# check for hard fail
 		if( $ret === false ) {
 			return false;
 		}
@@ -333,28 +429,20 @@ class FastlyAPI {
 		if( !empty($ret->status) ) {
 			# stash it
 			$this->_laststatus = $ret->status;
-			# is it what we wanted?
-			if( $ret->status == 'ok' ) {
-				# woo!
-				return true;
-			}
 		}
-		
-		return false;
+
+		# check http_code for not allowed
+		if( $this->lastcgi['http_code'] == '403' ) {
+			# we hit 403, so status should have a 'you are not allowed' message
+			return false;
+		}
+
+		# http_code was ok (200?)
+		# status should be "ok"
+
+		return true;
 	}
-	
-	/*
-	 * POST /service/<id>/purge_all
-	 * Purge everything from a service
-	 * Requires engineer permissions
-	 * example: POST /service/SU1Z0isxPaozGVKXdv0eY/purge_all
-	 * NOTE: may support using API_KEY authentication?
-	 * DEV: untested
-	 */
-	public function API_purge_all( $service ) {
-		return $this->_post( '/service/' . $service . '/purge_all', null);
-	}
-	
+
 	/*
 	 * POST /service/<servid>/purge/<surkey>
 	 * Purge groups of content by referring to the key that they hold in common.
@@ -365,7 +453,7 @@ class FastlyAPI {
 	 * SEE http://www.fastly.com/docs/api#Surrogate_Keys
 	 * DEV: untested
 	 */
-	public function API_purge_key( $service, $key ) {
+	public function API_purge_key ( $service, $key ) {
 		return $this->_post( '/service/' . $service . '/purge/' . $key, null);
 	}
 
