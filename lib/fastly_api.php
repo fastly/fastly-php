@@ -29,6 +29,11 @@ class FastlyAPI {
 				return $this->_lastmsg;
 			case 'laststatus':
 				return $this->_laststatus;
+			case 'lasthttp':
+				if( empty($this->_lastcgi) ) {
+					return null;
+				}
+				return $this->_lastcgi['http_code'];
 
 			case 'user':
 				return $this->_user;
@@ -205,6 +210,16 @@ class FastlyAPI {
 		$this->_auth = array();
 	}
 
+	public function AuthDelete () {
+		/* We have close the handle before we delete the file,
+			because curl does a flush to cookiejar on close. */
+		curl_close( $this->_ch );
+		unlink( $this->cookie_file );
+
+		# We re-init the handle, just in case we are still using the object
+		$this->_curl_init();
+	}
+
 	public function KeyFromCustomer () {
 		if( empty($this->_customer) ) {
 			return false;
@@ -253,7 +268,7 @@ class FastlyAPI {
 		}
 
 		# check for denied http status
-		if( $this->lastcgi['http_code'] == '403' ) {
+		if( $this->lasthttp == '403' ) {
 			return false;
 		}
 
@@ -272,22 +287,35 @@ class FastlyAPI {
 	/*
 	 * GET /current_user
 	 *	-Get the logged in user
-	 *	TODO: check for logged in bit, and use cached data rather then query server
-	 *	TODO: once cached data is checked, add optional force parameter to function
+	 *
+	 * If exiting data is in the object, it will return that first,
+	 *	pass true to force live fetch
+	 *
+	 * On fail, check object->lastmsg for reason from responce
 	 */
-	public function API_current_user () {
+	public function API_current_user ( $force=false ) {
+		# do we have pre-cached data?
+		# are we allowed to use it?
+		if( !empty($this->_user) && empty($force) ) {
+			return $this->_user;
+		}
+
+		$this->_lastmsg = null;
+
 		$ret = $this->_get( '/current_user' );
 
 		# check for hard curl fail
 		if( $ret === false ) {
-			// var_dump($ret);
 			return false;
 		}
 
+		# stash fail text
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
 		# check not allowed
-		if( $this->lastcgi['http_code'] == '403' ) {
-			# stash fail text
-			$this->_msg = $ret->msg;
+		if( $this->lasthttp == '403' ) {
 			return false;
 		}
 
@@ -327,10 +355,19 @@ class FastlyAPI {
 	/*
 	 * GET /current_customer
 	 *	-Get the logged in customer info
-	 *	TODO: check for logged in bit, and use cached data rather then query server
-	 *	TODO: once cached data is checked, add optional force parameter to function
+	 *
+	 * If exiting data is in the object, it will return that first,
+	 *	pass true to force live fetch
+	 *
+	 * On fail, check object->lastmsg for reason from responce
 	 */
-	public function API_current_customer () {
+	public function API_current_customer ( $force=false ) {
+		# do we have pre-cached data?
+		# are we allowed to use it?
+		if( !empty($this->_customer) && empty($force) ) {
+			return $this->_customer;
+		}
+
 		$this->_lastmsg = null;
 
 		$ret = $this->_get( '/current_customer' );
@@ -340,13 +377,13 @@ class FastlyAPI {
 			return false;
 		}
 
-		if( !empty($this->_lastmsg) ) {
+		# stash fail text
+		if( !empty($ret->msg) ) {
 			$this->_lastmsg = $ret->msg;
 		}
 
 		# check not allowed
-		if( $this->lastcgi['http_code'] == '403' ) {
-			# stash fail text
+		if( $this->lasthttp == '403' ) {
 			return false;
 		}
 
@@ -394,7 +431,7 @@ class FastlyAPI {
 
 		# is it what we wanted?
 		if( $ret->status != 'ok' ) {
-			# /purge didnt return 'ok' ? how is that even possible?
+			# /purge didnt return 'ok'? is that even possible?
 			return false;
 		}
 
@@ -432,7 +469,7 @@ class FastlyAPI {
 		}
 
 		# check http_code for not allowed
-		if( $this->lastcgi['http_code'] == '403' ) {
+		if( $this->lasthttp == '403' ) {
 			# we hit 403, so status should have a 'you are not allowed' message
 			return false;
 		}
