@@ -14,7 +14,7 @@ class FastlyAPI {
 	private $cookie_file = "./fastly.cookie";
 
 	public function __construct () {
-		$this->_ch = curl_init();
+		$this->_curl_init();
 	}
 
 	public function __destruct () {
@@ -232,6 +232,7 @@ class FastlyAPI {
 	}
 
 	# =================================================================
+	# http://www.fastly.com/docs/api#Auth
 	/*
 	 * POST /login
 	 * -requires having user/pass
@@ -284,6 +285,8 @@ class FastlyAPI {
 		return true;
 	}
 
+	# =================================================================
+	# http://www.fastly.com/docs/api#Users
 	/*
 	 * GET /current_user
 	 *	-Get the logged in user
@@ -331,27 +334,64 @@ class FastlyAPI {
 	/*
 	 * GET /user
 	 * 	-List users
-	 *		-if role < superuser, will fail
-	 *		-if role = superuser, will get users in YOUR customer
-	 *		-if role = admin, will get ALL users in ALL customers (have fun)
-	 *
-	 * GET /user/<id>
-	 * 	-Get a specific user
-	 *
-	 * NOTE:
-	 *	getting ANY user requires [role=ADMIN]
-	 *	getting a user in your CUSTOMER requires [role=superuser]
-	 *  can always get YOUR id (mimics doing /current_user ?)
+	 *		-if role < admin, fail
+	 *		-if role = admin, gets ALL users in ALL customers (have fun)
 	 */
-	public function API_user ( $id=null ) {
+	public function API_users () {
+		$this->_lastmsg = null;
 
-		if( empty($id) ) {
-			return $this->_get( '/user' );
-		} else {
-			return $this->_get( '/user/' . $id );
+		# list user mode
+		$ret = $this->_get( '/user' );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
 		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+
+		return $ret;
 	}
 
+	/*
+	 * GET /user/<id>
+	 * 	-Get a specific user
+	 * 		-if role = user, can get own id
+	 * 			(same return as /current_user, but does not update internal user cache)
+	 * 		-if role = superuser, can get any user in your CUSTOMER
+	 * 		-if role = admin, can get any user
+	 */
+	public function API_user ( $user_id=null ) {
+		$this->_lastmsg = null;
+
+		# single user mode
+		$ret = $this->_get( '/user/' . $user_id );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	# =================================================================
+	# http://www.fastly.com/docs/api#Customers
 	/*
 	 * GET /current_customer
 	 *	-Get the logged in customer info
