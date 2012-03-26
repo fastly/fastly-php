@@ -485,6 +485,45 @@ class FastlyAPI {
 
 	}
 
+	/*
+	 * DELETE /user/<id>
+	 * -Deletes a user
+	 * -- If role=super, limited to users in your CUSTOMER
+	 * -- If role=admin, any user
+	 * TODO: confirm fail checks
+	 */
+	public function API_user_delete ( $id ) {
+		$this->_laststatus = null;
+
+		#prevent stupid
+		if( empty($id) ) {
+			return false;
+		}
+
+		$ret = $this->_delete( '/user/' . $id, null);
+
+		#check for hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did it give us a status?
+		if( empty($ret->status) ) {
+			return false;
+		}
+
+		# stash it
+		$this->_laststatus = $ret->status;
+
+		# is it what we wanted?
+		if( $ret->status != 'ok' ) {
+			return false;
+		}
+
+		# woo!
+		return true;
+	}
+
 	# =================================================================
 	# http://www.fastly.com/docs/api#Customers
 	/*
