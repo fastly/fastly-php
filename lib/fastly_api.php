@@ -255,6 +255,7 @@ class FastlyAPI {
 
 		*/
 
+		$this->_lastmsg = null;
 		$ret = $this->_post( '/login', $payload );
 
 		#check for curl hard fail
@@ -387,6 +388,55 @@ class FastlyAPI {
 			return false;
 		}
 
+		return $ret;
+	}
+
+	/*
+	 * POST /user
+	 * -Creates a user in your CUSTOMER
+	 * -Requires >= SUPERUSER role
+	 *
+	 * Pass in an assoc array of data to create the account with
+	 * Required keys:
+			name (this is the textual name displayed)
+			login (email of user, used for login)
+	 * Optional keys:
+			role ( default:user if not supplied. Can only make <= your level)
+			customer ( id of customer to create the user into, may need role=ADMIN to use)
+			? (there are others, but need confirmation from API source)
+
+	 * Returns the userdata array for the newly created user on success.
+	 * Returns false on failure to create
+	 * TODO: on fail, api returns an array of missing/malformed keys, need to expose this
+	 */
+	public function API_user_create ( $data ) {
+		$this->_lastmsg = null;
+
+		# TODO: pre-check for the required keys in array
+
+		$ret = $this->_post( '/user', $data );
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+
+		# TODO: check for [errors] in return, expose to user somehow
+
+		# returned data should be decoded JSON array of data for new customer
+		# Note: you likely need to set additional data for this user (like role)
 		return $ret;
 	}
 
