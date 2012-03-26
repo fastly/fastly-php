@@ -440,6 +440,51 @@ class FastlyAPI {
 		return $ret;
 	}
 
+	/*
+	 * PUT /user/id
+	 * -Updates a user's information
+	 * -Requires >= SUPER to change others, or can change self
+	 * -You can pass null to 1st param (id), it will try to pull YOUR id from YOUR cached userdata
+	 * Things confirmed changeable:
+			login
+			name
+			role
+	 * Returns the updata userdata wad of the user that was changed.
+	 * NOTE: If you change a user other then YOU, that user will get require_new_password=>true
+	 * TODO: detect if you are changing your self (id=null OR with id==_user->id), and update _user cache with returned data
+	 */
+	public function API_user_update ( $id, $data ) {
+		$this->_lastmsg = null;
+
+		if( $id == null ) {
+			if( !empty($this->_user) && !empty($this->_user->id) ) {
+				$id = $this->_user->id;
+			}
+		}
+
+		if( empty($id) ) {
+			return false;
+		}
+
+		$ret = $this->_put( '/user/' . $id, $data );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+
+	}
+
 	# =================================================================
 	# http://www.fastly.com/docs/api#Customers
 	/*
