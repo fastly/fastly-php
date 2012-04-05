@@ -369,7 +369,7 @@ class FastlyAPI {
 	 * 		-if role = superuser, can get any user in your CUSTOMER
 	 * 		-if role = admin, can get any user
 	 */
-	public function API_user ( $user_id=null ) {
+	public function API_user ( $user_id ) {
 		$this->_lastmsg = null;
 
 		# single user mode
@@ -488,8 +488,8 @@ class FastlyAPI {
 	/*
 	 * DELETE /user/<id>
 	 * -Deletes a user
-	 * -- If role=super, limited to users in your CUSTOMER
-	 * -- If role=admin, any user
+	 * -- If role=SUPER, limited to users in your CUSTOMER
+	 * -- If role=ADMIN, any user
 	 * TODO: confirm fail checks
 	 */
 	public function API_user_delete ( $id ) {
@@ -567,6 +567,64 @@ class FastlyAPI {
 		$this->_customer = $ret;
 
 		# also return it back
+		return $ret;
+	}
+
+	/*
+	 * GET /customer
+	 * -Lists ALL customers
+	 * -Requires ADMIN
+	 */
+	public function API_customers ( ) {
+		$this->_lastmsg = null;
+
+		$ret = $this->_get( '/customer' );
+
+		# check for hard curl fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# stash fail text
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check not allowed
+		if( $this->lasthttp == '403' ) {
+			return false;
+		}
+
+		# also return it back
+		return $ret;
+	}
+
+	/*
+	 * GET /customer/<id>
+	 * -Get a specific customer
+	 * --If role <  ADMIN, limited to getting customers you belong to
+	 * --If role == ADMIN, can get any id
+	 */
+	public function API_customer ( $cust_id ) {
+		$this->_lastmsg = null;
+
+		# single user mode
+		$ret = $this->_get( '/customer/' . $cust_id );
+		var_dump($ret);
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
 		return $ret;
 	}
 
