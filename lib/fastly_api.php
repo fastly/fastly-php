@@ -149,7 +149,6 @@ class FastlyAPI {
 		curl_setopt($this->_ch, CURLOPT_RETURNTRANSFER, 1);
 
 		if( !empty($this->_curlheaders ) ) {
-			// print "we havz headers!\n"; var_dump( $this->_curlheaders );
 			curl_setopt($this->_ch, CURLOPT_HTTPHEADER, $this->_curlheaders);
 		}
 
@@ -610,7 +609,6 @@ class FastlyAPI {
 
 		# single user mode
 		$ret = $this->_get( '/customer/' . $cust_id );
-		var_dump($ret);
 
 		if( $ret === false ) {
 			$this->_lastmsg = 'hard_false';
@@ -628,7 +626,75 @@ class FastlyAPI {
 		return $ret;
 	}
 
+	/*
+	 * PUT /customer/<id>?params
+	 * -Update a customer
+	 *
+	 * -Requires >=SUPER
+	 * --SUPER can edit own customer(s)
+	 * --ADMIN can edit ANY customer
+	 *
+	 * Things SUPER can change:
+		name
+		owner_id
+	 *
+	 * Things ADMIN can also change:
+		can_upload_vcl
+		has_config_panel
+		can_configure_wordpress
+		has_billing_panel
+		can_stream_syslog
+		can_edit_matches
+	 *
+	 * If you send id===null, your current cached customer->id will be used
+	 */
+	public function API_customer_update ( $id, $data ) {
+		$this->_lastmsg = null;
+
+		if( $id === null ) {
+			if( !empty($this->_customer) && !empty($this->_customer->id) ) {
+				$id = $this->_customer->id;
+			}
+			# we dont have to catch a failed cache check here,
+			# since the following empty will catch the null
+		}
+
+		if( empty($id) ) {
+			return false;
+		}
+
+		$ret = $this->_put( '/customer/' . $id, $data );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+
+	}
+
+	/*
+	 * DELETE /customer/<id>
+	 * Delete a customer
+	 * -requires ADMIN
+	 *
+	 * NOTE: not coding this into API at this time. Need a better testing environment.
+	 */
+
 	# =================================================================
+	# http://www.fastly.com/docs/api#Services
+
+	# =================================================================
+	# http://www.fastly.com/docs/api#Purging
 	/*
 	 * POST /purge/<url>
 	 * purge a url from the service
