@@ -18,7 +18,9 @@ class FastlyAPI {
 	}
 
 	public function __destruct () {
-		curl_close( $this->_ch );
+		if( !empty( $this->_ch ) ) {
+			@curl_close( $this->_ch );
+		}
 	}
 
 	public function __get ( $var ) {
@@ -47,6 +49,14 @@ class FastlyAPI {
 
 		}
 		return null;
+	}
+
+	public function __set ( $var, $val ) {
+		switch( $var ) {
+			case 'apiHost':
+				$this->apphost = $val;
+				break;
+		}
 	}
 
 	# =================================================================
@@ -238,24 +248,25 @@ class FastlyAPI {
 	 * return: ?
 	 */
 	public function API_login () {
-		# TODO: check to see if auth has U/P
+		$this->_lastmsg = null;
 
 		# not sure if order matters, but docs did this order, so i too :)
-		$payload = array(
-			'password' => $this->_auth['password'],
-			    'user' => $this->_auth['user']
-			);
+		$payload = array();
 
-		/* TODO: cache return and analyze.
-			- /login return contains [customer] object with COMPANY info
-			- /login return contains [user] object with MY info
-				- this [user] is 99% (100?) same as doing a /current_user
-				- this has an important [role] key we can use to pre-check canDo() actions
+		if( array_key_exists('password', $this->_auth) ) {
+			$payload['password'] = $this->_auth['password'];
+		}
 
-		*/
+		if( array_key_exists('user', $this->_auth) ) {
+			$payload['user'] = $this->_auth['user'];
+		}
 
-		$this->_lastmsg = null;
+		if( empty($payload) ) {
+			return false;
+		}
+
 		$ret = $this->_post( '/login', $payload );
+
 
 		#check for curl hard fail
 		if( $ret === false ) {
@@ -693,6 +704,186 @@ class FastlyAPI {
 	# =================================================================
 	# http://www.fastly.com/docs/api#Services
 
+	/*
+		creates a bare, empty, service with 1 version.
+			said version has no backends, nor is deployed.
+	*/
+	public function API_service_create ( $data ) {
+		$this->_lastmsg = null;
+
+		# TODO: pre-check for the required keys in array
+
+		$ret = $this->_post( '/service', $data );
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			return false;
+		}
+
+		# 400 on "name taken"
+		if( $this->lasthttp == '400' ) {
+			$this->_lastmsg = $ret->msg . '|' . $ret->detail; //better?
+			return false;
+		}
+
+		# check for other non-normal http statuses? stati? states.
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	/*
+		get a service by id
+	*/
+	public function API_service ( $id ) {
+		$this->_lastmsg = null;
+
+		if( empty($id) ) {
+			return false;
+		}
+
+		$ret = $this->_get( '/service/' . $id );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	/*
+		get a list of service objects in your customer
+	*/
+	public function API_services ( ) {
+		$this->_lastmsg = null;
+
+		# single user mode
+		$ret = $this->_get( '/service' );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	/*
+		get a service by exact name
+	*/
+	public function API_service_byName( $name ) {
+		$this->_lastmsg = null;
+
+		if( empty($name) ) {
+			return false;
+		}
+
+		$ret = $this->_get( '/service/search?name=' . $name );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	/*
+		updates a service
+
+		data = array()
+		known working keys
+			name
+	*/
+	public function API_service_update ( $id, $data ) {
+		$this->_lastmsg = null;
+
+		if( empty($id) ) {
+			return false;
+		}
+
+		$ret = $this->_put( '/service/' . $id, $data );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	public function API_service_delete ( $id ) {
+		$this->_lastmsg = null;
+
+		if( empty($id) ) {
+			return false;
+		}
+
+		$ret = $this->_delete( '/service/' . $id, null );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return true;
+		// return $ret;
+	}
+
 	# =================================================================
 	# http://www.fastly.com/docs/api#Purging
 	/*
@@ -782,7 +973,7 @@ class FastlyAPI {
 	 * POST /service/<servid>/purge/<surkey>
 	 * Purge groups of content by referring to the key that they hold in common.
 	 * PERMISSIONS: unknown
-	 * example: /service/SU1Z0isxPaozGVKXdv0eY/purge/foo
+	 * example: /service/SU1Z0isxPaozGVKXdv0eY/purge/myLONGsurrKEYhash
 	 *
 	 * NOTE: BETA feature, not universally available
 	 * SEE http://www.fastly.com/docs/api#Surrogate_Keys
