@@ -983,4 +983,23 @@ class FastlyAPI {
 		return $this->_post( '/service/' . $service . '/purge/' . $key, null);
 	}
 
+	# =================================================================
+	# http://www.fastly.com/docs/api#Diagnostics
+	/*
+		GET /content/edge_check/<url>
+		checks a url on all the edge nodes.
+		returns array of nodes, wiht content hash and headers
+	*/
+	public function API_edge_check( $url ) {
+		if( empty($url) ) { return null; } # prevent stupid in
+
+		$ret = $this->_get( '/content/edge_check?url=' . $url, null );
+
+		if( empty($ret) ) {
+			return false; # prevent stupid out
+		}
+
+		return $ret;
+	}
+
 }
