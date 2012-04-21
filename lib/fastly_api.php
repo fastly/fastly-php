@@ -59,6 +59,11 @@ class FastlyAPI {
 		}
 	}
 
+	/* makes empty( ->__get ) happy.
+		not best solution, but works */
+	public function __isset( $var ) {
+		return (bool)$this->{$var};
+	}
 	# =================================================================
 	private function _get ( $path ) {
 		// print "GET {$path}\n";
@@ -72,7 +77,7 @@ class FastlyAPI {
 		return $this->_curl();
 	}
 
-	private function _post ( $path, $payload ) {
+	private function _post ( $path, $payload=null ) {
 		// print "POST {$path}\n";
 		$this->_curl_init();
 
@@ -103,40 +108,50 @@ class FastlyAPI {
 		return $this->_curl();
 	}
 
-	private function _put ( $path, $payload ) {
+	private function _put ( $path, $payload=null ) {
 		// print "PUT {$path}\n";
 		$this->_curl_init();
 
 		$url = $this->apphost . $path;
 		curl_setopt($this->_ch, CURLOPT_URL, $url);
 
-		if( is_array( $payload ) ) {
-			$payload_s = http_build_query( $payload );
-		} else {
-			$payload_s = $payload;
-		}
-
 		curl_setopt($this->_ch, CURLOPT_CUSTOMREQUEST, "PUT");
-		curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $payload_s);
+
+		if( !empty($payload) ) {
+			if( is_array( $payload ) ) {
+				$payload_s = http_build_query( $payload );
+			} else {
+				$payload_s = $payload;
+			}
+
+			curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $payload_s);
+		} else {
+			curl_setopt($this->_ch, CURLOPT_POSTFIELDS, '');
+		}
 
 		return $this->_curl();
 	}
 
-	private function _delete ( $path, $payload ) {
+	private function _delete ( $path, $payload=null ) {
 		// print "DELETE {$path}\n";
 		$this->_curl_init();
 
 		$url = $this->apphost . $path;
 		curl_setopt($this->_ch, CURLOPT_URL, $url);
 
-		if( is_array( $payload ) ) {
-			$payload_s = http_build_query( $payload );
-		} else {
-			$payload_s = $payload;
-		}
-
 		curl_setopt($this->_ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-		curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $payload_s);
+
+		if( !empty($payload) ) {
+			if( is_array( $payload ) ) {
+				$payload_s = http_build_query( $payload );
+			} else {
+				$payload_s = $payload;
+			}
+
+			curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $payload_s);
+		} else {
+			curl_setopt($this->_ch, CURLOPT_POSTFIELDS, '');
+		}
 
 		return $this->_curl();
 	}
@@ -510,7 +525,7 @@ class FastlyAPI {
 			return false;
 		}
 
-		$ret = $this->_delete( '/user/' . $id, null);
+		$ret = $this->_delete( '/user/' . $id);
 
 		#check for hard fail
 		if( $ret === false ) {
@@ -865,7 +880,7 @@ class FastlyAPI {
 			return false;
 		}
 
-		$ret = $this->_delete( '/service/' . $id, null );
+		$ret = $this->_delete( '/service/' . $id );
 
 		if( $ret === false ) {
 			$this->_lastmsg = 'hard_false';
@@ -903,7 +918,7 @@ class FastlyAPI {
 			return false;
 		}
 
-		$ret = $this->_post( '/purge/' . $url, null);
+		$ret = $this->_post( '/purge/' . $url);
 
 		#check for hard fail
 		if( $ret === false ) {
@@ -944,7 +959,7 @@ class FastlyAPI {
 			return false;
 		}
 
-		$ret = $this->_post( '/service/' . $service . '/purge_all', null);
+		$ret = $this->_post( '/service/' . $service . '/purge_all');
 
 		# check for hard fail
 		if( $ret === false ) {
@@ -980,7 +995,7 @@ class FastlyAPI {
 	 * DEV: untested
 	 */
 	public function API_purge_key ( $service, $key ) {
-		return $this->_post( '/service/' . $service . '/purge/' . $key, null);
+		return $this->_post( '/service/' . $service . '/purge/' . $key);
 	}
 
 	# =================================================================
@@ -993,7 +1008,7 @@ class FastlyAPI {
 	public function API_edge_check( $url ) {
 		if( empty($url) ) { return null; } # prevent stupid in
 
-		$ret = $this->_get( '/content/edge_check?url=' . $url, null );
+		$ret = $this->_get( '/content/edge_check?url=' . $url );
 
 		if( empty($ret) ) {
 			return false; # prevent stupid out
