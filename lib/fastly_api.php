@@ -900,6 +900,159 @@ class FastlyAPI {
 	}
 
 	# =================================================================
+	# http://www.fastly.com/docs/api#Versions
+
+	/*
+		creates a new version on a service
+		POST /service/<id>/version
+	*/
+	public function API_version_create ( $id ) {
+		$this->_lastmsg = null;
+		if( empty($id) ) { return null; }
+
+		$ret = $this->_post( '/service/' . $id . '/version' );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	/*
+		lists versions for a service
+		GET /service/<id>/version
+	*/
+	public function API_versions ( $id ) {
+		$this->_lastmsg = null;
+		if( empty($id) ) { return null; }
+
+		$ret = $this->_get('/service/'.$id.'/version');
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	/*
+		get a specific version of a service
+		GET /service/<id>/version/<ver>
+	*/
+	public function API_version ( $id, $ver ) {
+		$this->_lastmsg = null;
+		if( empty($id) ) { return null; }
+		if( empty($ver) ) { return null; }
+
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver);
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	/*
+		clone a version
+		POST /service/<sid>/version/<ver>/version
+	*/
+	public function API_version_clone ( $id, $ver ) {
+		$this->_lastmsg = null;
+		if( empty($id) ) { return null; }
+
+		$ret = $this->_put( '/service/' . $id . '/version/' . $ver . '/clone' );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
+	/*
+		Activate version.
+		PUT /service/<service_id>/version/<version_number>/activate
+	*/
+	public function API_version_activate ( $id, $ver ) {
+	}
+
+	/*
+		Deactivate this version.
+		PUT /service/<service_id>/version/<version_number>/deactivate
+	*/
+	public function API_version_deactivate ( $id, $ver ) {
+	}
+
+	/*
+		Validate the version for a particular service and version
+		GET /service/<service_id>/version/<version_number>/validate
+	*/
+	public function API_version_validate ( $id, $ver ) {
+	}
+
+	/*
+		Get the settings for a particular service and version
+		GET /service/<service_id>/version/<version_number>/settings
+	*/
+	public function API_version_settings ( $id, $ver ) {
+	}
+
+	/*
+		Update the settings for a particular service and version
+		PUT /service/<service_id>/version/<version_number>/settings
+	*/
+	public function API_version_settings_update ( $id, $ver ) {
+	}
+
+	/*
+		Delete the version for a particular service and version
+		DELETE /service/<service_id>/version/<version_number>/version
+	*/
+	public function API_version_delete ( $id, $ver ) {
+	}
+
+	# =================================================================
+	# http://www.fastly.com/docs/api#Backends
+
+	# =================================================================
 	# http://www.fastly.com/docs/api#Purging
 	/*
 	 * POST /purge/<url>
