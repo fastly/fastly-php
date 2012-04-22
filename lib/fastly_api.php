@@ -988,6 +988,7 @@ class FastlyAPI {
 	public function API_version_clone ( $id, $ver ) {
 		$this->_lastmsg = null;
 		if( empty($id) ) { return null; }
+		if( empty($ver) ) { return null; }
 
 		$ret = $this->_put( '/service/' . $id . '/version/' . $ver . '/clone' );
 
@@ -1008,10 +1009,35 @@ class FastlyAPI {
 	}
 
 	/*
-		Activate version.
+		Activate (deploy) a version.
 		PUT /service/<service_id>/version/<version_number>/activate
 	*/
 	public function API_version_activate ( $id, $ver ) {
+		$this->_lastmsg = null;
+		if( empty($id) ) { return null; }
+		if( empty($ver) ) { return null; }
+
+		$ret = $this->_put( '/service/' . $id . '/version/' . $ver . '/activate' );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp == '400' ) {
+			$this->_lastmsg = $ret->msg . '|' . $ret->detail;
+			return false;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
 	}
 
 	/*
@@ -1019,6 +1045,26 @@ class FastlyAPI {
 		PUT /service/<service_id>/version/<version_number>/deactivate
 	*/
 	public function API_version_deactivate ( $id, $ver ) {
+		$this->_lastmsg = null;
+		if( empty($id) ) { return null; }
+		if( empty($ver) ) { return null; }
+
+		$ret = $this->_put( '/service/' . $id . '/version/' . $ver . '/deactivate' );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
 	}
 
 	/*
@@ -1026,6 +1072,32 @@ class FastlyAPI {
 		GET /service/<service_id>/version/<version_number>/validate
 	*/
 	public function API_version_validate ( $id, $ver ) {
+		$this->_lastmsg = null;
+
+		$ret = $this->_get( '/service/' . $id . '/version/' . $ver . '/validate' );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		if( !empty($ret->status) && $ret->status == 'error' ) {
+			return false;
+		}
+
+		if( !empty($ret->status) && $ret->status == 'ok' ) {
+			return true;
+		}
+
+		return $ret;
 	}
 
 	/*
@@ -1044,9 +1116,31 @@ class FastlyAPI {
 
 	/*
 		Delete the version for a particular service and version
-		DELETE /service/<service_id>/version/<version_number>/version
+		DELETE /service/<service_id>/version/<version_number>
+		(note: may not actually work on the backend)
 	*/
 	public function API_version_delete ( $id, $ver ) {
+		$this->_lastmsg = null;
+		if( empty($id) ) { return null; }
+		if( empty($ver) ) { return null; }
+
+		$ret = $this->_delete( '/service/' . $id . '/version/' . $ver );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			print_r($ret);
+			return false;
+		}
+
+		return $ret;
 	}
 
 	# =================================================================
