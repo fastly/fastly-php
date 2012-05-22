@@ -201,7 +201,8 @@ class FastlyAPI {
 		# start looking at what we got
 
 		# easy JSON mime detection
-		if( $this->_lastcgi['content_type'] == 'text/json' ) {
+		if( $this->_lastcgi['content_type'] == 'text/json' ||
+			$this->_lastcgi['content_type'] == 'application/x-httpd-php') {
 			return json_decode($ret);
 		}
 
@@ -1187,7 +1188,7 @@ class FastlyAPI {
 		}
 
 		# woo!
-		return true;
+		return $ret;
 	}
 
 	/*
