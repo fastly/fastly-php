@@ -201,8 +201,7 @@ class FastlyAPI {
 		# start looking at what we got
 
 		# easy JSON mime detection
-		if( $this->_lastcgi['content_type'] == 'text/json' ||
-			$this->_lastcgi['content_type'] == 'application/x-httpd-php') {
+		if( $this->_lastcgi['content_type'] == 'text/json' ) {
 			return json_decode($ret);
 		}
 
@@ -213,8 +212,18 @@ class FastlyAPI {
 			return json_decode($ret);
 		}
 
-		# dunno what we got, so just return the raw text back
-		return $ret;
+		# BUG: api is returning content_type as mime type of end of requested url
+		# just attempt to decode everything
+		$decoded = json_decode($ret);
+
+		if( $decoded === null ) {
+			# null means we failed to decode, so just give the raw payload back
+			return $ret;
+		} else {
+			# non-null means we got json data, and it decoded, so all is good.
+			return $decoded;
+		}
+
 	}
 
 	# =================================================================
