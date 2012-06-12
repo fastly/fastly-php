@@ -909,6 +909,43 @@ class FastlyAPI {
 		// return $ret;
 	}
 
+	/*
+		polls for stats
+
+		known working types
+			all *default
+			minutely
+			hourly
+			daily
+
+		warning: large customers may have timeout issues retrieving data through this method.
+			contact support if you see consistant 503 errors from this entry point.
+	*/
+	public function API_service_stats( $id, $type='all' ) {
+		$this->_lastmsg = null;
+
+		if( empty($id) ) {
+			return false;
+		}
+
+		$ret = $this->_get( '/service/' . $id . '/stats/' . $type );
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+
 	# =================================================================
 	# http://www.fastly.com/docs/api#Versions
 
