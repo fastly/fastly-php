@@ -1243,7 +1243,7 @@ class FastlyAPI {
 	 * Purge everything from a service
 	 * Requires >= engineer permissions
 	 * example: POST /service/SU1Z0isxPaozGVKXdv0eY/purge_all
-	 * NOTE: may support using API_KEY authentication?
+	 * NOTE: Supports API_KEY authentication
 	 * on fail check ->laststatus;
 	 */
 	public function API_purge_all ( $service ) {
@@ -1268,14 +1268,13 @@ class FastlyAPI {
 		}
 
 		# check http_code for not allowed
-		if( $this->lasthttp == '403' ) {
-			# we hit 403, so status should have a 'you are not allowed' message
+		if( $this->lasthttp != '200' ) {
+			# we likely hit 403, so status should have a 'you are not allowed' message
 			return false;
 		}
 
 		# http_code was ok (200?)
 		# status should be "ok"
-
 		return true;
 	}
 
@@ -1295,10 +1294,19 @@ class FastlyAPI {
 
 	# =================================================================
 	# http://www.fastly.com/docs/api#Diagnostics
+
 	/*
 		GET /content/edge_check/<url>
-		checks a url on all the edge nodes.
-		returns array of nodes, wiht content hash and headers
+		checks a url on all the edge nodes currently in circulation.
+		Note: URL may or may not begin with protocol (http://)
+
+		Returns array of data objects, each representing an edge node.
+		Each contains:
+			server name
+			hash
+			request array (including headers sent)
+			response array (including headers returned, and status)
+			response_time
 	*/
 	public function API_edge_check( $url ) {
 		if( empty($url) ) { return null; } # prevent stupid in
