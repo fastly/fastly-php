@@ -4,6 +4,7 @@ class FastlyAPI {
 	private $_meta = array();
 	private $_auth = array();
 	private $_ch = null;
+	private $_curlheaders = null;
 	private $_lastcgi = null;
 	private $_lastmsg = null;
 	private $_laststatus = null;
