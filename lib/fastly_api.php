@@ -85,11 +85,6 @@ class FastlyAPI {
 		$url = $this->apphost . $path;
 		curl_setopt($this->_ch, CURLOPT_URL, $url);
 
-		# we have a key set? pass it along with our call;
-		if( !empty($this->_auth['key']) ) {
-			$this->_curlheaders[] = "X-Fastly-Key: " . $this->_auth['key'];
-		}
-
 		curl_setopt($this->_ch, CURLOPT_POST, 1);
 
 		# are we actually posting SOMETHING?
@@ -173,6 +168,11 @@ class FastlyAPI {
 
 		curl_setopt($this->_ch, CURLOPT_HEADER, 0);
 		curl_setopt($this->_ch, CURLOPT_RETURNTRANSFER, 1);
+
+		# we have a key set? pass it along with our call;
+		if( !empty($this->_auth['key']) ) {
+			$this->_curlheaders[] = "X-Fastly-Key: " . $this->_auth['key'];
+		}
 
 		if( !empty($this->_curlheaders ) ) {
 			curl_setopt($this->_ch, CURLOPT_HTTPHEADER, $this->_curlheaders);
