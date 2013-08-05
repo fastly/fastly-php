@@ -1215,8 +1215,8 @@ class FastlyAPI {
 
 		$this->_curl_init();
 		curl_setopt($this->_ch, CURLOPT_URL, $url);
-        curl_setopt($this->_ch, CURLOPT_CUSTOMREQUEST, "PURGE");
-        $ret = $this->_curl();
+		curl_setopt($this->_ch, CURLOPT_CUSTOMREQUEST, "PURGE");
+		$ret = $this->_curl();
 
 		#check for hard fail
 		if( $ret === false ) {
