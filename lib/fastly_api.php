@@ -1249,6 +1249,192 @@ class FastlyAPI {
 	}
 
 	# =================================================================
+	# http://docs.fastly.com/api/config#cache_settings
+	/*
+		get cache_settings details for a specific service and version
+		GET"/service/<service_id>/version/<version>/cache_settings/<name>
+	*/
+	public function API_cache_settings ( $id, $ver, $name ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) or empty($name) ) { return null; }
+		
+		$name = rawurlencode($name);
+
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/cache_settings/'.$name);
+
+		if ( $this->lasthttp == 400 ) {
+			$ret->msg = "ERROR";
+		}
+		
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		return $ret;
+	}
+	
+	/*
+		create a header for a particular service and version
+		POST"/service/<service_id>/version/<version>/cache_settings
+	*/
+	public function API_cache_settings_create ( $id, $ver, $data ) {
+
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+
+		$ret = $this->_post('/service/'.$id.'/version/'.$ver.'/cache_settings', $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+
+		return $ret;
+	}
+	
+	/*
+		update header for a particular service and version
+		PUT"/service/<service_id>/version/<version>/cache_settings/old_name
+	*/
+	public function API_cache_settings_update ( $id, $version, $name, $data ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+		$name = rawurlencode($name);
+
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/cache_settings/' . $name, $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+		
+		return $ret;
+
+	}	
+	
+	# =================================================================
+	# http://docs.fastly.com/api/config#request_settings
+	/*
+		get request_settings details for a specific service and version
+		GET"/service/<service_id>/version/<version>/request_settings/<name>
+	*/
+	public function API_request_settings ( $id, $ver, $name ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) or empty($name) ) { return null; }
+		
+		$name = rawurlencode($name);
+
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/request_settings/'.$name);
+
+		if ( $this->lasthttp == 400 ) {
+			$ret->msg = "ERROR";
+		}
+		
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		return $ret;
+	}
+	
+	/*
+		create a header for a particular service and version
+		POST"/service/<service_id>/version/<version>/request_settings
+	*/
+	public function API_request_settings_create ( $id, $ver, $data ) {
+
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+
+		$ret = $this->_post('/service/'.$id.'/version/'.$ver.'/request_settings', $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+
+		return $ret;
+	}
+	
+	/*
+		update header for a particular service and version
+		PUT"/service/<service_id>/version/<version>/request_settings/old_name
+	*/
+	public function API_request_settings_update ( $id, $version, $name, $data ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+		$name = rawurlencode($name);
+
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/request_settings/' . $name, $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+		
+		return $ret;
+
+	}	
+	
+	# =================================================================
 	# http://docs.fastly.com/api/config#header
 	/*
 		get header details for a specific service and version
