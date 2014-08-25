@@ -1073,8 +1073,14 @@ class FastlyAPI {
 	public function API_backend ( $id, $ver, $name ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) or empty($name) ) { return null; }
+		
+		$name = rawurlencode($name);
 
 		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/backend/'.$name);
+
+		if ( $this->lasthttp == 400 ) {
+			$ret->msg = "ERROR";
+		}
 
 		if( $ret === false ) {
 			$this->_lastmsg = 'hard_false';
@@ -1083,10 +1089,6 @@ class FastlyAPI {
 
 		if( !empty($ret->msg) ) {
 			$this->_lastmsg = $ret->msg;
-		}
-
-		if( $this->lasthttp != 200 ) {
-			return false;
 		}
 
 		return $ret;
@@ -1130,6 +1132,7 @@ class FastlyAPI {
 	public function API_backend_update ( $id, $version, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
+		$name = rawurlencode($name);
 
 		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/backend'.'/' . $name, $data);
 
@@ -1163,9 +1166,13 @@ class FastlyAPI {
 	public function API_condition ( $id, $ver, $name ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) or empty($name) ) { return null; }
+		$name = rawurlencode($name);
 
 		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/condition/'.$name);
-
+		if ( $this->lasthttp == 400 ) {
+			$ret->msg = "ERROR";
+		}
+		
 		if( $ret === false ) {
 			$this->_lastmsg = 'hard_false';
 			return false;
@@ -1173,10 +1180,6 @@ class FastlyAPI {
 
 		if( !empty($ret->msg) ) {
 			$this->_lastmsg = $ret->msg;
-		}
-
-		if( $this->lasthttp != 200 ) {
-			return false;
 		}
 
 		return $ret;
@@ -1220,6 +1223,7 @@ class FastlyAPI {
 	public function API_condition_update ( $id, $version, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
+		$name = rawurlencode($name);
 
 		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/condition/' . $name, $data);
 
@@ -1253,9 +1257,14 @@ class FastlyAPI {
 	public function API_header ( $id, $ver, $name ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) or empty($name) ) { return null; }
+		$name = rawurlencode($name);
 
 		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/header/'.$name);
 
+		if ( $this->lasthttp == 400 ) {
+			$ret->msg = "ERROR";
+		}
+		
 		if( $ret === false ) {
 			$this->_lastmsg = 'hard_false';
 			return false;
@@ -1263,10 +1272,6 @@ class FastlyAPI {
 
 		if( !empty($ret->msg) ) {
 			$this->_lastmsg = $ret->msg;
-		}
-
-		if( $this->lasthttp != 200 ) {
-			return false;
 		}
 
 		return $ret;
@@ -1310,6 +1315,7 @@ class FastlyAPI {
 	public function API_header_update ( $id, $version, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
+		$name = rawurlencode($name);
 
 		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/header/' . $name, $data);
 
