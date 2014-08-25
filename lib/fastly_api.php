@@ -1066,7 +1066,274 @@ class FastlyAPI {
 
 	# =================================================================
 	# http://www.fastly.com/docs/api#Backends
+	/*
+		get backend details for a specific service and version
+		GET"/service/<service_id>/version/<version>/backend/<name>
+	*/
+	public function API_backend ( $id, $ver, $name ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) or empty($name) ) { return null; }
 
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/backend/'.$name);
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+	
+	/*
+		create a backend for a particular service and version
+		POST"/service/<service_id>/version/<version>/backend
+	*/
+	public function API_backend_create ( $id, $ver, $data ) {
+
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+
+		$ret = $this->_post('/service/'.$id.'/version/'.$ver.'/backend', $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+
+		return $ret;
+	}
+	
+	/*
+		update backend for a particular service and version
+		PUT"/service/<service_id>/version/<version>/backend
+	*/
+	public function API_backend_update ( $id, $version, $name, $data ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/backend'.'/' . $name, $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+		
+		return $ret;
+
+	}
+	
+	# =================================================================
+	# http://docs.fastly.com/api/config#condition
+	/*
+		get condition details for a specific service and version
+		GET"/service/<service_id>/version/<version>/condition/<name>
+	*/
+	public function API_condition ( $id, $ver, $name ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) or empty($name) ) { return null; }
+
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/condition/'.$name);
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+	
+	/*
+		create a backend for a particular service and version
+		POST"/service/<service_id>/version/<version>/condition
+	*/
+	public function API_condition_create ( $id, $ver, $data ) {
+
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+
+		$ret = $this->_post('/service/'.$id.'/version/'.$ver.'/condition', $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+
+		return $ret;
+	}
+	
+	/*
+		update condition for a particular service and version
+		PUT"/service/<service_id>/version/<version>/condition/old_name
+	*/
+	public function API_condition_update ( $id, $version, $name, $data ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/condition/' . $name, $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+		
+		return $ret;
+
+	}
+
+	# =================================================================
+	# http://docs.fastly.com/api/config#header
+	/*
+		get header details for a specific service and version
+		GET"/service/<service_id>/version/<version>/header/<name>
+	*/
+	public function API_header ( $id, $ver, $name ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) or empty($name) ) { return null; }
+
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/header/'.$name);
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		if( $this->lasthttp != 200 ) {
+			return false;
+		}
+
+		return $ret;
+	}
+	
+	/*
+		create a header for a particular service and version
+		POST"/service/<service_id>/version/<version>/header
+	*/
+	public function API_header_create ( $id, $ver, $data ) {
+
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+
+		$ret = $this->_post('/service/'.$id.'/version/'.$ver.'/header', $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+
+		return $ret;
+	}
+	
+	/*
+		update header for a particular service and version
+		PUT"/service/<service_id>/version/<version>/condition/old_name
+	*/
+	public function API_header_update ( $id, $version, $name, $data ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/header/' . $name, $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+		
+		return $ret;
+
+	}
+	
 	# =================================================================
 	# http://www.fastly.com/docs/api#Purging
 	/*
