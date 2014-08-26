@@ -1065,6 +1065,99 @@ class FastlyAPI {
 	}
 
 	# =================================================================
+	# http://www.fastly.com/docs/api#domain
+	/*
+		get backend details for a specific service and version
+		GET"/service/<service_id>/version/<version>/backend/<name>
+	*/
+	public function API_domain ( $id, $ver, $name ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) or empty($name) ) { return null; }
+		
+		$name = rawurlencode($name);
+
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/domain/'.$name);
+
+		if ( $this->lasthttp == 400 ) {
+			$ret->msg = "ERROR";
+		}
+
+		if( $ret === false ) {
+			$this->_lastmsg = 'hard_false';
+			return false;
+		}
+
+		if( !empty($ret->msg) ) {
+			$this->_lastmsg = $ret->msg;
+		}
+
+		return $ret;
+	}
+	
+	/*
+		create a domain for a particular service and version
+		POST"/service/<service_id>/version/<version>/domain
+	*/
+	public function API_domain_create ( $id, $ver, $data ) {
+
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+
+		$ret = $this->_post('/service/'.$id.'/version/'.$ver.'/domain', $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+
+		return $ret;
+	}
+	
+	/*
+		update domain for a particular service and version
+		PUT"/service/<service_id>/version/<version>/domain
+	*/
+	public function API_domain_update ( $id, $version, $name, $data ) {
+		$this->_lastmsg = null;
+		if( empty($id) or empty($ver) ) { return null; }
+		$name = rawurlencode($name);
+
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/domain/' . $name, $data);
+
+		#check for curl hard fail
+		if( $ret === false ) {
+			return false;
+		}
+
+		# did we get a msg back?
+		if( !empty($ret->msg) ) {
+			# cache it
+			$this->_lastmsg = $ret->msg;
+		}
+
+		# check for denied http status
+		if( $this->lasthttp == '403' ) {
+			// return false;
+			# not going to throw a false on this right now, so the error array bubbles out
+		}
+		
+		return $ret;
+
+	}
+	
+	# =================================================================
 	# http://www.fastly.com/docs/api#Backends
 	/*
 		get backend details for a specific service and version
