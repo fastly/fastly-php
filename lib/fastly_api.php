@@ -707,7 +707,7 @@ class FastlyAPI {
 			return false;
 		}
 
-		$ret = $this->_get( '/service/search?name=' . $name );
+		$ret = $this->_get( '/service/search?name=' . rawurlencode($name) );
 
 		if( $ret === false ) {
 			$this->_lastmsg = 'hard_false';
@@ -1074,9 +1074,7 @@ class FastlyAPI {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) or empty($name) ) { return null; }
 		
-		$name = rawurlencode($name);
-
-		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/domain/'.$name);
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/domain/'.rawurlencode($name));
 
 		if ( $this->lasthttp == 400 ) {
 			$ret->msg = "ERROR";
@@ -1132,9 +1130,8 @@ class FastlyAPI {
 	public function API_domain_update ( $id, $version, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
-		$name = rawurlencode($name);
 
-		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/domain/' . $name, $data);
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/domain/' . rawurlencode($name), $data);
 
 		#check for curl hard fail
 		if( $ret === false ) {
@@ -1167,9 +1164,7 @@ class FastlyAPI {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) or empty($name) ) { return null; }
 		
-		$name = rawurlencode($name);
-
-		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/backend/'.$name);
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/backend/'.rawurlencode($name));
 
 		if ( $this->lasthttp == 400 ) {
 			$ret->msg = "ERROR";
@@ -1225,9 +1220,8 @@ class FastlyAPI {
 	public function API_backend_update ( $id, $version, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
-		$name = rawurlencode($name);
 
-		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/backend'.'/' . $name, $data);
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/backend'.'/' . rawurlencode($name), $data);
 
 		#check for curl hard fail
 		if( $ret === false ) {
@@ -1259,9 +1253,8 @@ class FastlyAPI {
 	public function API_condition ( $id, $ver, $name ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) or empty($name) ) { return null; }
-		$name = rawurlencode($name);
 
-		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/condition/'.$name);
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/condition/'.rawurlencode($name));
 		if ( $this->lasthttp == 400 ) {
 			$ret->msg = "ERROR";
 		}
@@ -1316,9 +1309,8 @@ class FastlyAPI {
 	public function API_condition_update ( $id, $version, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
-		$name = rawurlencode($name);
 
-		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/condition/' . $name, $data);
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/condition/' . rawurlencode($name), $data);
 
 		#check for curl hard fail
 		if( $ret === false ) {
@@ -1351,9 +1343,7 @@ class FastlyAPI {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) or empty($name) ) { return null; }
 		
-		$name = rawurlencode($name);
-
-		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/cache_settings/'.$name);
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/cache_settings/'.rawurlencode($name));
 
 		if ( $this->lasthttp == 400 ) {
 			$ret->msg = "ERROR";
@@ -1409,9 +1399,8 @@ class FastlyAPI {
 	public function API_cache_settings_update ( $id, $version, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
-		$name = rawurlencode($name);
 
-		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/cache_settings/' . $name, $data);
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/cache_settings/' . rawurlencode($name), $data);
 
 		#check for curl hard fail
 		if( $ret === false ) {
@@ -1444,9 +1433,7 @@ class FastlyAPI {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) or empty($name) ) { return null; }
 		
-		$name = rawurlencode($name);
-
-		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/request_settings/'.$name);
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/request_settings/'.rawurlencode($name));
 
 		if ( $this->lasthttp == 400 ) {
 			$ret->msg = "ERROR";
@@ -1502,9 +1489,8 @@ class FastlyAPI {
 	public function API_request_settings_update ( $id, $version, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
-		$name = rawurlencode($name);
 
-		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/request_settings/' . $name, $data);
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/request_settings/' . rawurlencode($name), $data);
 
 		#check for curl hard fail
 		if( $ret === false ) {
@@ -1536,9 +1522,8 @@ class FastlyAPI {
 	public function API_header ( $id, $ver, $name ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) or empty($name) ) { return null; }
-		$name = rawurlencode($name);
 
-		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/header/'.$name);
+		$ret = $this->_get('/service/'.$id.'/version/'.$ver.'/header/'.rawurlencode($name));
 
 		if ( $this->lasthttp == 400 ) {
 			$ret->msg = "ERROR";
@@ -1594,9 +1579,8 @@ class FastlyAPI {
 	public function API_header_update ( $id, $version, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
-		$name = rawurlencode($name);
 
-		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/header/' . $name, $data);
+		$ret = $this->_put('/service/'.$id.'/version/'.$ver.'/header/' . rawurlencode($name), $data);
 
 		#check for curl hard fail
 		if( $ret === false ) {
