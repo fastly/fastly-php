@@ -1217,7 +1217,7 @@ class FastlyAPI {
 		update backend for a particular service and version
 		PUT"/service/<service_id>/version/<version>/backend
 	*/
-	public function API_backend_update ( $id, $version, $name, $data ) {
+	public function API_backend_update ( $id, $ver, $name, $data ) {
 		$this->_lastmsg = null;
 		if( empty($id) or empty($ver) ) { return null; }
 
