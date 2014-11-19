@@ -1,6 +1,8 @@
 <?php
 
-class FastlyAPI {
+namespace Fastly;
+
+class API {
 	private $_meta = array();
 	private $_auth = array();
 	private $_ch = null;
