@@ -11,7 +11,7 @@ class FastlyAPI {
 	private $_user = null;
 	private $_customer = null;
 
-	private	$apphost = 'https://app.fastly.com';
+	private	$apphost = 'https://api.fastly.com';
 
 	public function __construct () {
 		$this->_curl_init();
