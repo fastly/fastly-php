@@ -1608,10 +1608,10 @@ class API {
 	# =================================================================
 	# http://www.fastly.com/docs/api#Purging
 	/*
-	 * POST /purge/<url>
+	 * PURGE <url>
 	 * purge a url from the service
-	 * Requires engineer permissions
-	 * example: /purge/http://www.example.com/some/path.html
+	 * Requires no permissions
+	 * example: PURGE http://www.example.com/example/url
 	 * NOTE: does not require any authentication to use
 	 * DEV: tested OK
 	 * on fail check ->laststatus;
@@ -1653,7 +1653,7 @@ class API {
 	}
 
 	/*
-	 * POST /service/<id>/purge_all
+	 * PURGE /service/<id>/purge_all
 	 * Purge everything from a service
 	 * Requires >= engineer permissions
 	 * example: POST /service/SU1Z0isxPaozGVKXdv0eY/purge_all
