@@ -1,0 +1,16 @@
+{
+    "name": "fastly/fastly",
+    "license": "MIT",
+    "type": "Library",
+    "authors": [
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fastly\\": "src/"
+        }
+    }
+}
