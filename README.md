@@ -10,7 +10,7 @@ The recommended method to install _Fastly-PHP_ is through [Composer](http://getc
     ```json
         {
             "require": {
-                "fastly/fastly": "dev-master"
+                "fastly/fastly": "v0.2.0"
             }
         }
     ```
