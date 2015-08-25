@@ -1,4 +1,4 @@
-Fastly PHP Client
+Fastly PHP Client [![Build Status](https://travis-ci.org/fastly/fastly-php.svg?branch=master)](https://travis-ci.org/fastly/fastly-php)
 ====
 
 Installation via Composer
