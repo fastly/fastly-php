@@ -7,7 +7,7 @@ use PhpSpec\ObjectBehavior;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @author Gonzalo Vilaseca <gvilaseca@reiss.co.uk>
+ * @author Gonzalo Vilaseca <gonzalo.vilaseca@reiss.com>
  */
 class FastlySpec extends ObjectBehavior
 {

@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 
 /**
- * @author Gonzalo Vilaseca <gvilaseca@reiss.co.uk>
+ * @author Gonzalo Vilaseca <gonzalo.vilaseca@reiss.com>
  */
 class GuzzleAdapter implements AdapterInterface
 {

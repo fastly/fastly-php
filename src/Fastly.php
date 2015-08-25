@@ -3,12 +3,11 @@
 namespace Fastly;
 
 use Fastly\Adapter\AdapterInterface;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * @author Gonzalo Vilaseca <gonzalo.vilaseca@reiss.com>
  */
-class Fastly
+class Fastly implements FastlyInterface
 {
     /**
      * Http adapter
@@ -37,14 +36,8 @@ class Fastly
         $this->entryPoint = $entryPoint;
     }
 
-    /**
-     * Send http request
-     *
-     * @param string $method
-     * @param string $uri
-     * @param array  $options
-     *
-     * @return ResponseInterface
+    /*
+     * {@inheritdoc}
      */
     public function send($method, $uri, array $options = [])
     {
@@ -55,22 +48,16 @@ class Fastly
         return $this->adapter->send($method, $uri, $options);
     }
 
-    /**
-     * @param string $url
-     * @param array  $options
-     *
-     * @return ResponseInterface
+    /*
+     * {@inheritdoc}
      */
     public function purge($url, array $options = [])
     {
         return $this->send('PURGE', $url, $options);
     }
 
-    /**
-     * @param string $service
-     * @param array  $options
-     *
-     * @return ResponseInterface
+    /*
+     * {@inheritdoc}
      */
     public function purgeAll($service, array $options = [])
     {
@@ -79,12 +66,8 @@ class Fastly
         return $this->send('POST', $url, $options);
     }
 
-    /**
-     * @param string $service
-     * @param string $key
-     * @param array  $options
-     *
-     * @return ResponseInterface
+    /*
+     * {@inheritdoc}
      */
     public function purgeKey($service, $key, array $options = [])
     {
