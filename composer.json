@@ -3,14 +3,23 @@
     "license": "MIT",
     "type": "Library",
     "authors": [
+        {
+            "name": "Gonzalo Vilaseca",
+            "email": "gonzalo.vilaseca@reiss.com",
+            "role": "Developer"
+        }
     ],
+    "support": {
+        "issues": "https://github.com/fastly/fastly-php/issues",
+        "source": "https://github.com/fastly/fastly-php"
+    },
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.0",
         "guzzlehttp/guzzle": "~6.0@dev"
     },
     "require-dev": {
-      "phpspec/phpspec": "~2.0"
+        "phpspec/phpspec": "~2.0"
     },
     "autoload": {
         "psr-4": {
