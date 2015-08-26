@@ -10,7 +10,7 @@ The recommended method to install _Fastly-PHP_ is through [Composer](http://getc
     ```json
         {
             "require": {
-                "fastly/fastly": "v0.2.0"
+                "fastly/fastly": "~0.2"
             }
         }
     ```
@@ -61,6 +61,21 @@ Adapters
 This packages uses [Guzzle](https://github.com/guzzle/guzzle) as the default http client.
 
 To use a different http client an adapter class that implements implementing ``Fastly\Adapter\AdapterInterface`` should be provided.
+
+Testing
+---
+There is a class provided in order to fake Fastly so it can be used for testing:
+```php
+$fastly = new FastlyFake();
+
+$result = $fastly->send('GET', 'stats?from=1+day+ago');
+
+$result = $fastly->purgeAll('some_service_id');
+
+$fastly->getCall(0); // Will return array('send', 'GET', 'stats?from=1+day+ago', array())
+$fastly->getCall(1); // Will return array('purgeAll', 'some_service_id', array());
+
+```
 
 Tests
 ---
