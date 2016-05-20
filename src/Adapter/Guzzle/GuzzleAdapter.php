@@ -31,6 +31,7 @@ class GuzzleAdapter implements AdapterInterface
             ['headers' => [
                 'Fastly-Key' => $fastlyKey,
                 'Accept'     => 'application/json',
+                'User-Agent' => 'fastly-php'
             ]],
             $defaultHeaders
         ));
