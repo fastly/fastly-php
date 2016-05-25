@@ -2,6 +2,7 @@
 
 namespace Fastly\Adapter\Guzzle;
 
+use Fastly\Fastly as Fastly;
 use Fastly\Adapter\AdapterInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
@@ -31,6 +32,7 @@ class GuzzleAdapter implements AdapterInterface
             ['headers' => [
                 'Fastly-Key' => $fastlyKey,
                 'Accept'     => 'application/json',
+                'User-Agent' => 'fastly-php-v' . Fastly::VERSION
             ]],
             $defaultHeaders
         ));
