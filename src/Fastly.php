@@ -4,13 +4,12 @@ namespace Fastly;
 
 use Fastly\Adapter\AdapterInterface;
 
-define('Fastly\VERSION', '1.1.0');
-
 /**
  * @author Gonzalo Vilaseca <gonzalo.vilaseca@reiss.com>
  */
 class Fastly implements FastlyInterface
 {
+    const VERSION = '1.1.0';
     /**
      * Http adapter
      *
