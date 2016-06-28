@@ -6,6 +6,7 @@ php:
 
 before_install:
   - composer self-update
+  - composer validate
 
 install:
   - composer install --prefer-source --no-interaction --dev
