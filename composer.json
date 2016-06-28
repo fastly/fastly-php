@@ -26,5 +26,8 @@
         "psr-4": {
             "Fastly\\": "src/"
         }
+    },
+    "scripts": {
+        "cs": "php-cs-fixer fix --verbose --diff"
     }
 }
