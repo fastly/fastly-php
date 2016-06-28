@@ -2,6 +2,7 @@
     "name": "fastly/fastly",
     "license": "MIT",
     "type": "Library",
+    "description": "Provides a PHP client for the Fastly API",
     "authors": [
         {
             "name": "Gonzalo Vilaseca",
