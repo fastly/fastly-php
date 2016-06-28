@@ -10,12 +10,12 @@ use Prophecy\Argument;
  */
 class FastlyFakeSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('Fastly\FastlyFake');
     }
 
-    function it_should_log_calls()
+    public function it_should_log_calls()
     {
         $this->send('POST', 'some/url', array('option1'));
         $this->purge('some/url', array('option2'));
@@ -28,7 +28,7 @@ class FastlyFakeSpec extends ObjectBehavior
         $this->getCall(3)->shouldReturn(array('purgeKey', 'someService', 'someKey', array('option4')));
     }
 
-    function it_return_prs7_response()
+    public function it_return_prs7_response()
     {
         $this->send('POST', 'some/url', array('option1'))->shouldHaveType('Psr\Http\Message\ResponseInterface');
         $this->purge('some/url', array('option2'))->shouldHaveType('Psr\Http\Message\ResponseInterface');
@@ -36,7 +36,7 @@ class FastlyFakeSpec extends ObjectBehavior
         $this->purgeKey('someService', 'someKey', array('option4'))->shouldHaveType('Psr\Http\Message\ResponseInterface');
     }
 
-    function it_returns_null_if_no_calls_have_been_made()
+    public function it_returns_null_if_no_calls_have_been_made()
     {
         $this->getCall(123)->shouldReturn(null);
     }

@@ -64,7 +64,6 @@ class FastlyFake implements FastlyInterface
     public function getCall($num)
     {
         if (array_key_exists($num, $this->calls)) {
-
             return $this->calls[$num];
         }
 

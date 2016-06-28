@@ -31,8 +31,7 @@ class Fastly implements FastlyInterface
     public function __construct(
         AdapterInterface $adapter,
         $entryPoint = 'https://api.fastly.com'
-    )
-    {
+    ) {
         $this->adapter    = $adapter;
         $this->entryPoint = $entryPoint;
     }

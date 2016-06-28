@@ -7,7 +7,8 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * @author Gonzalo Vilaseca <gonzalo.vilaseca@reiss.com>
  */
-interface FastlyInterface {
+interface FastlyInterface
+{
     /**
      * Send http request
      *

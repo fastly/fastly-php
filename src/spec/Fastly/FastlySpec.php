@@ -18,14 +18,14 @@ class FastlySpec extends ObjectBehavior
                             ]
     ];
 
-    function it_is_initializable(AdapterInterface $adapter)
+    public function it_is_initializable(AdapterInterface $adapter)
     {
         $this->beConstructedWith($adapter, 'http://customEntryPoint');
 
         $this->shouldHaveType('Fastly\Fastly');
     }
 
-    function it_adds_entry_point_correctly(AdapterInterface $adapter)
+    public function it_adds_entry_point_correctly(AdapterInterface $adapter)
     {
         $this->beConstructedWith($adapter, 'http://customEntryPoint');
         $uri = '/some/uri';
@@ -35,7 +35,7 @@ class FastlySpec extends ObjectBehavior
         $this->send('GET', $uri, $this->headers);
     }
 
-    function it_omits_entry_point_correctly(AdapterInterface $adapter)
+    public function it_omits_entry_point_correctly(AdapterInterface $adapter)
     {
         $this->beConstructedWith($adapter, 'http://customEntryPoint');
         $uri = 'http://someendpoint.com/some/uri';
@@ -45,7 +45,7 @@ class FastlySpec extends ObjectBehavior
         $this->send('GET', $uri, $this->headers);
     }
 
-    function it_returns_a_psr_response(AdapterInterface $adapter, ResponseInterface $response)
+    public function it_returns_a_psr_response(AdapterInterface $adapter, ResponseInterface $response)
     {
         $this->beConstructedWith($adapter, 'http://customEntryPoint');
         $uri = 'http://someendpoint.com/some/uri';
@@ -55,7 +55,7 @@ class FastlySpec extends ObjectBehavior
         $this->send('GET', $uri, $this->headers)->shouldReturn($response);
     }
 
-    function it_has_fastly_endpoint_by_default(AdapterInterface $adapter)
+    public function it_has_fastly_endpoint_by_default(AdapterInterface $adapter)
     {
         $this->beConstructedWith($adapter);
 

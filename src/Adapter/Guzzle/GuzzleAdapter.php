@@ -26,8 +26,7 @@ class GuzzleAdapter implements AdapterInterface
     public function __construct(
         $fastlyKey = null,
         $defaultHeaders = []
-    )
-    {
+    ) {
         $this->client = new Client(array_merge(
             ['headers' => [
                 'Fastly-Key' => $fastlyKey,
