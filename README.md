@@ -85,3 +85,8 @@ TODO
 -----
 docs
 consistantly formatted docs
+
+License
+-----
+
+This package uses the MIT License (MIT). Please see [`LICENSE`](LICENSE) for more information.
