@@ -13,4 +13,5 @@ install:
   - composer install --prefer-source --no-interaction
 
 script:
+  - vendor/bin/php-cs-fixer fix --verbose --diff --dry-run
   - vendor/bin/phpspec run
