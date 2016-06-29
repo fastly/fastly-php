@@ -1,2 +1,4 @@
 suites:
-    Fastly: { namespace: Fastly, spec_path: src }
+  Fastly:
+    namespace: Fastly
+    psr4_prefix: Fastly
