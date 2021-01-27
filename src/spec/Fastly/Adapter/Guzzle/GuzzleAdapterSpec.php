@@ -14,6 +14,6 @@ class GuzzleAdapterSpec extends ObjectBehavior
 
     function it_returns_a_psr7_response()
     {
-        $this->send('POST', 'http://endpoint.com/some/uri')->shouldHaveType('Psr\Http\Message\ResponseInterface');
+        $this->send('POST', 'https://httpbin.org/post')->shouldHaveType('Psr\Http\Message\ResponseInterface');
     }
 }

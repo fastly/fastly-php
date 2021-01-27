@@ -9,7 +9,7 @@ use Fastly\Adapter\AdapterInterface;
  */
 class Fastly implements FastlyInterface
 {
-    const VERSION = '0.3.0';
+    const VERSION = '0.4.0';
     /**
      * Http adapter
      *
