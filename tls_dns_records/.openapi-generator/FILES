@@ -1,0 +1,14 @@
+.gitignore
+.php_cs
+.travis.yml
+README.md
+composer.json
+docs/Model/ModelTlsDnsRecord.md
+git_push.sh
+lib/ApiException.php
+lib/Configuration.php
+lib/HeaderSelector.php
+lib/Model/ModelInterface.php
+lib/Model/ModelTlsDnsRecord.php
+lib/ObjectSerializer.php
+phpunit.xml.dist

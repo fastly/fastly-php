@@ -1,0 +1,14 @@
+.gitignore
+.php_cs
+.travis.yml
+README.md
+composer.json
+docs/Api/UtilsContentApi.md
+git_push.sh
+lib/Api/UtilsContentApi.php
+lib/ApiException.php
+lib/Configuration.php
+lib/HeaderSelector.php
+lib/Model/ModelInterface.php
+lib/ObjectSerializer.php
+phpunit.xml.dist
