@@ -1,6 +1,15 @@
-# OpenAPI\Client\RequestSettingsApi
+# Fastly\Api\RequestSettingsApi
 
-All URIs are relative to https://api.fastly.com.
+
+```php
+$apiInstance = new Fastly\Api\RequestSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,325 +23,179 @@ Method | HTTP request | Description
 ## `createRequestSettings()`
 
 ```php
-createRequestSettings($service_id, $version_id): \OpenAPI\Client\Model\ModelRequestSettings
+createRequestSettings($options): \Fastly\Model\RequestSettingsResponse // Create a Request Settings object
 ```
-
-Create a Request Settings object
 
 Creates a new Request Settings object.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\RequestSettingsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->createRequestSettings($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->createRequestSettings($options);
 } catch (Exception $e) {
     echo 'Exception when calling RequestSettingsApi->createRequestSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelRequestSettings**](../Model/ModelRequestSettings.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\RequestSettingsResponse**](../Model/RequestSettingsResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `deleteRequestSettings()`
 
 ```php
-deleteRequestSettings($service_id, $version_id, $request_settings_name): object
+deleteRequestSettings($options): object // Delete a Request Settings object
 ```
-
-Delete a Request Settings object
 
 Removes the specified Request Settings object.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\RequestSettingsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$request_settings_name = 'request_settings_name_example'; // string
-
 try {
-    $result = $apiInstance->deleteRequestSettings($service_id, $version_id, $request_settings_name);
-    print_r($result);
+    $result = $apiInstance->deleteRequestSettings($options);
 } catch (Exception $e) {
     echo 'Exception when calling RequestSettingsApi->deleteRequestSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **request_settings_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**request_settings_name** | **string** |  |
 
 ### Return type
 
 **object**
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getRequestSettings()`
 
 ```php
-getRequestSettings($service_id, $version_id, $request_settings_name): \OpenAPI\Client\Model\ModelRequestSettings
+getRequestSettings($options): \Fastly\Model\RequestSettingsResponse // Get a Request Settings object
 ```
-
-Get a Request Settings object
 
 Gets the specified Request Settings object.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\RequestSettingsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$request_settings_name = 'request_settings_name_example'; // string
-
 try {
-    $result = $apiInstance->getRequestSettings($service_id, $version_id, $request_settings_name);
-    print_r($result);
+    $result = $apiInstance->getRequestSettings($options);
 } catch (Exception $e) {
     echo 'Exception when calling RequestSettingsApi->getRequestSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **request_settings_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**request_settings_name** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelRequestSettings**](../Model/ModelRequestSettings.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\RequestSettingsResponse**](../Model/RequestSettingsResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `listRequestSettings()`
 
 ```php
-listRequestSettings($service_id, $version_id): \OpenAPI\Client\Model\ModelRequestSettings[]
+listRequestSettings($options): \Fastly\Model\RequestSettingsResponse[] // List Request Settings objects
 ```
-
-List Request Settings objects
 
 Returns a list of all Request Settings objects for the given service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\RequestSettingsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->listRequestSettings($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->listRequestSettings($options);
 } catch (Exception $e) {
     echo 'Exception when calling RequestSettingsApi->listRequestSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelRequestSettings[]**](../Model/ModelRequestSettings.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\RequestSettingsResponse[]**](../Model/RequestSettingsResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `updateRequestSettings()`
 
 ```php
-updateRequestSettings($service_id, $version_id, $request_settings_name): \OpenAPI\Client\Model\ModelRequestSettings
+updateRequestSettings($options): \Fastly\Model\RequestSettingsResponse // Update a Request Settings object
 ```
-
-Update a Request Settings object
 
 Updates the specified Request Settings object.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\RequestSettingsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$request_settings_name = 'request_settings_name_example'; // string
-
 try {
-    $result = $apiInstance->updateRequestSettings($service_id, $version_id, $request_settings_name);
-    print_r($result);
+    $result = $apiInstance->updateRequestSettings($options);
 } catch (Exception $e) {
     echo 'Exception when calling RequestSettingsApi->updateRequestSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **request_settings_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**request_settings_name** | **string** |  |
+**action** | **string** | Allows you to terminate request handling and immediately perform an action. | [optional]
+**bypass_busy_wait** | **int** | Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. | [optional]
+**default_host** | **string** | Sets the host header. | [optional]
+**force_miss** | **int** | Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable. | [optional]
+**force_ssl** | **int** | Forces the request use SSL (redirects a non-SSL to SSL). | [optional]
+**geo_headers** | **int** | Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers. | [optional]
+**hash_keys** | **string** | Comma separated list of varnish request object fields that should be in the hash key. | [optional]
+**max_stale_age** | **int** | How old an object is allowed to be to serve stale-if-error or stale-while-revalidate. | [optional]
+**name** | **string** | Name for the request settings. | [optional]
+**request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional]
+**timer_support** | **int** | Injects the X-Timer info into the request for viewing origin fetch durations. | [optional]
+**xff** | **string** | Short for X-Forwarded-For. | [optional]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelRequestSettings**](../Model/ModelRequestSettings.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\RequestSettingsResponse**](../Model/RequestSettingsResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)

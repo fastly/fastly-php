@@ -1,6 +1,15 @@
-# OpenAPI\Client\VclApi
+# Fastly\Api\VclApi
 
-All URIs are relative to https://api.fastly.com.
+
+```php
+$apiInstance = new Fastly\Api\VclApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,713 +29,375 @@ Method | HTTP request | Description
 ## `createCustomVcl()`
 
 ```php
-createCustomVcl($service_id, $version_id): \OpenAPI\Client\Model\ModelVcl
+createCustomVcl($options): \Fastly\Model\VclResponse // Create a custom VCL file
 ```
-
-Create a custom VCL file
 
 Upload a VCL for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->createCustomVcl($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->createCustomVcl($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->createCustomVcl: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**content** | **string** | The VCL code to be included. | [optional]
+**main** | **bool** | Set to &#x60;true&#x60; when this is the main VCL, otherwise &#x60;false&#x60;. | [optional]
+**name** | **string** | The name of this VCL. | [optional]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVcl**](../Model/ModelVcl.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\VclResponse**](../Model/VclResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `deleteCustomVcl()`
 
 ```php
-deleteCustomVcl($service_id, $version_id, $vcl_name): object
+deleteCustomVcl($options): object // Delete a custom VCL file
 ```
-
-Delete a custom VCL file
 
 Delete the uploaded VCL for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$vcl_name = 'vcl_name_example'; // string
-
 try {
-    $result = $apiInstance->deleteCustomVcl($service_id, $version_id, $vcl_name);
-    print_r($result);
+    $result = $apiInstance->deleteCustomVcl($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->deleteCustomVcl: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **vcl_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**vcl_name** | **string** |  |
 
 ### Return type
 
 **object**
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getCustomVcl()`
 
 ```php
-getCustomVcl($service_id, $version_id, $vcl_name, $no_content): \OpenAPI\Client\Model\ModelVcl
+getCustomVcl($options): \Fastly\Model\VclResponse // Get a custom VCL file
 ```
-
-Get a custom VCL file
 
 Get the uploaded VCL for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$vcl_name = 'vcl_name_example'; // string
-$no_content = 'no_content_example'; // string | Omit VCL content (default 0).
-
 try {
-    $result = $apiInstance->getCustomVcl($service_id, $version_id, $vcl_name, $no_content);
-    print_r($result);
+    $result = $apiInstance->getCustomVcl($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->getCustomVcl: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **vcl_name** | **string**|  |
- **no_content** | **string**| Omit VCL content (default 0). | [optional]
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**vcl_name** | **string** |  |
+**no_content** | **string** | Omit VCL content. | [optional] [default to &#39;0&#39;]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVcl**](../Model/ModelVcl.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\VclResponse**](../Model/VclResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getCustomVclBoilerplate()`
 
 ```php
-getCustomVclBoilerplate($service_id, $version_id)
+getCustomVclBoilerplate($options): string // Get boilerplate VCL
 ```
-
-Get boilerplate VCL
 
 Return boilerplate VCL with the service's TTL from the [settings](/reference/api/vcl-services/settings/).
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $apiInstance->getCustomVclBoilerplate($service_id, $version_id);
+    $result = $apiInstance->getCustomVclBoilerplate($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->getCustomVclBoilerplate: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-void (empty response body)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `text/plain`
+**string**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getCustomVclGenerated()`
 
 ```php
-getCustomVclGenerated($service_id, $version_id): \OpenAPI\Client\Model\ModelVcl
+getCustomVclGenerated($options): \Fastly\Model\VclResponse // Get the generated VCL for a service
 ```
-
-Get the generated VCL for a service
 
 Display the generated VCL for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->getCustomVclGenerated($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->getCustomVclGenerated($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->getCustomVclGenerated: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVcl**](../Model/ModelVcl.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\VclResponse**](../Model/VclResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getCustomVclGeneratedHighlighted()`
 
 ```php
-getCustomVclGeneratedHighlighted($service_id, $version_id)
+getCustomVclGeneratedHighlighted($options) // Get the generated VCL with syntax highlighting
 ```
-
-Get the generated VCL with syntax highlighting
 
 Display the content of generated VCL with HTML syntax highlighting. Include line numbers by sending `lineno=true` as a request parameter.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $apiInstance->getCustomVclGeneratedHighlighted($service_id, $version_id);
+    $apiInstance->getCustomVclGeneratedHighlighted($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->getCustomVclGeneratedHighlighted: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
 void (empty response body)
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getCustomVclHighlighted()`
 
 ```php
-getCustomVclHighlighted($service_id, $version_id, $vcl_name)
+getCustomVclHighlighted($options) // Get a custom VCL file with syntax highlighting
 ```
-
-Get a custom VCL file with syntax highlighting
 
 Get the uploaded VCL for a particular service and version with HTML syntax highlighting. Include line numbers by sending `lineno=true` as a request parameter.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$vcl_name = 'vcl_name_example'; // string
-
 try {
-    $apiInstance->getCustomVclHighlighted($service_id, $version_id, $vcl_name);
+    $apiInstance->getCustomVclHighlighted($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->getCustomVclHighlighted: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **vcl_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**vcl_name** | **string** |  |
 
 ### Return type
 
 void (empty response body)
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getCustomVclRaw()`
 
 ```php
-getCustomVclRaw($service_id, $version_id, $vcl_name)
+getCustomVclRaw($options): string // Download a custom VCL file
 ```
-
-Download a custom VCL file
 
 Download the specified VCL.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$vcl_name = 'vcl_name_example'; // string
-
 try {
-    $apiInstance->getCustomVclRaw($service_id, $version_id, $vcl_name);
+    $result = $apiInstance->getCustomVclRaw($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->getCustomVclRaw: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **vcl_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**vcl_name** | **string** |  |
 
 ### Return type
 
-void (empty response body)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `text/plain`
+**string**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `listCustomVcl()`
 
 ```php
-listCustomVcl($service_id, $version_id): \OpenAPI\Client\Model\ModelVcl[]
+listCustomVcl($options): \Fastly\Model\VclResponse[] // List custom VCL files
 ```
-
-List custom VCL files
 
 List the uploaded VCLs for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->listCustomVcl($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->listCustomVcl($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->listCustomVcl: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVcl[]**](../Model/ModelVcl.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\VclResponse[]**](../Model/VclResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `setCustomVclMain()`
 
 ```php
-setCustomVclMain($service_id, $version_id, $vcl_name): \OpenAPI\Client\Model\ModelVcl
+setCustomVclMain($options): \Fastly\Model\VclResponse // Set a custom VCL file as main
 ```
-
-Set a custom VCL file as main
 
 Set the specified VCL as the main.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$vcl_name = 'vcl_name_example'; // string
-
 try {
-    $result = $apiInstance->setCustomVclMain($service_id, $version_id, $vcl_name);
-    print_r($result);
+    $result = $apiInstance->setCustomVclMain($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->setCustomVclMain: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **vcl_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**vcl_name** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVcl**](../Model/ModelVcl.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\VclResponse**](../Model/VclResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `updateCustomVcl()`
 
 ```php
-updateCustomVcl($service_id, $version_id, $vcl_name): \OpenAPI\Client\Model\ModelVcl
+updateCustomVcl($options): \Fastly\Model\VclResponse // Update a custom VCL file
 ```
-
-Update a custom VCL file
 
 Update the uploaded VCL for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$vcl_name = 'vcl_name_example'; // string
-
 try {
-    $result = $apiInstance->updateCustomVcl($service_id, $version_id, $vcl_name);
-    print_r($result);
+    $result = $apiInstance->updateCustomVcl($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->updateCustomVcl: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **vcl_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**vcl_name** | **string** |  |
+**content** | **string** | The VCL code to be included. | [optional]
+**main** | **bool** | Set to &#x60;true&#x60; when this is the main VCL, otherwise &#x60;false&#x60;. | [optional]
+**name** | **string** | The name of this VCL. | [optional]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVcl**](../Model/ModelVcl.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\VclResponse**](../Model/VclResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)

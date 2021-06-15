@@ -1,6 +1,15 @@
-# OpenAPI\Client\DatacenterApi
+# Fastly\Api\DatacenterApi
 
-All URIs are relative to https://api.fastly.com.
+
+```php
+$apiInstance = new Fastly\Api\DatacenterApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,57 +19,29 @@ Method | HTTP request | Description
 ## `listDatacenters()`
 
 ```php
-listDatacenters()
+listDatacenters($options): \Fastly\Model\Datacenter[] // List Fastly datacenters
 ```
-
-List Fastly datacenters
 
 Get a list of all Fastly datacenters (POPs).
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\DatacenterApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
 try {
-    $apiInstance->listDatacenters();
+    $result = $apiInstance->listDatacenters($options);
 } catch (Exception $e) {
     echo 'Exception when calling DatacenterApi->listDatacenters: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\Datacenter[]**](../Model/Datacenter.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)

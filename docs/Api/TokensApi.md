@@ -1,6 +1,15 @@
-# OpenAPI\Client\TokensApi
+# Fastly\Api\TokensApi
 
-All URIs are relative to https://api.fastly.com.
+
+```php
+$apiInstance = new Fastly\Api\TokensApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,378 +25,209 @@ Method | HTTP request | Description
 ## `bulkRevokeTokens()`
 
 ```php
-bulkRevokeTokens($body)
+bulkRevokeTokens($options) // Revoke multiple tokens
 ```
-
-Revoke multiple tokens
 
 Revoke Tokens in bulk format. Users may only revoke their own tokens. Superusers may revoke tokens of others.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = {"data":[{"id":"3krg2uUGZzb2W9Euo4moOY","type":"token"},{"id":"71ZA6hv2FO6tGEQIE203Xj","type":"token"}]}; // object
-
 try {
-    $apiInstance->bulkRevokeTokens($body);
+    $apiInstance->bulkRevokeTokens($options);
 } catch (Exception $e) {
     echo 'Exception when calling TokensApi->bulkRevokeTokens: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**|  | [optional]
+**body** | **object** |  | [optional]
 
 ### Return type
 
 void (empty response body)
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/vnd.api+json; ext=bulk`
-- **Accept**: Not defined
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `createToken()`
 
 ```php
-createToken(): \OpenAPI\Client\Model\ModelTokenCreated
+createToken($options): \Fastly\Model\TokenCreatedResponse // Create a token
 ```
-
-Create a token
 
 Create an API token. If two-factor authentication is enabled for your account, review [the instructions](/reference/api/auth/) for including a one-time password in the request.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-
 try {
-    $result = $apiInstance->createToken();
-    print_r($result);
+    $result = $apiInstance->createToken($options);
 } catch (Exception $e) {
     echo 'Exception when calling TokensApi->createToken: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelTokenCreated**](../Model/ModelTokenCreated.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\TokenCreatedResponse**](../Model/TokenCreatedResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getTokenCurrent()`
 
 ```php
-getTokenCurrent(): \OpenAPI\Client\Model\ModelToken
+getTokenCurrent($options): \Fastly\Model\TokenResponse // Get the current token
 ```
-
-Get the current token
 
 Get a single token based on the access_token used in the request.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
 try {
-    $result = $apiInstance->getTokenCurrent();
-    print_r($result);
+    $result = $apiInstance->getTokenCurrent($options);
 } catch (Exception $e) {
     echo 'Exception when calling TokensApi->getTokenCurrent: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelToken**](../Model/ModelToken.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\TokenResponse**](../Model/TokenResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `listTokensCustomer()`
 
 ```php
-listTokensCustomer($customer_id): \OpenAPI\Client\Model\ModelToken[]
+listTokensCustomer($options): \Fastly\Model\TokenResponse[] // List tokens for a customer
 ```
-
-List tokens for a customer
 
 List all tokens belonging to a specific customer.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$customer_id = 'customer_id_example'; // string
-
 try {
-    $result = $apiInstance->listTokensCustomer($customer_id);
-    print_r($result);
+    $result = $apiInstance->listTokensCustomer($options);
 } catch (Exception $e) {
     echo 'Exception when calling TokensApi->listTokensCustomer: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customer_id** | **string**|  |
+**customer_id** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelToken[]**](../Model/ModelToken.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\TokenResponse[]**](../Model/TokenResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `listTokensUser()`
 
 ```php
-listTokensUser(): \OpenAPI\Client\Model\ModelToken[]
+listTokensUser($options): \Fastly\Model\TokenResponse[] // List tokens for the authenticated user
 ```
-
-List tokens for the authenticated user
 
 List all tokens belonging to the authenticated user.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-
 try {
-    $result = $apiInstance->listTokensUser();
-    print_r($result);
+    $result = $apiInstance->listTokensUser($options);
 } catch (Exception $e) {
     echo 'Exception when calling TokensApi->listTokensUser: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelToken[]**](../Model/ModelToken.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\TokenResponse[]**](../Model/TokenResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `revokeToken()`
 
 ```php
-revokeToken($token_id)
+revokeToken($options) // Revoke a token
 ```
-
-Revoke a token
 
 Revoke a specific token by its id.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$token_id = 'token_id_example'; // string
-
 try {
-    $apiInstance->revokeToken($token_id);
+    $apiInstance->revokeToken($options);
 } catch (Exception $e) {
     echo 'Exception when calling TokensApi->revokeToken: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token_id** | **string**|  |
+**token_id** | **string** |  |
 
 ### Return type
 
 void (empty response body)
 
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `revokeTokenCurrent()`
 
 ```php
-revokeTokenCurrent()
+revokeTokenCurrent($options) // Revoke the current token
 ```
-
-Revoke the current token
 
 Revoke a token that is used to authenticate the request.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
 try {
-    $apiInstance->revokeTokenCurrent();
+    $apiInstance->revokeTokenCurrent($options);
 } catch (Exception $e) {
     echo 'Exception when calling TokensApi->revokeTokenCurrent: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 This endpoint does not need any parameter.
 
@@ -395,15 +235,5 @@ This endpoint does not need any parameter.
 
 void (empty response body)
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)

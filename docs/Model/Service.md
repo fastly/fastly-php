@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\OpenAPI\Client\Model\RelationshipServiceServiceData**](RelationshipServiceServiceData.md) |  | [optional]
+**comment** | **string** | A freeform descriptive note. | [optional]
+**name** | **string** | The name of the service. | [optional]
+**customer_id** | **string** | Alphanumeric string identifying the customer. | [optional] [readonly]
 
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+[[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

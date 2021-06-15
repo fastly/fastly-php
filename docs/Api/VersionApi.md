@@ -1,6 +1,15 @@
-# OpenAPI\Client\VersionApi
+# Fastly\Api\VersionApi
 
-All URIs are relative to https://api.fastly.com.
+
+```php
+$apiInstance = new Fastly\Api\VersionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,571 +27,301 @@ Method | HTTP request | Description
 ## `activateServiceVersion()`
 
 ```php
-activateServiceVersion($service_id, $version_id): \OpenAPI\Client\Model\ModelVersion
+activateServiceVersion($options): \Fastly\Model\VersionResponse // Activate a service version
 ```
-
-Activate a service version
 
 Activate the current version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VersionApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->activateServiceVersion($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->activateServiceVersion($options);
 } catch (Exception $e) {
     echo 'Exception when calling VersionApi->activateServiceVersion: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVersion**](../Model/ModelVersion.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\VersionResponse**](../Model/VersionResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `cloneServiceVersion()`
 
 ```php
-cloneServiceVersion($service_id, $version_id): \OpenAPI\Client\Model\ModelVersion
+cloneServiceVersion($options): \Fastly\Model\Version // Clone a service version
 ```
-
-Clone a service version
 
 Clone the current configuration into a new version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VersionApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->cloneServiceVersion($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->cloneServiceVersion($options);
 } catch (Exception $e) {
     echo 'Exception when calling VersionApi->cloneServiceVersion: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVersion**](../Model/ModelVersion.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\Version**](../Model/Version.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `createServiceVersion()`
 
 ```php
-createServiceVersion($service_id): \OpenAPI\Client\Model\InlineResponse2001
+createServiceVersion($options): \Fastly\Model\VersionCreateResponse // Create a service version
 ```
-
-Create a service version
 
 Create a version for a particular service.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VersionApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-
 try {
-    $result = $apiInstance->createServiceVersion($service_id);
-    print_r($result);
+    $result = $apiInstance->createServiceVersion($options);
 } catch (Exception $e) {
     echo 'Exception when calling VersionApi->createServiceVersion: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
+**service_id** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\VersionCreateResponse**](../Model/VersionCreateResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `deactivateServiceVersion()`
 
 ```php
-deactivateServiceVersion($service_id, $version_id): \OpenAPI\Client\Model\ModelVersion
+deactivateServiceVersion($options): \Fastly\Model\VersionResponse // Deactivate a service version
 ```
-
-Deactivate a service version
 
 Deactivate the current version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VersionApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->deactivateServiceVersion($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->deactivateServiceVersion($options);
 } catch (Exception $e) {
     echo 'Exception when calling VersionApi->deactivateServiceVersion: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVersion**](../Model/ModelVersion.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\VersionResponse**](../Model/VersionResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getServiceVersion()`
 
 ```php
-getServiceVersion($service_id, $version_id): \OpenAPI\Client\Model\ModelVersion
+getServiceVersion($options): \Fastly\Model\VersionResponse // Get a version of a service
 ```
-
-Get a version of a service
 
 Get the version for a particular service.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VersionApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->getServiceVersion($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->getServiceVersion($options);
 } catch (Exception $e) {
     echo 'Exception when calling VersionApi->getServiceVersion: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVersion**](../Model/ModelVersion.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\VersionResponse**](../Model/VersionResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `listServiceVersions()`
 
 ```php
-listServiceVersions($service_id): \OpenAPI\Client\Model\ModelVersion[]
+listServiceVersions($options): \Fastly\Model\VersionResponse[] // List versions of a service
 ```
-
-List versions of a service
 
 List the versions for a particular service.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VersionApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-
 try {
-    $result = $apiInstance->listServiceVersions($service_id);
-    print_r($result);
+    $result = $apiInstance->listServiceVersions($options);
 } catch (Exception $e) {
     echo 'Exception when calling VersionApi->listServiceVersions: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
+**service_id** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVersion[]**](../Model/ModelVersion.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\VersionResponse[]**](../Model/VersionResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `lockServiceVersion()`
 
 ```php
-lockServiceVersion($service_id, $version_id): \OpenAPI\Client\Model\ModelVersion
+lockServiceVersion($options): \Fastly\Model\Version // Lock a service version
 ```
-
-Lock a service version
 
 Locks the specified version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VersionApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->lockServiceVersion($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->lockServiceVersion($options);
 } catch (Exception $e) {
     echo 'Exception when calling VersionApi->lockServiceVersion: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVersion**](../Model/ModelVersion.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\Version**](../Model/Version.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `updateServiceVersion()`
 
 ```php
-updateServiceVersion($service_id, $version_id): \OpenAPI\Client\Model\ModelVersion
+updateServiceVersion($options): \Fastly\Model\VersionResponse // Update a service version
 ```
-
-Update a service version
 
 Update a particular version for a particular service.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VersionApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->updateServiceVersion($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->updateServiceVersion($options);
 } catch (Exception $e) {
     echo 'Exception when calling VersionApi->updateServiceVersion: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**active** | **bool** | Whether this is the active version or not. | [optional] [default to false]
+**comment** | **string** | A freeform descriptive note. | [optional]
+**deployed** | **bool** | Unused at this time. | [optional]
+**locked** | **bool** | Whether this version is locked or not. Objects can not be added or edited on locked versions. | [optional] [default to false]
+**number** | **int** | The number of this version. | [optional]
+**staging** | **bool** | Unused at this time. | [optional] [default to false]
+**testing** | **bool** | Unused at this time. | [optional] [default to false]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelVersion**](../Model/ModelVersion.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\VersionResponse**](../Model/VersionResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `validateServiceVersion()`
 
 ```php
-validateServiceVersion($service_id, $version_id): object
+validateServiceVersion($options): object // Validate a service version
 ```
-
-Validate a service version
 
 Validate the version for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\VersionApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->validateServiceVersion($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->validateServiceVersion($options);
 } catch (Exception $e) {
     echo 'Exception when calling VersionApi->validateServiceVersion: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
 **object**
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)

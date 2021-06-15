@@ -1,0 +1,18 @@
+# # ConditionResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**comment** | **string** | A freeform descriptive note. | [optional]
+**name** | **string** | Name of the condition. Required. | [optional]
+**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
+**statement** | **string** | A conditional expression in VCL used to determine if the condition is met. | [optional]
+**type** | **string** | Type of the condition. Required. | [optional]
+**service_id** | **string** | Alphanumeric string identifying the service. | [optional] [readonly]
+**version** | **int** | Integer identifying a service version. | [optional] [readonly]
+**created_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly]
+**deleted_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly]
+**updated_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly]
+
+[[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

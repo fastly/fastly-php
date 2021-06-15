@@ -1,738 +1,443 @@
-# OpenAPIClient-php
+# Fastly PHP
 
-Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports.
-The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts.
-For the most accurate and up-to-date API reference content, visit developer.fastly.com/reference/api/
+A PHP client library for interacting with most facets of the [Fastly API](https://developer.fastly.com/reference/api).
 
+> ⚠️ This client library (`1.0.0-alpha1`)  is an early-access release. Features may change without notice. Use at your own risk.
 
+**We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases. Please try out the library in a test environment, see what breaks without worrying about consequences, and give us [feedback](#issues).
 
-## Installation & Usage
+## Installation
 
-### Requirements
+Requires PHP 7.2 or later.
 
-PHP 7.2 and later.
-
-### Composer
-
-To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
+To install via [Composer](https://getcomposer.org/), add the following to your project's `composer.json`:
 
 ```json
 {
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
-    }
-  ],
   "require": {
-    "GIT_USER_ID/GIT_REPO_ID": "*@dev"
+    "fastly/fastly": "*@dev"
   }
 }
 ```
 
-Then run `composer install`
+Then run `composer install`.
 
-### Manual Installation
-
-Download the files and include `autoload.php`:
+Composer generates a `vendor/autoload.php` file. You can include this file and start using the classes provided by this client without any extra work:
 
 ```php
 <?php
-require_once('/path/to/OpenAPIClient-php/vendor/autoload.php');
+require_once('/path/to/project/vendor/autoload.php');
 ```
 
-## Getting Started
-
-Please follow the [installation procedure](#installation--usage) and then run the following:
+## Usage
 
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Authorize the client with a Fastly API key (token)
+$config = Fastly\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
 
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\AclApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+$apiInstance = new Fastly\Api\(
+    // Optionally, pass a custom client that implements `GuzzleHttp\ClientInterface`.
+    // `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$created_at = 'created_at_example'; // string | Date and time in ISO 8601 format.
-$deleted_at = 'deleted_at_example'; // string | Date and time in ISO 8601 format.
-$updated_at = 'updated_at_example'; // string | Date and time in ISO 8601 format.
-$service_id2 = 'service_id_example'; // string | Alphanumeric string identifying the service.
-$version = 56; // int | Integer identifying a service version.
-$name = 'name_example'; // string | Name for the ACL. Must start with an alphanumeric character and contain only alphanumeric characters, underscores, and whitespace. Required.
-$id = 'id_example'; // string | Alphanumeric string identifying a ACL.
+
+$options['service_id'] = 'SU1Z0isxPaozGVKXdv0eY'; // string
+$options['version_id'] = 56; // int
+$options['name'] = 'my_acl'; // string
 
 try {
-    $result = $apiInstance->createAcl($service_id, $version_id, $created_at, $deleted_at, $updated_at, $service_id2, $version, $name, $id);
+    $result = $apiInstance->createAcl($options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AclApi->createAcl: ', $e->getMessage(), PHP_EOL;
 }
-
 ```
-
-## API Endpoints
-
-All URIs are relative to *https://api.fastly.com*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*AclApi* | [**createAcl**](docs/Api/AclApi.md#createacl) | **POST** /service/{service_id}/version/{version_id}/acl | Create a new ACL
-*AclApi* | [**deleteAcl**](docs/Api/AclApi.md#deleteacl) | **DELETE** /service/{service_id}/version/{version_id}/acl/{acl_name} | Delete an ACL
-*AclApi* | [**getAcl**](docs/Api/AclApi.md#getacl) | **GET** /service/{service_id}/version/{version_id}/acl/{acl_name} | Describe an ACL
-*AclApi* | [**listAcls**](docs/Api/AclApi.md#listacls) | **GET** /service/{service_id}/version/{version_id}/acl | List ACLs
-*AclApi* | [**updateAcl**](docs/Api/AclApi.md#updateacl) | **PUT** /service/{service_id}/version/{version_id}/acl/{acl_name} | Update an ACL
-*AclEntryApi* | [**bulkUpdateAclEntries**](docs/Api/AclEntryApi.md#bulkupdateaclentries) | **PATCH** /service/{service_id}/acl/{acl_id}/entries | Update multiple ACL entries
-*AclEntryApi* | [**createAclEntry**](docs/Api/AclEntryApi.md#createaclentry) | **POST** /service/{service_id}/acl/{acl_id}/entry | Create an ACL entry
-*AclEntryApi* | [**deleteAclEntry**](docs/Api/AclEntryApi.md#deleteaclentry) | **DELETE** /service/{service_id}/acl/{acl_id}/entry/{acl_entry_id} | Delete an ACL entry
-*AclEntryApi* | [**getAclEntry**](docs/Api/AclEntryApi.md#getaclentry) | **GET** /service/{service_id}/acl/{acl_id}/entry/{acl_entry_id} | Describe an ACL entry
-*AclEntryApi* | [**listAclEntries**](docs/Api/AclEntryApi.md#listaclentries) | **GET** /service/{service_id}/acl/{acl_id}/entries | List ACL entries
-*AclEntryApi* | [**updateAclEntry**](docs/Api/AclEntryApi.md#updateaclentry) | **PATCH** /service/{service_id}/acl/{acl_id}/entry/{acl_entry_id} | Update an ACL entry
-*BackendApi* | [**createBackend**](docs/Api/BackendApi.md#createbackend) | **POST** /service/{service_id}/version/{version_id}/backend | Create a backend
-*BackendApi* | [**deleteBackend**](docs/Api/BackendApi.md#deletebackend) | **DELETE** /service/{service_id}/version/{version_id}/backend/{backend_name} | Delete a backend
-*BackendApi* | [**getBackend**](docs/Api/BackendApi.md#getbackend) | **GET** /service/{service_id}/version/{version_id}/backend/{backend_name} | Describe a backend
-*BackendApi* | [**listBackends**](docs/Api/BackendApi.md#listbackends) | **GET** /service/{service_id}/version/{version_id}/backend | List backends
-*BackendApi* | [**updateBackend**](docs/Api/BackendApi.md#updatebackend) | **PUT** /service/{service_id}/version/{version_id}/backend/{backend_name} | Update a backend
-*BillingApi* | [**getInvoice**](docs/Api/BillingApi.md#getinvoice) | **GET** /billing/v2/year/{year}/month/{month} | Get an invoice
-*BillingApi* | [**getInvoiceMtd**](docs/Api/BillingApi.md#getinvoicemtd) | **GET** /billing/v2/account_customers/{customer_id}/mtd_invoice | Get month-to-date billing estimate
-*BillingAddressApi* | [**addBillingAddr**](docs/Api/BillingAddressApi.md#addbillingaddr) | **POST** /customer/{customer_id}/billing_address | Add a billing address to a customer
-*BillingAddressApi* | [**deleteBillingAddr**](docs/Api/BillingAddressApi.md#deletebillingaddr) | **DELETE** /customer/{customer_id}/billing_address | Delete a billing address
-*BillingAddressApi* | [**getBillingAddr**](docs/Api/BillingAddressApi.md#getbillingaddr) | **GET** /customer/{customer_id}/billing_address | Get a billing address
-*BillingAddressApi* | [**updateBillingAddr**](docs/Api/BillingAddressApi.md#updatebillingaddr) | **PATCH** /customer/{customer_id}/billing_address | Update a billing address
-*CacheSettingsApi* | [**createCacheSettings**](docs/Api/CacheSettingsApi.md#createcachesettings) | **POST** /service/{service_id}/version/{version_id}/cache_settings | Create a cache settings object
-*CacheSettingsApi* | [**deleteCacheSettings**](docs/Api/CacheSettingsApi.md#deletecachesettings) | **DELETE** /service/{service_id}/version/{version_id}/cache_settings/{cache_settings_name} | Delete a cache settings object
-*CacheSettingsApi* | [**getCacheSettings**](docs/Api/CacheSettingsApi.md#getcachesettings) | **GET** /service/{service_id}/version/{version_id}/cache_settings/{cache_settings_name} | Get a cache settings object
-*CacheSettingsApi* | [**listCacheSettings**](docs/Api/CacheSettingsApi.md#listcachesettings) | **GET** /service/{service_id}/version/{version_id}/cache_settings | List cache settings objects
-*CacheSettingsApi* | [**updateCacheSettings**](docs/Api/CacheSettingsApi.md#updatecachesettings) | **PUT** /service/{service_id}/version/{version_id}/cache_settings/{cache_settings_name} | Update a cache settings object
-*ConditionApi* | [**createCondition**](docs/Api/ConditionApi.md#createcondition) | **POST** /service/{service_id}/version/{version_id}/condition | Create a condition
-*ConditionApi* | [**deleteCondition**](docs/Api/ConditionApi.md#deletecondition) | **DELETE** /service/{service_id}/version/{version_id}/condition/{condition_name} | Delete a condition
-*ConditionApi* | [**getCondition**](docs/Api/ConditionApi.md#getcondition) | **GET** /service/{service_id}/version/{version_id}/condition/{condition_name} | Describe a condition
-*ConditionApi* | [**listConditions**](docs/Api/ConditionApi.md#listconditions) | **GET** /service/{service_id}/version/{version_id}/condition | List conditions
-*ConditionApi* | [**updateCondition**](docs/Api/ConditionApi.md#updatecondition) | **PUT** /service/{service_id}/version/{version_id}/condition/{condition_name} | Update a condition
-*ContentApi* | [**contentCheck**](docs/Api/ContentApi.md#contentcheck) | **GET** /content/edge_check | Check status of content in each data center cache
-*CustomerApi* | [**deleteCustomer**](docs/Api/CustomerApi.md#deletecustomer) | **DELETE** /customer/{customer_id} | Delete a customer
-*CustomerApi* | [**getCustomer**](docs/Api/CustomerApi.md#getcustomer) | **GET** /customer/{customer_id} | Get a customer
-*CustomerApi* | [**getLoggedInCustomer**](docs/Api/CustomerApi.md#getloggedincustomer) | **GET** /current_customer | Get the logged in customer
-*CustomerApi* | [**listUsers**](docs/Api/CustomerApi.md#listusers) | **GET** /customer/{customer_id}/users | List users
-*CustomerApi* | [**updateCustomer**](docs/Api/CustomerApi.md#updatecustomer) | **PUT** /customer/{customer_id} | Update a customer
-*DatacenterApi* | [**listDatacenters**](docs/Api/DatacenterApi.md#listdatacenters) | **GET** /datacenters | List Fastly datacenters
-*DictionaryApi* | [**createDictionary**](docs/Api/DictionaryApi.md#createdictionary) | **POST** /service/{service_id}/version/{version_id}/dictionary | Create an edge dictionary
-*DictionaryApi* | [**deleteDictionary**](docs/Api/DictionaryApi.md#deletedictionary) | **DELETE** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Delete an edge dictionary
-*DictionaryApi* | [**getDictionary**](docs/Api/DictionaryApi.md#getdictionary) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Get an edge dictionary
-*DictionaryApi* | [**listDictionaries**](docs/Api/DictionaryApi.md#listdictionaries) | **GET** /service/{service_id}/version/{version_id}/dictionary | List edge dictionaries
-*DictionaryApi* | [**updateDictionary**](docs/Api/DictionaryApi.md#updatedictionary) | **PUT** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Update an edge dictionary
-*DictionaryInfoApi* | [**getDictionaryInfo**](docs/Api/DictionaryInfoApi.md#getdictionaryinfo) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_id}/info | Get edge dictionary metadata
-*DictionaryItemApi* | [**bulkUpdateDictionaryItem**](docs/Api/DictionaryItemApi.md#bulkupdatedictionaryitem) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/items | Update multiple entries in an edge dictionary
-*DictionaryItemApi* | [**createDictionaryItem**](docs/Api/DictionaryItemApi.md#createdictionaryitem) | **POST** /service/{service_id}/dictionary/{dictionary_id}/item | Create an entry in an edge dictionary
-*DictionaryItemApi* | [**deleteDictionaryItem**](docs/Api/DictionaryItemApi.md#deletedictionaryitem) | **DELETE** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Delete an item from an edge dictionary
-*DictionaryItemApi* | [**getDictionaryItem**](docs/Api/DictionaryItemApi.md#getdictionaryitem) | **GET** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Get an item from an edge dictionary
-*DictionaryItemApi* | [**listDictionaryItems**](docs/Api/DictionaryItemApi.md#listdictionaryitems) | **GET** /service/{service_id}/dictionary/{dictionary_id}/items | List items in an edge dictionary
-*DictionaryItemApi* | [**updateDictionaryItem**](docs/Api/DictionaryItemApi.md#updatedictionaryitem) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Update an entry in an edge dictionary
-*DictionaryItemApi* | [**upsertDictionaryItem**](docs/Api/DictionaryItemApi.md#upsertdictionaryitem) | **PUT** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Insert or update an entry in an edge dictionary
-*DiffApi* | [**diffServiceVersions**](docs/Api/DiffApi.md#diffserviceversions) | **GET** /service/{service_id}/diff/from/{from_version_id}/to/{to_version_id} | Diff two service versions
-*DirectorApi* | [**createDirector**](docs/Api/DirectorApi.md#createdirector) | **POST** /service/{service_id}/version/{version_id}/director | Create a director
-*DirectorApi* | [**deleteDirector**](docs/Api/DirectorApi.md#deletedirector) | **DELETE** /service/{service_id}/version/{version_id}/director/{director_name} | Delete a director
-*DirectorApi* | [**getDirector**](docs/Api/DirectorApi.md#getdirector) | **GET** /service/{service_id}/version/{version_id}/director/{director_name} | Get a director
-*DirectorApi* | [**listDirectors**](docs/Api/DirectorApi.md#listdirectors) | **GET** /service/{service_id}/version/{version_id}/director | List directors
-*DirectorApi* | [**updateDirector**](docs/Api/DirectorApi.md#updatedirector) | **PUT** /service/{service_id}/version/{version_id}/director/{director_name} | Update a director
-*DirectorBackendApi* | [**createDirectorBackend**](docs/Api/DirectorBackendApi.md#createdirectorbackend) | **POST** /service/{service_id}/version/{version_id}/director/{director_name}/backend/{backend_name} | Create a director-backend relationship
-*DirectorBackendApi* | [**deleteDirectorBackend**](docs/Api/DirectorBackendApi.md#deletedirectorbackend) | **DELETE** /service/{service_id}/version/{version_id}/director/{director_name}/backend/{backend_name} | Delete a director-backend relationship
-*DirectorBackendApi* | [**getDirectorBackend**](docs/Api/DirectorBackendApi.md#getdirectorbackend) | **GET** /service/{service_id}/version/{version_id}/director/{director_name}/backend/{backend_name} | Get a director-backend relationship
-*DomainApi* | [**checkDomain**](docs/Api/DomainApi.md#checkdomain) | **GET** /service/{service_id}/version/{version_id}/domain/{domain_name}/check | Validate DNS configuration for a single domain on a service
-*DomainApi* | [**checkDomains**](docs/Api/DomainApi.md#checkdomains) | **GET** /service/{service_id}/version/{version_id}/domain/check_all | Validate DNS configuration for all domains on a service
-*DomainApi* | [**createDomain**](docs/Api/DomainApi.md#createdomain) | **POST** /service/{service_id}/version/{version_id}/domain | Add a domain name to a service
-*DomainApi* | [**deleteDomain**](docs/Api/DomainApi.md#deletedomain) | **DELETE** /service/{service_id}/version/{version_id}/domain/{domain_name} | Remove a domain from a service
-*DomainApi* | [**getDomain**](docs/Api/DomainApi.md#getdomain) | **GET** /service/{service_id}/version/{version_id}/domain/{domain_name} | Describe a domain
-*DomainApi* | [**listDomains**](docs/Api/DomainApi.md#listdomains) | **GET** /service/{service_id}/version/{version_id}/domain | List domains
-*DomainApi* | [**updateDomain**](docs/Api/DomainApi.md#updatedomain) | **PUT** /service/{service_id}/version/{version_id}/domain/{domain_name} | Update a domain
-*EventsApi* | [**getEvent**](docs/Api/EventsApi.md#getevent) | **GET** /events/{event_id} | Get an event
-*EventsApi* | [**listEvents**](docs/Api/EventsApi.md#listevents) | **GET** /events | List events
-*GzipApi* | [**createGzipConfig**](docs/Api/GzipApi.md#creategzipconfig) | **POST** /service/{service_id}/version/{version_id}/gzip | Create a gzip configuration
-*GzipApi* | [**deleteGzipConfig**](docs/Api/GzipApi.md#deletegzipconfig) | **DELETE** /service/{service_id}/version/{version_id}/gzip/{gzip_name} | Delete a gzip configuration
-*GzipApi* | [**getGzipConfigs**](docs/Api/GzipApi.md#getgzipconfigs) | **GET** /service/{service_id}/version/{version_id}/gzip/{gzip_name} | Get a gzip configuration
-*GzipApi* | [**listGzipConfigs**](docs/Api/GzipApi.md#listgzipconfigs) | **GET** /service/{service_id}/version/{version_id}/gzip | List gzip configurations
-*GzipApi* | [**updateGzipConfig**](docs/Api/GzipApi.md#updategzipconfig) | **PUT** /service/{service_id}/version/{version_id}/gzip/{gzip_name} | Update a gzip configuration
-*HeaderApi* | [**createHeaderObject**](docs/Api/HeaderApi.md#createheaderobject) | **POST** /service/{service_id}/version/{version_id}/header | Create a Header object
-*HeaderApi* | [**deleteHeaderObject**](docs/Api/HeaderApi.md#deleteheaderobject) | **DELETE** /service/{service_id}/version/{version_id}/header/{header_name} | Delete a Header object
-*HeaderApi* | [**getHeaderObject**](docs/Api/HeaderApi.md#getheaderobject) | **GET** /service/{service_id}/version/{version_id}/header/{header_name} | Get a Header object
-*HeaderApi* | [**listHeaderObjects**](docs/Api/HeaderApi.md#listheaderobjects) | **GET** /service/{service_id}/version/{version_id}/header | List Header objects
-*HeaderApi* | [**updateHeaderObject**](docs/Api/HeaderApi.md#updateheaderobject) | **PUT** /service/{service_id}/version/{version_id}/header/{header_name} | Update a Header object
-*HealthcheckApi* | [**createHealthcheck**](docs/Api/HealthcheckApi.md#createhealthcheck) | **POST** /service/{service_id}/version/{version_id}/healthcheck | Create a healthcheck
-*HealthcheckApi* | [**deleteHealthcheck**](docs/Api/HealthcheckApi.md#deletehealthcheck) | **DELETE** /service/{service_id}/version/{version_id}/healthcheck/{healthcheck_name} | Delete a healthcheck
-*HealthcheckApi* | [**getHealthcheck**](docs/Api/HealthcheckApi.md#gethealthcheck) | **GET** /service/{service_id}/version/{version_id}/healthcheck/{healthcheck_name} | Get a healthcheck
-*HealthcheckApi* | [**listHealthchecks**](docs/Api/HealthcheckApi.md#listhealthchecks) | **GET** /service/{service_id}/version/{version_id}/healthcheck | List healthchecks
-*HealthcheckApi* | [**updateHealthcheck**](docs/Api/HealthcheckApi.md#updatehealthcheck) | **PUT** /service/{service_id}/version/{version_id}/healthcheck/{healthcheck_name} | Update a healthcheck
-*InvitationsApi* | [**createInvitation**](docs/Api/InvitationsApi.md#createinvitation) | **POST** /invitations | Create an invitation
-*InvitationsApi* | [**deleteInvitation**](docs/Api/InvitationsApi.md#deleteinvitation) | **DELETE** /invitations/{invitation_id} | Delete an invitation
-*InvitationsApi* | [**listInvitations**](docs/Api/InvitationsApi.md#listinvitations) | **GET** /invitations | List invitations
-*LoggingAzureblobApi* | [**createLogAzure**](docs/Api/LoggingAzureblobApi.md#createlogazure) | **POST** /service/{service_id}/version/{version_id}/logging/azureblob | Create an Azure Blob Storage log endpoint
-*LoggingAzureblobApi* | [**deleteLoogAzure**](docs/Api/LoggingAzureblobApi.md#deleteloogazure) | **DELETE** /service/{service_id}/version/{version_id}/logging/azureblob/{logging_azureblob_name} | Delete the Azure Blob Storage log endpoint
-*LoggingAzureblobApi* | [**getLogAzure**](docs/Api/LoggingAzureblobApi.md#getlogazure) | **GET** /service/{service_id}/version/{version_id}/logging/azureblob/{logging_azureblob_name} | Get an Azure Blob Storage log endpoint
-*LoggingAzureblobApi* | [**listLogAzure**](docs/Api/LoggingAzureblobApi.md#listlogazure) | **GET** /service/{service_id}/version/{version_id}/logging/azureblob | List Azure Blob Storage log endpoints
-*LoggingAzureblobApi* | [**updateLogAzure**](docs/Api/LoggingAzureblobApi.md#updatelogazure) | **PUT** /service/{service_id}/version/{version_id}/logging/azureblob/{logging_azureblob_name} | Update an Azure Blob Storage log endpoint
-*LoggingBigqueryApi* | [**createLogBigquery**](docs/Api/LoggingBigqueryApi.md#createlogbigquery) | **POST** /service/{service_id}/version/{version_id}/logging/bigquery | Create a BigQuery log endpoint
-*LoggingBigqueryApi* | [**deleteLogBigquery**](docs/Api/LoggingBigqueryApi.md#deletelogbigquery) | **DELETE** /service/{service_id}/version/{version_id}/logging/bigquery/{logging_bigquery_name} | Delete a BigQuery log endpoint
-*LoggingBigqueryApi* | [**getLogBigquery**](docs/Api/LoggingBigqueryApi.md#getlogbigquery) | **GET** /service/{service_id}/version/{version_id}/logging/bigquery/{logging_bigquery_name} | Get a BigQuery log endpoint
-*LoggingBigqueryApi* | [**listLogBigquery**](docs/Api/LoggingBigqueryApi.md#listlogbigquery) | **GET** /service/{service_id}/version/{version_id}/logging/bigquery | List BigQuery log endpoints
-*LoggingBigqueryApi* | [**updateLogBigquery**](docs/Api/LoggingBigqueryApi.md#updatelogbigquery) | **PUT** /service/{service_id}/version/{version_id}/logging/bigquery/{logging_bigquery_name} | Update a BigQuery log endpoint
-*LoggingCloudfilesApi* | [**createLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#createlogcloudfiles) | **POST** /service/{service_id}/version/{version_id}/logging/cloudfiles | Create a Cloud Files log endpoint
-*LoggingCloudfilesApi* | [**deleteLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#deletelogcloudfiles) | **DELETE** /service/{service_id}/version/{version_id}/logging/cloudfiles/{logging_cloudfiles_name} | Delete the Cloud Files log endpoint
-*LoggingCloudfilesApi* | [**getLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#getlogcloudfiles) | **GET** /service/{service_id}/version/{version_id}/logging/cloudfiles/{logging_cloudfiles_name} | Get a Cloud Files log endpoint
-*LoggingCloudfilesApi* | [**listLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#listlogcloudfiles) | **GET** /service/{service_id}/version/{version_id}/logging/cloudfiles | List Cloud Files log endpoints
-*LoggingCloudfilesApi* | [**updateLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#updatelogcloudfiles) | **PUT** /service/{service_id}/version/{version_id}/logging/cloudfiles/{logging_cloudfiles_name} | Update the Cloud Files log endpoint
-*LoggingDatadogApi* | [**createLogDatadog**](docs/Api/LoggingDatadogApi.md#createlogdatadog) | **POST** /service/{service_id}/version/{version_id}/logging/datadog | Create a Datadog log endpoint
-*LoggingDatadogApi* | [**deleteLogDatadog**](docs/Api/LoggingDatadogApi.md#deletelogdatadog) | **DELETE** /service/{service_id}/version/{version_id}/logging/datadog/{logging_datadog_name} | Delete a Datadog log endpoint
-*LoggingDatadogApi* | [**getLogDatadog**](docs/Api/LoggingDatadogApi.md#getlogdatadog) | **GET** /service/{service_id}/version/{version_id}/logging/datadog/{logging_datadog_name} | Get a Datadog log endpoint
-*LoggingDatadogApi* | [**listLogDatadog**](docs/Api/LoggingDatadogApi.md#listlogdatadog) | **GET** /service/{service_id}/version/{version_id}/logging/datadog | List Datadog log endpoints
-*LoggingDatadogApi* | [**updateLogDatadog**](docs/Api/LoggingDatadogApi.md#updatelogdatadog) | **PUT** /service/{service_id}/version/{version_id}/logging/datadog/{logging_datadog_name} | Update a Datadog log endpoint
-*LoggingDigitaloceanApi* | [**createLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#createlogdigocean) | **POST** /service/{service_id}/version/{version_id}/logging/digitalocean | Create a DigitalOcean Spaces log endpoint
-*LoggingDigitaloceanApi* | [**deleteLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#deletelogdigocean) | **DELETE** /service/{service_id}/version/{version_id}/logging/digitalocean/{logging_digitalocean_name} | Delete a DigitalOcean Spaces log endpoint
-*LoggingDigitaloceanApi* | [**getLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#getlogdigocean) | **GET** /service/{service_id}/version/{version_id}/logging/digitalocean/{logging_digitalocean_name} | Get a DigitalOcean Spaces log endpoint
-*LoggingDigitaloceanApi* | [**listLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#listlogdigocean) | **GET** /service/{service_id}/version/{version_id}/logging/digitalocean | List DigitalOcean Spaces log endpoints
-*LoggingDigitaloceanApi* | [**updateLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#updatelogdigocean) | **PUT** /service/{service_id}/version/{version_id}/logging/digitalocean/{logging_digitalocean_name} | Update a DigitalOcean Spaces log endpoint
-*LoggingElasticsearchApi* | [**createLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#createlogelasticsearch) | **POST** /service/{service_id}/version/{version_id}/logging/elasticsearch | Create an Elasticsearch log endpoint
-*LoggingElasticsearchApi* | [**deleteLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#deletelogelasticsearch) | **DELETE** /service/{service_id}/version/{version_id}/logging/elasticsearch/{logging_elasticsearch_name} | Delete an Elasticsearch log endpoint
-*LoggingElasticsearchApi* | [**getLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#getlogelasticsearch) | **GET** /service/{service_id}/version/{version_id}/logging/elasticsearch/{logging_elasticsearch_name} | Get an Elasticsearch log endpoint
-*LoggingElasticsearchApi* | [**listLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#listlogelasticsearch) | **GET** /service/{service_id}/version/{version_id}/logging/elasticsearch | List Elasticsearch log endpoints
-*LoggingElasticsearchApi* | [**updateLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#updatelogelasticsearch) | **PUT** /service/{service_id}/version/{version_id}/logging/elasticsearch/{logging_elasticsearch_name} | Update an Elasticsearch log endpoint
-*LoggingFtpApi* | [**createLogFtp**](docs/Api/LoggingFtpApi.md#createlogftp) | **POST** /service/{service_id}/version/{version_id}/logging/ftp | Create an FTP log endpoint
-*LoggingFtpApi* | [**deleteLogFtp**](docs/Api/LoggingFtpApi.md#deletelogftp) | **DELETE** /service/{service_id}/version/{version_id}/logging/ftp/{logging_ftp_name} | Delete an FTP log endpoint
-*LoggingFtpApi* | [**getLogFtp**](docs/Api/LoggingFtpApi.md#getlogftp) | **GET** /service/{service_id}/version/{version_id}/logging/ftp/{logging_ftp_name} | Get an FTP log endpoint
-*LoggingFtpApi* | [**listLogFtp**](docs/Api/LoggingFtpApi.md#listlogftp) | **GET** /service/{service_id}/version/{version_id}/logging/ftp | List FTP log endpoints
-*LoggingFtpApi* | [**updateLogFtp**](docs/Api/LoggingFtpApi.md#updatelogftp) | **PUT** /service/{service_id}/version/{version_id}/logging/ftp/{logging_ftp_name} | Update an FTP log endpoint
-*LoggingGcsApi* | [**createLogGcs**](docs/Api/LoggingGcsApi.md#createloggcs) | **POST** /service/{service_id}/version/{version_id}/logging/gcs | Create a GCS log endpoint
-*LoggingGcsApi* | [**deleteLogGcs**](docs/Api/LoggingGcsApi.md#deleteloggcs) | **DELETE** /service/{service_id}/version/{version_id}/logging/gcs/{logging_gcs_name} | Delete a GCS log endpoint
-*LoggingGcsApi* | [**getLogGcs**](docs/Api/LoggingGcsApi.md#getloggcs) | **GET** /service/{service_id}/version/{version_id}/logging/gcs/{logging_gcs_name} | Get a GCS log endpoint
-*LoggingGcsApi* | [**listLogGcs**](docs/Api/LoggingGcsApi.md#listloggcs) | **GET** /service/{service_id}/version/{version_id}/logging/gcs | List GCS log endpoints
-*LoggingGcsApi* | [**updateLogGcs**](docs/Api/LoggingGcsApi.md#updateloggcs) | **PUT** /service/{service_id}/version/{version_id}/logging/gcs/{logging_gcs_name} | Update a GCS log endpoint
-*LoggingHerokuApi* | [**createLogHeroku**](docs/Api/LoggingHerokuApi.md#createlogheroku) | **POST** /service/{service_id}/version/{version_id}/logging/heroku | Create a Heroku log endpoint
-*LoggingHerokuApi* | [**deleteLogHeroku**](docs/Api/LoggingHerokuApi.md#deletelogheroku) | **DELETE** /service/{service_id}/version/{version_id}/logging/heroku/{logging_heroku_name} | Delete the Heroku log endpoint
-*LoggingHerokuApi* | [**getLogHeroku**](docs/Api/LoggingHerokuApi.md#getlogheroku) | **GET** /service/{service_id}/version/{version_id}/logging/heroku/{logging_heroku_name} | Get a Heroku log endpoint
-*LoggingHerokuApi* | [**listLogHeroku**](docs/Api/LoggingHerokuApi.md#listlogheroku) | **GET** /service/{service_id}/version/{version_id}/logging/heroku | List Heroku log endpoints
-*LoggingHerokuApi* | [**updateLogHeroku**](docs/Api/LoggingHerokuApi.md#updatelogheroku) | **PUT** /service/{service_id}/version/{version_id}/logging/heroku/{logging_heroku_name} | Update the Heroku log endpoint
-*LoggingHoneycombApi* | [**createLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#createloghoneycomb) | **POST** /service/{service_id}/version/{version_id}/logging/honeycomb | Create a Honeycomb log endpoint
-*LoggingHoneycombApi* | [**deleteLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#deleteloghoneycomb) | **DELETE** /service/{service_id}/version/{version_id}/logging/honeycomb/{logging_honeycomb_name} | Delete the Honeycomb log endpoint
-*LoggingHoneycombApi* | [**getLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#getloghoneycomb) | **GET** /service/{service_id}/version/{version_id}/logging/honeycomb/{logging_honeycomb_name} | Get a Honeycomb log endpoint
-*LoggingHoneycombApi* | [**listLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#listloghoneycomb) | **GET** /service/{service_id}/version/{version_id}/logging/honeycomb | List Honeycomb log endpoints
-*LoggingHoneycombApi* | [**updateLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#updateloghoneycomb) | **PUT** /service/{service_id}/version/{version_id}/logging/honeycomb/{logging_honeycomb_name} | Update a Honeycomb log endpoint
-*LoggingHttpsApi* | [**createLogHttps**](docs/Api/LoggingHttpsApi.md#createloghttps) | **POST** /service/{service_id}/version/{version_id}/logging/https | Create an HTTPS log endpoint
-*LoggingHttpsApi* | [**deleteLogHttps**](docs/Api/LoggingHttpsApi.md#deleteloghttps) | **DELETE** /service/{service_id}/version/{version_id}/logging/https/{logging_https_name} | Delete an HTTPS log endpoint
-*LoggingHttpsApi* | [**getLogHttps**](docs/Api/LoggingHttpsApi.md#getloghttps) | **GET** /service/{service_id}/version/{version_id}/logging/https/{logging_https_name} | Get an HTTPS log endpoint
-*LoggingHttpsApi* | [**listLogHttps**](docs/Api/LoggingHttpsApi.md#listloghttps) | **GET** /service/{service_id}/version/{version_id}/logging/https | List HTTPS log endpoints
-*LoggingHttpsApi* | [**updateLogHttps**](docs/Api/LoggingHttpsApi.md#updateloghttps) | **PUT** /service/{service_id}/version/{version_id}/logging/https/{logging_https_name} | Update an HTTPS log endpoint
-*LoggingKafkaApi* | [**createLogKafka**](docs/Api/LoggingKafkaApi.md#createlogkafka) | **POST** /service/{service_id}/version/{version_id}/logging/kafka | Create a Kafka log endpoint
-*LoggingKafkaApi* | [**deleteLogKafka**](docs/Api/LoggingKafkaApi.md#deletelogkafka) | **DELETE** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Delete the Kafka log endpoint
-*LoggingKafkaApi* | [**getLogKafka**](docs/Api/LoggingKafkaApi.md#getlogkafka) | **GET** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Get a Kafka log endpoint
-*LoggingKafkaApi* | [**listLogKafka**](docs/Api/LoggingKafkaApi.md#listlogkafka) | **GET** /service/{service_id}/version/{version_id}/logging/kafka | List Kafka log endpoints
-*LoggingKafkaApi* | [**updateLogKafka**](docs/Api/LoggingKafkaApi.md#updatelogkafka) | **PUT** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Update the Kafka log endpoint
-*LoggingKinesisApi* | [**createLogKinesis**](docs/Api/LoggingKinesisApi.md#createlogkinesis) | **POST** /service/{service_id}/version/{version_id}/logging/kinesis | Create  an Amazon Kinesis log endpoint
-*LoggingKinesisApi* | [**deleteLogKinesis**](docs/Api/LoggingKinesisApi.md#deletelogkinesis) | **DELETE** /service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name} | Delete the Amazon Kinesis log endpoint
-*LoggingKinesisApi* | [**getLogKinesis**](docs/Api/LoggingKinesisApi.md#getlogkinesis) | **GET** /service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name} | Get an Amazon Kinesis log endpoint
-*LoggingKinesisApi* | [**listLogKinesis**](docs/Api/LoggingKinesisApi.md#listlogkinesis) | **GET** /service/{service_id}/version/{version_id}/logging/kinesis | List Amazon Kinesis log endpoints
-*LoggingKinesisApi* | [**updateLogKinesis**](docs/Api/LoggingKinesisApi.md#updatelogkinesis) | **PUT** /service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name} | Update the Amazon Kinesis log endpoint
-*LoggingLogentriesApi* | [**createLogLogentries**](docs/Api/LoggingLogentriesApi.md#createloglogentries) | **POST** /service/{service_id}/version/{version_id}/logging/logentries | Create a Logentries log endpoint
-*LoggingLogentriesApi* | [**deleteLogLogentries**](docs/Api/LoggingLogentriesApi.md#deleteloglogentries) | **DELETE** /service/{service_id}/version/{version_id}/logging/logentries/{logging_logentries_name} | Delete a Logentries log endpoint
-*LoggingLogentriesApi* | [**getLogLogentries**](docs/Api/LoggingLogentriesApi.md#getloglogentries) | **GET** /service/{service_id}/version/{version_id}/logging/logentries/{logging_logentries_name} | Get a Logentries log endpoint
-*LoggingLogentriesApi* | [**listLogLogentries**](docs/Api/LoggingLogentriesApi.md#listloglogentries) | **GET** /service/{service_id}/version/{version_id}/logging/logentries | List Logentries log endpoints
-*LoggingLogentriesApi* | [**updateLogLogentries**](docs/Api/LoggingLogentriesApi.md#updateloglogentries) | **PUT** /service/{service_id}/version/{version_id}/logging/logentries/{logging_logentries_name} | Update a Logentries log endpoint
-*LoggingLogglyApi* | [**createLogLoggly**](docs/Api/LoggingLogglyApi.md#createlogloggly) | **POST** /service/{service_id}/version/{version_id}/logging/loggly | Create a Loggly log endpoint
-*LoggingLogglyApi* | [**deleteLogLoggly**](docs/Api/LoggingLogglyApi.md#deletelogloggly) | **DELETE** /service/{service_id}/version/{version_id}/logging/loggly/{logging_loggly_name} | Delete a Loggly log endpoint
-*LoggingLogglyApi* | [**getLogLoggly**](docs/Api/LoggingLogglyApi.md#getlogloggly) | **GET** /service/{service_id}/version/{version_id}/logging/loggly/{logging_loggly_name} | Get a Loggly log endpoint
-*LoggingLogglyApi* | [**listLogLoggly**](docs/Api/LoggingLogglyApi.md#listlogloggly) | **GET** /service/{service_id}/version/{version_id}/logging/loggly | List Loggly log endpoints
-*LoggingLogglyApi* | [**updateLogLoggly**](docs/Api/LoggingLogglyApi.md#updatelogloggly) | **PUT** /service/{service_id}/version/{version_id}/logging/loggly/{logging_loggly_name} | Update a Loggly log endpoint
-*LoggingLogshuttleApi* | [**createLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#createloglogshuttle) | **POST** /service/{service_id}/version/{version_id}/logging/logshuttle | Create a Log Shuttle log endpoint
-*LoggingLogshuttleApi* | [**deleteLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#deleteloglogshuttle) | **DELETE** /service/{service_id}/version/{version_id}/logging/logshuttle/{logging_logshuttle_name} | Delete a Log Shuttle log endpoint
-*LoggingLogshuttleApi* | [**getLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#getloglogshuttle) | **GET** /service/{service_id}/version/{version_id}/logging/logshuttle/{logging_logshuttle_name} | Get a Log Shuttle log endpoint
-*LoggingLogshuttleApi* | [**listLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#listloglogshuttle) | **GET** /service/{service_id}/version/{version_id}/logging/logshuttle | List Log Shuttle log endpoints
-*LoggingLogshuttleApi* | [**updateLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#updateloglogshuttle) | **PUT** /service/{service_id}/version/{version_id}/logging/logshuttle/{logging_logshuttle_name} | Update a Log Shuttle log endpoint
-*LoggingNewrelicApi* | [**createLogNewrelic**](docs/Api/LoggingNewrelicApi.md#createlognewrelic) | **POST** /service/{service_id}/version/{version_id}/logging/newrelic | Create a New Relic log endpoint
-*LoggingNewrelicApi* | [**deleteLogNewrelic**](docs/Api/LoggingNewrelicApi.md#deletelognewrelic) | **DELETE** /service/{service_id}/version/{version_id}/logging/newrelic/{logging_newrelic_name} | Delete a New Relic log endpoint
-*LoggingNewrelicApi* | [**getLogNewrelic**](docs/Api/LoggingNewrelicApi.md#getlognewrelic) | **GET** /service/{service_id}/version/{version_id}/logging/newrelic/{logging_newrelic_name} | Get a New Relic log endpoint
-*LoggingNewrelicApi* | [**listLogNewrelic**](docs/Api/LoggingNewrelicApi.md#listlognewrelic) | **GET** /service/{service_id}/version/{version_id}/logging/newrelic | List New Relic log endpoints
-*LoggingNewrelicApi* | [**updateLogNewrelic**](docs/Api/LoggingNewrelicApi.md#updatelognewrelic) | **PUT** /service/{service_id}/version/{version_id}/logging/newrelic/{logging_newrelic_name} | Update a New Relic log endpoint
-*LoggingOpenstackApi* | [**createLogOpenstack**](docs/Api/LoggingOpenstackApi.md#createlogopenstack) | **POST** /service/{service_id}/version/{version_id}/logging/openstack | Create an OpenStack log endpoint
-*LoggingOpenstackApi* | [**deleteLogOpenstack**](docs/Api/LoggingOpenstackApi.md#deletelogopenstack) | **DELETE** /service/{service_id}/version/{version_id}/logging/openstack/{logging_openstack_name} | Delete an OpenStack log endpoint
-*LoggingOpenstackApi* | [**getLogOpenstack**](docs/Api/LoggingOpenstackApi.md#getlogopenstack) | **GET** /service/{service_id}/version/{version_id}/logging/openstack/{logging_openstack_name} | Get an OpenStack log endpoint
-*LoggingOpenstackApi* | [**listLogOpenstack**](docs/Api/LoggingOpenstackApi.md#listlogopenstack) | **GET** /service/{service_id}/version/{version_id}/logging/openstack | List OpenStack log endpoints
-*LoggingOpenstackApi* | [**updateLogOpenstack**](docs/Api/LoggingOpenstackApi.md#updatelogopenstack) | **PUT** /service/{service_id}/version/{version_id}/logging/openstack/{logging_openstack_name} | Update an OpenStack log endpoint
-*LoggingPapertrailApi* | [**createLogPapertrail**](docs/Api/LoggingPapertrailApi.md#createlogpapertrail) | **POST** /service/{service_id}/version/{version_id}/logging/papertrail | Create a Papertrail log endpoint
-*LoggingPapertrailApi* | [**deleteLogPapertrail**](docs/Api/LoggingPapertrailApi.md#deletelogpapertrail) | **DELETE** /service/{service_id}/version/{version_id}/logging/papertrail/{logging_papertrail_name} | Delete a Papertrail log endpoint
-*LoggingPapertrailApi* | [**getLogPapertrail**](docs/Api/LoggingPapertrailApi.md#getlogpapertrail) | **GET** /service/{service_id}/version/{version_id}/logging/papertrail/{logging_papertrail_name} | Get a Papertrail log endpoint
-*LoggingPapertrailApi* | [**listLogPapertrail**](docs/Api/LoggingPapertrailApi.md#listlogpapertrail) | **GET** /service/{service_id}/version/{version_id}/logging/papertrail | List Papertrail log endpoints
-*LoggingPapertrailApi* | [**updateLogPapertrail**](docs/Api/LoggingPapertrailApi.md#updatelogpapertrail) | **PUT** /service/{service_id}/version/{version_id}/logging/papertrail/{logging_papertrail_name} | Update a Papertrail log endpoint
-*LoggingPubsubApi* | [**createLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#createloggcppubsub) | **POST** /service/{service_id}/version/{version_id}/logging/pubsub | Create a GCP Cloud Pub/Sub log endpoint
-*LoggingPubsubApi* | [**deleteLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#deleteloggcppubsub) | **DELETE** /service/{service_id}/version/{version_id}/logging/pubsub/{logging_google_pubsub_name} | Delete a GCP Cloud Pub/Sub log endpoint
-*LoggingPubsubApi* | [**getLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#getloggcppubsub) | **GET** /service/{service_id}/version/{version_id}/logging/pubsub/{logging_google_pubsub_name} | Get a GCP Cloud Pub/Sub log endpoint
-*LoggingPubsubApi* | [**listLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#listloggcppubsub) | **GET** /service/{service_id}/version/{version_id}/logging/pubsub | List GCP Cloud Pub/Sub log endpoints
-*LoggingPubsubApi* | [**updateLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#updateloggcppubsub) | **PUT** /service/{service_id}/version/{version_id}/logging/pubsub/{logging_google_pubsub_name} | Update a GCP Cloud Pub/Sub log endpoint
-*LoggingS3Api* | [**createLogAwsS3**](docs/Api/LoggingS3Api.md#createlogawss3) | **POST** /service/{service_id}/version/{version_id}/logging/s3 | Create an AWS S3 log endpoint
-*LoggingS3Api* | [**deleteLogAwsS3**](docs/Api/LoggingS3Api.md#deletelogawss3) | **DELETE** /service/{service_id}/version/{version_id}/logging/s3/{logging_s3_name} | Delete an AWS S3 log endpoint
-*LoggingS3Api* | [**getLogAwsS3**](docs/Api/LoggingS3Api.md#getlogawss3) | **GET** /service/{service_id}/version/{version_id}/logging/s3/{logging_s3_name} | Get an AWS S3 log endpoint
-*LoggingS3Api* | [**listLogAwsS3**](docs/Api/LoggingS3Api.md#listlogawss3) | **GET** /service/{service_id}/version/{version_id}/logging/s3 | List AWS S3 log endpoints
-*LoggingS3Api* | [**updateLogAwsS3**](docs/Api/LoggingS3Api.md#updatelogawss3) | **PUT** /service/{service_id}/version/{version_id}/logging/s3/{logging_s3_name} | Update an AWS S3 log endpoint
-*LoggingScalyrApi* | [**createLogScalyr**](docs/Api/LoggingScalyrApi.md#createlogscalyr) | **POST** /service/{service_id}/version/{version_id}/logging/scalyr | Create a Scalyr log endpoint
-*LoggingScalyrApi* | [**deleteLogScalyr**](docs/Api/LoggingScalyrApi.md#deletelogscalyr) | **DELETE** /service/{service_id}/version/{version_id}/logging/scalyr/{logging_scalyr_name} | Delete the Scalyr log endpoint
-*LoggingScalyrApi* | [**getLogScalyr**](docs/Api/LoggingScalyrApi.md#getlogscalyr) | **GET** /service/{service_id}/version/{version_id}/logging/scalyr/{logging_scalyr_name} | Get a Scalyr log endpoint
-*LoggingScalyrApi* | [**listLogScalyr**](docs/Api/LoggingScalyrApi.md#listlogscalyr) | **GET** /service/{service_id}/version/{version_id}/logging/scalyr | List Scalyr log endpoints
-*LoggingScalyrApi* | [**updateLogScalyr**](docs/Api/LoggingScalyrApi.md#updatelogscalyr) | **PUT** /service/{service_id}/version/{version_id}/logging/scalyr/{logging_scalyr_name} | Update the Scalyr log endpoint
-*LoggingSftpApi* | [**createLogSftp**](docs/Api/LoggingSftpApi.md#createlogsftp) | **POST** /service/{service_id}/version/{version_id}/logging/sftp | Create an SFTP log endpoint
-*LoggingSftpApi* | [**deleteLogSftp**](docs/Api/LoggingSftpApi.md#deletelogsftp) | **DELETE** /service/{service_id}/version/{version_id}/logging/sftp/{logging_sftp_name} | Delete an SFTP log endpoint
-*LoggingSftpApi* | [**getLogSftp**](docs/Api/LoggingSftpApi.md#getlogsftp) | **GET** /service/{service_id}/version/{version_id}/logging/sftp/{logging_sftp_name} | Get an SFTP log endpoint
-*LoggingSftpApi* | [**listLogSftp**](docs/Api/LoggingSftpApi.md#listlogsftp) | **GET** /service/{service_id}/version/{version_id}/logging/sftp | List SFTP log endpoints
-*LoggingSftpApi* | [**updateLogSftp**](docs/Api/LoggingSftpApi.md#updatelogsftp) | **PUT** /service/{service_id}/version/{version_id}/logging/sftp/{logging_sftp_name} | Update an SFTP log endpoint
-*LoggingSplunkApi* | [**createLogSplunk**](docs/Api/LoggingSplunkApi.md#createlogsplunk) | **POST** /service/{service_id}/version/{version_id}/logging/splunk | Create a Splunk log endpoint
-*LoggingSplunkApi* | [**deleteLogSplunk**](docs/Api/LoggingSplunkApi.md#deletelogsplunk) | **DELETE** /service/{service_id}/version/{version_id}/logging/splunk/{logging_splunk_name} | Delete a Splunk log endpoint
-*LoggingSplunkApi* | [**getLogSplunk**](docs/Api/LoggingSplunkApi.md#getlogsplunk) | **GET** /service/{service_id}/version/{version_id}/logging/splunk/{logging_splunk_name} | Get a Splunk log endpoint
-*LoggingSplunkApi* | [**listLogSplunk**](docs/Api/LoggingSplunkApi.md#listlogsplunk) | **GET** /service/{service_id}/version/{version_id}/logging/splunk | List Splunk log endpoints
-*LoggingSplunkApi* | [**updateLogSplunk**](docs/Api/LoggingSplunkApi.md#updatelogsplunk) | **PUT** /service/{service_id}/version/{version_id}/logging/splunk/{logging_splunk_name} | Update a Splunk log endpoint
-*LoggingSumologicApi* | [**createLogSumologic**](docs/Api/LoggingSumologicApi.md#createlogsumologic) | **POST** /service/{service_id}/version/{version_id}/logging/sumologic | Create a Sumologic log endpoint
-*LoggingSumologicApi* | [**deleteLogSumologic**](docs/Api/LoggingSumologicApi.md#deletelogsumologic) | **DELETE** /service/{service_id}/version/{version_id}/logging/sumologic/{logging_sumologic_name} | Delete a Sumologic log endpoint
-*LoggingSumologicApi* | [**getLogSumologic**](docs/Api/LoggingSumologicApi.md#getlogsumologic) | **GET** /service/{service_id}/version/{version_id}/logging/sumologic/{logging_sumologic_name} | Get a Sumologic log endpoint
-*LoggingSumologicApi* | [**listLogSumologic**](docs/Api/LoggingSumologicApi.md#listlogsumologic) | **GET** /service/{service_id}/version/{version_id}/logging/sumologic | List Sumologic log endpoints
-*LoggingSumologicApi* | [**updateLogSumologic**](docs/Api/LoggingSumologicApi.md#updatelogsumologic) | **PUT** /service/{service_id}/version/{version_id}/logging/sumologic/{logging_sumologic_name} | Update a Sumologic log endpoint
-*LoggingSyslogApi* | [**createLogSyslog**](docs/Api/LoggingSyslogApi.md#createlogsyslog) | **POST** /service/{service_id}/version/{version_id}/logging/syslog | Create a syslog log endpoint
-*LoggingSyslogApi* | [**deleteLogSyslog**](docs/Api/LoggingSyslogApi.md#deletelogsyslog) | **DELETE** /service/{service_id}/version/{version_id}/logging/syslog/{logging_syslog_name} | Delete a syslog log endpoint
-*LoggingSyslogApi* | [**getLogSyslog**](docs/Api/LoggingSyslogApi.md#getlogsyslog) | **GET** /service/{service_id}/version/{version_id}/logging/syslog/{logging_syslog_name} | Get a syslog log endpoint
-*LoggingSyslogApi* | [**listLogSyslog**](docs/Api/LoggingSyslogApi.md#listlogsyslog) | **GET** /service/{service_id}/version/{version_id}/logging/syslog | List Syslog log endpoints
-*LoggingSyslogApi* | [**updateLogSyslog**](docs/Api/LoggingSyslogApi.md#updatelogsyslog) | **PUT** /service/{service_id}/version/{version_id}/logging/syslog/{logging_syslog_name} | Update a syslog log endpoint
-*OriginInsightsApi* | [**getOriginInsightsLast120Seconds**](docs/Api/OriginInsightsApi.md#getorigininsightslast120seconds) | **GET** /v1/channel/{service_id}/ts/h?kind&#x3D;origin_insights | Get real-time origin data for the last 120 seconds
-*OriginInsightsApi* | [**getOriginInsightsLastMaxEntries**](docs/Api/OriginInsightsApi.md#getorigininsightslastmaxentries) | **GET** /v1/channel/{service_id}/ts/h/limit/{max_entries}?kind&#x3D;origin_insights | Get a limited number of real-time origin data entries
-*OriginInsightsApi* | [**getOriginInsightsLastSecond**](docs/Api/OriginInsightsApi.md#getorigininsightslastsecond) | **GET** /v1/channel/{service_id}/ts/{start_timestamp}?kind&#x3D;origin_insights | Get real-time origin data for the last second
-*PackageApi* | [**getPackage**](docs/Api/PackageApi.md#getpackage) | **GET** /service/{service_id}/version/{version_id}/package | Get details of the service&#39;s Compute@Edge package.
-*PackageApi* | [**putPackage**](docs/Api/PackageApi.md#putpackage) | **PUT** /service/{service_id}/version/{version_id}/package | Upload a Compute@Edge package.
-*PoolApi* | [**createServerPool**](docs/Api/PoolApi.md#createserverpool) | **POST** /service/{service_id}/version/{version_id}/pool | Create a server pool
-*PoolApi* | [**deleteServerPool**](docs/Api/PoolApi.md#deleteserverpool) | **DELETE** /service/{service_id}/version/{version_id}/pool/{pool_name} | Delete a server pool
-*PoolApi* | [**getServerPool**](docs/Api/PoolApi.md#getserverpool) | **GET** /service/{service_id}/version/{version_id}/pool/{pool_name} | Get a server pool
-*PoolApi* | [**listServerPools**](docs/Api/PoolApi.md#listserverpools) | **GET** /service/{service_id}/version/{version_id}/pool | List server pools
-*PoolApi* | [**updateServerPool**](docs/Api/PoolApi.md#updateserverpool) | **PUT** /service/{service_id}/version/{version_id}/pool/{pool_name} | Update a server pool
-*PublicIpListApi* | [**listFastlyIps**](docs/Api/PublicIpListApi.md#listfastlyips) | **GET** /public-ip-list | List Fastly&#39;s public IPs
-*RateLimiterApi* | [**createRateLimiter**](docs/Api/RateLimiterApi.md#createratelimiter) | **POST** /service/{service_id}/version/{version_id}/rate-limiters | Create a rate limiter
-*RateLimiterApi* | [**deleteRateLimiter**](docs/Api/RateLimiterApi.md#deleteratelimiter) | **DELETE** /rate-limiters/{rate_limiter_id} | Delete a rate limiter
-*RateLimiterApi* | [**getRateLimiter**](docs/Api/RateLimiterApi.md#getratelimiter) | **GET** /rate-limiters/{rate_limiter_id} | Get a rate limiter
-*RateLimiterApi* | [**listRateLimiters**](docs/Api/RateLimiterApi.md#listratelimiters) | **GET** /service/{service_id}/version/{version_id}/rate-limiters | List rate limiters
-*RateLimiterApi* | [**updateRateLimiter**](docs/Api/RateLimiterApi.md#updateratelimiter) | **PUT** /rate-limiters/{rate_limiter_id} | Update a rate limiter
-*RealtimeApi* | [**getStatsLast120Seconds**](docs/Api/RealtimeApi.md#getstatslast120seconds) | **GET** /v1/channel/{service_id}/ts/h | Get real-time data for the last 120 seconds
-*RealtimeApi* | [**getStatsLast120SecondsLimitEntries**](docs/Api/RealtimeApi.md#getstatslast120secondslimitentries) | **GET** /v1/channel/{service_id}/ts/h/limit/{max_entries} | Get a limited number of real-time data entries
-*RealtimeApi* | [**getStatsLastSecond**](docs/Api/RealtimeApi.md#getstatslastsecond) | **GET** /v1/channel/{service_id}/ts/{timestamp_in_seconds} | Get real-time data for the last second
-*RequestSettingsApi* | [**createRequestSettings**](docs/Api/RequestSettingsApi.md#createrequestsettings) | **POST** /service/{service_id}/version/{version_id}/request_settings | Create a Request Settings object
-*RequestSettingsApi* | [**deleteRequestSettings**](docs/Api/RequestSettingsApi.md#deleterequestsettings) | **DELETE** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Delete a Request Settings object
-*RequestSettingsApi* | [**getRequestSettings**](docs/Api/RequestSettingsApi.md#getrequestsettings) | **GET** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Get a Request Settings object
-*RequestSettingsApi* | [**listRequestSettings**](docs/Api/RequestSettingsApi.md#listrequestsettings) | **GET** /service/{service_id}/version/{version_id}/request_settings | List Request Settings objects
-*RequestSettingsApi* | [**updateRequestSettings**](docs/Api/RequestSettingsApi.md#updaterequestsettings) | **PUT** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Update a Request Settings object
-*ResponseObjectApi* | [**createResponseObject**](docs/Api/ResponseObjectApi.md#createresponseobject) | **POST** /service/{service_id}/version/{version_id}/response_object | Create a Response object
-*ResponseObjectApi* | [**deleteResponseObject**](docs/Api/ResponseObjectApi.md#deleteresponseobject) | **DELETE** /service/{service_id}/version/{version_id}/response_object/{response_object_name} | Delete a Response Object
-*ResponseObjectApi* | [**getResponseObject**](docs/Api/ResponseObjectApi.md#getresponseobject) | **GET** /service/{service_id}/version/{version_id}/response_object/{response_object_name} | Get a Response object
-*ResponseObjectApi* | [**listResponseObjects**](docs/Api/ResponseObjectApi.md#listresponseobjects) | **GET** /service/{service_id}/version/{version_id}/response_object | List Response objects
-*ResponseObjectApi* | [**updateResponseObject**](docs/Api/ResponseObjectApi.md#updateresponseobject) | **PUT** /service/{service_id}/version/{version_id}/response_object/{response_object_name} | Update a Response object
-*ServerApi* | [**createPoolServer**](docs/Api/ServerApi.md#createpoolserver) | **POST** /service/{service_id}/pool/{pool_id}/server | Add a server to a pool
-*ServerApi* | [**deletePoolServer**](docs/Api/ServerApi.md#deletepoolserver) | **DELETE** /service/{service_id}/pool/{pool_id}/server/{server_id} | Delete a server from a pool
-*ServerApi* | [**getPoolServer**](docs/Api/ServerApi.md#getpoolserver) | **GET** /service/{service_id}/pool/{pool_id}/server/{server_id} | Get a pool server
-*ServerApi* | [**listPoolServers**](docs/Api/ServerApi.md#listpoolservers) | **GET** /service/{service_id}/pool/{pool_id}/servers | List servers in a pool
-*ServerApi* | [**updatePoolServer**](docs/Api/ServerApi.md#updatepoolserver) | **PUT** /service/{service_id}/pool/{pool_id}/server/{server_id} | Update a server
-*ServiceApi* | [**createService**](docs/Api/ServiceApi.md#createservice) | **POST** /service | Create a service
-*ServiceApi* | [**deleteService**](docs/Api/ServiceApi.md#deleteservice) | **DELETE** /service/{service_id} | Delete a service
-*ServiceApi* | [**getService**](docs/Api/ServiceApi.md#getservice) | **GET** /service/{service_id} | Get a service
-*ServiceApi* | [**getServiceDetail**](docs/Api/ServiceApi.md#getservicedetail) | **GET** /service/{service_id}/details | Get service details
-*ServiceApi* | [**listServiceDomains**](docs/Api/ServiceApi.md#listservicedomains) | **GET** /service/{service_id}/domain | List the domains within a service
-*ServiceApi* | [**listServices**](docs/Api/ServiceApi.md#listservices) | **GET** /service | List services
-*ServiceApi* | [**searchService**](docs/Api/ServiceApi.md#searchservice) | **GET** /service/search | Search for a service by name
-*ServiceApi* | [**updateService**](docs/Api/ServiceApi.md#updateservice) | **PUT** /service/{service_id} | Update a service
-*ServiceAuthorizationsApi* | [**createServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#createserviceauthorization) | **POST** /service-authorizations | Create service authorization
-*ServiceAuthorizationsApi* | [**deleteServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#deleteserviceauthorization) | **DELETE** /service-authorizations/{service_authorization_id} | Delete service authorization
-*ServiceAuthorizationsApi* | [**deleteServiceAuthorization2**](docs/Api/ServiceAuthorizationsApi.md#deleteserviceauthorization2) | **DELETE** /service-authorizations | Delete service authorizations
-*ServiceAuthorizationsApi* | [**listServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#listserviceauthorization) | **GET** /service-authorizations | List service authorizations
-*ServiceAuthorizationsApi* | [**showServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#showserviceauthorization) | **GET** /service-authorizations/{service_authorization_id} | Show service authorization
-*ServiceAuthorizationsApi* | [**updateServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#updateserviceauthorization) | **PATCH** /service-authorizations/{service_authorization_id} | Update service authorization
-*ServiceAuthorizationsApi* | [**updateServiceAuthorization2**](docs/Api/ServiceAuthorizationsApi.md#updateserviceauthorization2) | **PATCH** /service-authorizations | Update service authorizations
-*SettingsApi* | [**getServiceSettings**](docs/Api/SettingsApi.md#getservicesettings) | **GET** /service/{service_id}/version/{version_id}/settings | Get service settings
-*SettingsApi* | [**updateServiceSettings**](docs/Api/SettingsApi.md#updateservicesettings) | **PUT** /service/{service_id}/version/{version_id}/settings | Update service settings
-*SnippetApi* | [**createSnippet**](docs/Api/SnippetApi.md#createsnippet) | **POST** /service/{service_id}/version/{version_id}/snippet | Create a snippet
-*SnippetApi* | [**deleteSnippet**](docs/Api/SnippetApi.md#deletesnippet) | **DELETE** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Delete a snippet
-*SnippetApi* | [**getSnippet**](docs/Api/SnippetApi.md#getsnippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Get a versioned snippet
-*SnippetApi* | [**getSnippetDynamic**](docs/Api/SnippetApi.md#getsnippetdynamic) | **GET** /service/{service_id}/snippet/{snippet_id} | Get a dynamic snippet
-*SnippetApi* | [**listSnippets**](docs/Api/SnippetApi.md#listsnippets) | **GET** /service/{service_id}/version/{version_id}/snippet | List snippets
-*SnippetApi* | [**updateSnippet**](docs/Api/SnippetApi.md#updatesnippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Update a versioned snippet
-*SnippetApi* | [**updateSnippetDynamic**](docs/Api/SnippetApi.md#updatesnippetdynamic) | **PUT** /service/{service_id}/snippet/{snippet_id} | Update a dynamic snippet
-*StarApi* | [**createServiceStar**](docs/Api/StarApi.md#createservicestar) | **POST** /stars | Create a star
-*StarApi* | [**deleteServiceStar**](docs/Api/StarApi.md#deleteservicestar) | **DELETE** /stars/{star_id} | Delete a star
-*StarApi* | [**getServiceStar**](docs/Api/StarApi.md#getservicestar) | **GET** /stars/{star_id} | Get a star
-*StarApi* | [**listServiceStars**](docs/Api/StarApi.md#listservicestars) | **GET** /stars | List stars
-*StatsApi* | [**getServiceStats**](docs/Api/StatsApi.md#getservicestats) | **GET** /service/{service_id}/stats/summary | Get stats for a service
-*TlsActivationsApi* | [**createTlsActivation**](docs/Api/TlsActivationsApi.md#createtlsactivation) | **POST** /tls/activations | Enable TLS for a domain using a custom certificate
-*TlsActivationsApi* | [**deleteTlsActivation**](docs/Api/TlsActivationsApi.md#deletetlsactivation) | **DELETE** /tls/activations/{tls_activation_id} | Disable TLS on a domain
-*TlsActivationsApi* | [**getTlsActivation**](docs/Api/TlsActivationsApi.md#gettlsactivation) | **GET** /tls/activations/{tls_activation_id} | Get a TLS activation
-*TlsActivationsApi* | [**listTlsActivations**](docs/Api/TlsActivationsApi.md#listtlsactivations) | **GET** /tls/activations | List TLS activations
-*TlsActivationsApi* | [**updateTlsActivation**](docs/Api/TlsActivationsApi.md#updatetlsactivation) | **PATCH** /tls/activations/{tls_activation_id} | Update a certificate
-*TlsBulkCertificatesApi* | [**deleteBulkTlsCert**](docs/Api/TlsBulkCertificatesApi.md#deletebulktlscert) | **DELETE** /tls/bulk/certificates/{certificate_id} | Delete a certificate
-*TlsBulkCertificatesApi* | [**getTlsBulkCert**](docs/Api/TlsBulkCertificatesApi.md#gettlsbulkcert) | **GET** /tls/bulk/certificates/{certificate_id} | Get a certificate
-*TlsBulkCertificatesApi* | [**listTlsBulkCerts**](docs/Api/TlsBulkCertificatesApi.md#listtlsbulkcerts) | **GET** /tls/bulk/certificates | List certificates
-*TlsBulkCertificatesApi* | [**updateBulkTlsCert**](docs/Api/TlsBulkCertificatesApi.md#updatebulktlscert) | **PATCH** /tls/bulk/certificates/{certificate_id} | Update a certificate
-*TlsBulkCertificatesApi* | [**uploadTlsBulkCert**](docs/Api/TlsBulkCertificatesApi.md#uploadtlsbulkcert) | **POST** /tls/bulk/certificates | Upload a certificate
-*TlsCertificatesApi* | [**createTlsCert**](docs/Api/TlsCertificatesApi.md#createtlscert) | **POST** /tls/certificates | Create a TLS certificate
-*TlsCertificatesApi* | [**deleteTlsCert**](docs/Api/TlsCertificatesApi.md#deletetlscert) | **DELETE** /tls/certificates/{tls_certificate_id} | Delete a TLS certificate
-*TlsCertificatesApi* | [**getTlsCert**](docs/Api/TlsCertificatesApi.md#gettlscert) | **GET** /tls/certificates/{tls_certificate_id} | Get a TLS certificate
-*TlsCertificatesApi* | [**listTlsCerts**](docs/Api/TlsCertificatesApi.md#listtlscerts) | **GET** /tls/certificates | List TLS certificates
-*TlsCertificatesApi* | [**updateTlsCert**](docs/Api/TlsCertificatesApi.md#updatetlscert) | **PATCH** /tls/certificates/{tls_certificate_id} | Update a TLS certificate
-*TlsConfigurationsApi* | [**getTlsConfig**](docs/Api/TlsConfigurationsApi.md#gettlsconfig) | **GET** /tls/configurations/{tls_configuration_id} | Get a TLS configuration
-*TlsConfigurationsApi* | [**listTlsConfigs**](docs/Api/TlsConfigurationsApi.md#listtlsconfigs) | **GET** /tls/configurations | List TLS configurations
-*TlsConfigurationsApi* | [**updateTlsConfig**](docs/Api/TlsConfigurationsApi.md#updatetlsconfig) | **PATCH** /tls/configurations/{tls_configuration_id} | Update a TLS configuration
-*TlsDomainsApi* | [**listTlsDomains**](docs/Api/TlsDomainsApi.md#listtlsdomains) | **GET** /tls/domains | List TLS domains
-*TlsPrivateKeysApi* | [**createTlsKey**](docs/Api/TlsPrivateKeysApi.md#createtlskey) | **POST** /tls/private_keys | Create a TLS private key
-*TlsPrivateKeysApi* | [**deleteTlsKey**](docs/Api/TlsPrivateKeysApi.md#deletetlskey) | **DELETE** /tls/private_keys/{tls_private_key_id} | Delete a TLS private key
-*TlsPrivateKeysApi* | [**getTlsKey**](docs/Api/TlsPrivateKeysApi.md#gettlskey) | **GET** /tls/private_keys/{tls_private_key_id} | Get a TLS private key
-*TlsPrivateKeysApi* | [**listTlsKeys**](docs/Api/TlsPrivateKeysApi.md#listtlskeys) | **GET** /tls/private_keys | List TLS private keys
-*TlsSubscriptionsApi* | [**createTlsSub**](docs/Api/TlsSubscriptionsApi.md#createtlssub) | **POST** /tls/subscriptions | Create a TLS subscription
-*TlsSubscriptionsApi* | [**deleteTlsSub**](docs/Api/TlsSubscriptionsApi.md#deletetlssub) | **DELETE** /tls/subscriptions/{tls_subscription_id} | Delete a TLS subscription
-*TlsSubscriptionsApi* | [**getTlsSub**](docs/Api/TlsSubscriptionsApi.md#gettlssub) | **GET** /tls/subscriptions/{tls_subscription_id} | Get a TLS subscription
-*TlsSubscriptionsApi* | [**listTlsSubs**](docs/Api/TlsSubscriptionsApi.md#listtlssubs) | **GET** /tls/subscriptions | List TLS subscriptions
-*TlsSubscriptionsApi* | [**patchTlsSub**](docs/Api/TlsSubscriptionsApi.md#patchtlssub) | **PATCH** /tls/subscriptions/{tls_subscription_id} | Update a TLS subscription
-*TokensApi* | [**bulkRevokeTokens**](docs/Api/TokensApi.md#bulkrevoketokens) | **DELETE** /tokens | Revoke multiple tokens
-*TokensApi* | [**createToken**](docs/Api/TokensApi.md#createtoken) | **POST** /tokens | Create a token
-*TokensApi* | [**getTokenCurrent**](docs/Api/TokensApi.md#gettokencurrent) | **GET** /tokens/self | Get the current token
-*TokensApi* | [**listTokensCustomer**](docs/Api/TokensApi.md#listtokenscustomer) | **GET** /customer/{customer_id}/tokens | List tokens for a customer
-*TokensApi* | [**listTokensUser**](docs/Api/TokensApi.md#listtokensuser) | **GET** /tokens | List tokens for the authenticated user
-*TokensApi* | [**revokeToken**](docs/Api/TokensApi.md#revoketoken) | **DELETE** /tokens/{token_id} | Revoke a token
-*TokensApi* | [**revokeTokenCurrent**](docs/Api/TokensApi.md#revoketokencurrent) | **DELETE** /tokens/self | Revoke the current token
-*UserApi* | [**createUser**](docs/Api/UserApi.md#createuser) | **POST** /user | Create a user
-*UserApi* | [**deleteUser**](docs/Api/UserApi.md#deleteuser) | **DELETE** /user/{user_id} | Delete a user
-*UserApi* | [**getCurrentUser**](docs/Api/UserApi.md#getcurrentuser) | **GET** /current_user | Get the current user
-*UserApi* | [**getUser**](docs/Api/UserApi.md#getuser) | **GET** /user/{user_id} | Get a user
-*UserApi* | [**requestPasswordReset**](docs/Api/UserApi.md#requestpasswordreset) | **POST** /user/{user_login}/password/request_reset | Request a password reset
-*UserApi* | [**updateUser**](docs/Api/UserApi.md#updateuser) | **PUT** /user/{user_id} | Update a user
-*UserApi* | [**updateUserPassword**](docs/Api/UserApi.md#updateuserpassword) | **POST** /current_user/password | Update the user&#39;s password
-*VclApi* | [**createCustomVcl**](docs/Api/VclApi.md#createcustomvcl) | **POST** /service/{service_id}/version/{version_id}/vcl | Create a custom VCL file
-*VclApi* | [**deleteCustomVcl**](docs/Api/VclApi.md#deletecustomvcl) | **DELETE** /service/{service_id}/version/{version_id}/vcl/{vcl_name} | Delete a custom VCL file
-*VclApi* | [**getCustomVcl**](docs/Api/VclApi.md#getcustomvcl) | **GET** /service/{service_id}/version/{version_id}/vcl/{vcl_name} | Get a custom VCL file
-*VclApi* | [**getCustomVclBoilerplate**](docs/Api/VclApi.md#getcustomvclboilerplate) | **GET** /service/{service_id}/version/{version_id}/boilerplate | Get boilerplate VCL
-*VclApi* | [**getCustomVclGenerated**](docs/Api/VclApi.md#getcustomvclgenerated) | **GET** /service/{service_id}/version/{version_id}/generated_vcl | Get the generated VCL for a service
-*VclApi* | [**getCustomVclGeneratedHighlighted**](docs/Api/VclApi.md#getcustomvclgeneratedhighlighted) | **GET** /service/{service_id}/version/{version_id}/generated_vcl/content | Get the generated VCL with syntax highlighting
-*VclApi* | [**getCustomVclHighlighted**](docs/Api/VclApi.md#getcustomvclhighlighted) | **GET** /service/{service_id}/version/{version_id}/vcl/{vcl_name}/content | Get a custom VCL file with syntax highlighting
-*VclApi* | [**getCustomVclRaw**](docs/Api/VclApi.md#getcustomvclraw) | **GET** /service/{service_id}/version/{version_id}/vcl/{vcl_name}/download | Download a custom VCL file
-*VclApi* | [**listCustomVcl**](docs/Api/VclApi.md#listcustomvcl) | **GET** /service/{service_id}/version/{version_id}/vcl | List custom VCL files
-*VclApi* | [**setCustomVclMain**](docs/Api/VclApi.md#setcustomvclmain) | **PUT** /service/{service_id}/version/{version_id}/vcl/{vcl_name}/main | Set a custom VCL file as main
-*VclApi* | [**updateCustomVcl**](docs/Api/VclApi.md#updatecustomvcl) | **PUT** /service/{service_id}/version/{version_id}/vcl/{vcl_name} | Update a custom VCL file
-*VclDiffApi* | [**vclDiffServiceVersions**](docs/Api/VclDiffApi.md#vcldiffserviceversions) | **GET** /service/{service_id}/vcl/diff/from/{from_version_id}/to/{to_version_id} | Get a comparison of the VCL changes between two service versions
-*VersionApi* | [**activateServiceVersion**](docs/Api/VersionApi.md#activateserviceversion) | **PUT** /service/{service_id}/version/{version_id}/activate | Activate a service version
-*VersionApi* | [**cloneServiceVersion**](docs/Api/VersionApi.md#cloneserviceversion) | **PUT** /service/{service_id}/version/{version_id}/clone | Clone a service version
-*VersionApi* | [**createServiceVersion**](docs/Api/VersionApi.md#createserviceversion) | **POST** /service/{service_id}/version | Create a service version
-*VersionApi* | [**deactivateServiceVersion**](docs/Api/VersionApi.md#deactivateserviceversion) | **PUT** /service/{service_id}/version/{version_id}/deactivate | Deactivate a service version
-*VersionApi* | [**getServiceVersion**](docs/Api/VersionApi.md#getserviceversion) | **GET** /service/{service_id}/version/{version_id} | Get a version of a service
-*VersionApi* | [**listServiceVersions**](docs/Api/VersionApi.md#listserviceversions) | **GET** /service/{service_id}/version | List versions of a service
-*VersionApi* | [**lockServiceVersion**](docs/Api/VersionApi.md#lockserviceversion) | **PUT** /service/{service_id}/version/{version_id}/lock | Lock a service version
-*VersionApi* | [**updateServiceVersion**](docs/Api/VersionApi.md#updateserviceversion) | **PUT** /service/{service_id}/version/{version_id} | Update a service version
-*VersionApi* | [**validateServiceVersion**](docs/Api/VersionApi.md#validateserviceversion) | **GET** /service/{service_id}/version/{version_id}/validate | Validate a service version
-*WafActiveRulesApi* | [**bulkDeleteWafActiveRules**](docs/Api/WafActiveRulesApi.md#bulkdeletewafactiverules) | **DELETE** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | Delete multiple active rules from a WAF
-*WafActiveRulesApi* | [**bulkUpdateWafActiveRules**](docs/Api/WafActiveRulesApi.md#bulkupdatewafactiverules) | **PATCH** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/bulk | Update multiple active rules
-*WafActiveRulesApi* | [**createWafActiveRule**](docs/Api/WafActiveRulesApi.md#createwafactiverule) | **POST** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | Add a rule to a WAF as an active rule
-*WafActiveRulesApi* | [**createWafActiveRulesTag**](docs/Api/WafActiveRulesApi.md#createwafactiverulestag) | **POST** /waf/firewalls/{firewall_id}/versions/{version_id}/tags/{waf_tag_name}/active-rules | Create active rules by tag
-*WafActiveRulesApi* | [**deleteWafActiveRule**](docs/Api/WafActiveRulesApi.md#deletewafactiverule) | **DELETE** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/{waf_rule_id} | Delete an active rule
-*WafActiveRulesApi* | [**getWafActiveRule**](docs/Api/WafActiveRulesApi.md#getwafactiverule) | **GET** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/{waf_rule_id} | Get an active WAF rule object
-*WafActiveRulesApi* | [**listWafActiveRules**](docs/Api/WafActiveRulesApi.md#listwafactiverules) | **GET** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | List active rules on a WAF
-*WafActiveRulesApi* | [**updateWafActiveRule**](docs/Api/WafActiveRulesApi.md#updatewafactiverule) | **PATCH** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/{waf_rule_id} | Update an active rule
-*WafExclusionsApi* | [**createWafRuleExclusion**](docs/Api/WafExclusionsApi.md#createwafruleexclusion) | **POST** /waf/firewalls/{firewall_id}/versions/{firewall_version_number}/exclusions | Create a WAF rule exclusion
-*WafExclusionsApi* | [**deleteWafRuleExclusion**](docs/Api/WafExclusionsApi.md#deletewafruleexclusion) | **DELETE** /waf/firewalls/{firewall_id}/versions/{firewall_version_number}/exclusions/{exclusion_number} | Delete a WAF rule exclusion
-*WafExclusionsApi* | [**getWafRuleExclusion**](docs/Api/WafExclusionsApi.md#getwafruleexclusion) | **GET** /waf/firewalls/{firewall_id}/versions/{firewall_version_number}/exclusions/{exclusion_number} | Get a WAF rule exclusion
-*WafExclusionsApi* | [**listWafRuleExclusions**](docs/Api/WafExclusionsApi.md#listwafruleexclusions) | **GET** /waf/firewalls/{firewall_id}/versions/{firewall_version_number}/exclusions | List WAF rule exclusions
-*WafExclusionsApi* | [**updateWafRuleExclusion**](docs/Api/WafExclusionsApi.md#updatewafruleexclusion) | **PATCH** /waf/firewalls/{firewall_id}/versions/{firewall_version_number}/exclusions/{exclusion_number} | Update a WAF rule exclusion
-*WafFirewallVersionsApi* | [**cloneWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#clonewaffirewallversion) | **PUT** /waf/firewalls/{firewall_id}/versions/{firewall_version_number}/clone | Clone a firewall version
-*WafFirewallVersionsApi* | [**createWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#createwaffirewallversion) | **POST** /waf/firewalls/{firewall_id}/versions | Create a firewall version
-*WafFirewallVersionsApi* | [**deployActivateWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#deployactivatewaffirewallversion) | **PUT** /waf/firewalls/{firewall_id}/versions/{firewall_version_number}/activate | Deploy or activate a firewall version
-*WafFirewallVersionsApi* | [**getWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#getwaffirewallversion) | **GET** /waf/firewalls/{firewall_id}/versions/{firewall_version_number} | Get a firewall version
-*WafFirewallVersionsApi* | [**listWafFirewallVersions**](docs/Api/WafFirewallVersionsApi.md#listwaffirewallversions) | **GET** /waf/firewalls/{firewall_id}/versions | List firewall versions
-*WafFirewallVersionsApi* | [**updateWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#updatewaffirewallversion) | **PATCH** /waf/firewalls/{firewall_id}/versions/{firewall_version_number} | Update a firewall version
-*WafFirewallsApi* | [**createWafFirewall**](docs/Api/WafFirewallsApi.md#createwaffirewall) | **POST** /waf/firewalls | Create a firewall
-*WafFirewallsApi* | [**deleteWafFirewall**](docs/Api/WafFirewallsApi.md#deletewaffirewall) | **DELETE** /waf/firewalls/{firewall_id} | Delete a firewall
-*WafFirewallsApi* | [**getWafFirewall**](docs/Api/WafFirewallsApi.md#getwaffirewall) | **GET** /waf/firewalls/{firewall_id} | Get a firewall
-*WafFirewallsApi* | [**listWafFirewalls**](docs/Api/WafFirewallsApi.md#listwaffirewalls) | **GET** /waf/firewalls | List firewalls
-*WafFirewallsApi* | [**updateWafFirewall**](docs/Api/WafFirewallsApi.md#updatewaffirewall) | **PATCH** /waf/firewalls/{firewall_id} | Update a firewall
-*WafRuleRevisionsApi* | [**getWafRuleRevision**](docs/Api/WafRuleRevisionsApi.md#getwafrulerevision) | **GET** /waf/rules/{waf_rule_id}/revisions/{waf_rule_revision_number} | Get a revision of a rule
-*WafRuleRevisionsApi* | [**listWafRuleRevisions**](docs/Api/WafRuleRevisionsApi.md#listwafrulerevisions) | **GET** /waf/rules/{waf_rule_id}/revisions | List revisions for a rule
-*WafRulesApi* | [**getWafRule**](docs/Api/WafRulesApi.md#getwafrule) | **GET** /waf/rules/{waf_rule_id} | Get a rule
-*WafRulesApi* | [**listWafRules**](docs/Api/WafRulesApi.md#listwafrules) | **GET** /waf/rules | List available WAF rules
-*WafTagsApi* | [**listWafTags**](docs/Api/WafTagsApi.md#listwaftags) | **GET** /waf/tags | List tags
-
-## Models
-
-- [CustomerCustomerIdBillingAddressData](docs/Model/CustomerCustomerIdBillingAddressData.md)
-- [CustomerCustomerIdBillingAddressData1](docs/Model/CustomerCustomerIdBillingAddressData1.md)
-- [Direction](docs/Model/Direction.md)
-- [GenericTokenError](docs/Model/GenericTokenError.md)
-- [InlineObject](docs/Model/InlineObject.md)
-- [InlineObject1](docs/Model/InlineObject1.md)
-- [InlineObject2](docs/Model/InlineObject2.md)
-- [InlineObject3](docs/Model/InlineObject3.md)
-- [InlineObject4](docs/Model/InlineObject4.md)
-- [InlineObject5](docs/Model/InlineObject5.md)
-- [InlineObject6](docs/Model/InlineObject6.md)
-- [InlineObject7](docs/Model/InlineObject7.md)
-- [InlineObject8](docs/Model/InlineObject8.md)
-- [InlineResponse200](docs/Model/InlineResponse200.md)
-- [InlineResponse2001](docs/Model/InlineResponse2001.md)
-- [InlineResponse204](docs/Model/InlineResponse204.md)
-- [InlineResponse400](docs/Model/InlineResponse400.md)
-- [InvitationsData](docs/Model/InvitationsData.md)
-- [LoggingAddressAndPort](docs/Model/LoggingAddressAndPort.md)
-- [LoggingCommon](docs/Model/LoggingCommon.md)
-- [LoggingCompressionCodec](docs/Model/LoggingCompressionCodec.md)
-- [LoggingFormatVersion](docs/Model/LoggingFormatVersion.md)
-- [LoggingGcsCommon](docs/Model/LoggingGcsCommon.md)
-- [LoggingGenericCommon](docs/Model/LoggingGenericCommon.md)
-- [LoggingMessageType](docs/Model/LoggingMessageType.md)
-- [LoggingPlacement](docs/Model/LoggingPlacement.md)
-- [LoggingRequestCapsCommon](docs/Model/LoggingRequestCapsCommon.md)
-- [LoggingTlsCommon](docs/Model/LoggingTlsCommon.md)
-- [LoggingUseTls](docs/Model/LoggingUseTls.md)
-- [ModelAcl](docs/Model/ModelAcl.md)
-- [ModelAclAllOf](docs/Model/ModelAclAllOf.md)
-- [ModelAclEntry](docs/Model/ModelAclEntry.md)
-- [ModelAclEntryAllOf](docs/Model/ModelAclEntryAllOf.md)
-- [ModelBackend](docs/Model/ModelBackend.md)
-- [ModelBackendAllOf](docs/Model/ModelBackendAllOf.md)
-- [ModelBilling](docs/Model/ModelBilling.md)
-- [ModelBillingAddress](docs/Model/ModelBillingAddress.md)
-- [ModelBillingStatus](docs/Model/ModelBillingStatus.md)
-- [ModelBillingTotal](docs/Model/ModelBillingTotal.md)
-- [ModelBillingTotalExtras](docs/Model/ModelBillingTotalExtras.md)
-- [ModelCacheSettings](docs/Model/ModelCacheSettings.md)
-- [ModelCacheSettingsAllOf](docs/Model/ModelCacheSettingsAllOf.md)
-- [ModelCompatInvitation](docs/Model/ModelCompatInvitation.md)
-- [ModelCompatService](docs/Model/ModelCompatService.md)
-- [ModelCompatServiceAllOf](docs/Model/ModelCompatServiceAllOf.md)
-- [ModelCompatServiceAuthorization](docs/Model/ModelCompatServiceAuthorization.md)
-- [ModelCompatStar](docs/Model/ModelCompatStar.md)
-- [ModelCompatTlsConfiguration](docs/Model/ModelCompatTlsConfiguration.md)
-- [ModelCompatTlsSubscriptions](docs/Model/ModelCompatTlsSubscriptions.md)
-- [ModelCompatWafExclusions](docs/Model/ModelCompatWafExclusions.md)
-- [ModelCompatWafExclusionsData](docs/Model/ModelCompatWafExclusionsData.md)
-- [ModelCompatWafExclusionsDataRelationships](docs/Model/ModelCompatWafExclusionsDataRelationships.md)
-- [ModelCompatWafExclusionsDataRelationshipsWafRules](docs/Model/ModelCompatWafExclusionsDataRelationshipsWafRules.md)
-- [ModelCompatWafExclusionsDataRelationshipsWafRulesData](docs/Model/ModelCompatWafExclusionsDataRelationshipsWafRulesData.md)
-- [ModelCondition](docs/Model/ModelCondition.md)
-- [ModelConditionAllOf](docs/Model/ModelConditionAllOf.md)
-- [ModelCustomer](docs/Model/ModelCustomer.md)
-- [ModelCustomerAllOf](docs/Model/ModelCustomerAllOf.md)
-- [ModelDictionary](docs/Model/ModelDictionary.md)
-- [ModelDictionaryAllOf](docs/Model/ModelDictionaryAllOf.md)
-- [ModelDictionaryInfo](docs/Model/ModelDictionaryInfo.md)
-- [ModelDictionaryItem](docs/Model/ModelDictionaryItem.md)
-- [ModelDictionaryItemAllOf](docs/Model/ModelDictionaryItemAllOf.md)
-- [ModelDiff](docs/Model/ModelDiff.md)
-- [ModelDirector](docs/Model/ModelDirector.md)
-- [ModelDirectorAllOf](docs/Model/ModelDirectorAllOf.md)
-- [ModelDirectorBackend](docs/Model/ModelDirectorBackend.md)
-- [ModelDirectorBackendAllOf](docs/Model/ModelDirectorBackendAllOf.md)
-- [ModelDomain](docs/Model/ModelDomain.md)
-- [ModelDomainAllOf](docs/Model/ModelDomainAllOf.md)
-- [ModelEvent](docs/Model/ModelEvent.md)
-- [ModelGzip](docs/Model/ModelGzip.md)
-- [ModelGzipAllOf](docs/Model/ModelGzipAllOf.md)
-- [ModelHeader](docs/Model/ModelHeader.md)
-- [ModelHeaderAllOf](docs/Model/ModelHeaderAllOf.md)
-- [ModelHealthcheck](docs/Model/ModelHealthcheck.md)
-- [ModelHealthcheckAllOf](docs/Model/ModelHealthcheckAllOf.md)
-- [ModelHistorical](docs/Model/ModelHistorical.md)
-- [ModelInvitation](docs/Model/ModelInvitation.md)
-- [ModelInvitationAllOf](docs/Model/ModelInvitationAllOf.md)
-- [ModelLoggingAzureblob](docs/Model/ModelLoggingAzureblob.md)
-- [ModelLoggingAzureblobAllOf](docs/Model/ModelLoggingAzureblobAllOf.md)
-- [ModelLoggingBigquery](docs/Model/ModelLoggingBigquery.md)
-- [ModelLoggingBigqueryAllOf](docs/Model/ModelLoggingBigqueryAllOf.md)
-- [ModelLoggingCloudfiles](docs/Model/ModelLoggingCloudfiles.md)
-- [ModelLoggingCloudfilesAllOf](docs/Model/ModelLoggingCloudfilesAllOf.md)
-- [ModelLoggingDatadog](docs/Model/ModelLoggingDatadog.md)
-- [ModelLoggingDatadogAllOf](docs/Model/ModelLoggingDatadogAllOf.md)
-- [ModelLoggingDigitalocean](docs/Model/ModelLoggingDigitalocean.md)
-- [ModelLoggingDigitaloceanAllOf](docs/Model/ModelLoggingDigitaloceanAllOf.md)
-- [ModelLoggingElasticsearch](docs/Model/ModelLoggingElasticsearch.md)
-- [ModelLoggingElasticsearchAllOf](docs/Model/ModelLoggingElasticsearchAllOf.md)
-- [ModelLoggingFtp](docs/Model/ModelLoggingFtp.md)
-- [ModelLoggingFtpAllOf](docs/Model/ModelLoggingFtpAllOf.md)
-- [ModelLoggingGcs](docs/Model/ModelLoggingGcs.md)
-- [ModelLoggingGcsAllOf](docs/Model/ModelLoggingGcsAllOf.md)
-- [ModelLoggingGooglePubsub](docs/Model/ModelLoggingGooglePubsub.md)
-- [ModelLoggingGooglePubsubAllOf](docs/Model/ModelLoggingGooglePubsubAllOf.md)
-- [ModelLoggingHeroku](docs/Model/ModelLoggingHeroku.md)
-- [ModelLoggingHerokuAllOf](docs/Model/ModelLoggingHerokuAllOf.md)
-- [ModelLoggingHoneycomb](docs/Model/ModelLoggingHoneycomb.md)
-- [ModelLoggingHoneycombAllOf](docs/Model/ModelLoggingHoneycombAllOf.md)
-- [ModelLoggingHttps](docs/Model/ModelLoggingHttps.md)
-- [ModelLoggingHttpsAllOf](docs/Model/ModelLoggingHttpsAllOf.md)
-- [ModelLoggingKafka](docs/Model/ModelLoggingKafka.md)
-- [ModelLoggingKafkaAllOf](docs/Model/ModelLoggingKafkaAllOf.md)
-- [ModelLoggingKinesis](docs/Model/ModelLoggingKinesis.md)
-- [ModelLoggingKinesisAllOf](docs/Model/ModelLoggingKinesisAllOf.md)
-- [ModelLoggingLogentries](docs/Model/ModelLoggingLogentries.md)
-- [ModelLoggingLogentriesAllOf](docs/Model/ModelLoggingLogentriesAllOf.md)
-- [ModelLoggingLoggly](docs/Model/ModelLoggingLoggly.md)
-- [ModelLoggingLogglyAllOf](docs/Model/ModelLoggingLogglyAllOf.md)
-- [ModelLoggingLogshuttle](docs/Model/ModelLoggingLogshuttle.md)
-- [ModelLoggingLogshuttleAllOf](docs/Model/ModelLoggingLogshuttleAllOf.md)
-- [ModelLoggingNewrelic](docs/Model/ModelLoggingNewrelic.md)
-- [ModelLoggingNewrelicAllOf](docs/Model/ModelLoggingNewrelicAllOf.md)
-- [ModelLoggingOpenstack](docs/Model/ModelLoggingOpenstack.md)
-- [ModelLoggingOpenstackAllOf](docs/Model/ModelLoggingOpenstackAllOf.md)
-- [ModelLoggingPapertrail](docs/Model/ModelLoggingPapertrail.md)
-- [ModelLoggingS3](docs/Model/ModelLoggingS3.md)
-- [ModelLoggingS3AllOf](docs/Model/ModelLoggingS3AllOf.md)
-- [ModelLoggingScalyr](docs/Model/ModelLoggingScalyr.md)
-- [ModelLoggingScalyrAllOf](docs/Model/ModelLoggingScalyrAllOf.md)
-- [ModelLoggingSftp](docs/Model/ModelLoggingSftp.md)
-- [ModelLoggingSftpAllOf](docs/Model/ModelLoggingSftpAllOf.md)
-- [ModelLoggingSplunk](docs/Model/ModelLoggingSplunk.md)
-- [ModelLoggingSplunkAllOf](docs/Model/ModelLoggingSplunkAllOf.md)
-- [ModelLoggingSumologic](docs/Model/ModelLoggingSumologic.md)
-- [ModelLoggingSumologicAllOf](docs/Model/ModelLoggingSumologicAllOf.md)
-- [ModelLoggingSyslog](docs/Model/ModelLoggingSyslog.md)
-- [ModelLoggingSyslogAllOf](docs/Model/ModelLoggingSyslogAllOf.md)
-- [ModelOriginInsights](docs/Model/ModelOriginInsights.md)
-- [ModelOriginInsightsEntry](docs/Model/ModelOriginInsightsEntry.md)
-- [ModelOriginInsightsMeasurements](docs/Model/ModelOriginInsightsMeasurements.md)
-- [ModelPackage](docs/Model/ModelPackage.md)
-- [ModelPackageAllOf](docs/Model/ModelPackageAllOf.md)
-- [ModelPackageMetadata](docs/Model/ModelPackageMetadata.md)
-- [ModelPool](docs/Model/ModelPool.md)
-- [ModelPoolAllOf](docs/Model/ModelPoolAllOf.md)
-- [ModelRateLimiter](docs/Model/ModelRateLimiter.md)
-- [ModelRateLimiterAllOf](docs/Model/ModelRateLimiterAllOf.md)
-- [ModelRateLimiterAllOfResponse](docs/Model/ModelRateLimiterAllOfResponse.md)
-- [ModelRealtime](docs/Model/ModelRealtime.md)
-- [ModelRealtimeEntry](docs/Model/ModelRealtimeEntry.md)
-- [ModelRealtimeMeasurements](docs/Model/ModelRealtimeMeasurements.md)
-- [ModelRequestSettings](docs/Model/ModelRequestSettings.md)
-- [ModelRequestSettingsAllOf](docs/Model/ModelRequestSettingsAllOf.md)
-- [ModelResponseObject](docs/Model/ModelResponseObject.md)
-- [ModelResponseObjectAllOf](docs/Model/ModelResponseObjectAllOf.md)
-- [ModelServer](docs/Model/ModelServer.md)
-- [ModelServerAllOf](docs/Model/ModelServerAllOf.md)
-- [ModelService](docs/Model/ModelService.md)
-- [ModelServiceAllOf](docs/Model/ModelServiceAllOf.md)
-- [ModelServiceAuthorization](docs/Model/ModelServiceAuthorization.md)
-- [ModelServiceAuthorizationAllOf](docs/Model/ModelServiceAuthorizationAllOf.md)
-- [ModelServiceDetail](docs/Model/ModelServiceDetail.md)
-- [ModelServiceDetailAllOf](docs/Model/ModelServiceDetailAllOf.md)
-- [ModelSettings](docs/Model/ModelSettings.md)
-- [ModelSettingsAllOf](docs/Model/ModelSettingsAllOf.md)
-- [ModelSnippet](docs/Model/ModelSnippet.md)
-- [ModelSnippetAllOf](docs/Model/ModelSnippetAllOf.md)
-- [ModelStar](docs/Model/ModelStar.md)
-- [ModelStarAllOf](docs/Model/ModelStarAllOf.md)
-- [ModelTlsActivation](docs/Model/ModelTlsActivation.md)
-- [ModelTlsBulkCertificate](docs/Model/ModelTlsBulkCertificate.md)
-- [ModelTlsCertificate](docs/Model/ModelTlsCertificate.md)
-- [ModelTlsConfiguration](docs/Model/ModelTlsConfiguration.md)
-- [ModelTlsConfigurationRelationships](docs/Model/ModelTlsConfigurationRelationships.md)
-- [ModelTlsDnsRecord](docs/Model/ModelTlsDnsRecord.md)
-- [ModelTlsDomain](docs/Model/ModelTlsDomain.md)
-- [ModelTlsPrivateKey](docs/Model/ModelTlsPrivateKey.md)
-- [ModelTlsSubscription](docs/Model/ModelTlsSubscription.md)
-- [ModelToken](docs/Model/ModelToken.md)
-- [ModelTokenCreated](docs/Model/ModelTokenCreated.md)
-- [ModelTokenCreatedAllOf](docs/Model/ModelTokenCreatedAllOf.md)
-- [ModelUser](docs/Model/ModelUser.md)
-- [ModelUserAllOf](docs/Model/ModelUserAllOf.md)
-- [ModelVcl](docs/Model/ModelVcl.md)
-- [ModelVclAllOf](docs/Model/ModelVclAllOf.md)
-- [ModelVclDiff](docs/Model/ModelVclDiff.md)
-- [ModelVersion](docs/Model/ModelVersion.md)
-- [ModelVersionAllOf](docs/Model/ModelVersionAllOf.md)
-- [ModelVersionDetail](docs/Model/ModelVersionDetail.md)
-- [ModelWafActiveRule](docs/Model/ModelWafActiveRule.md)
-- [ModelWafActiveRuleAllOf](docs/Model/ModelWafActiveRuleAllOf.md)
-- [ModelWafExclusions](docs/Model/ModelWafExclusions.md)
-- [ModelWafExclusionsAllOf](docs/Model/ModelWafExclusionsAllOf.md)
-- [ModelWafFirewall](docs/Model/ModelWafFirewall.md)
-- [ModelWafFirewallVersions](docs/Model/ModelWafFirewallVersions.md)
-- [ModelWafRule](docs/Model/ModelWafRule.md)
-- [ModelWafRuleRevision](docs/Model/ModelWafRuleRevision.md)
-- [ModelWafTag](docs/Model/ModelWafTag.md)
-- [NestedModelVersion](docs/Model/NestedModelVersion.md)
-- [Pagination](docs/Model/Pagination.md)
-- [PaginationLinks](docs/Model/PaginationLinks.md)
-- [PaginationMeta](docs/Model/PaginationMeta.md)
-- [Permission](docs/Model/Permission.md)
-- [RelationshipCustomer](docs/Model/RelationshipCustomer.md)
-- [RelationshipCustomerCustomer](docs/Model/RelationshipCustomerCustomer.md)
-- [RelationshipCustomerCustomerData](docs/Model/RelationshipCustomerCustomerData.md)
-- [RelationshipService](docs/Model/RelationshipService.md)
-- [RelationshipServiceInvitation](docs/Model/RelationshipServiceInvitation.md)
-- [RelationshipServiceInvitationServiceInvitation](docs/Model/RelationshipServiceInvitationServiceInvitation.md)
-- [RelationshipServiceInvitationServiceInvitationData](docs/Model/RelationshipServiceInvitationServiceInvitationData.md)
-- [RelationshipServiceService](docs/Model/RelationshipServiceService.md)
-- [RelationshipServiceServiceData](docs/Model/RelationshipServiceServiceData.md)
-- [RelationshipUser](docs/Model/RelationshipUser.md)
-- [RelationshipUserUser](docs/Model/RelationshipUserUser.md)
-- [RelationshipUserUserData](docs/Model/RelationshipUserUserData.md)
-- [ResourceBillingAddress](docs/Model/ResourceBillingAddress.md)
-- [ResourceBillingAddressData](docs/Model/ResourceBillingAddressData.md)
-- [ResourceEvent](docs/Model/ResourceEvent.md)
-- [ResourceEventData](docs/Model/ResourceEventData.md)
-- [ResourceInvitation](docs/Model/ResourceInvitation.md)
-- [ResourceInvitationData](docs/Model/ResourceInvitationData.md)
-- [ResourceServiceAuthorization](docs/Model/ResourceServiceAuthorization.md)
-- [ResourceServiceAuthorizationData](docs/Model/ResourceServiceAuthorizationData.md)
-- [ResourceServiceInvitation](docs/Model/ResourceServiceInvitation.md)
-- [ResourceServiceInvitationData](docs/Model/ResourceServiceInvitationData.md)
-- [ResourceStar](docs/Model/ResourceStar.md)
-- [ResourceStarData](docs/Model/ResourceStarData.md)
-- [ResourceWafTag](docs/Model/ResourceWafTag.md)
-- [ResourceWafTagAllOf](docs/Model/ResourceWafTagAllOf.md)
-- [RoleUser](docs/Model/RoleUser.md)
-- [SchemasModelBackend](docs/Model/SchemasModelBackend.md)
-- [SchemasModelHeader](docs/Model/SchemasModelHeader.md)
-- [SchemasModelSettings](docs/Model/SchemasModelSettings.md)
-- [SchemasModelSnippet](docs/Model/SchemasModelSnippet.md)
-- [SchemasModelUser](docs/Model/SchemasModelUser.md)
-- [SchemasModelVcl](docs/Model/SchemasModelVcl.md)
-- [SchemasModelVersion](docs/Model/SchemasModelVersion.md)
-- [Service](docs/Model/Service.md)
-- [ServiceAuthorizationsData](docs/Model/ServiceAuthorizationsData.md)
-- [ServiceIdAndVersion](docs/Model/ServiceIdAndVersion.md)
-- [Timestamps](docs/Model/Timestamps.md)
-- [TimestampsNoDelete](docs/Model/TimestampsNoDelete.md)
-- [TlsCommon](docs/Model/TlsCommon.md)
-- [WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsData](docs/Model/WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsData.md)
-- [WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsDataRelationships](docs/Model/WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsDataRelationships.md)
-- [WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsDataRelationshipsWafRules](docs/Model/WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsDataRelationshipsWafRules.md)
-- [WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsDataRelationshipsWafRulesData](docs/Model/WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsDataRelationshipsWafRulesData.md)
-- [WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsExclusionNumberData](docs/Model/WafFirewallsFirewallIdVersionsFirewallVersionNumberExclusionsExclusionNumberData.md)
 
 ## Authorization
 
-### token
+The Fastly API requires an [API token](https://developer.fastly.com/reference/api/#authentication) for most operations.  Set it in the PHP client by using the `setApiKey` method of a configuration as shown:
 
-- **Type**: API key
-- **API key parameter name**: Fastly-Key
-- **Location**: HTTP header
-
-
-## Tests
-
-To run the tests, use:
-
-```bash
-composer install
-vendor/bin/phpunit
+```php
+Fastly\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_TOKEN');
 ```
 
-## Author
+
+## Endpoints
+
+The main documentation for the Fastly API can be found on our [Developer Hub](https://developer.fastly.com/reference/api).
+
+Class | Method | Description
+------------ | ------------- | -------------
+[*AclApi*](docs/Api/AclApi.md) | [**createAcl**](docs/Api/AclApi.md#createacl) | Create a new ACL
+[*AclApi*](docs/Api/AclApi.md) | [**deleteAcl**](docs/Api/AclApi.md#deleteacl) | Delete an ACL
+[*AclApi*](docs/Api/AclApi.md) | [**getAcl**](docs/Api/AclApi.md#getacl) | Describe an ACL
+[*AclApi*](docs/Api/AclApi.md) | [**listAcls**](docs/Api/AclApi.md#listacls) | List ACLs
+[*AclApi*](docs/Api/AclApi.md) | [**updateAcl**](docs/Api/AclApi.md#updateacl) | Update an ACL
+[*AclEntryApi*](docs/Api/AclEntryApi.md) | [**bulkUpdateAclEntries**](docs/Api/AclEntryApi.md#bulkupdateaclentries) | Update multiple ACL entries
+[*AclEntryApi*](docs/Api/AclEntryApi.md) | [**createAclEntry**](docs/Api/AclEntryApi.md#createaclentry) | Create an ACL entry
+[*AclEntryApi*](docs/Api/AclEntryApi.md) | [**deleteAclEntry**](docs/Api/AclEntryApi.md#deleteaclentry) | Delete an ACL entry
+[*AclEntryApi*](docs/Api/AclEntryApi.md) | [**getAclEntry**](docs/Api/AclEntryApi.md#getaclentry) | Describe an ACL entry
+[*AclEntryApi*](docs/Api/AclEntryApi.md) | [**listAclEntries**](docs/Api/AclEntryApi.md#listaclentries) | List ACL entries
+[*AclEntryApi*](docs/Api/AclEntryApi.md) | [**updateAclEntry**](docs/Api/AclEntryApi.md#updateaclentry) | Update an ACL entry
+[*BackendApi*](docs/Api/BackendApi.md) | [**createBackend**](docs/Api/BackendApi.md#createbackend) | Create a backend
+[*BackendApi*](docs/Api/BackendApi.md) | [**deleteBackend**](docs/Api/BackendApi.md#deletebackend) | Delete a backend
+[*BackendApi*](docs/Api/BackendApi.md) | [**getBackend**](docs/Api/BackendApi.md#getbackend) | Describe a backend
+[*BackendApi*](docs/Api/BackendApi.md) | [**listBackends**](docs/Api/BackendApi.md#listbackends) | List backends
+[*BackendApi*](docs/Api/BackendApi.md) | [**updateBackend**](docs/Api/BackendApi.md#updatebackend) | Update a backend
+[*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**createCacheSettings**](docs/Api/CacheSettingsApi.md#createcachesettings) | Create a cache settings object
+[*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**deleteCacheSettings**](docs/Api/CacheSettingsApi.md#deletecachesettings) | Delete a cache settings object
+[*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**getCacheSettings**](docs/Api/CacheSettingsApi.md#getcachesettings) | Get a cache settings object
+[*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**listCacheSettings**](docs/Api/CacheSettingsApi.md#listcachesettings) | List cache settings objects
+[*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**updateCacheSettings**](docs/Api/CacheSettingsApi.md#updatecachesettings) | Update a cache settings object
+[*ConditionApi*](docs/Api/ConditionApi.md) | [**createCondition**](docs/Api/ConditionApi.md#createcondition) | Create a condition
+[*ConditionApi*](docs/Api/ConditionApi.md) | [**deleteCondition**](docs/Api/ConditionApi.md#deletecondition) | Delete a condition
+[*ConditionApi*](docs/Api/ConditionApi.md) | [**getCondition**](docs/Api/ConditionApi.md#getcondition) | Describe a condition
+[*ConditionApi*](docs/Api/ConditionApi.md) | [**listConditions**](docs/Api/ConditionApi.md#listconditions) | List conditions
+[*ConditionApi*](docs/Api/ConditionApi.md) | [**updateCondition**](docs/Api/ConditionApi.md#updatecondition) | Update a condition
+[*ContentApi*](docs/Api/ContentApi.md) | [**contentCheck**](docs/Api/ContentApi.md#contentcheck) | Check status of content in each data center cache
+[*CustomerApi*](docs/Api/CustomerApi.md) | [**deleteCustomer**](docs/Api/CustomerApi.md#deletecustomer) | Delete a customer
+[*CustomerApi*](docs/Api/CustomerApi.md) | [**getCustomer**](docs/Api/CustomerApi.md#getcustomer) | Get a customer
+[*CustomerApi*](docs/Api/CustomerApi.md) | [**getLoggedInCustomer**](docs/Api/CustomerApi.md#getloggedincustomer) | Get the logged in customer
+[*CustomerApi*](docs/Api/CustomerApi.md) | [**listUsers**](docs/Api/CustomerApi.md#listusers) | List users
+[*CustomerApi*](docs/Api/CustomerApi.md) | [**updateCustomer**](docs/Api/CustomerApi.md#updatecustomer) | Update a customer
+[*DatacenterApi*](docs/Api/DatacenterApi.md) | [**listDatacenters**](docs/Api/DatacenterApi.md#listdatacenters) | List Fastly datacenters
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**createDictionary**](docs/Api/DictionaryApi.md#createdictionary) | Create an edge dictionary
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**deleteDictionary**](docs/Api/DictionaryApi.md#deletedictionary) | Delete an edge dictionary
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**getDictionary**](docs/Api/DictionaryApi.md#getdictionary) | Get an edge dictionary
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**listDictionaries**](docs/Api/DictionaryApi.md#listdictionaries) | List edge dictionaries
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**updateDictionary**](docs/Api/DictionaryApi.md#updatedictionary) | Update an edge dictionary
+[*DictionaryInfoApi*](docs/Api/DictionaryInfoApi.md) | [**getDictionaryInfo**](docs/Api/DictionaryInfoApi.md#getdictionaryinfo) | Get edge dictionary metadata
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**bulkUpdateDictionaryItem**](docs/Api/DictionaryItemApi.md#bulkupdatedictionaryitem) | Update multiple entries in an edge dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**createDictionaryItem**](docs/Api/DictionaryItemApi.md#createdictionaryitem) | Create an entry in an edge dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**deleteDictionaryItem**](docs/Api/DictionaryItemApi.md#deletedictionaryitem) | Delete an item from an edge dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**getDictionaryItem**](docs/Api/DictionaryItemApi.md#getdictionaryitem) | Get an item from an edge dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**listDictionaryItems**](docs/Api/DictionaryItemApi.md#listdictionaryitems) | List items in an edge dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**updateDictionaryItem**](docs/Api/DictionaryItemApi.md#updatedictionaryitem) | Update an entry in an edge dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**upsertDictionaryItem**](docs/Api/DictionaryItemApi.md#upsertdictionaryitem) | Insert or update an entry in an edge dictionary
+[*DiffApi*](docs/Api/DiffApi.md) | [**diffServiceVersions**](docs/Api/DiffApi.md#diffserviceversions) | Diff two service versions
+[*DirectorApi*](docs/Api/DirectorApi.md) | [**createDirector**](docs/Api/DirectorApi.md#createdirector) | Create a director
+[*DirectorApi*](docs/Api/DirectorApi.md) | [**deleteDirector**](docs/Api/DirectorApi.md#deletedirector) | Delete a director
+[*DirectorApi*](docs/Api/DirectorApi.md) | [**getDirector**](docs/Api/DirectorApi.md#getdirector) | Get a director
+[*DirectorApi*](docs/Api/DirectorApi.md) | [**listDirectors**](docs/Api/DirectorApi.md#listdirectors) | List directors
+[*DirectorApi*](docs/Api/DirectorApi.md) | [**updateDirector**](docs/Api/DirectorApi.md#updatedirector) | Update a director
+[*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**createDirectorBackend**](docs/Api/DirectorBackendApi.md#createdirectorbackend) | Create a director-backend relationship
+[*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**deleteDirectorBackend**](docs/Api/DirectorBackendApi.md#deletedirectorbackend) | Delete a director-backend relationship
+[*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**getDirectorBackend**](docs/Api/DirectorBackendApi.md#getdirectorbackend) | Get a director-backend relationship
+[*DomainApi*](docs/Api/DomainApi.md) | [**checkDomain**](docs/Api/DomainApi.md#checkdomain) | Validate DNS configuration for a single domain on a service
+[*DomainApi*](docs/Api/DomainApi.md) | [**checkDomains**](docs/Api/DomainApi.md#checkdomains) | Validate DNS configuration for all domains on a service
+[*DomainApi*](docs/Api/DomainApi.md) | [**createDomain**](docs/Api/DomainApi.md#createdomain) | Add a domain name to a service
+[*DomainApi*](docs/Api/DomainApi.md) | [**deleteDomain**](docs/Api/DomainApi.md#deletedomain) | Remove a domain from a service
+[*DomainApi*](docs/Api/DomainApi.md) | [**getDomain**](docs/Api/DomainApi.md#getdomain) | Describe a domain
+[*DomainApi*](docs/Api/DomainApi.md) | [**listDomains**](docs/Api/DomainApi.md#listdomains) | List domains
+[*DomainApi*](docs/Api/DomainApi.md) | [**updateDomain**](docs/Api/DomainApi.md#updatedomain) | Update a domain
+[*EventsApi*](docs/Api/EventsApi.md) | [**getEvent**](docs/Api/EventsApi.md#getevent) | Get an event
+[*EventsApi*](docs/Api/EventsApi.md) | [**listEvents**](docs/Api/EventsApi.md#listevents) | List events
+[*GzipApi*](docs/Api/GzipApi.md) | [**createGzipConfig**](docs/Api/GzipApi.md#creategzipconfig) | Create a gzip configuration
+[*GzipApi*](docs/Api/GzipApi.md) | [**deleteGzipConfig**](docs/Api/GzipApi.md#deletegzipconfig) | Delete a gzip configuration
+[*GzipApi*](docs/Api/GzipApi.md) | [**getGzipConfigs**](docs/Api/GzipApi.md#getgzipconfigs) | Get a gzip configuration
+[*GzipApi*](docs/Api/GzipApi.md) | [**listGzipConfigs**](docs/Api/GzipApi.md#listgzipconfigs) | List gzip configurations
+[*GzipApi*](docs/Api/GzipApi.md) | [**updateGzipConfig**](docs/Api/GzipApi.md#updategzipconfig) | Update a gzip configuration
+[*HeaderApi*](docs/Api/HeaderApi.md) | [**createHeaderObject**](docs/Api/HeaderApi.md#createheaderobject) | Create a Header object
+[*HeaderApi*](docs/Api/HeaderApi.md) | [**deleteHeaderObject**](docs/Api/HeaderApi.md#deleteheaderobject) | Delete a Header object
+[*HeaderApi*](docs/Api/HeaderApi.md) | [**getHeaderObject**](docs/Api/HeaderApi.md#getheaderobject) | Get a Header object
+[*HeaderApi*](docs/Api/HeaderApi.md) | [**listHeaderObjects**](docs/Api/HeaderApi.md#listheaderobjects) | List Header objects
+[*HeaderApi*](docs/Api/HeaderApi.md) | [**updateHeaderObject**](docs/Api/HeaderApi.md#updateheaderobject) | Update a Header object
+[*HealthcheckApi*](docs/Api/HealthcheckApi.md) | [**createHealthcheck**](docs/Api/HealthcheckApi.md#createhealthcheck) | Create a healthcheck
+[*HealthcheckApi*](docs/Api/HealthcheckApi.md) | [**deleteHealthcheck**](docs/Api/HealthcheckApi.md#deletehealthcheck) | Delete a healthcheck
+[*HealthcheckApi*](docs/Api/HealthcheckApi.md) | [**getHealthcheck**](docs/Api/HealthcheckApi.md#gethealthcheck) | Get a healthcheck
+[*HealthcheckApi*](docs/Api/HealthcheckApi.md) | [**listHealthchecks**](docs/Api/HealthcheckApi.md#listhealthchecks) | List healthchecks
+[*HealthcheckApi*](docs/Api/HealthcheckApi.md) | [**updateHealthcheck**](docs/Api/HealthcheckApi.md#updatehealthcheck) | Update a healthcheck
+[*InvitationsApi*](docs/Api/InvitationsApi.md) | [**createInvitation**](docs/Api/InvitationsApi.md#createinvitation) | Create an invitation
+[*InvitationsApi*](docs/Api/InvitationsApi.md) | [**deleteInvitation**](docs/Api/InvitationsApi.md#deleteinvitation) | Delete an invitation
+[*InvitationsApi*](docs/Api/InvitationsApi.md) | [**listInvitations**](docs/Api/InvitationsApi.md#listinvitations) | List invitations
+[*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**createLogAzure**](docs/Api/LoggingAzureblobApi.md#createlogazure) | Create an Azure Blob Storage log endpoint
+[*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**deleteLogAzure**](docs/Api/LoggingAzureblobApi.md#deletelogazure) | Delete the Azure Blob Storage log endpoint
+[*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**getLogAzure**](docs/Api/LoggingAzureblobApi.md#getlogazure) | Get an Azure Blob Storage log endpoint
+[*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**listLogAzure**](docs/Api/LoggingAzureblobApi.md#listlogazure) | List Azure Blob Storage log endpoints
+[*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**updateLogAzure**](docs/Api/LoggingAzureblobApi.md#updatelogazure) | Update an Azure Blob Storage log endpoint
+[*LoggingBigqueryApi*](docs/Api/LoggingBigqueryApi.md) | [**createLogBigquery**](docs/Api/LoggingBigqueryApi.md#createlogbigquery) | Create a BigQuery log endpoint
+[*LoggingBigqueryApi*](docs/Api/LoggingBigqueryApi.md) | [**deleteLogBigquery**](docs/Api/LoggingBigqueryApi.md#deletelogbigquery) | Delete a BigQuery log endpoint
+[*LoggingBigqueryApi*](docs/Api/LoggingBigqueryApi.md) | [**getLogBigquery**](docs/Api/LoggingBigqueryApi.md#getlogbigquery) | Get a BigQuery log endpoint
+[*LoggingBigqueryApi*](docs/Api/LoggingBigqueryApi.md) | [**listLogBigquery**](docs/Api/LoggingBigqueryApi.md#listlogbigquery) | List BigQuery log endpoints
+[*LoggingBigqueryApi*](docs/Api/LoggingBigqueryApi.md) | [**updateLogBigquery**](docs/Api/LoggingBigqueryApi.md#updatelogbigquery) | Update a BigQuery log endpoint
+[*LoggingCloudfilesApi*](docs/Api/LoggingCloudfilesApi.md) | [**createLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#createlogcloudfiles) | Create a Cloud Files log endpoint
+[*LoggingCloudfilesApi*](docs/Api/LoggingCloudfilesApi.md) | [**deleteLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#deletelogcloudfiles) | Delete the Cloud Files log endpoint
+[*LoggingCloudfilesApi*](docs/Api/LoggingCloudfilesApi.md) | [**getLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#getlogcloudfiles) | Get a Cloud Files log endpoint
+[*LoggingCloudfilesApi*](docs/Api/LoggingCloudfilesApi.md) | [**listLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#listlogcloudfiles) | List Cloud Files log endpoints
+[*LoggingCloudfilesApi*](docs/Api/LoggingCloudfilesApi.md) | [**updateLogCloudfiles**](docs/Api/LoggingCloudfilesApi.md#updatelogcloudfiles) | Update the Cloud Files log endpoint
+[*LoggingDatadogApi*](docs/Api/LoggingDatadogApi.md) | [**createLogDatadog**](docs/Api/LoggingDatadogApi.md#createlogdatadog) | Create a Datadog log endpoint
+[*LoggingDatadogApi*](docs/Api/LoggingDatadogApi.md) | [**deleteLogDatadog**](docs/Api/LoggingDatadogApi.md#deletelogdatadog) | Delete a Datadog log endpoint
+[*LoggingDatadogApi*](docs/Api/LoggingDatadogApi.md) | [**getLogDatadog**](docs/Api/LoggingDatadogApi.md#getlogdatadog) | Get a Datadog log endpoint
+[*LoggingDatadogApi*](docs/Api/LoggingDatadogApi.md) | [**listLogDatadog**](docs/Api/LoggingDatadogApi.md#listlogdatadog) | List Datadog log endpoints
+[*LoggingDatadogApi*](docs/Api/LoggingDatadogApi.md) | [**updateLogDatadog**](docs/Api/LoggingDatadogApi.md#updatelogdatadog) | Update a Datadog log endpoint
+[*LoggingDigitaloceanApi*](docs/Api/LoggingDigitaloceanApi.md) | [**createLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#createlogdigocean) | Create a DigitalOcean Spaces log endpoint
+[*LoggingDigitaloceanApi*](docs/Api/LoggingDigitaloceanApi.md) | [**deleteLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#deletelogdigocean) | Delete a DigitalOcean Spaces log endpoint
+[*LoggingDigitaloceanApi*](docs/Api/LoggingDigitaloceanApi.md) | [**getLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#getlogdigocean) | Get a DigitalOcean Spaces log endpoint
+[*LoggingDigitaloceanApi*](docs/Api/LoggingDigitaloceanApi.md) | [**listLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#listlogdigocean) | List DigitalOcean Spaces log endpoints
+[*LoggingDigitaloceanApi*](docs/Api/LoggingDigitaloceanApi.md) | [**updateLogDigocean**](docs/Api/LoggingDigitaloceanApi.md#updatelogdigocean) | Update a DigitalOcean Spaces log endpoint
+[*LoggingElasticsearchApi*](docs/Api/LoggingElasticsearchApi.md) | [**createLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#createlogelasticsearch) | Create an Elasticsearch log endpoint
+[*LoggingElasticsearchApi*](docs/Api/LoggingElasticsearchApi.md) | [**deleteLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#deletelogelasticsearch) | Delete an Elasticsearch log endpoint
+[*LoggingElasticsearchApi*](docs/Api/LoggingElasticsearchApi.md) | [**getLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#getlogelasticsearch) | Get an Elasticsearch log endpoint
+[*LoggingElasticsearchApi*](docs/Api/LoggingElasticsearchApi.md) | [**listLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#listlogelasticsearch) | List Elasticsearch log endpoints
+[*LoggingElasticsearchApi*](docs/Api/LoggingElasticsearchApi.md) | [**updateLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#updatelogelasticsearch) | Update an Elasticsearch log endpoint
+[*LoggingFtpApi*](docs/Api/LoggingFtpApi.md) | [**createLogFtp**](docs/Api/LoggingFtpApi.md#createlogftp) | Create an FTP log endpoint
+[*LoggingFtpApi*](docs/Api/LoggingFtpApi.md) | [**deleteLogFtp**](docs/Api/LoggingFtpApi.md#deletelogftp) | Delete an FTP log endpoint
+[*LoggingFtpApi*](docs/Api/LoggingFtpApi.md) | [**getLogFtp**](docs/Api/LoggingFtpApi.md#getlogftp) | Get an FTP log endpoint
+[*LoggingFtpApi*](docs/Api/LoggingFtpApi.md) | [**listLogFtp**](docs/Api/LoggingFtpApi.md#listlogftp) | List FTP log endpoints
+[*LoggingFtpApi*](docs/Api/LoggingFtpApi.md) | [**updateLogFtp**](docs/Api/LoggingFtpApi.md#updatelogftp) | Update an FTP log endpoint
+[*LoggingGcsApi*](docs/Api/LoggingGcsApi.md) | [**createLogGcs**](docs/Api/LoggingGcsApi.md#createloggcs) | Create a GCS log endpoint
+[*LoggingGcsApi*](docs/Api/LoggingGcsApi.md) | [**deleteLogGcs**](docs/Api/LoggingGcsApi.md#deleteloggcs) | Delete a GCS log endpoint
+[*LoggingGcsApi*](docs/Api/LoggingGcsApi.md) | [**getLogGcs**](docs/Api/LoggingGcsApi.md#getloggcs) | Get a GCS log endpoint
+[*LoggingGcsApi*](docs/Api/LoggingGcsApi.md) | [**listLogGcs**](docs/Api/LoggingGcsApi.md#listloggcs) | List GCS log endpoints
+[*LoggingGcsApi*](docs/Api/LoggingGcsApi.md) | [**updateLogGcs**](docs/Api/LoggingGcsApi.md#updateloggcs) | Update a GCS log endpoint
+[*LoggingHerokuApi*](docs/Api/LoggingHerokuApi.md) | [**createLogHeroku**](docs/Api/LoggingHerokuApi.md#createlogheroku) | Create a Heroku log endpoint
+[*LoggingHerokuApi*](docs/Api/LoggingHerokuApi.md) | [**deleteLogHeroku**](docs/Api/LoggingHerokuApi.md#deletelogheroku) | Delete the Heroku log endpoint
+[*LoggingHerokuApi*](docs/Api/LoggingHerokuApi.md) | [**getLogHeroku**](docs/Api/LoggingHerokuApi.md#getlogheroku) | Get a Heroku log endpoint
+[*LoggingHerokuApi*](docs/Api/LoggingHerokuApi.md) | [**listLogHeroku**](docs/Api/LoggingHerokuApi.md#listlogheroku) | List Heroku log endpoints
+[*LoggingHerokuApi*](docs/Api/LoggingHerokuApi.md) | [**updateLogHeroku**](docs/Api/LoggingHerokuApi.md#updatelogheroku) | Update the Heroku log endpoint
+[*LoggingHoneycombApi*](docs/Api/LoggingHoneycombApi.md) | [**createLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#createloghoneycomb) | Create a Honeycomb log endpoint
+[*LoggingHoneycombApi*](docs/Api/LoggingHoneycombApi.md) | [**deleteLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#deleteloghoneycomb) | Delete the Honeycomb log endpoint
+[*LoggingHoneycombApi*](docs/Api/LoggingHoneycombApi.md) | [**getLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#getloghoneycomb) | Get a Honeycomb log endpoint
+[*LoggingHoneycombApi*](docs/Api/LoggingHoneycombApi.md) | [**listLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#listloghoneycomb) | List Honeycomb log endpoints
+[*LoggingHoneycombApi*](docs/Api/LoggingHoneycombApi.md) | [**updateLogHoneycomb**](docs/Api/LoggingHoneycombApi.md#updateloghoneycomb) | Update a Honeycomb log endpoint
+[*LoggingHttpsApi*](docs/Api/LoggingHttpsApi.md) | [**createLogHttps**](docs/Api/LoggingHttpsApi.md#createloghttps) | Create an HTTPS log endpoint
+[*LoggingHttpsApi*](docs/Api/LoggingHttpsApi.md) | [**deleteLogHttps**](docs/Api/LoggingHttpsApi.md#deleteloghttps) | Delete an HTTPS log endpoint
+[*LoggingHttpsApi*](docs/Api/LoggingHttpsApi.md) | [**getLogHttps**](docs/Api/LoggingHttpsApi.md#getloghttps) | Get an HTTPS log endpoint
+[*LoggingHttpsApi*](docs/Api/LoggingHttpsApi.md) | [**listLogHttps**](docs/Api/LoggingHttpsApi.md#listloghttps) | List HTTPS log endpoints
+[*LoggingHttpsApi*](docs/Api/LoggingHttpsApi.md) | [**updateLogHttps**](docs/Api/LoggingHttpsApi.md#updateloghttps) | Update an HTTPS log endpoint
+[*LoggingKafkaApi*](docs/Api/LoggingKafkaApi.md) | [**createLogKafka**](docs/Api/LoggingKafkaApi.md#createlogkafka) | Create a Kafka log endpoint
+[*LoggingKafkaApi*](docs/Api/LoggingKafkaApi.md) | [**deleteLogKafka**](docs/Api/LoggingKafkaApi.md#deletelogkafka) | Delete the Kafka log endpoint
+[*LoggingKafkaApi*](docs/Api/LoggingKafkaApi.md) | [**getLogKafka**](docs/Api/LoggingKafkaApi.md#getlogkafka) | Get a Kafka log endpoint
+[*LoggingKafkaApi*](docs/Api/LoggingKafkaApi.md) | [**listLogKafka**](docs/Api/LoggingKafkaApi.md#listlogkafka) | List Kafka log endpoints
+[*LoggingKafkaApi*](docs/Api/LoggingKafkaApi.md) | [**updateLogKafka**](docs/Api/LoggingKafkaApi.md#updatelogkafka) | Update the Kafka log endpoint
+[*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**createLogKinesis**](docs/Api/LoggingKinesisApi.md#createlogkinesis) | Create  an Amazon Kinesis log endpoint
+[*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**deleteLogKinesis**](docs/Api/LoggingKinesisApi.md#deletelogkinesis) | Delete the Amazon Kinesis log endpoint
+[*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**getLogKinesis**](docs/Api/LoggingKinesisApi.md#getlogkinesis) | Get an Amazon Kinesis log endpoint
+[*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**listLogKinesis**](docs/Api/LoggingKinesisApi.md#listlogkinesis) | List Amazon Kinesis log endpoints
+[*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**updateLogKinesis**](docs/Api/LoggingKinesisApi.md#updatelogkinesis) | Update the Amazon Kinesis log endpoint
+[*LoggingLogentriesApi*](docs/Api/LoggingLogentriesApi.md) | [**createLogLogentries**](docs/Api/LoggingLogentriesApi.md#createloglogentries) | Create a Logentries log endpoint
+[*LoggingLogentriesApi*](docs/Api/LoggingLogentriesApi.md) | [**deleteLogLogentries**](docs/Api/LoggingLogentriesApi.md#deleteloglogentries) | Delete a Logentries log endpoint
+[*LoggingLogentriesApi*](docs/Api/LoggingLogentriesApi.md) | [**getLogLogentries**](docs/Api/LoggingLogentriesApi.md#getloglogentries) | Get a Logentries log endpoint
+[*LoggingLogentriesApi*](docs/Api/LoggingLogentriesApi.md) | [**listLogLogentries**](docs/Api/LoggingLogentriesApi.md#listloglogentries) | List Logentries log endpoints
+[*LoggingLogentriesApi*](docs/Api/LoggingLogentriesApi.md) | [**updateLogLogentries**](docs/Api/LoggingLogentriesApi.md#updateloglogentries) | Update a Logentries log endpoint
+[*LoggingLogglyApi*](docs/Api/LoggingLogglyApi.md) | [**createLogLoggly**](docs/Api/LoggingLogglyApi.md#createlogloggly) | Create a Loggly log endpoint
+[*LoggingLogglyApi*](docs/Api/LoggingLogglyApi.md) | [**deleteLogLoggly**](docs/Api/LoggingLogglyApi.md#deletelogloggly) | Delete a Loggly log endpoint
+[*LoggingLogglyApi*](docs/Api/LoggingLogglyApi.md) | [**getLogLoggly**](docs/Api/LoggingLogglyApi.md#getlogloggly) | Get a Loggly log endpoint
+[*LoggingLogglyApi*](docs/Api/LoggingLogglyApi.md) | [**listLogLoggly**](docs/Api/LoggingLogglyApi.md#listlogloggly) | List Loggly log endpoints
+[*LoggingLogglyApi*](docs/Api/LoggingLogglyApi.md) | [**updateLogLoggly**](docs/Api/LoggingLogglyApi.md#updatelogloggly) | Update a Loggly log endpoint
+[*LoggingLogshuttleApi*](docs/Api/LoggingLogshuttleApi.md) | [**createLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#createloglogshuttle) | Create a Log Shuttle log endpoint
+[*LoggingLogshuttleApi*](docs/Api/LoggingLogshuttleApi.md) | [**deleteLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#deleteloglogshuttle) | Delete a Log Shuttle log endpoint
+[*LoggingLogshuttleApi*](docs/Api/LoggingLogshuttleApi.md) | [**getLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#getloglogshuttle) | Get a Log Shuttle log endpoint
+[*LoggingLogshuttleApi*](docs/Api/LoggingLogshuttleApi.md) | [**listLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#listloglogshuttle) | List Log Shuttle log endpoints
+[*LoggingLogshuttleApi*](docs/Api/LoggingLogshuttleApi.md) | [**updateLogLogshuttle**](docs/Api/LoggingLogshuttleApi.md#updateloglogshuttle) | Update a Log Shuttle log endpoint
+[*LoggingNewrelicApi*](docs/Api/LoggingNewrelicApi.md) | [**createLogNewrelic**](docs/Api/LoggingNewrelicApi.md#createlognewrelic) | Create a New Relic log endpoint
+[*LoggingNewrelicApi*](docs/Api/LoggingNewrelicApi.md) | [**deleteLogNewrelic**](docs/Api/LoggingNewrelicApi.md#deletelognewrelic) | Delete a New Relic log endpoint
+[*LoggingNewrelicApi*](docs/Api/LoggingNewrelicApi.md) | [**getLogNewrelic**](docs/Api/LoggingNewrelicApi.md#getlognewrelic) | Get a New Relic log endpoint
+[*LoggingNewrelicApi*](docs/Api/LoggingNewrelicApi.md) | [**listLogNewrelic**](docs/Api/LoggingNewrelicApi.md#listlognewrelic) | List New Relic log endpoints
+[*LoggingNewrelicApi*](docs/Api/LoggingNewrelicApi.md) | [**updateLogNewrelic**](docs/Api/LoggingNewrelicApi.md#updatelognewrelic) | Update a New Relic log endpoint
+[*LoggingOpenstackApi*](docs/Api/LoggingOpenstackApi.md) | [**createLogOpenstack**](docs/Api/LoggingOpenstackApi.md#createlogopenstack) | Create an OpenStack log endpoint
+[*LoggingOpenstackApi*](docs/Api/LoggingOpenstackApi.md) | [**deleteLogOpenstack**](docs/Api/LoggingOpenstackApi.md#deletelogopenstack) | Delete an OpenStack log endpoint
+[*LoggingOpenstackApi*](docs/Api/LoggingOpenstackApi.md) | [**getLogOpenstack**](docs/Api/LoggingOpenstackApi.md#getlogopenstack) | Get an OpenStack log endpoint
+[*LoggingOpenstackApi*](docs/Api/LoggingOpenstackApi.md) | [**listLogOpenstack**](docs/Api/LoggingOpenstackApi.md#listlogopenstack) | List OpenStack log endpoints
+[*LoggingOpenstackApi*](docs/Api/LoggingOpenstackApi.md) | [**updateLogOpenstack**](docs/Api/LoggingOpenstackApi.md#updatelogopenstack) | Update an OpenStack log endpoint
+[*LoggingPapertrailApi*](docs/Api/LoggingPapertrailApi.md) | [**createLogPapertrail**](docs/Api/LoggingPapertrailApi.md#createlogpapertrail) | Create a Papertrail log endpoint
+[*LoggingPapertrailApi*](docs/Api/LoggingPapertrailApi.md) | [**deleteLogPapertrail**](docs/Api/LoggingPapertrailApi.md#deletelogpapertrail) | Delete a Papertrail log endpoint
+[*LoggingPapertrailApi*](docs/Api/LoggingPapertrailApi.md) | [**getLogPapertrail**](docs/Api/LoggingPapertrailApi.md#getlogpapertrail) | Get a Papertrail log endpoint
+[*LoggingPapertrailApi*](docs/Api/LoggingPapertrailApi.md) | [**listLogPapertrail**](docs/Api/LoggingPapertrailApi.md#listlogpapertrail) | List Papertrail log endpoints
+[*LoggingPapertrailApi*](docs/Api/LoggingPapertrailApi.md) | [**updateLogPapertrail**](docs/Api/LoggingPapertrailApi.md#updatelogpapertrail) | Update a Papertrail log endpoint
+[*LoggingPubsubApi*](docs/Api/LoggingPubsubApi.md) | [**createLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#createloggcppubsub) | Create a GCP Cloud Pub/Sub log endpoint
+[*LoggingPubsubApi*](docs/Api/LoggingPubsubApi.md) | [**deleteLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#deleteloggcppubsub) | Delete a GCP Cloud Pub/Sub log endpoint
+[*LoggingPubsubApi*](docs/Api/LoggingPubsubApi.md) | [**getLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#getloggcppubsub) | Get a GCP Cloud Pub/Sub log endpoint
+[*LoggingPubsubApi*](docs/Api/LoggingPubsubApi.md) | [**listLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#listloggcppubsub) | List GCP Cloud Pub/Sub log endpoints
+[*LoggingPubsubApi*](docs/Api/LoggingPubsubApi.md) | [**updateLogGcpPubsub**](docs/Api/LoggingPubsubApi.md#updateloggcppubsub) | Update a GCP Cloud Pub/Sub log endpoint
+[*LoggingS3Api*](docs/Api/LoggingS3Api.md) | [**createLogAwsS3**](docs/Api/LoggingS3Api.md#createlogawss3) | Create an AWS S3 log endpoint
+[*LoggingS3Api*](docs/Api/LoggingS3Api.md) | [**deleteLogAwsS3**](docs/Api/LoggingS3Api.md#deletelogawss3) | Delete an AWS S3 log endpoint
+[*LoggingS3Api*](docs/Api/LoggingS3Api.md) | [**getLogAwsS3**](docs/Api/LoggingS3Api.md#getlogawss3) | Get an AWS S3 log endpoint
+[*LoggingS3Api*](docs/Api/LoggingS3Api.md) | [**listLogAwsS3**](docs/Api/LoggingS3Api.md#listlogawss3) | List AWS S3 log endpoints
+[*LoggingS3Api*](docs/Api/LoggingS3Api.md) | [**updateLogAwsS3**](docs/Api/LoggingS3Api.md#updatelogawss3) | Update an AWS S3 log endpoint
+[*LoggingScalyrApi*](docs/Api/LoggingScalyrApi.md) | [**createLogScalyr**](docs/Api/LoggingScalyrApi.md#createlogscalyr) | Create a Scalyr log endpoint
+[*LoggingScalyrApi*](docs/Api/LoggingScalyrApi.md) | [**deleteLogScalyr**](docs/Api/LoggingScalyrApi.md#deletelogscalyr) | Delete the Scalyr log endpoint
+[*LoggingScalyrApi*](docs/Api/LoggingScalyrApi.md) | [**getLogScalyr**](docs/Api/LoggingScalyrApi.md#getlogscalyr) | Get a Scalyr log endpoint
+[*LoggingScalyrApi*](docs/Api/LoggingScalyrApi.md) | [**listLogScalyr**](docs/Api/LoggingScalyrApi.md#listlogscalyr) | List Scalyr log endpoints
+[*LoggingScalyrApi*](docs/Api/LoggingScalyrApi.md) | [**updateLogScalyr**](docs/Api/LoggingScalyrApi.md#updatelogscalyr) | Update the Scalyr log endpoint
+[*LoggingSftpApi*](docs/Api/LoggingSftpApi.md) | [**createLogSftp**](docs/Api/LoggingSftpApi.md#createlogsftp) | Create an SFTP log endpoint
+[*LoggingSftpApi*](docs/Api/LoggingSftpApi.md) | [**deleteLogSftp**](docs/Api/LoggingSftpApi.md#deletelogsftp) | Delete an SFTP log endpoint
+[*LoggingSftpApi*](docs/Api/LoggingSftpApi.md) | [**getLogSftp**](docs/Api/LoggingSftpApi.md#getlogsftp) | Get an SFTP log endpoint
+[*LoggingSftpApi*](docs/Api/LoggingSftpApi.md) | [**listLogSftp**](docs/Api/LoggingSftpApi.md#listlogsftp) | List SFTP log endpoints
+[*LoggingSftpApi*](docs/Api/LoggingSftpApi.md) | [**updateLogSftp**](docs/Api/LoggingSftpApi.md#updatelogsftp) | Update an SFTP log endpoint
+[*LoggingSplunkApi*](docs/Api/LoggingSplunkApi.md) | [**createLogSplunk**](docs/Api/LoggingSplunkApi.md#createlogsplunk) | Create a Splunk log endpoint
+[*LoggingSplunkApi*](docs/Api/LoggingSplunkApi.md) | [**deleteLogSplunk**](docs/Api/LoggingSplunkApi.md#deletelogsplunk) | Delete a Splunk log endpoint
+[*LoggingSplunkApi*](docs/Api/LoggingSplunkApi.md) | [**getLogSplunk**](docs/Api/LoggingSplunkApi.md#getlogsplunk) | Get a Splunk log endpoint
+[*LoggingSplunkApi*](docs/Api/LoggingSplunkApi.md) | [**listLogSplunk**](docs/Api/LoggingSplunkApi.md#listlogsplunk) | List Splunk log endpoints
+[*LoggingSplunkApi*](docs/Api/LoggingSplunkApi.md) | [**updateLogSplunk**](docs/Api/LoggingSplunkApi.md#updatelogsplunk) | Update a Splunk log endpoint
+[*LoggingSumologicApi*](docs/Api/LoggingSumologicApi.md) | [**createLogSumologic**](docs/Api/LoggingSumologicApi.md#createlogsumologic) | Create a Sumologic log endpoint
+[*LoggingSumologicApi*](docs/Api/LoggingSumologicApi.md) | [**deleteLogSumologic**](docs/Api/LoggingSumologicApi.md#deletelogsumologic) | Delete a Sumologic log endpoint
+[*LoggingSumologicApi*](docs/Api/LoggingSumologicApi.md) | [**getLogSumologic**](docs/Api/LoggingSumologicApi.md#getlogsumologic) | Get a Sumologic log endpoint
+[*LoggingSumologicApi*](docs/Api/LoggingSumologicApi.md) | [**listLogSumologic**](docs/Api/LoggingSumologicApi.md#listlogsumologic) | List Sumologic log endpoints
+[*LoggingSumologicApi*](docs/Api/LoggingSumologicApi.md) | [**updateLogSumologic**](docs/Api/LoggingSumologicApi.md#updatelogsumologic) | Update a Sumologic log endpoint
+[*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**createLogSyslog**](docs/Api/LoggingSyslogApi.md#createlogsyslog) | Create a syslog log endpoint
+[*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**deleteLogSyslog**](docs/Api/LoggingSyslogApi.md#deletelogsyslog) | Delete a syslog log endpoint
+[*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**getLogSyslog**](docs/Api/LoggingSyslogApi.md#getlogsyslog) | Get a syslog log endpoint
+[*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**listLogSyslog**](docs/Api/LoggingSyslogApi.md#listlogsyslog) | List Syslog log endpoints
+[*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**updateLogSyslog**](docs/Api/LoggingSyslogApi.md#updatelogsyslog) | Update a syslog log endpoint
+[*PackageApi*](docs/Api/PackageApi.md) | [**getPackage**](docs/Api/PackageApi.md#getpackage) | Get details of the service&#39;s Compute@Edge package.
+[*PackageApi*](docs/Api/PackageApi.md) | [**putPackage**](docs/Api/PackageApi.md#putpackage) | Upload a Compute@Edge package.
+[*PoolApi*](docs/Api/PoolApi.md) | [**createServerPool**](docs/Api/PoolApi.md#createserverpool) | Create a server pool
+[*PoolApi*](docs/Api/PoolApi.md) | [**deleteServerPool**](docs/Api/PoolApi.md#deleteserverpool) | Delete a server pool
+[*PoolApi*](docs/Api/PoolApi.md) | [**getServerPool**](docs/Api/PoolApi.md#getserverpool) | Get a server pool
+[*PoolApi*](docs/Api/PoolApi.md) | [**listServerPools**](docs/Api/PoolApi.md#listserverpools) | List server pools
+[*PoolApi*](docs/Api/PoolApi.md) | [**updateServerPool**](docs/Api/PoolApi.md#updateserverpool) | Update a server pool
+[*PublicIpListApi*](docs/Api/PublicIpListApi.md) | [**listFastlyIps**](docs/Api/PublicIpListApi.md#listfastlyips) | List Fastly&#39;s public IPs
+[*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**createRateLimiter**](docs/Api/RateLimiterApi.md#createratelimiter) | Create a rate limiter
+[*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**deleteRateLimiter**](docs/Api/RateLimiterApi.md#deleteratelimiter) | Delete a rate limiter
+[*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**getRateLimiter**](docs/Api/RateLimiterApi.md#getratelimiter) | Get a rate limiter
+[*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**listRateLimiters**](docs/Api/RateLimiterApi.md#listratelimiters) | List rate limiters
+[*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**updateRateLimiter**](docs/Api/RateLimiterApi.md#updateratelimiter) | Update a rate limiter
+[*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**createRequestSettings**](docs/Api/RequestSettingsApi.md#createrequestsettings) | Create a Request Settings object
+[*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**deleteRequestSettings**](docs/Api/RequestSettingsApi.md#deleterequestsettings) | Delete a Request Settings object
+[*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**getRequestSettings**](docs/Api/RequestSettingsApi.md#getrequestsettings) | Get a Request Settings object
+[*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**listRequestSettings**](docs/Api/RequestSettingsApi.md#listrequestsettings) | List Request Settings objects
+[*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**updateRequestSettings**](docs/Api/RequestSettingsApi.md#updaterequestsettings) | Update a Request Settings object
+[*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**createResponseObject**](docs/Api/ResponseObjectApi.md#createresponseobject) | Create a Response object
+[*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**deleteResponseObject**](docs/Api/ResponseObjectApi.md#deleteresponseobject) | Delete a Response Object
+[*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**getResponseObject**](docs/Api/ResponseObjectApi.md#getresponseobject) | Get a Response object
+[*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**listResponseObjects**](docs/Api/ResponseObjectApi.md#listresponseobjects) | List Response objects
+[*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**updateResponseObject**](docs/Api/ResponseObjectApi.md#updateresponseobject) | Update a Response object
+[*ServerApi*](docs/Api/ServerApi.md) | [**createPoolServer**](docs/Api/ServerApi.md#createpoolserver) | Add a server to a pool
+[*ServerApi*](docs/Api/ServerApi.md) | [**deletePoolServer**](docs/Api/ServerApi.md#deletepoolserver) | Delete a server from a pool
+[*ServerApi*](docs/Api/ServerApi.md) | [**getPoolServer**](docs/Api/ServerApi.md#getpoolserver) | Get a pool server
+[*ServerApi*](docs/Api/ServerApi.md) | [**listPoolServers**](docs/Api/ServerApi.md#listpoolservers) | List servers in a pool
+[*ServerApi*](docs/Api/ServerApi.md) | [**updatePoolServer**](docs/Api/ServerApi.md#updatepoolserver) | Update a server
+[*ServiceApi*](docs/Api/ServiceApi.md) | [**createService**](docs/Api/ServiceApi.md#createservice) | Create a service
+[*ServiceApi*](docs/Api/ServiceApi.md) | [**deleteService**](docs/Api/ServiceApi.md#deleteservice) | Delete a service
+[*ServiceApi*](docs/Api/ServiceApi.md) | [**getService**](docs/Api/ServiceApi.md#getservice) | Get a service
+[*ServiceApi*](docs/Api/ServiceApi.md) | [**getServiceDetail**](docs/Api/ServiceApi.md#getservicedetail) | Get service details
+[*ServiceApi*](docs/Api/ServiceApi.md) | [**listServiceDomains**](docs/Api/ServiceApi.md#listservicedomains) | List the domains within a service
+[*ServiceApi*](docs/Api/ServiceApi.md) | [**listServices**](docs/Api/ServiceApi.md#listservices) | List services
+[*ServiceApi*](docs/Api/ServiceApi.md) | [**searchService**](docs/Api/ServiceApi.md#searchservice) | Search for a service by name
+[*ServiceApi*](docs/Api/ServiceApi.md) | [**updateService**](docs/Api/ServiceApi.md#updateservice) | Update a service
+[*SettingsApi*](docs/Api/SettingsApi.md) | [**getServiceSettings**](docs/Api/SettingsApi.md#getservicesettings) | Get service settings
+[*SettingsApi*](docs/Api/SettingsApi.md) | [**updateServiceSettings**](docs/Api/SettingsApi.md#updateservicesettings) | Update service settings
+[*SnippetApi*](docs/Api/SnippetApi.md) | [**createSnippet**](docs/Api/SnippetApi.md#createsnippet) | Create a snippet
+[*SnippetApi*](docs/Api/SnippetApi.md) | [**deleteSnippet**](docs/Api/SnippetApi.md#deletesnippet) | Delete a snippet
+[*SnippetApi*](docs/Api/SnippetApi.md) | [**getSnippet**](docs/Api/SnippetApi.md#getsnippet) | Get a versioned snippet
+[*SnippetApi*](docs/Api/SnippetApi.md) | [**getSnippetDynamic**](docs/Api/SnippetApi.md#getsnippetdynamic) | Get a dynamic snippet
+[*SnippetApi*](docs/Api/SnippetApi.md) | [**listSnippets**](docs/Api/SnippetApi.md#listsnippets) | List snippets
+[*SnippetApi*](docs/Api/SnippetApi.md) | [**updateSnippet**](docs/Api/SnippetApi.md#updatesnippet) | Update a versioned snippet
+[*SnippetApi*](docs/Api/SnippetApi.md) | [**updateSnippetDynamic**](docs/Api/SnippetApi.md#updatesnippetdynamic) | Update a dynamic snippet
+[*StarApi*](docs/Api/StarApi.md) | [**createServiceStar**](docs/Api/StarApi.md#createservicestar) | Create a star
+[*StarApi*](docs/Api/StarApi.md) | [**deleteServiceStar**](docs/Api/StarApi.md#deleteservicestar) | Delete a star
+[*StarApi*](docs/Api/StarApi.md) | [**getServiceStar**](docs/Api/StarApi.md#getservicestar) | Get a star
+[*StarApi*](docs/Api/StarApi.md) | [**listServiceStars**](docs/Api/StarApi.md#listservicestars) | List stars
+[*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**createTlsActivation**](docs/Api/TlsActivationsApi.md#createtlsactivation) | Enable TLS for a domain using a custom certificate
+[*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**deleteTlsActivation**](docs/Api/TlsActivationsApi.md#deletetlsactivation) | Disable TLS on a domain
+[*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**getTlsActivation**](docs/Api/TlsActivationsApi.md#gettlsactivation) | Get a TLS activation
+[*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**listTlsActivations**](docs/Api/TlsActivationsApi.md#listtlsactivations) | List TLS activations
+[*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**updateTlsActivation**](docs/Api/TlsActivationsApi.md#updatetlsactivation) | Update a certificate
+[*TlsBulkCertificatesApi*](docs/Api/TlsBulkCertificatesApi.md) | [**deleteBulkTlsCert**](docs/Api/TlsBulkCertificatesApi.md#deletebulktlscert) | Delete a certificate
+[*TlsBulkCertificatesApi*](docs/Api/TlsBulkCertificatesApi.md) | [**getTlsBulkCert**](docs/Api/TlsBulkCertificatesApi.md#gettlsbulkcert) | Get a certificate
+[*TlsBulkCertificatesApi*](docs/Api/TlsBulkCertificatesApi.md) | [**listTlsBulkCerts**](docs/Api/TlsBulkCertificatesApi.md#listtlsbulkcerts) | List certificates
+[*TlsBulkCertificatesApi*](docs/Api/TlsBulkCertificatesApi.md) | [**updateBulkTlsCert**](docs/Api/TlsBulkCertificatesApi.md#updatebulktlscert) | Update a certificate
+[*TlsBulkCertificatesApi*](docs/Api/TlsBulkCertificatesApi.md) | [**uploadTlsBulkCert**](docs/Api/TlsBulkCertificatesApi.md#uploadtlsbulkcert) | Upload a certificate
+[*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**createTlsCert**](docs/Api/TlsCertificatesApi.md#createtlscert) | Create a TLS certificate
+[*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**deleteTlsCert**](docs/Api/TlsCertificatesApi.md#deletetlscert) | Delete a TLS certificate
+[*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**getTlsCert**](docs/Api/TlsCertificatesApi.md#gettlscert) | Get a TLS certificate
+[*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**listTlsCerts**](docs/Api/TlsCertificatesApi.md#listtlscerts) | List TLS certificates
+[*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**updateTlsCert**](docs/Api/TlsCertificatesApi.md#updatetlscert) | Update a TLS certificate
+[*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**getTlsConfig**](docs/Api/TlsConfigurationsApi.md#gettlsconfig) | Get a TLS configuration
+[*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**listTlsConfigs**](docs/Api/TlsConfigurationsApi.md#listtlsconfigs) | List TLS configurations
+[*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**updateTlsConfig**](docs/Api/TlsConfigurationsApi.md#updatetlsconfig) | Update a TLS configuration
+[*TlsDomainsApi*](docs/Api/TlsDomainsApi.md) | [**listTlsDomains**](docs/Api/TlsDomainsApi.md#listtlsdomains) | List TLS domains
+[*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**createTlsKey**](docs/Api/TlsPrivateKeysApi.md#createtlskey) | Create a TLS private key
+[*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**deleteTlsKey**](docs/Api/TlsPrivateKeysApi.md#deletetlskey) | Delete a TLS private key
+[*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**getTlsKey**](docs/Api/TlsPrivateKeysApi.md#gettlskey) | Get a TLS private key
+[*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**listTlsKeys**](docs/Api/TlsPrivateKeysApi.md#listtlskeys) | List TLS private keys
+[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**createTlsSub**](docs/Api/TlsSubscriptionsApi.md#createtlssub) | Create a TLS subscription
+[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**deleteTlsSub**](docs/Api/TlsSubscriptionsApi.md#deletetlssub) | Delete a TLS subscription
+[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**getTlsSub**](docs/Api/TlsSubscriptionsApi.md#gettlssub) | Get a TLS subscription
+[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**listTlsSubs**](docs/Api/TlsSubscriptionsApi.md#listtlssubs) | List TLS subscriptions
+[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**patchTlsSub**](docs/Api/TlsSubscriptionsApi.md#patchtlssub) | Update a TLS subscription
+[*TokensApi*](docs/Api/TokensApi.md) | [**bulkRevokeTokens**](docs/Api/TokensApi.md#bulkrevoketokens) | Revoke multiple tokens
+[*TokensApi*](docs/Api/TokensApi.md) | [**createToken**](docs/Api/TokensApi.md#createtoken) | Create a token
+[*TokensApi*](docs/Api/TokensApi.md) | [**getTokenCurrent**](docs/Api/TokensApi.md#gettokencurrent) | Get the current token
+[*TokensApi*](docs/Api/TokensApi.md) | [**listTokensCustomer**](docs/Api/TokensApi.md#listtokenscustomer) | List tokens for a customer
+[*TokensApi*](docs/Api/TokensApi.md) | [**listTokensUser**](docs/Api/TokensApi.md#listtokensuser) | List tokens for the authenticated user
+[*TokensApi*](docs/Api/TokensApi.md) | [**revokeToken**](docs/Api/TokensApi.md#revoketoken) | Revoke a token
+[*TokensApi*](docs/Api/TokensApi.md) | [**revokeTokenCurrent**](docs/Api/TokensApi.md#revoketokencurrent) | Revoke the current token
+[*UserApi*](docs/Api/UserApi.md) | [**createUser**](docs/Api/UserApi.md#createuser) | Create a user
+[*UserApi*](docs/Api/UserApi.md) | [**deleteUser**](docs/Api/UserApi.md#deleteuser) | Delete a user
+[*UserApi*](docs/Api/UserApi.md) | [**getCurrentUser**](docs/Api/UserApi.md#getcurrentuser) | Get the current user
+[*UserApi*](docs/Api/UserApi.md) | [**getUser**](docs/Api/UserApi.md#getuser) | Get a user
+[*UserApi*](docs/Api/UserApi.md) | [**requestPasswordReset**](docs/Api/UserApi.md#requestpasswordreset) | Request a password reset
+[*UserApi*](docs/Api/UserApi.md) | [**updateUser**](docs/Api/UserApi.md#updateuser) | Update a user
+[*UserApi*](docs/Api/UserApi.md) | [**updateUserPassword**](docs/Api/UserApi.md#updateuserpassword) | Update the user&#39;s password
+[*VclApi*](docs/Api/VclApi.md) | [**createCustomVcl**](docs/Api/VclApi.md#createcustomvcl) | Create a custom VCL file
+[*VclApi*](docs/Api/VclApi.md) | [**deleteCustomVcl**](docs/Api/VclApi.md#deletecustomvcl) | Delete a custom VCL file
+[*VclApi*](docs/Api/VclApi.md) | [**getCustomVcl**](docs/Api/VclApi.md#getcustomvcl) | Get a custom VCL file
+[*VclApi*](docs/Api/VclApi.md) | [**getCustomVclBoilerplate**](docs/Api/VclApi.md#getcustomvclboilerplate) | Get boilerplate VCL
+[*VclApi*](docs/Api/VclApi.md) | [**getCustomVclGenerated**](docs/Api/VclApi.md#getcustomvclgenerated) | Get the generated VCL for a service
+[*VclApi*](docs/Api/VclApi.md) | [**getCustomVclGeneratedHighlighted**](docs/Api/VclApi.md#getcustomvclgeneratedhighlighted) | Get the generated VCL with syntax highlighting
+[*VclApi*](docs/Api/VclApi.md) | [**getCustomVclHighlighted**](docs/Api/VclApi.md#getcustomvclhighlighted) | Get a custom VCL file with syntax highlighting
+[*VclApi*](docs/Api/VclApi.md) | [**getCustomVclRaw**](docs/Api/VclApi.md#getcustomvclraw) | Download a custom VCL file
+[*VclApi*](docs/Api/VclApi.md) | [**listCustomVcl**](docs/Api/VclApi.md#listcustomvcl) | List custom VCL files
+[*VclApi*](docs/Api/VclApi.md) | [**setCustomVclMain**](docs/Api/VclApi.md#setcustomvclmain) | Set a custom VCL file as main
+[*VclApi*](docs/Api/VclApi.md) | [**updateCustomVcl**](docs/Api/VclApi.md#updatecustomvcl) | Update a custom VCL file
+[*VclDiffApi*](docs/Api/VclDiffApi.md) | [**vclDiffServiceVersions**](docs/Api/VclDiffApi.md#vcldiffserviceversions) | Get a comparison of the VCL changes between two service versions
+[*VersionApi*](docs/Api/VersionApi.md) | [**activateServiceVersion**](docs/Api/VersionApi.md#activateserviceversion) | Activate a service version
+[*VersionApi*](docs/Api/VersionApi.md) | [**cloneServiceVersion**](docs/Api/VersionApi.md#cloneserviceversion) | Clone a service version
+[*VersionApi*](docs/Api/VersionApi.md) | [**createServiceVersion**](docs/Api/VersionApi.md#createserviceversion) | Create a service version
+[*VersionApi*](docs/Api/VersionApi.md) | [**deactivateServiceVersion**](docs/Api/VersionApi.md#deactivateserviceversion) | Deactivate a service version
+[*VersionApi*](docs/Api/VersionApi.md) | [**getServiceVersion**](docs/Api/VersionApi.md#getserviceversion) | Get a version of a service
+[*VersionApi*](docs/Api/VersionApi.md) | [**listServiceVersions**](docs/Api/VersionApi.md#listserviceversions) | List versions of a service
+[*VersionApi*](docs/Api/VersionApi.md) | [**lockServiceVersion**](docs/Api/VersionApi.md#lockserviceversion) | Lock a service version
+[*VersionApi*](docs/Api/VersionApi.md) | [**updateServiceVersion**](docs/Api/VersionApi.md#updateserviceversion) | Update a service version
+[*VersionApi*](docs/Api/VersionApi.md) | [**validateServiceVersion**](docs/Api/VersionApi.md#validateserviceversion) | Validate a service version
+[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**bulkDeleteWafActiveRules**](docs/Api/WafActiveRulesApi.md#bulkdeletewafactiverules) | Delete multiple active rules from a WAF
+[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**bulkUpdateWafActiveRules**](docs/Api/WafActiveRulesApi.md#bulkupdatewafactiverules) | Update multiple active rules
+[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**createWafActiveRule**](docs/Api/WafActiveRulesApi.md#createwafactiverule) | Add a rule to a WAF as an active rule
+[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**createWafActiveRulesTag**](docs/Api/WafActiveRulesApi.md#createwafactiverulestag) | Create active rules by tag
+[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**deleteWafActiveRule**](docs/Api/WafActiveRulesApi.md#deletewafactiverule) | Delete an active rule
+[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**getWafActiveRule**](docs/Api/WafActiveRulesApi.md#getwafactiverule) | Get an active WAF rule object
+[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**listWafActiveRules**](docs/Api/WafActiveRulesApi.md#listwafactiverules) | List active rules on a WAF
+[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**updateWafActiveRule**](docs/Api/WafActiveRulesApi.md#updatewafactiverule) | Update an active rule
+[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**createWafRuleExclusion**](docs/Api/WafExclusionsApi.md#createwafruleexclusion) | Create a WAF rule exclusion
+[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**deleteWafRuleExclusion**](docs/Api/WafExclusionsApi.md#deletewafruleexclusion) | Delete a WAF rule exclusion
+[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**getWafRuleExclusion**](docs/Api/WafExclusionsApi.md#getwafruleexclusion) | Get a WAF rule exclusion
+[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**listWafRuleExclusions**](docs/Api/WafExclusionsApi.md#listwafruleexclusions) | List WAF rule exclusions
+[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**updateWafRuleExclusion**](docs/Api/WafExclusionsApi.md#updatewafruleexclusion) | Update a WAF rule exclusion
+[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**cloneWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#clonewaffirewallversion) | Clone a firewall version
+[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**createWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#createwaffirewallversion) | Create a firewall version
+[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**deployActivateWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#deployactivatewaffirewallversion) | Deploy or activate a firewall version
+[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**getWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#getwaffirewallversion) | Get a firewall version
+[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**listWafFirewallVersions**](docs/Api/WafFirewallVersionsApi.md#listwaffirewallversions) | List firewall versions
+[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**updateWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#updatewaffirewallversion) | Update a firewall version
+[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**createWafFirewall**](docs/Api/WafFirewallsApi.md#createwaffirewall) | Create a firewall
+[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**deleteWafFirewall**](docs/Api/WafFirewallsApi.md#deletewaffirewall) | Delete a firewall
+[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**getWafFirewall**](docs/Api/WafFirewallsApi.md#getwaffirewall) | Get a firewall
+[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**listWafFirewalls**](docs/Api/WafFirewallsApi.md#listwaffirewalls) | List firewalls
+[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**updateWafFirewall**](docs/Api/WafFirewallsApi.md#updatewaffirewall) | Update a firewall
+[*WafRuleRevisionsApi*](docs/Api/WafRuleRevisionsApi.md) | [**getWafRuleRevision**](docs/Api/WafRuleRevisionsApi.md#getwafrulerevision) | Get a revision of a rule
+[*WafRuleRevisionsApi*](docs/Api/WafRuleRevisionsApi.md) | [**listWafRuleRevisions**](docs/Api/WafRuleRevisionsApi.md#listwafrulerevisions) | List revisions for a rule
+[*WafRulesApi*](docs/Api/WafRulesApi.md) | [**getWafRule**](docs/Api/WafRulesApi.md#getwafrule) | Get a rule
+[*WafRulesApi*](docs/Api/WafRulesApi.md) | [**listWafRules**](docs/Api/WafRulesApi.md#listwafrules) | List available WAF rules
+[*WafTagsApi*](docs/Api/WafTagsApi.md) | [**listWafTags**](docs/Api/WafTagsApi.md#listwaftags) | List tags
 
 
+## Issues
 
-## About this package
+If you encounter any non-security-related bug or unexpected behavior, please [file an issue][bug]
+using the bug report template.
 
-This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
+[bug]: https://github.com/fastly/fastly-php/issues/new?labels=bug
 
-- API version: `1.0.0`
-    - Package version: `1.0.0-alpha1`
-- Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
+### Security issues
+
+Please see our [SECURITY.md](./SECURITY.md) for guidance on reporting security-related issues.
+
+## License
+
+[MIT](./LICENSE).

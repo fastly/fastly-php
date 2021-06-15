@@ -9,4 +9,4 @@ Name | Type | Description | Notes
 **record_count** | **int** | Total records in result set. | [optional]
 **total_pages** | **int** | Total pages in result set. | [optional]
 
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+[[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

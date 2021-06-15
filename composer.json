@@ -1,24 +1,26 @@
 {
     "name": "fastly/fastly",
     "version": "1.0.0-alpha1",
-    "description": "Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit developer.fastly.com/reference/api/",
+    "description": "A PHP client library for interacting with most facets of the Fastly API.",
     "keywords": [
-        "openapitools",
-        "openapi-generator",
-        "openapi",
+        "fastly",
         "php",
         "sdk",
         "rest",
         "api"
     ],
-    "homepage": "https://openapi-generator.tech",
-    "license": "unlicense",
+    "homepage": "https://github.com/fastly/fastly-php",
+    "license": "MIT",
     "authors": [
         {
-            "name": "OpenAPI-Generator contributors",
-            "homepage": "https://openapi-generator.tech"
+            "name": "Fastly",
+            "email": "oss@fastly.com",
+            "role": "Developer"
         }
     ],
+    "support": {
+        "email": "oss@fastly.com"
+    },
     "require": {
         "php": ">=7.2",
         "ext-curl": "*",
@@ -27,13 +29,9 @@
         "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0 || ^9.0",
         "friendsofphp/php-cs-fixer": "^2.12"
     },
     "autoload": {
-        "psr-4": { "OpenAPI\\Client\\" : "lib/" }
-    },
-    "autoload-dev": {
-        "psr-4": { "OpenAPI\\Client\\Test\\" : "test/" }
+        "psr-4": { "Fastly\\" : "lib/" }
     }
 }

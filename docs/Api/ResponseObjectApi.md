@@ -1,6 +1,15 @@
-# OpenAPI\Client\ResponseObjectApi
+# Fastly\Api\ResponseObjectApi
 
-All URIs are relative to https://api.fastly.com.
+
+```php
+$apiInstance = new Fastly\Api\ResponseObjectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,325 +23,167 @@ Method | HTTP request | Description
 ## `createResponseObject()`
 
 ```php
-createResponseObject($service_id, $version_id): \OpenAPI\Client\Model\ModelResponseObject
+createResponseObject($options): \Fastly\Model\ResponseObjectResponse // Create a Response object
 ```
-
-Create a Response object
 
 Creates a new Response Object.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\ResponseObjectApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->createResponseObject($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->createResponseObject($options);
 } catch (Exception $e) {
     echo 'Exception when calling ResponseObjectApi->createResponseObject: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelResponseObject**](../Model/ModelResponseObject.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\ResponseObjectResponse**](../Model/ResponseObjectResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `deleteResponseObject()`
 
 ```php
-deleteResponseObject($service_id, $version_id, $response_object_name): object
+deleteResponseObject($options): object // Delete a Response Object
 ```
-
-Delete a Response Object
 
 Deletes the specified Response Object.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\ResponseObjectApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$response_object_name = 'response_object_name_example'; // string
-
 try {
-    $result = $apiInstance->deleteResponseObject($service_id, $version_id, $response_object_name);
-    print_r($result);
+    $result = $apiInstance->deleteResponseObject($options);
 } catch (Exception $e) {
     echo 'Exception when calling ResponseObjectApi->deleteResponseObject: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **response_object_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**response_object_name** | **string** |  |
 
 ### Return type
 
 **object**
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getResponseObject()`
 
 ```php
-getResponseObject($service_id, $version_id, $response_object_name): \OpenAPI\Client\Model\ModelResponseObject
+getResponseObject($options): \Fastly\Model\ResponseObjectResponse // Get a Response object
 ```
-
-Get a Response object
 
 Gets the specified Response Object.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\ResponseObjectApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$response_object_name = 'response_object_name_example'; // string
-
 try {
-    $result = $apiInstance->getResponseObject($service_id, $version_id, $response_object_name);
-    print_r($result);
+    $result = $apiInstance->getResponseObject($options);
 } catch (Exception $e) {
     echo 'Exception when calling ResponseObjectApi->getResponseObject: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **response_object_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**response_object_name** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelResponseObject**](../Model/ModelResponseObject.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\ResponseObjectResponse**](../Model/ResponseObjectResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `listResponseObjects()`
 
 ```php
-listResponseObjects($service_id, $version_id): \OpenAPI\Client\Model\ModelResponseObject[]
+listResponseObjects($options): \Fastly\Model\ResponseObjectResponse[] // List Response objects
 ```
-
-List Response objects
 
 Returns all Response Objects for the specified service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\ResponseObjectApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->listResponseObjects($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->listResponseObjects($options);
 } catch (Exception $e) {
     echo 'Exception when calling ResponseObjectApi->listResponseObjects: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelResponseObject[]**](../Model/ModelResponseObject.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\ResponseObjectResponse[]**](../Model/ResponseObjectResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `updateResponseObject()`
 
 ```php
-updateResponseObject($service_id, $version_id, $response_object_name): \OpenAPI\Client\Model\ModelResponseObject
+updateResponseObject($options): \Fastly\Model\ResponseObjectResponse // Update a Response object
 ```
-
-Update a Response object
 
 Updates the specified Response Object.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\ResponseObjectApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$response_object_name = 'response_object_name_example'; // string
-
 try {
-    $result = $apiInstance->updateResponseObject($service_id, $version_id, $response_object_name);
-    print_r($result);
+    $result = $apiInstance->updateResponseObject($options);
 } catch (Exception $e) {
     echo 'Exception when calling ResponseObjectApi->updateResponseObject: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **response_object_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**response_object_name** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelResponseObject**](../Model/ModelResponseObject.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\ResponseObjectResponse**](../Model/ResponseObjectResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)

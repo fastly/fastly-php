@@ -1,6 +1,15 @@
-# OpenAPI\Client\DirectorApi
+# Fastly\Api\DirectorApi
 
-All URIs are relative to https://api.fastly.com.
+
+```php
+$apiInstance = new Fastly\Api\DirectorApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,351 +23,175 @@ Method | HTTP request | Description
 ## `createDirector()`
 
 ```php
-createDirector($service_id, $version_id, $created_at, $deleted_at, $updated_at, $service_id2, $version, $backends, $capacity, $comment, $name, $quorum, $shield, $type, $retries): \OpenAPI\Client\Model\ModelDirector
+createDirector($options): \Fastly\Model\DirectorResponse // Create a director
 ```
-
-Create a director
 
 Create a director for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\DirectorApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$created_at = 'created_at_example'; // string | Date and time in ISO 8601 format.
-$deleted_at = 'deleted_at_example'; // string | Date and time in ISO 8601 format.
-$updated_at = 'updated_at_example'; // string | Date and time in ISO 8601 format.
-$service_id2 = 'service_id_example'; // string | Alphanumeric string identifying the service.
-$version = 56; // int | Integer identifying a service version.
-$backends = new \OpenAPI\Client\Model\SchemasModelBackend(); // \OpenAPI\Client\Model\SchemasModelBackend[] | List of backends associated to a director.
-$capacity = 56; // int | Unused.
-$comment = ''; // string | A freeform descriptive note.
-$name = 'name_example'; // string | Name for the Director.
-$quorum = 75; // int | The percentage of capacity that needs to be up for a director to be considered up. `0` to `100`.
-$shield = 'null'; // string | Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding.
-$type = 1; // int | What type of load balance group to use.
-$retries = 5; // int | How many backends to search if it fails.
-
 try {
-    $result = $apiInstance->createDirector($service_id, $version_id, $created_at, $deleted_at, $updated_at, $service_id2, $version, $backends, $capacity, $comment, $name, $quorum, $shield, $type, $retries);
-    print_r($result);
+    $result = $apiInstance->createDirector($options);
 } catch (Exception $e) {
     echo 'Exception when calling DirectorApi->createDirector: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **created_at** | **string**| Date and time in ISO 8601 format. | [optional]
- **deleted_at** | **string**| Date and time in ISO 8601 format. | [optional]
- **updated_at** | **string**| Date and time in ISO 8601 format. | [optional]
- **service_id2** | **string**| Alphanumeric string identifying the service. | [optional]
- **version** | **int**| Integer identifying a service version. | [optional]
- **backends** | [**\OpenAPI\Client\Model\SchemasModelBackend[]**](../Model/\OpenAPI\Client\Model\SchemasModelBackend.md)| List of backends associated to a director. | [optional]
- **capacity** | **int**| Unused. | [optional]
- **comment** | **string**| A freeform descriptive note. | [optional] [default to &#39;&#39;]
- **name** | **string**| Name for the Director. | [optional]
- **quorum** | **int**| The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. | [optional] [default to 75]
- **shield** | **string**| Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. | [optional] [default to &#39;null&#39;]
- **type** | **int**| What type of load balance group to use. | [optional] [default to 1]
- **retries** | **int**| How many backends to search if it fails. | [optional] [default to 5]
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**backends** | [**\Fastly\Model\SchemasBackend[]**](../Model/\Fastly\Model\SchemasBackend.md) | List of backends associated to a director. | [optional]
+**capacity** | **int** | Unused. | [optional]
+**comment** | **string** | A freeform descriptive note. | [optional]
+**name** | **string** | Name for the Director. | [optional]
+**quorum** | **int** | The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. | [optional] [default to 75]
+**shield** | **string** | Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. | [optional] [default to &#39;null&#39;]
+**type** | **int** | What type of load balance group to use. | [optional] [default to 1]
+**retries** | **int** | How many backends to search if it fails. | [optional] [default to 5]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelDirector**](../Model/ModelDirector.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\DirectorResponse**](../Model/DirectorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `deleteDirector()`
 
 ```php
-deleteDirector($service_id, $version_id, $director_name): object
+deleteDirector($options): object // Delete a director
 ```
-
-Delete a director
 
 Delete the director for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\DirectorApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$director_name = 'director_name_example'; // string
-
 try {
-    $result = $apiInstance->deleteDirector($service_id, $version_id, $director_name);
-    print_r($result);
+    $result = $apiInstance->deleteDirector($options);
 } catch (Exception $e) {
     echo 'Exception when calling DirectorApi->deleteDirector: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **director_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**director_name** | **string** |  |
 
 ### Return type
 
 **object**
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getDirector()`
 
 ```php
-getDirector($service_id, $version_id, $director_name): \OpenAPI\Client\Model\ModelDirector
+getDirector($options): \Fastly\Model\DirectorResponse // Get a director
 ```
-
-Get a director
 
 Get the director for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\DirectorApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$director_name = 'director_name_example'; // string
-
 try {
-    $result = $apiInstance->getDirector($service_id, $version_id, $director_name);
-    print_r($result);
+    $result = $apiInstance->getDirector($options);
 } catch (Exception $e) {
     echo 'Exception when calling DirectorApi->getDirector: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **director_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**director_name** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelDirector**](../Model/ModelDirector.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\DirectorResponse**](../Model/DirectorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `listDirectors()`
 
 ```php
-listDirectors($service_id, $version_id): \OpenAPI\Client\Model\ModelDirector[]
+listDirectors($options): \Fastly\Model\DirectorResponse[] // List directors
 ```
-
-List directors
 
 List the directors for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\DirectorApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->listDirectors($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->listDirectors($options);
 } catch (Exception $e) {
     echo 'Exception when calling DirectorApi->listDirectors: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelDirector[]**](../Model/ModelDirector.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\DirectorResponse[]**](../Model/DirectorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `updateDirector()`
 
 ```php
-updateDirector($service_id, $version_id, $director_name): \OpenAPI\Client\Model\ModelDirector
+updateDirector($options): \Fastly\Model\DirectorResponse // Update a director
 ```
-
-Update a director
 
 Update the director for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\DirectorApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$director_name = 'director_name_example'; // string
-
 try {
-    $result = $apiInstance->updateDirector($service_id, $version_id, $director_name);
-    print_r($result);
+    $result = $apiInstance->updateDirector($options);
 } catch (Exception $e) {
     echo 'Exception when calling DirectorApi->updateDirector: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **director_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**director_name** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelDirector**](../Model/ModelDirector.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\DirectorResponse**](../Model/DirectorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)

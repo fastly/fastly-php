@@ -1,6 +1,15 @@
-# OpenAPI\Client\LoggingDatadogApi
+# Fastly\Api\LoggingDatadogApi
 
-All URIs are relative to https://api.fastly.com.
+
+```php
+$apiInstance = new Fastly\Api\LoggingDatadogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,349 +23,181 @@ Method | HTTP request | Description
 ## `createLogDatadog()`
 
 ```php
-createLogDatadog($service_id, $version_id, $created_at, $deleted_at, $updated_at, $service_id2, $version, $name, $placement, $format_version, $response_condition, $format, $region, $token): \OpenAPI\Client\Model\ModelLoggingDatadog
+createLogDatadog($options): \Fastly\Model\LoggingDatadogResponse // Create a Datadog log endpoint
 ```
-
-Create a Datadog log endpoint
 
 Create a Datadog logging object for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\LoggingDatadogApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$created_at = 'created_at_example'; // string | Date and time in ISO 8601 format.
-$deleted_at = 'deleted_at_example'; // string | Date and time in ISO 8601 format.
-$updated_at = 'updated_at_example'; // string | Date and time in ISO 8601 format.
-$service_id2 = 'service_id_example'; // string | Alphanumeric string identifying the service.
-$version = 56; // int | Integer identifying a service version.
-$name = 'name_example'; // string | The name for the real-time logging configuration.
-$placement = new \OpenAPI\Client\Model\LoggingPlacement(); // \OpenAPI\Client\Model\LoggingPlacement
-$format_version = new \OpenAPI\Client\Model\LoggingFormatVersion(); // \OpenAPI\Client\Model\LoggingFormatVersion
-$response_condition = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
-$format = NULL; // mixed | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest.
-$region = 'US'; // string | The region that log data will be sent to.
-$token = 'token_example'; // string | The API key from your Datadog account. Required.
-
 try {
-    $result = $apiInstance->createLogDatadog($service_id, $version_id, $created_at, $deleted_at, $updated_at, $service_id2, $version, $name, $placement, $format_version, $response_condition, $format, $region, $token);
-    print_r($result);
+    $result = $apiInstance->createLogDatadog($options);
 } catch (Exception $e) {
     echo 'Exception when calling LoggingDatadogApi->createLogDatadog: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **created_at** | **string**| Date and time in ISO 8601 format. | [optional]
- **deleted_at** | **string**| Date and time in ISO 8601 format. | [optional]
- **updated_at** | **string**| Date and time in ISO 8601 format. | [optional]
- **service_id2** | **string**| Alphanumeric string identifying the service. | [optional]
- **version** | **int**| Integer identifying a service version. | [optional]
- **name** | **string**| The name for the real-time logging configuration. | [optional]
- **placement** | [**\OpenAPI\Client\Model\LoggingPlacement**](../Model/LoggingPlacement.md)|  | [optional]
- **format_version** | [**\OpenAPI\Client\Model\LoggingFormatVersion**](../Model/LoggingFormatVersion.md)|  | [optional]
- **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
- **format** | [**mixed**](../Model/mixed.md)| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. | [optional]
- **region** | **string**| The region that log data will be sent to. | [optional] [default to &#39;US&#39;]
- **token** | **string**| The API key from your Datadog account. Required. | [optional]
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**name** | **string** | The name for the real-time logging configuration. | [optional]
+**placement** | [**\Fastly\Model\LoggingPlacement**](../Model/LoggingPlacement.md) |  | [optional]
+**format_version** | [**\Fastly\Model\LoggingFormatVersion**](../Model/LoggingFormatVersion.md) |  | [optional]
+**response_condition** | **string** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
+**format** | [**mixed**](../Model/mixed.md) | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. | [optional]
+**region** | **string** | The region that log data will be sent to. | [optional] [default to &#39;US&#39;]
+**token** | **string** | The API key from your Datadog account. Required. | [optional]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelLoggingDatadog**](../Model/ModelLoggingDatadog.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\LoggingDatadogResponse**](../Model/LoggingDatadogResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `deleteLogDatadog()`
 
 ```php
-deleteLogDatadog($service_id, $version_id, $logging_datadog_name): object
+deleteLogDatadog($options): object // Delete a Datadog log endpoint
 ```
-
-Delete a Datadog log endpoint
 
 Delete the Datadog logging object for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\LoggingDatadogApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$logging_datadog_name = 'logging_datadog_name_example'; // string
-
 try {
-    $result = $apiInstance->deleteLogDatadog($service_id, $version_id, $logging_datadog_name);
-    print_r($result);
+    $result = $apiInstance->deleteLogDatadog($options);
 } catch (Exception $e) {
     echo 'Exception when calling LoggingDatadogApi->deleteLogDatadog: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **logging_datadog_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**logging_datadog_name** | **string** |  |
 
 ### Return type
 
 **object**
 
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `getLogDatadog()`
 
 ```php
-getLogDatadog($service_id, $version_id, $logging_datadog_name): \OpenAPI\Client\Model\ModelLoggingDatadog
+getLogDatadog($options): \Fastly\Model\LoggingDatadogResponse // Get a Datadog log endpoint
 ```
-
-Get a Datadog log endpoint
 
 Get the details for a Datadog logging object for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\LoggingDatadogApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$logging_datadog_name = 'logging_datadog_name_example'; // string
-
 try {
-    $result = $apiInstance->getLogDatadog($service_id, $version_id, $logging_datadog_name);
-    print_r($result);
+    $result = $apiInstance->getLogDatadog($options);
 } catch (Exception $e) {
     echo 'Exception when calling LoggingDatadogApi->getLogDatadog: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **logging_datadog_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**logging_datadog_name** | **string** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelLoggingDatadog**](../Model/ModelLoggingDatadog.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\LoggingDatadogResponse**](../Model/LoggingDatadogResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `listLogDatadog()`
 
 ```php
-listLogDatadog($service_id, $version_id): \OpenAPI\Client\Model\ModelLoggingDatadog[]
+listLogDatadog($options): \Fastly\Model\LoggingDatadogResponse[] // List Datadog log endpoints
 ```
-
-List Datadog log endpoints
 
 List all of the Datadog logging objects for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\LoggingDatadogApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-
 try {
-    $result = $apiInstance->listLogDatadog($service_id, $version_id);
-    print_r($result);
+    $result = $apiInstance->listLogDatadog($options);
 } catch (Exception $e) {
     echo 'Exception when calling LoggingDatadogApi->listLogDatadog: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelLoggingDatadog[]**](../Model/ModelLoggingDatadog.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\LoggingDatadogResponse[]**](../Model/LoggingDatadogResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
 ## `updateLogDatadog()`
 
 ```php
-updateLogDatadog($service_id, $version_id, $logging_datadog_name): \OpenAPI\Client\Model\ModelLoggingDatadog
+updateLogDatadog($options): \Fastly\Model\LoggingDatadogResponse // Update a Datadog log endpoint
 ```
-
-Update a Datadog log endpoint
 
 Update the Datadog logging object for a particular service and version.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\LoggingDatadogApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_id = 'service_id_example'; // string
-$version_id = 56; // int
-$logging_datadog_name = 'logging_datadog_name_example'; // string
-
 try {
-    $result = $apiInstance->updateLogDatadog($service_id, $version_id, $logging_datadog_name);
-    print_r($result);
+    $result = $apiInstance->updateLogDatadog($options);
 } catch (Exception $e) {
     echo 'Exception when calling LoggingDatadogApi->updateLogDatadog: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service_id** | **string**|  |
- **version_id** | **int**|  |
- **logging_datadog_name** | **string**|  |
+**service_id** | **string** |  |
+**version_id** | **int** |  |
+**logging_datadog_name** | **string** |  |
+**name** | **string** | The name for the real-time logging configuration. | [optional]
+**placement** | [**\Fastly\Model\LoggingPlacement**](../Model/LoggingPlacement.md) |  | [optional]
+**format_version** | [**\Fastly\Model\LoggingFormatVersion**](../Model/LoggingFormatVersion.md) |  | [optional]
+**response_condition** | **string** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
+**format** | [**mixed**](../Model/mixed.md) | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. | [optional]
+**region** | **string** | The region that log data will be sent to. | [optional] [default to REGION_US]
+**token** | **string** | The API key from your Datadog account. Required. | [optional]
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModelLoggingDatadog**](../Model/ModelLoggingDatadog.md)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: `application/x-www-form-urlencoded`
-- **Accept**: `application/json`
+[**\Fastly\Model\LoggingDatadogResponse**](../Model/LoggingDatadogResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)

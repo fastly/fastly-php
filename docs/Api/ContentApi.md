@@ -1,6 +1,15 @@
-# OpenAPI\Client\ContentApi
+# Fastly\Api\ContentApi
 
-All URIs are relative to https://api.fastly.com.
+
+```php
+$apiInstance = new Fastly\Api\ContentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,60 +19,31 @@ Method | HTTP request | Description
 ## `contentCheck()`
 
 ```php
-contentCheck($url)
+contentCheck($options): \Fastly\Model\Content[] // Check status of content in each data center cache
 ```
-
-Check status of content in each data center cache
 
 Retrieve headers and MD5 hash of the content for a particular URL from each Fastly edge server. This API is limited to 200 requests per hour.
 
 ### Example
-
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: token
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Fastly-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Fastly-Key', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\ContentApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$url = https://www.example.com/foo/bar; // string | Full URL (host and path) to check on all nodes. if protocol is omitted, http will be assumed.
-
 try {
-    $apiInstance->contentCheck($url);
+    $result = $apiInstance->contentCheck($options);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentCheck: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
-### Parameters
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **url** | **string**| Full URL (host and path) to check on all nodes. if protocol is omitted, http will be assumed. | [optional]
+**url** | **string** | Full URL (host and path) to check on all nodes. if protocol is omitted, http will be assumed. | [optional]
 
 ### Return type
 
-void (empty response body)
-
-### Authorization
-
-[token](../../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+[**\Fastly\Model\Content[]**](../Model/Content.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
