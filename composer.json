@@ -1,29 +1,39 @@
 {
     "name": "fastly/fastly",
-    "license": "MIT",
-    "type": "library",
-    "description": "Provides a PHP client for the Fastly API",
+    "version": "1.0.0-alpha1",
+    "description": "Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit developer.fastly.com/reference/api/",
+    "keywords": [
+        "openapitools",
+        "openapi-generator",
+        "openapi",
+        "php",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "homepage": "https://openapi-generator.tech",
+    "license": "unlicense",
     "authors": [
         {
-            "name": "Gonzalo Vilaseca",
-            "email": "gonzalo.vilaseca@reiss.com",
-            "role": "Developer"
+            "name": "OpenAPI-Generator contributors",
+            "homepage": "https://openapi-generator.tech"
         }
     ],
-    "support": {
-        "issues": "https://github.com/fastly/fastly-php/issues",
-        "source": "https://github.com/fastly/fastly-php"
-    },
     "require": {
-        "php": "^7.2",
-        "guzzlehttp/guzzle": "^6.2.0 || ^7.2.0"
+        "php": ">=7.2",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
-        "phpspec/phpspec": "^2.5.0"
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^2.12"
     },
     "autoload": {
-        "psr-4": {
-            "Fastly\\": "src/"
-        }
+        "psr-4": { "OpenAPI\\Client\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "OpenAPI\\Client\\Test\\" : "test/" }
     }
 }

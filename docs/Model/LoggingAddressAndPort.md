@@ -1,0 +1,10 @@
+# # LoggingAddressAndPort
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**address** | **string** | A hostname or IPv4 address. | [optional]
+**port** | **int** | The port number. | [optional] [default to 514]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
