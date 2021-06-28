@@ -477,10 +477,10 @@ class LoggingLogentriesApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -802,10 +802,10 @@ class LoggingLogentriesApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1127,10 +1127,10 @@ class LoggingLogentriesApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1432,10 +1432,10 @@ class LoggingLogentriesApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1847,10 +1847,10 @@ class LoggingLogentriesApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];

@@ -122,7 +122,7 @@ class LoggingScalyrApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
+     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
      * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
@@ -150,7 +150,7 @@ class LoggingScalyrApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
+     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
      * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
@@ -249,7 +249,7 @@ class LoggingScalyrApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
+     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
      * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
@@ -280,7 +280,7 @@ class LoggingScalyrApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
+     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
      * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
@@ -338,7 +338,7 @@ class LoggingScalyrApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
+     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
      * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
@@ -355,7 +355,7 @@ class LoggingScalyrApi
         $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
         $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
-        $region = array_key_exists('region', $options) ? $options['region'] : REGION_US;
+        $region = array_key_exists('region', $options) ? $options['region'] : 'US';
         $token = array_key_exists('token', $options) ? $options['token'] : null;
         $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : 'logplex';
 
@@ -467,10 +467,10 @@ class LoggingScalyrApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -792,10 +792,10 @@ class LoggingScalyrApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1117,10 +1117,10 @@ class LoggingScalyrApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1422,10 +1422,10 @@ class LoggingScalyrApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1827,10 +1827,10 @@ class LoggingScalyrApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];

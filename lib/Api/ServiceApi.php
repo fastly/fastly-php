@@ -387,10 +387,10 @@ class ServiceApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -672,10 +672,10 @@ class ServiceApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -957,10 +957,10 @@ class ServiceApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1242,10 +1242,10 @@ class ServiceApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1279,7 +1279,7 @@ class ServiceApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\SchemasDomainResponse[]
+     * @return \Fastly\Model\DomainResponse[]
      */
     public function listServiceDomains($options)
     {
@@ -1298,7 +1298,7 @@ class ServiceApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\SchemasDomainResponse[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\DomainResponse[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listServiceDomainsWithHttpInfo($options)
     {
@@ -1335,20 +1335,20 @@ class ServiceApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\SchemasDomainResponse[]' === '\SplFileObject') {
+                    if ('\Fastly\Model\DomainResponse[]' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\SchemasDomainResponse[]', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\DomainResponse[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\SchemasDomainResponse[]';
+            $returnType = '\Fastly\Model\DomainResponse[]';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1367,7 +1367,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\SchemasDomainResponse[]',
+                        '\Fastly\Model\DomainResponse[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1413,7 +1413,7 @@ class ServiceApi
      */
     public function listServiceDomainsAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\SchemasDomainResponse[]';
+        $returnType = '\Fastly\Model\DomainResponse[]';
         $request = $this->listServiceDomainsRequest($options);
 
         return $this->client
@@ -1527,10 +1527,10 @@ class ServiceApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1851,10 +1851,10 @@ class ServiceApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -2139,10 +2139,10 @@ class ServiceApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -2454,10 +2454,10 @@ class ServiceApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];

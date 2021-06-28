@@ -1,6 +1,6 @@
 <?php
 /**
- * SchemasHeaderResponse
+ * SchemasRequestSettingsResponse
  *
  * PHP version 7.2
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * SchemasHeaderResponse Class Doc Comment
+ * SchemasRequestSettingsResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null  
  */
-class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $fastlyModelName = 'schemas-header_response';
+    protected static $fastlyModelName = 'schemas-request_settings_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,17 +54,17 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $fastlyTypes = [
         'action' => 'string',
-        'cache_condition' => 'string',
-        'dst' => 'string',
-        'ignore_if_set' => 'int',
+        'bypass_busy_wait' => 'int',
+        'default_host' => 'string',
+        'force_miss' => 'int',
+        'force_ssl' => 'int',
+        'geo_headers' => 'int',
+        'hash_keys' => 'string',
+        'max_stale_age' => 'int',
         'name' => 'string',
-        'priority' => 'int',
-        'regex' => 'string',
         'request_condition' => 'string',
-        'response_condition' => 'string',
-        'src' => 'string',
-        'substitution' => 'string',
-        'type' => 'string',
+        'timer_support' => 'int',
+        'xff' => 'string',
         'service_id' => 'string',
         'version' => 'int',
         'created_at' => 'string',
@@ -81,17 +81,17 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $fastlyFormats = [
         'action' => null,
-        'cache_condition' => null,
-        'dst' => null,
-        'ignore_if_set' => null,
+        'bypass_busy_wait' => null,
+        'default_host' => null,
+        'force_miss' => null,
+        'force_ssl' => null,
+        'geo_headers' => null,
+        'hash_keys' => null,
+        'max_stale_age' => null,
         'name' => null,
-        'priority' => null,
-        'regex' => null,
         'request_condition' => null,
-        'response_condition' => null,
-        'src' => null,
-        'substitution' => null,
-        'type' => null,
+        'timer_support' => null,
+        'xff' => null,
         'service_id' => null,
         'version' => null,
         'created_at' => null,
@@ -127,17 +127,17 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'action' => 'action',
-        'cache_condition' => 'cache_condition',
-        'dst' => 'dst',
-        'ignore_if_set' => 'ignore_if_set',
+        'bypass_busy_wait' => 'bypass_busy_wait',
+        'default_host' => 'default_host',
+        'force_miss' => 'force_miss',
+        'force_ssl' => 'force_ssl',
+        'geo_headers' => 'geo_headers',
+        'hash_keys' => 'hash_keys',
+        'max_stale_age' => 'max_stale_age',
         'name' => 'name',
-        'priority' => 'priority',
-        'regex' => 'regex',
         'request_condition' => 'request_condition',
-        'response_condition' => 'response_condition',
-        'src' => 'src',
-        'substitution' => 'substitution',
-        'type' => 'type',
+        'timer_support' => 'timer_support',
+        'xff' => 'xff',
         'service_id' => 'service_id',
         'version' => 'version',
         'created_at' => 'created_at',
@@ -152,17 +152,17 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'action' => 'setAction',
-        'cache_condition' => 'setCacheCondition',
-        'dst' => 'setDst',
-        'ignore_if_set' => 'setIgnoreIfSet',
+        'bypass_busy_wait' => 'setBypassBusyWait',
+        'default_host' => 'setDefaultHost',
+        'force_miss' => 'setForceMiss',
+        'force_ssl' => 'setForceSsl',
+        'geo_headers' => 'setGeoHeaders',
+        'hash_keys' => 'setHashKeys',
+        'max_stale_age' => 'setMaxStaleAge',
         'name' => 'setName',
-        'priority' => 'setPriority',
-        'regex' => 'setRegex',
         'request_condition' => 'setRequestCondition',
-        'response_condition' => 'setResponseCondition',
-        'src' => 'setSrc',
-        'substitution' => 'setSubstitution',
-        'type' => 'setType',
+        'timer_support' => 'setTimerSupport',
+        'xff' => 'setXff',
         'service_id' => 'setServiceId',
         'version' => 'setVersion',
         'created_at' => 'setCreatedAt',
@@ -177,17 +177,17 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'action' => 'getAction',
-        'cache_condition' => 'getCacheCondition',
-        'dst' => 'getDst',
-        'ignore_if_set' => 'getIgnoreIfSet',
+        'bypass_busy_wait' => 'getBypassBusyWait',
+        'default_host' => 'getDefaultHost',
+        'force_miss' => 'getForceMiss',
+        'force_ssl' => 'getForceSsl',
+        'geo_headers' => 'getGeoHeaders',
+        'hash_keys' => 'getHashKeys',
+        'max_stale_age' => 'getMaxStaleAge',
         'name' => 'getName',
-        'priority' => 'getPriority',
-        'regex' => 'getRegex',
         'request_condition' => 'getRequestCondition',
-        'response_condition' => 'getResponseCondition',
-        'src' => 'getSrc',
-        'substitution' => 'getSubstitution',
-        'type' => 'getType',
+        'timer_support' => 'getTimerSupport',
+        'xff' => 'getXff',
         'service_id' => 'getServiceId',
         'version' => 'getVersion',
         'created_at' => 'getCreatedAt',
@@ -236,15 +236,13 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$fastlyModelName;
     }
 
-    const ACTION_SET = 'set';
-    const ACTION_APPEND = 'append';
-    const ACTION_DELETE = 'delete';
-    const ACTION_REGEX = 'regex';
-    const ACTION_REGEX_REPEAT = 'regex_repeat';
-    const TYPE_REQUEST = 'request';
-    const TYPE_FETCH = 'fetch';
-    const TYPE_CACHE = 'cache';
-    const TYPE_RESPONSE = 'response';
+    const ACTION_LOOKUP = 'lookup';
+    const ACTION_PASS = 'pass';
+    const XFF_CLEAR = 'clear';
+    const XFF_LEAVE = 'leave';
+    const XFF_APPEND = 'append';
+    const XFF_APPEND_ALL = 'append_all';
+    const XFF_OVERWRITE = 'overwrite';
     
 
     
@@ -256,11 +254,8 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function getActionAllowableValues()
     {
         return [
-            self::ACTION_SET,
-            self::ACTION_APPEND,
-            self::ACTION_DELETE,
-            self::ACTION_REGEX,
-            self::ACTION_REGEX_REPEAT,
+            self::ACTION_LOOKUP,
+            self::ACTION_PASS,
         ];
     }
     
@@ -269,13 +264,14 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getXffAllowableValues()
     {
         return [
-            self::TYPE_REQUEST,
-            self::TYPE_FETCH,
-            self::TYPE_CACHE,
-            self::TYPE_RESPONSE,
+            self::XFF_CLEAR,
+            self::XFF_LEAVE,
+            self::XFF_APPEND,
+            self::XFF_APPEND_ALL,
+            self::XFF_OVERWRITE,
         ];
     }
     
@@ -296,17 +292,17 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(array $data = null)
     {
         $this->container['action'] = $data['action'] ?? null;
-        $this->container['cache_condition'] = $data['cache_condition'] ?? null;
-        $this->container['dst'] = $data['dst'] ?? null;
-        $this->container['ignore_if_set'] = $data['ignore_if_set'] ?? null;
+        $this->container['bypass_busy_wait'] = $data['bypass_busy_wait'] ?? null;
+        $this->container['default_host'] = $data['default_host'] ?? null;
+        $this->container['force_miss'] = $data['force_miss'] ?? null;
+        $this->container['force_ssl'] = $data['force_ssl'] ?? null;
+        $this->container['geo_headers'] = $data['geo_headers'] ?? null;
+        $this->container['hash_keys'] = $data['hash_keys'] ?? null;
+        $this->container['max_stale_age'] = $data['max_stale_age'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? 100;
-        $this->container['regex'] = $data['regex'] ?? null;
         $this->container['request_condition'] = $data['request_condition'] ?? null;
-        $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['src'] = $data['src'] ?? null;
-        $this->container['substitution'] = $data['substitution'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
+        $this->container['timer_support'] = $data['timer_support'] ?? null;
+        $this->container['xff'] = $data['xff'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -332,11 +328,11 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
             );
         }
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        $allowedValues = $this->getXffAllowableValues();
+        if (!is_null($this->container['xff']) && !in_array($this->container['xff'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'xff', must be one of '%s'",
+                $this->container['xff'],
                 implode("', '", $allowedValues)
             );
         }
@@ -369,7 +365,7 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets action
      *
-     * @param string|null $action Accepts a string value.
+     * @param string|null $action Allows you to terminate request handling and immediately perform an action.
      *
      * @return self
      */
@@ -391,73 +387,169 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets cache_condition
-     *
-     * @return string|null
-     */
-    public function getCacheCondition()
-    {
-        return $this->container['cache_condition'];
-    }
-
-    /**
-     * Sets cache_condition
-     *
-     * @param string|null $cache_condition Name of the cache condition controlling when this configuration applies.
-     *
-     * @return self
-     */
-    public function setCacheCondition($cache_condition)
-    {
-        $this->container['cache_condition'] = $cache_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets dst
-     *
-     * @return string|null
-     */
-    public function getDst()
-    {
-        return $this->container['dst'];
-    }
-
-    /**
-     * Sets dst
-     *
-     * @param string|null $dst Header to set.
-     *
-     * @return self
-     */
-    public function setDst($dst)
-    {
-        $this->container['dst'] = $dst;
-
-        return $this;
-    }
-
-    /**
-     * Gets ignore_if_set
+     * Gets bypass_busy_wait
      *
      * @return int|null
      */
-    public function getIgnoreIfSet()
+    public function getBypassBusyWait()
     {
-        return $this->container['ignore_if_set'];
+        return $this->container['bypass_busy_wait'];
     }
 
     /**
-     * Sets ignore_if_set
+     * Sets bypass_busy_wait
      *
-     * @param int|null $ignore_if_set Don't add the header if it is added already. Only applies to 'set' action.
+     * @param int|null $bypass_busy_wait Disable collapsed forwarding, so you don't wait for other objects to origin.
      *
      * @return self
      */
-    public function setIgnoreIfSet($ignore_if_set)
+    public function setBypassBusyWait($bypass_busy_wait)
     {
-        $this->container['ignore_if_set'] = $ignore_if_set;
+        $this->container['bypass_busy_wait'] = $bypass_busy_wait;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_host
+     *
+     * @return string|null
+     */
+    public function getDefaultHost()
+    {
+        return $this->container['default_host'];
+    }
+
+    /**
+     * Sets default_host
+     *
+     * @param string|null $default_host Sets the host header.
+     *
+     * @return self
+     */
+    public function setDefaultHost($default_host)
+    {
+        $this->container['default_host'] = $default_host;
+
+        return $this;
+    }
+
+    /**
+     * Gets force_miss
+     *
+     * @return int|null
+     */
+    public function getForceMiss()
+    {
+        return $this->container['force_miss'];
+    }
+
+    /**
+     * Sets force_miss
+     *
+     * @param int|null $force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
+     *
+     * @return self
+     */
+    public function setForceMiss($force_miss)
+    {
+        $this->container['force_miss'] = $force_miss;
+
+        return $this;
+    }
+
+    /**
+     * Gets force_ssl
+     *
+     * @return int|null
+     */
+    public function getForceSsl()
+    {
+        return $this->container['force_ssl'];
+    }
+
+    /**
+     * Sets force_ssl
+     *
+     * @param int|null $force_ssl Forces the request use SSL (redirects a non-SSL to SSL).
+     *
+     * @return self
+     */
+    public function setForceSsl($force_ssl)
+    {
+        $this->container['force_ssl'] = $force_ssl;
+
+        return $this;
+    }
+
+    /**
+     * Gets geo_headers
+     *
+     * @return int|null
+     */
+    public function getGeoHeaders()
+    {
+        return $this->container['geo_headers'];
+    }
+
+    /**
+     * Sets geo_headers
+     *
+     * @param int|null $geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
+     *
+     * @return self
+     */
+    public function setGeoHeaders($geo_headers)
+    {
+        $this->container['geo_headers'] = $geo_headers;
+
+        return $this;
+    }
+
+    /**
+     * Gets hash_keys
+     *
+     * @return string|null
+     */
+    public function getHashKeys()
+    {
+        return $this->container['hash_keys'];
+    }
+
+    /**
+     * Sets hash_keys
+     *
+     * @param string|null $hash_keys Comma separated list of varnish request object fields that should be in the hash key.
+     *
+     * @return self
+     */
+    public function setHashKeys($hash_keys)
+    {
+        $this->container['hash_keys'] = $hash_keys;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_stale_age
+     *
+     * @return int|null
+     */
+    public function getMaxStaleAge()
+    {
+        return $this->container['max_stale_age'];
+    }
+
+    /**
+     * Sets max_stale_age
+     *
+     * @param int|null $max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
+     *
+     * @return self
+     */
+    public function setMaxStaleAge($max_stale_age)
+    {
+        $this->container['max_stale_age'] = $max_stale_age;
 
         return $this;
     }
@@ -475,61 +567,13 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets name
      *
-     * @param string|null $name A handle to refer to this Header object.
+     * @param string|null $name Name for the request settings.
      *
      * @return self
      */
     public function setName($name)
     {
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets priority
-     *
-     * @return int|null
-     */
-    public function getPriority()
-    {
-        return $this->container['priority'];
-    }
-
-    /**
-     * Sets priority
-     *
-     * @param int|null $priority Priority determines execution order. Lower numbers execute first.
-     *
-     * @return self
-     */
-    public function setPriority($priority)
-    {
-        $this->container['priority'] = $priority;
-
-        return $this;
-    }
-
-    /**
-     * Gets regex
-     *
-     * @return string|null
-     */
-    public function getRegex()
-    {
-        return $this->container['regex'];
-    }
-
-    /**
-     * Sets regex
-     *
-     * @param string|null $regex Regular expression to use. Only applies to `regex` and `regex_repeat` actions.
-     *
-     * @return self
-     */
-    public function setRegex($regex)
-    {
-        $this->container['regex'] = $regex;
 
         return $this;
     }
@@ -559,107 +603,59 @@ class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets response_condition
+     * Gets timer_support
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getResponseCondition()
+    public function getTimerSupport()
     {
-        return $this->container['response_condition'];
+        return $this->container['timer_support'];
     }
 
     /**
-     * Sets response_condition
+     * Sets timer_support
      *
-     * @param string|null $response_condition response_condition
+     * @param int|null $timer_support Injects the X-Timer info into the request for viewing origin fetch durations.
      *
      * @return self
      */
-    public function setResponseCondition($response_condition)
+    public function setTimerSupport($timer_support)
     {
-        $this->container['response_condition'] = $response_condition;
+        $this->container['timer_support'] = $timer_support;
 
         return $this;
     }
 
     /**
-     * Gets src
+     * Gets xff
      *
      * @return string|null
      */
-    public function getSrc()
+    public function getXff()
     {
-        return $this->container['src'];
+        return $this->container['xff'];
     }
 
     /**
-     * Sets src
+     * Sets xff
      *
-     * @param string|null $src Variable to be used as a source for the header content. Does not apply to `delete` action.
+     * @param string|null $xff Short for X-Forwarded-For.
      *
      * @return self
      */
-    public function setSrc($src)
+    public function setXff($xff)
     {
-        $this->container['src'] = $src;
-
-        return $this;
-    }
-
-    /**
-     * Gets substitution
-     *
-     * @return string|null
-     */
-    public function getSubstitution()
-    {
-        return $this->container['substitution'];
-    }
-
-    /**
-     * Sets substitution
-     *
-     * @param string|null $substitution Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
-     *
-     * @return self
-     */
-    public function setSubstitution($substitution)
-    {
-        $this->container['substitution'] = $substitution;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Accepts a string value.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+        $allowedValues = $this->getXffAllowableValues();
+        if (!is_null($xff) && !in_array($xff, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
+                    "Invalid value '%s' for 'xff', must be one of '%s'",
+                    $xff,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['type'] = $type;
+        $this->container['xff'] = $xff;
 
         return $this;
     }

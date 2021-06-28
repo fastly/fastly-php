@@ -1,6 +1,6 @@
 <?php
 /**
- * SchemasWafActiveRule
+ * SchemasGzip
  *
  * PHP version 7.2
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * SchemasWafActiveRule Class Doc Comment
+ * SchemasGzip Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null  
  */
-class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializable
+class SchemasGzip implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $fastlyModelName = 'schemas-waf_active_rule';
+    protected static $fastlyModelName = 'schemas-gzip';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,10 @@ class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\WafActiveRuleData'
+        'cache_condition' => 'string',
+        'content_types' => 'string',
+        'extensions' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -64,7 +67,10 @@ class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null
+        'cache_condition' => null,
+        'content_types' => null,
+        'extensions' => null,
+        'name' => null
     ];
 
     /**
@@ -94,7 +100,10 @@ class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'cache_condition' => 'cache_condition',
+        'content_types' => 'content_types',
+        'extensions' => 'extensions',
+        'name' => 'name'
     ];
 
     /**
@@ -103,7 +112,10 @@ class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'cache_condition' => 'setCacheCondition',
+        'content_types' => 'setContentTypes',
+        'extensions' => 'setExtensions',
+        'name' => 'setName'
     ];
 
     /**
@@ -112,7 +124,10 @@ class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'cache_condition' => 'getCacheCondition',
+        'content_types' => 'getContentTypes',
+        'extensions' => 'getExtensions',
+        'name' => 'getName'
     ];
 
     /**
@@ -175,7 +190,10 @@ class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['cache_condition'] = $data['cache_condition'] ?? null;
+        $this->container['content_types'] = $data['content_types'] ?? null;
+        $this->container['extensions'] = $data['extensions'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -203,25 +221,97 @@ class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets data
+     * Gets cache_condition
      *
-     * @return \Fastly\Model\WafActiveRuleData|null
+     * @return string|null
      */
-    public function getData()
+    public function getCacheCondition()
     {
-        return $this->container['data'];
+        return $this->container['cache_condition'];
     }
 
     /**
-     * Sets data
+     * Sets cache_condition
      *
-     * @param \Fastly\Model\WafActiveRuleData|null $data data
+     * @param string|null $cache_condition Name of the cache condition controlling when this configuration applies.
      *
      * @return self
      */
-    public function setData($data)
+    public function setCacheCondition($cache_condition)
     {
-        $this->container['data'] = $data;
+        $this->container['cache_condition'] = $cache_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets content_types
+     *
+     * @return string|null
+     */
+    public function getContentTypes()
+    {
+        return $this->container['content_types'];
+    }
+
+    /**
+     * Sets content_types
+     *
+     * @param string|null $content_types Space-separated list of content types to compress. If you omit this field a default list will be used.
+     *
+     * @return self
+     */
+    public function setContentTypes($content_types)
+    {
+        $this->container['content_types'] = $content_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets extensions
+     *
+     * @return string|null
+     */
+    public function getExtensions()
+    {
+        return $this->container['extensions'];
+    }
+
+    /**
+     * Sets extensions
+     *
+     * @param string|null $extensions Space-separated list of file extensions to compress. If you omit this field a default list will be used.
+     *
+     * @return self
+     */
+    public function setExtensions($extensions)
+    {
+        $this->container['extensions'] = $extensions;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name of the gzip configuration.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

@@ -68,11 +68,11 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
         'cache_settings' => '\Fastly\Model\CacheSettingResponse[]',
         'conditions' => '\Fastly\Model\ConditionResponse[]',
         'directors' => '\Fastly\Model\SchemasDirector[]',
-        'domains' => '\Fastly\Model\SchemasDomainResponse[]',
-        'gzips' => '\Fastly\Model\GzipResponse[]',
-        'headers' => '\Fastly\Model\SchemasHeaderResponse[]',
+        'domains' => '\Fastly\Model\DomainResponse[]',
+        'gzips' => '\Fastly\Model\SchemasGzipResponse[]',
+        'headers' => '\Fastly\Model\HeaderResponse[]',
         'healthchecks' => '\Fastly\Model\HealthcheckResponse[]',
-        'request_settings' => '\Fastly\Model\RequestSettingsResponse[]',
+        'request_settings' => '\Fastly\Model\SchemasRequestSettingsResponse[]',
         'response_objects' => '\Fastly\Model\ResponseObjectResponse[]',
         'settings' => 'Settings',
         'snippets' => '\Fastly\Model\SchemasSnippetResponse[]',
@@ -709,7 +709,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets domains
      *
-     * @return \Fastly\Model\SchemasDomainResponse[]|null
+     * @return \Fastly\Model\DomainResponse[]|null
      */
     public function getDomains()
     {
@@ -719,7 +719,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domains
      *
-     * @param \Fastly\Model\SchemasDomainResponse[]|null $domains List of domains associated to this service.
+     * @param \Fastly\Model\DomainResponse[]|null $domains List of domains associated to this service.
      *
      * @return self
      */
@@ -733,7 +733,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets gzips
      *
-     * @return \Fastly\Model\GzipResponse[]|null
+     * @return \Fastly\Model\SchemasGzipResponse[]|null
      */
     public function getGzips()
     {
@@ -743,7 +743,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets gzips
      *
-     * @param \Fastly\Model\GzipResponse[]|null $gzips List of gzip rules associated to this service.
+     * @param \Fastly\Model\SchemasGzipResponse[]|null $gzips List of gzip rules associated to this service.
      *
      * @return self
      */
@@ -757,7 +757,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets headers
      *
-     * @return \Fastly\Model\SchemasHeaderResponse[]|null
+     * @return \Fastly\Model\HeaderResponse[]|null
      */
     public function getHeaders()
     {
@@ -767,7 +767,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets headers
      *
-     * @param \Fastly\Model\SchemasHeaderResponse[]|null $headers List of headers associated to this service.
+     * @param \Fastly\Model\HeaderResponse[]|null $headers List of headers associated to this service.
      *
      * @return self
      */
@@ -805,7 +805,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets request_settings
      *
-     * @return \Fastly\Model\RequestSettingsResponse[]|null
+     * @return \Fastly\Model\SchemasRequestSettingsResponse[]|null
      */
     public function getRequestSettings()
     {
@@ -815,7 +815,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets request_settings
      *
-     * @param \Fastly\Model\RequestSettingsResponse[]|null $request_settings List of request settings for this service.
+     * @param \Fastly\Model\SchemasRequestSettingsResponse[]|null $request_settings List of request settings for this service.
      *
      * @return self
      */

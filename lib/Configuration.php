@@ -38,18 +38,18 @@ class Configuration
     private static $defaultConfiguration;
 
     /**
-     * Associate array to store API key(s)
+     * Associate array to store API token(s)
      *
      * @var string[]
      */
-    protected $apiKeys = [];
+    protected $apiTokens = [];
 
     /**
      * Associate array to store API prefix (e.g. Bearer)
      *
      * @var string[]
      */
-    protected $apiKeyPrefixes = [];
+    protected $apiTokenPrefixes = [];
 
     /**
      * Access token for OAuth/Bearer authentication
@@ -116,55 +116,49 @@ class Configuration
     }
 
     /**
-     * Sets API key
+     * Sets API token
      *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     * @param string $key              API key or token
+     * @param string $key              API token or token
      *
      * @return $this
      */
-    public function setApiKey($apiKeyIdentifier, $key)
+    public function setApiToken($key)
     {
-        $this->apiKeys[$apiKeyIdentifier] = $key;
+        $this->apiKeys['Fastly-Key'] = $key;
         return $this;
     }
 
     /**
-     * Gets API key
+     * Gets API token
      *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     *
-     * @return null|string API key or token
+     * @return null|string API token or token
      */
-    public function getApiKey($apiKeyIdentifier)
+    public function getApiToken()
     {
-        return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : null;
+        return isset($this->apiKeys['Fastly-Key']) ? $this->apiKeys['Fastly-Key'] : null;
     }
 
     /**
-     * Sets the prefix for API key (e.g. Bearer)
+     * Sets the prefix for API token (e.g. Bearer)
      *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     * @param string $prefix           API key prefix, e.g. Bearer
+     * @param string $prefix           API token prefix, e.g. Bearer
      *
      * @return $this
      */
-    public function setApiKeyPrefix($apiKeyIdentifier, $prefix)
+    public function setApiTokenPrefix($prefix)
     {
-        $this->apiKeyPrefixes[$apiKeyIdentifier] = $prefix;
+        $this->apiKeyPrefixes['Fastly-Key'] = $prefix;
         return $this;
     }
 
     /**
-     * Gets API key prefix
-     *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
+     * Gets API token prefix
      *
      * @return null|string
      */
-    public function getApiKeyPrefix($apiKeyIdentifier)
+    public function getApiTokenPrefix()
     {
-        return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ? $this->apiKeyPrefixes[$apiKeyIdentifier] : null;
+        return isset($this->apiKeyPrefixes['Fastly-Key']) ? $this->apiKeyPrefixes['Fastly-Key'] : null;
     }
 
     /**
@@ -400,25 +394,23 @@ class Configuration
     }
 
     /**
-     * Get API key (with prefix if set)
+     * Get API token (with prefix if set)
      *
-     * @param  string $apiKeyIdentifier name of apikey
-     *
-     * @return null|string API key with the prefix
+     * @return null|string API token with the prefix
      */
-    public function getApiKeyWithPrefix($apiKeyIdentifier)
+    public function getApiTokenWithPrefix()
     {
-        $prefix = $this->getApiKeyPrefix($apiKeyIdentifier);
-        $apiKey = $this->getApiKey($apiKeyIdentifier);
+        $prefix = $this->getApiTokenPrefix('Fastly-Key');
+        $apiToken = $this->getApiToken('Fastly-Key');
 
-        if ($apiKey === null) {
+        if ($apiToken === null) {
             return null;
         }
 
         if ($prefix === null) {
-            $keyWithPrefix = $apiKey;
+            $keyWithPrefix = $apiToken;
         } else {
-            $keyWithPrefix = $prefix . ' ' . $apiKey;
+            $keyWithPrefix = $prefix . ' ' . $apiToken;
         }
 
         return $keyWithPrefix;

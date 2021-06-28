@@ -122,7 +122,7 @@ class LoggingDatadogApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. (optional)
-     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
+     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The API key from your Datadog account. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -149,7 +149,7 @@ class LoggingDatadogApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. (optional)
-     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
+     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The API key from your Datadog account. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -247,7 +247,7 @@ class LoggingDatadogApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. (optional)
-     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
+     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The API key from your Datadog account. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -277,7 +277,7 @@ class LoggingDatadogApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. (optional)
-     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
+     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The API key from your Datadog account. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -334,7 +334,7 @@ class LoggingDatadogApi
      * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. (optional)
-     * @param  string $region The region that log data will be sent to. (optional, default to 'US')
+     * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The API key from your Datadog account. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -350,7 +350,7 @@ class LoggingDatadogApi
         $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
         $format = array_key_exists('format', $options) ? $options['format'] : null;
-        $region = array_key_exists('region', $options) ? $options['region'] : 'US';
+        $region = array_key_exists('region', $options) ? $options['region'] : REGION_US;
         $token = array_key_exists('token', $options) ? $options['token'] : null;
 
         // verify the required parameter 'service_id' is set
@@ -457,10 +457,10 @@ class LoggingDatadogApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -782,10 +782,10 @@ class LoggingDatadogApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1107,10 +1107,10 @@ class LoggingDatadogApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1412,10 +1412,10 @@ class LoggingDatadogApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];
@@ -1807,10 +1807,10 @@ class LoggingDatadogApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Fastly-Key');
-        if ($apiKey !== null) {
-            $headers['Fastly-Key'] = $apiKey;
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
         }
 
         $defaultHeaders = [];

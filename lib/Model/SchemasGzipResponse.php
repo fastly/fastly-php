@@ -1,6 +1,6 @@
 <?php
 /**
- * SchemasDomainResponse
+ * SchemasGzipResponse
  *
  * PHP version 7.2
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * SchemasDomainResponse Class Doc Comment
+ * SchemasGzipResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null  
  */
-class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SchemasGzipResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $fastlyModelName = 'schemas-domain_response';
+    protected static $fastlyModelName = 'schemas-gzip_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,9 @@ class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'comment' => 'string',
+        'cache_condition' => 'string',
+        'content_types' => 'string',
+        'extensions' => 'string',
         'name' => 'string',
         'service_id' => 'string',
         'version' => 'int',
@@ -70,7 +72,9 @@ class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'comment' => null,
+        'cache_condition' => null,
+        'content_types' => null,
+        'extensions' => null,
         'name' => null,
         'service_id' => null,
         'version' => null,
@@ -106,7 +110,9 @@ class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'comment' => 'comment',
+        'cache_condition' => 'cache_condition',
+        'content_types' => 'content_types',
+        'extensions' => 'extensions',
         'name' => 'name',
         'service_id' => 'service_id',
         'version' => 'version',
@@ -121,7 +127,9 @@ class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'comment' => 'setComment',
+        'cache_condition' => 'setCacheCondition',
+        'content_types' => 'setContentTypes',
+        'extensions' => 'setExtensions',
         'name' => 'setName',
         'service_id' => 'setServiceId',
         'version' => 'setVersion',
@@ -136,7 +144,9 @@ class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'comment' => 'getComment',
+        'cache_condition' => 'getCacheCondition',
+        'content_types' => 'getContentTypes',
+        'extensions' => 'getExtensions',
         'name' => 'getName',
         'service_id' => 'getServiceId',
         'version' => 'getVersion',
@@ -205,7 +215,9 @@ class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['comment'] = $data['comment'] ?? null;
+        $this->container['cache_condition'] = $data['cache_condition'] ?? null;
+        $this->container['content_types'] = $data['content_types'] ?? null;
+        $this->container['extensions'] = $data['extensions'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
@@ -239,25 +251,73 @@ class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets comment
+     * Gets cache_condition
      *
      * @return string|null
      */
-    public function getComment()
+    public function getCacheCondition()
     {
-        return $this->container['comment'];
+        return $this->container['cache_condition'];
     }
 
     /**
-     * Sets comment
+     * Sets cache_condition
      *
-     * @param string|null $comment A freeform descriptive note.
+     * @param string|null $cache_condition Name of the cache condition controlling when this configuration applies.
      *
      * @return self
      */
-    public function setComment($comment)
+    public function setCacheCondition($cache_condition)
     {
-        $this->container['comment'] = $comment;
+        $this->container['cache_condition'] = $cache_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets content_types
+     *
+     * @return string|null
+     */
+    public function getContentTypes()
+    {
+        return $this->container['content_types'];
+    }
+
+    /**
+     * Sets content_types
+     *
+     * @param string|null $content_types Space-separated list of content types to compress. If you omit this field a default list will be used.
+     *
+     * @return self
+     */
+    public function setContentTypes($content_types)
+    {
+        $this->container['content_types'] = $content_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets extensions
+     *
+     * @return string|null
+     */
+    public function getExtensions()
+    {
+        return $this->container['extensions'];
+    }
+
+    /**
+     * Sets extensions
+     *
+     * @param string|null $extensions Space-separated list of file extensions to compress. If you omit this field a default list will be used.
+     *
+     * @return self
+     */
+    public function setExtensions($extensions)
+    {
+        $this->container['extensions'] = $extensions;
 
         return $this;
     }
@@ -275,7 +335,7 @@ class SchemasDomainResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets name
      *
-     * @param string|null $name The name of the domain or domains associated with this service.
+     * @param string|null $name Name of the gzip configuration.
      *
      * @return self
      */

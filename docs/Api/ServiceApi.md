@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 ## `listServiceDomains()`
 
 ```php
-listServiceDomains($options): \Fastly\Model\SchemasDomainResponse[] // List the domains within a service
+listServiceDomains($options): \Fastly\Model\DomainResponse[] // List the domains within a service
 ```
 
 List the domains within a service.
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\SchemasDomainResponse[]**](../Model/SchemasDomainResponse.md)
+[**\Fastly\Model\DomainResponse[]**](../Model/DomainResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
