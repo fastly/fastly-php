@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\DictionaryApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createDictionary()**](DictionaryApi.md#createDictionary) | **POST** /service/{service_id}/version/{version_id}/dictionary | Create an edge dictionary
 [**deleteDictionary()**](DictionaryApi.md#deleteDictionary) | **DELETE** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Delete an edge dictionary

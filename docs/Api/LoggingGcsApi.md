@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\LoggingGcsApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createLogGcs()**](LoggingGcsApi.md#createLogGcs) | **POST** /service/{service_id}/version/{version_id}/logging/gcs | Create a GCS log endpoint
 [**deleteLogGcs()**](LoggingGcsApi.md#deleteLogGcs) | **DELETE** /service/{service_id}/version/{version_id}/logging/gcs/{logging_gcs_name} | Delete a GCS log endpoint

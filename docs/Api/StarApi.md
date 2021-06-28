@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\StarApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createServiceStar()**](StarApi.md#createServiceStar) | **POST** /stars | Create a star
 [**deleteServiceStar()**](StarApi.md#deleteServiceStar) | **DELETE** /stars/{star_id} | Delete a star

@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\LoggingS3Api(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createLogAwsS3()**](LoggingS3Api.md#createLogAwsS3) | **POST** /service/{service_id}/version/{version_id}/logging/s3 | Create an AWS S3 log endpoint
 [**deleteLogAwsS3()**](LoggingS3Api.md#deleteLogAwsS3) | **DELETE** /service/{service_id}/version/{version_id}/logging/s3/{logging_s3_name} | Delete an AWS S3 log endpoint

@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\AclApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createAcl()**](AclApi.md#createAcl) | **POST** /service/{service_id}/version/{version_id}/acl | Create a new ACL
 [**deleteAcl()**](AclApi.md#deleteAcl) | **DELETE** /service/{service_id}/version/{version_id}/acl/{acl_name} | Delete an ACL

@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\DatacenterApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**listDatacenters()**](DatacenterApi.md#listDatacenters) | **GET** /datacenters | List Fastly datacenters
 

@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\WafFirewallsApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createWafFirewall()**](WafFirewallsApi.md#createWafFirewall) | **POST** /waf/firewalls | Create a firewall
 [**deleteWafFirewall()**](WafFirewallsApi.md#deleteWafFirewall) | **DELETE** /waf/firewalls/{firewall_id} | Delete a firewall

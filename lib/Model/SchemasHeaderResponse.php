@@ -1,6 +1,6 @@
 <?php
 /**
- * SchemasHealthcheckResponse
+ * SchemasHeaderResponse
  *
  * PHP version 7.2
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * SchemasHealthcheckResponse Class Doc Comment
+ * SchemasHeaderResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null  
  */
-class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SchemasHeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $fastlyModelName = 'schemas-healthcheck_response';
+    protected static $fastlyModelName = 'schemas-header_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,18 +53,18 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'check_interval' => 'int',
-        'comment' => 'string',
-        'expected_response' => 'int',
-        'host' => 'string',
-        'http_version' => 'string',
-        'initial' => 'int',
-        'method' => 'string',
+        'action' => 'string',
+        'cache_condition' => 'string',
+        'dst' => 'string',
+        'ignore_if_set' => 'int',
         'name' => 'string',
-        'path' => 'string',
-        'threshold' => 'int',
-        'timeout' => 'int',
-        'window' => 'int',
+        'priority' => 'int',
+        'regex' => 'string',
+        'request_condition' => 'string',
+        'response_condition' => 'string',
+        'src' => 'string',
+        'substitution' => 'string',
+        'type' => 'string',
         'service_id' => 'string',
         'version' => 'int',
         'created_at' => 'string',
@@ -80,18 +80,18 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'check_interval' => null,
-        'comment' => null,
-        'expected_response' => null,
-        'host' => null,
-        'http_version' => null,
-        'initial' => null,
-        'method' => null,
+        'action' => null,
+        'cache_condition' => null,
+        'dst' => null,
+        'ignore_if_set' => null,
         'name' => null,
-        'path' => null,
-        'threshold' => null,
-        'timeout' => null,
-        'window' => null,
+        'priority' => null,
+        'regex' => null,
+        'request_condition' => null,
+        'response_condition' => null,
+        'src' => null,
+        'substitution' => null,
+        'type' => null,
         'service_id' => null,
         'version' => null,
         'created_at' => null,
@@ -126,18 +126,18 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'check_interval' => 'check_interval',
-        'comment' => 'comment',
-        'expected_response' => 'expected_response',
-        'host' => 'host',
-        'http_version' => 'http_version',
-        'initial' => 'initial',
-        'method' => 'method',
+        'action' => 'action',
+        'cache_condition' => 'cache_condition',
+        'dst' => 'dst',
+        'ignore_if_set' => 'ignore_if_set',
         'name' => 'name',
-        'path' => 'path',
-        'threshold' => 'threshold',
-        'timeout' => 'timeout',
-        'window' => 'window',
+        'priority' => 'priority',
+        'regex' => 'regex',
+        'request_condition' => 'request_condition',
+        'response_condition' => 'response_condition',
+        'src' => 'src',
+        'substitution' => 'substitution',
+        'type' => 'type',
         'service_id' => 'service_id',
         'version' => 'version',
         'created_at' => 'created_at',
@@ -151,18 +151,18 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'check_interval' => 'setCheckInterval',
-        'comment' => 'setComment',
-        'expected_response' => 'setExpectedResponse',
-        'host' => 'setHost',
-        'http_version' => 'setHttpVersion',
-        'initial' => 'setInitial',
-        'method' => 'setMethod',
+        'action' => 'setAction',
+        'cache_condition' => 'setCacheCondition',
+        'dst' => 'setDst',
+        'ignore_if_set' => 'setIgnoreIfSet',
         'name' => 'setName',
-        'path' => 'setPath',
-        'threshold' => 'setThreshold',
-        'timeout' => 'setTimeout',
-        'window' => 'setWindow',
+        'priority' => 'setPriority',
+        'regex' => 'setRegex',
+        'request_condition' => 'setRequestCondition',
+        'response_condition' => 'setResponseCondition',
+        'src' => 'setSrc',
+        'substitution' => 'setSubstitution',
+        'type' => 'setType',
         'service_id' => 'setServiceId',
         'version' => 'setVersion',
         'created_at' => 'setCreatedAt',
@@ -176,18 +176,18 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'check_interval' => 'getCheckInterval',
-        'comment' => 'getComment',
-        'expected_response' => 'getExpectedResponse',
-        'host' => 'getHost',
-        'http_version' => 'getHttpVersion',
-        'initial' => 'getInitial',
-        'method' => 'getMethod',
+        'action' => 'getAction',
+        'cache_condition' => 'getCacheCondition',
+        'dst' => 'getDst',
+        'ignore_if_set' => 'getIgnoreIfSet',
         'name' => 'getName',
-        'path' => 'getPath',
-        'threshold' => 'getThreshold',
-        'timeout' => 'getTimeout',
-        'window' => 'getWindow',
+        'priority' => 'getPriority',
+        'regex' => 'getRegex',
+        'request_condition' => 'getRequestCondition',
+        'response_condition' => 'getResponseCondition',
+        'src' => 'getSrc',
+        'substitution' => 'getSubstitution',
+        'type' => 'getType',
         'service_id' => 'getServiceId',
         'version' => 'getVersion',
         'created_at' => 'getCreatedAt',
@@ -236,8 +236,48 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
         return self::$fastlyModelName;
     }
 
+    const ACTION_SET = 'set';
+    const ACTION_APPEND = 'append';
+    const ACTION_DELETE = 'delete';
+    const ACTION_REGEX = 'regex';
+    const ACTION_REGEX_REPEAT = 'regex_repeat';
+    const TYPE_REQUEST = 'request';
+    const TYPE_FETCH = 'fetch';
+    const TYPE_CACHE = 'cache';
+    const TYPE_RESPONSE = 'response';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getActionAllowableValues()
+    {
+        return [
+            self::ACTION_SET,
+            self::ACTION_APPEND,
+            self::ACTION_DELETE,
+            self::ACTION_REGEX,
+            self::ACTION_REGEX_REPEAT,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_REQUEST,
+            self::TYPE_FETCH,
+            self::TYPE_CACHE,
+            self::TYPE_RESPONSE,
+        ];
+    }
     
 
     /**
@@ -255,18 +295,18 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['check_interval'] = $data['check_interval'] ?? null;
-        $this->container['comment'] = $data['comment'] ?? null;
-        $this->container['expected_response'] = $data['expected_response'] ?? null;
-        $this->container['host'] = $data['host'] ?? null;
-        $this->container['http_version'] = $data['http_version'] ?? null;
-        $this->container['initial'] = $data['initial'] ?? null;
-        $this->container['method'] = $data['method'] ?? null;
+        $this->container['action'] = $data['action'] ?? null;
+        $this->container['cache_condition'] = $data['cache_condition'] ?? null;
+        $this->container['dst'] = $data['dst'] ?? null;
+        $this->container['ignore_if_set'] = $data['ignore_if_set'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['path'] = $data['path'] ?? null;
-        $this->container['threshold'] = $data['threshold'] ?? null;
-        $this->container['timeout'] = $data['timeout'] ?? null;
-        $this->container['window'] = $data['window'] ?? null;
+        $this->container['priority'] = $data['priority'] ?? 100;
+        $this->container['regex'] = $data['regex'] ?? null;
+        $this->container['request_condition'] = $data['request_condition'] ?? null;
+        $this->container['response_condition'] = $data['response_condition'] ?? null;
+        $this->container['src'] = $data['src'] ?? null;
+        $this->container['substitution'] = $data['substitution'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -282,6 +322,24 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getActionAllowableValues();
+        if (!is_null($this->container['action']) && !in_array($this->container['action'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'action', must be one of '%s'",
+                $this->container['action'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -299,169 +357,107 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets check_interval
+     * Gets action
+     *
+     * @return string|null
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string|null $action Accepts a string value.
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        $allowedValues = $this->getActionAllowableValues();
+        if (!is_null($action) && !in_array($action, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'action', must be one of '%s'",
+                    $action,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets cache_condition
+     *
+     * @return string|null
+     */
+    public function getCacheCondition()
+    {
+        return $this->container['cache_condition'];
+    }
+
+    /**
+     * Sets cache_condition
+     *
+     * @param string|null $cache_condition Name of the cache condition controlling when this configuration applies.
+     *
+     * @return self
+     */
+    public function setCacheCondition($cache_condition)
+    {
+        $this->container['cache_condition'] = $cache_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets dst
+     *
+     * @return string|null
+     */
+    public function getDst()
+    {
+        return $this->container['dst'];
+    }
+
+    /**
+     * Sets dst
+     *
+     * @param string|null $dst Header to set.
+     *
+     * @return self
+     */
+    public function setDst($dst)
+    {
+        $this->container['dst'] = $dst;
+
+        return $this;
+    }
+
+    /**
+     * Gets ignore_if_set
      *
      * @return int|null
      */
-    public function getCheckInterval()
+    public function getIgnoreIfSet()
     {
-        return $this->container['check_interval'];
+        return $this->container['ignore_if_set'];
     }
 
     /**
-     * Sets check_interval
+     * Sets ignore_if_set
      *
-     * @param int|null $check_interval How often to run the healthcheck in milliseconds.
+     * @param int|null $ignore_if_set Don't add the header if it is added already. Only applies to 'set' action.
      *
      * @return self
      */
-    public function setCheckInterval($check_interval)
+    public function setIgnoreIfSet($ignore_if_set)
     {
-        $this->container['check_interval'] = $check_interval;
-
-        return $this;
-    }
-
-    /**
-     * Gets comment
-     *
-     * @return string|null
-     */
-    public function getComment()
-    {
-        return $this->container['comment'];
-    }
-
-    /**
-     * Sets comment
-     *
-     * @param string|null $comment A freeform descriptive note.
-     *
-     * @return self
-     */
-    public function setComment($comment)
-    {
-        $this->container['comment'] = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Gets expected_response
-     *
-     * @return int|null
-     */
-    public function getExpectedResponse()
-    {
-        return $this->container['expected_response'];
-    }
-
-    /**
-     * Sets expected_response
-     *
-     * @param int|null $expected_response The status code expected from the host.
-     *
-     * @return self
-     */
-    public function setExpectedResponse($expected_response)
-    {
-        $this->container['expected_response'] = $expected_response;
-
-        return $this;
-    }
-
-    /**
-     * Gets host
-     *
-     * @return string|null
-     */
-    public function getHost()
-    {
-        return $this->container['host'];
-    }
-
-    /**
-     * Sets host
-     *
-     * @param string|null $host Which host to check.
-     *
-     * @return self
-     */
-    public function setHost($host)
-    {
-        $this->container['host'] = $host;
-
-        return $this;
-    }
-
-    /**
-     * Gets http_version
-     *
-     * @return string|null
-     */
-    public function getHttpVersion()
-    {
-        return $this->container['http_version'];
-    }
-
-    /**
-     * Sets http_version
-     *
-     * @param string|null $http_version Whether to use version 1.0 or 1.1 HTTP.
-     *
-     * @return self
-     */
-    public function setHttpVersion($http_version)
-    {
-        $this->container['http_version'] = $http_version;
-
-        return $this;
-    }
-
-    /**
-     * Gets initial
-     *
-     * @return int|null
-     */
-    public function getInitial()
-    {
-        return $this->container['initial'];
-    }
-
-    /**
-     * Sets initial
-     *
-     * @param int|null $initial When loading a config, the initial number of probes to be seen as OK.
-     *
-     * @return self
-     */
-    public function setInitial($initial)
-    {
-        $this->container['initial'] = $initial;
-
-        return $this;
-    }
-
-    /**
-     * Gets method
-     *
-     * @return string|null
-     */
-    public function getMethod()
-    {
-        return $this->container['method'];
-    }
-
-    /**
-     * Sets method
-     *
-     * @param string|null $method Which HTTP method to use.
-     *
-     * @return self
-     */
-    public function setMethod($method)
-    {
-        $this->container['method'] = $method;
+        $this->container['ignore_if_set'] = $ignore_if_set;
 
         return $this;
     }
@@ -479,7 +475,7 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets name
      *
-     * @param string|null $name The name of the healthcheck.
+     * @param string|null $name A handle to refer to this Header object.
      *
      * @return self
      */
@@ -491,97 +487,179 @@ class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets path
+     * Gets priority
+     *
+     * @return int|null
+     */
+    public function getPriority()
+    {
+        return $this->container['priority'];
+    }
+
+    /**
+     * Sets priority
+     *
+     * @param int|null $priority Priority determines execution order. Lower numbers execute first.
+     *
+     * @return self
+     */
+    public function setPriority($priority)
+    {
+        $this->container['priority'] = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Gets regex
      *
      * @return string|null
      */
-    public function getPath()
+    public function getRegex()
     {
-        return $this->container['path'];
+        return $this->container['regex'];
     }
 
     /**
-     * Sets path
+     * Sets regex
      *
-     * @param string|null $path The path to check.
+     * @param string|null $regex Regular expression to use. Only applies to `regex` and `regex_repeat` actions.
      *
      * @return self
      */
-    public function setPath($path)
+    public function setRegex($regex)
     {
-        $this->container['path'] = $path;
+        $this->container['regex'] = $regex;
 
         return $this;
     }
 
     /**
-     * Gets threshold
+     * Gets request_condition
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getThreshold()
+    public function getRequestCondition()
     {
-        return $this->container['threshold'];
+        return $this->container['request_condition'];
     }
 
     /**
-     * Sets threshold
+     * Sets request_condition
      *
-     * @param int|null $threshold How many healthchecks must succeed to be considered healthy.
+     * @param string|null $request_condition Condition which, if met, will select this configuration during a request. Optional.
      *
      * @return self
      */
-    public function setThreshold($threshold)
+    public function setRequestCondition($request_condition)
     {
-        $this->container['threshold'] = $threshold;
+        $this->container['request_condition'] = $request_condition;
 
         return $this;
     }
 
     /**
-     * Gets timeout
+     * Gets response_condition
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getTimeout()
+    public function getResponseCondition()
     {
-        return $this->container['timeout'];
+        return $this->container['response_condition'];
     }
 
     /**
-     * Sets timeout
+     * Sets response_condition
      *
-     * @param int|null $timeout Timeout in milliseconds.
+     * @param string|null $response_condition response_condition
      *
      * @return self
      */
-    public function setTimeout($timeout)
+    public function setResponseCondition($response_condition)
     {
-        $this->container['timeout'] = $timeout;
+        $this->container['response_condition'] = $response_condition;
 
         return $this;
     }
 
     /**
-     * Gets window
+     * Gets src
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getWindow()
+    public function getSrc()
     {
-        return $this->container['window'];
+        return $this->container['src'];
     }
 
     /**
-     * Sets window
+     * Sets src
      *
-     * @param int|null $window The number of most recent healthcheck queries to keep for this healthcheck.
+     * @param string|null $src Variable to be used as a source for the header content. Does not apply to `delete` action.
      *
      * @return self
      */
-    public function setWindow($window)
+    public function setSrc($src)
     {
-        $this->container['window'] = $window;
+        $this->container['src'] = $src;
+
+        return $this;
+    }
+
+    /**
+     * Gets substitution
+     *
+     * @return string|null
+     */
+    public function getSubstitution()
+    {
+        return $this->container['substitution'];
+    }
+
+    /**
+     * Sets substitution
+     *
+     * @param string|null $substitution Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
+     *
+     * @return self
+     */
+    public function setSubstitution($substitution)
+    {
+        $this->container['substitution'] = $substitution;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Accepts a string value.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

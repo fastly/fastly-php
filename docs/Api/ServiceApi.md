@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\ServiceApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createService()**](ServiceApi.md#createService) | **POST** /service | Create a service
 [**deleteService()**](ServiceApi.md#deleteService) | **DELETE** /service/{service_id} | Delete a service

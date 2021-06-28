@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\WafRulesApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**getWafRule()**](WafRulesApi.md#getWafRule) | **GET** /waf/rules/{waf_rule_id} | Get a rule
 [**listWafRules()**](WafRulesApi.md#listWafRules) | **GET** /waf/rules | List available WAF rules

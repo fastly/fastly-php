@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\CustomerApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**deleteCustomer()**](CustomerApi.md#deleteCustomer) | **DELETE** /customer/{customer_id} | Delete a customer
 [**getCustomer()**](CustomerApi.md#getCustomer) | **GET** /customer/{customer_id} | Get a customer

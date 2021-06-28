@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\ContentApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**contentCheck()**](ContentApi.md#contentCheck) | **GET** /content/edge_check | Check status of content in each data center cache
 

@@ -56,7 +56,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
         'data' => '\Fastly\Model\Data[]',
-        'included' => 'AnyOfWafFirewallVersionWafRuleRevision[]'
+        'included' => 'AnyOfSchemasWafFirewallVersionWafRuleRevision[]'
     ];
 
     /**
@@ -295,7 +295,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets included
      *
-     * @return AnyOfWafFirewallVersionWafRuleRevision[]|null
+     * @return AnyOfSchemasWafFirewallVersionWafRuleRevision[]|null
      */
     public function getIncluded()
     {
@@ -305,7 +305,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets included
      *
-     * @param AnyOfWafFirewallVersionWafRuleRevision[]|null $included included
+     * @param AnyOfSchemasWafFirewallVersionWafRuleRevision[]|null $included included
      *
      * @return self
      */

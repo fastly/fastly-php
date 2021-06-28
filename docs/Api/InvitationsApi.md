@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\InvitationsApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createInvitation()**](InvitationsApi.md#createInvitation) | **POST** /invitations | Create an invitation
 [**deleteInvitation()**](InvitationsApi.md#deleteInvitation) | **DELETE** /invitations/{invitation_id} | Delete an invitation

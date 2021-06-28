@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\EventsApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**getEvent()**](EventsApi.md#getEvent) | **GET** /events/{event_id} | Get an event
 [**listEvents()**](EventsApi.md#listEvents) | **GET** /events | List events

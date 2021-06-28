@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\WafTagsApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**listWafTags()**](WafTagsApi.md#listWafTags) | **GET** /waf/tags | List tags
 

@@ -70,8 +70,8 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
         'directors' => '\Fastly\Model\SchemasDirector[]',
         'domains' => '\Fastly\Model\DomainResponse[]',
         'gzips' => '\Fastly\Model\SchemasGzipResponse[]',
-        'headers' => '\Fastly\Model\HeaderResponse[]',
-        'healthchecks' => '\Fastly\Model\SchemasHealthcheckResponse[]',
+        'headers' => '\Fastly\Model\SchemasHeaderResponse[]',
+        'healthchecks' => '\Fastly\Model\HealthcheckResponse[]',
         'request_settings' => '\Fastly\Model\RequestSettingsResponse[]',
         'response_objects' => '\Fastly\Model\ResponseObjectResponse[]',
         'settings' => 'Settings',
@@ -757,7 +757,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets headers
      *
-     * @return \Fastly\Model\HeaderResponse[]|null
+     * @return \Fastly\Model\SchemasHeaderResponse[]|null
      */
     public function getHeaders()
     {
@@ -767,7 +767,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets headers
      *
-     * @param \Fastly\Model\HeaderResponse[]|null $headers List of headers associated to this service.
+     * @param \Fastly\Model\SchemasHeaderResponse[]|null $headers List of headers associated to this service.
      *
      * @return self
      */
@@ -781,7 +781,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets healthchecks
      *
-     * @return \Fastly\Model\SchemasHealthcheckResponse[]|null
+     * @return \Fastly\Model\HealthcheckResponse[]|null
      */
     public function getHealthchecks()
     {
@@ -791,7 +791,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets healthchecks
      *
-     * @param \Fastly\Model\SchemasHealthcheckResponse[]|null $healthchecks List of healthchecks associated to this service.
+     * @param \Fastly\Model\HealthcheckResponse[]|null $healthchecks List of healthchecks associated to this service.
      *
      * @return self
      */

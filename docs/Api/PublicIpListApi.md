@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\PublicIpListApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**listFastlyIps()**](PublicIpListApi.md#listFastlyIps) | **GET** /public-ip-list | List Fastly&#39;s public IPs
 

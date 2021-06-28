@@ -11,7 +11,7 @@ $apiInstance = new Fastly\Api\TlsDomainsApi(
 
 ## Methods
 
-Method | HTTP request | Description
+Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**listTlsDomains()**](TlsDomainsApi.md#listTlsDomains) | **GET** /tls/domains | List TLS domains
 
