@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 **format_version** | [**\Fastly\Model\LoggingFormatVersion**](../Model/LoggingFormatVersion.md) |  | [optional]
 **response_condition** | **string** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
 **format** | [**mixed**](../Model/mixed.md) | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. | [optional]
-**region** | **string** | The region that log data will be sent to. | [optional] [default to REGION_US]
+**region** | **string** | The region that log data will be sent to. | [optional] [default to &#39;US&#39;]
 **token** | **string** | The API key from your Datadog account. Required. | [optional]
 
 ### Return type

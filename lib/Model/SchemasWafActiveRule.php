@@ -1,6 +1,6 @@
 <?php
 /**
- * WafActiveRulesResponse
+ * SchemasWafActiveRule
  *
  * PHP version 7.2
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * WafActiveRulesResponse Class Doc Comment
+ * SchemasWafActiveRule Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null  
  */
-class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SchemasWafActiveRule implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $fastlyModelName = 'waf_active_rules_response';
+    protected static $fastlyModelName = 'schemas-waf_active_rule';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,10 +53,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'links' => '\Fastly\Model\PaginationLinks',
-        'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]',
-        'included' => 'AnyOfWafFirewallVersionWafRuleRevision[]'
+        'data' => '\Fastly\Model\WafActiveRuleData'
     ];
 
     /**
@@ -67,10 +64,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'links' => null,
-        'meta' => null,
-        'data' => null,
-        'included' => null
+        'data' => null
     ];
 
     /**
@@ -100,10 +94,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'links' => 'links',
-        'meta' => 'meta',
-        'data' => 'data',
-        'included' => 'included'
+        'data' => 'data'
     ];
 
     /**
@@ -112,10 +103,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'links' => 'setLinks',
-        'meta' => 'setMeta',
-        'data' => 'setData',
-        'included' => 'setIncluded'
+        'data' => 'setData'
     ];
 
     /**
@@ -124,10 +112,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'links' => 'getLinks',
-        'meta' => 'getMeta',
-        'data' => 'getData',
-        'included' => 'getIncluded'
+        'data' => 'getData'
     ];
 
     /**
@@ -190,10 +175,7 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['links'] = $data['links'] ?? null;
-        $this->container['meta'] = $data['meta'] ?? null;
         $this->container['data'] = $data['data'] ?? null;
-        $this->container['included'] = $data['included'] ?? null;
     }
 
     /**
@@ -221,57 +203,9 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets links
-     *
-     * @return \Fastly\Model\PaginationLinks|null
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param \Fastly\Model\PaginationLinks|null $links links
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets meta
-     *
-     * @return \Fastly\Model\PaginationMeta|null
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param \Fastly\Model\PaginationMeta|null $meta meta
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        $this->container['meta'] = $meta;
-
-        return $this;
-    }
-
-    /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafActiveRuleData|null
      */
     public function getData()
     {
@@ -281,37 +215,13 @@ class WafActiveRulesResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafActiveRuleData|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets included
-     *
-     * @return AnyOfWafFirewallVersionWafRuleRevision[]|null
-     */
-    public function getIncluded()
-    {
-        return $this->container['included'];
-    }
-
-    /**
-     * Sets included
-     *
-     * @param AnyOfWafFirewallVersionWafRuleRevision[]|null $included included
-     *
-     * @return self
-     */
-    public function setIncluded($included)
-    {
-        $this->container['included'] = $included;
 
         return $this;
     }

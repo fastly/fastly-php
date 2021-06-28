@@ -60,8 +60,8 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'domains' => '\Fastly\Model\DomainResponse[]',
         'gzips' => '\Fastly\Model\SchemasGzipResponse[]',
         'headers' => '\Fastly\Model\HeaderResponse[]',
-        'healthchecks' => '\Fastly\Model\HealthcheckResponse[]',
-        'request_settings' => '\Fastly\Model\SchemasRequestSettingsResponse[]',
+        'healthchecks' => '\Fastly\Model\SchemasHealthcheckResponse[]',
+        'request_settings' => '\Fastly\Model\RequestSettingsResponse[]',
         'response_objects' => '\Fastly\Model\ResponseObjectResponse[]',
         'settings' => 'Settings',
         'snippets' => '\Fastly\Model\SchemasSnippetResponse[]',
@@ -451,7 +451,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets healthchecks
      *
-     * @return \Fastly\Model\HealthcheckResponse[]|null
+     * @return \Fastly\Model\SchemasHealthcheckResponse[]|null
      */
     public function getHealthchecks()
     {
@@ -461,7 +461,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets healthchecks
      *
-     * @param \Fastly\Model\HealthcheckResponse[]|null $healthchecks List of healthchecks associated to this service.
+     * @param \Fastly\Model\SchemasHealthcheckResponse[]|null $healthchecks List of healthchecks associated to this service.
      *
      * @return self
      */
@@ -475,7 +475,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets request_settings
      *
-     * @return \Fastly\Model\SchemasRequestSettingsResponse[]|null
+     * @return \Fastly\Model\RequestSettingsResponse[]|null
      */
     public function getRequestSettings()
     {
@@ -485,7 +485,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets request_settings
      *
-     * @param \Fastly\Model\SchemasRequestSettingsResponse[]|null $request_settings List of request settings for this service.
+     * @param \Fastly\Model\RequestSettingsResponse[]|null $request_settings List of request settings for this service.
      *
      * @return self
      */

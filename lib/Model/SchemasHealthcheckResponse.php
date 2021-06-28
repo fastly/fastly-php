@@ -1,6 +1,6 @@
 <?php
 /**
- * SchemasRequestSettingsResponse
+ * SchemasHealthcheckResponse
  *
  * PHP version 7.2
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * SchemasRequestSettingsResponse Class Doc Comment
+ * SchemasHealthcheckResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null  
  */
-class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SchemasHealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $fastlyModelName = 'schemas-request_settings_response';
+    protected static $fastlyModelName = 'schemas-healthcheck_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,18 +53,18 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'action' => 'string',
-        'bypass_busy_wait' => 'int',
-        'default_host' => 'string',
-        'force_miss' => 'int',
-        'force_ssl' => 'int',
-        'geo_headers' => 'int',
-        'hash_keys' => 'string',
-        'max_stale_age' => 'int',
+        'check_interval' => 'int',
+        'comment' => 'string',
+        'expected_response' => 'int',
+        'host' => 'string',
+        'http_version' => 'string',
+        'initial' => 'int',
+        'method' => 'string',
         'name' => 'string',
-        'request_condition' => 'string',
-        'timer_support' => 'int',
-        'xff' => 'string',
+        'path' => 'string',
+        'threshold' => 'int',
+        'timeout' => 'int',
+        'window' => 'int',
         'service_id' => 'string',
         'version' => 'int',
         'created_at' => 'string',
@@ -80,18 +80,18 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'action' => null,
-        'bypass_busy_wait' => null,
-        'default_host' => null,
-        'force_miss' => null,
-        'force_ssl' => null,
-        'geo_headers' => null,
-        'hash_keys' => null,
-        'max_stale_age' => null,
+        'check_interval' => null,
+        'comment' => null,
+        'expected_response' => null,
+        'host' => null,
+        'http_version' => null,
+        'initial' => null,
+        'method' => null,
         'name' => null,
-        'request_condition' => null,
-        'timer_support' => null,
-        'xff' => null,
+        'path' => null,
+        'threshold' => null,
+        'timeout' => null,
+        'window' => null,
         'service_id' => null,
         'version' => null,
         'created_at' => null,
@@ -126,18 +126,18 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'action' => 'action',
-        'bypass_busy_wait' => 'bypass_busy_wait',
-        'default_host' => 'default_host',
-        'force_miss' => 'force_miss',
-        'force_ssl' => 'force_ssl',
-        'geo_headers' => 'geo_headers',
-        'hash_keys' => 'hash_keys',
-        'max_stale_age' => 'max_stale_age',
+        'check_interval' => 'check_interval',
+        'comment' => 'comment',
+        'expected_response' => 'expected_response',
+        'host' => 'host',
+        'http_version' => 'http_version',
+        'initial' => 'initial',
+        'method' => 'method',
         'name' => 'name',
-        'request_condition' => 'request_condition',
-        'timer_support' => 'timer_support',
-        'xff' => 'xff',
+        'path' => 'path',
+        'threshold' => 'threshold',
+        'timeout' => 'timeout',
+        'window' => 'window',
         'service_id' => 'service_id',
         'version' => 'version',
         'created_at' => 'created_at',
@@ -151,18 +151,18 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'action' => 'setAction',
-        'bypass_busy_wait' => 'setBypassBusyWait',
-        'default_host' => 'setDefaultHost',
-        'force_miss' => 'setForceMiss',
-        'force_ssl' => 'setForceSsl',
-        'geo_headers' => 'setGeoHeaders',
-        'hash_keys' => 'setHashKeys',
-        'max_stale_age' => 'setMaxStaleAge',
+        'check_interval' => 'setCheckInterval',
+        'comment' => 'setComment',
+        'expected_response' => 'setExpectedResponse',
+        'host' => 'setHost',
+        'http_version' => 'setHttpVersion',
+        'initial' => 'setInitial',
+        'method' => 'setMethod',
         'name' => 'setName',
-        'request_condition' => 'setRequestCondition',
-        'timer_support' => 'setTimerSupport',
-        'xff' => 'setXff',
+        'path' => 'setPath',
+        'threshold' => 'setThreshold',
+        'timeout' => 'setTimeout',
+        'window' => 'setWindow',
         'service_id' => 'setServiceId',
         'version' => 'setVersion',
         'created_at' => 'setCreatedAt',
@@ -176,18 +176,18 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'action' => 'getAction',
-        'bypass_busy_wait' => 'getBypassBusyWait',
-        'default_host' => 'getDefaultHost',
-        'force_miss' => 'getForceMiss',
-        'force_ssl' => 'getForceSsl',
-        'geo_headers' => 'getGeoHeaders',
-        'hash_keys' => 'getHashKeys',
-        'max_stale_age' => 'getMaxStaleAge',
+        'check_interval' => 'getCheckInterval',
+        'comment' => 'getComment',
+        'expected_response' => 'getExpectedResponse',
+        'host' => 'getHost',
+        'http_version' => 'getHttpVersion',
+        'initial' => 'getInitial',
+        'method' => 'getMethod',
         'name' => 'getName',
-        'request_condition' => 'getRequestCondition',
-        'timer_support' => 'getTimerSupport',
-        'xff' => 'getXff',
+        'path' => 'getPath',
+        'threshold' => 'getThreshold',
+        'timeout' => 'getTimeout',
+        'window' => 'getWindow',
         'service_id' => 'getServiceId',
         'version' => 'getVersion',
         'created_at' => 'getCreatedAt',
@@ -236,44 +236,8 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
         return self::$fastlyModelName;
     }
 
-    const ACTION_LOOKUP = 'lookup';
-    const ACTION_PASS = 'pass';
-    const XFF_CLEAR = 'clear';
-    const XFF_LEAVE = 'leave';
-    const XFF_APPEND = 'append';
-    const XFF_APPEND_ALL = 'append_all';
-    const XFF_OVERWRITE = 'overwrite';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getActionAllowableValues()
-    {
-        return [
-            self::ACTION_LOOKUP,
-            self::ACTION_PASS,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getXffAllowableValues()
-    {
-        return [
-            self::XFF_CLEAR,
-            self::XFF_LEAVE,
-            self::XFF_APPEND,
-            self::XFF_APPEND_ALL,
-            self::XFF_OVERWRITE,
-        ];
-    }
     
 
     /**
@@ -291,18 +255,18 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['action'] = $data['action'] ?? null;
-        $this->container['bypass_busy_wait'] = $data['bypass_busy_wait'] ?? null;
-        $this->container['default_host'] = $data['default_host'] ?? null;
-        $this->container['force_miss'] = $data['force_miss'] ?? null;
-        $this->container['force_ssl'] = $data['force_ssl'] ?? null;
-        $this->container['geo_headers'] = $data['geo_headers'] ?? null;
-        $this->container['hash_keys'] = $data['hash_keys'] ?? null;
-        $this->container['max_stale_age'] = $data['max_stale_age'] ?? null;
+        $this->container['check_interval'] = $data['check_interval'] ?? null;
+        $this->container['comment'] = $data['comment'] ?? null;
+        $this->container['expected_response'] = $data['expected_response'] ?? null;
+        $this->container['host'] = $data['host'] ?? null;
+        $this->container['http_version'] = $data['http_version'] ?? null;
+        $this->container['initial'] = $data['initial'] ?? null;
+        $this->container['method'] = $data['method'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['request_condition'] = $data['request_condition'] ?? null;
-        $this->container['timer_support'] = $data['timer_support'] ?? null;
-        $this->container['xff'] = $data['xff'] ?? null;
+        $this->container['path'] = $data['path'] ?? null;
+        $this->container['threshold'] = $data['threshold'] ?? null;
+        $this->container['timeout'] = $data['timeout'] ?? null;
+        $this->container['window'] = $data['window'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -318,24 +282,6 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getActionAllowableValues();
-        if (!is_null($this->container['action']) && !in_array($this->container['action'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'action', must be one of '%s'",
-                $this->container['action'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getXffAllowableValues();
-        if (!is_null($this->container['xff']) && !in_array($this->container['xff'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'xff', must be one of '%s'",
-                $this->container['xff'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -353,203 +299,169 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets action
+     * Gets check_interval
+     *
+     * @return int|null
+     */
+    public function getCheckInterval()
+    {
+        return $this->container['check_interval'];
+    }
+
+    /**
+     * Sets check_interval
+     *
+     * @param int|null $check_interval How often to run the healthcheck in milliseconds.
+     *
+     * @return self
+     */
+    public function setCheckInterval($check_interval)
+    {
+        $this->container['check_interval'] = $check_interval;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment
      *
      * @return string|null
      */
-    public function getAction()
+    public function getComment()
     {
-        return $this->container['action'];
+        return $this->container['comment'];
     }
 
     /**
-     * Sets action
+     * Sets comment
      *
-     * @param string|null $action Allows you to terminate request handling and immediately perform an action.
+     * @param string|null $comment A freeform descriptive note.
      *
      * @return self
      */
-    public function setAction($action)
+    public function setComment($comment)
     {
-        $allowedValues = $this->getActionAllowableValues();
-        if (!is_null($action) && !in_array($action, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'action', must be one of '%s'",
-                    $action,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['action'] = $action;
+        $this->container['comment'] = $comment;
 
         return $this;
     }
 
     /**
-     * Gets bypass_busy_wait
+     * Gets expected_response
      *
      * @return int|null
      */
-    public function getBypassBusyWait()
+    public function getExpectedResponse()
     {
-        return $this->container['bypass_busy_wait'];
+        return $this->container['expected_response'];
     }
 
     /**
-     * Sets bypass_busy_wait
+     * Sets expected_response
      *
-     * @param int|null $bypass_busy_wait Disable collapsed forwarding, so you don't wait for other objects to origin.
+     * @param int|null $expected_response The status code expected from the host.
      *
      * @return self
      */
-    public function setBypassBusyWait($bypass_busy_wait)
+    public function setExpectedResponse($expected_response)
     {
-        $this->container['bypass_busy_wait'] = $bypass_busy_wait;
+        $this->container['expected_response'] = $expected_response;
 
         return $this;
     }
 
     /**
-     * Gets default_host
+     * Gets host
      *
      * @return string|null
      */
-    public function getDefaultHost()
+    public function getHost()
     {
-        return $this->container['default_host'];
+        return $this->container['host'];
     }
 
     /**
-     * Sets default_host
+     * Sets host
      *
-     * @param string|null $default_host Sets the host header.
+     * @param string|null $host Which host to check.
      *
      * @return self
      */
-    public function setDefaultHost($default_host)
+    public function setHost($host)
     {
-        $this->container['default_host'] = $default_host;
+        $this->container['host'] = $host;
 
         return $this;
     }
 
     /**
-     * Gets force_miss
-     *
-     * @return int|null
-     */
-    public function getForceMiss()
-    {
-        return $this->container['force_miss'];
-    }
-
-    /**
-     * Sets force_miss
-     *
-     * @param int|null $force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
-     *
-     * @return self
-     */
-    public function setForceMiss($force_miss)
-    {
-        $this->container['force_miss'] = $force_miss;
-
-        return $this;
-    }
-
-    /**
-     * Gets force_ssl
-     *
-     * @return int|null
-     */
-    public function getForceSsl()
-    {
-        return $this->container['force_ssl'];
-    }
-
-    /**
-     * Sets force_ssl
-     *
-     * @param int|null $force_ssl Forces the request use SSL (redirects a non-SSL to SSL).
-     *
-     * @return self
-     */
-    public function setForceSsl($force_ssl)
-    {
-        $this->container['force_ssl'] = $force_ssl;
-
-        return $this;
-    }
-
-    /**
-     * Gets geo_headers
-     *
-     * @return int|null
-     */
-    public function getGeoHeaders()
-    {
-        return $this->container['geo_headers'];
-    }
-
-    /**
-     * Sets geo_headers
-     *
-     * @param int|null $geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
-     *
-     * @return self
-     */
-    public function setGeoHeaders($geo_headers)
-    {
-        $this->container['geo_headers'] = $geo_headers;
-
-        return $this;
-    }
-
-    /**
-     * Gets hash_keys
+     * Gets http_version
      *
      * @return string|null
      */
-    public function getHashKeys()
+    public function getHttpVersion()
     {
-        return $this->container['hash_keys'];
+        return $this->container['http_version'];
     }
 
     /**
-     * Sets hash_keys
+     * Sets http_version
      *
-     * @param string|null $hash_keys Comma separated list of varnish request object fields that should be in the hash key.
+     * @param string|null $http_version Whether to use version 1.0 or 1.1 HTTP.
      *
      * @return self
      */
-    public function setHashKeys($hash_keys)
+    public function setHttpVersion($http_version)
     {
-        $this->container['hash_keys'] = $hash_keys;
+        $this->container['http_version'] = $http_version;
 
         return $this;
     }
 
     /**
-     * Gets max_stale_age
+     * Gets initial
      *
      * @return int|null
      */
-    public function getMaxStaleAge()
+    public function getInitial()
     {
-        return $this->container['max_stale_age'];
+        return $this->container['initial'];
     }
 
     /**
-     * Sets max_stale_age
+     * Sets initial
      *
-     * @param int|null $max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
+     * @param int|null $initial When loading a config, the initial number of probes to be seen as OK.
      *
      * @return self
      */
-    public function setMaxStaleAge($max_stale_age)
+    public function setInitial($initial)
     {
-        $this->container['max_stale_age'] = $max_stale_age;
+        $this->container['initial'] = $initial;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
+     *
+     * @return string|null
+     */
+    public function getMethod()
+    {
+        return $this->container['method'];
+    }
+
+    /**
+     * Sets method
+     *
+     * @param string|null $method Which HTTP method to use.
+     *
+     * @return self
+     */
+    public function setMethod($method)
+    {
+        $this->container['method'] = $method;
 
         return $this;
     }
@@ -567,7 +479,7 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets name
      *
-     * @param string|null $name Name for the request settings.
+     * @param string|null $name The name of the healthcheck.
      *
      * @return self
      */
@@ -579,83 +491,97 @@ class SchemasRequestSettingsResponse implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets request_condition
+     * Gets path
      *
      * @return string|null
      */
-    public function getRequestCondition()
+    public function getPath()
     {
-        return $this->container['request_condition'];
+        return $this->container['path'];
     }
 
     /**
-     * Sets request_condition
+     * Sets path
      *
-     * @param string|null $request_condition Condition which, if met, will select this configuration during a request. Optional.
+     * @param string|null $path The path to check.
      *
      * @return self
      */
-    public function setRequestCondition($request_condition)
+    public function setPath($path)
     {
-        $this->container['request_condition'] = $request_condition;
+        $this->container['path'] = $path;
 
         return $this;
     }
 
     /**
-     * Gets timer_support
+     * Gets threshold
      *
      * @return int|null
      */
-    public function getTimerSupport()
+    public function getThreshold()
     {
-        return $this->container['timer_support'];
+        return $this->container['threshold'];
     }
 
     /**
-     * Sets timer_support
+     * Sets threshold
      *
-     * @param int|null $timer_support Injects the X-Timer info into the request for viewing origin fetch durations.
+     * @param int|null $threshold How many healthchecks must succeed to be considered healthy.
      *
      * @return self
      */
-    public function setTimerSupport($timer_support)
+    public function setThreshold($threshold)
     {
-        $this->container['timer_support'] = $timer_support;
+        $this->container['threshold'] = $threshold;
 
         return $this;
     }
 
     /**
-     * Gets xff
+     * Gets timeout
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getXff()
+    public function getTimeout()
     {
-        return $this->container['xff'];
+        return $this->container['timeout'];
     }
 
     /**
-     * Sets xff
+     * Sets timeout
      *
-     * @param string|null $xff Short for X-Forwarded-For.
+     * @param int|null $timeout Timeout in milliseconds.
      *
      * @return self
      */
-    public function setXff($xff)
+    public function setTimeout($timeout)
     {
-        $allowedValues = $this->getXffAllowableValues();
-        if (!is_null($xff) && !in_array($xff, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'xff', must be one of '%s'",
-                    $xff,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['xff'] = $xff;
+        $this->container['timeout'] = $timeout;
+
+        return $this;
+    }
+
+    /**
+     * Gets window
+     *
+     * @return int|null
+     */
+    public function getWindow()
+    {
+        return $this->container['window'];
+    }
+
+    /**
+     * Sets window
+     *
+     * @param int|null $window The number of most recent healthcheck queries to keep for this healthcheck.
+     *
+     * @return self
+     */
+    public function setWindow($window)
+    {
+        $this->container['window'] = $window;
 
         return $this;
     }

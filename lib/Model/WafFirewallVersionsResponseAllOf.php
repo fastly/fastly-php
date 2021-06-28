@@ -54,7 +54,7 @@ class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \
       */
     protected static $fastlyTypes = [
         'data' => '\Fastly\Model\Data[]',
-        'included' => 'AnyOfWafFirewallVersionWafActiveRule[]'
+        'included' => 'AnyOfWafFirewallVersionSchemasWafActiveRule[]'
     ];
 
     /**
@@ -235,7 +235,7 @@ class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \
     /**
      * Gets included
      *
-     * @return AnyOfWafFirewallVersionWafActiveRule[]|null
+     * @return AnyOfWafFirewallVersionSchemasWafActiveRule[]|null
      */
     public function getIncluded()
     {
@@ -245,7 +245,7 @@ class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \
     /**
      * Sets included
      *
-     * @param AnyOfWafFirewallVersionWafActiveRule[]|null $included included
+     * @param AnyOfWafFirewallVersionSchemasWafActiveRule[]|null $included included
      *
      * @return self
      */
