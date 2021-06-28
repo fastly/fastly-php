@@ -1,0 +1,120 @@
+# Fastly\Api\TlsConfigurationsApi
+
+
+```php
+$apiInstance = new Fastly\Api\TlsConfigurationsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+```
+
+## Methods
+
+Method | Fastly API endpoint | Description
+------------- | ------------- | -------------
+[**getTlsConfig()**](TlsConfigurationsApi.md#getTlsConfig) | **GET** /tls/configurations/{tls_configuration_id} | Get a TLS configuration
+[**listTlsConfigs()**](TlsConfigurationsApi.md#listTlsConfigs) | **GET** /tls/configurations | List TLS configurations
+[**updateTlsConfig()**](TlsConfigurationsApi.md#updateTlsConfig) | **PATCH** /tls/configurations/{tls_configuration_id} | Update a TLS configuration
+
+
+## `getTlsConfig()`
+
+```php
+getTlsConfig($options): \Fastly\Model\TlsConfigurationResponse // Get a TLS configuration
+```
+
+Show a TLS configuration.
+
+### Example
+```php
+try {
+    $result = $apiInstance->getTlsConfig($options);
+} catch (Exception $e) {
+    echo 'Exception when calling TlsConfigurationsApi->getTlsConfig: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**tls_configuration_id** | **string** |  |
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. | [optional]
+
+### Return type
+
+[**\Fastly\Model\TlsConfigurationResponse**](../Model/TlsConfigurationResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listTlsConfigs()`
+
+```php
+listTlsConfigs($options): \Fastly\Model\TlsConfigurationsResponse // List TLS configurations
+```
+
+List all TLS configurations.
+
+### Example
+```php
+try {
+    $result = $apiInstance->listTlsConfigs($options);
+} catch (Exception $e) {
+    echo 'Exception when calling TlsConfigurationsApi->listTlsConfigs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**filter_bulk** | **string** | Optionally filters by the bulk attribute. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. | [optional]
+**page_number** | **int** | Current page. | [optional]
+**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+
+### Return type
+
+[**\Fastly\Model\TlsConfigurationsResponse**](../Model/TlsConfigurationsResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateTlsConfig()`
+
+```php
+updateTlsConfig($options): \Fastly\Model\TlsConfigurationResponse // Update a TLS configuration
+```
+
+Update a TLS configuration.
+
+### Example
+```php
+try {
+    $result = $apiInstance->updateTlsConfig($options);
+} catch (Exception $e) {
+    echo 'Exception when calling TlsConfigurationsApi->updateTlsConfig: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**tls_configuration_id** | **string** |  |
+**tls_configuration** | [**\Fastly\Model\TlsConfiguration**](../Model/TlsConfiguration.md) |  | [optional]
+
+### Return type
+
+[**\Fastly\Model\TlsConfigurationResponse**](../Model/TlsConfigurationResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)

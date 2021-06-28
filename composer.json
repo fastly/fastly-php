@@ -1,29 +1,37 @@
 {
     "name": "fastly/fastly",
+    "version": "1.0.0-alpha1",
+    "description": "A PHP client library for interacting with most facets of the Fastly API.",
+    "keywords": [
+        "fastly",
+        "php",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "homepage": "https://github.com/fastly/fastly-php",
     "license": "MIT",
-    "type": "library",
-    "description": "Provides a PHP client for the Fastly API",
     "authors": [
         {
-            "name": "Gonzalo Vilaseca",
-            "email": "gonzalo.vilaseca@reiss.com",
+            "name": "Fastly",
+            "email": "oss@fastly.com",
             "role": "Developer"
         }
     ],
     "support": {
-        "issues": "https://github.com/fastly/fastly-php/issues",
-        "source": "https://github.com/fastly/fastly-php"
+        "email": "oss@fastly.com"
     },
     "require": {
-        "php": "^7.2",
-        "guzzlehttp/guzzle": "^6.2.0 || ^7.2.0"
+        "php": ">=7.2",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
-        "phpspec/phpspec": "^2.5.0"
+        "friendsofphp/php-cs-fixer": "^2.12"
     },
     "autoload": {
-        "psr-4": {
-            "Fastly\\": "src/"
-        }
+        "psr-4": { "Fastly\\" : "lib/" }
     }
 }
