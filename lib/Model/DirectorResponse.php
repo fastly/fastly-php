@@ -53,7 +53,7 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'backends' => '\Fastly\Model\SchemasBackend[]',
+        'backends' => '\Fastly\Model\Backend[]',
         'capacity' => 'int',
         'comment' => 'string',
         'name' => 'string',
@@ -311,7 +311,7 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets backends
      *
-     * @return \Fastly\Model\SchemasBackend[]|null
+     * @return \Fastly\Model\Backend[]|null
      */
     public function getBackends()
     {
@@ -321,7 +321,7 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets backends
      *
-     * @param \Fastly\Model\SchemasBackend[]|null $backends List of backends associated to a director.
+     * @param \Fastly\Model\Backend[]|null $backends List of backends associated to a director.
      *
      * @return self
      */

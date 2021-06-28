@@ -36,7 +36,7 @@ require_once('/path/to/project/vendor/autoload.php');
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Authorize the client with a Fastly API token
-$config = Fastly\Configuration::getDefaultConfiguration()->setApiToken('Fastly-Key', 'YOUR_API_TOKEN');
+$config = Fastly\Configuration::getDefaultConfiguration()->setApiToken('YOUR_API_TOKEN');
 
 $apiInstance = new Fastly\Api\(
     // Optionally, pass a custom client that implements `GuzzleHttp\ClientInterface`.
@@ -62,7 +62,7 @@ try {
 The Fastly API requires an [API token](https://developer.fastly.com/reference/api/#authentication) for most operations.  Set it in the PHP client by using the `setApiToken` method of a configuration as shown:
 
 ```php
-Fastly\Configuration::getDefaultConfiguration()->setApiToken('Fastly-Key', 'YOUR_API_TOKEN');
+Fastly\Configuration::getDefaultConfiguration()->setApiToken('YOUR_API_TOKEN');
 ```
 
 

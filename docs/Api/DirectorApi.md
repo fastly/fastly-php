@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** |  |
 **version_id** | **int** |  |
-**backends** | [**\Fastly\Model\SchemasBackend[]**](../Model/\Fastly\Model\SchemasBackend.md) | List of backends associated to a director. | [optional]
+**backends** | [**\Fastly\Model\Backend[]**](../Model/\Fastly\Model\Backend.md) | List of backends associated to a director. | [optional]
 **capacity** | **int** | Unused. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **name** | **string** | Name for the Director. | [optional]

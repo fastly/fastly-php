@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**backends** | [**\Fastly\Model\SchemasBackend[]**](SchemasBackend.md) | List of backends associated to a director. | [optional]
+**backends** | [**\Fastly\Model\Backend[]**](Backend.md) | List of backends associated to a director. | [optional]
 **capacity** | **int** | Unused. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **name** | **string** | Name for the Director. | [optional]

@@ -67,7 +67,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
         'backends' => '\Fastly\Model\BackendResponse[]',
         'cache_settings' => '\Fastly\Model\CacheSettingResponse[]',
         'conditions' => '\Fastly\Model\ConditionResponse[]',
-        'directors' => '\Fastly\Model\SchemasDirector[]',
+        'directors' => '\Fastly\Model\Director[]',
         'domains' => '\Fastly\Model\DomainResponse[]',
         'gzips' => '\Fastly\Model\SchemasGzipResponse[]',
         'headers' => '\Fastly\Model\SchemasHeaderResponse[]',
@@ -75,7 +75,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_settings' => '\Fastly\Model\RequestSettingsResponse[]',
         'response_objects' => '\Fastly\Model\ResponseObjectResponse[]',
         'settings' => 'Settings',
-        'snippets' => '\Fastly\Model\SchemasSnippetResponse[]',
+        'snippets' => '\Fastly\Model\SnippetResponse[]',
         'vcls' => '\Fastly\Model\SchemasVclResponse[]',
         'wordpress' => 'object[]'
     ];
@@ -685,7 +685,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets directors
      *
-     * @return \Fastly\Model\SchemasDirector[]|null
+     * @return \Fastly\Model\Director[]|null
      */
     public function getDirectors()
     {
@@ -695,7 +695,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets directors
      *
-     * @param \Fastly\Model\SchemasDirector[]|null $directors List of directors associated to this service.
+     * @param \Fastly\Model\Director[]|null $directors List of directors associated to this service.
      *
      * @return self
      */
@@ -877,7 +877,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets snippets
      *
-     * @return \Fastly\Model\SchemasSnippetResponse[]|null
+     * @return \Fastly\Model\SnippetResponse[]|null
      */
     public function getSnippets()
     {
@@ -887,7 +887,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets snippets
      *
-     * @param \Fastly\Model\SchemasSnippetResponse[]|null $snippets List of VCL snippets for this service.
+     * @param \Fastly\Model\SnippetResponse[]|null $snippets List of VCL snippets for this service.
      *
      * @return self
      */

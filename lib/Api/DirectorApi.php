@@ -117,7 +117,7 @@ class DirectorApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
-     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
@@ -145,7 +145,7 @@ class DirectorApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
-     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
@@ -244,7 +244,7 @@ class DirectorApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
-     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
@@ -275,7 +275,7 @@ class DirectorApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
-     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
@@ -333,7 +333,7 @@ class DirectorApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
-     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
