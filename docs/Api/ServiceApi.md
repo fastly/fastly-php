@@ -47,8 +47,8 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **comment** | **string** | A freeform descriptive note. | [optional]
-**name** | **string** | The name of the service. | [optional]
 **customer_id** | **string** | Alphanumeric string identifying the customer. | [optional]
+**name** | **string** | The name of the service. | [optional]
 **type** | **string** | The type of this service. | [optional]
 
 ### Return type
@@ -278,8 +278,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** |  |
 **comment** | **string** | A freeform descriptive note. | [optional]
-**name** | **string** | The name of the service. | [optional]
 **customer_id** | **string** | Alphanumeric string identifying the customer. | [optional]
+**name** | **string** | The name of the service. | [optional]
 
 ### Return type
 

@@ -117,14 +117,14 @@ class LoggingScalyrApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -145,14 +145,14 @@ class LoggingScalyrApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -244,14 +244,14 @@ class LoggingScalyrApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -275,14 +275,14 @@ class LoggingScalyrApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -333,14 +333,14 @@ class LoggingScalyrApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -350,14 +350,14 @@ class LoggingScalyrApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : 'logplex';
         $region = array_key_exists('region', $options) ? $options['region'] : REGION_US;
         $token = array_key_exists('token', $options) ? $options['token'] : null;
-        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : 'logplex';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -399,6 +399,14 @@ class LoggingScalyrApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -407,16 +415,12 @@ class LoggingScalyrApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        if ($project_id !== null) {
+            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
         // form params
         if ($region !== null) {
@@ -425,10 +429,6 @@ class LoggingScalyrApi
         // form params
         if ($token !== null) {
             $formParams['token'] = ObjectSerializer::toFormValue($token);
-        }
-        // form params
-        if ($project_id !== null) {
-            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
 
         if ($multipart) {
@@ -1458,14 +1458,14 @@ class LoggingScalyrApi
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
      * @param  string $logging_scalyr_name logging_scalyr_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1487,14 +1487,14 @@ class LoggingScalyrApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_scalyr_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1587,14 +1587,14 @@ class LoggingScalyrApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_scalyr_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1619,14 +1619,14 @@ class LoggingScalyrApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_scalyr_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1678,14 +1678,14 @@ class LoggingScalyrApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_scalyr_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      * @param  string $region The region that log data will be sent to. (optional, default to REGION_US)
      * @param  string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
-     * @param  string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1696,14 +1696,14 @@ class LoggingScalyrApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_scalyr_name = array_key_exists('logging_scalyr_name', $options) ? $options['logging_scalyr_name'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : 'logplex';
         $region = array_key_exists('region', $options) ? $options['region'] : REGION_US;
         $token = array_key_exists('token', $options) ? $options['token'] : null;
-        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : 'logplex';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1759,6 +1759,14 @@ class LoggingScalyrApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1767,16 +1775,12 @@ class LoggingScalyrApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        if ($project_id !== null) {
+            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
         // form params
         if ($region !== null) {
@@ -1785,10 +1789,6 @@ class LoggingScalyrApi
         // form params
         if ($token !== null) {
             $formParams['token'] = ObjectSerializer::toFormValue($token);
-        }
-        // form params
-        if ($project_id !== null) {
-            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
 
         if ($multipart) {

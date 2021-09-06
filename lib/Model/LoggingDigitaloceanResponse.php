@@ -53,22 +53,22 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'string',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'response_condition' => 'string',
-        'format' => 'string',
-        'message_type' => '\Fastly\Model\LoggingMessageType',
-        'timestamp_format' => 'string',
-        'period' => 'int',
-        'gzip_level' => 'int',
         'compression_codec' => '\Fastly\Model\LoggingCompressionCodec',
-        'bucket_name' => 'string',
+        'gzip_level' => 'int',
+        'message_type' => '\Fastly\Model\LoggingMessageType',
+        'period' => 'int',
+        'timestamp_format' => 'string',
         'access_key' => 'string',
-        'secret_key' => 'string',
+        'bucket_name' => 'string',
         'domain' => 'string',
         'path' => 'string',
         'public_key' => 'string',
+        'secret_key' => 'string',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -84,22 +84,22 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
+        'format_version' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
-        'format' => null,
-        'message_type' => null,
-        'timestamp_format' => null,
-        'period' => null,
-        'gzip_level' => null,
         'compression_codec' => null,
-        'bucket_name' => null,
+        'gzip_level' => null,
+        'message_type' => null,
+        'period' => null,
+        'timestamp_format' => null,
         'access_key' => null,
-        'secret_key' => null,
+        'bucket_name' => null,
         'domain' => null,
         'path' => null,
         'public_key' => null,
+        'secret_key' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -134,22 +134,22 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
+        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'format' => 'format',
-        'message_type' => 'message_type',
-        'timestamp_format' => 'timestamp_format',
-        'period' => 'period',
-        'gzip_level' => 'gzip_level',
         'compression_codec' => 'compression_codec',
-        'bucket_name' => 'bucket_name',
+        'gzip_level' => 'gzip_level',
+        'message_type' => 'message_type',
+        'period' => 'period',
+        'timestamp_format' => 'timestamp_format',
         'access_key' => 'access_key',
-        'secret_key' => 'secret_key',
+        'bucket_name' => 'bucket_name',
         'domain' => 'domain',
         'path' => 'path',
         'public_key' => 'public_key',
+        'secret_key' => 'secret_key',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -163,22 +163,22 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'format' => 'setFormat',
-        'message_type' => 'setMessageType',
-        'timestamp_format' => 'setTimestampFormat',
-        'period' => 'setPeriod',
-        'gzip_level' => 'setGzipLevel',
         'compression_codec' => 'setCompressionCodec',
-        'bucket_name' => 'setBucketName',
+        'gzip_level' => 'setGzipLevel',
+        'message_type' => 'setMessageType',
+        'period' => 'setPeriod',
+        'timestamp_format' => 'setTimestampFormat',
         'access_key' => 'setAccessKey',
-        'secret_key' => 'setSecretKey',
+        'bucket_name' => 'setBucketName',
         'domain' => 'setDomain',
         'path' => 'setPath',
         'public_key' => 'setPublicKey',
+        'secret_key' => 'setSecretKey',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -192,22 +192,22 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'format' => 'getFormat',
-        'message_type' => 'getMessageType',
-        'timestamp_format' => 'getTimestampFormat',
-        'period' => 'getPeriod',
-        'gzip_level' => 'getGzipLevel',
         'compression_codec' => 'getCompressionCodec',
-        'bucket_name' => 'getBucketName',
+        'gzip_level' => 'getGzipLevel',
+        'message_type' => 'getMessageType',
+        'period' => 'getPeriod',
+        'timestamp_format' => 'getTimestampFormat',
         'access_key' => 'getAccessKey',
-        'secret_key' => 'getSecretKey',
+        'bucket_name' => 'getBucketName',
         'domain' => 'getDomain',
         'path' => 'getPath',
         'public_key' => 'getPublicKey',
+        'secret_key' => 'getSecretKey',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -275,22 +275,22 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['message_type'] = $data['message_type'] ?? null;
-        $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
-        $this->container['period'] = $data['period'] ?? 3600;
-        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
-        $this->container['bucket_name'] = $data['bucket_name'] ?? null;
+        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
+        $this->container['message_type'] = $data['message_type'] ?? null;
+        $this->container['period'] = $data['period'] ?? 3600;
+        $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
         $this->container['access_key'] = $data['access_key'] ?? null;
-        $this->container['secret_key'] = $data['secret_key'] ?? null;
+        $this->container['bucket_name'] = $data['bucket_name'] ?? null;
         $this->container['domain'] = $data['domain'] ?? 'nyc3.digitaloceanspaces.com';
         $this->container['path'] = $data['path'] ?? 'null';
         $this->container['public_key'] = $data['public_key'] ?? 'null';
+        $this->container['secret_key'] = $data['secret_key'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -321,6 +321,54 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -371,30 +419,6 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -414,126 +438,6 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets message_type
-     *
-     * @return \Fastly\Model\LoggingMessageType|null
-     */
-    public function getMessageType()
-    {
-        return $this->container['message_type'];
-    }
-
-    /**
-     * Sets message_type
-     *
-     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
-     *
-     * @return self
-     */
-    public function setMessageType($message_type)
-    {
-        $this->container['message_type'] = $message_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp_format
-     *
-     * @return string|null
-     */
-    public function getTimestampFormat()
-    {
-        return $this->container['timestamp_format'];
-    }
-
-    /**
-     * Sets timestamp_format
-     *
-     * @param string|null $timestamp_format Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setTimestampFormat($timestamp_format)
-    {
-        $this->container['timestamp_format'] = $timestamp_format;
-
-        return $this;
-    }
-
-    /**
-     * Gets period
-     *
-     * @return int|null
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period
-     *
-     * @param int|null $period How frequently log files are finalized so they can be available for reading (in seconds).
-     *
-     * @return self
-     */
-    public function setPeriod($period)
-    {
-        $this->container['period'] = $period;
-
-        return $this;
-    }
-
-    /**
-     * Gets gzip_level
-     *
-     * @return int|null
-     */
-    public function getGzipLevel()
-    {
-        return $this->container['gzip_level'];
-    }
-
-    /**
-     * Sets gzip_level
-     *
-     * @param int|null $gzip_level What level of gzip encoding to have when sending logs (default `0`, no compression). If an explicit non-zero value is set, then `compression_codec` will default to \"gzip.\" Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-     *
-     * @return self
-     */
-    public function setGzipLevel($gzip_level)
-    {
-        $this->container['gzip_level'] = $gzip_level;
 
         return $this;
     }
@@ -563,25 +467,97 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets bucket_name
+     * Gets gzip_level
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getBucketName()
+    public function getGzipLevel()
     {
-        return $this->container['bucket_name'];
+        return $this->container['gzip_level'];
     }
 
     /**
-     * Sets bucket_name
+     * Sets gzip_level
      *
-     * @param string|null $bucket_name The name of the DigitalOcean Space.
+     * @param int|null $gzip_level What level of gzip encoding to have when sending logs (default `0`, no compression). If an explicit non-zero value is set, then `compression_codec` will default to \"gzip.\" Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
      *
      * @return self
      */
-    public function setBucketName($bucket_name)
+    public function setGzipLevel($gzip_level)
     {
-        $this->container['bucket_name'] = $bucket_name;
+        $this->container['gzip_level'] = $gzip_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_type
+     *
+     * @return \Fastly\Model\LoggingMessageType|null
+     */
+    public function getMessageType()
+    {
+        return $this->container['message_type'];
+    }
+
+    /**
+     * Sets message_type
+     *
+     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
+     *
+     * @return self
+     */
+    public function setMessageType($message_type)
+    {
+        $this->container['message_type'] = $message_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return int|null
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param int|null $period How frequently log files are finalized so they can be available for reading (in seconds).
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp_format
+     *
+     * @return string|null
+     */
+    public function getTimestampFormat()
+    {
+        return $this->container['timestamp_format'];
+    }
+
+    /**
+     * Sets timestamp_format
+     *
+     * @param string|null $timestamp_format Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setTimestampFormat($timestamp_format)
+    {
+        $this->container['timestamp_format'] = $timestamp_format;
 
         return $this;
     }
@@ -611,25 +587,25 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets secret_key
+     * Gets bucket_name
      *
      * @return string|null
      */
-    public function getSecretKey()
+    public function getBucketName()
     {
-        return $this->container['secret_key'];
+        return $this->container['bucket_name'];
     }
 
     /**
-     * Sets secret_key
+     * Sets bucket_name
      *
-     * @param string|null $secret_key Your DigitalOcean Spaces account secret key.
+     * @param string|null $bucket_name The name of the DigitalOcean Space.
      *
      * @return self
      */
-    public function setSecretKey($secret_key)
+    public function setBucketName($bucket_name)
     {
-        $this->container['secret_key'] = $secret_key;
+        $this->container['bucket_name'] = $bucket_name;
 
         return $this;
     }
@@ -702,6 +678,30 @@ class LoggingDigitaloceanResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setPublicKey($public_key)
     {
         $this->container['public_key'] = $public_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets secret_key
+     *
+     * @return string|null
+     */
+    public function getSecretKey()
+    {
+        return $this->container['secret_key'];
+    }
+
+    /**
+     * Sets secret_key
+     *
+     * @param string|null $secret_key Your DigitalOcean Spaces account secret key.
+     *
+     * @return self
+     */
+    public function setSecretKey($secret_key)
+    {
+        $this->container['secret_key'] = $secret_key;
 
         return $this;
     }

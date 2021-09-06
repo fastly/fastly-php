@@ -117,17 +117,17 @@ class LoggingBigqueryApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -148,17 +148,17 @@ class LoggingBigqueryApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -250,17 +250,17 @@ class LoggingBigqueryApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -284,17 +284,17 @@ class LoggingBigqueryApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -345,17 +345,17 @@ class LoggingBigqueryApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -365,17 +365,17 @@ class LoggingBigqueryApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : null;
-        $user = array_key_exists('user', $options) ? $options['user'] : null;
         $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
+        $user = array_key_exists('user', $options) ? $options['user'] : null;
         $dataset = array_key_exists('dataset', $options) ? $options['dataset'] : null;
+        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : null;
         $table = array_key_exists('table', $options) ? $options['table'] : null;
         $template_suffix = array_key_exists('template_suffix', $options) ? $options['template_suffix'] : null;
-        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -417,6 +417,14 @@ class LoggingBigqueryApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -425,28 +433,24 @@ class LoggingBigqueryApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
-        }
-        // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($user !== null) {
-            $formParams['user'] = ObjectSerializer::toFormValue($user);
         }
         // form params
         if ($secret_key !== null) {
             $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
         }
         // form params
+        if ($user !== null) {
+            $formParams['user'] = ObjectSerializer::toFormValue($user);
+        }
+        // form params
         if ($dataset !== null) {
             $formParams['dataset'] = ObjectSerializer::toFormValue($dataset);
+        }
+        // form params
+        if ($project_id !== null) {
+            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
         // form params
         if ($table !== null) {
@@ -455,10 +459,6 @@ class LoggingBigqueryApi
         // form params
         if ($template_suffix !== null) {
             $formParams['template_suffix'] = ObjectSerializer::toFormValue($template_suffix);
-        }
-        // form params
-        if ($project_id !== null) {
-            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
 
         if ($multipart) {
@@ -1488,17 +1488,17 @@ class LoggingBigqueryApi
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
      * @param  string $logging_bigquery_name logging_bigquery_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1520,17 +1520,17 @@ class LoggingBigqueryApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_bigquery_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1623,17 +1623,17 @@ class LoggingBigqueryApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_bigquery_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1658,17 +1658,17 @@ class LoggingBigqueryApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_bigquery_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1720,17 +1720,17 @@ class LoggingBigqueryApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_bigquery_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
-     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $dataset Your BigQuery dataset. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      * @param  string $table Your BigQuery table. (optional)
      * @param  string $template_suffix BigQuery table name suffix template. Optional. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1741,17 +1741,17 @@ class LoggingBigqueryApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_bigquery_name = array_key_exists('logging_bigquery_name', $options) ? $options['logging_bigquery_name'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : null;
-        $user = array_key_exists('user', $options) ? $options['user'] : null;
         $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
+        $user = array_key_exists('user', $options) ? $options['user'] : null;
         $dataset = array_key_exists('dataset', $options) ? $options['dataset'] : null;
+        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : null;
         $table = array_key_exists('table', $options) ? $options['table'] : null;
         $template_suffix = array_key_exists('template_suffix', $options) ? $options['template_suffix'] : null;
-        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1807,6 +1807,14 @@ class LoggingBigqueryApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1815,28 +1823,24 @@ class LoggingBigqueryApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
-        }
-        // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($user !== null) {
-            $formParams['user'] = ObjectSerializer::toFormValue($user);
         }
         // form params
         if ($secret_key !== null) {
             $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
         }
         // form params
+        if ($user !== null) {
+            $formParams['user'] = ObjectSerializer::toFormValue($user);
+        }
+        // form params
         if ($dataset !== null) {
             $formParams['dataset'] = ObjectSerializer::toFormValue($dataset);
+        }
+        // form params
+        if ($project_id !== null) {
+            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
         // form params
         if ($table !== null) {
@@ -1845,10 +1849,6 @@ class LoggingBigqueryApi
         // form params
         if ($template_suffix !== null) {
             $formParams['template_suffix'] = ObjectSerializer::toFormValue($template_suffix);
-        }
-        // form params
-        if ($project_id !== null) {
-            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
 
         if ($multipart) {

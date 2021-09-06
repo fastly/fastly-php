@@ -84,7 +84,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'fastly-php/1.0.0-alpha1';
+    protected $userAgent = 'fastly-php/1.0.0-alpha2';
 
     /**
      * Debug switch (default set to false)
@@ -135,7 +135,7 @@ class Configuration
      */
     public function getApiToken()
     {
-        return isset($this->apiKeys['Fastly-Key']) ? $this->apiKeys['Fastly-Key'] : null;
+        return getenv("FASTLY_API_TOKEN") !== false ? getenv("FASTLY_API_TOKEN") : (isset($this->apiKeys['Fastly-Key']) ? $this->apiKeys['Fastly-Key'] : null);
     }
 
     /**
@@ -387,7 +387,7 @@ class Configuration
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the schema document: 1.0.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 1.0.0-alpha1' . PHP_EOL;
+        $report .= '    SDK Package Version: 1.0.0-alpha2' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
@@ -400,8 +400,8 @@ class Configuration
      */
     public function getApiTokenWithPrefix()
     {
-        $prefix = $this->getApiTokenPrefix('Fastly-Key');
-        $apiToken = $this->getApiToken('Fastly-Key');
+        $prefix = $this->getApiTokenPrefix();
+        $apiToken = $this->getApiToken();
 
         if ($apiToken === null) {
             return null;
@@ -426,6 +426,10 @@ class Configuration
         return [
             [
                 "url" => "https://api.fastly.com",
+                "description" => "No description provided",
+            ],
+            [
+                "url" => "https://rt.fastly.com",
                 "description" => "No description provided",
             ]
         ];

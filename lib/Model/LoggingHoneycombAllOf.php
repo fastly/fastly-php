@@ -53,8 +53,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'mixed',
         'dataset' => 'string',
+        'format' => 'mixed',
         'token' => 'string'
     ];
 
@@ -66,8 +66,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
         'dataset' => null,
+        'format' => null,
         'token' => null
     ];
 
@@ -98,8 +98,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
         'dataset' => 'dataset',
+        'format' => 'format',
         'token' => 'token'
     ];
 
@@ -109,8 +109,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
         'dataset' => 'setDataset',
+        'format' => 'setFormat',
         'token' => 'setToken'
     ];
 
@@ -120,8 +120,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
         'dataset' => 'getDataset',
+        'format' => 'getFormat',
         'token' => 'getToken'
     ];
 
@@ -185,8 +185,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? null;
         $this->container['dataset'] = $data['dataset'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
     }
 
@@ -215,30 +215,6 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets format
-     *
-     * @return mixed|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest.
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
      * Gets dataset
      *
      * @return string|null
@@ -258,6 +234,30 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDataset($dataset)
     {
         $this->container['dataset'] = $dataset;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return mixed|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
 
         return $this;
     }

@@ -30,7 +30,7 @@ use \Fastly\ObjectSerializer;
  * PackageMetadata Class Doc Comment
  *
  * @category Class
- * @description \\[Package metadata](#metadata-model) that has been extracted from the uploaded package.
+ * @description [Package metadata](#metadata-model) that has been extracted from the uploaded package.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
@@ -54,12 +54,12 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => 'string',
-        'description' => 'string',
         'authors' => 'string[]',
+        'description' => 'string',
+        'hashsum' => 'string',
         'language' => 'string',
-        'size' => 'int',
-        'hashsum' => 'string'
+        'name' => 'string',
+        'size' => 'int'
     ];
 
     /**
@@ -70,12 +70,12 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'name' => null,
-        'description' => null,
         'authors' => null,
+        'description' => null,
+        'hashsum' => null,
         'language' => null,
-        'size' => null,
-        'hashsum' => null
+        'name' => null,
+        'size' => null
     ];
 
     /**
@@ -105,12 +105,12 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'description' => 'description',
         'authors' => 'authors',
+        'description' => 'description',
+        'hashsum' => 'hashsum',
         'language' => 'language',
-        'size' => 'size',
-        'hashsum' => 'hashsum'
+        'name' => 'name',
+        'size' => 'size'
     ];
 
     /**
@@ -119,12 +119,12 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'description' => 'setDescription',
         'authors' => 'setAuthors',
+        'description' => 'setDescription',
+        'hashsum' => 'setHashsum',
         'language' => 'setLanguage',
-        'size' => 'setSize',
-        'hashsum' => 'setHashsum'
+        'name' => 'setName',
+        'size' => 'setSize'
     ];
 
     /**
@@ -133,12 +133,12 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'description' => 'getDescription',
         'authors' => 'getAuthors',
+        'description' => 'getDescription',
+        'hashsum' => 'getHashsum',
         'language' => 'getLanguage',
-        'size' => 'getSize',
-        'hashsum' => 'getHashsum'
+        'name' => 'getName',
+        'size' => 'getSize'
     ];
 
     /**
@@ -201,12 +201,12 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
         $this->container['authors'] = $data['authors'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['size'] = $data['size'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
         $this->container['hashsum'] = $data['hashsum'] ?? null;
+        $this->container['language'] = $data['language'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['size'] = $data['size'] ?? null;
     }
 
     /**
@@ -234,25 +234,25 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets authors
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getName()
+    public function getAuthors()
     {
-        return $this->container['name'];
+        return $this->container['authors'];
     }
 
     /**
-     * Sets name
+     * Sets authors
      *
-     * @param string|null $name Name of the Compute@Edge package.
+     * @param string[]|null $authors A list of package authors' email addresses.
      *
      * @return self
      */
-    public function setName($name)
+    public function setAuthors($authors)
     {
-        $this->container['name'] = $name;
+        $this->container['authors'] = $authors;
 
         return $this;
     }
@@ -282,25 +282,25 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets authors
+     * Gets hashsum
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getAuthors()
+    public function getHashsum()
     {
-        return $this->container['authors'];
+        return $this->container['hashsum'];
     }
 
     /**
-     * Sets authors
+     * Sets hashsum
      *
-     * @param string[]|null $authors authors
+     * @param string|null $hashsum Hash of the Compute@Edge package.
      *
      * @return self
      */
-    public function setAuthors($authors)
+    public function setHashsum($hashsum)
     {
-        $this->container['authors'] = $authors;
+        $this->container['hashsum'] = $hashsum;
 
         return $this;
     }
@@ -318,13 +318,37 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets language
      *
-     * @param string|null $language language
+     * @param string|null $language The language of the Compute@Edge package.
      *
      * @return self
      */
     public function setLanguage($language)
     {
         $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name of the Compute@Edge package.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -349,30 +373,6 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSize($size)
     {
         $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets hashsum
-     *
-     * @return string|null
-     */
-    public function getHashsum()
-    {
-        return $this->container['hashsum'];
-    }
-
-    /**
-     * Sets hashsum
-     *
-     * @param string|null $hashsum Hash of the Compute@Edge package.
-     *
-     * @return self
-     */
-    public function setHashsum($hashsum)
-    {
-        $this->container['hashsum'] = $hashsum;
 
         return $this;
     }

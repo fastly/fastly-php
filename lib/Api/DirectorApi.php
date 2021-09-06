@@ -117,14 +117,14 @@ class DirectorApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
-     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
      * @param  int $quorum The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. (optional, default to 75)
-     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  int $type What type of load balance group to use. (optional, default to 1)
      * @param  int $retries How many backends to search if it fails. (optional, default to 5)
+     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $type What type of load balance group to use. (optional, default to 1)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -145,14 +145,14 @@ class DirectorApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
-     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
      * @param  int $quorum The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. (optional, default to 75)
-     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  int $type What type of load balance group to use. (optional, default to 1)
      * @param  int $retries How many backends to search if it fails. (optional, default to 5)
+     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $type What type of load balance group to use. (optional, default to 1)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -244,14 +244,14 @@ class DirectorApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
-     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
      * @param  int $quorum The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. (optional, default to 75)
-     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  int $type What type of load balance group to use. (optional, default to 1)
      * @param  int $retries How many backends to search if it fails. (optional, default to 5)
+     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $type What type of load balance group to use. (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -275,14 +275,14 @@ class DirectorApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
-     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
      * @param  int $quorum The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. (optional, default to 75)
-     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  int $type What type of load balance group to use. (optional, default to 1)
      * @param  int $retries How many backends to search if it fails. (optional, default to 5)
+     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $type What type of load balance group to use. (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -333,14 +333,14 @@ class DirectorApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
-     * @param  \Fastly\Model\Backend[] $backends List of backends associated to a director. (optional)
+     * @param  \Fastly\Model\SchemasBackend[] $backends List of backends associated to a director. (optional)
      * @param  int $capacity Unused. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name for the Director. (optional)
      * @param  int $quorum The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. (optional, default to 75)
-     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  int $type What type of load balance group to use. (optional, default to 1)
      * @param  int $retries How many backends to search if it fails. (optional, default to 5)
+     * @param  string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $type What type of load balance group to use. (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -355,9 +355,9 @@ class DirectorApi
         $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $quorum = array_key_exists('quorum', $options) ? $options['quorum'] : 75;
+        $retries = array_key_exists('retries', $options) ? $options['retries'] : 5;
         $shield = array_key_exists('shield', $options) ? $options['shield'] : 'null';
         $type = array_key_exists('type', $options) ? $options['type'] : 1;
-        $retries = array_key_exists('retries', $options) ? $options['retries'] : 5;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -426,16 +426,16 @@ class DirectorApi
             $formParams['quorum'] = ObjectSerializer::toFormValue($quorum);
         }
         // form params
+        if ($retries !== null) {
+            $formParams['retries'] = ObjectSerializer::toFormValue($retries);
+        }
+        // form params
         if ($shield !== null) {
             $formParams['shield'] = ObjectSerializer::toFormValue($shield);
         }
         // form params
         if ($type !== null) {
             $formParams['type'] = ObjectSerializer::toFormValue($type);
-        }
-        // form params
-        if ($retries !== null) {
-            $formParams['retries'] = ObjectSerializer::toFormValue($retries);
         }
 
         if ($multipart) {

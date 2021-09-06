@@ -54,26 +54,26 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'tls_ca_cert' => 'string',
+        'tls_cert_hostname' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
-        'tls_cert_hostname' => 'string',
         'use_tls' => 'int',
-        'name' => 'string',
-        'shield' => 'string',
-        'request_condition' => 'string',
-        'max_conn_default' => 'int',
+        'comment' => 'string',
         'connect_timeout' => 'int',
         'first_byte_timeout' => 'int',
+        'healthcheck' => 'string',
+        'max_conn_default' => 'int',
+        'max_tls_version' => 'int',
+        'min_tls_version' => 'int',
+        'name' => 'string',
+        'override_host' => 'string',
         'quorum' => 'int',
+        'request_condition' => 'string',
+        'shield' => 'string',
+        'tls_check_cert' => 'int',
         'tls_ciphers' => 'string',
         'tls_sni_hostname' => 'string',
-        'tls_check_cert' => 'int',
-        'min_tls_version' => 'int',
-        'max_tls_version' => 'int',
-        'healthcheck' => 'string',
-        'comment' => 'string',
-        'type' => 'string',
-        'override_host' => 'string'
+        'type' => 'string'
     ];
 
     /**
@@ -85,26 +85,26 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'tls_ca_cert' => null,
+        'tls_cert_hostname' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
-        'tls_cert_hostname' => null,
         'use_tls' => null,
-        'name' => null,
-        'shield' => null,
-        'request_condition' => null,
-        'max_conn_default' => null,
+        'comment' => null,
         'connect_timeout' => null,
         'first_byte_timeout' => null,
+        'healthcheck' => null,
+        'max_conn_default' => null,
+        'max_tls_version' => null,
+        'min_tls_version' => null,
+        'name' => null,
+        'override_host' => null,
         'quorum' => null,
+        'request_condition' => null,
+        'shield' => null,
+        'tls_check_cert' => null,
         'tls_ciphers' => null,
         'tls_sni_hostname' => null,
-        'tls_check_cert' => null,
-        'min_tls_version' => null,
-        'max_tls_version' => null,
-        'healthcheck' => null,
-        'comment' => null,
-        'type' => null,
-        'override_host' => null
+        'type' => null
     ];
 
     /**
@@ -135,26 +135,26 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'tls_ca_cert' => 'tls_ca_cert',
+        'tls_cert_hostname' => 'tls_cert_hostname',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
-        'tls_cert_hostname' => 'tls_cert_hostname',
         'use_tls' => 'use_tls',
-        'name' => 'name',
-        'shield' => 'shield',
-        'request_condition' => 'request_condition',
-        'max_conn_default' => 'max_conn_default',
+        'comment' => 'comment',
         'connect_timeout' => 'connect_timeout',
         'first_byte_timeout' => 'first_byte_timeout',
+        'healthcheck' => 'healthcheck',
+        'max_conn_default' => 'max_conn_default',
+        'max_tls_version' => 'max_tls_version',
+        'min_tls_version' => 'min_tls_version',
+        'name' => 'name',
+        'override_host' => 'override_host',
         'quorum' => 'quorum',
+        'request_condition' => 'request_condition',
+        'shield' => 'shield',
+        'tls_check_cert' => 'tls_check_cert',
         'tls_ciphers' => 'tls_ciphers',
         'tls_sni_hostname' => 'tls_sni_hostname',
-        'tls_check_cert' => 'tls_check_cert',
-        'min_tls_version' => 'min_tls_version',
-        'max_tls_version' => 'max_tls_version',
-        'healthcheck' => 'healthcheck',
-        'comment' => 'comment',
-        'type' => 'type',
-        'override_host' => 'override_host'
+        'type' => 'type'
     ];
 
     /**
@@ -164,26 +164,26 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'tls_ca_cert' => 'setTlsCaCert',
+        'tls_cert_hostname' => 'setTlsCertHostname',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
-        'tls_cert_hostname' => 'setTlsCertHostname',
         'use_tls' => 'setUseTls',
-        'name' => 'setName',
-        'shield' => 'setShield',
-        'request_condition' => 'setRequestCondition',
-        'max_conn_default' => 'setMaxConnDefault',
+        'comment' => 'setComment',
         'connect_timeout' => 'setConnectTimeout',
         'first_byte_timeout' => 'setFirstByteTimeout',
+        'healthcheck' => 'setHealthcheck',
+        'max_conn_default' => 'setMaxConnDefault',
+        'max_tls_version' => 'setMaxTlsVersion',
+        'min_tls_version' => 'setMinTlsVersion',
+        'name' => 'setName',
+        'override_host' => 'setOverrideHost',
         'quorum' => 'setQuorum',
+        'request_condition' => 'setRequestCondition',
+        'shield' => 'setShield',
+        'tls_check_cert' => 'setTlsCheckCert',
         'tls_ciphers' => 'setTlsCiphers',
         'tls_sni_hostname' => 'setTlsSniHostname',
-        'tls_check_cert' => 'setTlsCheckCert',
-        'min_tls_version' => 'setMinTlsVersion',
-        'max_tls_version' => 'setMaxTlsVersion',
-        'healthcheck' => 'setHealthcheck',
-        'comment' => 'setComment',
-        'type' => 'setType',
-        'override_host' => 'setOverrideHost'
+        'type' => 'setType'
     ];
 
     /**
@@ -193,26 +193,26 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'tls_ca_cert' => 'getTlsCaCert',
+        'tls_cert_hostname' => 'getTlsCertHostname',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
-        'tls_cert_hostname' => 'getTlsCertHostname',
         'use_tls' => 'getUseTls',
-        'name' => 'getName',
-        'shield' => 'getShield',
-        'request_condition' => 'getRequestCondition',
-        'max_conn_default' => 'getMaxConnDefault',
+        'comment' => 'getComment',
         'connect_timeout' => 'getConnectTimeout',
         'first_byte_timeout' => 'getFirstByteTimeout',
+        'healthcheck' => 'getHealthcheck',
+        'max_conn_default' => 'getMaxConnDefault',
+        'max_tls_version' => 'getMaxTlsVersion',
+        'min_tls_version' => 'getMinTlsVersion',
+        'name' => 'getName',
+        'override_host' => 'getOverrideHost',
         'quorum' => 'getQuorum',
+        'request_condition' => 'getRequestCondition',
+        'shield' => 'getShield',
+        'tls_check_cert' => 'getTlsCheckCert',
         'tls_ciphers' => 'getTlsCiphers',
         'tls_sni_hostname' => 'getTlsSniHostname',
-        'tls_check_cert' => 'getTlsCheckCert',
-        'min_tls_version' => 'getMinTlsVersion',
-        'max_tls_version' => 'getMaxTlsVersion',
-        'healthcheck' => 'getHealthcheck',
-        'comment' => 'getComment',
-        'type' => 'getType',
-        'override_host' => 'getOverrideHost'
+        'type' => 'getType'
     ];
 
     /**
@@ -308,26 +308,26 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
+        $this->container['tls_cert_hostname'] = $data['tls_cert_hostname'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
-        $this->container['tls_cert_hostname'] = $data['tls_cert_hostname'] ?? 'null';
         $this->container['use_tls'] = $data['use_tls'] ?? USE_TLS_no_tls;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['shield'] = $data['shield'] ?? 'null';
-        $this->container['request_condition'] = $data['request_condition'] ?? null;
-        $this->container['max_conn_default'] = $data['max_conn_default'] ?? null;
+        $this->container['comment'] = $data['comment'] ?? null;
         $this->container['connect_timeout'] = $data['connect_timeout'] ?? null;
         $this->container['first_byte_timeout'] = $data['first_byte_timeout'] ?? null;
+        $this->container['healthcheck'] = $data['healthcheck'] ?? null;
+        $this->container['max_conn_default'] = $data['max_conn_default'] ?? null;
+        $this->container['max_tls_version'] = $data['max_tls_version'] ?? null;
+        $this->container['min_tls_version'] = $data['min_tls_version'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['override_host'] = $data['override_host'] ?? 'null';
         $this->container['quorum'] = $data['quorum'] ?? 75;
+        $this->container['request_condition'] = $data['request_condition'] ?? null;
+        $this->container['shield'] = $data['shield'] ?? 'null';
+        $this->container['tls_check_cert'] = $data['tls_check_cert'] ?? null;
         $this->container['tls_ciphers'] = $data['tls_ciphers'] ?? null;
         $this->container['tls_sni_hostname'] = $data['tls_sni_hostname'] ?? null;
-        $this->container['tls_check_cert'] = $data['tls_check_cert'] ?? null;
-        $this->container['min_tls_version'] = $data['min_tls_version'] ?? null;
-        $this->container['max_tls_version'] = $data['max_tls_version'] ?? null;
-        $this->container['healthcheck'] = $data['healthcheck'] ?? null;
-        $this->container['comment'] = $data['comment'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['override_host'] = $data['override_host'] ?? 'null';
     }
 
     /**
@@ -405,6 +405,30 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets tls_cert_hostname
+     *
+     * @return string|null
+     */
+    public function getTlsCertHostname()
+    {
+        return $this->container['tls_cert_hostname'];
+    }
+
+    /**
+     * Sets tls_cert_hostname
+     *
+     * @param string|null $tls_cert_hostname The hostname used to verify a server's certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN).
+     *
+     * @return self
+     */
+    public function setTlsCertHostname($tls_cert_hostname)
+    {
+        $this->container['tls_cert_hostname'] = $tls_cert_hostname;
+
+        return $this;
+    }
+
+    /**
      * Gets tls_client_cert
      *
      * @return string|null
@@ -453,30 +477,6 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets tls_cert_hostname
-     *
-     * @return string|null
-     */
-    public function getTlsCertHostname()
-    {
-        return $this->container['tls_cert_hostname'];
-    }
-
-    /**
-     * Sets tls_cert_hostname
-     *
-     * @param string|null $tls_cert_hostname The hostname used to verify a server's certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN).
-     *
-     * @return self
-     */
-    public function setTlsCertHostname($tls_cert_hostname)
-    {
-        $this->container['tls_cert_hostname'] = $tls_cert_hostname;
-
-        return $this;
-    }
-
-    /**
      * Gets use_tls
      *
      * @return int|null
@@ -511,97 +511,25 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
+     * Gets comment
      *
      * @return string|null
      */
-    public function getName()
+    public function getComment()
     {
-        return $this->container['name'];
+        return $this->container['comment'];
     }
 
     /**
-     * Sets name
+     * Sets comment
      *
-     * @param string|null $name Name for the Pool.
+     * @param string|null $comment A freeform descriptive note.
      *
      * @return self
      */
-    public function setName($name)
+    public function setComment($comment)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets shield
-     *
-     * @return string|null
-     */
-    public function getShield()
-    {
-        return $this->container['shield'];
-    }
-
-    /**
-     * Sets shield
-     *
-     * @param string|null $shield Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding.
-     *
-     * @return self
-     */
-    public function setShield($shield)
-    {
-        $this->container['shield'] = $shield;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_condition
-     *
-     * @return string|null
-     */
-    public function getRequestCondition()
-    {
-        return $this->container['request_condition'];
-    }
-
-    /**
-     * Sets request_condition
-     *
-     * @param string|null $request_condition Condition which, if met, will select this configuration during a request. Optional.
-     *
-     * @return self
-     */
-    public function setRequestCondition($request_condition)
-    {
-        $this->container['request_condition'] = $request_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_conn_default
-     *
-     * @return int|null
-     */
-    public function getMaxConnDefault()
-    {
-        return $this->container['max_conn_default'];
-    }
-
-    /**
-     * Sets max_conn_default
-     *
-     * @param int|null $max_conn_default Maximum number of connections.
-     *
-     * @return self
-     */
-    public function setMaxConnDefault($max_conn_default)
-    {
-        $this->container['max_conn_default'] = $max_conn_default;
+        $this->container['comment'] = $comment;
 
         return $this;
     }
@@ -655,6 +583,150 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets healthcheck
+     *
+     * @return string|null
+     */
+    public function getHealthcheck()
+    {
+        return $this->container['healthcheck'];
+    }
+
+    /**
+     * Sets healthcheck
+     *
+     * @param string|null $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
+     *
+     * @return self
+     */
+    public function setHealthcheck($healthcheck)
+    {
+        $this->container['healthcheck'] = $healthcheck;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_conn_default
+     *
+     * @return int|null
+     */
+    public function getMaxConnDefault()
+    {
+        return $this->container['max_conn_default'];
+    }
+
+    /**
+     * Sets max_conn_default
+     *
+     * @param int|null $max_conn_default Maximum number of connections.
+     *
+     * @return self
+     */
+    public function setMaxConnDefault($max_conn_default)
+    {
+        $this->container['max_conn_default'] = $max_conn_default;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_tls_version
+     *
+     * @return int|null
+     */
+    public function getMaxTlsVersion()
+    {
+        return $this->container['max_tls_version'];
+    }
+
+    /**
+     * Sets max_tls_version
+     *
+     * @param int|null $max_tls_version Maximum allowed TLS version on connections to this server. Optional.
+     *
+     * @return self
+     */
+    public function setMaxTlsVersion($max_tls_version)
+    {
+        $this->container['max_tls_version'] = $max_tls_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_tls_version
+     *
+     * @return int|null
+     */
+    public function getMinTlsVersion()
+    {
+        return $this->container['min_tls_version'];
+    }
+
+    /**
+     * Sets min_tls_version
+     *
+     * @param int|null $min_tls_version Minimum allowed TLS version on connections to this server. Optional.
+     *
+     * @return self
+     */
+    public function setMinTlsVersion($min_tls_version)
+    {
+        $this->container['min_tls_version'] = $min_tls_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name for the Pool.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets override_host
+     *
+     * @return string|null
+     */
+    public function getOverrideHost()
+    {
+        return $this->container['override_host'];
+    }
+
+    /**
+     * Sets override_host
+     *
+     * @param string|null $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+     *
+     * @return self
+     */
+    public function setOverrideHost($override_host)
+    {
+        $this->container['override_host'] = $override_host;
+
+        return $this;
+    }
+
+    /**
      * Gets quorum
      *
      * @return int|null
@@ -682,6 +754,78 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['quorum'] = $quorum;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_condition
+     *
+     * @return string|null
+     */
+    public function getRequestCondition()
+    {
+        return $this->container['request_condition'];
+    }
+
+    /**
+     * Sets request_condition
+     *
+     * @param string|null $request_condition Condition which, if met, will select this configuration during a request. Optional.
+     *
+     * @return self
+     */
+    public function setRequestCondition($request_condition)
+    {
+        $this->container['request_condition'] = $request_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield
+     *
+     * @return string|null
+     */
+    public function getShield()
+    {
+        return $this->container['shield'];
+    }
+
+    /**
+     * Sets shield
+     *
+     * @param string|null $shield Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
+     *
+     * @return self
+     */
+    public function setShield($shield)
+    {
+        $this->container['shield'] = $shield;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_check_cert
+     *
+     * @return int|null
+     */
+    public function getTlsCheckCert()
+    {
+        return $this->container['tls_check_cert'];
+    }
+
+    /**
+     * Sets tls_check_cert
+     *
+     * @param int|null $tls_check_cert Be strict on checking TLS certs. Optional.
+     *
+     * @return self
+     */
+    public function setTlsCheckCert($tls_check_cert)
+    {
+        $this->container['tls_check_cert'] = $tls_check_cert;
 
         return $this;
     }
@@ -735,126 +879,6 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets tls_check_cert
-     *
-     * @return int|null
-     */
-    public function getTlsCheckCert()
-    {
-        return $this->container['tls_check_cert'];
-    }
-
-    /**
-     * Sets tls_check_cert
-     *
-     * @param int|null $tls_check_cert Be strict on checking TLS certs. Optional.
-     *
-     * @return self
-     */
-    public function setTlsCheckCert($tls_check_cert)
-    {
-        $this->container['tls_check_cert'] = $tls_check_cert;
-
-        return $this;
-    }
-
-    /**
-     * Gets min_tls_version
-     *
-     * @return int|null
-     */
-    public function getMinTlsVersion()
-    {
-        return $this->container['min_tls_version'];
-    }
-
-    /**
-     * Sets min_tls_version
-     *
-     * @param int|null $min_tls_version Minimum allowed TLS version on connections to this server. Optional.
-     *
-     * @return self
-     */
-    public function setMinTlsVersion($min_tls_version)
-    {
-        $this->container['min_tls_version'] = $min_tls_version;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_tls_version
-     *
-     * @return int|null
-     */
-    public function getMaxTlsVersion()
-    {
-        return $this->container['max_tls_version'];
-    }
-
-    /**
-     * Sets max_tls_version
-     *
-     * @param int|null $max_tls_version Maximum allowed TLS version on connections to this server. Optional.
-     *
-     * @return self
-     */
-    public function setMaxTlsVersion($max_tls_version)
-    {
-        $this->container['max_tls_version'] = $max_tls_version;
-
-        return $this;
-    }
-
-    /**
-     * Gets healthcheck
-     *
-     * @return string|null
-     */
-    public function getHealthcheck()
-    {
-        return $this->container['healthcheck'];
-    }
-
-    /**
-     * Sets healthcheck
-     *
-     * @param string|null $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
-     *
-     * @return self
-     */
-    public function setHealthcheck($healthcheck)
-    {
-        $this->container['healthcheck'] = $healthcheck;
-
-        return $this;
-    }
-
-    /**
-     * Gets comment
-     *
-     * @return string|null
-     */
-    public function getComment()
-    {
-        return $this->container['comment'];
-    }
-
-    /**
-     * Sets comment
-     *
-     * @param string|null $comment A freeform descriptive note.
-     *
-     * @return self
-     */
-    public function setComment($comment)
-    {
-        $this->container['comment'] = $comment;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return string|null
@@ -884,30 +908,6 @@ class Pool implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets override_host
-     *
-     * @return string|null
-     */
-    public function getOverrideHost()
-    {
-        return $this->container['override_host'];
-    }
-
-    /**
-     * Sets override_host
-     *
-     * @param string|null $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
-     *
-     * @return self
-     */
-    public function setOverrideHost($override_host)
-    {
-        $this->container['override_host'] = $override_host;
 
         return $this;
     }

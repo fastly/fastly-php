@@ -53,6 +53,8 @@ class DictionaryItemResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'item_key' => 'string',
+        'item_value' => 'string',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -68,6 +70,8 @@ class DictionaryItemResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'item_key' => null,
+        'item_value' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -102,6 +106,8 @@ class DictionaryItemResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
+        'item_key' => 'item_key',
+        'item_value' => 'item_value',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -115,6 +121,8 @@ class DictionaryItemResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
+        'item_key' => 'setItemKey',
+        'item_value' => 'setItemValue',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -128,6 +136,8 @@ class DictionaryItemResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
+        'item_key' => 'getItemKey',
+        'item_value' => 'getItemValue',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -195,6 +205,8 @@ class DictionaryItemResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
+        $this->container['item_key'] = $data['item_key'] ?? null;
+        $this->container['item_value'] = $data['item_value'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -225,6 +237,54 @@ class DictionaryItemResponse implements ModelInterface, ArrayAccess, \JsonSerial
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets item_key
+     *
+     * @return string|null
+     */
+    public function getItemKey()
+    {
+        return $this->container['item_key'];
+    }
+
+    /**
+     * Sets item_key
+     *
+     * @param string|null $item_key Item key, maximum 256 characters.
+     *
+     * @return self
+     */
+    public function setItemKey($item_key)
+    {
+        $this->container['item_key'] = $item_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets item_value
+     *
+     * @return string|null
+     */
+    public function getItemValue()
+    {
+        return $this->container['item_value'];
+    }
+
+    /**
+     * Sets item_value
+     *
+     * @param string|null $item_value Item value, maximum 8000 characters.
+     *
+     * @return self
+     */
+    public function setItemValue($item_value)
+    {
+        $this->container['item_value'] = $item_value;
+
+        return $this;
+    }
 
     /**
      * Gets created_at

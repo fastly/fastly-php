@@ -42,7 +42,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**star_data** | [**\Fastly\Model\StarData**](../Model/StarData.md) |  | [optional]
+**star** | [**\Fastly\Model\Star**](../Model/Star.md) |  | [optional]
 
 ### Return type
 

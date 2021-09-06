@@ -53,8 +53,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'type' => '\Fastly\Model\TypeTlsActivation',
-        'relationships' => 'AnyOfObjectObjectObject'
+        'relationships' => 'AnyOfObjectObjectObject',
+        'type' => '\Fastly\Model\TypeTlsActivation'
     ];
 
     /**
@@ -65,8 +65,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'type' => null,
-        'relationships' => null
+        'relationships' => null,
+        'type' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'relationships' => 'relationships'
+        'relationships' => 'relationships',
+        'type' => 'type'
     ];
 
     /**
@@ -106,8 +106,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'relationships' => 'setRelationships'
+        'relationships' => 'setRelationships',
+        'type' => 'setType'
     ];
 
     /**
@@ -116,8 +116,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'relationships' => 'getRelationships'
+        'relationships' => 'getRelationships',
+        'type' => 'getType'
     ];
 
     /**
@@ -180,8 +180,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['relationships'] = $data['relationships'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeTlsActivation|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeTlsActivation|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets relationships
      *
      * @return AnyOfObjectObjectObject|null
@@ -252,6 +228,30 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setRelationships($relationships)
     {
         $this->container['relationships'] = $relationships;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeTlsActivation|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeTlsActivation|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

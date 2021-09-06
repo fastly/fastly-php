@@ -53,16 +53,16 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'string',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'response_condition' => 'string',
-        'format' => 'string',
-        'message_type' => '\Fastly\Model\LoggingMessageType',
-        'timestamp_format' => 'string',
-        'period' => 'int',
-        'gzip_level' => 'int',
         'compression_codec' => '\Fastly\Model\LoggingCompressionCodec',
+        'gzip_level' => 'int',
+        'message_type' => '\Fastly\Model\LoggingMessageType',
+        'period' => 'int',
+        'timestamp_format' => 'string',
         'access_key' => 'string',
         'bucket_name' => 'string',
         'path' => 'string',
@@ -84,16 +84,16 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
+        'format_version' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
-        'format' => null,
-        'message_type' => null,
-        'timestamp_format' => null,
-        'period' => null,
-        'gzip_level' => null,
         'compression_codec' => null,
+        'gzip_level' => null,
+        'message_type' => null,
+        'period' => null,
+        'timestamp_format' => null,
         'access_key' => null,
         'bucket_name' => null,
         'path' => null,
@@ -134,16 +134,16 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
+        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'format' => 'format',
-        'message_type' => 'message_type',
-        'timestamp_format' => 'timestamp_format',
-        'period' => 'period',
-        'gzip_level' => 'gzip_level',
         'compression_codec' => 'compression_codec',
+        'gzip_level' => 'gzip_level',
+        'message_type' => 'message_type',
+        'period' => 'period',
+        'timestamp_format' => 'timestamp_format',
         'access_key' => 'access_key',
         'bucket_name' => 'bucket_name',
         'path' => 'path',
@@ -163,16 +163,16 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'format' => 'setFormat',
-        'message_type' => 'setMessageType',
-        'timestamp_format' => 'setTimestampFormat',
-        'period' => 'setPeriod',
-        'gzip_level' => 'setGzipLevel',
         'compression_codec' => 'setCompressionCodec',
+        'gzip_level' => 'setGzipLevel',
+        'message_type' => 'setMessageType',
+        'period' => 'setPeriod',
+        'timestamp_format' => 'setTimestampFormat',
         'access_key' => 'setAccessKey',
         'bucket_name' => 'setBucketName',
         'path' => 'setPath',
@@ -192,16 +192,16 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'format' => 'getFormat',
-        'message_type' => 'getMessageType',
-        'timestamp_format' => 'getTimestampFormat',
-        'period' => 'getPeriod',
-        'gzip_level' => 'getGzipLevel',
         'compression_codec' => 'getCompressionCodec',
+        'gzip_level' => 'getGzipLevel',
+        'message_type' => 'getMessageType',
+        'period' => 'getPeriod',
+        'timestamp_format' => 'getTimestampFormat',
         'access_key' => 'getAccessKey',
         'bucket_name' => 'getBucketName',
         'path' => 'getPath',
@@ -275,16 +275,16 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['message_type'] = $data['message_type'] ?? null;
-        $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
-        $this->container['period'] = $data['period'] ?? 3600;
-        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
+        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
+        $this->container['message_type'] = $data['message_type'] ?? null;
+        $this->container['period'] = $data['period'] ?? 3600;
+        $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
         $this->container['access_key'] = $data['access_key'] ?? null;
         $this->container['bucket_name'] = $data['bucket_name'] ?? null;
         $this->container['path'] = $data['path'] ?? 'null';
@@ -321,6 +321,54 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -371,30 +419,6 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -419,97 +443,25 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets format
+     * Gets compression_codec
      *
-     * @return string|null
+     * @return \Fastly\Model\LoggingCompressionCodec|null
      */
-    public function getFormat()
+    public function getCompressionCodec()
     {
-        return $this->container['format'];
+        return $this->container['compression_codec'];
     }
 
     /**
-     * Sets format
+     * Sets compression_codec
      *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     * @param \Fastly\Model\LoggingCompressionCodec|null $compression_codec compression_codec
      *
      * @return self
      */
-    public function setFormat($format)
+    public function setCompressionCodec($compression_codec)
     {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets message_type
-     *
-     * @return \Fastly\Model\LoggingMessageType|null
-     */
-    public function getMessageType()
-    {
-        return $this->container['message_type'];
-    }
-
-    /**
-     * Sets message_type
-     *
-     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
-     *
-     * @return self
-     */
-    public function setMessageType($message_type)
-    {
-        $this->container['message_type'] = $message_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp_format
-     *
-     * @return string|null
-     */
-    public function getTimestampFormat()
-    {
-        return $this->container['timestamp_format'];
-    }
-
-    /**
-     * Sets timestamp_format
-     *
-     * @param string|null $timestamp_format Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setTimestampFormat($timestamp_format)
-    {
-        $this->container['timestamp_format'] = $timestamp_format;
-
-        return $this;
-    }
-
-    /**
-     * Gets period
-     *
-     * @return int|null
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period
-     *
-     * @param int|null $period How frequently log files are finalized so they can be available for reading (in seconds).
-     *
-     * @return self
-     */
-    public function setPeriod($period)
-    {
-        $this->container['period'] = $period;
+        $this->container['compression_codec'] = $compression_codec;
 
         return $this;
     }
@@ -539,25 +491,73 @@ class LoggingOpenstackResponse implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets compression_codec
+     * Gets message_type
      *
-     * @return \Fastly\Model\LoggingCompressionCodec|null
+     * @return \Fastly\Model\LoggingMessageType|null
      */
-    public function getCompressionCodec()
+    public function getMessageType()
     {
-        return $this->container['compression_codec'];
+        return $this->container['message_type'];
     }
 
     /**
-     * Sets compression_codec
+     * Sets message_type
      *
-     * @param \Fastly\Model\LoggingCompressionCodec|null $compression_codec compression_codec
+     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
      *
      * @return self
      */
-    public function setCompressionCodec($compression_codec)
+    public function setMessageType($message_type)
     {
-        $this->container['compression_codec'] = $compression_codec;
+        $this->container['message_type'] = $message_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return int|null
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param int|null $period How frequently log files are finalized so they can be available for reading (in seconds).
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp_format
+     *
+     * @return string|null
+     */
+    public function getTimestampFormat()
+    {
+        return $this->container['timestamp_format'];
+    }
+
+    /**
+     * Sets timestamp_format
+     *
+     * @param string|null $timestamp_format Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setTimestampFormat($timestamp_format)
+    {
+        $this->container['timestamp_format'] = $timestamp_format;
 
         return $this;
     }

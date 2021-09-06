@@ -53,7 +53,7 @@ class SchemasWafFirewallVersion implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\WafFirewallVersionData'
+        'data' => '\Fastly\Model\SchemasWafFirewallVersionData'
     ];
 
     /**
@@ -205,7 +205,7 @@ class SchemasWafFirewallVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets data
      *
-     * @return \Fastly\Model\WafFirewallVersionData|null
+     * @return \Fastly\Model\SchemasWafFirewallVersionData|null
      */
     public function getData()
     {
@@ -215,7 +215,7 @@ class SchemasWafFirewallVersion implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \Fastly\Model\WafFirewallVersionData|null $data data
+     * @param \Fastly\Model\SchemasWafFirewallVersionData|null $data data
      *
      * @return self
      */

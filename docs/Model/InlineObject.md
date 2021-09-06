@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**DictionaryItem[]**](DictionaryItem.md) |  | [optional]
+**data** | [**\Fastly\Model\CustomerCustomerIdBillingAddressData**](CustomerCustomerIdBillingAddressData.md) |  | [optional]
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

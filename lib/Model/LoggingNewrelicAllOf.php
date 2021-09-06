@@ -54,6 +54,7 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $fastlyTypes = [
         'format' => 'mixed',
+        'region' => 'string',
         'token' => 'string'
     ];
 
@@ -66,6 +67,7 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $fastlyFormats = [
         'format' => null,
+        'region' => null,
         'token' => null
     ];
 
@@ -97,6 +99,7 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'format' => 'format',
+        'region' => 'region',
         'token' => 'token'
     ];
 
@@ -107,6 +110,7 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'format' => 'setFormat',
+        'region' => 'setRegion',
         'token' => 'setToken'
     ];
 
@@ -117,6 +121,7 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'format' => 'getFormat',
+        'region' => 'getRegion',
         'token' => 'getToken'
     ];
 
@@ -161,8 +166,23 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$fastlyModelName;
     }
 
+    const REGION_US = 'US';
+    const REGION_EU = 'EU';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRegionAllowableValues()
+    {
+        return [
+            self::REGION_US,
+            self::REGION_EU,
+        ];
+    }
     
 
     /**
@@ -181,6 +201,7 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['format'] = $data['format'] ?? null;
+        $this->container['region'] = $data['region'] ?? REGION_US;
         $this->container['token'] = $data['token'] ?? null;
     }
 
@@ -192,6 +213,15 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getRegionAllowableValues();
+        if (!is_null($this->container['region']) && !in_array($this->container['region'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'region', must be one of '%s'",
+                $this->container['region'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -228,6 +258,40 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets region
+     *
+     * @return string|null
+     */
+    public function getRegion()
+    {
+        return $this->container['region'];
+    }
+
+    /**
+     * Sets region
+     *
+     * @param string|null $region The region to which to stream logs.
+     *
+     * @return self
+     */
+    public function setRegion($region)
+    {
+        $allowedValues = $this->getRegionAllowableValues();
+        if (!is_null($region) && !in_array($region, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'region', must be one of '%s'",
+                    $region,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['region'] = $region;
 
         return $this;
     }

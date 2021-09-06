@@ -45,17 +45,17 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** |  |
 **version_id** | **int** |  |
+**format** | **string** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. | [optional]
+**format_version** | [**\Fastly\Model\LoggingFormatVersion**](../Model/LoggingFormatVersion.md) |  | [optional]
 **name** | **string** | The name of the BigQuery logging object. Used as a primary key for API access. | [optional]
 **placement** | [**\Fastly\Model\LoggingPlacement**](../Model/LoggingPlacement.md) |  | [optional]
-**format_version** | [**\Fastly\Model\LoggingFormatVersion**](../Model/LoggingFormatVersion.md) |  | [optional]
 **response_condition** | **string** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
-**format** | **string** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. | [optional]
-**user** | **string** | Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. | [optional]
 **secret_key** | **string** | Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. | [optional]
+**user** | **string** | Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. | [optional]
 **dataset** | **string** | Your BigQuery dataset. | [optional]
+**project_id** | **string** | Your Google Cloud Platform project ID. Required | [optional]
 **table** | **string** | Your BigQuery table. | [optional]
 **template_suffix** | **string** | BigQuery table name suffix template. Optional. | [optional]
-**project_id** | **string** | Your Google Cloud Platform project ID. Required | [optional]
 
 ### Return type
 
@@ -191,17 +191,17 @@ Name | Type | Description  | Notes
 **service_id** | **string** |  |
 **version_id** | **int** |  |
 **logging_bigquery_name** | **string** |  |
+**format** | **string** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. | [optional]
+**format_version** | [**\Fastly\Model\LoggingFormatVersion**](../Model/LoggingFormatVersion.md) |  | [optional]
 **name** | **string** | The name of the BigQuery logging object. Used as a primary key for API access. | [optional]
 **placement** | [**\Fastly\Model\LoggingPlacement**](../Model/LoggingPlacement.md) |  | [optional]
-**format_version** | [**\Fastly\Model\LoggingFormatVersion**](../Model/LoggingFormatVersion.md) |  | [optional]
 **response_condition** | **string** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
-**format** | **string** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. | [optional]
-**user** | **string** | Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. | [optional]
 **secret_key** | **string** | Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. | [optional]
+**user** | **string** | Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. | [optional]
 **dataset** | **string** | Your BigQuery dataset. | [optional]
+**project_id** | **string** | Your Google Cloud Platform project ID. Required | [optional]
 **table** | **string** | Your BigQuery table. | [optional]
 **template_suffix** | **string** | BigQuery table name suffix template. Optional. | [optional]
-**project_id** | **string** | Your Google Cloud Platform project ID. Required | [optional]
 
 ### Return type
 

@@ -53,12 +53,12 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'mixed',
         'index' => 'string',
-        'url' => 'string',
-        'pipeline' => 'string',
-        'user' => 'string',
         'password' => 'string',
-        'format' => 'mixed'
+        'pipeline' => 'string',
+        'url' => 'string',
+        'user' => 'string'
     ];
 
     /**
@@ -69,12 +69,12 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
         'index' => null,
-        'url' => null,
-        'pipeline' => null,
-        'user' => null,
         'password' => null,
-        'format' => null
+        'pipeline' => null,
+        'url' => null,
+        'user' => null
     ];
 
     /**
@@ -104,12 +104,12 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
         'index' => 'index',
-        'url' => 'url',
-        'pipeline' => 'pipeline',
-        'user' => 'user',
         'password' => 'password',
-        'format' => 'format'
+        'pipeline' => 'pipeline',
+        'url' => 'url',
+        'user' => 'user'
     ];
 
     /**
@@ -118,12 +118,12 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
         'index' => 'setIndex',
-        'url' => 'setUrl',
-        'pipeline' => 'setPipeline',
-        'user' => 'setUser',
         'password' => 'setPassword',
-        'format' => 'setFormat'
+        'pipeline' => 'setPipeline',
+        'url' => 'setUrl',
+        'user' => 'setUser'
     ];
 
     /**
@@ -132,12 +132,12 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
         'index' => 'getIndex',
-        'url' => 'getUrl',
-        'pipeline' => 'getPipeline',
-        'user' => 'getUser',
         'password' => 'getPassword',
-        'format' => 'getFormat'
+        'pipeline' => 'getPipeline',
+        'url' => 'getUrl',
+        'user' => 'getUser'
     ];
 
     /**
@@ -200,12 +200,12 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['index'] = $data['index'] ?? null;
-        $this->container['url'] = $data['url'] ?? null;
-        $this->container['pipeline'] = $data['pipeline'] ?? null;
-        $this->container['user'] = $data['user'] ?? null;
-        $this->container['password'] = $data['password'] ?? null;
         $this->container['format'] = $data['format'] ?? null;
+        $this->container['index'] = $data['index'] ?? null;
+        $this->container['password'] = $data['password'] ?? null;
+        $this->container['pipeline'] = $data['pipeline'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
+        $this->container['user'] = $data['user'] ?? null;
     }
 
     /**
@@ -233,6 +233,30 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
+     * Gets format
+     *
+     * @return mixed|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
      * Gets index
      *
      * @return string|null
@@ -252,78 +276,6 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
     public function setIndex($index)
     {
         $this->container['index'] = $index;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string|null
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string|null $url The URL to stream logs to. Must use HTTPS.
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets pipeline
-     *
-     * @return string|null
-     */
-    public function getPipeline()
-    {
-        return $this->container['pipeline'];
-    }
-
-    /**
-     * Sets pipeline
-     *
-     * @param string|null $pipeline The ID of the Elasticsearch ingest pipeline to apply pre-process transformations to before indexing. Learn more about creating a pipeline in the [Elasticsearch docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html).
-     *
-     * @return self
-     */
-    public function setPipeline($pipeline)
-    {
-        $this->container['pipeline'] = $pipeline;
-
-        return $this;
-    }
-
-    /**
-     * Gets user
-     *
-     * @return string|null
-     */
-    public function getUser()
-    {
-        return $this->container['user'];
-    }
-
-    /**
-     * Sets user
-     *
-     * @param string|null $user Basic Auth username.
-     *
-     * @return self
-     */
-    public function setUser($user)
-    {
-        $this->container['user'] = $user;
 
         return $this;
     }
@@ -353,25 +305,73 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets format
+     * Gets pipeline
      *
-     * @return mixed|null
+     * @return string|null
      */
-    public function getFormat()
+    public function getPipeline()
     {
-        return $this->container['format'];
+        return $this->container['pipeline'];
     }
 
     /**
-     * Sets format
+     * Sets pipeline
      *
-     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
+     * @param string|null $pipeline The ID of the Elasticsearch ingest pipeline to apply pre-process transformations to before indexing. Learn more about creating a pipeline in the [Elasticsearch docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html).
      *
      * @return self
      */
-    public function setFormat($format)
+    public function setPipeline($pipeline)
     {
-        $this->container['format'] = $format;
+        $this->container['pipeline'] = $pipeline;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url The URL to stream logs to. Must use HTTPS.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets user
+     *
+     * @return string|null
+     */
+    public function getUser()
+    {
+        return $this->container['user'];
+    }
+
+    /**
+     * Sets user
+     *
+     * @param string|null $user Basic Auth username.
+     *
+     * @return self
+     */
+    public function setUser($user)
+    {
+        $this->container['user'] = $user;
 
         return $this;
     }

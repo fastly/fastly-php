@@ -109,7 +109,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **tls_subscription_id** | **string** |  |
-**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. | [optional]
 
 ### Return type
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **filter_state** | **string** | Limit the returned subscriptions by state. Valid values are pending, processing, issued, and renewing. Accepts parameters: not (e.g., filter[state][not]&#x3D;renewing). | [optional]
 **filter_tls_domains_id** | **string** | Limit the returned subscriptions to those that include the specific domain. | [optional]
-**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. | [optional]
 **page_number** | **int** | Current page. | [optional]
 **page_size** | **int** | Number of records per page. | [optional] [default to 20]
 **sort** | **string** | The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]

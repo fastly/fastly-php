@@ -118,26 +118,26 @@ class PoolApi
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to 0)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -159,26 +159,26 @@ class PoolApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to 0)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -271,26 +271,26 @@ class PoolApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to 0)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -315,26 +315,26 @@ class PoolApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to 0)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -386,26 +386,26 @@ class PoolApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to 0)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -416,26 +416,26 @@ class PoolApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $tls_ca_cert = array_key_exists('tls_ca_cert', $options) ? $options['tls_ca_cert'] : 'null';
+        $tls_cert_hostname = array_key_exists('tls_cert_hostname', $options) ? $options['tls_cert_hostname'] : 'null';
         $tls_client_cert = array_key_exists('tls_client_cert', $options) ? $options['tls_client_cert'] : 'null';
         $tls_client_key = array_key_exists('tls_client_key', $options) ? $options['tls_client_key'] : 'null';
-        $tls_cert_hostname = array_key_exists('tls_cert_hostname', $options) ? $options['tls_cert_hostname'] : 'null';
         $use_tls = array_key_exists('use_tls', $options) ? $options['use_tls'] : 0;
-        $name = array_key_exists('name', $options) ? $options['name'] : null;
-        $shield = array_key_exists('shield', $options) ? $options['shield'] : 'null';
-        $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
-        $max_conn_default = array_key_exists('max_conn_default', $options) ? $options['max_conn_default'] : null;
+        $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $connect_timeout = array_key_exists('connect_timeout', $options) ? $options['connect_timeout'] : null;
         $first_byte_timeout = array_key_exists('first_byte_timeout', $options) ? $options['first_byte_timeout'] : null;
+        $healthcheck = array_key_exists('healthcheck', $options) ? $options['healthcheck'] : null;
+        $max_conn_default = array_key_exists('max_conn_default', $options) ? $options['max_conn_default'] : null;
+        $max_tls_version = array_key_exists('max_tls_version', $options) ? $options['max_tls_version'] : null;
+        $min_tls_version = array_key_exists('min_tls_version', $options) ? $options['min_tls_version'] : null;
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
+        $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : 'null';
         $quorum = array_key_exists('quorum', $options) ? $options['quorum'] : 75;
+        $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
+        $shield = array_key_exists('shield', $options) ? $options['shield'] : 'null';
+        $tls_check_cert = array_key_exists('tls_check_cert', $options) ? $options['tls_check_cert'] : null;
         $tls_ciphers = array_key_exists('tls_ciphers', $options) ? $options['tls_ciphers'] : null;
         $tls_sni_hostname = array_key_exists('tls_sni_hostname', $options) ? $options['tls_sni_hostname'] : null;
-        $tls_check_cert = array_key_exists('tls_check_cert', $options) ? $options['tls_check_cert'] : null;
-        $min_tls_version = array_key_exists('min_tls_version', $options) ? $options['min_tls_version'] : null;
-        $max_tls_version = array_key_exists('max_tls_version', $options) ? $options['max_tls_version'] : null;
-        $healthcheck = array_key_exists('healthcheck', $options) ? $options['healthcheck'] : null;
-        $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
-        $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : 'null';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -488,6 +488,10 @@ class PoolApi
             $formParams['tls_ca_cert'] = ObjectSerializer::toFormValue($tls_ca_cert);
         }
         // form params
+        if ($tls_cert_hostname !== null) {
+            $formParams['tls_cert_hostname'] = ObjectSerializer::toFormValue($tls_cert_hostname);
+        }
+        // form params
         if ($tls_client_cert !== null) {
             $formParams['tls_client_cert'] = ObjectSerializer::toFormValue($tls_client_cert);
         }
@@ -496,28 +500,12 @@ class PoolApi
             $formParams['tls_client_key'] = ObjectSerializer::toFormValue($tls_client_key);
         }
         // form params
-        if ($tls_cert_hostname !== null) {
-            $formParams['tls_cert_hostname'] = ObjectSerializer::toFormValue($tls_cert_hostname);
-        }
-        // form params
         if ($use_tls !== null) {
             $formParams['use_tls'] = ObjectSerializer::toFormValue($use_tls);
         }
         // form params
-        if ($name !== null) {
-            $formParams['name'] = ObjectSerializer::toFormValue($name);
-        }
-        // form params
-        if ($shield !== null) {
-            $formParams['shield'] = ObjectSerializer::toFormValue($shield);
-        }
-        // form params
-        if ($request_condition !== null) {
-            $formParams['request_condition'] = ObjectSerializer::toFormValue($request_condition);
-        }
-        // form params
-        if ($max_conn_default !== null) {
-            $formParams['max_conn_default'] = ObjectSerializer::toFormValue($max_conn_default);
+        if ($comment !== null) {
+            $formParams['comment'] = ObjectSerializer::toFormValue($comment);
         }
         // form params
         if ($connect_timeout !== null) {
@@ -528,8 +516,44 @@ class PoolApi
             $formParams['first_byte_timeout'] = ObjectSerializer::toFormValue($first_byte_timeout);
         }
         // form params
+        if ($healthcheck !== null) {
+            $formParams['healthcheck'] = ObjectSerializer::toFormValue($healthcheck);
+        }
+        // form params
+        if ($max_conn_default !== null) {
+            $formParams['max_conn_default'] = ObjectSerializer::toFormValue($max_conn_default);
+        }
+        // form params
+        if ($max_tls_version !== null) {
+            $formParams['max_tls_version'] = ObjectSerializer::toFormValue($max_tls_version);
+        }
+        // form params
+        if ($min_tls_version !== null) {
+            $formParams['min_tls_version'] = ObjectSerializer::toFormValue($min_tls_version);
+        }
+        // form params
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
+        }
+        // form params
+        if ($override_host !== null) {
+            $formParams['override_host'] = ObjectSerializer::toFormValue($override_host);
+        }
+        // form params
         if ($quorum !== null) {
             $formParams['quorum'] = ObjectSerializer::toFormValue($quorum);
+        }
+        // form params
+        if ($request_condition !== null) {
+            $formParams['request_condition'] = ObjectSerializer::toFormValue($request_condition);
+        }
+        // form params
+        if ($shield !== null) {
+            $formParams['shield'] = ObjectSerializer::toFormValue($shield);
+        }
+        // form params
+        if ($tls_check_cert !== null) {
+            $formParams['tls_check_cert'] = ObjectSerializer::toFormValue($tls_check_cert);
         }
         // form params
         if ($tls_ciphers !== null) {
@@ -540,32 +564,8 @@ class PoolApi
             $formParams['tls_sni_hostname'] = ObjectSerializer::toFormValue($tls_sni_hostname);
         }
         // form params
-        if ($tls_check_cert !== null) {
-            $formParams['tls_check_cert'] = ObjectSerializer::toFormValue($tls_check_cert);
-        }
-        // form params
-        if ($min_tls_version !== null) {
-            $formParams['min_tls_version'] = ObjectSerializer::toFormValue($min_tls_version);
-        }
-        // form params
-        if ($max_tls_version !== null) {
-            $formParams['max_tls_version'] = ObjectSerializer::toFormValue($max_tls_version);
-        }
-        // form params
-        if ($healthcheck !== null) {
-            $formParams['healthcheck'] = ObjectSerializer::toFormValue($healthcheck);
-        }
-        // form params
-        if ($comment !== null) {
-            $formParams['comment'] = ObjectSerializer::toFormValue($comment);
-        }
-        // form params
         if ($type !== null) {
             $formParams['type'] = ObjectSerializer::toFormValue($type);
-        }
-        // form params
-        if ($override_host !== null) {
-            $formParams['override_host'] = ObjectSerializer::toFormValue($override_host);
         }
 
         if ($multipart) {
@@ -1596,26 +1596,26 @@ class PoolApi
      * @param  int $version_id version_id (required)
      * @param  string $pool_name pool_name (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to USE_TLS_no_tls)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1638,26 +1638,26 @@ class PoolApi
      * @param  int $version_id (required)
      * @param  string $pool_name (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to USE_TLS_no_tls)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1751,26 +1751,26 @@ class PoolApi
      * @param  int $version_id (required)
      * @param  string $pool_name (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to USE_TLS_no_tls)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1796,26 +1796,26 @@ class PoolApi
      * @param  int $version_id (required)
      * @param  string $pool_name (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to USE_TLS_no_tls)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1868,26 +1868,26 @@ class PoolApi
      * @param  int $version_id (required)
      * @param  string $pool_name (required)
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
+     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
-     * @param  string $tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (optional, default to 'null')
      * @param  int $use_tls Whether to use TLS. (optional, default to USE_TLS_no_tls)
-     * @param  string $name Name for the Pool. (optional)
-     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [datacenters API endpoint](/reference/api/utils/datacenter/) to get a list of available POPs used for shielding. (optional, default to 'null')
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
      * @param  int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
+     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
+     * @param  int $max_conn_default Maximum number of connections. (optional)
+     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
+     * @param  string $name Name for the Pool. (optional)
+     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      * @param  int $quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (optional, default to 75)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
      * @param  string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.0.2/man1/ciphers) for details). Optional. (optional)
      * @param  string $tls_sni_hostname SNI hostname. Optional. (optional)
-     * @param  int $tls_check_cert Be strict on checking TLS certs. Optional. (optional)
-     * @param  int $min_tls_version Minimum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  int $max_tls_version Maximum allowed TLS version on connections to this server. Optional. (optional)
-     * @param  string $healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. (optional)
-     * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $type What type of load balance group to use. (optional)
-     * @param  string $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1899,26 +1899,26 @@ class PoolApi
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $pool_name = array_key_exists('pool_name', $options) ? $options['pool_name'] : null;
         $tls_ca_cert = array_key_exists('tls_ca_cert', $options) ? $options['tls_ca_cert'] : 'null';
+        $tls_cert_hostname = array_key_exists('tls_cert_hostname', $options) ? $options['tls_cert_hostname'] : 'null';
         $tls_client_cert = array_key_exists('tls_client_cert', $options) ? $options['tls_client_cert'] : 'null';
         $tls_client_key = array_key_exists('tls_client_key', $options) ? $options['tls_client_key'] : 'null';
-        $tls_cert_hostname = array_key_exists('tls_cert_hostname', $options) ? $options['tls_cert_hostname'] : 'null';
         $use_tls = array_key_exists('use_tls', $options) ? $options['use_tls'] : USE_TLS_no_tls;
-        $name = array_key_exists('name', $options) ? $options['name'] : null;
-        $shield = array_key_exists('shield', $options) ? $options['shield'] : 'null';
-        $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
-        $max_conn_default = array_key_exists('max_conn_default', $options) ? $options['max_conn_default'] : null;
+        $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $connect_timeout = array_key_exists('connect_timeout', $options) ? $options['connect_timeout'] : null;
         $first_byte_timeout = array_key_exists('first_byte_timeout', $options) ? $options['first_byte_timeout'] : null;
+        $healthcheck = array_key_exists('healthcheck', $options) ? $options['healthcheck'] : null;
+        $max_conn_default = array_key_exists('max_conn_default', $options) ? $options['max_conn_default'] : null;
+        $max_tls_version = array_key_exists('max_tls_version', $options) ? $options['max_tls_version'] : null;
+        $min_tls_version = array_key_exists('min_tls_version', $options) ? $options['min_tls_version'] : null;
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
+        $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : 'null';
         $quorum = array_key_exists('quorum', $options) ? $options['quorum'] : 75;
+        $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
+        $shield = array_key_exists('shield', $options) ? $options['shield'] : 'null';
+        $tls_check_cert = array_key_exists('tls_check_cert', $options) ? $options['tls_check_cert'] : null;
         $tls_ciphers = array_key_exists('tls_ciphers', $options) ? $options['tls_ciphers'] : null;
         $tls_sni_hostname = array_key_exists('tls_sni_hostname', $options) ? $options['tls_sni_hostname'] : null;
-        $tls_check_cert = array_key_exists('tls_check_cert', $options) ? $options['tls_check_cert'] : null;
-        $min_tls_version = array_key_exists('min_tls_version', $options) ? $options['min_tls_version'] : null;
-        $max_tls_version = array_key_exists('max_tls_version', $options) ? $options['max_tls_version'] : null;
-        $healthcheck = array_key_exists('healthcheck', $options) ? $options['healthcheck'] : null;
-        $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
-        $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : 'null';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1985,6 +1985,10 @@ class PoolApi
             $formParams['tls_ca_cert'] = ObjectSerializer::toFormValue($tls_ca_cert);
         }
         // form params
+        if ($tls_cert_hostname !== null) {
+            $formParams['tls_cert_hostname'] = ObjectSerializer::toFormValue($tls_cert_hostname);
+        }
+        // form params
         if ($tls_client_cert !== null) {
             $formParams['tls_client_cert'] = ObjectSerializer::toFormValue($tls_client_cert);
         }
@@ -1993,28 +1997,12 @@ class PoolApi
             $formParams['tls_client_key'] = ObjectSerializer::toFormValue($tls_client_key);
         }
         // form params
-        if ($tls_cert_hostname !== null) {
-            $formParams['tls_cert_hostname'] = ObjectSerializer::toFormValue($tls_cert_hostname);
-        }
-        // form params
         if ($use_tls !== null) {
             $formParams['use_tls'] = ObjectSerializer::toFormValue($use_tls);
         }
         // form params
-        if ($name !== null) {
-            $formParams['name'] = ObjectSerializer::toFormValue($name);
-        }
-        // form params
-        if ($shield !== null) {
-            $formParams['shield'] = ObjectSerializer::toFormValue($shield);
-        }
-        // form params
-        if ($request_condition !== null) {
-            $formParams['request_condition'] = ObjectSerializer::toFormValue($request_condition);
-        }
-        // form params
-        if ($max_conn_default !== null) {
-            $formParams['max_conn_default'] = ObjectSerializer::toFormValue($max_conn_default);
+        if ($comment !== null) {
+            $formParams['comment'] = ObjectSerializer::toFormValue($comment);
         }
         // form params
         if ($connect_timeout !== null) {
@@ -2025,8 +2013,44 @@ class PoolApi
             $formParams['first_byte_timeout'] = ObjectSerializer::toFormValue($first_byte_timeout);
         }
         // form params
+        if ($healthcheck !== null) {
+            $formParams['healthcheck'] = ObjectSerializer::toFormValue($healthcheck);
+        }
+        // form params
+        if ($max_conn_default !== null) {
+            $formParams['max_conn_default'] = ObjectSerializer::toFormValue($max_conn_default);
+        }
+        // form params
+        if ($max_tls_version !== null) {
+            $formParams['max_tls_version'] = ObjectSerializer::toFormValue($max_tls_version);
+        }
+        // form params
+        if ($min_tls_version !== null) {
+            $formParams['min_tls_version'] = ObjectSerializer::toFormValue($min_tls_version);
+        }
+        // form params
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
+        }
+        // form params
+        if ($override_host !== null) {
+            $formParams['override_host'] = ObjectSerializer::toFormValue($override_host);
+        }
+        // form params
         if ($quorum !== null) {
             $formParams['quorum'] = ObjectSerializer::toFormValue($quorum);
+        }
+        // form params
+        if ($request_condition !== null) {
+            $formParams['request_condition'] = ObjectSerializer::toFormValue($request_condition);
+        }
+        // form params
+        if ($shield !== null) {
+            $formParams['shield'] = ObjectSerializer::toFormValue($shield);
+        }
+        // form params
+        if ($tls_check_cert !== null) {
+            $formParams['tls_check_cert'] = ObjectSerializer::toFormValue($tls_check_cert);
         }
         // form params
         if ($tls_ciphers !== null) {
@@ -2037,32 +2061,8 @@ class PoolApi
             $formParams['tls_sni_hostname'] = ObjectSerializer::toFormValue($tls_sni_hostname);
         }
         // form params
-        if ($tls_check_cert !== null) {
-            $formParams['tls_check_cert'] = ObjectSerializer::toFormValue($tls_check_cert);
-        }
-        // form params
-        if ($min_tls_version !== null) {
-            $formParams['min_tls_version'] = ObjectSerializer::toFormValue($min_tls_version);
-        }
-        // form params
-        if ($max_tls_version !== null) {
-            $formParams['max_tls_version'] = ObjectSerializer::toFormValue($max_tls_version);
-        }
-        // form params
-        if ($healthcheck !== null) {
-            $formParams['healthcheck'] = ObjectSerializer::toFormValue($healthcheck);
-        }
-        // form params
-        if ($comment !== null) {
-            $formParams['comment'] = ObjectSerializer::toFormValue($comment);
-        }
-        // form params
         if ($type !== null) {
             $formParams['type'] = ObjectSerializer::toFormValue($type);
-        }
-        // form params
-        if ($override_host !== null) {
-            $formParams['override_host'] = ObjectSerializer::toFormValue($override_host);
         }
 
         if ($multipart) {

@@ -117,16 +117,16 @@ class LoggingOpenstackApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -153,16 +153,16 @@ class LoggingOpenstackApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -260,16 +260,16 @@ class LoggingOpenstackApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -299,16 +299,16 @@ class LoggingOpenstackApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -365,16 +365,16 @@ class LoggingOpenstackApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -390,16 +390,16 @@ class LoggingOpenstackApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
-        $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
-        $period = array_key_exists('period', $options) ? $options['period'] : 3600;
-        $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
         $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
+        $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
+        $period = array_key_exists('period', $options) ? $options['period'] : 3600;
+        $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
         $access_key = array_key_exists('access_key', $options) ? $options['access_key'] : null;
         $bucket_name = array_key_exists('bucket_name', $options) ? $options['bucket_name'] : null;
         $path = array_key_exists('path', $options) ? $options['path'] : 'null';
@@ -447,6 +447,14 @@ class LoggingOpenstackApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -455,36 +463,28 @@ class LoggingOpenstackApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($message_type !== null) {
-            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
-        }
-        // form params
-        if ($timestamp_format !== null) {
-            $formParams['timestamp_format'] = ObjectSerializer::toFormValue($timestamp_format);
-        }
-        // form params
-        if ($period !== null) {
-            $formParams['period'] = ObjectSerializer::toFormValue($period);
+        if ($compression_codec !== null) {
+            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
         }
         // form params
         if ($gzip_level !== null) {
             $formParams['gzip_level'] = ObjectSerializer::toFormValue($gzip_level);
         }
         // form params
-        if ($compression_codec !== null) {
-            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
+        if ($message_type !== null) {
+            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
+        }
+        // form params
+        if ($period !== null) {
+            $formParams['period'] = ObjectSerializer::toFormValue($period);
+        }
+        // form params
+        if ($timestamp_format !== null) {
+            $formParams['timestamp_format'] = ObjectSerializer::toFormValue($timestamp_format);
         }
         // form params
         if ($access_key !== null) {
@@ -1538,16 +1538,16 @@ class LoggingOpenstackApi
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
      * @param  string $logging_openstack_name logging_openstack_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -1575,16 +1575,16 @@ class LoggingOpenstackApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_openstack_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -1683,16 +1683,16 @@ class LoggingOpenstackApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_openstack_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -1723,16 +1723,16 @@ class LoggingOpenstackApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_openstack_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -1790,16 +1790,16 @@ class LoggingOpenstackApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_openstack_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
      * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
      * @param  string $access_key Your OpenStack account access key. (optional)
      * @param  string $bucket_name The name of your OpenStack container. (optional)
      * @param  string $path The path to upload logs to. (optional, default to 'null')
@@ -1816,16 +1816,16 @@ class LoggingOpenstackApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_openstack_name = array_key_exists('logging_openstack_name', $options) ? $options['logging_openstack_name'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
-        $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
-        $period = array_key_exists('period', $options) ? $options['period'] : 3600;
-        $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
         $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
+        $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
+        $period = array_key_exists('period', $options) ? $options['period'] : 3600;
+        $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
         $access_key = array_key_exists('access_key', $options) ? $options['access_key'] : null;
         $bucket_name = array_key_exists('bucket_name', $options) ? $options['bucket_name'] : null;
         $path = array_key_exists('path', $options) ? $options['path'] : 'null';
@@ -1887,6 +1887,14 @@ class LoggingOpenstackApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1895,36 +1903,28 @@ class LoggingOpenstackApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($message_type !== null) {
-            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
-        }
-        // form params
-        if ($timestamp_format !== null) {
-            $formParams['timestamp_format'] = ObjectSerializer::toFormValue($timestamp_format);
-        }
-        // form params
-        if ($period !== null) {
-            $formParams['period'] = ObjectSerializer::toFormValue($period);
+        if ($compression_codec !== null) {
+            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
         }
         // form params
         if ($gzip_level !== null) {
             $formParams['gzip_level'] = ObjectSerializer::toFormValue($gzip_level);
         }
         // form params
-        if ($compression_codec !== null) {
-            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
+        if ($message_type !== null) {
+            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
+        }
+        // form params
+        if ($period !== null) {
+            $formParams['period'] = ObjectSerializer::toFormValue($period);
+        }
+        // form params
+        if ($timestamp_format !== null) {
+            $formParams['timestamp_format'] = ObjectSerializer::toFormValue($timestamp_format);
         }
         // form params
         if ($access_key !== null) {

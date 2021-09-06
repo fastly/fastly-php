@@ -53,12 +53,19 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'address' => 'string',
+        'comment' => 'string',
+        'disabled' => 'bool',
+        'max_conn' => 'int',
+        'override_host' => 'string',
+        'port' => 'int',
+        'weight' => 'int',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
-        'service_id' => 'string',
         'id' => 'string',
-        'pool_id' => 'string'
+        'pool_id' => 'string',
+        'service_id' => 'string'
     ];
 
     /**
@@ -69,12 +76,19 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'address' => null,
+        'comment' => null,
+        'disabled' => null,
+        'max_conn' => null,
+        'override_host' => null,
+        'port' => null,
+        'weight' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
-        'service_id' => null,
         'id' => null,
-        'pool_id' => null
+        'pool_id' => null,
+        'service_id' => null
     ];
 
     /**
@@ -104,12 +118,19 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'address' => 'address',
+        'comment' => 'comment',
+        'disabled' => 'disabled',
+        'max_conn' => 'max_conn',
+        'override_host' => 'override_host',
+        'port' => 'port',
+        'weight' => 'weight',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
-        'service_id' => 'service_id',
         'id' => 'id',
-        'pool_id' => 'pool_id'
+        'pool_id' => 'pool_id',
+        'service_id' => 'service_id'
     ];
 
     /**
@@ -118,12 +139,19 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'address' => 'setAddress',
+        'comment' => 'setComment',
+        'disabled' => 'setDisabled',
+        'max_conn' => 'setMaxConn',
+        'override_host' => 'setOverrideHost',
+        'port' => 'setPort',
+        'weight' => 'setWeight',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
-        'service_id' => 'setServiceId',
         'id' => 'setId',
-        'pool_id' => 'setPoolId'
+        'pool_id' => 'setPoolId',
+        'service_id' => 'setServiceId'
     ];
 
     /**
@@ -132,12 +160,19 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'address' => 'getAddress',
+        'comment' => 'getComment',
+        'disabled' => 'getDisabled',
+        'max_conn' => 'getMaxConn',
+        'override_host' => 'getOverrideHost',
+        'port' => 'getPort',
+        'weight' => 'getWeight',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
-        'service_id' => 'getServiceId',
         'id' => 'getId',
-        'pool_id' => 'getPoolId'
+        'pool_id' => 'getPoolId',
+        'service_id' => 'getServiceId'
     ];
 
     /**
@@ -200,12 +235,19 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['address'] = $data['address'] ?? null;
+        $this->container['comment'] = $data['comment'] ?? null;
+        $this->container['disabled'] = $data['disabled'] ?? false;
+        $this->container['max_conn'] = $data['max_conn'] ?? 0;
+        $this->container['override_host'] = $data['override_host'] ?? 'null';
+        $this->container['port'] = $data['port'] ?? 80;
+        $this->container['weight'] = $data['weight'] ?? 100;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['pool_id'] = $data['pool_id'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
     }
 
     /**
@@ -216,6 +258,14 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['weight']) && ($this->container['weight'] > 100)) {
+            $invalidProperties[] = "invalid value for 'weight', must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['weight']) && ($this->container['weight'] < 1)) {
+            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -231,6 +281,182 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets address
+     *
+     * @return string|null
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param string|null $address A hostname, IPv4, or IPv6 address for the server. Required.
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment
+     *
+     * @return string|null
+     */
+    public function getComment()
+    {
+        return $this->container['comment'];
+    }
+
+    /**
+     * Sets comment
+     *
+     * @param string|null $comment A freeform descriptive note.
+     *
+     * @return self
+     */
+    public function setComment($comment)
+    {
+        $this->container['comment'] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Gets disabled
+     *
+     * @return bool|null
+     */
+    public function getDisabled()
+    {
+        return $this->container['disabled'];
+    }
+
+    /**
+     * Sets disabled
+     *
+     * @param bool|null $disabled Allows servers to be enabled and disabled in a pool.
+     *
+     * @return self
+     */
+    public function setDisabled($disabled)
+    {
+        $this->container['disabled'] = $disabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_conn
+     *
+     * @return int|null
+     */
+    public function getMaxConn()
+    {
+        return $this->container['max_conn'];
+    }
+
+    /**
+     * Sets max_conn
+     *
+     * @param int|null $max_conn Maximum number of connections. If the value is `0`, it inherits the value from pool's `max_conn_default`.
+     *
+     * @return self
+     */
+    public function setMaxConn($max_conn)
+    {
+        $this->container['max_conn'] = $max_conn;
+
+        return $this;
+    }
+
+    /**
+     * Gets override_host
+     *
+     * @return string|null
+     */
+    public function getOverrideHost()
+    {
+        return $this->container['override_host'];
+    }
+
+    /**
+     * Sets override_host
+     *
+     * @param string|null $override_host The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting.
+     *
+     * @return self
+     */
+    public function setOverrideHost($override_host)
+    {
+        $this->container['override_host'] = $override_host;
+
+        return $this;
+    }
+
+    /**
+     * Gets port
+     *
+     * @return int|null
+     */
+    public function getPort()
+    {
+        return $this->container['port'];
+    }
+
+    /**
+     * Sets port
+     *
+     * @param int|null $port Port number. Setting port `443` does not force TLS. Set `use_tls` in pool to force TLS.
+     *
+     * @return self
+     */
+    public function setPort($port)
+    {
+        $this->container['port'] = $port;
+
+        return $this;
+    }
+
+    /**
+     * Gets weight
+     *
+     * @return int|null
+     */
+    public function getWeight()
+    {
+        return $this->container['weight'];
+    }
+
+    /**
+     * Sets weight
+     *
+     * @param int|null $weight Weight (`1-100`) used to load balance this server against others.
+     *
+     * @return self
+     */
+    public function setWeight($weight)
+    {
+
+        if (!is_null($weight) && ($weight > 100)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling ServerResponse., must be smaller than or equal to 100.');
+        }
+        if (!is_null($weight) && ($weight < 1)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling ServerResponse., must be bigger than or equal to 1.');
+        }
+
+        $this->container['weight'] = $weight;
+
+        return $this;
+    }
 
     /**
      * Gets created_at
@@ -305,30 +531,6 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets service_id
-     *
-     * @return string|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string|null $service_id Alphanumeric string identifying the service.
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string|null
@@ -372,6 +574,30 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPoolId($pool_id)
     {
         $this->container['pool_id'] = $pool_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id Alphanumeric string identifying the service.
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
 
         return $this;
     }

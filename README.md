@@ -2,13 +2,13 @@
 
 A PHP client library for interacting with most facets of the [Fastly API](https://developer.fastly.com/reference/api).
 
-> ⚠️ This client library (`1.0.0-alpha1`)  is an early-access release. Features may change without notice. Use at your own risk.
+> ⚠️ This client library (`1.0.0-alpha2`)  is an early-access release. Features may change without notice. Use at your own risk.
 
 **We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases. Please try out the library in a test environment, see what breaks without worrying about consequences, and give us [feedback](#issues).
 
 ## Installation
 
-Requires PHP 7.2 or later.
+Requires PHP 7.3 or later.
 
 To install via [Composer](https://getcomposer.org/), add the following to your project's `composer.json`:
 
@@ -35,8 +35,11 @@ require_once('/path/to/project/vendor/autoload.php');
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Authorize the client with a Fastly API token
+// Authorize the client with a Fastly API token.
 $config = Fastly\Configuration::getDefaultConfiguration()->setApiToken('YOUR_API_TOKEN');
+
+// Alternatively, set the FASTLY_API_TOKEN environment variable:
+// $config = Fastly\Configuration::getDefaultConfiguration();
 
 $apiInstance = new Fastly\Api\(
     // Optionally, pass a custom client that implements `GuzzleHttp\ClientInterface`.
@@ -65,6 +68,11 @@ The Fastly API requires an [API token](https://developer.fastly.com/reference/ap
 Fastly\Configuration::getDefaultConfiguration()->setApiToken('YOUR_API_TOKEN');
 ```
 
+Alternatively, set the `FASTLY_API_TOKEN` environment variable instead of using `setApiToken`. 
+
+```php
+Fastly\Configuration::getDefaultConfiguration();
+```
 
 ## Endpoints
 
@@ -88,6 +96,12 @@ Class | Method | Description
 [*BackendApi*](docs/Api/BackendApi.md) | [**getBackend**](docs/Api/BackendApi.md#getbackend) | Describe a backend
 [*BackendApi*](docs/Api/BackendApi.md) | [**listBackends**](docs/Api/BackendApi.md#listbackends) | List backends
 [*BackendApi*](docs/Api/BackendApi.md) | [**updateBackend**](docs/Api/BackendApi.md#updatebackend) | Update a backend
+[*BillingApi*](docs/Api/BillingApi.md) | [**getInvoice**](docs/Api/BillingApi.md#getinvoice) | Get an invoice
+[*BillingApi*](docs/Api/BillingApi.md) | [**getInvoiceMtd**](docs/Api/BillingApi.md#getinvoicemtd) | Get month-to-date billing estimate
+[*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**addBillingAddr**](docs/Api/BillingAddressApi.md#addbillingaddr) | Add a billing address to a customer
+[*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**deleteBillingAddr**](docs/Api/BillingAddressApi.md#deletebillingaddr) | Delete a billing address
+[*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**getBillingAddr**](docs/Api/BillingAddressApi.md#getbillingaddr) | Get a billing address
+[*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**updateBillingAddr**](docs/Api/BillingAddressApi.md#updatebillingaddr) | Update a billing address
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**createCacheSettings**](docs/Api/CacheSettingsApi.md#createcachesettings) | Create a cache settings object
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**deleteCacheSettings**](docs/Api/CacheSettingsApi.md#deletecachesettings) | Delete a cache settings object
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**getCacheSettings**](docs/Api/CacheSettingsApi.md#getcachesettings) | Get a cache settings object
@@ -104,7 +118,6 @@ Class | Method | Description
 [*CustomerApi*](docs/Api/CustomerApi.md) | [**getLoggedInCustomer**](docs/Api/CustomerApi.md#getloggedincustomer) | Get the logged in customer
 [*CustomerApi*](docs/Api/CustomerApi.md) | [**listUsers**](docs/Api/CustomerApi.md#listusers) | List users
 [*CustomerApi*](docs/Api/CustomerApi.md) | [**updateCustomer**](docs/Api/CustomerApi.md#updatecustomer) | Update a customer
-[*DatacenterApi*](docs/Api/DatacenterApi.md) | [**listDatacenters**](docs/Api/DatacenterApi.md#listdatacenters) | List Fastly datacenters
 [*DictionaryApi*](docs/Api/DictionaryApi.md) | [**createDictionary**](docs/Api/DictionaryApi.md#createdictionary) | Create an edge dictionary
 [*DictionaryApi*](docs/Api/DictionaryApi.md) | [**deleteDictionary**](docs/Api/DictionaryApi.md#deletedictionary) | Delete an edge dictionary
 [*DictionaryApi*](docs/Api/DictionaryApi.md) | [**getDictionary**](docs/Api/DictionaryApi.md#getdictionary) | Get an edge dictionary
@@ -151,6 +164,15 @@ Class | Method | Description
 [*HealthcheckApi*](docs/Api/HealthcheckApi.md) | [**getHealthcheck**](docs/Api/HealthcheckApi.md#gethealthcheck) | Get a healthcheck
 [*HealthcheckApi*](docs/Api/HealthcheckApi.md) | [**listHealthchecks**](docs/Api/HealthcheckApi.md#listhealthchecks) | List healthchecks
 [*HealthcheckApi*](docs/Api/HealthcheckApi.md) | [**updateHealthcheck**](docs/Api/HealthcheckApi.md#updatehealthcheck) | Update a healthcheck
+[*HistoricalApi*](docs/Api/HistoricalApi.md) | [**getHistStats**](docs/Api/HistoricalApi.md#gethiststats) | Get historical stats
+[*HistoricalApi*](docs/Api/HistoricalApi.md) | [**getHistStatsAggregated**](docs/Api/HistoricalApi.md#gethiststatsaggregated) | Get aggregated historical stats
+[*HistoricalApi*](docs/Api/HistoricalApi.md) | [**getHistStatsField**](docs/Api/HistoricalApi.md#gethiststatsfield) | Get historical stats for a single field
+[*HistoricalApi*](docs/Api/HistoricalApi.md) | [**getHistStatsService**](docs/Api/HistoricalApi.md#gethiststatsservice) | Get historical stats for a single service
+[*HistoricalApi*](docs/Api/HistoricalApi.md) | [**getHistStatsServiceField**](docs/Api/HistoricalApi.md#gethiststatsservicefield) | Get historical stats for a single service/field combination
+[*HistoricalApi*](docs/Api/HistoricalApi.md) | [**getRegions**](docs/Api/HistoricalApi.md#getregions) | Get region codes
+[*HistoricalApi*](docs/Api/HistoricalApi.md) | [**getUsage**](docs/Api/HistoricalApi.md#getusage) | Get usage statistics
+[*HistoricalApi*](docs/Api/HistoricalApi.md) | [**getUsageMonth**](docs/Api/HistoricalApi.md#getusagemonth) | Get month-to-date usage statistics
+[*HistoricalApi*](docs/Api/HistoricalApi.md) | [**getUsageService**](docs/Api/HistoricalApi.md#getusageservice) | Get usage statistics per service
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**createInvitation**](docs/Api/InvitationsApi.md#createinvitation) | Create an invitation
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**deleteInvitation**](docs/Api/InvitationsApi.md#deleteinvitation) | Delete an invitation
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**listInvitations**](docs/Api/InvitationsApi.md#listinvitations) | List invitations
@@ -297,6 +319,9 @@ Class | Method | Description
 [*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**getRateLimiter**](docs/Api/RateLimiterApi.md#getratelimiter) | Get a rate limiter
 [*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**listRateLimiters**](docs/Api/RateLimiterApi.md#listratelimiters) | List rate limiters
 [*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**updateRateLimiter**](docs/Api/RateLimiterApi.md#updateratelimiter) | Update a rate limiter
+[*RealtimeApi*](docs/Api/RealtimeApi.md) | [**getStatsLast120Seconds**](docs/Api/RealtimeApi.md#getstatslast120seconds) | Get real-time data for the last 120 seconds
+[*RealtimeApi*](docs/Api/RealtimeApi.md) | [**getStatsLast120SecondsLimitEntries**](docs/Api/RealtimeApi.md#getstatslast120secondslimitentries) | Get a limited number of real-time data entries
+[*RealtimeApi*](docs/Api/RealtimeApi.md) | [**getStatsLastSecond**](docs/Api/RealtimeApi.md#getstatslastsecond) | Get real-time data for the last second
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**createRequestSettings**](docs/Api/RequestSettingsApi.md#createrequestsettings) | Create a Request Settings object
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**deleteRequestSettings**](docs/Api/RequestSettingsApi.md#deleterequestsettings) | Delete a Request Settings object
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**getRequestSettings**](docs/Api/RequestSettingsApi.md#getrequestsettings) | Get a Request Settings object
@@ -320,6 +345,13 @@ Class | Method | Description
 [*ServiceApi*](docs/Api/ServiceApi.md) | [**listServices**](docs/Api/ServiceApi.md#listservices) | List services
 [*ServiceApi*](docs/Api/ServiceApi.md) | [**searchService**](docs/Api/ServiceApi.md#searchservice) | Search for a service by name
 [*ServiceApi*](docs/Api/ServiceApi.md) | [**updateService**](docs/Api/ServiceApi.md#updateservice) | Update a service
+[*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**createServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#createserviceauthorization) | Create service authorization
+[*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**deleteServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#deleteserviceauthorization) | Delete service authorization
+[*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**deleteServiceAuthorization2**](docs/Api/ServiceAuthorizationsApi.md#deleteserviceauthorization2) | Delete service authorizations
+[*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**listServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#listserviceauthorization) | List service authorizations
+[*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**showServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#showserviceauthorization) | Show service authorization
+[*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**updateServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#updateserviceauthorization) | Update service authorization
+[*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**updateServiceAuthorization2**](docs/Api/ServiceAuthorizationsApi.md#updateserviceauthorization2) | Update service authorizations
 [*SettingsApi*](docs/Api/SettingsApi.md) | [**getServiceSettings**](docs/Api/SettingsApi.md#getservicesettings) | Get service settings
 [*SettingsApi*](docs/Api/SettingsApi.md) | [**updateServiceSettings**](docs/Api/SettingsApi.md#updateservicesettings) | Update service settings
 [*SnippetApi*](docs/Api/SnippetApi.md) | [**createSnippet**](docs/Api/SnippetApi.md#createsnippet) | Create a snippet
@@ -333,6 +365,7 @@ Class | Method | Description
 [*StarApi*](docs/Api/StarApi.md) | [**deleteServiceStar**](docs/Api/StarApi.md#deleteservicestar) | Delete a star
 [*StarApi*](docs/Api/StarApi.md) | [**getServiceStar**](docs/Api/StarApi.md#getservicestar) | Get a star
 [*StarApi*](docs/Api/StarApi.md) | [**listServiceStars**](docs/Api/StarApi.md#listservicestars) | List stars
+[*StatsApi*](docs/Api/StatsApi.md) | [**getServiceStats**](docs/Api/StatsApi.md#getservicestats) | Get stats for a service
 [*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**createTlsActivation**](docs/Api/TlsActivationsApi.md#createtlsactivation) | Enable TLS for a domain using a custom certificate
 [*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**deleteTlsActivation**](docs/Api/TlsActivationsApi.md#deletetlsactivation) | Disable TLS on a domain
 [*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**getTlsActivation**](docs/Api/TlsActivationsApi.md#gettlsactivation) | Get a TLS activation
@@ -361,6 +394,8 @@ Class | Method | Description
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**getTlsSub**](docs/Api/TlsSubscriptionsApi.md#gettlssub) | Get a TLS subscription
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**listTlsSubs**](docs/Api/TlsSubscriptionsApi.md#listtlssubs) | List TLS subscriptions
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**patchTlsSub**](docs/Api/TlsSubscriptionsApi.md#patchtlssub) | Update a TLS subscription
+[*TlsSubscriptionsOtherApi*](docs/Api/TlsSubscriptionsOtherApi.md) | [**deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId**](docs/Api/TlsSubscriptionsOtherApi.md#deletetlssubscriptionstlssubscriptionidauthorizationstlsauthorizationidglobalsignemailchallengesglobalsignemailchallengeid) | Delete a GlobalSign email challenge
+[*TlsSubscriptionsOtherApi*](docs/Api/TlsSubscriptionsOtherApi.md) | [**postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges**](docs/Api/TlsSubscriptionsOtherApi.md#posttlssubscriptionstlssubscriptionidauthorizationstlsauthorizationidglobalsignemailchallenges) | Creates a GlobalSign email challenge.
 [*TokensApi*](docs/Api/TokensApi.md) | [**bulkRevokeTokens**](docs/Api/TokensApi.md#bulkrevoketokens) | Revoke multiple tokens
 [*TokensApi*](docs/Api/TokensApi.md) | [**createToken**](docs/Api/TokensApi.md#createtoken) | Create a token
 [*TokensApi*](docs/Api/TokensApi.md) | [**getTokenCurrent**](docs/Api/TokensApi.md#gettokencurrent) | Get the current token

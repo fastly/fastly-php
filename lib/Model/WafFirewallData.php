@@ -53,8 +53,8 @@ class WafFirewallData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'type' => '\Fastly\Model\TypeWafFirewall',
-        'attributes' => '\Fastly\Model\WafFirewallDataAttributes'
+        'attributes' => '\Fastly\Model\WafFirewallDataAttributes',
+        'type' => '\Fastly\Model\TypeWafFirewall'
     ];
 
     /**
@@ -65,8 +65,8 @@ class WafFirewallData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'type' => null,
-        'attributes' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class WafFirewallData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -106,8 +106,8 @@ class WafFirewallData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -116,8 +116,8 @@ class WafFirewallData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -180,8 +180,8 @@ class WafFirewallData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class WafFirewallData implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeWafFirewall|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeWafFirewall|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets attributes
      *
      * @return \Fastly\Model\WafFirewallDataAttributes|null
@@ -252,6 +228,30 @@ class WafFirewallData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAttributes($attributes)
     {
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeWafFirewall|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeWafFirewall|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

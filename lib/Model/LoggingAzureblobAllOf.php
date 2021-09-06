@@ -53,12 +53,12 @@ class LoggingAzureblobAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'path' => 'string',
         'account_name' => 'string',
         'container' => 'string',
-        'sas_token' => 'string',
+        'file_max_bytes' => 'int',
+        'path' => 'string',
         'public_key' => 'string',
-        'file_max_bytes' => 'int'
+        'sas_token' => 'string'
     ];
 
     /**
@@ -69,12 +69,12 @@ class LoggingAzureblobAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'path' => null,
         'account_name' => null,
         'container' => null,
-        'sas_token' => null,
+        'file_max_bytes' => null,
+        'path' => null,
         'public_key' => null,
-        'file_max_bytes' => null
+        'sas_token' => null
     ];
 
     /**
@@ -104,12 +104,12 @@ class LoggingAzureblobAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'path' => 'path',
         'account_name' => 'account_name',
         'container' => 'container',
-        'sas_token' => 'sas_token',
+        'file_max_bytes' => 'file_max_bytes',
+        'path' => 'path',
         'public_key' => 'public_key',
-        'file_max_bytes' => 'file_max_bytes'
+        'sas_token' => 'sas_token'
     ];
 
     /**
@@ -118,12 +118,12 @@ class LoggingAzureblobAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'path' => 'setPath',
         'account_name' => 'setAccountName',
         'container' => 'setContainer',
-        'sas_token' => 'setSasToken',
+        'file_max_bytes' => 'setFileMaxBytes',
+        'path' => 'setPath',
         'public_key' => 'setPublicKey',
-        'file_max_bytes' => 'setFileMaxBytes'
+        'sas_token' => 'setSasToken'
     ];
 
     /**
@@ -132,12 +132,12 @@ class LoggingAzureblobAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'path' => 'getPath',
         'account_name' => 'getAccountName',
         'container' => 'getContainer',
-        'sas_token' => 'getSasToken',
+        'file_max_bytes' => 'getFileMaxBytes',
+        'path' => 'getPath',
         'public_key' => 'getPublicKey',
-        'file_max_bytes' => 'getFileMaxBytes'
+        'sas_token' => 'getSasToken'
     ];
 
     /**
@@ -200,12 +200,12 @@ class LoggingAzureblobAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['path'] = $data['path'] ?? 'null';
         $this->container['account_name'] = $data['account_name'] ?? null;
         $this->container['container'] = $data['container'] ?? null;
-        $this->container['sas_token'] = $data['sas_token'] ?? null;
-        $this->container['public_key'] = $data['public_key'] ?? 'null';
         $this->container['file_max_bytes'] = $data['file_max_bytes'] ?? null;
+        $this->container['path'] = $data['path'] ?? 'null';
+        $this->container['public_key'] = $data['public_key'] ?? 'null';
+        $this->container['sas_token'] = $data['sas_token'] ?? null;
     }
 
     /**
@@ -235,30 +235,6 @@ class LoggingAzureblobAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets path
-     *
-     * @return string|null
-     */
-    public function getPath()
-    {
-        return $this->container['path'];
-    }
-
-    /**
-     * Sets path
-     *
-     * @param string|null $path The path to upload logs to.
-     *
-     * @return self
-     */
-    public function setPath($path)
-    {
-        $this->container['path'] = $path;
-
-        return $this;
-    }
 
     /**
      * Gets account_name
@@ -309,25 +285,54 @@ class LoggingAzureblobAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets sas_token
+     * Gets file_max_bytes
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getSasToken()
+    public function getFileMaxBytes()
     {
-        return $this->container['sas_token'];
+        return $this->container['file_max_bytes'];
     }
 
     /**
-     * Sets sas_token
+     * Sets file_max_bytes
      *
-     * @param string|null $sas_token The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
+     * @param int|null $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
      *
      * @return self
      */
-    public function setSasToken($sas_token)
+    public function setFileMaxBytes($file_max_bytes)
     {
-        $this->container['sas_token'] = $sas_token;
+
+        if (!is_null($file_max_bytes) && ($file_max_bytes < 1048576)) {
+            throw new \InvalidArgumentException('invalid value for $file_max_bytes when calling LoggingAzureblobAllOf., must be bigger than or equal to 1048576.');
+        }
+
+        $this->container['file_max_bytes'] = $file_max_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string|null
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string|null $path The path to upload logs to.
+     *
+     * @return self
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }
@@ -357,30 +362,25 @@ class LoggingAzureblobAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets file_max_bytes
+     * Gets sas_token
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getFileMaxBytes()
+    public function getSasToken()
     {
-        return $this->container['file_max_bytes'];
+        return $this->container['sas_token'];
     }
 
     /**
-     * Sets file_max_bytes
+     * Sets sas_token
      *
-     * @param int|null $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+     * @param string|null $sas_token The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
      *
      * @return self
      */
-    public function setFileMaxBytes($file_max_bytes)
+    public function setSasToken($sas_token)
     {
-
-        if (!is_null($file_max_bytes) && ($file_max_bytes < 1048576)) {
-            throw new \InvalidArgumentException('invalid value for $file_max_bytes when calling LoggingAzureblobAllOf., must be bigger than or equal to 1048576.');
-        }
-
-        $this->container['file_max_bytes'] = $file_max_bytes;
+        $this->container['sas_token'] = $sas_token;
 
         return $this;
     }

@@ -53,17 +53,17 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'string',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'response_condition' => 'string',
-        'format' => 'string',
-        'user' => 'string',
         'secret_key' => 'string',
+        'user' => 'string',
         'dataset' => 'string',
+        'project_id' => 'string',
         'table' => 'string',
         'template_suffix' => 'string',
-        'project_id' => 'string',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -79,17 +79,17 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
+        'format_version' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
-        'format' => null,
-        'user' => null,
         'secret_key' => null,
+        'user' => null,
         'dataset' => null,
+        'project_id' => null,
         'table' => null,
         'template_suffix' => null,
-        'project_id' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -124,17 +124,17 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
+        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'format' => 'format',
-        'user' => 'user',
         'secret_key' => 'secret_key',
+        'user' => 'user',
         'dataset' => 'dataset',
+        'project_id' => 'project_id',
         'table' => 'table',
         'template_suffix' => 'template_suffix',
-        'project_id' => 'project_id',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -148,17 +148,17 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'format' => 'setFormat',
-        'user' => 'setUser',
         'secret_key' => 'setSecretKey',
+        'user' => 'setUser',
         'dataset' => 'setDataset',
+        'project_id' => 'setProjectId',
         'table' => 'setTable',
         'template_suffix' => 'setTemplateSuffix',
-        'project_id' => 'setProjectId',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -172,17 +172,17 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'format' => 'getFormat',
-        'user' => 'getUser',
         'secret_key' => 'getSecretKey',
+        'user' => 'getUser',
         'dataset' => 'getDataset',
+        'project_id' => 'getProjectId',
         'table' => 'getTable',
         'template_suffix' => 'getTemplateSuffix',
-        'project_id' => 'getProjectId',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -250,17 +250,17 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
-        $this->container['user'] = $data['user'] ?? null;
         $this->container['secret_key'] = $data['secret_key'] ?? null;
+        $this->container['user'] = $data['user'] ?? null;
         $this->container['dataset'] = $data['dataset'] ?? null;
+        $this->container['project_id'] = $data['project_id'] ?? null;
         $this->container['table'] = $data['table'] ?? null;
         $this->container['template_suffix'] = $data['template_suffix'] ?? null;
-        $this->container['project_id'] = $data['project_id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -291,6 +291,54 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -341,30 +389,6 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -384,54 +408,6 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets user
-     *
-     * @return string|null
-     */
-    public function getUser()
-    {
-        return $this->container['user'];
-    }
-
-    /**
-     * Sets user
-     *
-     * @param string|null $user Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Required.
-     *
-     * @return self
-     */
-    public function setUser($user)
-    {
-        $this->container['user'] = $user;
 
         return $this;
     }
@@ -461,6 +437,30 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets user
+     *
+     * @return string|null
+     */
+    public function getUser()
+    {
+        return $this->container['user'];
+    }
+
+    /**
+     * Sets user
+     *
+     * @param string|null $user Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Required.
+     *
+     * @return self
+     */
+    public function setUser($user)
+    {
+        $this->container['user'] = $user;
+
+        return $this;
+    }
+
+    /**
      * Gets dataset
      *
      * @return string|null
@@ -480,6 +480,30 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDataset($dataset)
     {
         $this->container['dataset'] = $dataset;
+
+        return $this;
+    }
+
+    /**
+     * Gets project_id
+     *
+     * @return string|null
+     */
+    public function getProjectId()
+    {
+        return $this->container['project_id'];
+    }
+
+    /**
+     * Sets project_id
+     *
+     * @param string|null $project_id Your Google Cloud Platform project ID. Required
+     *
+     * @return self
+     */
+    public function setProjectId($project_id)
+    {
+        $this->container['project_id'] = $project_id;
 
         return $this;
     }
@@ -528,30 +552,6 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setTemplateSuffix($template_suffix)
     {
         $this->container['template_suffix'] = $template_suffix;
-
-        return $this;
-    }
-
-    /**
-     * Gets project_id
-     *
-     * @return string|null
-     */
-    public function getProjectId()
-    {
-        return $this->container['project_id'];
-    }
-
-    /**
-     * Sets project_id
-     *
-     * @param string|null $project_id Your Google Cloud Platform project ID. Required
-     *
-     * @return self
-     */
-    public function setProjectId($project_id)
-    {
-        $this->container['project_id'] = $project_id;
 
         return $this;
     }

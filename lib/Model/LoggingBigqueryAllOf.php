@@ -53,12 +53,12 @@ class LoggingBigqueryAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => 'string',
-        'format' => 'string',
         'dataset' => 'string',
+        'format' => 'string',
+        'name' => 'string',
+        'project_id' => 'string',
         'table' => 'string',
-        'template_suffix' => 'string',
-        'project_id' => 'string'
+        'template_suffix' => 'string'
     ];
 
     /**
@@ -69,12 +69,12 @@ class LoggingBigqueryAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'name' => null,
-        'format' => null,
         'dataset' => null,
+        'format' => null,
+        'name' => null,
+        'project_id' => null,
         'table' => null,
-        'template_suffix' => null,
-        'project_id' => null
+        'template_suffix' => null
     ];
 
     /**
@@ -104,12 +104,12 @@ class LoggingBigqueryAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'format' => 'format',
         'dataset' => 'dataset',
+        'format' => 'format',
+        'name' => 'name',
+        'project_id' => 'project_id',
         'table' => 'table',
-        'template_suffix' => 'template_suffix',
-        'project_id' => 'project_id'
+        'template_suffix' => 'template_suffix'
     ];
 
     /**
@@ -118,12 +118,12 @@ class LoggingBigqueryAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'format' => 'setFormat',
         'dataset' => 'setDataset',
+        'format' => 'setFormat',
+        'name' => 'setName',
+        'project_id' => 'setProjectId',
         'table' => 'setTable',
-        'template_suffix' => 'setTemplateSuffix',
-        'project_id' => 'setProjectId'
+        'template_suffix' => 'setTemplateSuffix'
     ];
 
     /**
@@ -132,12 +132,12 @@ class LoggingBigqueryAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'format' => 'getFormat',
         'dataset' => 'getDataset',
+        'format' => 'getFormat',
+        'name' => 'getName',
+        'project_id' => 'getProjectId',
         'table' => 'getTable',
-        'template_suffix' => 'getTemplateSuffix',
-        'project_id' => 'getProjectId'
+        'template_suffix' => 'getTemplateSuffix'
     ];
 
     /**
@@ -200,12 +200,12 @@ class LoggingBigqueryAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
         $this->container['dataset'] = $data['dataset'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['project_id'] = $data['project_id'] ?? null;
         $this->container['table'] = $data['table'] ?? null;
         $this->container['template_suffix'] = $data['template_suffix'] ?? null;
-        $this->container['project_id'] = $data['project_id'] ?? null;
     }
 
     /**
@@ -233,25 +233,25 @@ class LoggingBigqueryAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets name
+     * Gets dataset
      *
      * @return string|null
      */
-    public function getName()
+    public function getDataset()
     {
-        return $this->container['name'];
+        return $this->container['dataset'];
     }
 
     /**
-     * Sets name
+     * Sets dataset
      *
-     * @param string|null $name The name of the BigQuery logging object. Used as a primary key for API access.
+     * @param string|null $dataset Your BigQuery dataset.
      *
      * @return self
      */
-    public function setName($name)
+    public function setDataset($dataset)
     {
-        $this->container['name'] = $name;
+        $this->container['dataset'] = $dataset;
 
         return $this;
     }
@@ -281,25 +281,49 @@ class LoggingBigqueryAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets dataset
+     * Gets name
      *
      * @return string|null
      */
-    public function getDataset()
+    public function getName()
     {
-        return $this->container['dataset'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets dataset
+     * Sets name
      *
-     * @param string|null $dataset Your BigQuery dataset.
+     * @param string|null $name The name of the BigQuery logging object. Used as a primary key for API access.
      *
      * @return self
      */
-    public function setDataset($dataset)
+    public function setName($name)
     {
-        $this->container['dataset'] = $dataset;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets project_id
+     *
+     * @return string|null
+     */
+    public function getProjectId()
+    {
+        return $this->container['project_id'];
+    }
+
+    /**
+     * Sets project_id
+     *
+     * @param string|null $project_id Your Google Cloud Platform project ID. Required
+     *
+     * @return self
+     */
+    public function setProjectId($project_id)
+    {
+        $this->container['project_id'] = $project_id;
 
         return $this;
     }
@@ -348,30 +372,6 @@ class LoggingBigqueryAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTemplateSuffix($template_suffix)
     {
         $this->container['template_suffix'] = $template_suffix;
-
-        return $this;
-    }
-
-    /**
-     * Gets project_id
-     *
-     * @return string|null
-     */
-    public function getProjectId()
-    {
-        return $this->container['project_id'];
-    }
-
-    /**
-     * Sets project_id
-     *
-     * @param string|null $project_id Your Google Cloud Platform project ID. Required
-     *
-     * @return self
-     */
-    public function setProjectId($project_id)
-    {
-        $this->container['project_id'] = $project_id;
 
         return $this;
     }

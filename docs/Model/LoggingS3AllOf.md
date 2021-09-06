@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to 'null']
 **redundancy** | **string** | The S3 redundancy level. | [optional] [default to 'null']
 **secret_key** | **string** | The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. | [optional]
-**server_side_encryption_kms_key_id** | **string** | Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. | [optional] [default to 'null']
 **server_side_encryption** | **string** | Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. | [optional] [default to 'null']
+**server_side_encryption_kms_key_id** | **string** | Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. | [optional] [default to 'null']
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

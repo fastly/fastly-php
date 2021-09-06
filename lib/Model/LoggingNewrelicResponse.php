@@ -53,11 +53,12 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'mixed',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'response_condition' => 'string',
-        'format' => 'mixed',
+        'region' => 'string',
         'token' => 'string',
         'created_at' => 'string',
         'deleted_at' => 'string',
@@ -74,11 +75,12 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
+        'format_version' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
-        'format' => null,
+        'region' => null,
         'token' => null,
         'created_at' => null,
         'deleted_at' => null,
@@ -114,11 +116,12 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
+        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'format' => 'format',
+        'region' => 'region',
         'token' => 'token',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
@@ -133,11 +136,12 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'format' => 'setFormat',
+        'region' => 'setRegion',
         'token' => 'setToken',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
@@ -152,11 +156,12 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'format' => 'getFormat',
+        'region' => 'getRegion',
         'token' => 'getToken',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
@@ -206,8 +211,23 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$fastlyModelName;
     }
 
+    const REGION_US = 'US';
+    const REGION_EU = 'EU';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRegionAllowableValues()
+    {
+        return [
+            self::REGION_US,
+            self::REGION_EU,
+        ];
+    }
     
 
     /**
@@ -225,11 +245,12 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
+        $this->container['region'] = $data['region'] ?? REGION_US;
         $this->container['token'] = $data['token'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
@@ -247,6 +268,15 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getRegionAllowableValues();
+        if (!is_null($this->container['region']) && !in_array($this->container['region'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'region', must be one of '%s'",
+                $this->container['region'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -261,6 +291,54 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return mixed|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -311,30 +389,6 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -359,25 +413,35 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets format
+     * Gets region
      *
-     * @return mixed|null
+     * @return string|null
      */
-    public function getFormat()
+    public function getRegion()
     {
-        return $this->container['format'];
+        return $this->container['region'];
     }
 
     /**
-     * Sets format
+     * Sets region
      *
-     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest.
+     * @param string|null $region The region to which to stream logs.
      *
      * @return self
      */
-    public function setFormat($format)
+    public function setRegion($region)
     {
-        $this->container['format'] = $format;
+        $allowedValues = $this->getRegionAllowableValues();
+        if (!is_null($region) && !in_array($region, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'region', must be one of '%s'",
+                    $region,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['region'] = $region;
 
         return $this;
     }

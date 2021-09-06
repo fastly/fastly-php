@@ -117,7 +117,7 @@ class DictionaryItemApi
      *
      * @param  string $service_id service_id (required)
      * @param  string $dictionary_id dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject $inline_object inline_object (optional)
+     * @param  \Fastly\Model\InlineObject4 $inline_object4 inline_object4 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -138,7 +138,7 @@ class DictionaryItemApi
      *
      * @param  string $service_id (required)
      * @param  string $dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject $inline_object (optional)
+     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -230,7 +230,7 @@ class DictionaryItemApi
      *
      * @param  string $service_id (required)
      * @param  string $dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject $inline_object (optional)
+     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -254,7 +254,7 @@ class DictionaryItemApi
      *
      * @param  string $service_id (required)
      * @param  string $dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject $inline_object (optional)
+     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -305,7 +305,7 @@ class DictionaryItemApi
      *
      * @param  string $service_id (required)
      * @param  string $dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject $inline_object (optional)
+     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -315,7 +315,7 @@ class DictionaryItemApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $dictionary_id = array_key_exists('dictionary_id', $options) ? $options['dictionary_id'] : null;
-        $inline_object = array_key_exists('inline_object', $options) ? $options['inline_object'] : null;
+        $inline_object4 = array_key_exists('inline_object4', $options) ? $options['inline_object4'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -369,11 +369,11 @@ class DictionaryItemApi
         }
 
         // for model (json/xml)
-        if (isset($inline_object)) {
+        if (isset($inline_object4)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object4));
             } else {
-                $httpBody = $inline_object;
+                $httpBody = $inline_object4;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

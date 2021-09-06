@@ -53,10 +53,10 @@ class DiffResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'from' => 'int',
-        'to' => 'int',
+        'diff' => 'string',
         'format' => 'string',
-        'diff' => 'string'
+        'from' => 'int',
+        'to' => 'int'
     ];
 
     /**
@@ -67,10 +67,10 @@ class DiffResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'from' => null,
-        'to' => null,
+        'diff' => null,
         'format' => null,
-        'diff' => null
+        'from' => null,
+        'to' => null
     ];
 
     /**
@@ -100,10 +100,10 @@ class DiffResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'from' => 'from',
-        'to' => 'to',
+        'diff' => 'diff',
         'format' => 'format',
-        'diff' => 'diff'
+        'from' => 'from',
+        'to' => 'to'
     ];
 
     /**
@@ -112,10 +112,10 @@ class DiffResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'from' => 'setFrom',
-        'to' => 'setTo',
+        'diff' => 'setDiff',
         'format' => 'setFormat',
-        'diff' => 'setDiff'
+        'from' => 'setFrom',
+        'to' => 'setTo'
     ];
 
     /**
@@ -124,10 +124,10 @@ class DiffResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'from' => 'getFrom',
-        'to' => 'getTo',
+        'diff' => 'getDiff',
         'format' => 'getFormat',
-        'diff' => 'getDiff'
+        'from' => 'getFrom',
+        'to' => 'getTo'
     ];
 
     /**
@@ -190,10 +190,10 @@ class DiffResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['diff'] = $data['diff'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
-        $this->container['diff'] = $data['diff'] ?? null;
     }
 
     /**
@@ -219,6 +219,54 @@ class DiffResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets diff
+     *
+     * @return string|null
+     */
+    public function getDiff()
+    {
+        return $this->container['diff'];
+    }
+
+    /**
+     * Sets diff
+     *
+     * @param string|null $diff The differences between two specified versions.
+     *
+     * @return self
+     */
+    public function setDiff($diff)
+    {
+        $this->container['diff'] = $diff;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format The format the diff is being returned in (`text`, `html` or `html_simple`).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
 
     /**
      * Gets from
@@ -264,54 +312,6 @@ class DiffResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTo($to)
     {
         $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format The format the diff is being returned in (`text`, `html` or `html_simple`).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets diff
-     *
-     * @return string|null
-     */
-    public function getDiff()
-    {
-        return $this->container['diff'];
-    }
-
-    /**
-     * Sets diff
-     *
-     * @param string|null $diff The differences between two specified versions.
-     *
-     * @return self
-     */
-    public function setDiff($diff)
-    {
-        $this->container['diff'] = $diff;
 
         return $this;
     }

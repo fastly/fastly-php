@@ -53,8 +53,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => 'string',
-        'key' => 'string'
+        'key' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'name' => null,
-        'key' => null
+        'key' => null,
+        'name' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'key' => 'key'
+        'key' => 'key',
+        'name' => 'name'
     ];
 
     /**
@@ -106,8 +106,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'key' => 'setKey'
+        'key' => 'setKey',
+        'name' => 'setName'
     ];
 
     /**
@@ -116,8 +116,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'key' => 'getKey'
+        'key' => 'getKey',
+        'name' => 'getName'
     ];
 
     /**
@@ -180,8 +180,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['key'] = $data['key'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name A customizable name for your private key. Optional.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets key
      *
      * @return string|null
@@ -252,6 +228,30 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
     public function setKey($key)
     {
         $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name A customizable name for your private key. Optional.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

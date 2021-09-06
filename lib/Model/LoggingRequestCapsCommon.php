@@ -53,8 +53,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'request_max_entries' => 'int',
-        'request_max_bytes' => 'int'
+        'request_max_bytes' => 'int',
+        'request_max_entries' => 'int'
     ];
 
     /**
@@ -65,8 +65,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'request_max_entries' => null,
-        'request_max_bytes' => null
+        'request_max_bytes' => null,
+        'request_max_entries' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'request_max_entries' => 'request_max_entries',
-        'request_max_bytes' => 'request_max_bytes'
+        'request_max_bytes' => 'request_max_bytes',
+        'request_max_entries' => 'request_max_entries'
     ];
 
     /**
@@ -106,8 +106,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'request_max_entries' => 'setRequestMaxEntries',
-        'request_max_bytes' => 'setRequestMaxBytes'
+        'request_max_bytes' => 'setRequestMaxBytes',
+        'request_max_entries' => 'setRequestMaxEntries'
     ];
 
     /**
@@ -116,8 +116,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'request_max_entries' => 'getRequestMaxEntries',
-        'request_max_bytes' => 'getRequestMaxBytes'
+        'request_max_bytes' => 'getRequestMaxBytes',
+        'request_max_entries' => 'getRequestMaxEntries'
     ];
 
     /**
@@ -180,8 +180,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
         $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
+        $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
     }
 
     /**
@@ -209,30 +209,6 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets request_max_entries
-     *
-     * @return int|null
-     */
-    public function getRequestMaxEntries()
-    {
-        return $this->container['request_max_entries'];
-    }
-
-    /**
-     * Sets request_max_entries
-     *
-     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` for unbounded.
-     *
-     * @return self
-     */
-    public function setRequestMaxEntries($request_max_entries)
-    {
-        $this->container['request_max_entries'] = $request_max_entries;
-
-        return $this;
-    }
-
-    /**
      * Gets request_max_bytes
      *
      * @return int|null
@@ -252,6 +228,30 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
     public function setRequestMaxBytes($request_max_bytes)
     {
         $this->container['request_max_bytes'] = $request_max_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_max_entries
+     *
+     * @return int|null
+     */
+    public function getRequestMaxEntries()
+    {
+        return $this->container['request_max_entries'];
+    }
+
+    /**
+     * Sets request_max_entries
+     *
+     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` for unbounded.
+     *
+     * @return self
+     */
+    public function setRequestMaxEntries($request_max_entries)
+    {
+        $this->container['request_max_entries'] = $request_max_entries;
 
         return $this;
     }

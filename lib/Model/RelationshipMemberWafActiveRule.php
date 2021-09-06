@@ -53,8 +53,8 @@ class RelationshipMemberWafActiveRule implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'type' => '\Fastly\Model\TypeWafActiveRule',
-        'id' => 'string'
+        'id' => 'string',
+        'type' => '\Fastly\Model\TypeWafActiveRule'
     ];
 
     /**
@@ -65,8 +65,8 @@ class RelationshipMemberWafActiveRule implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'type' => null,
-        'id' => null
+        'id' => null,
+        'type' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class RelationshipMemberWafActiveRule implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'id' => 'id'
+        'id' => 'id',
+        'type' => 'type'
     ];
 
     /**
@@ -106,8 +106,8 @@ class RelationshipMemberWafActiveRule implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'id' => 'setId'
+        'id' => 'setId',
+        'type' => 'setType'
     ];
 
     /**
@@ -116,8 +116,8 @@ class RelationshipMemberWafActiveRule implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'id' => 'getId'
+        'id' => 'getId',
+        'type' => 'getType'
     ];
 
     /**
@@ -180,8 +180,8 @@ class RelationshipMemberWafActiveRule implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class RelationshipMemberWafActiveRule implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeWafActiveRule|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeWafActiveRule|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string|null
@@ -252,6 +228,30 @@ class RelationshipMemberWafActiveRule implements ModelInterface, ArrayAccess, \J
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeWafActiveRule|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeWafActiveRule|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

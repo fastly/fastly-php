@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** |  |
 **dictionary_id** | **string** |  |
-**inline_object** | [**\Fastly\Model\InlineObject**](../Model/InlineObject.md) |  | [optional]
+**inline_object4** | [**\Fastly\Model\InlineObject4**](../Model/InlineObject4.md) |  | [optional]
 
 ### Return type
 

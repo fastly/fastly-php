@@ -53,10 +53,10 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'login' => 'string',
-        'name' => 'string',
         'limit_services' => 'bool',
         'locked' => 'bool',
+        'login' => 'string',
+        'name' => 'string',
         'require_new_password' => 'bool',
         'role' => '\Fastly\Model\RoleUser',
         'two_factor_auth_enabled' => 'bool',
@@ -64,9 +64,9 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
-        'id' => 'string',
+        'customer_id' => 'string',
         'email_hash' => 'string',
-        'customer_id' => 'string'
+        'id' => 'string'
     ];
 
     /**
@@ -77,10 +77,10 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'login' => null,
-        'name' => null,
         'limit_services' => null,
         'locked' => null,
+        'login' => null,
+        'name' => null,
         'require_new_password' => null,
         'role' => null,
         'two_factor_auth_enabled' => null,
@@ -88,9 +88,9 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
-        'id' => null,
+        'customer_id' => null,
         'email_hash' => null,
-        'customer_id' => null
+        'id' => null
     ];
 
     /**
@@ -120,10 +120,10 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'login' => 'login',
-        'name' => 'name',
         'limit_services' => 'limit_services',
         'locked' => 'locked',
+        'login' => 'login',
+        'name' => 'name',
         'require_new_password' => 'require_new_password',
         'role' => 'role',
         'two_factor_auth_enabled' => 'two_factor_auth_enabled',
@@ -131,9 +131,9 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
-        'id' => 'id',
+        'customer_id' => 'customer_id',
         'email_hash' => 'email_hash',
-        'customer_id' => 'customer_id'
+        'id' => 'id'
     ];
 
     /**
@@ -142,10 +142,10 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'login' => 'setLogin',
-        'name' => 'setName',
         'limit_services' => 'setLimitServices',
         'locked' => 'setLocked',
+        'login' => 'setLogin',
+        'name' => 'setName',
         'require_new_password' => 'setRequireNewPassword',
         'role' => 'setRole',
         'two_factor_auth_enabled' => 'setTwoFactorAuthEnabled',
@@ -153,9 +153,9 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
-        'id' => 'setId',
+        'customer_id' => 'setCustomerId',
         'email_hash' => 'setEmailHash',
-        'customer_id' => 'setCustomerId'
+        'id' => 'setId'
     ];
 
     /**
@@ -164,10 +164,10 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'login' => 'getLogin',
-        'name' => 'getName',
         'limit_services' => 'getLimitServices',
         'locked' => 'getLocked',
+        'login' => 'getLogin',
+        'name' => 'getName',
         'require_new_password' => 'getRequireNewPassword',
         'role' => 'getRole',
         'two_factor_auth_enabled' => 'getTwoFactorAuthEnabled',
@@ -175,9 +175,9 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
-        'id' => 'getId',
+        'customer_id' => 'getCustomerId',
         'email_hash' => 'getEmailHash',
-        'customer_id' => 'getCustomerId'
+        'id' => 'getId'
     ];
 
     /**
@@ -240,10 +240,10 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['login'] = $data['login'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['limit_services'] = $data['limit_services'] ?? null;
         $this->container['locked'] = $data['locked'] ?? null;
+        $this->container['login'] = $data['login'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['require_new_password'] = $data['require_new_password'] ?? null;
         $this->container['role'] = $data['role'] ?? null;
         $this->container['two_factor_auth_enabled'] = $data['two_factor_auth_enabled'] ?? null;
@@ -251,9 +251,9 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['email_hash'] = $data['email_hash'] ?? null;
         $this->container['customer_id'] = $data['customer_id'] ?? null;
+        $this->container['email_hash'] = $data['email_hash'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -279,54 +279,6 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets login
-     *
-     * @return string|null
-     */
-    public function getLogin()
-    {
-        return $this->container['login'];
-    }
-
-    /**
-     * Sets login
-     *
-     * @param string|null $login The login associated with the user (typically, an email address).
-     *
-     * @return self
-     */
-    public function setLogin($login)
-    {
-        $this->container['login'] = $login;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The real life name of the user.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets limit_services
@@ -372,6 +324,54 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setLocked($locked)
     {
         $this->container['locked'] = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Gets login
+     *
+     * @return string|null
+     */
+    public function getLogin()
+    {
+        return $this->container['login'];
+    }
+
+    /**
+     * Sets login
+     *
+     * @param string|null $login The login associated with the user (typically, an email address).
+     *
+     * @return self
+     */
+    public function setLogin($login)
+    {
+        $this->container['login'] = $login;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name The real life name of the user.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -545,25 +545,25 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets id
+     * Gets customer_id
      *
      * @return string|null
      */
-    public function getId()
+    public function getCustomerId()
     {
-        return $this->container['id'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets id
+     * Sets customer_id
      *
-     * @param string|null $id Alphanumeric string identifying the user.
+     * @param string|null $customer_id Alphanumeric string identifying the customer.
      *
      * @return self
      */
-    public function setId($id)
+    public function setCustomerId($customer_id)
     {
-        $this->container['id'] = $id;
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }
@@ -593,25 +593,25 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets customer_id
+     * Gets id
      *
      * @return string|null
      */
-    public function getCustomerId()
+    public function getId()
     {
-        return $this->container['customer_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets customer_id
+     * Sets id
      *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     * @param string|null $id Alphanumeric string identifying the user.
      *
      * @return self
      */
-    public function setCustomerId($customer_id)
+    public function setId($id)
     {
-        $this->container['customer_id'] = $customer_id;
+        $this->container['id'] = $id;
 
         return $this;
     }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**\Fastly\Model\TypeTlsActivation**](TypeTlsActivation.md) |  | [optional]
 **id** | **string** | Alphanumeric string identifying a TLS activation. | [optional] [readonly]
+**type** | [**\Fastly\Model\TypeTlsActivation**](TypeTlsActivation.md) |  | [optional]
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

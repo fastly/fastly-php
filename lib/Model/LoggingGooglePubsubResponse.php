@@ -53,15 +53,15 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'string',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'response_condition' => 'string',
-        'format' => 'string',
-        'user' => 'string',
         'secret_key' => 'string',
-        'topic' => 'string',
+        'user' => 'string',
         'project_id' => 'string',
+        'topic' => 'string',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -77,15 +77,15 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
+        'format_version' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
-        'format' => null,
-        'user' => null,
         'secret_key' => null,
-        'topic' => null,
+        'user' => null,
         'project_id' => null,
+        'topic' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -120,15 +120,15 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
+        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'format' => 'format',
-        'user' => 'user',
         'secret_key' => 'secret_key',
-        'topic' => 'topic',
+        'user' => 'user',
         'project_id' => 'project_id',
+        'topic' => 'topic',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -142,15 +142,15 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'format' => 'setFormat',
-        'user' => 'setUser',
         'secret_key' => 'setSecretKey',
-        'topic' => 'setTopic',
+        'user' => 'setUser',
         'project_id' => 'setProjectId',
+        'topic' => 'setTopic',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -164,15 +164,15 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'format' => 'getFormat',
-        'user' => 'getUser',
         'secret_key' => 'getSecretKey',
-        'topic' => 'getTopic',
+        'user' => 'getUser',
         'project_id' => 'getProjectId',
+        'topic' => 'getTopic',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -240,15 +240,15 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['user'] = $data['user'] ?? null;
         $this->container['secret_key'] = $data['secret_key'] ?? null;
-        $this->container['topic'] = $data['topic'] ?? null;
+        $this->container['user'] = $data['user'] ?? null;
         $this->container['project_id'] = $data['project_id'] ?? null;
+        $this->container['topic'] = $data['topic'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -279,6 +279,54 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -329,30 +377,6 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -372,54 +396,6 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets user
-     *
-     * @return string|null
-     */
-    public function getUser()
-    {
-        return $this->container['user'];
-    }
-
-    /**
-     * Sets user
-     *
-     * @param string|null $user Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Required.
-     *
-     * @return self
-     */
-    public function setUser($user)
-    {
-        $this->container['user'] = $user;
 
         return $this;
     }
@@ -449,25 +425,25 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets topic
+     * Gets user
      *
      * @return string|null
      */
-    public function getTopic()
+    public function getUser()
     {
-        return $this->container['topic'];
+        return $this->container['user'];
     }
 
     /**
-     * Sets topic
+     * Sets user
      *
-     * @param string|null $topic The Google Cloud Pub/Sub topic to which logs will be published. Required.
+     * @param string|null $user Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Required.
      *
      * @return self
      */
-    public function setTopic($topic)
+    public function setUser($user)
     {
-        $this->container['topic'] = $topic;
+        $this->container['user'] = $user;
 
         return $this;
     }
@@ -492,6 +468,30 @@ class LoggingGooglePubsubResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setProjectId($project_id)
     {
         $this->container['project_id'] = $project_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets topic
+     *
+     * @return string|null
+     */
+    public function getTopic()
+    {
+        return $this->container['topic'];
+    }
+
+    /**
+     * Sets topic
+     *
+     * @param string|null $topic The Google Cloud Pub/Sub topic to which logs will be published. Required.
+     *
+     * @return self
+     */
+    public function setTopic($topic)
+    {
+        $this->container['topic'] = $topic;
 
         return $this;
     }
