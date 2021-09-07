@@ -47,11 +47,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** |  |
 **version_id** | **int** |  |
-**name** | **string** | The name for the snippet. | [optional]
-**dynamic** | **string** | Sets the snippet version. | [optional]
-**type** | **string** | The location in generated VCL where the snippet should be placed. | [optional]
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
+**dynamic** | **string** | Sets the snippet version. | [optional]
+**name** | **string** | The name for the snippet. | [optional]
 **priority** | **string** | Numeric string value. Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
+**type** | **string** | The location in generated VCL where the snippet should be placed. | [optional]
 
 ### Return type
 
@@ -253,11 +253,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** |  |
 **snippet_id** | **string** |  |
-**name** | **string** | The name for the snippet. | [optional]
-**dynamic** | **string** | Sets the snippet version. | [optional]
-**type** | **string** | The location in generated VCL where the snippet should be placed. | [optional]
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
+**dynamic** | **string** | Sets the snippet version. | [optional]
+**name** | **string** | The name for the snippet. | [optional]
 **priority** | **string** | Numeric string value. Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
+**type** | **string** | The location in generated VCL where the snippet should be placed. | [optional]
 
 ### Return type
 

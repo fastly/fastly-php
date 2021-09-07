@@ -115,7 +115,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\StarData $star_data star_data (optional)
+     * @param  \Fastly\Model\Star $star star (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -134,7 +134,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\StarData $star_data (optional)
+     * @param  \Fastly\Model\Star $star (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -224,7 +224,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\StarData $star_data (optional)
+     * @param  \Fastly\Model\Star $star (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -246,7 +246,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\StarData $star_data (optional)
+     * @param  \Fastly\Model\Star $star (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -295,7 +295,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\StarData $star_data (optional)
+     * @param  \Fastly\Model\Star $star (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -303,7 +303,7 @@ class StarApi
     public function createServiceStarRequest($options)
     {
         // unbox the parameters from the associative array
-        $star_data = array_key_exists('star_data', $options) ? $options['star_data'] : null;
+        $star = array_key_exists('star', $options) ? $options['star'] : null;
 
 
         $resourcePath = '/stars';
@@ -329,11 +329,11 @@ class StarApi
         }
 
         // for model (json/xml)
-        if (isset($star_data)) {
+        if (isset($star)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($star_data));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($star));
             } else {
-                $httpBody = $star_data;
+                $httpBody = $star;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

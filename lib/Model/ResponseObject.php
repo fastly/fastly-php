@@ -57,9 +57,9 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
         'content' => 'string',
         'content_type' => 'string',
         'name' => 'string',
-        'status' => 'int',
+        'request_condition' => 'string',
         'response' => 'string',
-        'request_condition' => 'string'
+        'status' => 'int'
     ];
 
     /**
@@ -74,9 +74,9 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
         'content' => null,
         'content_type' => null,
         'name' => null,
-        'status' => null,
+        'request_condition' => null,
         'response' => null,
-        'request_condition' => null
+        'status' => null
     ];
 
     /**
@@ -110,9 +110,9 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
         'content' => 'content',
         'content_type' => 'content_type',
         'name' => 'name',
-        'status' => 'status',
+        'request_condition' => 'request_condition',
         'response' => 'response',
-        'request_condition' => 'request_condition'
+        'status' => 'status'
     ];
 
     /**
@@ -125,9 +125,9 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
         'content' => 'setContent',
         'content_type' => 'setContentType',
         'name' => 'setName',
-        'status' => 'setStatus',
+        'request_condition' => 'setRequestCondition',
         'response' => 'setResponse',
-        'request_condition' => 'setRequestCondition'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -140,9 +140,9 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
         'content' => 'getContent',
         'content_type' => 'getContentType',
         'name' => 'getName',
-        'status' => 'getStatus',
+        'request_condition' => 'getRequestCondition',
         'response' => 'getResponse',
-        'request_condition' => 'getRequestCondition'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -209,9 +209,9 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['content'] = $data['content'] ?? null;
         $this->container['content_type'] = $data['content_type'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['status'] = $data['status'] ?? 200;
-        $this->container['response'] = $data['response'] ?? 'Ok';
         $this->container['request_condition'] = $data['request_condition'] ?? null;
+        $this->container['response'] = $data['response'] ?? 'Ok';
+        $this->container['status'] = $data['status'] ?? 200;
     }
 
     /**
@@ -335,25 +335,25 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets status
+     * Gets request_condition
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getStatus()
+    public function getRequestCondition()
     {
-        return $this->container['status'];
+        return $this->container['request_condition'];
     }
 
     /**
-     * Sets status
+     * Sets request_condition
      *
-     * @param int|null $status The HTTP status code.
+     * @param string|null $request_condition Condition which, if met, will select this configuration during a request. Optional.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setRequestCondition($request_condition)
     {
-        $this->container['status'] = $status;
+        $this->container['request_condition'] = $request_condition;
 
         return $this;
     }
@@ -383,25 +383,25 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets request_condition
+     * Gets status
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getRequestCondition()
+    public function getStatus()
     {
-        return $this->container['request_condition'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets request_condition
+     * Sets status
      *
-     * @param string|null $request_condition Condition which, if met, will select this configuration during a request. Optional.
+     * @param int|null $status The HTTP status code.
      *
      * @return self
      */
-    public function setRequestCondition($request_condition)
+    public function setStatus($status)
     {
-        $this->container['request_condition'] = $request_condition;
+        $this->container['status'] = $status;
 
         return $this;
     }

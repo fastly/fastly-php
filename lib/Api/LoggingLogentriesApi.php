@@ -117,15 +117,15 @@ class LoggingLogentriesApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
-     * @param  string $region region (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -146,15 +146,15 @@ class LoggingLogentriesApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
-     * @param  string $region (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -246,15 +246,15 @@ class LoggingLogentriesApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
-     * @param  string $region (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -278,15 +278,15 @@ class LoggingLogentriesApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
-     * @param  string $region (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -337,15 +337,15 @@ class LoggingLogentriesApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
-     * @param  string $region (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -355,15 +355,15 @@ class LoggingLogentriesApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $port = array_key_exists('port', $options) ? $options['port'] : 20000;
+        $region = array_key_exists('region', $options) ? $options['region'] : null;
         $token = array_key_exists('token', $options) ? $options['token'] : null;
         $use_tls = array_key_exists('use_tls', $options) ? $options['use_tls'] : null;
-        $region = array_key_exists('region', $options) ? $options['region'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -405,6 +405,14 @@ class LoggingLogentriesApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -413,20 +421,16 @@ class LoggingLogentriesApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
         if ($port !== null) {
             $formParams['port'] = ObjectSerializer::toFormValue($port);
+        }
+        // form params
+        if ($region !== null) {
+            $formParams['region'] = ObjectSerializer::toFormValue($region);
         }
         // form params
         if ($token !== null) {
@@ -435,10 +439,6 @@ class LoggingLogentriesApi
         // form params
         if ($use_tls !== null) {
             $formParams['use_tls'] = ObjectSerializer::toFormValue($use_tls);
-        }
-        // form params
-        if ($region !== null) {
-            $formParams['region'] = ObjectSerializer::toFormValue($region);
         }
 
         if ($multipart) {
@@ -1468,15 +1468,15 @@ class LoggingLogentriesApi
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
      * @param  string $logging_logentries_name logging_logentries_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
-     * @param  string $region region (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1498,15 +1498,15 @@ class LoggingLogentriesApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_logentries_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
-     * @param  string $region (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1599,15 +1599,15 @@ class LoggingLogentriesApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_logentries_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
-     * @param  string $region (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1632,15 +1632,15 @@ class LoggingLogentriesApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_logentries_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
-     * @param  string $region (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1692,15 +1692,15 @@ class LoggingLogentriesApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_logentries_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  int $port The port number. (optional, default to 20000)
+     * @param  string $region The region to which to stream logs. (optional)
      * @param  string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
-     * @param  string $region (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1711,15 +1711,15 @@ class LoggingLogentriesApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_logentries_name = array_key_exists('logging_logentries_name', $options) ? $options['logging_logentries_name'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $port = array_key_exists('port', $options) ? $options['port'] : 20000;
+        $region = array_key_exists('region', $options) ? $options['region'] : null;
         $token = array_key_exists('token', $options) ? $options['token'] : null;
         $use_tls = array_key_exists('use_tls', $options) ? $options['use_tls'] : null;
-        $region = array_key_exists('region', $options) ? $options['region'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1775,6 +1775,14 @@ class LoggingLogentriesApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1783,20 +1791,16 @@ class LoggingLogentriesApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
         if ($port !== null) {
             $formParams['port'] = ObjectSerializer::toFormValue($port);
+        }
+        // form params
+        if ($region !== null) {
+            $formParams['region'] = ObjectSerializer::toFormValue($region);
         }
         // form params
         if ($token !== null) {
@@ -1805,10 +1809,6 @@ class LoggingLogentriesApi
         // form params
         if ($use_tls !== null) {
             $formParams['use_tls'] = ObjectSerializer::toFormValue($use_tls);
-        }
-        // form params
-        if ($region !== null) {
-            $formParams['region'] = ObjectSerializer::toFormValue($region);
         }
 
         if ($multipart) {

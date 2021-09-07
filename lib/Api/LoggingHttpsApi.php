@@ -117,24 +117,24 @@ class LoggingHttpsApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to 'POST')
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -155,24 +155,24 @@ class LoggingHttpsApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to 'POST')
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -264,24 +264,24 @@ class LoggingHttpsApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to 'POST')
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -305,24 +305,24 @@ class LoggingHttpsApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to 'POST')
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -373,24 +373,24 @@ class LoggingHttpsApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to 'POST')
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -400,24 +400,24 @@ class LoggingHttpsApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $tls_ca_cert = array_key_exists('tls_ca_cert', $options) ? $options['tls_ca_cert'] : 'null';
         $tls_client_cert = array_key_exists('tls_client_cert', $options) ? $options['tls_client_cert'] : 'null';
         $tls_client_key = array_key_exists('tls_client_key', $options) ? $options['tls_client_key'] : 'null';
         $tls_hostname = array_key_exists('tls_hostname', $options) ? $options['tls_hostname'] : 'null';
-        $request_max_entries = array_key_exists('request_max_entries', $options) ? $options['request_max_entries'] : 0;
         $request_max_bytes = array_key_exists('request_max_bytes', $options) ? $options['request_max_bytes'] : 0;
-        $url = array_key_exists('url', $options) ? $options['url'] : null;
+        $request_max_entries = array_key_exists('request_max_entries', $options) ? $options['request_max_entries'] : 0;
         $content_type = array_key_exists('content_type', $options) ? $options['content_type'] : 'null';
         $header_name = array_key_exists('header_name', $options) ? $options['header_name'] : 'null';
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
         $header_value = array_key_exists('header_value', $options) ? $options['header_value'] : 'null';
-        $method = array_key_exists('method', $options) ? $options['method'] : 'POST';
         $json_format = array_key_exists('json_format', $options) ? $options['json_format'] : null;
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
+        $method = array_key_exists('method', $options) ? $options['method'] : 'POST';
+        $url = array_key_exists('url', $options) ? $options['url'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -459,6 +459,14 @@ class LoggingHttpsApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -467,16 +475,8 @@ class LoggingHttpsApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
-        }
-        // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($tls_ca_cert !== null) {
@@ -495,16 +495,12 @@ class LoggingHttpsApi
             $formParams['tls_hostname'] = ObjectSerializer::toFormValue($tls_hostname);
         }
         // form params
-        if ($request_max_entries !== null) {
-            $formParams['request_max_entries'] = ObjectSerializer::toFormValue($request_max_entries);
-        }
-        // form params
         if ($request_max_bytes !== null) {
             $formParams['request_max_bytes'] = ObjectSerializer::toFormValue($request_max_bytes);
         }
         // form params
-        if ($url !== null) {
-            $formParams['url'] = ObjectSerializer::toFormValue($url);
+        if ($request_max_entries !== null) {
+            $formParams['request_max_entries'] = ObjectSerializer::toFormValue($request_max_entries);
         }
         // form params
         if ($content_type !== null) {
@@ -515,20 +511,24 @@ class LoggingHttpsApi
             $formParams['header_name'] = ObjectSerializer::toFormValue($header_name);
         }
         // form params
-        if ($message_type !== null) {
-            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
-        }
-        // form params
         if ($header_value !== null) {
             $formParams['header_value'] = ObjectSerializer::toFormValue($header_value);
+        }
+        // form params
+        if ($json_format !== null) {
+            $formParams['json_format'] = ObjectSerializer::toFormValue($json_format);
+        }
+        // form params
+        if ($message_type !== null) {
+            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
         }
         // form params
         if ($method !== null) {
             $formParams['method'] = ObjectSerializer::toFormValue($method);
         }
         // form params
-        if ($json_format !== null) {
-            $formParams['json_format'] = ObjectSerializer::toFormValue($json_format);
+        if ($url !== null) {
+            $formParams['url'] = ObjectSerializer::toFormValue($url);
         }
 
         if ($multipart) {
@@ -1558,24 +1558,24 @@ class LoggingHttpsApi
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
      * @param  string $logging_https_name logging_https_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1597,24 +1597,24 @@ class LoggingHttpsApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_https_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1707,24 +1707,24 @@ class LoggingHttpsApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_https_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1749,24 +1749,24 @@ class LoggingHttpsApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_https_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1818,24 +1818,24 @@ class LoggingHttpsApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_https_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
-     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
+     * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  string $content_type Content type of the header sent with the request. (optional, default to 'null')
      * @param  string $header_name Name of the custom header sent with the request. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
-     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
+     * @param  string $method HTTP method used for request. (optional, default to METHOD_POST)
+     * @param  string $url The URL to send logs to. Must use HTTPS. Required. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1846,24 +1846,24 @@ class LoggingHttpsApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_https_name = array_key_exists('logging_https_name', $options) ? $options['logging_https_name'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $tls_ca_cert = array_key_exists('tls_ca_cert', $options) ? $options['tls_ca_cert'] : 'null';
         $tls_client_cert = array_key_exists('tls_client_cert', $options) ? $options['tls_client_cert'] : 'null';
         $tls_client_key = array_key_exists('tls_client_key', $options) ? $options['tls_client_key'] : 'null';
         $tls_hostname = array_key_exists('tls_hostname', $options) ? $options['tls_hostname'] : 'null';
-        $request_max_entries = array_key_exists('request_max_entries', $options) ? $options['request_max_entries'] : 0;
         $request_max_bytes = array_key_exists('request_max_bytes', $options) ? $options['request_max_bytes'] : 0;
-        $url = array_key_exists('url', $options) ? $options['url'] : null;
+        $request_max_entries = array_key_exists('request_max_entries', $options) ? $options['request_max_entries'] : 0;
         $content_type = array_key_exists('content_type', $options) ? $options['content_type'] : 'null';
         $header_name = array_key_exists('header_name', $options) ? $options['header_name'] : 'null';
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
         $header_value = array_key_exists('header_value', $options) ? $options['header_value'] : 'null';
-        $method = array_key_exists('method', $options) ? $options['method'] : METHOD_POST;
         $json_format = array_key_exists('json_format', $options) ? $options['json_format'] : null;
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
+        $method = array_key_exists('method', $options) ? $options['method'] : METHOD_POST;
+        $url = array_key_exists('url', $options) ? $options['url'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1919,6 +1919,14 @@ class LoggingHttpsApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1927,16 +1935,8 @@ class LoggingHttpsApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
-        }
-        // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($tls_ca_cert !== null) {
@@ -1955,16 +1955,12 @@ class LoggingHttpsApi
             $formParams['tls_hostname'] = ObjectSerializer::toFormValue($tls_hostname);
         }
         // form params
-        if ($request_max_entries !== null) {
-            $formParams['request_max_entries'] = ObjectSerializer::toFormValue($request_max_entries);
-        }
-        // form params
         if ($request_max_bytes !== null) {
             $formParams['request_max_bytes'] = ObjectSerializer::toFormValue($request_max_bytes);
         }
         // form params
-        if ($url !== null) {
-            $formParams['url'] = ObjectSerializer::toFormValue($url);
+        if ($request_max_entries !== null) {
+            $formParams['request_max_entries'] = ObjectSerializer::toFormValue($request_max_entries);
         }
         // form params
         if ($content_type !== null) {
@@ -1975,20 +1971,24 @@ class LoggingHttpsApi
             $formParams['header_name'] = ObjectSerializer::toFormValue($header_name);
         }
         // form params
-        if ($message_type !== null) {
-            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
-        }
-        // form params
         if ($header_value !== null) {
             $formParams['header_value'] = ObjectSerializer::toFormValue($header_value);
+        }
+        // form params
+        if ($json_format !== null) {
+            $formParams['json_format'] = ObjectSerializer::toFormValue($json_format);
+        }
+        // form params
+        if ($message_type !== null) {
+            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
         }
         // form params
         if ($method !== null) {
             $formParams['method'] = ObjectSerializer::toFormValue($method);
         }
         // form params
-        if ($json_format !== null) {
-            $formParams['json_format'] = ObjectSerializer::toFormValue($json_format);
+        if ($url !== null) {
+            $formParams['url'] = ObjectSerializer::toFormValue($url);
         }
 
         if ($multipart) {

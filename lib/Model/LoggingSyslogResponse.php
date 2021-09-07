@@ -53,20 +53,20 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'string',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'response_condition' => 'string',
-        'format' => 'string',
         'tls_ca_cert' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
         'tls_hostname' => 'string',
         'address' => 'string',
         'port' => 'int',
-        'message_type' => '\Fastly\Model\LoggingMessageType',
         'hostname' => 'string',
         'ipv4' => 'string',
+        'message_type' => '\Fastly\Model\LoggingMessageType',
         'token' => 'string',
         'use_tls' => '\Fastly\Model\LoggingUseTls',
         'created_at' => 'string',
@@ -84,20 +84,20 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
+        'format_version' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
-        'format' => null,
         'tls_ca_cert' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
         'tls_hostname' => null,
         'address' => null,
         'port' => null,
-        'message_type' => null,
         'hostname' => null,
         'ipv4' => null,
+        'message_type' => null,
         'token' => null,
         'use_tls' => null,
         'created_at' => null,
@@ -134,20 +134,20 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
+        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'format' => 'format',
         'tls_ca_cert' => 'tls_ca_cert',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
         'tls_hostname' => 'tls_hostname',
         'address' => 'address',
         'port' => 'port',
-        'message_type' => 'message_type',
         'hostname' => 'hostname',
         'ipv4' => 'ipv4',
+        'message_type' => 'message_type',
         'token' => 'token',
         'use_tls' => 'use_tls',
         'created_at' => 'created_at',
@@ -163,20 +163,20 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'format' => 'setFormat',
         'tls_ca_cert' => 'setTlsCaCert',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
         'tls_hostname' => 'setTlsHostname',
         'address' => 'setAddress',
         'port' => 'setPort',
-        'message_type' => 'setMessageType',
         'hostname' => 'setHostname',
         'ipv4' => 'setIpv4',
+        'message_type' => 'setMessageType',
         'token' => 'setToken',
         'use_tls' => 'setUseTls',
         'created_at' => 'setCreatedAt',
@@ -192,20 +192,20 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'format' => 'getFormat',
         'tls_ca_cert' => 'getTlsCaCert',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
         'tls_hostname' => 'getTlsHostname',
         'address' => 'getAddress',
         'port' => 'getPort',
-        'message_type' => 'getMessageType',
         'hostname' => 'getHostname',
         'ipv4' => 'getIpv4',
+        'message_type' => 'getMessageType',
         'token' => 'getToken',
         'use_tls' => 'getUseTls',
         'created_at' => 'getCreatedAt',
@@ -275,20 +275,20 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
         $this->container['tls_hostname'] = $data['tls_hostname'] ?? 'null';
         $this->container['address'] = $data['address'] ?? null;
         $this->container['port'] = $data['port'] ?? 514;
-        $this->container['message_type'] = $data['message_type'] ?? null;
         $this->container['hostname'] = $data['hostname'] ?? null;
         $this->container['ipv4'] = $data['ipv4'] ?? null;
+        $this->container['message_type'] = $data['message_type'] ?? null;
         $this->container['token'] = $data['token'] ?? 'null';
         $this->container['use_tls'] = $data['use_tls'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -321,6 +321,54 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -371,30 +419,6 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -414,30 +438,6 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
 
         return $this;
     }
@@ -587,30 +587,6 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets message_type
-     *
-     * @return \Fastly\Model\LoggingMessageType|null
-     */
-    public function getMessageType()
-    {
-        return $this->container['message_type'];
-    }
-
-    /**
-     * Sets message_type
-     *
-     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
-     *
-     * @return self
-     */
-    public function setMessageType($message_type)
-    {
-        $this->container['message_type'] = $message_type;
-
-        return $this;
-    }
-
-    /**
      * Gets hostname
      *
      * @return string|null
@@ -654,6 +630,30 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setIpv4($ipv4)
     {
         $this->container['ipv4'] = $ipv4;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_type
+     *
+     * @return \Fastly\Model\LoggingMessageType|null
+     */
+    public function getMessageType()
+    {
+        return $this->container['message_type'];
+    }
+
+    /**
+     * Sets message_type
+     *
+     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
+     *
+     * @return self
+     */
+    public function setMessageType($message_type)
+    {
+        $this->container['message_type'] = $message_type;
 
         return $this;
     }

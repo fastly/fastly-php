@@ -54,11 +54,11 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'hash' => 'string',
+        'pop' => 'string',
         'request' => 'object',
         'response' => 'object',
         'response_time' => 'float',
-        'server' => 'string',
-        'pop' => 'string'
+        'server' => 'string'
     ];
 
     /**
@@ -70,11 +70,11 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'hash' => null,
+        'pop' => null,
         'request' => null,
         'response' => null,
         'response_time' => null,
-        'server' => null,
-        'pop' => null
+        'server' => null
     ];
 
     /**
@@ -105,11 +105,11 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'hash' => 'hash',
+        'pop' => 'pop',
         'request' => 'request',
         'response' => 'response',
         'response_time' => 'response_time',
-        'server' => 'server',
-        'pop' => 'pop'
+        'server' => 'server'
     ];
 
     /**
@@ -119,11 +119,11 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'hash' => 'setHash',
+        'pop' => 'setPop',
         'request' => 'setRequest',
         'response' => 'setResponse',
         'response_time' => 'setResponseTime',
-        'server' => 'setServer',
-        'pop' => 'setPop'
+        'server' => 'setServer'
     ];
 
     /**
@@ -133,11 +133,11 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'hash' => 'getHash',
+        'pop' => 'getPop',
         'request' => 'getRequest',
         'response' => 'getResponse',
         'response_time' => 'getResponseTime',
-        'server' => 'getServer',
-        'pop' => 'getPop'
+        'server' => 'getServer'
     ];
 
     /**
@@ -201,11 +201,11 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['hash'] = $data['hash'] ?? null;
+        $this->container['pop'] = $data['pop'] ?? null;
         $this->container['request'] = $data['request'] ?? null;
         $this->container['response'] = $data['response'] ?? null;
         $this->container['response_time'] = $data['response_time'] ?? null;
         $this->container['server'] = $data['server'] ?? null;
-        $this->container['pop'] = $data['pop'] ?? null;
     }
 
     /**
@@ -252,6 +252,30 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHash($hash)
     {
         $this->container['hash'] = $hash;
+
+        return $this;
+    }
+
+    /**
+     * Gets pop
+     *
+     * @return string|null
+     */
+    public function getPop()
+    {
+        return $this->container['pop'];
+    }
+
+    /**
+     * Sets pop
+     *
+     * @param string|null $pop pop
+     *
+     * @return self
+     */
+    public function setPop($pop)
+    {
+        $this->container['pop'] = $pop;
 
         return $this;
     }
@@ -348,30 +372,6 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServer($server)
     {
         $this->container['server'] = $server;
-
-        return $this;
-    }
-
-    /**
-     * Gets pop
-     *
-     * @return string|null
-     */
-    public function getPop()
-    {
-        return $this->container['pop'];
-    }
-
-    /**
-     * Sets pop
-     *
-     * @param string|null $pop pop
-     *
-     * @return self
-     */
-    public function setPop($pop)
-    {
-        $this->container['pop'] = $pop;
 
         return $this;
     }

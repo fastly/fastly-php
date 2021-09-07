@@ -54,8 +54,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'region' => 'string',
-        'record_type' => 'string'
+        'record_type' => 'string',
+        'region' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'id' => null,
-        'region' => null,
-        'record_type' => null
+        'record_type' => null,
+        'region' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'region' => 'region',
-        'record_type' => 'record_type'
+        'record_type' => 'record_type',
+        'region' => 'region'
     ];
 
     /**
@@ -110,8 +110,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'region' => 'setRegion',
-        'record_type' => 'setRecordType'
+        'record_type' => 'setRecordType',
+        'region' => 'setRegion'
     ];
 
     /**
@@ -121,8 +121,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'region' => 'getRegion',
-        'record_type' => 'getRecordType'
+        'record_type' => 'getRecordType',
+        'region' => 'getRegion'
     ];
 
     /**
@@ -186,8 +186,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['region'] = $data['region'] ?? null;
         $this->container['record_type'] = $data['record_type'] ?? null;
+        $this->container['region'] = $data['region'] ?? null;
     }
 
     /**
@@ -239,30 +239,6 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets region
-     *
-     * @return string|null
-     */
-    public function getRegion()
-    {
-        return $this->container['region'];
-    }
-
-    /**
-     * Sets region
-     *
-     * @param string|null $region Specifies the regions that will be used to route traffic. Select DNS Records with a `global` region to route traffic to the most performant point of presence (POP) worldwide (global pricing will apply). Select DNS records with a `us-eu` region to exclusively land traffic on North American and European POPs.
-     *
-     * @return self
-     */
-    public function setRegion($region)
-    {
-        $this->container['region'] = $region;
-
-        return $this;
-    }
-
-    /**
      * Gets record_type
      *
      * @return string|null
@@ -282,6 +258,30 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRecordType($record_type)
     {
         $this->container['record_type'] = $record_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets region
+     *
+     * @return string|null
+     */
+    public function getRegion()
+    {
+        return $this->container['region'];
+    }
+
+    /**
+     * Sets region
+     *
+     * @param string|null $region Specifies the regions that will be used to route traffic. Select DNS Records with a `global` region to route traffic to the most performant point of presence (POP) worldwide (global pricing will apply). Select DNS records with a `us-eu` region to exclusively land traffic on North American and European POPs.
+     *
+     * @return self
+     */
+    public function setRegion($region)
+    {
+        $this->container['region'] = $region;
 
         return $this;
     }

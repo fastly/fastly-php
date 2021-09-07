@@ -53,15 +53,15 @@ class LoggingKinesis implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'access_key' => 'string',
+        'format' => 'string',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
+        'iam_role' => 'string',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
-        'format' => 'string',
-        'topic' => 'string',
         'region' => 'string',
         'secret_key' => 'string',
-        'access_key' => 'string',
-        'iam_role' => 'string'
+        'topic' => 'string'
     ];
 
     /**
@@ -72,15 +72,15 @@ class LoggingKinesis implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'access_key' => null,
+        'format' => null,
+        'format_version' => null,
+        'iam_role' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
-        'format' => null,
-        'topic' => null,
         'region' => null,
         'secret_key' => null,
-        'access_key' => null,
-        'iam_role' => null
+        'topic' => null
     ];
 
     /**
@@ -110,15 +110,15 @@ class LoggingKinesis implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'access_key' => 'access_key',
+        'format' => 'format',
+        'format_version' => 'format_version',
+        'iam_role' => 'iam_role',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
-        'format' => 'format',
-        'topic' => 'topic',
         'region' => 'region',
         'secret_key' => 'secret_key',
-        'access_key' => 'access_key',
-        'iam_role' => 'iam_role'
+        'topic' => 'topic'
     ];
 
     /**
@@ -127,15 +127,15 @@ class LoggingKinesis implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'access_key' => 'setAccessKey',
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
+        'iam_role' => 'setIamRole',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
-        'format' => 'setFormat',
-        'topic' => 'setTopic',
         'region' => 'setRegion',
         'secret_key' => 'setSecretKey',
-        'access_key' => 'setAccessKey',
-        'iam_role' => 'setIamRole'
+        'topic' => 'setTopic'
     ];
 
     /**
@@ -144,15 +144,15 @@ class LoggingKinesis implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'access_key' => 'getAccessKey',
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
+        'iam_role' => 'getIamRole',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
-        'format' => 'getFormat',
-        'topic' => 'getTopic',
         'region' => 'getRegion',
         'secret_key' => 'getSecretKey',
-        'access_key' => 'getAccessKey',
-        'iam_role' => 'getIamRole'
+        'topic' => 'getTopic'
     ];
 
     /**
@@ -272,15 +272,15 @@ class LoggingKinesis implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['access_key'] = $data['access_key'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? null;
+        $this->container['iam_role'] = $data['iam_role'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
-        $this->container['topic'] = $data['topic'] ?? null;
         $this->container['region'] = $data['region'] ?? null;
         $this->container['secret_key'] = $data['secret_key'] ?? null;
-        $this->container['access_key'] = $data['access_key'] ?? null;
-        $this->container['iam_role'] = $data['iam_role'] ?? null;
+        $this->container['topic'] = $data['topic'] ?? null;
     }
 
     /**
@@ -315,6 +315,102 @@ class LoggingKinesis implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets access_key
+     *
+     * @return string|null
+     */
+    public function getAccessKey()
+    {
+        return $this->container['access_key'];
+    }
+
+    /**
+     * Sets access_key
+     *
+     * @param string|null $access_key The access key associated with the target Amazon Kinesis stream. Not required if `iam_role` is specified.
+     *
+     * @return self
+     */
+    public function setAccessKey($access_key)
+    {
+        $this->container['access_key'] = $access_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format format
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets iam_role
+     *
+     * @return string|null
+     */
+    public function getIamRole()
+    {
+        return $this->container['iam_role'];
+    }
+
+    /**
+     * Sets iam_role
+     *
+     * @param string|null $iam_role The ARN for an IAM role granting Fastly access to the target Amazon Kinesis stream. Not required if `access_key` and `secret_key` are provided.
+     *
+     * @return self
+     */
+    public function setIamRole($iam_role)
+    {
+        $this->container['iam_role'] = $iam_role;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -360,78 +456,6 @@ class LoggingKinesis implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlacement($placement)
     {
         $this->container['placement'] = $placement;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format format
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets topic
-     *
-     * @return string|null
-     */
-    public function getTopic()
-    {
-        return $this->container['topic'];
-    }
-
-    /**
-     * Sets topic
-     *
-     * @param string|null $topic The Amazon Kinesis stream to send logs to. Required.
-     *
-     * @return self
-     */
-    public function setTopic($topic)
-    {
-        $this->container['topic'] = $topic;
 
         return $this;
     }
@@ -495,49 +519,25 @@ class LoggingKinesis implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets access_key
+     * Gets topic
      *
      * @return string|null
      */
-    public function getAccessKey()
+    public function getTopic()
     {
-        return $this->container['access_key'];
+        return $this->container['topic'];
     }
 
     /**
-     * Sets access_key
+     * Sets topic
      *
-     * @param string|null $access_key The access key associated with the target Amazon Kinesis stream. Not required if `iam_role` is specified.
+     * @param string|null $topic The Amazon Kinesis stream to send logs to. Required.
      *
      * @return self
      */
-    public function setAccessKey($access_key)
+    public function setTopic($topic)
     {
-        $this->container['access_key'] = $access_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets iam_role
-     *
-     * @return string|null
-     */
-    public function getIamRole()
-    {
-        return $this->container['iam_role'];
-    }
-
-    /**
-     * Sets iam_role
-     *
-     * @param string|null $iam_role The ARN for an IAM role granting Fastly access to the target Amazon Kinesis stream. Not required if `access_key` and `secret_key` are provided.
-     *
-     * @return self
-     */
-    public function setIamRole($iam_role)
-    {
-        $this->container['iam_role'] = $iam_role;
+        $this->container['topic'] = $topic;
 
         return $this;
     }

@@ -54,8 +54,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'comment' => 'string',
-        'name' => 'string',
-        'customer_id' => 'string'
+        'customer_id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'comment' => null,
-        'name' => null,
-        'customer_id' => null
+        'customer_id' => null,
+        'name' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'comment' => 'comment',
-        'name' => 'name',
-        'customer_id' => 'customer_id'
+        'customer_id' => 'customer_id',
+        'name' => 'name'
     ];
 
     /**
@@ -110,8 +110,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'comment' => 'setComment',
-        'name' => 'setName',
-        'customer_id' => 'setCustomerId'
+        'customer_id' => 'setCustomerId',
+        'name' => 'setName'
     ];
 
     /**
@@ -121,8 +121,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'comment' => 'getComment',
-        'name' => 'getName',
-        'customer_id' => 'getCustomerId'
+        'customer_id' => 'getCustomerId',
+        'name' => 'getName'
     ];
 
     /**
@@ -186,8 +186,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['comment'] = $data['comment'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['customer_id'] = $data['customer_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -239,30 +239,6 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name of the service.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets customer_id
      *
      * @return string|null
@@ -282,6 +258,30 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCustomerId($customer_id)
     {
         $this->container['customer_id'] = $customer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name The name of the service.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

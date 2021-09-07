@@ -54,9 +54,9 @@ class TlsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'tls_ca_cert' => 'string',
+        'tls_cert_hostname' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
-        'tls_cert_hostname' => 'string',
         'use_tls' => 'int'
     ];
 
@@ -69,9 +69,9 @@ class TlsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'tls_ca_cert' => null,
+        'tls_cert_hostname' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
-        'tls_cert_hostname' => null,
         'use_tls' => null
     ];
 
@@ -103,9 +103,9 @@ class TlsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'tls_ca_cert' => 'tls_ca_cert',
+        'tls_cert_hostname' => 'tls_cert_hostname',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
-        'tls_cert_hostname' => 'tls_cert_hostname',
         'use_tls' => 'use_tls'
     ];
 
@@ -116,9 +116,9 @@ class TlsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'tls_ca_cert' => 'setTlsCaCert',
+        'tls_cert_hostname' => 'setTlsCertHostname',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
-        'tls_cert_hostname' => 'setTlsCertHostname',
         'use_tls' => 'setUseTls'
     ];
 
@@ -129,9 +129,9 @@ class TlsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'tls_ca_cert' => 'getTlsCaCert',
+        'tls_cert_hostname' => 'getTlsCertHostname',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
-        'tls_cert_hostname' => 'getTlsCertHostname',
         'use_tls' => 'getUseTls'
     ];
 
@@ -211,9 +211,9 @@ class TlsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
+        $this->container['tls_cert_hostname'] = $data['tls_cert_hostname'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
-        $this->container['tls_cert_hostname'] = $data['tls_cert_hostname'] ?? 'null';
         $this->container['use_tls'] = $data['use_tls'] ?? USE_TLS_no_tls;
     }
 
@@ -275,6 +275,30 @@ class TlsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets tls_cert_hostname
+     *
+     * @return string|null
+     */
+    public function getTlsCertHostname()
+    {
+        return $this->container['tls_cert_hostname'];
+    }
+
+    /**
+     * Sets tls_cert_hostname
+     *
+     * @param string|null $tls_cert_hostname The hostname used to verify a server's certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN).
+     *
+     * @return self
+     */
+    public function setTlsCertHostname($tls_cert_hostname)
+    {
+        $this->container['tls_cert_hostname'] = $tls_cert_hostname;
+
+        return $this;
+    }
+
+    /**
      * Gets tls_client_cert
      *
      * @return string|null
@@ -318,30 +342,6 @@ class TlsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTlsClientKey($tls_client_key)
     {
         $this->container['tls_client_key'] = $tls_client_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets tls_cert_hostname
-     *
-     * @return string|null
-     */
-    public function getTlsCertHostname()
-    {
-        return $this->container['tls_cert_hostname'];
-    }
-
-    /**
-     * Sets tls_cert_hostname
-     *
-     * @param string|null $tls_cert_hostname The hostname used to verify a server's certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN).
-     *
-     * @return self
-     */
-    public function setTlsCertHostname($tls_cert_hostname)
-    {
-        $this->container['tls_cert_hostname'] = $tls_cert_hostname;
 
         return $this;
     }

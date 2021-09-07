@@ -117,25 +117,25 @@ class LoggingKafkaApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
+     * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $brokers A comma-separated list of IP addresses or hostnames of Kafka brokers. Required. (optional)
      * @param  string $compression_codec The codec used for compression of your logs. (optional)
-     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  bool $parse_log_keyvals Enables parsing of key&#x3D;value tuples from the beginning of a logline, turning them into [record headers](https://cwiki.apache.org/confluence/display/KAFKA/KIP-82+-+Add+Record+Headers). (optional)
-     * @param  string $auth_method SASL authentication method. (optional)
-     * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
+     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
+     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
+     * @param  string $user SASL user. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -156,25 +156,25 @@ class LoggingKafkaApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
+     * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $brokers A comma-separated list of IP addresses or hostnames of Kafka brokers. Required. (optional)
      * @param  string $compression_codec The codec used for compression of your logs. (optional)
-     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  bool $parse_log_keyvals Enables parsing of key&#x3D;value tuples from the beginning of a logline, turning them into [record headers](https://cwiki.apache.org/confluence/display/KAFKA/KIP-82+-+Add+Record+Headers). (optional)
-     * @param  string $auth_method SASL authentication method. (optional)
-     * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
+     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
+     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  string $user SASL user. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -266,25 +266,25 @@ class LoggingKafkaApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
+     * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $brokers A comma-separated list of IP addresses or hostnames of Kafka brokers. Required. (optional)
      * @param  string $compression_codec The codec used for compression of your logs. (optional)
-     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  bool $parse_log_keyvals Enables parsing of key&#x3D;value tuples from the beginning of a logline, turning them into [record headers](https://cwiki.apache.org/confluence/display/KAFKA/KIP-82+-+Add+Record+Headers). (optional)
-     * @param  string $auth_method SASL authentication method. (optional)
-     * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
+     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
+     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  string $user SASL user. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -308,25 +308,25 @@ class LoggingKafkaApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
+     * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $brokers A comma-separated list of IP addresses or hostnames of Kafka brokers. Required. (optional)
      * @param  string $compression_codec The codec used for compression of your logs. (optional)
-     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  bool $parse_log_keyvals Enables parsing of key&#x3D;value tuples from the beginning of a logline, turning them into [record headers](https://cwiki.apache.org/confluence/display/KAFKA/KIP-82+-+Add+Record+Headers). (optional)
-     * @param  string $auth_method SASL authentication method. (optional)
-     * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
+     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
+     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  string $user SASL user. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -377,25 +377,25 @@ class LoggingKafkaApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
+     * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $brokers A comma-separated list of IP addresses or hostnames of Kafka brokers. Required. (optional)
      * @param  string $compression_codec The codec used for compression of your logs. (optional)
-     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
      * @param  bool $parse_log_keyvals Enables parsing of key&#x3D;value tuples from the beginning of a logline, turning them into [record headers](https://cwiki.apache.org/confluence/display/KAFKA/KIP-82+-+Add+Record+Headers). (optional)
-     * @param  string $auth_method SASL authentication method. (optional)
-     * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; (no limit). (optional, default to 0)
+     * @param  int $required_acks The number of acknowledgements a leader must receive before a write is considered successful. (optional, default to 1)
+     * @param  string $topic The Kafka topic to send logs to. Required. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  string $user SASL user. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -405,25 +405,25 @@ class LoggingKafkaApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $tls_ca_cert = array_key_exists('tls_ca_cert', $options) ? $options['tls_ca_cert'] : 'null';
         $tls_client_cert = array_key_exists('tls_client_cert', $options) ? $options['tls_client_cert'] : 'null';
         $tls_client_key = array_key_exists('tls_client_key', $options) ? $options['tls_client_key'] : 'null';
         $tls_hostname = array_key_exists('tls_hostname', $options) ? $options['tls_hostname'] : 'null';
-        $topic = array_key_exists('topic', $options) ? $options['topic'] : null;
+        $auth_method = array_key_exists('auth_method', $options) ? $options['auth_method'] : null;
         $brokers = array_key_exists('brokers', $options) ? $options['brokers'] : null;
         $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
-        $required_acks = array_key_exists('required_acks', $options) ? $options['required_acks'] : 1;
-        $request_max_bytes = array_key_exists('request_max_bytes', $options) ? $options['request_max_bytes'] : 0;
         $parse_log_keyvals = array_key_exists('parse_log_keyvals', $options) ? $options['parse_log_keyvals'] : null;
-        $auth_method = array_key_exists('auth_method', $options) ? $options['auth_method'] : null;
-        $user = array_key_exists('user', $options) ? $options['user'] : null;
         $password = array_key_exists('password', $options) ? $options['password'] : null;
+        $request_max_bytes = array_key_exists('request_max_bytes', $options) ? $options['request_max_bytes'] : 0;
+        $required_acks = array_key_exists('required_acks', $options) ? $options['required_acks'] : 1;
+        $topic = array_key_exists('topic', $options) ? $options['topic'] : null;
         $use_tls = array_key_exists('use_tls', $options) ? $options['use_tls'] : null;
+        $user = array_key_exists('user', $options) ? $options['user'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -465,6 +465,14 @@ class LoggingKafkaApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -473,16 +481,8 @@ class LoggingKafkaApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
-        }
-        // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($tls_ca_cert !== null) {
@@ -501,8 +501,8 @@ class LoggingKafkaApi
             $formParams['tls_hostname'] = ObjectSerializer::toFormValue($tls_hostname);
         }
         // form params
-        if ($topic !== null) {
-            $formParams['topic'] = ObjectSerializer::toFormValue($topic);
+        if ($auth_method !== null) {
+            $formParams['auth_method'] = ObjectSerializer::toFormValue($auth_method);
         }
         // form params
         if ($brokers !== null) {
@@ -513,32 +513,32 @@ class LoggingKafkaApi
             $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
         }
         // form params
-        if ($required_acks !== null) {
-            $formParams['required_acks'] = ObjectSerializer::toFormValue($required_acks);
-        }
-        // form params
-        if ($request_max_bytes !== null) {
-            $formParams['request_max_bytes'] = ObjectSerializer::toFormValue($request_max_bytes);
-        }
-        // form params
         if ($parse_log_keyvals !== null) {
             $formParams['parse_log_keyvals'] = ObjectSerializer::toFormValue($parse_log_keyvals);
-        }
-        // form params
-        if ($auth_method !== null) {
-            $formParams['auth_method'] = ObjectSerializer::toFormValue($auth_method);
-        }
-        // form params
-        if ($user !== null) {
-            $formParams['user'] = ObjectSerializer::toFormValue($user);
         }
         // form params
         if ($password !== null) {
             $formParams['password'] = ObjectSerializer::toFormValue($password);
         }
         // form params
+        if ($request_max_bytes !== null) {
+            $formParams['request_max_bytes'] = ObjectSerializer::toFormValue($request_max_bytes);
+        }
+        // form params
+        if ($required_acks !== null) {
+            $formParams['required_acks'] = ObjectSerializer::toFormValue($required_acks);
+        }
+        // form params
+        if ($topic !== null) {
+            $formParams['topic'] = ObjectSerializer::toFormValue($topic);
+        }
+        // form params
         if ($use_tls !== null) {
             $formParams['use_tls'] = ObjectSerializer::toFormValue($use_tls);
+        }
+        // form params
+        if ($user !== null) {
+            $formParams['user'] = ObjectSerializer::toFormValue($user);
         }
 
         if ($multipart) {

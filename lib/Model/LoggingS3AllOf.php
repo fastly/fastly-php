@@ -62,8 +62,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => 'string',
         'redundancy' => 'string',
         'secret_key' => 'string',
-        'server_side_encryption_kms_key_id' => 'string',
-        'server_side_encryption' => 'string'
+        'server_side_encryption' => 'string',
+        'server_side_encryption_kms_key_id' => 'string'
     ];
 
     /**
@@ -83,8 +83,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => null,
         'redundancy' => null,
         'secret_key' => null,
-        'server_side_encryption_kms_key_id' => null,
-        'server_side_encryption' => null
+        'server_side_encryption' => null,
+        'server_side_encryption_kms_key_id' => null
     ];
 
     /**
@@ -123,8 +123,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => 'public_key',
         'redundancy' => 'redundancy',
         'secret_key' => 'secret_key',
-        'server_side_encryption_kms_key_id' => 'server_side_encryption_kms_key_id',
-        'server_side_encryption' => 'server_side_encryption'
+        'server_side_encryption' => 'server_side_encryption',
+        'server_side_encryption_kms_key_id' => 'server_side_encryption_kms_key_id'
     ];
 
     /**
@@ -142,8 +142,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => 'setPublicKey',
         'redundancy' => 'setRedundancy',
         'secret_key' => 'setSecretKey',
-        'server_side_encryption_kms_key_id' => 'setServerSideEncryptionKmsKeyId',
-        'server_side_encryption' => 'setServerSideEncryption'
+        'server_side_encryption' => 'setServerSideEncryption',
+        'server_side_encryption_kms_key_id' => 'setServerSideEncryptionKmsKeyId'
     ];
 
     /**
@@ -161,8 +161,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => 'getPublicKey',
         'redundancy' => 'getRedundancy',
         'secret_key' => 'getSecretKey',
-        'server_side_encryption_kms_key_id' => 'getServerSideEncryptionKmsKeyId',
-        'server_side_encryption' => 'getServerSideEncryption'
+        'server_side_encryption' => 'getServerSideEncryption',
+        'server_side_encryption_kms_key_id' => 'getServerSideEncryptionKmsKeyId'
     ];
 
     /**
@@ -234,8 +234,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['public_key'] = $data['public_key'] ?? 'null';
         $this->container['redundancy'] = $data['redundancy'] ?? 'null';
         $this->container['secret_key'] = $data['secret_key'] ?? null;
-        $this->container['server_side_encryption_kms_key_id'] = $data['server_side_encryption_kms_key_id'] ?? 'null';
         $this->container['server_side_encryption'] = $data['server_side_encryption'] ?? 'null';
+        $this->container['server_side_encryption_kms_key_id'] = $data['server_side_encryption_kms_key_id'] ?? 'null';
     }
 
     /**
@@ -479,30 +479,6 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets server_side_encryption_kms_key_id
-     *
-     * @return string|null
-     */
-    public function getServerSideEncryptionKmsKeyId()
-    {
-        return $this->container['server_side_encryption_kms_key_id'];
-    }
-
-    /**
-     * Sets server_side_encryption_kms_key_id
-     *
-     * @param string|null $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
-     *
-     * @return self
-     */
-    public function setServerSideEncryptionKmsKeyId($server_side_encryption_kms_key_id)
-    {
-        $this->container['server_side_encryption_kms_key_id'] = $server_side_encryption_kms_key_id;
-
-        return $this;
-    }
-
-    /**
      * Gets server_side_encryption
      *
      * @return string|null
@@ -522,6 +498,30 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServerSideEncryption($server_side_encryption)
     {
         $this->container['server_side_encryption'] = $server_side_encryption;
+
+        return $this;
+    }
+
+    /**
+     * Gets server_side_encryption_kms_key_id
+     *
+     * @return string|null
+     */
+    public function getServerSideEncryptionKmsKeyId()
+    {
+        return $this->container['server_side_encryption_kms_key_id'];
+    }
+
+    /**
+     * Sets server_side_encryption_kms_key_id
+     *
+     * @param string|null $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
+     *
+     * @return self
+     */
+    public function setServerSideEncryptionKmsKeyId($server_side_encryption_kms_key_id)
+    {
+        $this->container['server_side_encryption_kms_key_id'] = $server_side_encryption_kms_key_id;
 
         return $this;
     }

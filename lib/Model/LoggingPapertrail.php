@@ -53,11 +53,11 @@ class LoggingPapertrail implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'string',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'response_condition' => 'string',
-        'format' => 'string',
         'address' => 'string',
         'port' => 'int'
     ];
@@ -70,11 +70,11 @@ class LoggingPapertrail implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
+        'format_version' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
-        'format' => null,
         'address' => null,
         'port' => null
     ];
@@ -106,11 +106,11 @@ class LoggingPapertrail implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
+        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'format' => 'format',
         'address' => 'address',
         'port' => 'port'
     ];
@@ -121,11 +121,11 @@ class LoggingPapertrail implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'format' => 'setFormat',
         'address' => 'setAddress',
         'port' => 'setPort'
     ];
@@ -136,11 +136,11 @@ class LoggingPapertrail implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'format' => 'getFormat',
         'address' => 'getAddress',
         'port' => 'getPort'
     ];
@@ -205,11 +205,11 @@ class LoggingPapertrail implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['address'] = $data['address'] ?? null;
         $this->container['port'] = $data['port'] ?? 514;
     }
@@ -237,6 +237,54 @@ class LoggingPapertrail implements ModelInterface, ArrayAccess, \JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -287,30 +335,6 @@ class LoggingPapertrail implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -330,30 +354,6 @@ class LoggingPapertrail implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
 
         return $this;
     }

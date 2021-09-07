@@ -117,11 +117,12 @@ class LoggingNewrelicApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to 'US')
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -143,11 +144,12 @@ class LoggingNewrelicApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to 'US')
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -240,11 +242,12 @@ class LoggingNewrelicApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to 'US')
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -269,11 +272,12 @@ class LoggingNewrelicApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to 'US')
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -325,11 +329,12 @@ class LoggingNewrelicApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to 'US')
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -340,11 +345,12 @@ class LoggingNewrelicApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : null;
+        $region = array_key_exists('region', $options) ? $options['region'] : 'US';
         $token = array_key_exists('token', $options) ? $options['token'] : null;
 
         // verify the required parameter 'service_id' is set
@@ -387,6 +393,14 @@ class LoggingNewrelicApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -395,16 +409,12 @@ class LoggingNewrelicApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        if ($region !== null) {
+            $formParams['region'] = ObjectSerializer::toFormValue($region);
         }
         // form params
         if ($token !== null) {
@@ -1438,11 +1448,12 @@ class LoggingNewrelicApi
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
      * @param  string $logging_newrelic_name logging_newrelic_name (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to REGION_US)
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1465,11 +1476,12 @@ class LoggingNewrelicApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_newrelic_name (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to REGION_US)
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1563,11 +1575,12 @@ class LoggingNewrelicApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_newrelic_name (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to REGION_US)
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1593,11 +1606,12 @@ class LoggingNewrelicApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_newrelic_name (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to REGION_US)
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1650,11 +1664,12 @@ class LoggingNewrelicApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_newrelic_name (required)
+     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  mixed $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. (optional)
+     * @param  string $region The region to which to stream logs. (optional, default to REGION_US)
      * @param  string $token The Insert API key from the Account page of your New Relic account. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1666,11 +1681,12 @@ class LoggingNewrelicApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_newrelic_name = array_key_exists('logging_newrelic_name', $options) ? $options['logging_newrelic_name'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : null;
+        $region = array_key_exists('region', $options) ? $options['region'] : REGION_US;
         $token = array_key_exists('token', $options) ? $options['token'] : null;
 
         // verify the required parameter 'service_id' is set
@@ -1727,6 +1743,14 @@ class LoggingNewrelicApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1735,16 +1759,12 @@ class LoggingNewrelicApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        if ($region !== null) {
+            $formParams['region'] = ObjectSerializer::toFormValue($region);
         }
         // form params
         if ($token !== null) {

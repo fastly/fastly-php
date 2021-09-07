@@ -53,6 +53,8 @@ class DictionaryResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'name' => 'string',
+        'write_only' => 'bool',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -69,6 +71,8 @@ class DictionaryResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'name' => null,
+        'write_only' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -104,6 +108,8 @@ class DictionaryResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
+        'name' => 'name',
+        'write_only' => 'write_only',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -118,6 +124,8 @@ class DictionaryResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
+        'name' => 'setName',
+        'write_only' => 'setWriteOnly',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -132,6 +140,8 @@ class DictionaryResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
+        'name' => 'getName',
+        'write_only' => 'getWriteOnly',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -200,6 +210,8 @@ class DictionaryResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['write_only'] = $data['write_only'] ?? false;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -231,6 +243,54 @@ class DictionaryResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name for the Dictionary.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets write_only
+     *
+     * @return bool|null
+     */
+    public function getWriteOnly()
+    {
+        return $this->container['write_only'];
+    }
+
+    /**
+     * Sets write_only
+     *
+     * @param bool|null $write_only Determines if items in the dictionary are readable or not.
+     *
+     * @return self
+     */
+    public function setWriteOnly($write_only)
+    {
+        $this->container['write_only'] = $write_only;
+
+        return $this;
+    }
 
     /**
      * Gets created_at

@@ -55,8 +55,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'first' => 'string',
         'last' => 'string',
-        'prev' => 'string',
-        'next' => 'string'
+        'next' => 'string',
+        'prev' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyFormats = [
         'first' => null,
         'last' => null,
-        'prev' => null,
-        'next' => null
+        'next' => null,
+        'prev' => null
     ];
 
     /**
@@ -102,8 +102,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'first' => 'first',
         'last' => 'last',
-        'prev' => 'prev',
-        'next' => 'next'
+        'next' => 'next',
+        'prev' => 'prev'
     ];
 
     /**
@@ -114,8 +114,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'first' => 'setFirst',
         'last' => 'setLast',
-        'prev' => 'setPrev',
-        'next' => 'setNext'
+        'next' => 'setNext',
+        'prev' => 'setPrev'
     ];
 
     /**
@@ -126,8 +126,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'first' => 'getFirst',
         'last' => 'getLast',
-        'prev' => 'getPrev',
-        'next' => 'getNext'
+        'next' => 'getNext',
+        'prev' => 'getPrev'
     ];
 
     /**
@@ -192,8 +192,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['first'] = $data['first'] ?? null;
         $this->container['last'] = $data['last'] ?? null;
-        $this->container['prev'] = $data['prev'] ?? null;
         $this->container['next'] = $data['next'] ?? null;
+        $this->container['prev'] = $data['prev'] ?? null;
     }
 
     /**
@@ -269,30 +269,6 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets prev
-     *
-     * @return string|null
-     */
-    public function getPrev()
-    {
-        return $this->container['prev'];
-    }
-
-    /**
-     * Sets prev
-     *
-     * @param string|null $prev The previous page of data.
-     *
-     * @return self
-     */
-    public function setPrev($prev)
-    {
-        $this->container['prev'] = $prev;
-
-        return $this;
-    }
-
-    /**
      * Gets next
      *
      * @return string|null
@@ -312,6 +288,30 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNext($next)
     {
         $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets prev
+     *
+     * @return string|null
+     */
+    public function getPrev()
+    {
+        return $this->container['prev'];
+    }
+
+    /**
+     * Sets prev
+     *
+     * @param string|null $prev The previous page of data.
+     *
+     * @return self
+     */
+    public function setPrev($prev)
+    {
+        $this->container['prev'] = $prev;
 
         return $this;
     }

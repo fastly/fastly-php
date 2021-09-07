@@ -53,8 +53,8 @@ class RelationshipMemberTlsBulkCertificate implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'type' => '\Fastly\Model\TypeTlsBulkCertificate',
-        'id' => 'string'
+        'id' => 'string',
+        'type' => '\Fastly\Model\TypeTlsBulkCertificate'
     ];
 
     /**
@@ -65,8 +65,8 @@ class RelationshipMemberTlsBulkCertificate implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'type' => null,
-        'id' => null
+        'id' => null,
+        'type' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class RelationshipMemberTlsBulkCertificate implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'id' => 'id'
+        'id' => 'id',
+        'type' => 'type'
     ];
 
     /**
@@ -106,8 +106,8 @@ class RelationshipMemberTlsBulkCertificate implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'id' => 'setId'
+        'id' => 'setId',
+        'type' => 'setType'
     ];
 
     /**
@@ -116,8 +116,8 @@ class RelationshipMemberTlsBulkCertificate implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'id' => 'getId'
+        'id' => 'getId',
+        'type' => 'getType'
     ];
 
     /**
@@ -180,8 +180,8 @@ class RelationshipMemberTlsBulkCertificate implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class RelationshipMemberTlsBulkCertificate implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeTlsBulkCertificate|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeTlsBulkCertificate|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string|null
@@ -252,6 +228,30 @@ class RelationshipMemberTlsBulkCertificate implements ModelInterface, ArrayAcces
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeTlsBulkCertificate|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeTlsBulkCertificate|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

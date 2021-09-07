@@ -53,10 +53,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'login' => 'string',
-        'name' => 'string',
         'limit_services' => 'bool',
         'locked' => 'bool',
+        'login' => 'string',
+        'name' => 'string',
         'require_new_password' => 'bool',
         'role' => '\Fastly\Model\RoleUser',
         'two_factor_auth_enabled' => 'bool',
@@ -71,10 +71,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'login' => null,
-        'name' => null,
         'limit_services' => null,
         'locked' => null,
+        'login' => null,
+        'name' => null,
         'require_new_password' => null,
         'role' => null,
         'two_factor_auth_enabled' => null,
@@ -108,10 +108,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'login' => 'login',
-        'name' => 'name',
         'limit_services' => 'limit_services',
         'locked' => 'locked',
+        'login' => 'login',
+        'name' => 'name',
         'require_new_password' => 'require_new_password',
         'role' => 'role',
         'two_factor_auth_enabled' => 'two_factor_auth_enabled',
@@ -124,10 +124,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'login' => 'setLogin',
-        'name' => 'setName',
         'limit_services' => 'setLimitServices',
         'locked' => 'setLocked',
+        'login' => 'setLogin',
+        'name' => 'setName',
         'require_new_password' => 'setRequireNewPassword',
         'role' => 'setRole',
         'two_factor_auth_enabled' => 'setTwoFactorAuthEnabled',
@@ -140,10 +140,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'login' => 'getLogin',
-        'name' => 'getName',
         'limit_services' => 'getLimitServices',
         'locked' => 'getLocked',
+        'login' => 'getLogin',
+        'name' => 'getName',
         'require_new_password' => 'getRequireNewPassword',
         'role' => 'getRole',
         'two_factor_auth_enabled' => 'getTwoFactorAuthEnabled',
@@ -210,10 +210,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['login'] = $data['login'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['limit_services'] = $data['limit_services'] ?? null;
         $this->container['locked'] = $data['locked'] ?? null;
+        $this->container['login'] = $data['login'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['require_new_password'] = $data['require_new_password'] ?? null;
         $this->container['role'] = $data['role'] ?? null;
         $this->container['two_factor_auth_enabled'] = $data['two_factor_auth_enabled'] ?? null;
@@ -243,54 +243,6 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets login
-     *
-     * @return string|null
-     */
-    public function getLogin()
-    {
-        return $this->container['login'];
-    }
-
-    /**
-     * Sets login
-     *
-     * @param string|null $login The login associated with the user (typically, an email address).
-     *
-     * @return self
-     */
-    public function setLogin($login)
-    {
-        $this->container['login'] = $login;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The real life name of the user.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets limit_services
@@ -336,6 +288,54 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLocked($locked)
     {
         $this->container['locked'] = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Gets login
+     *
+     * @return string|null
+     */
+    public function getLogin()
+    {
+        return $this->container['login'];
+    }
+
+    /**
+     * Sets login
+     *
+     * @param string|null $login The login associated with the user (typically, an email address).
+     *
+     * @return self
+     */
+    public function setLogin($login)
+    {
+        $this->container['login'] = $login;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name The real life name of the user.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

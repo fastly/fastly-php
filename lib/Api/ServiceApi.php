@@ -116,8 +116,8 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -138,8 +138,8 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -231,8 +231,8 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \InvalidArgumentException
@@ -256,8 +256,8 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \InvalidArgumentException
@@ -308,8 +308,8 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \InvalidArgumentException
@@ -319,8 +319,8 @@ class ServiceApi
     {
         // unbox the parameters from the associative array
         $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
-        $name = array_key_exists('name', $options) ? $options['name'] : null;
         $customer_id = array_key_exists('customer_id', $options) ? $options['customer_id'] : null;
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
 
 
@@ -339,12 +339,12 @@ class ServiceApi
             $formParams['comment'] = ObjectSerializer::toFormValue($comment);
         }
         // form params
-        if ($name !== null) {
-            $formParams['name'] = ObjectSerializer::toFormValue($name);
-        }
-        // form params
         if ($customer_id !== null) {
             $formParams['customer_id'] = ObjectSerializer::toFormValue($customer_id);
+        }
+        // form params
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
         // form params
         if ($type !== null) {
@@ -2174,8 +2174,8 @@ class ServiceApi
      *
      * @param  string $service_id service_id (required)
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2196,8 +2196,8 @@ class ServiceApi
      *
      * @param  string $service_id (required)
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2289,8 +2289,8 @@ class ServiceApi
      *
      * @param  string $service_id (required)
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2314,8 +2314,8 @@ class ServiceApi
      *
      * @param  string $service_id (required)
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2366,8 +2366,8 @@ class ServiceApi
      *
      * @param  string $service_id (required)
      * @param  string $comment A freeform descriptive note. (optional)
-     * @param  string $name The name of the service. (optional)
      * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $name The name of the service. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2377,8 +2377,8 @@ class ServiceApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
-        $name = array_key_exists('name', $options) ? $options['name'] : null;
         $customer_id = array_key_exists('customer_id', $options) ? $options['customer_id'] : null;
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -2410,12 +2410,12 @@ class ServiceApi
             $formParams['comment'] = ObjectSerializer::toFormValue($comment);
         }
         // form params
-        if ($name !== null) {
-            $formParams['name'] = ObjectSerializer::toFormValue($name);
-        }
-        // form params
         if ($customer_id !== null) {
             $formParams['customer_id'] = ObjectSerializer::toFormValue($customer_id);
+        }
+        // form params
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
 
         if ($multipart) {

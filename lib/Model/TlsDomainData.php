@@ -54,8 +54,8 @@ class TlsDomainData implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'type' => '\Fastly\Model\TypeTlsDomain',
-        'relationships' => 'AnyOfObjectObjectRelationshipTlsSubscriptions'
+        'relationships' => 'AnyOfObjectObjectRelationshipTlsSubscriptions',
+        'type' => '\Fastly\Model\TypeTlsDomain'
     ];
 
     /**
@@ -67,8 +67,8 @@ class TlsDomainData implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'id' => null,
-        'type' => null,
-        'relationships' => null
+        'relationships' => null,
+        'type' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class TlsDomainData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'type' => 'type',
-        'relationships' => 'relationships'
+        'relationships' => 'relationships',
+        'type' => 'type'
     ];
 
     /**
@@ -110,8 +110,8 @@ class TlsDomainData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'type' => 'setType',
-        'relationships' => 'setRelationships'
+        'relationships' => 'setRelationships',
+        'type' => 'setType'
     ];
 
     /**
@@ -121,8 +121,8 @@ class TlsDomainData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'type' => 'getType',
-        'relationships' => 'getRelationships'
+        'relationships' => 'getRelationships',
+        'type' => 'getType'
     ];
 
     /**
@@ -186,8 +186,8 @@ class TlsDomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['relationships'] = $data['relationships'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -239,30 +239,6 @@ class TlsDomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeTlsDomain|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeTlsDomain|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets relationships
      *
      * @return AnyOfObjectObjectRelationshipTlsSubscriptions|null
@@ -282,6 +258,30 @@ class TlsDomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRelationships($relationships)
     {
         $this->container['relationships'] = $relationships;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeTlsDomain|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeTlsDomain|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

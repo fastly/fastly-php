@@ -53,7 +53,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Star'
+        'relationships' => 'RelationshipUser',
+        'type' => '\Fastly\Model\TypeStar'
     ];
 
     /**
@@ -64,7 +65,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null
+        'relationships' => null,
+        'type' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'relationships' => 'relationships',
+        'type' => 'type'
     ];
 
     /**
@@ -103,7 +106,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'relationships' => 'setRelationships',
+        'type' => 'setType'
     ];
 
     /**
@@ -112,7 +116,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'relationships' => 'getRelationships',
+        'type' => 'getType'
     ];
 
     /**
@@ -175,7 +180,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['relationships'] = $data['relationships'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -203,25 +209,49 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets data
+     * Gets relationships
      *
-     * @return \Fastly\Model\Star|null
+     * @return RelationshipUser|null
      */
-    public function getData()
+    public function getRelationships()
     {
-        return $this->container['data'];
+        return $this->container['relationships'];
     }
 
     /**
-     * Sets data
+     * Sets relationships
      *
-     * @param \Fastly\Model\Star|null $data data
+     * @param RelationshipUser|null $relationships relationships
      *
      * @return self
      */
-    public function setData($data)
+    public function setRelationships($relationships)
     {
-        $this->container['data'] = $data;
+        $this->container['relationships'] = $relationships;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeStar|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeStar|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

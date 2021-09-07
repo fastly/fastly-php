@@ -53,24 +53,24 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'string',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'response_condition' => 'string',
-        'format' => 'string',
         'tls_ca_cert' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
         'tls_hostname' => 'string',
-        'request_max_entries' => 'int',
         'request_max_bytes' => 'int',
-        'url' => 'string',
+        'request_max_entries' => 'int',
         'content_type' => 'string',
         'header_name' => 'string',
-        'message_type' => '\Fastly\Model\LoggingMessageType',
         'header_value' => 'string',
-        'method' => 'string',
         'json_format' => 'string',
+        'message_type' => '\Fastly\Model\LoggingMessageType',
+        'method' => 'string',
+        'url' => 'string',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -86,24 +86,24 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
+        'format_version' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
-        'format' => null,
         'tls_ca_cert' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
         'tls_hostname' => null,
-        'request_max_entries' => null,
         'request_max_bytes' => null,
-        'url' => null,
+        'request_max_entries' => null,
         'content_type' => null,
         'header_name' => null,
-        'message_type' => null,
         'header_value' => null,
-        'method' => null,
         'json_format' => null,
+        'message_type' => null,
+        'method' => null,
+        'url' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -138,24 +138,24 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
+        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'format' => 'format',
         'tls_ca_cert' => 'tls_ca_cert',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
         'tls_hostname' => 'tls_hostname',
-        'request_max_entries' => 'request_max_entries',
         'request_max_bytes' => 'request_max_bytes',
-        'url' => 'url',
+        'request_max_entries' => 'request_max_entries',
         'content_type' => 'content_type',
         'header_name' => 'header_name',
-        'message_type' => 'message_type',
         'header_value' => 'header_value',
-        'method' => 'method',
         'json_format' => 'json_format',
+        'message_type' => 'message_type',
+        'method' => 'method',
+        'url' => 'url',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -169,24 +169,24 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'format' => 'setFormat',
         'tls_ca_cert' => 'setTlsCaCert',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
         'tls_hostname' => 'setTlsHostname',
-        'request_max_entries' => 'setRequestMaxEntries',
         'request_max_bytes' => 'setRequestMaxBytes',
-        'url' => 'setUrl',
+        'request_max_entries' => 'setRequestMaxEntries',
         'content_type' => 'setContentType',
         'header_name' => 'setHeaderName',
-        'message_type' => 'setMessageType',
         'header_value' => 'setHeaderValue',
-        'method' => 'setMethod',
         'json_format' => 'setJsonFormat',
+        'message_type' => 'setMessageType',
+        'method' => 'setMethod',
+        'url' => 'setUrl',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -200,24 +200,24 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'format' => 'getFormat',
         'tls_ca_cert' => 'getTlsCaCert',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
         'tls_hostname' => 'getTlsHostname',
-        'request_max_entries' => 'getRequestMaxEntries',
         'request_max_bytes' => 'getRequestMaxBytes',
-        'url' => 'getUrl',
+        'request_max_entries' => 'getRequestMaxEntries',
         'content_type' => 'getContentType',
         'header_name' => 'getHeaderName',
-        'message_type' => 'getMessageType',
         'header_value' => 'getHeaderValue',
-        'method' => 'getMethod',
         'json_format' => 'getJsonFormat',
+        'message_type' => 'getMessageType',
+        'method' => 'getMethod',
+        'url' => 'getUrl',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -266,26 +266,13 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$fastlyModelName;
     }
 
-    const METHOD_POST = 'POST';
-    const METHOD_PUT = 'PUT';
     const JSON_FORMAT_disabled = '0';
     const JSON_FORMAT_json_array = '1';
     const JSON_FORMAT_newline_delimited_json = '2';
+    const METHOD_POST = 'POST';
+    const METHOD_PUT = 'PUT';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMethodAllowableValues()
-    {
-        return [
-            self::METHOD_POST,
-            self::METHOD_PUT,
-        ];
-    }
     
     /**
      * Gets allowable values of the enum
@@ -298,6 +285,19 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             self::JSON_FORMAT_disabled,
             self::JSON_FORMAT_json_array,
             self::JSON_FORMAT_newline_delimited_json,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_POST,
+            self::METHOD_PUT,
         ];
     }
     
@@ -317,24 +317,24 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
         $this->container['tls_hostname'] = $data['tls_hostname'] ?? 'null';
-        $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
         $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
-        $this->container['url'] = $data['url'] ?? null;
+        $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
         $this->container['content_type'] = $data['content_type'] ?? 'null';
         $this->container['header_name'] = $data['header_name'] ?? 'null';
-        $this->container['message_type'] = $data['message_type'] ?? null;
         $this->container['header_value'] = $data['header_value'] ?? 'null';
-        $this->container['method'] = $data['method'] ?? METHOD_POST;
         $this->container['json_format'] = $data['json_format'] ?? null;
+        $this->container['message_type'] = $data['message_type'] ?? null;
+        $this->container['method'] = $data['method'] ?? METHOD_POST;
+        $this->container['url'] = $data['url'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -351,20 +351,20 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getMethodAllowableValues();
-        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'method', must be one of '%s'",
-                $this->container['method'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getJsonFormatAllowableValues();
         if (!is_null($this->container['json_format']) && !in_array($this->container['json_format'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'json_format', must be one of '%s'",
                 $this->container['json_format'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
                 implode("', '", $allowedValues)
             );
         }
@@ -383,6 +383,54 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -433,30 +481,6 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -476,30 +500,6 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
 
         return $this;
     }
@@ -601,30 +601,6 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets request_max_entries
-     *
-     * @return int|null
-     */
-    public function getRequestMaxEntries()
-    {
-        return $this->container['request_max_entries'];
-    }
-
-    /**
-     * Sets request_max_entries
-     *
-     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` (no limit).
-     *
-     * @return self
-     */
-    public function setRequestMaxEntries($request_max_entries)
-    {
-        $this->container['request_max_entries'] = $request_max_entries;
-
-        return $this;
-    }
-
-    /**
      * Gets request_max_bytes
      *
      * @return int|null
@@ -649,25 +625,25 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets url
+     * Gets request_max_entries
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getUrl()
+    public function getRequestMaxEntries()
     {
-        return $this->container['url'];
+        return $this->container['request_max_entries'];
     }
 
     /**
-     * Sets url
+     * Sets request_max_entries
      *
-     * @param string|null $url The URL to send logs to. Must use HTTPS. Required.
+     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` (no limit).
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setRequestMaxEntries($request_max_entries)
     {
-        $this->container['url'] = $url;
+        $this->container['request_max_entries'] = $request_max_entries;
 
         return $this;
     }
@@ -721,30 +697,6 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets message_type
-     *
-     * @return \Fastly\Model\LoggingMessageType|null
-     */
-    public function getMessageType()
-    {
-        return $this->container['message_type'];
-    }
-
-    /**
-     * Sets message_type
-     *
-     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
-     *
-     * @return self
-     */
-    public function setMessageType($message_type)
-    {
-        $this->container['message_type'] = $message_type;
-
-        return $this;
-    }
-
-    /**
      * Gets header_value
      *
      * @return string|null
@@ -764,6 +716,64 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setHeaderValue($header_value)
     {
         $this->container['header_value'] = $header_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets json_format
+     *
+     * @return string|null
+     */
+    public function getJsonFormat()
+    {
+        return $this->container['json_format'];
+    }
+
+    /**
+     * Sets json_format
+     *
+     * @param string|null $json_format Enforces valid JSON formatting for log entries.
+     *
+     * @return self
+     */
+    public function setJsonFormat($json_format)
+    {
+        $allowedValues = $this->getJsonFormatAllowableValues();
+        if (!is_null($json_format) && !in_array($json_format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'json_format', must be one of '%s'",
+                    $json_format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['json_format'] = $json_format;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_type
+     *
+     * @return \Fastly\Model\LoggingMessageType|null
+     */
+    public function getMessageType()
+    {
+        return $this->container['message_type'];
+    }
+
+    /**
+     * Sets message_type
+     *
+     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
+     *
+     * @return self
+     */
+    public function setMessageType($message_type)
+    {
+        $this->container['message_type'] = $message_type;
 
         return $this;
     }
@@ -803,35 +813,25 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets json_format
+     * Gets url
      *
      * @return string|null
      */
-    public function getJsonFormat()
+    public function getUrl()
     {
-        return $this->container['json_format'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets json_format
+     * Sets url
      *
-     * @param string|null $json_format Enforces valid JSON formatting for log entries.
+     * @param string|null $url The URL to send logs to. Must use HTTPS. Required.
      *
      * @return self
      */
-    public function setJsonFormat($json_format)
+    public function setUrl($url)
     {
-        $allowedValues = $this->getJsonFormatAllowableValues();
-        if (!is_null($json_format) && !in_array($json_format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'json_format', must be one of '%s'",
-                    $json_format,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['json_format'] = $json_format;
+        $this->container['url'] = $url;
 
         return $this;
     }

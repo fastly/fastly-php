@@ -117,20 +117,20 @@ class LoggingSyslogApi
      *
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
      *
@@ -153,20 +153,20 @@ class LoggingSyslogApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
@@ -260,20 +260,20 @@ class LoggingSyslogApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
@@ -299,20 +299,20 @@ class LoggingSyslogApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
@@ -365,20 +365,20 @@ class LoggingSyslogApi
      *
      * @param  string $service_id (required)
      * @param  int $version_id (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
@@ -390,20 +390,20 @@ class LoggingSyslogApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $tls_ca_cert = array_key_exists('tls_ca_cert', $options) ? $options['tls_ca_cert'] : 'null';
         $tls_client_cert = array_key_exists('tls_client_cert', $options) ? $options['tls_client_cert'] : 'null';
         $tls_client_key = array_key_exists('tls_client_key', $options) ? $options['tls_client_key'] : 'null';
         $tls_hostname = array_key_exists('tls_hostname', $options) ? $options['tls_hostname'] : 'null';
         $address = array_key_exists('address', $options) ? $options['address'] : null;
         $port = array_key_exists('port', $options) ? $options['port'] : 514;
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
         $hostname = array_key_exists('hostname', $options) ? $options['hostname'] : null;
         $ipv4 = array_key_exists('ipv4', $options) ? $options['ipv4'] : null;
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
         $token = array_key_exists('token', $options) ? $options['token'] : 'null';
         $use_tls = array_key_exists('use_tls', $options) ? $options['use_tls'] : null;
 
@@ -447,6 +447,14 @@ class LoggingSyslogApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -455,16 +463,8 @@ class LoggingSyslogApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
-        }
-        // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($tls_ca_cert !== null) {
@@ -491,16 +491,16 @@ class LoggingSyslogApi
             $formParams['port'] = ObjectSerializer::toFormValue($port);
         }
         // form params
-        if ($message_type !== null) {
-            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
-        }
-        // form params
         if ($hostname !== null) {
             $formParams['hostname'] = ObjectSerializer::toFormValue($hostname);
         }
         // form params
         if ($ipv4 !== null) {
             $formParams['ipv4'] = ObjectSerializer::toFormValue($ipv4);
+        }
+        // form params
+        if ($message_type !== null) {
+            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
         }
         // form params
         if ($token !== null) {
@@ -1538,20 +1538,20 @@ class LoggingSyslogApi
      * @param  string $service_id service_id (required)
      * @param  int $version_id version_id (required)
      * @param  string $logging_syslog_name logging_syslog_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
      *
@@ -1575,20 +1575,20 @@ class LoggingSyslogApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_syslog_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
@@ -1683,20 +1683,20 @@ class LoggingSyslogApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_syslog_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
@@ -1723,20 +1723,20 @@ class LoggingSyslogApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_syslog_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
@@ -1790,20 +1790,20 @@ class LoggingSyslogApi
      * @param  string $service_id (required)
      * @param  int $version_id (required)
      * @param  string $logging_syslog_name (required)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  \Fastly\Model\LoggingPlacement $placement (optional)
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
      * @param  string $address A hostname or IPv4 address. (optional)
      * @param  int $port The port number. (optional, default to 514)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
+     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
@@ -1816,20 +1816,20 @@ class LoggingSyslogApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_syslog_name = array_key_exists('logging_syslog_name', $options) ? $options['logging_syslog_name'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $tls_ca_cert = array_key_exists('tls_ca_cert', $options) ? $options['tls_ca_cert'] : 'null';
         $tls_client_cert = array_key_exists('tls_client_cert', $options) ? $options['tls_client_cert'] : 'null';
         $tls_client_key = array_key_exists('tls_client_key', $options) ? $options['tls_client_key'] : 'null';
         $tls_hostname = array_key_exists('tls_hostname', $options) ? $options['tls_hostname'] : 'null';
         $address = array_key_exists('address', $options) ? $options['address'] : null;
         $port = array_key_exists('port', $options) ? $options['port'] : 514;
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
         $hostname = array_key_exists('hostname', $options) ? $options['hostname'] : null;
         $ipv4 = array_key_exists('ipv4', $options) ? $options['ipv4'] : null;
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
         $token = array_key_exists('token', $options) ? $options['token'] : 'null';
         $use_tls = array_key_exists('use_tls', $options) ? $options['use_tls'] : null;
 
@@ -1887,6 +1887,14 @@ class LoggingSyslogApi
         }
 
         // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1895,16 +1903,8 @@ class LoggingSyslogApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
-        }
-        // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($tls_ca_cert !== null) {
@@ -1931,16 +1931,16 @@ class LoggingSyslogApi
             $formParams['port'] = ObjectSerializer::toFormValue($port);
         }
         // form params
-        if ($message_type !== null) {
-            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
-        }
-        // form params
         if ($hostname !== null) {
             $formParams['hostname'] = ObjectSerializer::toFormValue($hostname);
         }
         // form params
         if ($ipv4 !== null) {
             $formParams['ipv4'] = ObjectSerializer::toFormValue($ipv4);
+        }
+        // form params
+        if ($message_type !== null) {
+            $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
         }
         // form params
         if ($token !== null) {

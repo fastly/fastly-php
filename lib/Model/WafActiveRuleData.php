@@ -53,9 +53,9 @@ class WafActiveRuleData implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'type' => '\Fastly\Model\TypeWafActiveRule',
         'attributes' => '\Fastly\Model\WafActiveRuleDataAttributes',
-        'relationships' => 'AnyOfRelationshipWafFirewallVersionRelationshipWafRuleRevision'
+        'relationships' => 'AnyOfRelationshipWafFirewallVersionRelationshipWafRuleRevision',
+        'type' => '\Fastly\Model\TypeWafActiveRule'
     ];
 
     /**
@@ -66,9 +66,9 @@ class WafActiveRuleData implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'type' => null,
         'attributes' => null,
-        'relationships' => null
+        'relationships' => null,
+        'type' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class WafActiveRuleData implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
         'attributes' => 'attributes',
-        'relationships' => 'relationships'
+        'relationships' => 'relationships',
+        'type' => 'type'
     ];
 
     /**
@@ -109,9 +109,9 @@ class WafActiveRuleData implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
         'attributes' => 'setAttributes',
-        'relationships' => 'setRelationships'
+        'relationships' => 'setRelationships',
+        'type' => 'setType'
     ];
 
     /**
@@ -120,9 +120,9 @@ class WafActiveRuleData implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
         'attributes' => 'getAttributes',
-        'relationships' => 'getRelationships'
+        'relationships' => 'getRelationships',
+        'type' => 'getType'
     ];
 
     /**
@@ -185,9 +185,9 @@ class WafActiveRuleData implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
         $this->container['relationships'] = $data['relationships'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class WafActiveRuleData implements ModelInterface, ArrayAccess, \JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeWafActiveRule|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeWafActiveRule|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
 
     /**
      * Gets attributes
@@ -282,6 +258,30 @@ class WafActiveRuleData implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setRelationships($relationships)
     {
         $this->container['relationships'] = $relationships;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeWafActiveRule|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeWafActiveRule|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

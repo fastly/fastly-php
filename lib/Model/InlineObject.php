@@ -53,7 +53,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'items' => 'DictionaryItem[]'
+        'data' => '\Fastly\Model\CustomerCustomerIdBillingAddressData'
     ];
 
     /**
@@ -64,7 +64,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'items' => null
+        'data' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'items' => 'items'
+        'data' => 'data'
     ];
 
     /**
@@ -103,7 +103,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'items' => 'setItems'
+        'data' => 'setData'
     ];
 
     /**
@@ -112,7 +112,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'items' => 'getItems'
+        'data' => 'getData'
     ];
 
     /**
@@ -175,7 +175,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -203,25 +203,25 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets items
+     * Gets data
      *
-     * @return DictionaryItem[]|null
+     * @return \Fastly\Model\CustomerCustomerIdBillingAddressData|null
      */
-    public function getItems()
+    public function getData()
     {
-        return $this->container['items'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets items
+     * Sets data
      *
-     * @param DictionaryItem[]|null $items items
+     * @param \Fastly\Model\CustomerCustomerIdBillingAddressData|null $data data
      *
      * @return self
      */
-    public function setItems($items)
+    public function setData($data)
     {
-        $this->container['items'] = $items;
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -54,8 +54,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'publish_key' => 'string',
         'paused' => 'bool',
+        'publish_key' => 'string',
         'version' => 'int',
         'versions' => '\Fastly\Model\SchemasVersionResponse[]'
     ];
@@ -69,8 +69,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $fastlyFormats = [
         'id' => null,
-        'publish_key' => null,
         'paused' => null,
+        'publish_key' => null,
         'version' => null,
         'versions' => null
     ];
@@ -103,8 +103,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'publish_key' => 'publish_key',
         'paused' => 'paused',
+        'publish_key' => 'publish_key',
         'version' => 'version',
         'versions' => 'versions'
     ];
@@ -116,8 +116,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'id' => 'setId',
-        'publish_key' => 'setPublishKey',
         'paused' => 'setPaused',
+        'publish_key' => 'setPublishKey',
         'version' => 'setVersion',
         'versions' => 'setVersions'
     ];
@@ -129,8 +129,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'id' => 'getId',
-        'publish_key' => 'getPublishKey',
         'paused' => 'getPaused',
+        'publish_key' => 'getPublishKey',
         'version' => 'getVersion',
         'versions' => 'getVersions'
     ];
@@ -196,8 +196,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['publish_key'] = $data['publish_key'] ?? null;
         $this->container['paused'] = $data['paused'] ?? null;
+        $this->container['publish_key'] = $data['publish_key'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['versions'] = $data['versions'] ?? null;
     }
@@ -251,30 +251,6 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets publish_key
-     *
-     * @return string|null
-     */
-    public function getPublishKey()
-    {
-        return $this->container['publish_key'];
-    }
-
-    /**
-     * Sets publish_key
-     *
-     * @param string|null $publish_key Unused at this time.
-     *
-     * @return self
-     */
-    public function setPublishKey($publish_key)
-    {
-        $this->container['publish_key'] = $publish_key;
-
-        return $this;
-    }
-
-    /**
      * Gets paused
      *
      * @return bool|null
@@ -294,6 +270,30 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPaused($paused)
     {
         $this->container['paused'] = $paused;
+
+        return $this;
+    }
+
+    /**
+     * Gets publish_key
+     *
+     * @return string|null
+     */
+    public function getPublishKey()
+    {
+        return $this->container['publish_key'];
+    }
+
+    /**
+     * Sets publish_key
+     *
+     * @param string|null $publish_key Unused at this time.
+     *
+     * @return self
+     */
+    public function setPublishKey($publish_key)
+    {
+        $this->container['publish_key'] = $publish_key;
 
         return $this;
     }

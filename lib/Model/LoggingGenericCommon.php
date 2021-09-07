@@ -53,11 +53,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'message_type' => '\Fastly\Model\LoggingMessageType',
-        'timestamp_format' => 'string',
-        'period' => 'int',
+        'compression_codec' => '\Fastly\Model\LoggingCompressionCodec',
         'gzip_level' => 'int',
-        'compression_codec' => '\Fastly\Model\LoggingCompressionCodec'
+        'message_type' => '\Fastly\Model\LoggingMessageType',
+        'period' => 'int',
+        'timestamp_format' => 'string'
     ];
 
     /**
@@ -68,11 +68,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'message_type' => null,
-        'timestamp_format' => null,
-        'period' => null,
+        'compression_codec' => null,
         'gzip_level' => null,
-        'compression_codec' => null
+        'message_type' => null,
+        'period' => null,
+        'timestamp_format' => null
     ];
 
     /**
@@ -102,11 +102,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'message_type' => 'message_type',
-        'timestamp_format' => 'timestamp_format',
-        'period' => 'period',
+        'compression_codec' => 'compression_codec',
         'gzip_level' => 'gzip_level',
-        'compression_codec' => 'compression_codec'
+        'message_type' => 'message_type',
+        'period' => 'period',
+        'timestamp_format' => 'timestamp_format'
     ];
 
     /**
@@ -115,11 +115,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'message_type' => 'setMessageType',
-        'timestamp_format' => 'setTimestampFormat',
-        'period' => 'setPeriod',
+        'compression_codec' => 'setCompressionCodec',
         'gzip_level' => 'setGzipLevel',
-        'compression_codec' => 'setCompressionCodec'
+        'message_type' => 'setMessageType',
+        'period' => 'setPeriod',
+        'timestamp_format' => 'setTimestampFormat'
     ];
 
     /**
@@ -128,11 +128,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'message_type' => 'getMessageType',
-        'timestamp_format' => 'getTimestampFormat',
-        'period' => 'getPeriod',
+        'compression_codec' => 'getCompressionCodec',
         'gzip_level' => 'getGzipLevel',
-        'compression_codec' => 'getCompressionCodec'
+        'message_type' => 'getMessageType',
+        'period' => 'getPeriod',
+        'timestamp_format' => 'getTimestampFormat'
     ];
 
     /**
@@ -195,11 +195,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['message_type'] = $data['message_type'] ?? null;
-        $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
-        $this->container['period'] = $data['period'] ?? 3600;
-        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
+        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
+        $this->container['message_type'] = $data['message_type'] ?? null;
+        $this->container['period'] = $data['period'] ?? 3600;
+        $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
     }
 
     /**
@@ -227,73 +227,25 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets message_type
+     * Gets compression_codec
      *
-     * @return \Fastly\Model\LoggingMessageType|null
+     * @return \Fastly\Model\LoggingCompressionCodec|null
      */
-    public function getMessageType()
+    public function getCompressionCodec()
     {
-        return $this->container['message_type'];
+        return $this->container['compression_codec'];
     }
 
     /**
-     * Sets message_type
+     * Sets compression_codec
      *
-     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
+     * @param \Fastly\Model\LoggingCompressionCodec|null $compression_codec compression_codec
      *
      * @return self
      */
-    public function setMessageType($message_type)
+    public function setCompressionCodec($compression_codec)
     {
-        $this->container['message_type'] = $message_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp_format
-     *
-     * @return string|null
-     */
-    public function getTimestampFormat()
-    {
-        return $this->container['timestamp_format'];
-    }
-
-    /**
-     * Sets timestamp_format
-     *
-     * @param string|null $timestamp_format Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setTimestampFormat($timestamp_format)
-    {
-        $this->container['timestamp_format'] = $timestamp_format;
-
-        return $this;
-    }
-
-    /**
-     * Gets period
-     *
-     * @return int|null
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period
-     *
-     * @param int|null $period How frequently log files are finalized so they can be available for reading (in seconds).
-     *
-     * @return self
-     */
-    public function setPeriod($period)
-    {
-        $this->container['period'] = $period;
+        $this->container['compression_codec'] = $compression_codec;
 
         return $this;
     }
@@ -323,25 +275,73 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets compression_codec
+     * Gets message_type
      *
-     * @return \Fastly\Model\LoggingCompressionCodec|null
+     * @return \Fastly\Model\LoggingMessageType|null
      */
-    public function getCompressionCodec()
+    public function getMessageType()
     {
-        return $this->container['compression_codec'];
+        return $this->container['message_type'];
     }
 
     /**
-     * Sets compression_codec
+     * Sets message_type
      *
-     * @param \Fastly\Model\LoggingCompressionCodec|null $compression_codec compression_codec
+     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
      *
      * @return self
      */
-    public function setCompressionCodec($compression_codec)
+    public function setMessageType($message_type)
     {
-        $this->container['compression_codec'] = $compression_codec;
+        $this->container['message_type'] = $message_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return int|null
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param int|null $period How frequently log files are finalized so they can be available for reading (in seconds).
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp_format
+     *
+     * @return string|null
+     */
+    public function getTimestampFormat()
+    {
+        return $this->container['timestamp_format'];
+    }
+
+    /**
+     * Sets timestamp_format
+     *
+     * @param string|null $timestamp_format Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setTimestampFormat($timestamp_format)
+    {
+        $this->container['timestamp_format'] = $timestamp_format;
 
         return $this;
     }

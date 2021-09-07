@@ -53,19 +53,19 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'format' => 'string',
+        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'response_condition' => 'string',
-        'format' => 'string',
         'tls_ca_cert' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
         'tls_hostname' => 'string',
-        'request_max_entries' => 'int',
         'request_max_bytes' => 'int',
-        'url' => 'string',
+        'request_max_entries' => 'int',
         'token' => 'string',
+        'url' => 'string',
         'use_tls' => '\Fastly\Model\LoggingUseTls',
         'created_at' => 'string',
         'deleted_at' => 'string',
@@ -82,19 +82,19 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'format' => null,
+        'format_version' => null,
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
-        'format' => null,
         'tls_ca_cert' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
         'tls_hostname' => null,
-        'request_max_entries' => null,
         'request_max_bytes' => null,
-        'url' => null,
+        'request_max_entries' => null,
         'token' => null,
+        'url' => null,
         'use_tls' => null,
         'created_at' => null,
         'deleted_at' => null,
@@ -130,19 +130,19 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'format' => 'format',
+        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'format' => 'format',
         'tls_ca_cert' => 'tls_ca_cert',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
         'tls_hostname' => 'tls_hostname',
-        'request_max_entries' => 'request_max_entries',
         'request_max_bytes' => 'request_max_bytes',
-        'url' => 'url',
+        'request_max_entries' => 'request_max_entries',
         'token' => 'token',
+        'url' => 'url',
         'use_tls' => 'use_tls',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
@@ -157,19 +157,19 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'format' => 'setFormat',
         'tls_ca_cert' => 'setTlsCaCert',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
         'tls_hostname' => 'setTlsHostname',
-        'request_max_entries' => 'setRequestMaxEntries',
         'request_max_bytes' => 'setRequestMaxBytes',
-        'url' => 'setUrl',
+        'request_max_entries' => 'setRequestMaxEntries',
         'token' => 'setToken',
+        'url' => 'setUrl',
         'use_tls' => 'setUseTls',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
@@ -184,19 +184,19 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'format' => 'getFormat',
         'tls_ca_cert' => 'getTlsCaCert',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
         'tls_hostname' => 'getTlsHostname',
-        'request_max_entries' => 'getRequestMaxEntries',
         'request_max_bytes' => 'getRequestMaxBytes',
-        'url' => 'getUrl',
+        'request_max_entries' => 'getRequestMaxEntries',
         'token' => 'getToken',
+        'url' => 'getUrl',
         'use_tls' => 'getUseTls',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
@@ -265,19 +265,19 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
         $this->container['tls_hostname'] = $data['tls_hostname'] ?? 'null';
-        $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
         $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
-        $this->container['url'] = $data['url'] ?? null;
+        $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
         $this->container['token'] = $data['token'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
         $this->container['use_tls'] = $data['use_tls'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
@@ -309,6 +309,54 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return \Fastly\Model\LoggingFormatVersion|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -359,30 +407,6 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -402,30 +426,6 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
 
         return $this;
     }
@@ -527,30 +527,6 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets request_max_entries
-     *
-     * @return int|null
-     */
-    public function getRequestMaxEntries()
-    {
-        return $this->container['request_max_entries'];
-    }
-
-    /**
-     * Sets request_max_entries
-     *
-     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` for unbounded.
-     *
-     * @return self
-     */
-    public function setRequestMaxEntries($request_max_entries)
-    {
-        $this->container['request_max_entries'] = $request_max_entries;
-
-        return $this;
-    }
-
-    /**
      * Gets request_max_bytes
      *
      * @return int|null
@@ -575,25 +551,25 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets url
+     * Gets request_max_entries
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getUrl()
+    public function getRequestMaxEntries()
     {
-        return $this->container['url'];
+        return $this->container['request_max_entries'];
     }
 
     /**
-     * Sets url
+     * Sets request_max_entries
      *
-     * @param string|null $url The URL to post logs to.
+     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` for unbounded.
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setRequestMaxEntries($request_max_entries)
     {
-        $this->container['url'] = $url;
+        $this->container['request_max_entries'] = $request_max_entries;
 
         return $this;
     }
@@ -618,6 +594,30 @@ class LoggingSplunkResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setToken($token)
     {
         $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url The URL to post logs to.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }

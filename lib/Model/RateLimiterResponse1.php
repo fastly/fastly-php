@@ -54,9 +54,9 @@ class RateLimiterResponse1 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'status' => 'int',
+        'content' => 'string',
         'content_type' => 'string',
-        'content' => 'string'
+        'status' => 'int'
     ];
 
     /**
@@ -67,9 +67,9 @@ class RateLimiterResponse1 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'status' => null,
+        'content' => null,
         'content_type' => null,
-        'content' => null
+        'status' => null
     ];
 
     /**
@@ -99,9 +99,9 @@ class RateLimiterResponse1 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
+        'content' => 'content',
         'content_type' => 'content_type',
-        'content' => 'content'
+        'status' => 'status'
     ];
 
     /**
@@ -110,9 +110,9 @@ class RateLimiterResponse1 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
+        'content' => 'setContent',
         'content_type' => 'setContentType',
-        'content' => 'setContent'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -121,9 +121,9 @@ class RateLimiterResponse1 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
+        'content' => 'getContent',
         'content_type' => 'getContentType',
-        'content' => 'getContent'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -186,9 +186,9 @@ class RateLimiterResponse1 implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['content_type'] = $data['content_type'] ?? null;
         $this->container['content'] = $data['content'] ?? null;
+        $this->container['content_type'] = $data['content_type'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -200,20 +200,20 @@ class RateLimiterResponse1 implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['status']) && ($this->container['status'] > 999)) {
-            $invalidProperties[] = "invalid value for 'status', must be smaller than or equal to 999.";
-        }
-
-        if (!is_null($this->container['status']) && ($this->container['status'] < 100)) {
-            $invalidProperties[] = "invalid value for 'status', must be bigger than or equal to 100.";
+        if (!is_null($this->container['content']) && (mb_strlen($this->container['content']) < 1)) {
+            $invalidProperties[] = "invalid value for 'content', the character length must be bigger than or equal to 1.";
         }
 
         if (!is_null($this->container['content_type']) && (mb_strlen($this->container['content_type']) < 1)) {
             $invalidProperties[] = "invalid value for 'content_type', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['content']) && (mb_strlen($this->container['content']) < 1)) {
-            $invalidProperties[] = "invalid value for 'content', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['status']) && ($this->container['status'] > 999)) {
+            $invalidProperties[] = "invalid value for 'status', must be smaller than or equal to 999.";
+        }
+
+        if (!is_null($this->container['status']) && ($this->container['status'] < 100)) {
+            $invalidProperties[] = "invalid value for 'status', must be bigger than or equal to 100.";
         }
 
         return $invalidProperties;
@@ -232,33 +232,30 @@ class RateLimiterResponse1 implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets status
+     * Gets content
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getStatus()
+    public function getContent()
     {
-        return $this->container['status'];
+        return $this->container['content'];
     }
 
     /**
-     * Sets status
+     * Sets content
      *
-     * @param int|null $status HTTP status code for custom limit enforcement response.
+     * @param string|null $content Response body for custom limit enforcement response.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setContent($content)
     {
 
-        if (!is_null($status) && ($status > 999)) {
-            throw new \InvalidArgumentException('invalid value for $status when calling RateLimiterResponse1., must be smaller than or equal to 999.');
-        }
-        if (!is_null($status) && ($status < 100)) {
-            throw new \InvalidArgumentException('invalid value for $status when calling RateLimiterResponse1., must be bigger than or equal to 100.');
+        if (!is_null($content) && (mb_strlen($content) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $content when calling RateLimiterResponse1., must be bigger than or equal to 1.');
         }
 
-        $this->container['status'] = $status;
+        $this->container['content'] = $content;
 
         return $this;
     }
@@ -293,30 +290,33 @@ class RateLimiterResponse1 implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets content
+     * Gets status
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getContent()
+    public function getStatus()
     {
-        return $this->container['content'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets content
+     * Sets status
      *
-     * @param string|null $content Response body for custom limit enforcement response.
+     * @param int|null $status HTTP status code for custom limit enforcement response.
      *
      * @return self
      */
-    public function setContent($content)
+    public function setStatus($status)
     {
 
-        if (!is_null($content) && (mb_strlen($content) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $content when calling RateLimiterResponse1., must be bigger than or equal to 1.');
+        if (!is_null($status) && ($status > 999)) {
+            throw new \InvalidArgumentException('invalid value for $status when calling RateLimiterResponse1., must be smaller than or equal to 999.');
+        }
+        if (!is_null($status) && ($status < 100)) {
+            throw new \InvalidArgumentException('invalid value for $status when calling RateLimiterResponse1., must be bigger than or equal to 100.');
         }
 
-        $this->container['content'] = $content;
+        $this->container['status'] = $status;
 
         return $this;
     }

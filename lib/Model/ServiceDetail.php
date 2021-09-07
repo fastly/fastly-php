@@ -57,12 +57,12 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => 'string',
         'updated_at' => 'string',
         'comment' => 'string',
-        'name' => 'string',
         'customer_id' => 'string',
+        'name' => 'string',
         'type' => 'string',
         'id' => 'string',
-        'publish_key' => 'string',
         'paused' => 'bool',
+        'publish_key' => 'string',
         'version' => '\Fastly\Model\NestedVersion',
         'versions' => '\Fastly\Model\SchemasVersionResponse[]',
         'active_version' => '\Fastly\Model\NestedVersion'
@@ -80,12 +80,12 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => null,
         'updated_at' => null,
         'comment' => null,
-        'name' => null,
         'customer_id' => null,
+        'name' => null,
         'type' => null,
         'id' => null,
-        'publish_key' => null,
         'paused' => null,
+        'publish_key' => null,
         'version' => null,
         'versions' => null,
         'active_version' => null
@@ -122,12 +122,12 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
         'comment' => 'comment',
-        'name' => 'name',
         'customer_id' => 'customer_id',
+        'name' => 'name',
         'type' => 'type',
         'id' => 'id',
-        'publish_key' => 'publish_key',
         'paused' => 'paused',
+        'publish_key' => 'publish_key',
         'version' => 'version',
         'versions' => 'versions',
         'active_version' => 'active_version'
@@ -143,12 +143,12 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
         'comment' => 'setComment',
-        'name' => 'setName',
         'customer_id' => 'setCustomerId',
+        'name' => 'setName',
         'type' => 'setType',
         'id' => 'setId',
-        'publish_key' => 'setPublishKey',
         'paused' => 'setPaused',
+        'publish_key' => 'setPublishKey',
         'version' => 'setVersion',
         'versions' => 'setVersions',
         'active_version' => 'setActiveVersion'
@@ -164,12 +164,12 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
         'comment' => 'getComment',
-        'name' => 'getName',
         'customer_id' => 'getCustomerId',
+        'name' => 'getName',
         'type' => 'getType',
         'id' => 'getId',
-        'publish_key' => 'getPublishKey',
         'paused' => 'getPaused',
+        'publish_key' => 'getPublishKey',
         'version' => 'getVersion',
         'versions' => 'getVersions',
         'active_version' => 'getActiveVersion'
@@ -254,12 +254,12 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['comment'] = $data['comment'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['customer_id'] = $data['customer_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['publish_key'] = $data['publish_key'] ?? null;
         $this->container['paused'] = $data['paused'] ?? null;
+        $this->container['publish_key'] = $data['publish_key'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['versions'] = $data['versions'] ?? null;
         $this->container['active_version'] = $data['active_version'] ?? null;
@@ -395,30 +395,6 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name of the service.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets customer_id
      *
      * @return string|null
@@ -438,6 +414,30 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCustomerId($customer_id)
     {
         $this->container['customer_id'] = $customer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name The name of the service.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -501,30 +501,6 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets publish_key
-     *
-     * @return string|null
-     */
-    public function getPublishKey()
-    {
-        return $this->container['publish_key'];
-    }
-
-    /**
-     * Sets publish_key
-     *
-     * @param string|null $publish_key Unused at this time.
-     *
-     * @return self
-     */
-    public function setPublishKey($publish_key)
-    {
-        $this->container['publish_key'] = $publish_key;
-
-        return $this;
-    }
-
-    /**
      * Gets paused
      *
      * @return bool|null
@@ -544,6 +520,30 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaused($paused)
     {
         $this->container['paused'] = $paused;
+
+        return $this;
+    }
+
+    /**
+     * Gets publish_key
+     *
+     * @return string|null
+     */
+    public function getPublishKey()
+    {
+        return $this->container['publish_key'];
+    }
+
+    /**
+     * Sets publish_key
+     *
+     * @param string|null $publish_key Unused at this time.
+     *
+     * @return self
+     */
+    public function setPublishKey($publish_key)
+    {
+        $this->container['publish_key'] = $publish_key;
 
         return $this;
     }
