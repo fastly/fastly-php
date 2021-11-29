@@ -57,13 +57,12 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => 'string',
         'updated_at' => 'string',
         'comment' => 'string',
-        'customer_id' => 'string',
         'name' => 'string',
+        'customer_id' => 'string',
         'type' => 'string',
         'id' => 'string',
-        'paused' => 'bool',
         'publish_key' => 'string',
-        'version' => 'int',
+        'paused' => 'bool',
         'versions' => '\Fastly\Model\SchemasVersionResponse[]'
     ];
 
@@ -79,13 +78,12 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => null,
         'updated_at' => null,
         'comment' => null,
-        'customer_id' => null,
         'name' => null,
+        'customer_id' => null,
         'type' => null,
         'id' => null,
-        'paused' => null,
         'publish_key' => null,
-        'version' => null,
+        'paused' => null,
         'versions' => null
     ];
 
@@ -120,13 +118,12 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
         'comment' => 'comment',
-        'customer_id' => 'customer_id',
         'name' => 'name',
+        'customer_id' => 'customer_id',
         'type' => 'type',
         'id' => 'id',
-        'paused' => 'paused',
         'publish_key' => 'publish_key',
-        'version' => 'version',
+        'paused' => 'paused',
         'versions' => 'versions'
     ];
 
@@ -140,13 +137,12 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
         'comment' => 'setComment',
-        'customer_id' => 'setCustomerId',
         'name' => 'setName',
+        'customer_id' => 'setCustomerId',
         'type' => 'setType',
         'id' => 'setId',
-        'paused' => 'setPaused',
         'publish_key' => 'setPublishKey',
-        'version' => 'setVersion',
+        'paused' => 'setPaused',
         'versions' => 'setVersions'
     ];
 
@@ -160,13 +156,12 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
         'comment' => 'getComment',
-        'customer_id' => 'getCustomerId',
         'name' => 'getName',
+        'customer_id' => 'getCustomerId',
         'type' => 'getType',
         'id' => 'getId',
-        'paused' => 'getPaused',
         'publish_key' => 'getPublishKey',
-        'version' => 'getVersion',
+        'paused' => 'getPaused',
         'versions' => 'getVersions'
     ];
 
@@ -249,13 +244,12 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['comment'] = $data['comment'] ?? null;
-        $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['paused'] = $data['paused'] ?? null;
         $this->container['publish_key'] = $data['publish_key'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
+        $this->container['paused'] = $data['paused'] ?? null;
         $this->container['versions'] = $data['versions'] ?? null;
     }
 
@@ -389,30 +383,6 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets customer_id
-     *
-     * @return string|null
-     */
-    public function getCustomerId()
-    {
-        return $this->container['customer_id'];
-    }
-
-    /**
-     * Sets customer_id
-     *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
-     *
-     * @return self
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->container['customer_id'] = $customer_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -432,6 +402,30 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_id
+     *
+     * @return string|null
+     */
+    public function getCustomerId()
+    {
+        return $this->container['customer_id'];
+    }
+
+    /**
+     * Sets customer_id
+     *
+     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     *
+     * @return self
+     */
+    public function setCustomerId($customer_id)
+    {
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }
@@ -495,30 +489,6 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets paused
-     *
-     * @return bool|null
-     */
-    public function getPaused()
-    {
-        return $this->container['paused'];
-    }
-
-    /**
-     * Sets paused
-     *
-     * @param bool|null $paused Whether the service is paused. Services are paused due to a lack of traffic for an extended period of time. Services are resumed either when a draft version is activated or a locked version is cloned and reactivated.
-     *
-     * @return self
-     */
-    public function setPaused($paused)
-    {
-        $this->container['paused'] = $paused;
-
-        return $this;
-    }
-
-    /**
      * Gets publish_key
      *
      * @return string|null
@@ -543,25 +513,25 @@ class ServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets version
+     * Gets paused
      *
-     * @return int|null
+     * @return bool|null
      */
-    public function getVersion()
+    public function getPaused()
     {
-        return $this->container['version'];
+        return $this->container['paused'];
     }
 
     /**
-     * Sets version
+     * Sets paused
      *
-     * @param int|null $version Current [version](/reference/api/services/version/) of the service.
+     * @param bool|null $paused Whether the service is paused. Services are paused due to a lack of traffic for an extended period of time. Services are resumed either when a draft version is activated or a locked version is cloned and reactivated.
      *
      * @return self
      */
-    public function setVersion($version)
+    public function setPaused($paused)
     {
-        $this->container['version'] = $version;
+        $this->container['paused'] = $paused;
 
         return $this;
     }

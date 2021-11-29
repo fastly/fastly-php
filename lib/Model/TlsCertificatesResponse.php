@@ -55,7 +55,7 @@ class TlsCertificatesResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsCertificateResponseData[]'
     ];
 
     /**
@@ -265,7 +265,7 @@ class TlsCertificatesResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsCertificateResponseData[]|null
      */
     public function getData()
     {
@@ -275,7 +275,7 @@ class TlsCertificatesResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsCertificateResponseData[]|null $data data
      *
      * @return self
      */

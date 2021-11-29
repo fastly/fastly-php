@@ -53,16 +53,16 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'content_type' => 'string',
-        'format' => 'string',
-        'header_name' => 'string',
-        'header_value' => 'string',
-        'json_format' => 'string',
-        'message_type' => '\Fastly\Model\LoggingMessageType',
-        'method' => 'string',
-        'request_max_bytes' => 'int',
+        'url' => 'string',
         'request_max_entries' => 'int',
-        'url' => 'string'
+        'request_max_bytes' => 'int',
+        'content_type' => 'string',
+        'header_name' => 'string',
+        'message_type' => '\Fastly\Model\LoggingMessageType',
+        'header_value' => 'string',
+        'method' => 'string',
+        'json_format' => 'string',
+        'format' => 'string'
     ];
 
     /**
@@ -73,16 +73,16 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'content_type' => null,
-        'format' => null,
-        'header_name' => null,
-        'header_value' => null,
-        'json_format' => null,
-        'message_type' => null,
-        'method' => null,
-        'request_max_bytes' => null,
+        'url' => null,
         'request_max_entries' => null,
-        'url' => null
+        'request_max_bytes' => null,
+        'content_type' => null,
+        'header_name' => null,
+        'message_type' => null,
+        'header_value' => null,
+        'method' => null,
+        'json_format' => null,
+        'format' => null
     ];
 
     /**
@@ -112,16 +112,16 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'content_type' => 'content_type',
-        'format' => 'format',
-        'header_name' => 'header_name',
-        'header_value' => 'header_value',
-        'json_format' => 'json_format',
-        'message_type' => 'message_type',
-        'method' => 'method',
-        'request_max_bytes' => 'request_max_bytes',
+        'url' => 'url',
         'request_max_entries' => 'request_max_entries',
-        'url' => 'url'
+        'request_max_bytes' => 'request_max_bytes',
+        'content_type' => 'content_type',
+        'header_name' => 'header_name',
+        'message_type' => 'message_type',
+        'header_value' => 'header_value',
+        'method' => 'method',
+        'json_format' => 'json_format',
+        'format' => 'format'
     ];
 
     /**
@@ -130,16 +130,16 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'content_type' => 'setContentType',
-        'format' => 'setFormat',
-        'header_name' => 'setHeaderName',
-        'header_value' => 'setHeaderValue',
-        'json_format' => 'setJsonFormat',
-        'message_type' => 'setMessageType',
-        'method' => 'setMethod',
-        'request_max_bytes' => 'setRequestMaxBytes',
+        'url' => 'setUrl',
         'request_max_entries' => 'setRequestMaxEntries',
-        'url' => 'setUrl'
+        'request_max_bytes' => 'setRequestMaxBytes',
+        'content_type' => 'setContentType',
+        'header_name' => 'setHeaderName',
+        'message_type' => 'setMessageType',
+        'header_value' => 'setHeaderValue',
+        'method' => 'setMethod',
+        'json_format' => 'setJsonFormat',
+        'format' => 'setFormat'
     ];
 
     /**
@@ -148,16 +148,16 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'content_type' => 'getContentType',
-        'format' => 'getFormat',
-        'header_name' => 'getHeaderName',
-        'header_value' => 'getHeaderValue',
-        'json_format' => 'getJsonFormat',
-        'message_type' => 'getMessageType',
-        'method' => 'getMethod',
-        'request_max_bytes' => 'getRequestMaxBytes',
+        'url' => 'getUrl',
         'request_max_entries' => 'getRequestMaxEntries',
-        'url' => 'getUrl'
+        'request_max_bytes' => 'getRequestMaxBytes',
+        'content_type' => 'getContentType',
+        'header_name' => 'getHeaderName',
+        'message_type' => 'getMessageType',
+        'header_value' => 'getHeaderValue',
+        'method' => 'getMethod',
+        'json_format' => 'getJsonFormat',
+        'format' => 'getFormat'
     ];
 
     /**
@@ -201,13 +201,26 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$fastlyModelName;
     }
 
+    const METHOD_POST = 'POST';
+    const METHOD_PUT = 'PUT';
     const JSON_FORMAT_disabled = '0';
     const JSON_FORMAT_json_array = '1';
     const JSON_FORMAT_newline_delimited_json = '2';
-    const METHOD_POST = 'POST';
-    const METHOD_PUT = 'PUT';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_POST,
+            self::METHOD_PUT,
+        ];
+    }
     
     /**
      * Gets allowable values of the enum
@@ -220,19 +233,6 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::JSON_FORMAT_disabled,
             self::JSON_FORMAT_json_array,
             self::JSON_FORMAT_newline_delimited_json,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMethodAllowableValues()
-    {
-        return [
-            self::METHOD_POST,
-            self::METHOD_PUT,
         ];
     }
     
@@ -252,16 +252,16 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['content_type'] = $data['content_type'] ?? 'null';
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['header_name'] = $data['header_name'] ?? 'null';
-        $this->container['header_value'] = $data['header_value'] ?? 'null';
-        $this->container['json_format'] = $data['json_format'] ?? null;
-        $this->container['message_type'] = $data['message_type'] ?? null;
-        $this->container['method'] = $data['method'] ?? METHOD_POST;
-        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
-        $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
         $this->container['url'] = $data['url'] ?? null;
+        $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
+        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
+        $this->container['content_type'] = $data['content_type'] ?? 'null';
+        $this->container['header_name'] = $data['header_name'] ?? 'null';
+        $this->container['message_type'] = $data['message_type'] ?? null;
+        $this->container['header_value'] = $data['header_value'] ?? 'null';
+        $this->container['method'] = $data['method'] ?? METHOD_POST;
+        $this->container['json_format'] = $data['json_format'] ?? null;
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
     }
 
     /**
@@ -273,20 +273,20 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getJsonFormatAllowableValues();
-        if (!is_null($this->container['json_format']) && !in_array($this->container['json_format'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'json_format', must be one of '%s'",
-                $this->container['json_format'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getMethodAllowableValues();
         if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'method', must be one of '%s'",
                 $this->container['method'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getJsonFormatAllowableValues();
+        if (!is_null($this->container['json_format']) && !in_array($this->container['json_format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'json_format', must be one of '%s'",
+                $this->container['json_format'],
                 implode("', '", $allowedValues)
             );
         }
@@ -305,6 +305,78 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url The URL to send logs to. Must use HTTPS. Required.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_max_entries
+     *
+     * @return int|null
+     */
+    public function getRequestMaxEntries()
+    {
+        return $this->container['request_max_entries'];
+    }
+
+    /**
+     * Sets request_max_entries
+     *
+     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` (no limit).
+     *
+     * @return self
+     */
+    public function setRequestMaxEntries($request_max_entries)
+    {
+        $this->container['request_max_entries'] = $request_max_entries;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_max_bytes
+     *
+     * @return int|null
+     */
+    public function getRequestMaxBytes()
+    {
+        return $this->container['request_max_bytes'];
+    }
+
+    /**
+     * Sets request_max_bytes
+     *
+     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` (no limit).
+     *
+     * @return self
+     */
+    public function setRequestMaxBytes($request_max_bytes)
+    {
+        $this->container['request_max_bytes'] = $request_max_bytes;
+
+        return $this;
+    }
 
     /**
      * Gets content_type
@@ -326,30 +398,6 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setContentType($content_type)
     {
         $this->container['content_type'] = $content_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
 
         return $this;
     }
@@ -379,64 +427,6 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets header_value
-     *
-     * @return string|null
-     */
-    public function getHeaderValue()
-    {
-        return $this->container['header_value'];
-    }
-
-    /**
-     * Sets header_value
-     *
-     * @param string|null $header_value Value of the custom header sent with the request.
-     *
-     * @return self
-     */
-    public function setHeaderValue($header_value)
-    {
-        $this->container['header_value'] = $header_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets json_format
-     *
-     * @return string|null
-     */
-    public function getJsonFormat()
-    {
-        return $this->container['json_format'];
-    }
-
-    /**
-     * Sets json_format
-     *
-     * @param string|null $json_format Enforces valid JSON formatting for log entries.
-     *
-     * @return self
-     */
-    public function setJsonFormat($json_format)
-    {
-        $allowedValues = $this->getJsonFormatAllowableValues();
-        if (!is_null($json_format) && !in_array($json_format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'json_format', must be one of '%s'",
-                    $json_format,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['json_format'] = $json_format;
-
-        return $this;
-    }
-
-    /**
      * Gets message_type
      *
      * @return \Fastly\Model\LoggingMessageType|null
@@ -456,6 +446,30 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setMessageType($message_type)
     {
         $this->container['message_type'] = $message_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets header_value
+     *
+     * @return string|null
+     */
+    public function getHeaderValue()
+    {
+        return $this->container['header_value'];
+    }
+
+    /**
+     * Sets header_value
+     *
+     * @param string|null $header_value Value of the custom header sent with the request.
+     *
+     * @return self
+     */
+    public function setHeaderValue($header_value)
+    {
+        $this->container['header_value'] = $header_value;
 
         return $this;
     }
@@ -495,73 +509,59 @@ class LoggingHttpsAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets request_max_bytes
-     *
-     * @return int|null
-     */
-    public function getRequestMaxBytes()
-    {
-        return $this->container['request_max_bytes'];
-    }
-
-    /**
-     * Sets request_max_bytes
-     *
-     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` (no limit).
-     *
-     * @return self
-     */
-    public function setRequestMaxBytes($request_max_bytes)
-    {
-        $this->container['request_max_bytes'] = $request_max_bytes;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_max_entries
-     *
-     * @return int|null
-     */
-    public function getRequestMaxEntries()
-    {
-        return $this->container['request_max_entries'];
-    }
-
-    /**
-     * Sets request_max_entries
-     *
-     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` (no limit).
-     *
-     * @return self
-     */
-    public function setRequestMaxEntries($request_max_entries)
-    {
-        $this->container['request_max_entries'] = $request_max_entries;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
+     * Gets json_format
      *
      * @return string|null
      */
-    public function getUrl()
+    public function getJsonFormat()
     {
-        return $this->container['url'];
+        return $this->container['json_format'];
     }
 
     /**
-     * Sets url
+     * Sets json_format
      *
-     * @param string|null $url The URL to send logs to. Must use HTTPS. Required.
+     * @param string|null $json_format Enforces valid JSON formatting for log entries.
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setJsonFormat($json_format)
     {
-        $this->container['url'] = $url;
+        $allowedValues = $this->getJsonFormatAllowableValues();
+        if (!is_null($json_format) && !in_array($json_format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'json_format', must be one of '%s'",
+                    $json_format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['json_format'] = $json_format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
 
         return $this;
     }

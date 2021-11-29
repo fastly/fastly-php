@@ -74,7 +74,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**star_id** | **string** |  |
+**star_id** | **string** | Alphanumeric string identifying a star. |
 
 ### Return type
 
@@ -106,7 +106,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**star_id** | **string** |  |
+**star_id** | **string** | Alphanumeric string identifying a star. |
 
 ### Return type
 
@@ -136,7 +136,7 @@ try {
 
 Note: the input parameter is an associative array with the keys listed below.
 
-This endpoint does not need any parameter.
+This endpoint does not need any parameters.
 
 ### Return type
 

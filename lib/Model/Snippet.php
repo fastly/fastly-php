@@ -53,11 +53,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'content' => 'string',
-        'dynamic' => 'string',
         'name' => 'string',
-        'priority' => 'string',
-        'type' => 'string'
+        'dynamic' => 'string',
+        'type' => 'string',
+        'content' => 'string',
+        'priority' => 'string'
     ];
 
     /**
@@ -68,11 +68,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'content' => null,
-        'dynamic' => null,
         'name' => null,
-        'priority' => null,
-        'type' => null
+        'dynamic' => null,
+        'type' => null,
+        'content' => null,
+        'priority' => null
     ];
 
     /**
@@ -102,11 +102,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'content' => 'content',
-        'dynamic' => 'dynamic',
         'name' => 'name',
-        'priority' => 'priority',
-        'type' => 'type'
+        'dynamic' => 'dynamic',
+        'type' => 'type',
+        'content' => 'content',
+        'priority' => 'priority'
     ];
 
     /**
@@ -115,11 +115,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'content' => 'setContent',
-        'dynamic' => 'setDynamic',
         'name' => 'setName',
-        'priority' => 'setPriority',
-        'type' => 'setType'
+        'dynamic' => 'setDynamic',
+        'type' => 'setType',
+        'content' => 'setContent',
+        'priority' => 'setPriority'
     ];
 
     /**
@@ -128,11 +128,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'content' => 'getContent',
-        'dynamic' => 'getDynamic',
         'name' => 'getName',
-        'priority' => 'getPriority',
-        'type' => 'getType'
+        'dynamic' => 'getDynamic',
+        'type' => 'getType',
+        'content' => 'getContent',
+        'priority' => 'getPriority'
     ];
 
     /**
@@ -243,11 +243,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['content'] = $data['content'] ?? null;
-        $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? '100';
+        $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['content'] = $data['content'] ?? null;
+        $this->container['priority'] = $data['priority'] ?? '100';
     }
 
     /**
@@ -293,25 +293,25 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets content
+     * Gets name
      *
      * @return string|null
      */
-    public function getContent()
+    public function getName()
     {
-        return $this->container['content'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets content
+     * Sets name
      *
-     * @param string|null $content The VCL code that specifies exactly what the snippet does.
+     * @param string|null $name The name for the snippet.
      *
      * @return self
      */
-    public function setContent($content)
+    public function setName($name)
     {
-        $this->container['content'] = $content;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -351,54 +351,6 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name for the snippet.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets priority
-     *
-     * @return string|null
-     */
-    public function getPriority()
-    {
-        return $this->container['priority'];
-    }
-
-    /**
-     * Sets priority
-     *
-     * @param string|null $priority Numeric string value. Priority determines execution order. Lower numbers execute first.
-     *
-     * @return self
-     */
-    public function setPriority($priority)
-    {
-        $this->container['priority'] = $priority;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return string|null
@@ -428,6 +380,54 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets content
+     *
+     * @return string|null
+     */
+    public function getContent()
+    {
+        return $this->container['content'];
+    }
+
+    /**
+     * Sets content
+     *
+     * @param string|null $content The VCL code that specifies exactly what the snippet does.
+     *
+     * @return self
+     */
+    public function setContent($content)
+    {
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets priority
+     *
+     * @return string|null
+     */
+    public function getPriority()
+    {
+        return $this->container['priority'];
+    }
+
+    /**
+     * Sets priority
+     *
+     * @param string|null $priority Numeric string value. Priority determines execution order. Lower numbers execute first.
+     *
+     * @return self
+     */
+    public function setPriority($priority)
+    {
+        $this->container['priority'] = $priority;
 
         return $this;
     }

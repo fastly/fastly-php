@@ -44,8 +44,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**firewall_version_number** | **int** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**firewall_version_number** | **int** | Integer identifying a WAF firewall version. |
 
 ### Return type
 
@@ -77,7 +77,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
 **waf_firewall_version** | [**\Fastly\Model\WafFirewallVersion**](../Model/WafFirewallVersion.md) |  | [optional]
 
 ### Return type
@@ -110,8 +110,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**firewall_version_number** | **int** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**firewall_version_number** | **int** | Integer identifying a WAF firewall version. |
 
 ### Return type
 
@@ -143,9 +143,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**firewall_version_number** | **int** |  |
-**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. | [optional]
+**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: `waf_firewall` and `waf_active_rules`. | [optional]
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**firewall_version_number** | **int** | Integer identifying a WAF firewall version. |
 
 ### Return type
 
@@ -177,10 +177,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
 **include** | **string** | Include relationships. Optional. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
 
 ### Return type
 
@@ -212,8 +212,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**firewall_version_number** | **int** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**firewall_version_number** | **int** | Integer identifying a WAF firewall version. |
 **waf_firewall_version** | [**\Fastly\Model\WafFirewallVersion**](../Model/WafFirewallVersion.md) |  | [optional]
 
 ### Return type

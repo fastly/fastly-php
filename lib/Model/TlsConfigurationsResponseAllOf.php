@@ -53,7 +53,7 @@ class TlsConfigurationsResponseAllOf implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsConfigurationResponseData[]'
     ];
 
     /**
@@ -205,7 +205,7 @@ class TlsConfigurationsResponseAllOf implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsConfigurationResponseData[]|null
      */
     public function getData()
     {
@@ -215,7 +215,7 @@ class TlsConfigurationsResponseAllOf implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsConfigurationResponseData[]|null $data data
      *
      * @return self
      */

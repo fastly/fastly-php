@@ -54,8 +54,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'record_type' => 'string',
-        'region' => 'string'
+        'region' => 'string',
+        'record_type' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'id' => null,
-        'record_type' => null,
-        'region' => null
+        'region' => null,
+        'record_type' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'record_type' => 'record_type',
-        'region' => 'region'
+        'region' => 'region',
+        'record_type' => 'record_type'
     ];
 
     /**
@@ -110,8 +110,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'record_type' => 'setRecordType',
-        'region' => 'setRegion'
+        'region' => 'setRegion',
+        'record_type' => 'setRecordType'
     ];
 
     /**
@@ -121,8 +121,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'record_type' => 'getRecordType',
-        'region' => 'getRegion'
+        'region' => 'getRegion',
+        'record_type' => 'getRecordType'
     ];
 
     /**
@@ -186,8 +186,8 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['record_type'] = $data['record_type'] ?? null;
         $this->container['region'] = $data['region'] ?? null;
+        $this->container['record_type'] = $data['record_type'] ?? null;
     }
 
     /**
@@ -239,30 +239,6 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets record_type
-     *
-     * @return string|null
-     */
-    public function getRecordType()
-    {
-        return $this->container['record_type'];
-    }
-
-    /**
-     * Sets record_type
-     *
-     * @param string|null $record_type The type of the DNS record. `A` specifies an IPv4 address to be used for an A record to be used for apex domains (e.g., `example.com`). `AAAA` specifies an IPv6 address for use in an A record for apex domains. `CNAME` specifies the hostname to be used for a CNAME record for subdomains or wildcard domains (e.g., `www.example.com` or `*.example.com`).
-     *
-     * @return self
-     */
-    public function setRecordType($record_type)
-    {
-        $this->container['record_type'] = $record_type;
-
-        return $this;
-    }
-
-    /**
      * Gets region
      *
      * @return string|null
@@ -282,6 +258,30 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRegion($region)
     {
         $this->container['region'] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Gets record_type
+     *
+     * @return string|null
+     */
+    public function getRecordType()
+    {
+        return $this->container['record_type'];
+    }
+
+    /**
+     * Sets record_type
+     *
+     * @param string|null $record_type The type of the DNS record. `A` specifies an IPv4 address to be used for an A record to be used for apex domains (e.g., `example.com`). `AAAA` specifies an IPv6 address for use in an A record for apex domains. `CNAME` specifies the hostname to be used for a CNAME record for subdomains or wildcard domains (e.g., `www.example.com` or `*.example.com`).
+     *
+     * @return self
+     */
+    public function setRecordType($record_type)
+    {
+        $this->container['record_type'] = $record_type;
 
         return $this;
     }

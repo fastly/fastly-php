@@ -115,10 +115,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -141,10 +141,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -238,10 +238,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -267,10 +267,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -323,10 +323,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -338,10 +338,10 @@ class UserApi
     public function createUserRequest($options)
     {
         // unbox the parameters from the associative array
-        $limit_services = array_key_exists('limit_services', $options) ? $options['limit_services'] : null;
-        $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $login = array_key_exists('login', $options) ? $options['login'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
+        $limit_services = array_key_exists('limit_services', $options) ? $options['limit_services'] : null;
+        $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $require_new_password = array_key_exists('require_new_password', $options) ? $options['require_new_password'] : null;
         $role = array_key_exists('role', $options) ? $options['role'] : null;
         $two_factor_auth_enabled = array_key_exists('two_factor_auth_enabled', $options) ? $options['two_factor_auth_enabled'] : null;
@@ -359,20 +359,20 @@ class UserApi
 
 
         // form params
-        if ($limit_services !== null) {
-            $formParams['limit_services'] = ObjectSerializer::toFormValue($limit_services);
-        }
-        // form params
-        if ($locked !== null) {
-            $formParams['locked'] = ObjectSerializer::toFormValue($locked);
-        }
-        // form params
         if ($login !== null) {
             $formParams['login'] = ObjectSerializer::toFormValue($login);
         }
         // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
+        }
+        // form params
+        if ($limit_services !== null) {
+            $formParams['limit_services'] = ObjectSerializer::toFormValue($limit_services);
+        }
+        // form params
+        if ($locked !== null) {
+            $formParams['locked'] = ObjectSerializer::toFormValue($locked);
         }
         // form params
         if ($require_new_password !== null) {
@@ -455,7 +455,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -474,7 +474,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -564,7 +564,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -586,7 +586,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -635,7 +635,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -995,7 +995,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1014,7 +1014,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1104,7 +1104,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1126,7 +1126,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1175,7 +1175,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1275,7 +1275,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1294,7 +1294,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1384,7 +1384,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1406,7 +1406,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1455,7 +1455,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1560,11 +1560,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1587,11 +1587,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1685,11 +1685,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1715,11 +1715,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1772,11 +1772,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1789,10 +1789,10 @@ class UserApi
     {
         // unbox the parameters from the associative array
         $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
-        $limit_services = array_key_exists('limit_services', $options) ? $options['limit_services'] : null;
-        $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $login = array_key_exists('login', $options) ? $options['login'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
+        $limit_services = array_key_exists('limit_services', $options) ? $options['limit_services'] : null;
+        $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $require_new_password = array_key_exists('require_new_password', $options) ? $options['require_new_password'] : null;
         $role = array_key_exists('role', $options) ? $options['role'] : null;
         $two_factor_auth_enabled = array_key_exists('two_factor_auth_enabled', $options) ? $options['two_factor_auth_enabled'] : null;
@@ -1824,20 +1824,20 @@ class UserApi
         }
 
         // form params
-        if ($limit_services !== null) {
-            $formParams['limit_services'] = ObjectSerializer::toFormValue($limit_services);
-        }
-        // form params
-        if ($locked !== null) {
-            $formParams['locked'] = ObjectSerializer::toFormValue($locked);
-        }
-        // form params
         if ($login !== null) {
             $formParams['login'] = ObjectSerializer::toFormValue($login);
         }
         // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
+        }
+        // form params
+        if ($limit_services !== null) {
+            $formParams['limit_services'] = ObjectSerializer::toFormValue($limit_services);
+        }
+        // form params
+        if ($locked !== null) {
+            $formParams['locked'] = ObjectSerializer::toFormValue($locked);
         }
         // form params
         if ($require_new_password !== null) {
@@ -1925,8 +1925,8 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1945,8 +1945,8 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2036,8 +2036,8 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2059,8 +2059,8 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2109,8 +2109,8 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2118,8 +2118,8 @@ class UserApi
     public function updateUserPasswordRequest($options)
     {
         // unbox the parameters from the associative array
-        $new_password = array_key_exists('new_password', $options) ? $options['new_password'] : null;
         $old_password = array_key_exists('old_password', $options) ? $options['old_password'] : null;
+        $new_password = array_key_exists('new_password', $options) ? $options['new_password'] : null;
 
 
         $resourcePath = '/current_user/password';
@@ -2133,12 +2133,12 @@ class UserApi
 
 
         // form params
-        if ($new_password !== null) {
-            $formParams['new_password'] = ObjectSerializer::toFormValue($new_password);
-        }
-        // form params
         if ($old_password !== null) {
             $formParams['old_password'] = ObjectSerializer::toFormValue($old_password);
+        }
+        // form params
+        if ($new_password !== null) {
+            $formParams['new_password'] = ObjectSerializer::toFormValue($new_password);
         }
 
         if ($multipart) {

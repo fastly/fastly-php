@@ -257,7 +257,7 @@ class DictionaryResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets name
      *
-     * @param string|null $name Name for the Dictionary.
+     * @param string|null $name Name for the Dictionary (must start with an alphabetic character and can contain only alphanumeric characters, underscores, and whitespace).
      *
      * @return self
      */

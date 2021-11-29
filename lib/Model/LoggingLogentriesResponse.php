@@ -53,15 +53,15 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'string',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
-        'placement' => '\Fastly\Model\LoggingPlacement',
+        'placement' => 'string',
+        'format_version' => 'int',
         'response_condition' => 'string',
+        'format' => 'string',
         'port' => 'int',
-        'region' => 'string',
         'token' => 'string',
         'use_tls' => '\Fastly\Model\LoggingUseTls',
+        'region' => 'string',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -77,15 +77,15 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
-        'format_version' => null,
         'name' => null,
         'placement' => null,
+        'format_version' => null,
         'response_condition' => null,
+        'format' => null,
         'port' => null,
-        'region' => null,
         'token' => null,
         'use_tls' => null,
+        'region' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -120,15 +120,15 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
-        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
+        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
+        'format' => 'format',
         'port' => 'port',
-        'region' => 'region',
         'token' => 'token',
         'use_tls' => 'use_tls',
+        'region' => 'region',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -142,15 +142,15 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
-        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
+        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
+        'format' => 'setFormat',
         'port' => 'setPort',
-        'region' => 'setRegion',
         'token' => 'setToken',
         'use_tls' => 'setUseTls',
+        'region' => 'setRegion',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -164,15 +164,15 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
-        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
+        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
+        'format' => 'getFormat',
         'port' => 'getPort',
-        'region' => 'getRegion',
         'token' => 'getToken',
         'use_tls' => 'getUseTls',
+        'region' => 'getRegion',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -221,6 +221,11 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
         return self::$fastlyModelName;
     }
 
+    const PLACEMENT_NONE = 'none';
+    const PLACEMENT_WAF_DEBUG = 'waf_debug';
+    const PLACEMENT_NULL = 'null';
+    const FORMAT_VERSION_v1 = 1;
+    const FORMAT_VERSION_v2 = 2;
     const REGION_US = 'US';
     const REGION_US_2 = 'US-2';
     const REGION_US_3 = 'US-3';
@@ -230,6 +235,33 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     const REGION_AP = 'AP';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlacementAllowableValues()
+    {
+        return [
+            self::PLACEMENT_NONE,
+            self::PLACEMENT_WAF_DEBUG,
+            self::PLACEMENT_NULL,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatVersionAllowableValues()
+    {
+        return [
+            self::FORMAT_VERSION_v1,
+            self::FORMAT_VERSION_v2,
+        ];
+    }
     
     /**
      * Gets allowable values of the enum
@@ -265,15 +297,15 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['port'] = $data['port'] ?? 20000;
-        $this->container['region'] = $data['region'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
         $this->container['use_tls'] = $data['use_tls'] ?? null;
+        $this->container['region'] = $data['region'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -289,6 +321,24 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format_version', must be one of '%s'",
+                $this->container['format_version'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getRegionAllowableValues();
         if (!is_null($this->container['region']) && !in_array($this->container['region'], $allowedValues, true)) {
@@ -313,54 +363,6 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -389,7 +391,7 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets placement
      *
-     * @return \Fastly\Model\LoggingPlacement|null
+     * @return string|null
      */
     public function getPlacement()
     {
@@ -399,13 +401,57 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets placement
      *
-     * @param \Fastly\Model\LoggingPlacement|null $placement placement
+     * @param string|null $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
      *
      * @return self
      */
     public function setPlacement($placement)
     {
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($placement) && !in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['placement'] = $placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return int|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -435,6 +481,30 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
      * Gets port
      *
      * @return int|null
@@ -454,40 +524,6 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setPort($port)
     {
         $this->container['port'] = $port;
-
-        return $this;
-    }
-
-    /**
-     * Gets region
-     *
-     * @return string|null
-     */
-    public function getRegion()
-    {
-        return $this->container['region'];
-    }
-
-    /**
-     * Sets region
-     *
-     * @param string|null $region The region to which to stream logs.
-     *
-     * @return self
-     */
-    public function setRegion($region)
-    {
-        $allowedValues = $this->getRegionAllowableValues();
-        if (!is_null($region) && !in_array($region, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'region', must be one of '%s'",
-                    $region,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['region'] = $region;
 
         return $this;
     }
@@ -536,6 +572,40 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setUseTls($use_tls)
     {
         $this->container['use_tls'] = $use_tls;
+
+        return $this;
+    }
+
+    /**
+     * Gets region
+     *
+     * @return string|null
+     */
+    public function getRegion()
+    {
+        return $this->container['region'];
+    }
+
+    /**
+     * Sets region
+     *
+     * @param string|null $region The region to which to stream logs.
+     *
+     * @return self
+     */
+    public function setRegion($region)
+    {
+        $allowedValues = $this->getRegionAllowableValues();
+        if (!is_null($region) && !in_array($region, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'region', must be one of '%s'",
+                    $region,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['region'] = $region;
 
         return $this;
     }

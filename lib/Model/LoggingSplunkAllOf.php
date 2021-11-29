@@ -53,8 +53,8 @@ class LoggingSplunkAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'token' => 'string',
         'url' => 'string',
+        'token' => 'string',
         'use_tls' => '\Fastly\Model\LoggingUseTls'
     ];
 
@@ -66,8 +66,8 @@ class LoggingSplunkAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'token' => null,
         'url' => null,
+        'token' => null,
         'use_tls' => null
     ];
 
@@ -98,8 +98,8 @@ class LoggingSplunkAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'token' => 'token',
         'url' => 'url',
+        'token' => 'token',
         'use_tls' => 'use_tls'
     ];
 
@@ -109,8 +109,8 @@ class LoggingSplunkAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'token' => 'setToken',
         'url' => 'setUrl',
+        'token' => 'setToken',
         'use_tls' => 'setUseTls'
     ];
 
@@ -120,8 +120,8 @@ class LoggingSplunkAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'token' => 'getToken',
         'url' => 'getUrl',
+        'token' => 'getToken',
         'use_tls' => 'getUseTls'
     ];
 
@@ -185,8 +185,8 @@ class LoggingSplunkAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['token'] = $data['token'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
+        $this->container['token'] = $data['token'] ?? null;
         $this->container['use_tls'] = $data['use_tls'] ?? null;
     }
 
@@ -215,30 +215,6 @@ class LoggingSplunkAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets token
-     *
-     * @return string|null
-     */
-    public function getToken()
-    {
-        return $this->container['token'];
-    }
-
-    /**
-     * Sets token
-     *
-     * @param string|null $token A Splunk token for use in posting logs over HTTP to your collector.
-     *
-     * @return self
-     */
-    public function setToken($token)
-    {
-        $this->container['token'] = $token;
-
-        return $this;
-    }
-
-    /**
      * Gets url
      *
      * @return string|null
@@ -258,6 +234,30 @@ class LoggingSplunkAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setUrl($url)
     {
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets token
+     *
+     * @return string|null
+     */
+    public function getToken()
+    {
+        return $this->container['token'];
+    }
+
+    /**
+     * Sets token
+     *
+     * @param string|null $token A Splunk token for use in posting logs over HTTP to your collector.
+     *
+     * @return self
+     */
+    public function setToken($token)
+    {
+        $this->container['token'] = $token;
 
         return $this;
     }

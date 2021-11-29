@@ -53,9 +53,9 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'status' => 'string',
         'meta' => '\Fastly\Model\HistoricalMeta',
         'msg' => 'string',
-        'status' => 'string',
         'data' => 'array<string,object>'
     ];
 
@@ -67,9 +67,9 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'status' => null,
         'meta' => null,
         'msg' => null,
-        'status' => null,
         'data' => null
     ];
 
@@ -100,9 +100,9 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
+        'status' => 'status',
         'meta' => 'meta',
         'msg' => 'msg',
-        'status' => 'status',
         'data' => 'data'
     ];
 
@@ -112,9 +112,9 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
+        'status' => 'setStatus',
         'meta' => 'setMeta',
         'msg' => 'setMsg',
-        'status' => 'setStatus',
         'data' => 'setData'
     ];
 
@@ -124,9 +124,9 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
+        'status' => 'getStatus',
         'meta' => 'getMeta',
         'msg' => 'getMsg',
-        'status' => 'getStatus',
         'data' => 'getData'
     ];
 
@@ -190,9 +190,9 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['meta'] = $data['meta'] ?? null;
         $this->container['msg'] = $data['msg'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['data'] = $data['data'] ?? null;
     }
 
@@ -219,6 +219,30 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Whether or not we were able to successfully execute the query.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
 
     /**
      * Gets meta
@@ -264,30 +288,6 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
     public function setMsg($msg)
     {
         $this->container['msg'] = $msg;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Whether or not we were able to successfully execute the query.
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
 
         return $this;
     }

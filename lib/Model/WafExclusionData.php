@@ -53,9 +53,9 @@ class WafExclusionData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'type' => '\Fastly\Model\TypeWafExclusion',
         'attributes' => '\Fastly\Model\WafExclusionDataAttributes',
-        'relationships' => 'AnyOfRelationshipWafRulesRelationshipWafRuleRevisions',
-        'type' => '\Fastly\Model\TypeWafExclusion'
+        'relationships' => '\Fastly\Model\RelationshipsForWafExclusion'
     ];
 
     /**
@@ -66,9 +66,9 @@ class WafExclusionData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'type' => null,
         'attributes' => null,
-        'relationships' => null,
-        'type' => null
+        'relationships' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class WafExclusionData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'type' => 'type',
         'attributes' => 'attributes',
-        'relationships' => 'relationships',
-        'type' => 'type'
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -109,9 +109,9 @@ class WafExclusionData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'type' => 'setType',
         'attributes' => 'setAttributes',
-        'relationships' => 'setRelationships',
-        'type' => 'setType'
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -120,9 +120,9 @@ class WafExclusionData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'type' => 'getType',
         'attributes' => 'getAttributes',
-        'relationships' => 'getRelationships',
-        'type' => 'getType'
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -185,9 +185,9 @@ class WafExclusionData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
         $this->container['relationships'] = $data['relationships'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -213,6 +213,30 @@ class WafExclusionData implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeWafExclusion|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeWafExclusion|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
 
     /**
      * Gets attributes
@@ -241,7 +265,7 @@ class WafExclusionData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets relationships
      *
-     * @return AnyOfRelationshipWafRulesRelationshipWafRuleRevisions|null
+     * @return \Fastly\Model\RelationshipsForWafExclusion|null
      */
     public function getRelationships()
     {
@@ -251,37 +275,13 @@ class WafExclusionData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets relationships
      *
-     * @param AnyOfRelationshipWafRulesRelationshipWafRuleRevisions|null $relationships relationships
+     * @param \Fastly\Model\RelationshipsForWafExclusion|null $relationships relationships
      *
      * @return self
      */
     public function setRelationships($relationships)
     {
         $this->container['relationships'] = $relationships;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeWafExclusion|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeWafExclusion|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
 
         return $this;
     }

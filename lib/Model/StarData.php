@@ -53,8 +53,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'relationships' => 'RelationshipUser',
-        'type' => '\Fastly\Model\TypeStar'
+        'type' => '\Fastly\Model\TypeStar',
+        'relationships' => 'RelationshipUser'
     ];
 
     /**
@@ -65,8 +65,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'relationships' => null,
-        'type' => null
+        'type' => null,
+        'relationships' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'relationships' => 'relationships',
-        'type' => 'type'
+        'type' => 'type',
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -106,8 +106,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'relationships' => 'setRelationships',
-        'type' => 'setType'
+        'type' => 'setType',
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -116,8 +116,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'relationships' => 'getRelationships',
-        'type' => 'getType'
+        'type' => 'getType',
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -180,8 +180,8 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['relationships'] = $data['relationships'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['relationships'] = $data['relationships'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets relationships
-     *
-     * @return RelationshipUser|null
-     */
-    public function getRelationships()
-    {
-        return $this->container['relationships'];
-    }
-
-    /**
-     * Sets relationships
-     *
-     * @param RelationshipUser|null $relationships relationships
-     *
-     * @return self
-     */
-    public function setRelationships($relationships)
-    {
-        $this->container['relationships'] = $relationships;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return \Fastly\Model\TypeStar|null
@@ -252,6 +228,30 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets relationships
+     *
+     * @return RelationshipUser|null
+     */
+    public function getRelationships()
+    {
+        return $this->container['relationships'];
+    }
+
+    /**
+     * Sets relationships
+     *
+     * @param RelationshipUser|null $relationships relationships
+     *
+     * @return self
+     */
+    public function setRelationships($relationships)
+    {
+        $this->container['relationships'] = $relationships;
 
         return $this;
     }

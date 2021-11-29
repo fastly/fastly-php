@@ -53,25 +53,25 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'string',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
-        'placement' => '\Fastly\Model\LoggingPlacement',
+        'placement' => 'string',
+        'format_version' => 'int',
         'response_condition' => 'string',
+        'format' => 'string',
         'tls_ca_cert' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
         'tls_hostname' => 'string',
-        'auth_method' => 'string',
+        'topic' => 'string',
         'brokers' => 'string',
         'compression_codec' => 'string',
-        'parse_log_keyvals' => 'bool',
-        'password' => 'string',
-        'request_max_bytes' => 'int',
         'required_acks' => 'int',
-        'topic' => 'string',
-        'use_tls' => '\Fastly\Model\LoggingUseTls',
+        'request_max_bytes' => 'int',
+        'parse_log_keyvals' => 'bool',
+        'auth_method' => 'string',
         'user' => 'string',
+        'password' => 'string',
+        'use_tls' => '\Fastly\Model\LoggingUseTls',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -87,25 +87,25 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
-        'format_version' => null,
         'name' => null,
         'placement' => null,
+        'format_version' => null,
         'response_condition' => null,
+        'format' => null,
         'tls_ca_cert' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
         'tls_hostname' => null,
-        'auth_method' => null,
+        'topic' => null,
         'brokers' => null,
         'compression_codec' => null,
-        'parse_log_keyvals' => null,
-        'password' => null,
-        'request_max_bytes' => null,
         'required_acks' => null,
-        'topic' => null,
-        'use_tls' => null,
+        'request_max_bytes' => null,
+        'parse_log_keyvals' => null,
+        'auth_method' => null,
         'user' => null,
+        'password' => null,
+        'use_tls' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -140,25 +140,25 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
-        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
+        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
+        'format' => 'format',
         'tls_ca_cert' => 'tls_ca_cert',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
         'tls_hostname' => 'tls_hostname',
-        'auth_method' => 'auth_method',
+        'topic' => 'topic',
         'brokers' => 'brokers',
         'compression_codec' => 'compression_codec',
-        'parse_log_keyvals' => 'parse_log_keyvals',
-        'password' => 'password',
-        'request_max_bytes' => 'request_max_bytes',
         'required_acks' => 'required_acks',
-        'topic' => 'topic',
-        'use_tls' => 'use_tls',
+        'request_max_bytes' => 'request_max_bytes',
+        'parse_log_keyvals' => 'parse_log_keyvals',
+        'auth_method' => 'auth_method',
         'user' => 'user',
+        'password' => 'password',
+        'use_tls' => 'use_tls',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -172,25 +172,25 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
-        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
+        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
+        'format' => 'setFormat',
         'tls_ca_cert' => 'setTlsCaCert',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
         'tls_hostname' => 'setTlsHostname',
-        'auth_method' => 'setAuthMethod',
+        'topic' => 'setTopic',
         'brokers' => 'setBrokers',
         'compression_codec' => 'setCompressionCodec',
-        'parse_log_keyvals' => 'setParseLogKeyvals',
-        'password' => 'setPassword',
-        'request_max_bytes' => 'setRequestMaxBytes',
         'required_acks' => 'setRequiredAcks',
-        'topic' => 'setTopic',
-        'use_tls' => 'setUseTls',
+        'request_max_bytes' => 'setRequestMaxBytes',
+        'parse_log_keyvals' => 'setParseLogKeyvals',
+        'auth_method' => 'setAuthMethod',
         'user' => 'setUser',
+        'password' => 'setPassword',
+        'use_tls' => 'setUseTls',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -204,25 +204,25 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
-        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
+        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
+        'format' => 'getFormat',
         'tls_ca_cert' => 'getTlsCaCert',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
         'tls_hostname' => 'getTlsHostname',
-        'auth_method' => 'getAuthMethod',
+        'topic' => 'getTopic',
         'brokers' => 'getBrokers',
         'compression_codec' => 'getCompressionCodec',
-        'parse_log_keyvals' => 'getParseLogKeyvals',
-        'password' => 'getPassword',
-        'request_max_bytes' => 'getRequestMaxBytes',
         'required_acks' => 'getRequiredAcks',
-        'topic' => 'getTopic',
-        'use_tls' => 'getUseTls',
+        'request_max_bytes' => 'getRequestMaxBytes',
+        'parse_log_keyvals' => 'getParseLogKeyvals',
+        'auth_method' => 'getAuthMethod',
         'user' => 'getUser',
+        'password' => 'getPassword',
+        'use_tls' => 'getUseTls',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -271,9 +271,11 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$fastlyModelName;
     }
 
-    const AUTH_METHOD_PLAIN = 'plain';
-    const AUTH_METHOD_SCRAM_SHA_256 = 'scram-sha-256';
-    const AUTH_METHOD_SCRAM_SHA_512 = 'scram-sha-512';
+    const PLACEMENT_NONE = 'none';
+    const PLACEMENT_WAF_DEBUG = 'waf_debug';
+    const PLACEMENT_NULL = 'null';
+    const FORMAT_VERSION_v1 = 1;
+    const FORMAT_VERSION_v2 = 2;
     const COMPRESSION_CODEC_GZIP = 'gzip';
     const COMPRESSION_CODEC_SNAPPY = 'snappy';
     const COMPRESSION_CODEC_LZ4 = 'lz4';
@@ -281,6 +283,9 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     const REQUIRED_ACKS_one = 1;
     const REQUIRED_ACKS_none = 0;
     const REQUIRED_ACKS_all = -1;
+    const AUTH_METHOD_PLAIN = 'plain';
+    const AUTH_METHOD_SCRAM_SHA_256 = 'scram-sha-256';
+    const AUTH_METHOD_SCRAM_SHA_512 = 'scram-sha-512';
     
 
     
@@ -289,12 +294,25 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
-    public function getAuthMethodAllowableValues()
+    public function getPlacementAllowableValues()
     {
         return [
-            self::AUTH_METHOD_PLAIN,
-            self::AUTH_METHOD_SCRAM_SHA_256,
-            self::AUTH_METHOD_SCRAM_SHA_512,
+            self::PLACEMENT_NONE,
+            self::PLACEMENT_WAF_DEBUG,
+            self::PLACEMENT_NULL,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatVersionAllowableValues()
+    {
+        return [
+            self::FORMAT_VERSION_v1,
+            self::FORMAT_VERSION_v2,
         ];
     }
     
@@ -327,6 +345,20 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         ];
     }
     
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAuthMethodAllowableValues()
+    {
+        return [
+            self::AUTH_METHOD_PLAIN,
+            self::AUTH_METHOD_SCRAM_SHA_256,
+            self::AUTH_METHOD_SCRAM_SHA_512,
+        ];
+    }
+    
 
     /**
      * Associative array for storing property values
@@ -343,25 +375,25 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
         $this->container['tls_hostname'] = $data['tls_hostname'] ?? 'null';
-        $this->container['auth_method'] = $data['auth_method'] ?? null;
+        $this->container['topic'] = $data['topic'] ?? null;
         $this->container['brokers'] = $data['brokers'] ?? null;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
-        $this->container['parse_log_keyvals'] = $data['parse_log_keyvals'] ?? null;
-        $this->container['password'] = $data['password'] ?? null;
-        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
         $this->container['required_acks'] = $data['required_acks'] ?? REQUIRED_ACKS_one;
-        $this->container['topic'] = $data['topic'] ?? null;
-        $this->container['use_tls'] = $data['use_tls'] ?? null;
+        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
+        $this->container['parse_log_keyvals'] = $data['parse_log_keyvals'] ?? null;
+        $this->container['auth_method'] = $data['auth_method'] ?? null;
         $this->container['user'] = $data['user'] ?? null;
+        $this->container['password'] = $data['password'] ?? null;
+        $this->container['use_tls'] = $data['use_tls'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -378,11 +410,20 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAuthMethodAllowableValues();
-        if (!is_null($this->container['auth_method']) && !in_array($this->container['auth_method'], $allowedValues, true)) {
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'auth_method', must be one of '%s'",
-                $this->container['auth_method'],
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format_version', must be one of '%s'",
+                $this->container['format_version'],
                 implode("', '", $allowedValues)
             );
         }
@@ -405,6 +446,15 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
 
+        $allowedValues = $this->getAuthMethodAllowableValues();
+        if (!is_null($this->container['auth_method']) && !in_array($this->container['auth_method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'auth_method', must be one of '%s'",
+                $this->container['auth_method'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -419,54 +469,6 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -495,7 +497,7 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets placement
      *
-     * @return \Fastly\Model\LoggingPlacement|null
+     * @return string|null
      */
     public function getPlacement()
     {
@@ -505,13 +507,57 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets placement
      *
-     * @param \Fastly\Model\LoggingPlacement|null $placement placement
+     * @param string|null $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
      *
      * @return self
      */
     public function setPlacement($placement)
     {
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($placement) && !in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['placement'] = $placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return int|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -536,6 +582,30 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
 
         return $this;
     }
@@ -637,35 +707,25 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets auth_method
+     * Gets topic
      *
      * @return string|null
      */
-    public function getAuthMethod()
+    public function getTopic()
     {
-        return $this->container['auth_method'];
+        return $this->container['topic'];
     }
 
     /**
-     * Sets auth_method
+     * Sets topic
      *
-     * @param string|null $auth_method SASL authentication method.
+     * @param string|null $topic The Kafka topic to send logs to. Required.
      *
      * @return self
      */
-    public function setAuthMethod($auth_method)
+    public function setTopic($topic)
     {
-        $allowedValues = $this->getAuthMethodAllowableValues();
-        if (!is_null($auth_method) && !in_array($auth_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'auth_method', must be one of '%s'",
-                    $auth_method,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['auth_method'] = $auth_method;
+        $this->container['topic'] = $topic;
 
         return $this;
     }
@@ -729,78 +789,6 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets parse_log_keyvals
-     *
-     * @return bool|null
-     */
-    public function getParseLogKeyvals()
-    {
-        return $this->container['parse_log_keyvals'];
-    }
-
-    /**
-     * Sets parse_log_keyvals
-     *
-     * @param bool|null $parse_log_keyvals Enables parsing of key=value tuples from the beginning of a logline, turning them into [record headers](https://cwiki.apache.org/confluence/display/KAFKA/KIP-82+-+Add+Record+Headers).
-     *
-     * @return self
-     */
-    public function setParseLogKeyvals($parse_log_keyvals)
-    {
-        $this->container['parse_log_keyvals'] = $parse_log_keyvals;
-
-        return $this;
-    }
-
-    /**
-     * Gets password
-     *
-     * @return string|null
-     */
-    public function getPassword()
-    {
-        return $this->container['password'];
-    }
-
-    /**
-     * Sets password
-     *
-     * @param string|null $password SASL password.
-     *
-     * @return self
-     */
-    public function setPassword($password)
-    {
-        $this->container['password'] = $password;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_max_bytes
-     *
-     * @return int|null
-     */
-    public function getRequestMaxBytes()
-    {
-        return $this->container['request_max_bytes'];
-    }
-
-    /**
-     * Sets request_max_bytes
-     *
-     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` (no limit).
-     *
-     * @return self
-     */
-    public function setRequestMaxBytes($request_max_bytes)
-    {
-        $this->container['request_max_bytes'] = $request_max_bytes;
-
-        return $this;
-    }
-
-    /**
      * Gets required_acks
      *
      * @return int|null
@@ -835,49 +823,83 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets topic
+     * Gets request_max_bytes
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getTopic()
+    public function getRequestMaxBytes()
     {
-        return $this->container['topic'];
+        return $this->container['request_max_bytes'];
     }
 
     /**
-     * Sets topic
+     * Sets request_max_bytes
      *
-     * @param string|null $topic The Kafka topic to send logs to. Required.
+     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` (no limit).
      *
      * @return self
      */
-    public function setTopic($topic)
+    public function setRequestMaxBytes($request_max_bytes)
     {
-        $this->container['topic'] = $topic;
+        $this->container['request_max_bytes'] = $request_max_bytes;
 
         return $this;
     }
 
     /**
-     * Gets use_tls
+     * Gets parse_log_keyvals
      *
-     * @return \Fastly\Model\LoggingUseTls|null
+     * @return bool|null
      */
-    public function getUseTls()
+    public function getParseLogKeyvals()
     {
-        return $this->container['use_tls'];
+        return $this->container['parse_log_keyvals'];
     }
 
     /**
-     * Sets use_tls
+     * Sets parse_log_keyvals
      *
-     * @param \Fastly\Model\LoggingUseTls|null $use_tls use_tls
+     * @param bool|null $parse_log_keyvals Enables parsing of key=value tuples from the beginning of a logline, turning them into [record headers](https://cwiki.apache.org/confluence/display/KAFKA/KIP-82+-+Add+Record+Headers).
      *
      * @return self
      */
-    public function setUseTls($use_tls)
+    public function setParseLogKeyvals($parse_log_keyvals)
     {
-        $this->container['use_tls'] = $use_tls;
+        $this->container['parse_log_keyvals'] = $parse_log_keyvals;
+
+        return $this;
+    }
+
+    /**
+     * Gets auth_method
+     *
+     * @return string|null
+     */
+    public function getAuthMethod()
+    {
+        return $this->container['auth_method'];
+    }
+
+    /**
+     * Sets auth_method
+     *
+     * @param string|null $auth_method SASL authentication method.
+     *
+     * @return self
+     */
+    public function setAuthMethod($auth_method)
+    {
+        $allowedValues = $this->getAuthMethodAllowableValues();
+        if (!is_null($auth_method) && !in_array($auth_method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'auth_method', must be one of '%s'",
+                    $auth_method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['auth_method'] = $auth_method;
 
         return $this;
     }
@@ -902,6 +924,54 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setUser($user)
     {
         $this->container['user'] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Gets password
+     *
+     * @return string|null
+     */
+    public function getPassword()
+    {
+        return $this->container['password'];
+    }
+
+    /**
+     * Sets password
+     *
+     * @param string|null $password SASL password.
+     *
+     * @return self
+     */
+    public function setPassword($password)
+    {
+        $this->container['password'] = $password;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_tls
+     *
+     * @return \Fastly\Model\LoggingUseTls|null
+     */
+    public function getUseTls()
+    {
+        return $this->container['use_tls'];
+    }
+
+    /**
+     * Sets use_tls
+     *
+     * @param \Fastly\Model\LoggingUseTls|null $use_tls use_tls
+     *
+     * @return self
+     */
+    public function setUseTls($use_tls)
+    {
+        $this->container['use_tls'] = $use_tls;
 
         return $this;
     }

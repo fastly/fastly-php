@@ -53,7 +53,7 @@ class TlsActivationResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'Data'
+        'data' => '\Fastly\Model\TlsActivationResponseData'
     ];
 
     /**
@@ -205,7 +205,7 @@ class TlsActivationResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets data
      *
-     * @return Data|null
+     * @return \Fastly\Model\TlsActivationResponseData|null
      */
     public function getData()
     {
@@ -215,7 +215,7 @@ class TlsActivationResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets data
      *
-     * @param Data|null $data data
+     * @param \Fastly\Model\TlsActivationResponseData|null $data data
      *
      * @return self
      */

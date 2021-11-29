@@ -40,8 +40,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**waf_rule_id** | **string** |  |
-**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_tags&#x60; and &#x60;waf_rule_revisions&#x60;. | [optional]
+**waf_rule_id** | **string** | Alphanumeric string identifying a WAF rule. |
+**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: `waf_tags` and `waf_rule_revisions`. | [optional]
 
 ### Return type
 
@@ -78,8 +78,8 @@ Name | Type | Description  | Notes
 **filter_waf_rule_revisions_source** | **string** | Limit the returned rules to a set linked to a source. | [optional]
 **filter_waf_firewall_id_not_match** | **string** | Limit the returned rules to a set not included in the active firewall version for a firewall. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
-**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_tags&#x60; and &#x60;waf_rule_revisions&#x60;. | [optional]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
+**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: `waf_tags` and `waf_rule_revisions`. | [optional]
 
 ### Return type
 

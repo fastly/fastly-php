@@ -392,7 +392,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -410,7 +410,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -464,7 +464,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -486,7 +486,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -524,7 +524,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -629,7 +629,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -648,7 +648,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -738,7 +738,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -760,7 +760,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -809,7 +809,7 @@ class StarApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $star_id (required)
+     * @param  string $star_id Alphanumeric string identifying a star. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

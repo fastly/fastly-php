@@ -53,7 +53,7 @@ class TlsCertificateResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'Data'
+        'data' => '\Fastly\Model\TlsCertificateResponseData'
     ];
 
     /**
@@ -205,7 +205,7 @@ class TlsCertificateResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets data
      *
-     * @return Data|null
+     * @return \Fastly\Model\TlsCertificateResponseData|null
      */
     public function getData()
     {
@@ -215,7 +215,7 @@ class TlsCertificateResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets data
      *
-     * @param Data|null $data data
+     * @param \Fastly\Model\TlsCertificateResponseData|null $data data
      *
      * @return self
      */

@@ -53,16 +53,16 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'auth_method' => 'string',
+        'topic' => 'string',
         'brokers' => 'string',
         'compression_codec' => 'string',
-        'parse_log_keyvals' => 'bool',
-        'password' => 'string',
-        'request_max_bytes' => 'int',
         'required_acks' => 'int',
-        'topic' => 'string',
-        'use_tls' => '\Fastly\Model\LoggingUseTls',
-        'user' => 'string'
+        'request_max_bytes' => 'int',
+        'parse_log_keyvals' => 'bool',
+        'auth_method' => 'string',
+        'user' => 'string',
+        'password' => 'string',
+        'use_tls' => '\Fastly\Model\LoggingUseTls'
     ];
 
     /**
@@ -73,16 +73,16 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'auth_method' => null,
+        'topic' => null,
         'brokers' => null,
         'compression_codec' => null,
-        'parse_log_keyvals' => null,
-        'password' => null,
-        'request_max_bytes' => null,
         'required_acks' => null,
-        'topic' => null,
-        'use_tls' => null,
-        'user' => null
+        'request_max_bytes' => null,
+        'parse_log_keyvals' => null,
+        'auth_method' => null,
+        'user' => null,
+        'password' => null,
+        'use_tls' => null
     ];
 
     /**
@@ -112,16 +112,16 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'auth_method' => 'auth_method',
+        'topic' => 'topic',
         'brokers' => 'brokers',
         'compression_codec' => 'compression_codec',
-        'parse_log_keyvals' => 'parse_log_keyvals',
-        'password' => 'password',
-        'request_max_bytes' => 'request_max_bytes',
         'required_acks' => 'required_acks',
-        'topic' => 'topic',
-        'use_tls' => 'use_tls',
-        'user' => 'user'
+        'request_max_bytes' => 'request_max_bytes',
+        'parse_log_keyvals' => 'parse_log_keyvals',
+        'auth_method' => 'auth_method',
+        'user' => 'user',
+        'password' => 'password',
+        'use_tls' => 'use_tls'
     ];
 
     /**
@@ -130,16 +130,16 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'auth_method' => 'setAuthMethod',
+        'topic' => 'setTopic',
         'brokers' => 'setBrokers',
         'compression_codec' => 'setCompressionCodec',
-        'parse_log_keyvals' => 'setParseLogKeyvals',
-        'password' => 'setPassword',
-        'request_max_bytes' => 'setRequestMaxBytes',
         'required_acks' => 'setRequiredAcks',
-        'topic' => 'setTopic',
-        'use_tls' => 'setUseTls',
-        'user' => 'setUser'
+        'request_max_bytes' => 'setRequestMaxBytes',
+        'parse_log_keyvals' => 'setParseLogKeyvals',
+        'auth_method' => 'setAuthMethod',
+        'user' => 'setUser',
+        'password' => 'setPassword',
+        'use_tls' => 'setUseTls'
     ];
 
     /**
@@ -148,16 +148,16 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'auth_method' => 'getAuthMethod',
+        'topic' => 'getTopic',
         'brokers' => 'getBrokers',
         'compression_codec' => 'getCompressionCodec',
-        'parse_log_keyvals' => 'getParseLogKeyvals',
-        'password' => 'getPassword',
-        'request_max_bytes' => 'getRequestMaxBytes',
         'required_acks' => 'getRequiredAcks',
-        'topic' => 'getTopic',
-        'use_tls' => 'getUseTls',
-        'user' => 'getUser'
+        'request_max_bytes' => 'getRequestMaxBytes',
+        'parse_log_keyvals' => 'getParseLogKeyvals',
+        'auth_method' => 'getAuthMethod',
+        'user' => 'getUser',
+        'password' => 'getPassword',
+        'use_tls' => 'getUseTls'
     ];
 
     /**
@@ -201,9 +201,6 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$fastlyModelName;
     }
 
-    const AUTH_METHOD_PLAIN = 'plain';
-    const AUTH_METHOD_SCRAM_SHA_256 = 'scram-sha-256';
-    const AUTH_METHOD_SCRAM_SHA_512 = 'scram-sha-512';
     const COMPRESSION_CODEC_GZIP = 'gzip';
     const COMPRESSION_CODEC_SNAPPY = 'snappy';
     const COMPRESSION_CODEC_LZ4 = 'lz4';
@@ -211,22 +208,11 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     const REQUIRED_ACKS_one = 1;
     const REQUIRED_ACKS_none = 0;
     const REQUIRED_ACKS_all = -1;
+    const AUTH_METHOD_PLAIN = 'plain';
+    const AUTH_METHOD_SCRAM_SHA_256 = 'scram-sha-256';
+    const AUTH_METHOD_SCRAM_SHA_512 = 'scram-sha-512';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAuthMethodAllowableValues()
-    {
-        return [
-            self::AUTH_METHOD_PLAIN,
-            self::AUTH_METHOD_SCRAM_SHA_256,
-            self::AUTH_METHOD_SCRAM_SHA_512,
-        ];
-    }
     
     /**
      * Gets allowable values of the enum
@@ -257,6 +243,20 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
         ];
     }
     
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAuthMethodAllowableValues()
+    {
+        return [
+            self::AUTH_METHOD_PLAIN,
+            self::AUTH_METHOD_SCRAM_SHA_256,
+            self::AUTH_METHOD_SCRAM_SHA_512,
+        ];
+    }
+    
 
     /**
      * Associative array for storing property values
@@ -273,16 +273,16 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['auth_method'] = $data['auth_method'] ?? null;
+        $this->container['topic'] = $data['topic'] ?? null;
         $this->container['brokers'] = $data['brokers'] ?? null;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
-        $this->container['parse_log_keyvals'] = $data['parse_log_keyvals'] ?? null;
-        $this->container['password'] = $data['password'] ?? null;
-        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
         $this->container['required_acks'] = $data['required_acks'] ?? REQUIRED_ACKS_one;
-        $this->container['topic'] = $data['topic'] ?? null;
-        $this->container['use_tls'] = $data['use_tls'] ?? null;
+        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
+        $this->container['parse_log_keyvals'] = $data['parse_log_keyvals'] ?? null;
+        $this->container['auth_method'] = $data['auth_method'] ?? null;
         $this->container['user'] = $data['user'] ?? null;
+        $this->container['password'] = $data['password'] ?? null;
+        $this->container['use_tls'] = $data['use_tls'] ?? null;
     }
 
     /**
@@ -293,15 +293,6 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getAuthMethodAllowableValues();
-        if (!is_null($this->container['auth_method']) && !in_array($this->container['auth_method'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'auth_method', must be one of '%s'",
-                $this->container['auth_method'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         $allowedValues = $this->getCompressionCodecAllowableValues();
         if (!is_null($this->container['compression_codec']) && !in_array($this->container['compression_codec'], $allowedValues, true)) {
@@ -317,6 +308,15 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'required_acks', must be one of '%s'",
                 $this->container['required_acks'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getAuthMethodAllowableValues();
+        if (!is_null($this->container['auth_method']) && !in_array($this->container['auth_method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'auth_method', must be one of '%s'",
+                $this->container['auth_method'],
                 implode("', '", $allowedValues)
             );
         }
@@ -337,35 +337,25 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets auth_method
+     * Gets topic
      *
      * @return string|null
      */
-    public function getAuthMethod()
+    public function getTopic()
     {
-        return $this->container['auth_method'];
+        return $this->container['topic'];
     }
 
     /**
-     * Sets auth_method
+     * Sets topic
      *
-     * @param string|null $auth_method SASL authentication method.
+     * @param string|null $topic The Kafka topic to send logs to. Required.
      *
      * @return self
      */
-    public function setAuthMethod($auth_method)
+    public function setTopic($topic)
     {
-        $allowedValues = $this->getAuthMethodAllowableValues();
-        if (!is_null($auth_method) && !in_array($auth_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'auth_method', must be one of '%s'",
-                    $auth_method,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['auth_method'] = $auth_method;
+        $this->container['topic'] = $topic;
 
         return $this;
     }
@@ -429,78 +419,6 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets parse_log_keyvals
-     *
-     * @return bool|null
-     */
-    public function getParseLogKeyvals()
-    {
-        return $this->container['parse_log_keyvals'];
-    }
-
-    /**
-     * Sets parse_log_keyvals
-     *
-     * @param bool|null $parse_log_keyvals Enables parsing of key=value tuples from the beginning of a logline, turning them into [record headers](https://cwiki.apache.org/confluence/display/KAFKA/KIP-82+-+Add+Record+Headers).
-     *
-     * @return self
-     */
-    public function setParseLogKeyvals($parse_log_keyvals)
-    {
-        $this->container['parse_log_keyvals'] = $parse_log_keyvals;
-
-        return $this;
-    }
-
-    /**
-     * Gets password
-     *
-     * @return string|null
-     */
-    public function getPassword()
-    {
-        return $this->container['password'];
-    }
-
-    /**
-     * Sets password
-     *
-     * @param string|null $password SASL password.
-     *
-     * @return self
-     */
-    public function setPassword($password)
-    {
-        $this->container['password'] = $password;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_max_bytes
-     *
-     * @return int|null
-     */
-    public function getRequestMaxBytes()
-    {
-        return $this->container['request_max_bytes'];
-    }
-
-    /**
-     * Sets request_max_bytes
-     *
-     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` (no limit).
-     *
-     * @return self
-     */
-    public function setRequestMaxBytes($request_max_bytes)
-    {
-        $this->container['request_max_bytes'] = $request_max_bytes;
-
-        return $this;
-    }
-
-    /**
      * Gets required_acks
      *
      * @return int|null
@@ -535,49 +453,83 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets topic
+     * Gets request_max_bytes
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getTopic()
+    public function getRequestMaxBytes()
     {
-        return $this->container['topic'];
+        return $this->container['request_max_bytes'];
     }
 
     /**
-     * Sets topic
+     * Sets request_max_bytes
      *
-     * @param string|null $topic The Kafka topic to send logs to. Required.
+     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` (no limit).
      *
      * @return self
      */
-    public function setTopic($topic)
+    public function setRequestMaxBytes($request_max_bytes)
     {
-        $this->container['topic'] = $topic;
+        $this->container['request_max_bytes'] = $request_max_bytes;
 
         return $this;
     }
 
     /**
-     * Gets use_tls
+     * Gets parse_log_keyvals
      *
-     * @return \Fastly\Model\LoggingUseTls|null
+     * @return bool|null
      */
-    public function getUseTls()
+    public function getParseLogKeyvals()
     {
-        return $this->container['use_tls'];
+        return $this->container['parse_log_keyvals'];
     }
 
     /**
-     * Sets use_tls
+     * Sets parse_log_keyvals
      *
-     * @param \Fastly\Model\LoggingUseTls|null $use_tls use_tls
+     * @param bool|null $parse_log_keyvals Enables parsing of key=value tuples from the beginning of a logline, turning them into [record headers](https://cwiki.apache.org/confluence/display/KAFKA/KIP-82+-+Add+Record+Headers).
      *
      * @return self
      */
-    public function setUseTls($use_tls)
+    public function setParseLogKeyvals($parse_log_keyvals)
     {
-        $this->container['use_tls'] = $use_tls;
+        $this->container['parse_log_keyvals'] = $parse_log_keyvals;
+
+        return $this;
+    }
+
+    /**
+     * Gets auth_method
+     *
+     * @return string|null
+     */
+    public function getAuthMethod()
+    {
+        return $this->container['auth_method'];
+    }
+
+    /**
+     * Sets auth_method
+     *
+     * @param string|null $auth_method SASL authentication method.
+     *
+     * @return self
+     */
+    public function setAuthMethod($auth_method)
+    {
+        $allowedValues = $this->getAuthMethodAllowableValues();
+        if (!is_null($auth_method) && !in_array($auth_method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'auth_method', must be one of '%s'",
+                    $auth_method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['auth_method'] = $auth_method;
 
         return $this;
     }
@@ -602,6 +554,54 @@ class LoggingKafkaAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setUser($user)
     {
         $this->container['user'] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Gets password
+     *
+     * @return string|null
+     */
+    public function getPassword()
+    {
+        return $this->container['password'];
+    }
+
+    /**
+     * Sets password
+     *
+     * @param string|null $password SASL password.
+     *
+     * @return self
+     */
+    public function setPassword($password)
+    {
+        $this->container['password'] = $password;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_tls
+     *
+     * @return \Fastly\Model\LoggingUseTls|null
+     */
+    public function getUseTls()
+    {
+        return $this->container['use_tls'];
+    }
+
+    /**
+     * Sets use_tls
+     *
+     * @param \Fastly\Model\LoggingUseTls|null $use_tls use_tls
+     *
+     * @return self
+     */
+    public function setUseTls($use_tls)
+    {
+        $this->container['use_tls'] = $use_tls;
 
         return $this;
     }

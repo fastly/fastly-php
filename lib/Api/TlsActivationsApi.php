@@ -392,7 +392,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -410,7 +410,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -464,7 +464,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -486,7 +486,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -524,7 +524,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -629,8 +629,8 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id tls_activation_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_certificate&#x60;, &#x60;tls_configuration&#x60;, and &#x60;tls_domain&#x60;. (optional)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -649,8 +649,8 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_certificate&#x60;, &#x60;tls_configuration&#x60;, and &#x60;tls_domain&#x60;. (optional)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -740,8 +740,8 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_certificate&#x60;, &#x60;tls_configuration&#x60;, and &#x60;tls_domain&#x60;. (optional)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -763,8 +763,8 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_certificate&#x60;, &#x60;tls_configuration&#x60;, and &#x60;tls_domain&#x60;. (optional)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -813,8 +813,8 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_certificate&#x60;, &#x60;tls_configuration&#x60;, and &#x60;tls_domain&#x60;. (optional)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -822,8 +822,8 @@ class TlsActivationsApi
     public function getTlsActivationRequest($options)
     {
         // unbox the parameters from the associative array
-        $tls_activation_id = array_key_exists('tls_activation_id', $options) ? $options['tls_activation_id'] : null;
         $include = array_key_exists('include', $options) ? $options['include'] : null;
+        $tls_activation_id = array_key_exists('tls_activation_id', $options) ? $options['tls_activation_id'] : null;
 
         // verify the required parameter 'tls_activation_id' is set
         if ($tls_activation_id === null || (is_array($tls_activation_id) && count($tls_activation_id) === 0)) {
@@ -1203,18 +1203,26 @@ class TlsActivationsApi
             $queryParams['include'] = $include;
         }
         // query params
-        if (is_array($page_number)) {
-            $page_number = ObjectSerializer::serializeCollection($page_number, 'simple', true);
-        }
         if ($page_number !== null) {
-            $queryParams['page[number]'] = $page_number;
+            if('form' === 'form' && is_array($page_number)) {
+                foreach($page_number as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[number]'] = $page_number;
+            }
         }
         // query params
-        if (is_array($page_size)) {
-            $page_size = ObjectSerializer::serializeCollection($page_size, 'simple', true);
-        }
         if ($page_size !== null) {
-            $queryParams['page[size]'] = $page_size;
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[size]'] = $page_size;
+            }
         }
 
 
@@ -1289,7 +1297,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      * @param  \Fastly\Model\TlsActivation $tls_activation tls_activation (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1309,7 +1317,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      * @param  \Fastly\Model\TlsActivation $tls_activation (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1400,7 +1408,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      * @param  \Fastly\Model\TlsActivation $tls_activation (optional)
      *
      * @throws \InvalidArgumentException
@@ -1423,7 +1431,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      * @param  \Fastly\Model\TlsActivation $tls_activation (optional)
      *
      * @throws \InvalidArgumentException
@@ -1473,7 +1481,7 @@ class TlsActivationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_activation_id (required)
+     * @param  string $tls_activation_id Alphanumeric string identifying a TLS activation. (required)
      * @param  \Fastly\Model\TlsActivation $tls_activation (optional)
      *
      * @throws \InvalidArgumentException

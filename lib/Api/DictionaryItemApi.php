@@ -115,8 +115,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  \Fastly\Model\InlineObject4 $inline_object4 inline_object4 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -136,8 +136,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -228,8 +228,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
      *
      * @throws \InvalidArgumentException
@@ -252,8 +252,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
      *
      * @throws \InvalidArgumentException
@@ -303,8 +303,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
      *
      * @throws \InvalidArgumentException
@@ -432,8 +432,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -454,8 +454,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -547,8 +547,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -572,8 +572,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -624,8 +624,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -757,9 +757,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
-     * @param  string $dictionary_item_key dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -778,9 +778,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -870,9 +870,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -894,9 +894,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -945,9 +945,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1082,9 +1082,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
-     * @param  string $dictionary_item_key dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1103,9 +1103,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1195,9 +1195,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1219,9 +1219,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1270,9 +1270,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1407,8 +1407,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1431,8 +1431,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1526,8 +1526,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1553,8 +1553,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1607,8 +1607,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1655,32 +1655,48 @@ class DictionaryItemApi
         $multipart = false;
 
         // query params
-        if (is_array($page)) {
-            $page = ObjectSerializer::serializeCollection($page, 'simple', true);
-        }
         if ($page !== null) {
-            $queryParams['page'] = $page;
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
         }
         // query params
-        if (is_array($per_page)) {
-            $per_page = ObjectSerializer::serializeCollection($per_page, 'simple', true);
-        }
         if ($per_page !== null) {
-            $queryParams['per_page'] = $per_page;
+            if('form' === 'form' && is_array($per_page)) {
+                foreach($per_page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['per_page'] = $per_page;
+            }
         }
         // query params
-        if (is_array($sort)) {
-            $sort = ObjectSerializer::serializeCollection($sort, 'simple', true);
-        }
         if ($sort !== null) {
-            $queryParams['sort'] = $sort;
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort'] = $sort;
+            }
         }
         // query params
-        if (is_array($direction)) {
-            $direction = ObjectSerializer::serializeCollection($direction, 'simple', true);
-        }
         if ($direction !== null) {
-            $queryParams['direction'] = $direction;
+            if('form' === 'form' && is_array($direction)) {
+                foreach($direction as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['direction'] = $direction;
+            }
         }
 
 
@@ -1771,9 +1787,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
-     * @param  string $dictionary_item_key dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -1794,9 +1810,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -1888,9 +1904,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -1914,9 +1930,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -1967,9 +1983,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2116,9 +2132,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
-     * @param  string $dictionary_item_key dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2139,9 +2155,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2233,9 +2249,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2259,9 +2275,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2312,9 +2328,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *

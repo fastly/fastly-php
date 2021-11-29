@@ -55,7 +55,7 @@ class TlsActivationsResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsActivationResponseData[]'
     ];
 
     /**
@@ -265,7 +265,7 @@ class TlsActivationsResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsActivationResponseData[]|null
      */
     public function getData()
     {
@@ -275,7 +275,7 @@ class TlsActivationsResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsActivationResponseData[]|null $data data
      *
      * @return self
      */

@@ -53,8 +53,8 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string',
-        'type' => '\Fastly\Model\TypeTlsDnsRecord'
+        'type' => '\Fastly\Model\TypeTlsDnsRecord',
+        'id' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null,
-        'type' => null
+        'type' => null,
+        'id' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'type' => 'type'
+        'type' => 'type',
+        'id' => 'id'
     ];
 
     /**
@@ -106,8 +106,8 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'type' => 'setType'
+        'type' => 'setType',
+        'id' => 'setId'
     ];
 
     /**
@@ -116,8 +116,8 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'type' => 'getType'
+        'type' => 'getType',
+        'id' => 'getId'
     ];
 
     /**
@@ -180,8 +180,8 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id The IP address or hostname of the DNS record.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return \Fastly\Model\TypeTlsDnsRecord|null
@@ -252,6 +228,30 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id The IP address or hostname of the DNS record.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

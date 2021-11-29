@@ -43,8 +43,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 **check_interval** | **int** | How often to run the healthcheck in milliseconds. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **expected_response** | **int** | The status code expected from the host. | [optional]
@@ -88,9 +88,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**healthcheck_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**healthcheck_name** | **string** | The name of the healthcheck. |
 
 ### Return type
 
@@ -122,9 +122,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**healthcheck_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**healthcheck_name** | **string** | The name of the healthcheck. |
 
 ### Return type
 
@@ -156,8 +156,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -189,9 +189,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**healthcheck_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**healthcheck_name** | **string** | The name of the healthcheck. |
 **check_interval** | **int** | How often to run the healthcheck in milliseconds. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **expected_response** | **int** | The status code expected from the host. | [optional]

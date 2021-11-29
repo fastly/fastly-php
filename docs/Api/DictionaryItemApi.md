@@ -45,8 +45,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**dictionary_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
 **inline_object4** | [**\Fastly\Model\InlineObject4**](../Model/InlineObject4.md) |  | [optional]
 
 ### Return type
@@ -79,8 +79,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**dictionary_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
 **item_key** | **string** | Item key, maximum 256 characters. | [optional]
 **item_value** | **string** | Item value, maximum 8000 characters. | [optional]
 
@@ -114,9 +114,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**dictionary_id** | **string** |  |
-**dictionary_item_key** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
+**dictionary_item_key** | **string** | Item key, maximum 256 characters. |
 
 ### Return type
 
@@ -148,9 +148,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**dictionary_id** | **string** |  |
-**dictionary_item_key** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
+**dictionary_item_key** | **string** | Item key, maximum 256 characters. |
 
 ### Return type
 
@@ -182,12 +182,12 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**dictionary_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
 **page** | **int** | Current page. | [optional]
-**per_page** | **int** | Number of records per page. | [optional] [default to 20]
-**sort** | **string** | Field on which to sort. | [optional] [default to &#39;created&#39;]
-**direction** | **string** | Direction in which to sort results. | [optional] [default to &#39;ascend&#39;]
+**per_page** | **int** | Number of records per page. | [optional] [defaults to 20]
+**sort** | **string** | Field on which to sort. | [optional] [defaults to 'created']
+**direction** | **string** | Direction in which to sort results. | [optional] [one of: 'ascend', 'descend'] [defaults to 'ascend']
 
 ### Return type
 
@@ -219,9 +219,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**dictionary_id** | **string** |  |
-**dictionary_item_key** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
+**dictionary_item_key** | **string** | Item key, maximum 256 characters. |
 **item_key** | **string** | Item key, maximum 256 characters. | [optional]
 **item_value** | **string** | Item value, maximum 8000 characters. | [optional]
 
@@ -255,9 +255,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**dictionary_id** | **string** |  |
-**dictionary_item_key** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
+**dictionary_item_key** | **string** | Item key, maximum 256 characters. |
 **item_key** | **string** | Item key, maximum 256 characters. | [optional]
 **item_value** | **string** | Item value, maximum 8000 characters. | [optional]
 

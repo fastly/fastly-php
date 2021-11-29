@@ -115,8 +115,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $firewall_version_number firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -135,8 +135,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -226,8 +226,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -249,8 +249,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -299,8 +299,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -420,7 +420,7 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version waf_firewall_version (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -440,7 +440,7 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -531,7 +531,7 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
      *
      * @throws \InvalidArgumentException
@@ -554,7 +554,7 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
      *
      * @throws \InvalidArgumentException
@@ -604,7 +604,7 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
      *
      * @throws \InvalidArgumentException
@@ -717,8 +717,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $firewall_version_number firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -737,8 +737,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -828,8 +828,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -851,8 +851,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -901,8 +901,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1022,9 +1022,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $firewall_version_number firewall_version_number (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1043,9 +1043,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1135,9 +1135,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1159,9 +1159,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1210,9 +1210,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1220,9 +1220,9 @@ class WafFirewallVersionsApi
     public function getWafFirewallVersionRequest($options)
     {
         // unbox the parameters from the associative array
+        $include = array_key_exists('include', $options) ? $options['include'] : null;
         $firewall_id = array_key_exists('firewall_id', $options) ? $options['firewall_id'] : null;
         $firewall_version_number = array_key_exists('firewall_version_number', $options) ? $options['firewall_version_number'] : null;
-        $include = array_key_exists('include', $options) ? $options['include'] : null;
 
         // verify the required parameter 'firewall_id' is set
         if ($firewall_id === null || (is_array($firewall_id) && count($firewall_id) === 0)) {
@@ -1344,10 +1344,10 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1366,10 +1366,10 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1459,10 +1459,10 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1484,10 +1484,10 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1536,10 +1536,10 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1547,17 +1547,11 @@ class WafFirewallVersionsApi
     public function listWafFirewallVersionsRequest($options)
     {
         // unbox the parameters from the associative array
-        $firewall_id = array_key_exists('firewall_id', $options) ? $options['firewall_id'] : null;
         $include = array_key_exists('include', $options) ? $options['include'] : null;
         $page_number = array_key_exists('page_number', $options) ? $options['page_number'] : null;
         $page_size = array_key_exists('page_size', $options) ? $options['page_size'] : 20;
+        $firewall_id = array_key_exists('firewall_id', $options) ? $options['firewall_id'] : null;
 
-        // verify the required parameter 'firewall_id' is set
-        if ($firewall_id === null || (is_array($firewall_id) && count($firewall_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $firewall_id when calling listWafFirewallVersions'
-            );
-        }
         if ($page_size !== null && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling WafFirewallVersionsApi.listWafFirewallVersions, must be smaller than or equal to 100.');
         }
@@ -1565,6 +1559,12 @@ class WafFirewallVersionsApi
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling WafFirewallVersionsApi.listWafFirewallVersions, must be bigger than or equal to 1.');
         }
 
+        // verify the required parameter 'firewall_id' is set
+        if ($firewall_id === null || (is_array($firewall_id) && count($firewall_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $firewall_id when calling listWafFirewallVersions'
+            );
+        }
 
         $resourcePath = '/waf/firewalls/{firewall_id}/versions';
         $formParams = [];
@@ -1585,18 +1585,26 @@ class WafFirewallVersionsApi
             }
         }
         // query params
-        if (is_array($page_number)) {
-            $page_number = ObjectSerializer::serializeCollection($page_number, 'simple', true);
-        }
         if ($page_number !== null) {
-            $queryParams['page[number]'] = $page_number;
+            if('form' === 'form' && is_array($page_number)) {
+                foreach($page_number as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[number]'] = $page_number;
+            }
         }
         // query params
-        if (is_array($page_size)) {
-            $page_size = ObjectSerializer::serializeCollection($page_size, 'simple', true);
-        }
         if ($page_size !== null) {
-            $queryParams['page[size]'] = $page_size;
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[size]'] = $page_size;
+            }
         }
 
 
@@ -1679,8 +1687,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $firewall_version_number firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version waf_firewall_version (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1700,8 +1708,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1792,8 +1800,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
      *
      * @throws \InvalidArgumentException
@@ -1816,8 +1824,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
      *
      * @throws \InvalidArgumentException
@@ -1867,8 +1875,8 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $firewall_version_number (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
      *
      * @throws \InvalidArgumentException

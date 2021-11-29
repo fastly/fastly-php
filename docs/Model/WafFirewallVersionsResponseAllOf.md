@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\Data[]**](Data.md) |  | [optional]
-**included** | [**AnyOfWafFirewallVersionWafActiveRule[]**](AnyOfWafFirewallVersionWafActiveRule.md) |  | [optional]
+**data** | [**\Fastly\Model\WafFirewallVersionResponseData[]**](WafFirewallVersionResponseData.md) |  | [optional] 
+**included** | [**\Fastly\Model\IncludedWithWafFirewallVersionItem[]**](IncludedWithWafFirewallVersionItem.md) |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

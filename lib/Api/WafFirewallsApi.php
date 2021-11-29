@@ -392,7 +392,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall waf_firewall (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -411,7 +411,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -466,7 +466,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
@@ -489,7 +489,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
@@ -528,7 +528,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
@@ -641,7 +641,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
@@ -662,7 +662,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
@@ -754,7 +754,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
@@ -778,7 +778,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
@@ -829,7 +829,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
@@ -1190,18 +1190,26 @@ class WafFirewallsApi
         $multipart = false;
 
         // query params
-        if (is_array($page_number)) {
-            $page_number = ObjectSerializer::serializeCollection($page_number, 'simple', true);
-        }
         if ($page_number !== null) {
-            $queryParams['page[number]'] = $page_number;
+            if('form' === 'form' && is_array($page_number)) {
+                foreach($page_number as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[number]'] = $page_number;
+            }
         }
         // query params
-        if (is_array($page_size)) {
-            $page_size = ObjectSerializer::serializeCollection($page_size, 'simple', true);
-        }
         if ($page_size !== null) {
-            $queryParams['page[size]'] = $page_size;
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[size]'] = $page_size;
+            }
         }
         // query params
         if ($filter_service_id !== null) {
@@ -1309,7 +1317,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall waf_firewall (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1329,7 +1337,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1420,7 +1428,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
@@ -1443,7 +1451,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
@@ -1493,7 +1501,7 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException

@@ -53,7 +53,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'tls_domain' => '\Fastly\Model\RelationshipCommonNameCommonName'
+        'tls_domain' => '\Fastly\Model\RelationshipTlsDomainTlsDomain'
     ];
 
     /**
@@ -205,7 +205,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets tls_domain
      *
-     * @return \Fastly\Model\RelationshipCommonNameCommonName|null
+     * @return \Fastly\Model\RelationshipTlsDomainTlsDomain|null
      */
     public function getTlsDomain()
     {
@@ -215,7 +215,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets tls_domain
      *
-     * @param \Fastly\Model\RelationshipCommonNameCommonName|null $tls_domain tls_domain
+     * @param \Fastly\Model\RelationshipTlsDomainTlsDomain|null $tls_domain tls_domain
      *
      * @return self
      */

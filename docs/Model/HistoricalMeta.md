@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**by** | **string** |  | [optional]
-**from** | **string** |  | [optional]
-**region** | **string** |  | [optional]
-**to** | **string** |  | [optional]
+**to** | **string** |  | [optional] 
+**from** | **string** |  | [optional] 
+**by** | **string** |  | [optional] 
+**region** | **string** |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

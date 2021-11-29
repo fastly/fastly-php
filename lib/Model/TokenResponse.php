@@ -53,18 +53,18 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'services' => 'string[]',
         'name' => 'string',
         'scope' => 'string',
-        'services' => 'string[]',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
-        'expires_at' => 'string',
         'id' => 'string',
-        'ip' => 'string',
+        'user_id' => 'string',
         'last_used_at' => 'string',
-        'user_agent' => 'string',
-        'user_id' => 'string'
+        'expires_at' => 'string',
+        'ip' => 'string',
+        'user_agent' => 'string'
     ];
 
     /**
@@ -75,18 +75,18 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'services' => null,
         'name' => null,
         'scope' => null,
-        'services' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
-        'expires_at' => null,
         'id' => null,
-        'ip' => null,
+        'user_id' => null,
         'last_used_at' => null,
-        'user_agent' => null,
-        'user_id' => null
+        'expires_at' => null,
+        'ip' => null,
+        'user_agent' => null
     ];
 
     /**
@@ -116,18 +116,18 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'services' => 'services',
         'name' => 'name',
         'scope' => 'scope',
-        'services' => 'services',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
-        'expires_at' => 'expires_at',
         'id' => 'id',
-        'ip' => 'ip',
+        'user_id' => 'user_id',
         'last_used_at' => 'last_used_at',
-        'user_agent' => 'user_agent',
-        'user_id' => 'user_id'
+        'expires_at' => 'expires_at',
+        'ip' => 'ip',
+        'user_agent' => 'user_agent'
     ];
 
     /**
@@ -136,18 +136,18 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'services' => 'setServices',
         'name' => 'setName',
         'scope' => 'setScope',
-        'services' => 'setServices',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
-        'expires_at' => 'setExpiresAt',
         'id' => 'setId',
-        'ip' => 'setIp',
+        'user_id' => 'setUserId',
         'last_used_at' => 'setLastUsedAt',
-        'user_agent' => 'setUserAgent',
-        'user_id' => 'setUserId'
+        'expires_at' => 'setExpiresAt',
+        'ip' => 'setIp',
+        'user_agent' => 'setUserAgent'
     ];
 
     /**
@@ -156,18 +156,18 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'services' => 'getServices',
         'name' => 'getName',
         'scope' => 'getScope',
-        'services' => 'getServices',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
-        'expires_at' => 'getExpiresAt',
         'id' => 'getId',
-        'ip' => 'getIp',
+        'user_id' => 'getUserId',
         'last_used_at' => 'getLastUsedAt',
-        'user_agent' => 'getUserAgent',
-        'user_id' => 'getUserId'
+        'expires_at' => 'getExpiresAt',
+        'ip' => 'getIp',
+        'user_agent' => 'getUserAgent'
     ];
 
     /**
@@ -249,18 +249,18 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['services'] = $data['services'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['scope'] = $data['scope'] ?? SCOPE__GLOBAL;
-        $this->container['services'] = $data['services'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['expires_at'] = $data['expires_at'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['ip'] = $data['ip'] ?? null;
-        $this->container['last_used_at'] = $data['last_used_at'] ?? null;
-        $this->container['user_agent'] = $data['user_agent'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['last_used_at'] = $data['last_used_at'] ?? null;
+        $this->container['expires_at'] = $data['expires_at'] ?? null;
+        $this->container['ip'] = $data['ip'] ?? null;
+        $this->container['user_agent'] = $data['user_agent'] ?? null;
     }
 
     /**
@@ -295,6 +295,30 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets services
+     *
+     * @return string[]|null
+     */
+    public function getServices()
+    {
+        return $this->container['services'];
+    }
+
+    /**
+     * Sets services
+     *
+     * @param string[]|null $services List of alphanumeric strings identifying services (optional). If no services are specified, the token will have access to all services on the account.
+     *
+     * @return self
+     */
+    public function setServices($services)
+    {
+        $this->container['services'] = $services;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -350,30 +374,6 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['scope'] = $scope;
-
-        return $this;
-    }
-
-    /**
-     * Gets services
-     *
-     * @return string[]|null
-     */
-    public function getServices()
-    {
-        return $this->container['services'];
-    }
-
-    /**
-     * Sets services
-     *
-     * @param string[]|null $services List of alphanumeric strings identifying services (optional). If no services are specified, the token will have access to all services on the account.
-     *
-     * @return self
-     */
-    public function setServices($services)
-    {
-        $this->container['services'] = $services;
 
         return $this;
     }
@@ -451,30 +451,6 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets expires_at
-     *
-     * @return string|null
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param string|null $expires_at Time-stamp (UTC) of when the token will expire (optional).
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string|null
@@ -499,25 +475,25 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets ip
+     * Gets user_id
      *
      * @return string|null
      */
-    public function getIp()
+    public function getUserId()
     {
-        return $this->container['ip'];
+        return $this->container['user_id'];
     }
 
     /**
-     * Sets ip
+     * Sets user_id
      *
-     * @param string|null $ip IP Address of the client that last used the token.
+     * @param string|null $user_id Alphanumeric string identifying the user.
      *
      * @return self
      */
-    public function setIp($ip)
+    public function setUserId($user_id)
     {
-        $this->container['ip'] = $ip;
+        $this->container['user_id'] = $user_id;
 
         return $this;
     }
@@ -547,6 +523,54 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets expires_at
+     *
+     * @return string|null
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param string|null $expires_at Time-stamp (UTC) of when the token will expire (optional).
+     *
+     * @return self
+     */
+    public function setExpiresAt($expires_at)
+    {
+        $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets ip
+     *
+     * @return string|null
+     */
+    public function getIp()
+    {
+        return $this->container['ip'];
+    }
+
+    /**
+     * Sets ip
+     *
+     * @param string|null $ip IP Address of the client that last used the token.
+     *
+     * @return self
+     */
+    public function setIp($ip)
+    {
+        $this->container['ip'] = $ip;
+
+        return $this;
+    }
+
+    /**
      * Gets user_agent
      *
      * @return string|null
@@ -566,30 +590,6 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUserAgent($user_agent)
     {
         $this->container['user_agent'] = $user_agent;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return string|null
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param string|null $user_id Alphanumeric string identifying the user.
-     *
-     * @return self
-     */
-    public function setUserId($user_id)
-    {
-        $this->container['user_id'] = $user_id;
 
         return $this;
     }

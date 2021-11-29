@@ -58,9 +58,9 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'string',
         'name' => 'string',
         'quorum' => 'int',
-        'retries' => 'int',
         'shield' => 'string',
         'type' => 'int',
+        'retries' => 'int',
         'service_id' => 'string',
         'version' => 'int',
         'created_at' => 'string',
@@ -81,9 +81,9 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => null,
         'name' => null,
         'quorum' => null,
-        'retries' => null,
         'shield' => null,
         'type' => null,
+        'retries' => null,
         'service_id' => null,
         'version' => null,
         'created_at' => null,
@@ -123,9 +123,9 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'comment',
         'name' => 'name',
         'quorum' => 'quorum',
-        'retries' => 'retries',
         'shield' => 'shield',
         'type' => 'type',
+        'retries' => 'retries',
         'service_id' => 'service_id',
         'version' => 'version',
         'created_at' => 'created_at',
@@ -144,9 +144,9 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'setComment',
         'name' => 'setName',
         'quorum' => 'setQuorum',
-        'retries' => 'setRetries',
         'shield' => 'setShield',
         'type' => 'setType',
+        'retries' => 'setRetries',
         'service_id' => 'setServiceId',
         'version' => 'setVersion',
         'created_at' => 'setCreatedAt',
@@ -165,9 +165,9 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'getComment',
         'name' => 'getName',
         'quorum' => 'getQuorum',
-        'retries' => 'getRetries',
         'shield' => 'getShield',
         'type' => 'getType',
+        'retries' => 'getRetries',
         'service_id' => 'getServiceId',
         'version' => 'getVersion',
         'created_at' => 'getCreatedAt',
@@ -257,9 +257,9 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['comment'] = $data['comment'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['quorum'] = $data['quorum'] ?? 75;
-        $this->container['retries'] = $data['retries'] ?? 5;
         $this->container['shield'] = $data['shield'] ?? 'null';
         $this->container['type'] = $data['type'] ?? TYPE_random;
+        $this->container['retries'] = $data['retries'] ?? 5;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -437,30 +437,6 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets retries
-     *
-     * @return int|null
-     */
-    public function getRetries()
-    {
-        return $this->container['retries'];
-    }
-
-    /**
-     * Sets retries
-     *
-     * @param int|null $retries How many backends to search if it fails.
-     *
-     * @return self
-     */
-    public function setRetries($retries)
-    {
-        $this->container['retries'] = $retries;
-
-        return $this;
-    }
-
-    /**
      * Gets shield
      *
      * @return string|null
@@ -514,6 +490,30 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets retries
+     *
+     * @return int|null
+     */
+    public function getRetries()
+    {
+        return $this->container['retries'];
+    }
+
+    /**
+     * Sets retries
+     *
+     * @param int|null $retries How many backends to search if it fails.
+     *
+     * @return self
+     */
+    public function setRetries($retries)
+    {
+        $this->container['retries'] = $retries;
 
         return $this;
     }

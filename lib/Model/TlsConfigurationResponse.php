@@ -53,7 +53,7 @@ class TlsConfigurationResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'Data'
+        'data' => '\Fastly\Model\TlsConfigurationResponseData'
     ];
 
     /**
@@ -205,7 +205,7 @@ class TlsConfigurationResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets data
      *
-     * @return Data|null
+     * @return \Fastly\Model\TlsConfigurationResponseData|null
      */
     public function getData()
     {
@@ -215,7 +215,7 @@ class TlsConfigurationResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets data
      *
-     * @param Data|null $data data
+     * @param \Fastly\Model\TlsConfigurationResponseData|null $data data
      *
      * @return self
      */

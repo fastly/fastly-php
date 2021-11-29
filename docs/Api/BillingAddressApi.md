@@ -42,7 +42,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 **inline_object** | [**\Fastly\Model\InlineObject**](../Model/InlineObject.md) |  | [optional]
 
 ### Return type
@@ -75,7 +75,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 
 ### Return type
 
@@ -107,7 +107,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 
 ### Return type
 
@@ -139,7 +139,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 **inline_object1** | [**\Fastly\Model\InlineObject1**](../Model/InlineObject1.md) |  | [optional]
 
 ### Return type

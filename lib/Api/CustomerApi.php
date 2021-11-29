@@ -115,7 +115,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -134,7 +134,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -224,7 +224,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -246,7 +246,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -295,7 +295,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -400,7 +400,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -419,7 +419,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -509,7 +509,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -531,7 +531,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -580,7 +580,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -950,7 +950,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -969,7 +969,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1059,7 +1059,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1081,7 +1081,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1130,7 +1130,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1235,7 +1235,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)
@@ -1278,7 +1278,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)
@@ -1392,7 +1392,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)
@@ -1438,7 +1438,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)
@@ -1511,7 +1511,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)

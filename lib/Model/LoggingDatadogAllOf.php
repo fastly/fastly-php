@@ -53,8 +53,8 @@ class LoggingDatadogAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'mixed',
         'region' => 'string',
+        'format' => 'string',
         'token' => 'string'
     ];
 
@@ -66,8 +66,8 @@ class LoggingDatadogAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
         'region' => null,
+        'format' => null,
         'token' => null
     ];
 
@@ -98,8 +98,8 @@ class LoggingDatadogAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
         'region' => 'region',
+        'format' => 'format',
         'token' => 'token'
     ];
 
@@ -109,8 +109,8 @@ class LoggingDatadogAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
         'region' => 'setRegion',
+        'format' => 'setFormat',
         'token' => 'setToken'
     ];
 
@@ -120,8 +120,8 @@ class LoggingDatadogAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
         'region' => 'getRegion',
+        'format' => 'getFormat',
         'token' => 'getToken'
     ];
 
@@ -200,8 +200,8 @@ class LoggingDatadogAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? null;
         $this->container['region'] = $data['region'] ?? REGION_US;
+        $this->container['format'] = $data['format'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
     }
 
@@ -239,30 +239,6 @@ class LoggingDatadogAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets format
-     *
-     * @return mixed|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest.
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
      * Gets region
      *
      * @return string|null
@@ -292,6 +268,30 @@ class LoggingDatadogAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['region'] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format format
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
 
         return $this;
     }

@@ -53,10 +53,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'limit_services' => 'bool',
-        'locked' => 'bool',
         'login' => 'string',
         'name' => 'string',
+        'limit_services' => 'bool',
+        'locked' => 'bool',
         'require_new_password' => 'bool',
         'role' => '\Fastly\Model\RoleUser',
         'two_factor_auth_enabled' => 'bool',
@@ -71,10 +71,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'limit_services' => null,
-        'locked' => null,
         'login' => null,
         'name' => null,
+        'limit_services' => null,
+        'locked' => null,
         'require_new_password' => null,
         'role' => null,
         'two_factor_auth_enabled' => null,
@@ -108,10 +108,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'limit_services' => 'limit_services',
-        'locked' => 'locked',
         'login' => 'login',
         'name' => 'name',
+        'limit_services' => 'limit_services',
+        'locked' => 'locked',
         'require_new_password' => 'require_new_password',
         'role' => 'role',
         'two_factor_auth_enabled' => 'two_factor_auth_enabled',
@@ -124,10 +124,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'limit_services' => 'setLimitServices',
-        'locked' => 'setLocked',
         'login' => 'setLogin',
         'name' => 'setName',
+        'limit_services' => 'setLimitServices',
+        'locked' => 'setLocked',
         'require_new_password' => 'setRequireNewPassword',
         'role' => 'setRole',
         'two_factor_auth_enabled' => 'setTwoFactorAuthEnabled',
@@ -140,10 +140,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'limit_services' => 'getLimitServices',
-        'locked' => 'getLocked',
         'login' => 'getLogin',
         'name' => 'getName',
+        'limit_services' => 'getLimitServices',
+        'locked' => 'getLocked',
         'require_new_password' => 'getRequireNewPassword',
         'role' => 'getRole',
         'two_factor_auth_enabled' => 'getTwoFactorAuthEnabled',
@@ -210,10 +210,10 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['limit_services'] = $data['limit_services'] ?? null;
-        $this->container['locked'] = $data['locked'] ?? null;
         $this->container['login'] = $data['login'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['limit_services'] = $data['limit_services'] ?? null;
+        $this->container['locked'] = $data['locked'] ?? null;
         $this->container['require_new_password'] = $data['require_new_password'] ?? null;
         $this->container['role'] = $data['role'] ?? null;
         $this->container['two_factor_auth_enabled'] = $data['two_factor_auth_enabled'] ?? null;
@@ -243,54 +243,6 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets limit_services
-     *
-     * @return bool|null
-     */
-    public function getLimitServices()
-    {
-        return $this->container['limit_services'];
-    }
-
-    /**
-     * Sets limit_services
-     *
-     * @param bool|null $limit_services Indicates that the user has limited access to the customer's services.
-     *
-     * @return self
-     */
-    public function setLimitServices($limit_services)
-    {
-        $this->container['limit_services'] = $limit_services;
-
-        return $this;
-    }
-
-    /**
-     * Gets locked
-     *
-     * @return bool|null
-     */
-    public function getLocked()
-    {
-        return $this->container['locked'];
-    }
-
-    /**
-     * Sets locked
-     *
-     * @param bool|null $locked Indicates whether the is account is locked for editing or not.
-     *
-     * @return self
-     */
-    public function setLocked($locked)
-    {
-        $this->container['locked'] = $locked;
-
-        return $this;
-    }
 
     /**
      * Gets login
@@ -336,6 +288,54 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_services
+     *
+     * @return bool|null
+     */
+    public function getLimitServices()
+    {
+        return $this->container['limit_services'];
+    }
+
+    /**
+     * Sets limit_services
+     *
+     * @param bool|null $limit_services Indicates that the user has limited access to the customer's services.
+     *
+     * @return self
+     */
+    public function setLimitServices($limit_services)
+    {
+        $this->container['limit_services'] = $limit_services;
+
+        return $this;
+    }
+
+    /**
+     * Gets locked
+     *
+     * @return bool|null
+     */
+    public function getLocked()
+    {
+        return $this->container['locked'];
+    }
+
+    /**
+     * Sets locked
+     *
+     * @param bool|null $locked Indicates whether the is account is locked for editing or not.
+     *
+     * @return self
+     */
+    public function setLocked($locked)
+    {
+        $this->container['locked'] = $locked;
 
         return $this;
     }

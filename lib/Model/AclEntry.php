@@ -53,9 +53,9 @@ class AclEntry implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'negated' => 'int',
         'comment' => 'string',
         'ip' => 'string',
-        'negated' => 'int',
         'subnet' => 'int'
     ];
 
@@ -67,9 +67,9 @@ class AclEntry implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'negated' => null,
         'comment' => null,
         'ip' => null,
-        'negated' => null,
         'subnet' => null
     ];
 
@@ -100,9 +100,9 @@ class AclEntry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'negated' => 'negated',
         'comment' => 'comment',
         'ip' => 'ip',
-        'negated' => 'negated',
         'subnet' => 'subnet'
     ];
 
@@ -112,9 +112,9 @@ class AclEntry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'negated' => 'setNegated',
         'comment' => 'setComment',
         'ip' => 'setIp',
-        'negated' => 'setNegated',
         'subnet' => 'setSubnet'
     ];
 
@@ -124,9 +124,9 @@ class AclEntry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'negated' => 'getNegated',
         'comment' => 'getComment',
         'ip' => 'getIp',
-        'negated' => 'getNegated',
         'subnet' => 'getSubnet'
     ];
 
@@ -205,9 +205,9 @@ class AclEntry implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['negated'] = $data['negated'] ?? NEGATED_0;
         $this->container['comment'] = $data['comment'] ?? null;
         $this->container['ip'] = $data['ip'] ?? null;
-        $this->container['negated'] = $data['negated'] ?? NEGATED_0;
         $this->container['subnet'] = $data['subnet'] ?? null;
     }
 
@@ -243,6 +243,40 @@ class AclEntry implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets negated
+     *
+     * @return int|null
+     */
+    public function getNegated()
+    {
+        return $this->container['negated'];
+    }
+
+    /**
+     * Sets negated
+     *
+     * @param int|null $negated Whether to negate the match. Useful primarily when creating individual exceptions to larger subnets.
+     *
+     * @return self
+     */
+    public function setNegated($negated)
+    {
+        $allowedValues = $this->getNegatedAllowableValues();
+        if (!is_null($negated) && !in_array($negated, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'negated', must be one of '%s'",
+                    $negated,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['negated'] = $negated;
+
+        return $this;
+    }
 
     /**
      * Gets comment
@@ -288,40 +322,6 @@ class AclEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIp($ip)
     {
         $this->container['ip'] = $ip;
-
-        return $this;
-    }
-
-    /**
-     * Gets negated
-     *
-     * @return int|null
-     */
-    public function getNegated()
-    {
-        return $this->container['negated'];
-    }
-
-    /**
-     * Sets negated
-     *
-     * @param int|null $negated Whether to negate the match. Useful primarily when creating individual exceptions to larger subnets.
-     *
-     * @return self
-     */
-    public function setNegated($negated)
-    {
-        $allowedValues = $this->getNegatedAllowableValues();
-        if (!is_null($negated) && !in_array($negated, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'negated', must be one of '%s'",
-                    $negated,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['negated'] = $negated;
 
         return $this;
     }

@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\Fastly\Model\SchemasWafFirewallVersionDataAttributes**](SchemasWafFirewallVersionDataAttributes.md) |  | [optional]
-**type** | [**\Fastly\Model\TypeWafFirewallVersion**](TypeWafFirewallVersion.md) |  | [optional]
+**type** | [**\Fastly\Model\TypeWafFirewallVersion**](TypeWafFirewallVersion.md) |  | [optional] 
+**attributes** | [**\Fastly\Model\WafFirewallVersionDataAttributes**](WafFirewallVersionDataAttributes.md) |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

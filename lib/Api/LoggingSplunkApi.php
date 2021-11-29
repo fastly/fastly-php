@@ -115,21 +115,21 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -149,21 +149,21 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -254,21 +254,21 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
      * @throws \InvalidArgumentException
@@ -291,21 +291,21 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
      * @throws \InvalidArgumentException
@@ -355,21 +355,21 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
      * @throws \InvalidArgumentException
@@ -380,19 +380,19 @@ class LoggingSplunkApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $tls_ca_cert = array_key_exists('tls_ca_cert', $options) ? $options['tls_ca_cert'] : 'null';
         $tls_client_cert = array_key_exists('tls_client_cert', $options) ? $options['tls_client_cert'] : 'null';
         $tls_client_key = array_key_exists('tls_client_key', $options) ? $options['tls_client_key'] : 'null';
         $tls_hostname = array_key_exists('tls_hostname', $options) ? $options['tls_hostname'] : 'null';
-        $request_max_bytes = array_key_exists('request_max_bytes', $options) ? $options['request_max_bytes'] : 0;
         $request_max_entries = array_key_exists('request_max_entries', $options) ? $options['request_max_entries'] : 0;
-        $token = array_key_exists('token', $options) ? $options['token'] : null;
+        $request_max_bytes = array_key_exists('request_max_bytes', $options) ? $options['request_max_bytes'] : 0;
         $url = array_key_exists('url', $options) ? $options['url'] : null;
+        $token = array_key_exists('token', $options) ? $options['token'] : null;
         $use_tls = array_key_exists('use_tls', $options) ? $options['use_tls'] : null;
 
         // verify the required parameter 'service_id' is set
@@ -435,14 +435,6 @@ class LoggingSplunkApi
         }
 
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -451,8 +443,16 @@ class LoggingSplunkApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
+        }
+        // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($tls_ca_cert !== null) {
@@ -471,20 +471,20 @@ class LoggingSplunkApi
             $formParams['tls_hostname'] = ObjectSerializer::toFormValue($tls_hostname);
         }
         // form params
-        if ($request_max_bytes !== null) {
-            $formParams['request_max_bytes'] = ObjectSerializer::toFormValue($request_max_bytes);
-        }
-        // form params
         if ($request_max_entries !== null) {
             $formParams['request_max_entries'] = ObjectSerializer::toFormValue($request_max_entries);
         }
         // form params
-        if ($token !== null) {
-            $formParams['token'] = ObjectSerializer::toFormValue($token);
+        if ($request_max_bytes !== null) {
+            $formParams['request_max_bytes'] = ObjectSerializer::toFormValue($request_max_bytes);
         }
         // form params
         if ($url !== null) {
             $formParams['url'] = ObjectSerializer::toFormValue($url);
+        }
+        // form params
+        if ($token !== null) {
+            $formParams['token'] = ObjectSerializer::toFormValue($token);
         }
         // form params
         if ($use_tls !== null) {
@@ -560,9 +560,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $logging_splunk_name logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -581,9 +581,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -673,9 +673,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -697,9 +697,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -748,9 +748,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -885,9 +885,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $logging_splunk_name logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -906,9 +906,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -998,9 +998,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1022,9 +1022,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1073,9 +1073,9 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1210,8 +1210,8 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1230,8 +1230,8 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1321,8 +1321,8 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1344,8 +1344,8 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1394,8 +1394,8 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1515,22 +1515,22 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $logging_splunk_name logging_splunk_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1550,22 +1550,22 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1656,22 +1656,22 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
      * @throws \InvalidArgumentException
@@ -1694,22 +1694,22 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
      * @throws \InvalidArgumentException
@@ -1759,22 +1759,22 @@ class LoggingSplunkApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_splunk_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_splunk_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $tls_ca_cert A secure certificate to authenticate a server with. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_cert The client certificate used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (optional, default to 'null')
      * @param  string $tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (optional, default to 'null')
-     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  int $request_max_entries The maximum number of logs sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
-     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
+     * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
+     * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
      * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
      *
      * @throws \InvalidArgumentException
@@ -1786,19 +1786,19 @@ class LoggingSplunkApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_splunk_name = array_key_exists('logging_splunk_name', $options) ? $options['logging_splunk_name'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $tls_ca_cert = array_key_exists('tls_ca_cert', $options) ? $options['tls_ca_cert'] : 'null';
         $tls_client_cert = array_key_exists('tls_client_cert', $options) ? $options['tls_client_cert'] : 'null';
         $tls_client_key = array_key_exists('tls_client_key', $options) ? $options['tls_client_key'] : 'null';
         $tls_hostname = array_key_exists('tls_hostname', $options) ? $options['tls_hostname'] : 'null';
-        $request_max_bytes = array_key_exists('request_max_bytes', $options) ? $options['request_max_bytes'] : 0;
         $request_max_entries = array_key_exists('request_max_entries', $options) ? $options['request_max_entries'] : 0;
-        $token = array_key_exists('token', $options) ? $options['token'] : null;
+        $request_max_bytes = array_key_exists('request_max_bytes', $options) ? $options['request_max_bytes'] : 0;
         $url = array_key_exists('url', $options) ? $options['url'] : null;
+        $token = array_key_exists('token', $options) ? $options['token'] : null;
         $use_tls = array_key_exists('use_tls', $options) ? $options['use_tls'] : null;
 
         // verify the required parameter 'service_id' is set
@@ -1855,14 +1855,6 @@ class LoggingSplunkApi
         }
 
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1871,8 +1863,16 @@ class LoggingSplunkApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
+        }
+        // form params
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($tls_ca_cert !== null) {
@@ -1891,20 +1891,20 @@ class LoggingSplunkApi
             $formParams['tls_hostname'] = ObjectSerializer::toFormValue($tls_hostname);
         }
         // form params
-        if ($request_max_bytes !== null) {
-            $formParams['request_max_bytes'] = ObjectSerializer::toFormValue($request_max_bytes);
-        }
-        // form params
         if ($request_max_entries !== null) {
             $formParams['request_max_entries'] = ObjectSerializer::toFormValue($request_max_entries);
         }
         // form params
-        if ($token !== null) {
-            $formParams['token'] = ObjectSerializer::toFormValue($token);
+        if ($request_max_bytes !== null) {
+            $formParams['request_max_bytes'] = ObjectSerializer::toFormValue($request_max_bytes);
         }
         // form params
         if ($url !== null) {
             $formParams['url'] = ObjectSerializer::toFormValue($url);
+        }
+        // form params
+        if ($token !== null) {
+            $formParams['token'] = ObjectSerializer::toFormValue($token);
         }
         // form params
         if ($use_tls !== null) {

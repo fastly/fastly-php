@@ -47,9 +47,9 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **comment** | **string** | A freeform descriptive note. | [optional]
-**customer_id** | **string** | Alphanumeric string identifying the customer. | [optional]
 **name** | **string** | The name of the service. | [optional]
-**type** | **string** | The type of this service. | [optional]
+**customer_id** | **string** | Alphanumeric string identifying the customer. | [optional]
+**type** | **string** | The type of this service. | [optional] [one of: 'vcl', 'wasm']
 
 ### Return type
 
@@ -81,7 +81,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 
 ### Return type
 
@@ -113,7 +113,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 
 ### Return type
 
@@ -145,7 +145,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 
 ### Return type
 
@@ -177,7 +177,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 
 ### Return type
 
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 ## `listServices()`
 
 ```php
-listServices($options): \Fastly\Model\ServiceResponse[] // List services
+listServices($options): \Fastly\Model\ServiceListResponse[] // List services
 ```
 
 List services.
@@ -210,13 +210,13 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page** | **int** | Current page. | [optional]
-**per_page** | **int** | Number of records per page. | [optional] [default to 20]
-**sort** | **string** | Field on which to sort. | [optional] [default to &#39;created&#39;]
-**direction** | **string** | Direction in which to sort results. | [optional] [default to &#39;ascend&#39;]
+**per_page** | **int** | Number of records per page. | [optional] [defaults to 20]
+**sort** | **string** | Field on which to sort. | [optional] [defaults to 'created']
+**direction** | **string** | Direction in which to sort results. | [optional] [one of: 'ascend', 'descend'] [defaults to 'ascend']
 
 ### Return type
 
-[**\Fastly\Model\ServiceResponse[]**](../Model/ServiceResponse.md)
+[**\Fastly\Model\ServiceListResponse[]**](../Model/ServiceListResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -244,7 +244,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**name** | **string** |  |
+**name** | **string** | The name of the service. |
 
 ### Return type
 
@@ -276,10 +276,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 **comment** | **string** | A freeform descriptive note. | [optional]
-**customer_id** | **string** | Alphanumeric string identifying the customer. | [optional]
 **name** | **string** | The name of the service. | [optional]
+**customer_id** | **string** | Alphanumeric string identifying the customer. | [optional]
 
 ### Return type
 

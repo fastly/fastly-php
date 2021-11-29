@@ -217,7 +217,6 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
     const ACTION_REGEX = 'regex';
     const ACTION_REGEX_REPEAT = 'regex_repeat';
     const TYPE_REQUEST = 'request';
-    const TYPE_FETCH = 'fetch';
     const TYPE_CACHE = 'cache';
     const TYPE_RESPONSE = 'response';
     
@@ -248,7 +247,6 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::TYPE_REQUEST,
-            self::TYPE_FETCH,
             self::TYPE_CACHE,
             self::TYPE_RESPONSE,
         ];

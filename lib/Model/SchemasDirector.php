@@ -58,9 +58,9 @@ class SchemasDirector implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'string',
         'name' => 'string',
         'quorum' => 'int',
-        'retries' => 'int',
         'shield' => 'string',
-        'type' => 'int'
+        'type' => 'int',
+        'retries' => 'int'
     ];
 
     /**
@@ -76,9 +76,9 @@ class SchemasDirector implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => null,
         'name' => null,
         'quorum' => null,
-        'retries' => null,
         'shield' => null,
-        'type' => null
+        'type' => null,
+        'retries' => null
     ];
 
     /**
@@ -113,9 +113,9 @@ class SchemasDirector implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'comment',
         'name' => 'name',
         'quorum' => 'quorum',
-        'retries' => 'retries',
         'shield' => 'shield',
-        'type' => 'type'
+        'type' => 'type',
+        'retries' => 'retries'
     ];
 
     /**
@@ -129,9 +129,9 @@ class SchemasDirector implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'setComment',
         'name' => 'setName',
         'quorum' => 'setQuorum',
-        'retries' => 'setRetries',
         'shield' => 'setShield',
-        'type' => 'setType'
+        'type' => 'setType',
+        'retries' => 'setRetries'
     ];
 
     /**
@@ -145,9 +145,9 @@ class SchemasDirector implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'getComment',
         'name' => 'getName',
         'quorum' => 'getQuorum',
-        'retries' => 'getRetries',
         'shield' => 'getShield',
-        'type' => 'getType'
+        'type' => 'getType',
+        'retries' => 'getRetries'
     ];
 
     /**
@@ -232,9 +232,9 @@ class SchemasDirector implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['comment'] = $data['comment'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['quorum'] = $data['quorum'] ?? 75;
-        $this->container['retries'] = $data['retries'] ?? 5;
         $this->container['shield'] = $data['shield'] ?? 'null';
         $this->container['type'] = $data['type'] ?? TYPE_random;
+        $this->container['retries'] = $data['retries'] ?? 5;
     }
 
     /**
@@ -407,30 +407,6 @@ class SchemasDirector implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets retries
-     *
-     * @return int|null
-     */
-    public function getRetries()
-    {
-        return $this->container['retries'];
-    }
-
-    /**
-     * Sets retries
-     *
-     * @param int|null $retries How many backends to search if it fails.
-     *
-     * @return self
-     */
-    public function setRetries($retries)
-    {
-        $this->container['retries'] = $retries;
-
-        return $this;
-    }
-
-    /**
      * Gets shield
      *
      * @return string|null
@@ -484,6 +460,30 @@ class SchemasDirector implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets retries
+     *
+     * @return int|null
+     */
+    public function getRetries()
+    {
+        return $this->container['retries'];
+    }
+
+    /**
+     * Sets retries
+     *
+     * @param int|null $retries How many backends to search if it fails.
+     *
+     * @return self
+     */
+    public function setRetries($retries)
+    {
+        $this->container['retries'] = $retries;
 
         return $this;
     }

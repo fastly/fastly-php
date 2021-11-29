@@ -54,9 +54,9 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'recorded' => 'int',
         'aggregated' => 'RealtimeMeasurements',
-        'datacenter' => 'array<string,\Fastly\Model\RealtimeMeasurements>',
-        'recorded' => 'int'
+        'datacenter' => 'array<string,\Fastly\Model\RealtimeMeasurements>'
     ];
 
     /**
@@ -67,9 +67,9 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'recorded' => null,
         'aggregated' => null,
-        'datacenter' => null,
-        'recorded' => null
+        'datacenter' => null
     ];
 
     /**
@@ -99,9 +99,9 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'recorded' => 'recorded',
         'aggregated' => 'aggregated',
-        'datacenter' => 'datacenter',
-        'recorded' => 'recorded'
+        'datacenter' => 'datacenter'
     ];
 
     /**
@@ -110,9 +110,9 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'recorded' => 'setRecorded',
         'aggregated' => 'setAggregated',
-        'datacenter' => 'setDatacenter',
-        'recorded' => 'setRecorded'
+        'datacenter' => 'setDatacenter'
     ];
 
     /**
@@ -121,9 +121,9 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'recorded' => 'getRecorded',
         'aggregated' => 'getAggregated',
-        'datacenter' => 'getDatacenter',
-        'recorded' => 'getRecorded'
+        'datacenter' => 'getDatacenter'
     ];
 
     /**
@@ -186,9 +186,9 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['recorded'] = $data['recorded'] ?? null;
         $this->container['aggregated'] = $data['aggregated'] ?? null;
         $this->container['datacenter'] = $data['datacenter'] ?? null;
-        $this->container['recorded'] = $data['recorded'] ?? null;
     }
 
     /**
@@ -214,6 +214,30 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets recorded
+     *
+     * @return int|null
+     */
+    public function getRecorded()
+    {
+        return $this->container['recorded'];
+    }
+
+    /**
+     * Sets recorded
+     *
+     * @param int|null $recorded recorded
+     *
+     * @return self
+     */
+    public function setRecorded($recorded)
+    {
+        $this->container['recorded'] = $recorded;
+
+        return $this;
+    }
 
     /**
      * Gets aggregated
@@ -259,30 +283,6 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDatacenter($datacenter)
     {
         $this->container['datacenter'] = $datacenter;
-
-        return $this;
-    }
-
-    /**
-     * Gets recorded
-     *
-     * @return int|null
-     */
-    public function getRecorded()
-    {
-        return $this->container['recorded'];
-    }
-
-    /**
-     * Sets recorded
-     *
-     * @param int|null $recorded recorded
-     *
-     * @return self
-     */
-    public function setRecorded($recorded)
-    {
-        $this->container['recorded'] = $recorded;
 
         return $this;
     }

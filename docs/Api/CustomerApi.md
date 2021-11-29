@@ -43,7 +43,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 
 ### Return type
 
@@ -75,7 +75,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 
 ### Return type
 
@@ -105,7 +105,7 @@ try {
 
 Note: the input parameter is an associative array with the keys listed below.
 
-This endpoint does not need any parameter.
+This endpoint does not need any parameters.
 
 ### Return type
 
@@ -137,7 +137,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 
 ### Return type
 
@@ -169,9 +169,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 **billing_contact_id** | **string** | The alphanumeric string representing the primary billing contact. | [optional]
-**billing_network_type** | **string** | Customer&#39;s current network revenue type. | [optional]
+**billing_network_type** | **string** | Customer&#39;s current network revenue type. | [optional] [one of: 'public', 'private']
 **billing_ref** | **string** | Used for adding purchased orders to customer&#39;s account. | [optional]
 **can_configure_wordpress** | **bool** | Whether this customer can view or edit wordpress. | [optional]
 **can_reset_passwords** | **bool** | Whether this customer can reset passwords. | [optional]

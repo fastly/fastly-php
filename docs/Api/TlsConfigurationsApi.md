@@ -41,8 +41,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_configuration_id** | **string** |  |
-**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `dns_records`. | [optional]
+**tls_configuration_id** | **string** | Alphanumeric string identifying a TLS configuration. |
 
 ### Return type
 
@@ -75,9 +75,9 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **filter_bulk** | **string** | Optionally filters by the bulk attribute. | [optional]
-**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `dns_records`. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 
 ### Return type
 
@@ -109,7 +109,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_configuration_id** | **string** |  |
+**tls_configuration_id** | **string** | Alphanumeric string identifying a TLS configuration. |
 **tls_configuration** | [**\Fastly\Model\TlsConfiguration**](../Model/TlsConfiguration.md) |  | [optional]
 
 ### Return type

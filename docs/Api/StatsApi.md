@@ -39,7 +39,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 **month** | **string** | 2-digit month. | [optional]
 **year** | **string** | 4-digit year. | [optional]
 **start_time** | **int** | Epoch timestamp. Limits the results returned. | [optional]

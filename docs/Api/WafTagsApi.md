@@ -41,8 +41,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **filter_name** | **string** | Limit the returned tags to a specific name. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
-**include** | **string** | Include relationships. Optional. | [optional] [default to &#39;waf_rules&#39;]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
+**include** | **string** | Include relationships. Optional. | [optional] [one of: 'waf_rules'] [defaults to 'waf_rules']
 
 ### Return type
 

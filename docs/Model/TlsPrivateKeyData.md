@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\Fastly\Model\TlsPrivateKeyDataAttributes**](TlsPrivateKeyDataAttributes.md) |  | [optional]
-**relationships** | [**AnyOfRelationshipTlsActivationsObject**](AnyOfRelationshipTlsActivationsObject.md) |  | [optional]
-**type** | [**\Fastly\Model\TypeTlsPrivateKey**](TypeTlsPrivateKey.md) |  | [optional]
+**type** | [**\Fastly\Model\TypeTlsPrivateKey**](TypeTlsPrivateKey.md) |  | [optional] 
+**attributes** | [**\Fastly\Model\TlsPrivateKeyDataAttributes**](TlsPrivateKeyDataAttributes.md) |  | [optional] 
+**relationships** | [**\Fastly\Model\RelationshipsForTlsPrivateKey**](RelationshipsForTlsPrivateKey.md) |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

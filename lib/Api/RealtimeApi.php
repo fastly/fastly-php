@@ -115,7 +115,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -134,7 +134,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -224,7 +224,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -246,7 +246,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -295,7 +295,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -400,7 +400,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -420,7 +420,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -511,7 +511,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
      *
      * @throws \InvalidArgumentException
@@ -534,7 +534,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
      *
      * @throws \InvalidArgumentException
@@ -584,7 +584,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
      *
      * @throws \InvalidArgumentException
@@ -705,7 +705,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -725,7 +725,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -816,7 +816,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
      *
      * @throws \InvalidArgumentException
@@ -839,7 +839,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
      *
      * @throws \InvalidArgumentException
@@ -889,7 +889,7 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
      *
      * @throws \InvalidArgumentException

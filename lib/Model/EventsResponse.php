@@ -55,7 +55,7 @@ class EventsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\Event[]'
     ];
 
     /**
@@ -265,7 +265,7 @@ class EventsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\Event[]|null
      */
     public function getData()
     {
@@ -275,7 +275,7 @@ class EventsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\Event[]|null $data data
      *
      * @return self
      */

@@ -77,7 +77,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_authorization_id** | **string** |  |
+**service_authorization_id** | **string** | Alphanumeric string identifying a service authorization. |
 
 ### Return type
 
@@ -142,7 +142,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 
 ### Return type
 
@@ -174,7 +174,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_authorization_id** | **string** |  |
+**service_authorization_id** | **string** | Alphanumeric string identifying a service authorization. |
 
 ### Return type
 
@@ -206,7 +206,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_authorization_id** | **string** |  |
+**service_authorization_id** | **string** | Alphanumeric string identifying a service authorization. |
 **service_authorization** | [**\Fastly\Model\ServiceAuthorization**](../Model/ServiceAuthorization.md) |  | [optional]
 
 ### Return type

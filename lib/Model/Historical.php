@@ -53,9 +53,9 @@ class Historical implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'status' => 'string',
         'meta' => '\Fastly\Model\HistoricalMeta',
-        'msg' => 'string',
-        'status' => 'string'
+        'msg' => 'string'
     ];
 
     /**
@@ -66,9 +66,9 @@ class Historical implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'status' => null,
         'meta' => null,
-        'msg' => null,
-        'status' => null
+        'msg' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class Historical implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'status' => 'status',
         'meta' => 'meta',
-        'msg' => 'msg',
-        'status' => 'status'
+        'msg' => 'msg'
     ];
 
     /**
@@ -109,9 +109,9 @@ class Historical implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'status' => 'setStatus',
         'meta' => 'setMeta',
-        'msg' => 'setMsg',
-        'status' => 'setStatus'
+        'msg' => 'setMsg'
     ];
 
     /**
@@ -120,9 +120,9 @@ class Historical implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'status' => 'getStatus',
         'meta' => 'getMeta',
-        'msg' => 'getMsg',
-        'status' => 'getStatus'
+        'msg' => 'getMsg'
     ];
 
     /**
@@ -185,9 +185,9 @@ class Historical implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['meta'] = $data['meta'] ?? null;
         $this->container['msg'] = $data['msg'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -213,6 +213,30 @@ class Historical implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Whether or not we were able to successfully execute the query.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
 
     /**
      * Gets meta
@@ -258,30 +282,6 @@ class Historical implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMsg($msg)
     {
         $this->container['msg'] = $msg;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Whether or not we were able to successfully execute the query.
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
 
         return $this;
     }

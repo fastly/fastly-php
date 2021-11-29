@@ -115,10 +115,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name director_name (required)
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $backend_name backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -137,10 +137,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -230,10 +230,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -255,10 +255,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -307,10 +307,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -460,10 +460,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name director_name (required)
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $backend_name backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -482,10 +482,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -575,10 +575,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -600,10 +600,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -652,10 +652,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -805,10 +805,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name director_name (required)
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $backend_name backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -827,10 +827,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -920,10 +920,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -945,10 +945,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -997,10 +997,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

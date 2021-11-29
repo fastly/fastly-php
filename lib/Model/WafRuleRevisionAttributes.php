@@ -56,7 +56,7 @@ class WafRuleRevisionAttributes implements ModelInterface, ArrayAccess, \JsonSer
         'message' => 'string',
         'modsec_rule_id' => 'int',
         'paranoia_level' => 'int',
-        'revision' => 'int',
+        'revision' => 'float',
         'severity' => 'int',
         'source' => 'string',
         'state' => 'string',
@@ -343,7 +343,7 @@ class WafRuleRevisionAttributes implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets revision
      *
-     * @return int|null
+     * @return float|null
      */
     public function getRevision()
     {
@@ -353,7 +353,7 @@ class WafRuleRevisionAttributes implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets revision
      *
-     * @param int|null $revision Revision number.
+     * @param float|null $revision Revision number.
      *
      * @return self
      */

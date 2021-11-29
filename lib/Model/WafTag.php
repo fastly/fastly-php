@@ -53,9 +53,9 @@ class WafTag implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'attributes' => '\Fastly\Model\WafTagAttributes',
+        'type' => '\Fastly\Model\TypeWafTag',
         'id' => 'string',
-        'type' => '\Fastly\Model\TypeWafTag'
+        'attributes' => '\Fastly\Model\WafTagAttributes'
     ];
 
     /**
@@ -66,9 +66,9 @@ class WafTag implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'attributes' => null,
+        'type' => null,
         'id' => null,
-        'type' => null
+        'attributes' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class WafTag implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
+        'type' => 'type',
         'id' => 'id',
-        'type' => 'type'
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -109,9 +109,9 @@ class WafTag implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
+        'type' => 'setType',
         'id' => 'setId',
-        'type' => 'setType'
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -120,9 +120,9 @@ class WafTag implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
+        'type' => 'getType',
         'id' => 'getId',
-        'type' => 'getType'
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -185,9 +185,9 @@ class WafTag implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['attributes'] = $data['attributes'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['attributes'] = $data['attributes'] ?? null;
     }
 
     /**
@@ -215,25 +215,25 @@ class WafTag implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets attributes
+     * Gets type
      *
-     * @return \Fastly\Model\WafTagAttributes|null
+     * @return \Fastly\Model\TypeWafTag|null
      */
-    public function getAttributes()
+    public function getType()
     {
-        return $this->container['attributes'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets attributes
+     * Sets type
      *
-     * @param \Fastly\Model\WafTagAttributes|null $attributes attributes
+     * @param \Fastly\Model\TypeWafTag|null $type type
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setType($type)
     {
-        $this->container['attributes'] = $attributes;
+        $this->container['type'] = $type;
 
         return $this;
     }
@@ -263,25 +263,25 @@ class WafTag implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets type
+     * Gets attributes
      *
-     * @return \Fastly\Model\TypeWafTag|null
+     * @return \Fastly\Model\WafTagAttributes|null
      */
-    public function getType()
+    public function getAttributes()
     {
-        return $this->container['type'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets type
+     * Sets attributes
      *
-     * @param \Fastly\Model\TypeWafTag|null $type type
+     * @param \Fastly\Model\WafTagAttributes|null $attributes attributes
      *
      * @return self
      */
-    public function setType($type)
+    public function setAttributes($attributes)
     {
-        $this->container['type'] = $type;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

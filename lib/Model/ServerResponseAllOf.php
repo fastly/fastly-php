@@ -53,9 +53,9 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'service_id' => 'string',
         'id' => 'string',
-        'pool_id' => 'string',
-        'service_id' => 'string'
+        'pool_id' => 'string'
     ];
 
     /**
@@ -66,9 +66,9 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'service_id' => null,
         'id' => null,
-        'pool_id' => null,
-        'service_id' => null
+        'pool_id' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'service_id' => 'service_id',
         'id' => 'id',
-        'pool_id' => 'pool_id',
-        'service_id' => 'service_id'
+        'pool_id' => 'pool_id'
     ];
 
     /**
@@ -109,9 +109,9 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'service_id' => 'setServiceId',
         'id' => 'setId',
-        'pool_id' => 'setPoolId',
-        'service_id' => 'setServiceId'
+        'pool_id' => 'setPoolId'
     ];
 
     /**
@@ -120,9 +120,9 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'service_id' => 'getServiceId',
         'id' => 'getId',
-        'pool_id' => 'getPoolId',
-        'service_id' => 'getServiceId'
+        'pool_id' => 'getPoolId'
     ];
 
     /**
@@ -185,9 +185,9 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
+        $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['pool_id'] = $data['pool_id'] ?? null;
-        $this->container['service_id'] = $data['service_id'] ?? null;
     }
 
     /**
@@ -213,6 +213,30 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id Alphanumeric string identifying the service.
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -258,30 +282,6 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPoolId($pool_id)
     {
         $this->container['pool_id'] = $pool_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_id
-     *
-     * @return string|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string|null $service_id Alphanumeric string identifying the service.
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
 
         return $this;
     }

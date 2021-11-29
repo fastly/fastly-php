@@ -54,9 +54,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'paused' => 'bool',
         'publish_key' => 'string',
-        'version' => 'int',
+        'paused' => 'bool',
         'versions' => '\Fastly\Model\SchemasVersionResponse[]'
     ];
 
@@ -69,9 +68,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $fastlyFormats = [
         'id' => null,
-        'paused' => null,
         'publish_key' => null,
-        'version' => null,
+        'paused' => null,
         'versions' => null
     ];
 
@@ -103,9 +101,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'paused' => 'paused',
         'publish_key' => 'publish_key',
-        'version' => 'version',
+        'paused' => 'paused',
         'versions' => 'versions'
     ];
 
@@ -116,9 +113,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'id' => 'setId',
-        'paused' => 'setPaused',
         'publish_key' => 'setPublishKey',
-        'version' => 'setVersion',
+        'paused' => 'setPaused',
         'versions' => 'setVersions'
     ];
 
@@ -129,9 +125,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'id' => 'getId',
-        'paused' => 'getPaused',
         'publish_key' => 'getPublishKey',
-        'version' => 'getVersion',
+        'paused' => 'getPaused',
         'versions' => 'getVersions'
     ];
 
@@ -196,9 +191,8 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['paused'] = $data['paused'] ?? null;
         $this->container['publish_key'] = $data['publish_key'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
+        $this->container['paused'] = $data['paused'] ?? null;
         $this->container['versions'] = $data['versions'] ?? null;
     }
 
@@ -251,30 +245,6 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets paused
-     *
-     * @return bool|null
-     */
-    public function getPaused()
-    {
-        return $this->container['paused'];
-    }
-
-    /**
-     * Sets paused
-     *
-     * @param bool|null $paused Whether the service is paused. Services are paused due to a lack of traffic for an extended period of time. Services are resumed either when a draft version is activated or a locked version is cloned and reactivated.
-     *
-     * @return self
-     */
-    public function setPaused($paused)
-    {
-        $this->container['paused'] = $paused;
-
-        return $this;
-    }
-
-    /**
      * Gets publish_key
      *
      * @return string|null
@@ -299,25 +269,25 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets version
+     * Gets paused
      *
-     * @return int|null
+     * @return bool|null
      */
-    public function getVersion()
+    public function getPaused()
     {
-        return $this->container['version'];
+        return $this->container['paused'];
     }
 
     /**
-     * Sets version
+     * Sets paused
      *
-     * @param int|null $version Current [version](/reference/api/services/version/) of the service.
+     * @param bool|null $paused Whether the service is paused. Services are paused due to a lack of traffic for an extended period of time. Services are resumed either when a draft version is activated or a locked version is cloned and reactivated.
      *
      * @return self
      */
-    public function setVersion($version)
+    public function setPaused($paused)
     {
-        $this->container['version'] = $version;
+        $this->container['paused'] = $paused;
 
         return $this;
     }

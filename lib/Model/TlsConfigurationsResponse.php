@@ -55,7 +55,7 @@ class TlsConfigurationsResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsConfigurationResponseData[]'
     ];
 
     /**
@@ -265,7 +265,7 @@ class TlsConfigurationsResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsConfigurationResponseData[]|null
      */
     public function getData()
     {
@@ -275,7 +275,7 @@ class TlsConfigurationsResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsConfigurationResponseData[]|null $data data
      *
      * @return self
      */

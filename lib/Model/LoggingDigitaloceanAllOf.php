@@ -53,12 +53,12 @@ class LoggingDigitaloceanAllOf implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'access_key' => 'string',
         'bucket_name' => 'string',
+        'access_key' => 'string',
+        'secret_key' => 'string',
         'domain' => 'string',
         'path' => 'string',
-        'public_key' => 'string',
-        'secret_key' => 'string'
+        'public_key' => 'string'
     ];
 
     /**
@@ -69,12 +69,12 @@ class LoggingDigitaloceanAllOf implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'access_key' => null,
         'bucket_name' => null,
+        'access_key' => null,
+        'secret_key' => null,
         'domain' => null,
         'path' => null,
-        'public_key' => null,
-        'secret_key' => null
+        'public_key' => null
     ];
 
     /**
@@ -104,12 +104,12 @@ class LoggingDigitaloceanAllOf implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'access_key' => 'access_key',
         'bucket_name' => 'bucket_name',
+        'access_key' => 'access_key',
+        'secret_key' => 'secret_key',
         'domain' => 'domain',
         'path' => 'path',
-        'public_key' => 'public_key',
-        'secret_key' => 'secret_key'
+        'public_key' => 'public_key'
     ];
 
     /**
@@ -118,12 +118,12 @@ class LoggingDigitaloceanAllOf implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'access_key' => 'setAccessKey',
         'bucket_name' => 'setBucketName',
+        'access_key' => 'setAccessKey',
+        'secret_key' => 'setSecretKey',
         'domain' => 'setDomain',
         'path' => 'setPath',
-        'public_key' => 'setPublicKey',
-        'secret_key' => 'setSecretKey'
+        'public_key' => 'setPublicKey'
     ];
 
     /**
@@ -132,12 +132,12 @@ class LoggingDigitaloceanAllOf implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'access_key' => 'getAccessKey',
         'bucket_name' => 'getBucketName',
+        'access_key' => 'getAccessKey',
+        'secret_key' => 'getSecretKey',
         'domain' => 'getDomain',
         'path' => 'getPath',
-        'public_key' => 'getPublicKey',
-        'secret_key' => 'getSecretKey'
+        'public_key' => 'getPublicKey'
     ];
 
     /**
@@ -200,12 +200,12 @@ class LoggingDigitaloceanAllOf implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['access_key'] = $data['access_key'] ?? null;
         $this->container['bucket_name'] = $data['bucket_name'] ?? null;
+        $this->container['access_key'] = $data['access_key'] ?? null;
+        $this->container['secret_key'] = $data['secret_key'] ?? null;
         $this->container['domain'] = $data['domain'] ?? 'nyc3.digitaloceanspaces.com';
         $this->container['path'] = $data['path'] ?? 'null';
         $this->container['public_key'] = $data['public_key'] ?? 'null';
-        $this->container['secret_key'] = $data['secret_key'] ?? null;
     }
 
     /**
@@ -233,6 +233,30 @@ class LoggingDigitaloceanAllOf implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
+     * Gets bucket_name
+     *
+     * @return string|null
+     */
+    public function getBucketName()
+    {
+        return $this->container['bucket_name'];
+    }
+
+    /**
+     * Sets bucket_name
+     *
+     * @param string|null $bucket_name The name of the DigitalOcean Space.
+     *
+     * @return self
+     */
+    public function setBucketName($bucket_name)
+    {
+        $this->container['bucket_name'] = $bucket_name;
+
+        return $this;
+    }
+
+    /**
      * Gets access_key
      *
      * @return string|null
@@ -257,25 +281,25 @@ class LoggingDigitaloceanAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets bucket_name
+     * Gets secret_key
      *
      * @return string|null
      */
-    public function getBucketName()
+    public function getSecretKey()
     {
-        return $this->container['bucket_name'];
+        return $this->container['secret_key'];
     }
 
     /**
-     * Sets bucket_name
+     * Sets secret_key
      *
-     * @param string|null $bucket_name The name of the DigitalOcean Space.
+     * @param string|null $secret_key Your DigitalOcean Spaces account secret key.
      *
      * @return self
      */
-    public function setBucketName($bucket_name)
+    public function setSecretKey($secret_key)
     {
-        $this->container['bucket_name'] = $bucket_name;
+        $this->container['secret_key'] = $secret_key;
 
         return $this;
     }
@@ -348,30 +372,6 @@ class LoggingDigitaloceanAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPublicKey($public_key)
     {
         $this->container['public_key'] = $public_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets secret_key
-     *
-     * @return string|null
-     */
-    public function getSecretKey()
-    {
-        return $this->container['secret_key'];
-    }
-
-    /**
-     * Sets secret_key
-     *
-     * @param string|null $secret_key Your DigitalOcean Spaces account secret key.
-     *
-     * @return self
-     */
-    public function setSecretKey($secret_key)
-    {
-        $this->container['secret_key'] = $secret_key;
 
         return $this;
     }

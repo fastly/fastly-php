@@ -53,13 +53,13 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'weight' => 'int',
+        'max_conn' => 'int',
+        'port' => 'int',
         'address' => 'string',
         'comment' => 'string',
         'disabled' => 'bool',
-        'max_conn' => 'int',
-        'override_host' => 'string',
-        'port' => 'int',
-        'weight' => 'int'
+        'override_host' => 'string'
     ];
 
     /**
@@ -70,13 +70,13 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'weight' => null,
+        'max_conn' => null,
+        'port' => null,
         'address' => null,
         'comment' => null,
         'disabled' => null,
-        'max_conn' => null,
-        'override_host' => null,
-        'port' => null,
-        'weight' => null
+        'override_host' => null
     ];
 
     /**
@@ -106,13 +106,13 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'weight' => 'weight',
+        'max_conn' => 'max_conn',
+        'port' => 'port',
         'address' => 'address',
         'comment' => 'comment',
         'disabled' => 'disabled',
-        'max_conn' => 'max_conn',
-        'override_host' => 'override_host',
-        'port' => 'port',
-        'weight' => 'weight'
+        'override_host' => 'override_host'
     ];
 
     /**
@@ -121,13 +121,13 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'weight' => 'setWeight',
+        'max_conn' => 'setMaxConn',
+        'port' => 'setPort',
         'address' => 'setAddress',
         'comment' => 'setComment',
         'disabled' => 'setDisabled',
-        'max_conn' => 'setMaxConn',
-        'override_host' => 'setOverrideHost',
-        'port' => 'setPort',
-        'weight' => 'setWeight'
+        'override_host' => 'setOverrideHost'
     ];
 
     /**
@@ -136,13 +136,13 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'weight' => 'getWeight',
+        'max_conn' => 'getMaxConn',
+        'port' => 'getPort',
         'address' => 'getAddress',
         'comment' => 'getComment',
         'disabled' => 'getDisabled',
-        'max_conn' => 'getMaxConn',
-        'override_host' => 'getOverrideHost',
-        'port' => 'getPort',
-        'weight' => 'getWeight'
+        'override_host' => 'getOverrideHost'
     ];
 
     /**
@@ -205,13 +205,13 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['weight'] = $data['weight'] ?? 100;
+        $this->container['max_conn'] = $data['max_conn'] ?? 0;
+        $this->container['port'] = $data['port'] ?? 80;
         $this->container['address'] = $data['address'] ?? null;
         $this->container['comment'] = $data['comment'] ?? null;
         $this->container['disabled'] = $data['disabled'] ?? false;
-        $this->container['max_conn'] = $data['max_conn'] ?? 0;
         $this->container['override_host'] = $data['override_host'] ?? 'null';
-        $this->container['port'] = $data['port'] ?? 80;
-        $this->container['weight'] = $data['weight'] ?? 100;
     }
 
     /**
@@ -245,6 +245,86 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets weight
+     *
+     * @return int|null
+     */
+    public function getWeight()
+    {
+        return $this->container['weight'];
+    }
+
+    /**
+     * Sets weight
+     *
+     * @param int|null $weight Weight (`1-100`) used to load balance this server against others.
+     *
+     * @return self
+     */
+    public function setWeight($weight)
+    {
+
+        if (!is_null($weight) && ($weight > 100)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling Server., must be smaller than or equal to 100.');
+        }
+        if (!is_null($weight) && ($weight < 1)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling Server., must be bigger than or equal to 1.');
+        }
+
+        $this->container['weight'] = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_conn
+     *
+     * @return int|null
+     */
+    public function getMaxConn()
+    {
+        return $this->container['max_conn'];
+    }
+
+    /**
+     * Sets max_conn
+     *
+     * @param int|null $max_conn Maximum number of connections. If the value is `0`, it inherits the value from pool's `max_conn_default`.
+     *
+     * @return self
+     */
+    public function setMaxConn($max_conn)
+    {
+        $this->container['max_conn'] = $max_conn;
+
+        return $this;
+    }
+
+    /**
+     * Gets port
+     *
+     * @return int|null
+     */
+    public function getPort()
+    {
+        return $this->container['port'];
+    }
+
+    /**
+     * Sets port
+     *
+     * @param int|null $port Port number. Setting port `443` does not force TLS. Set `use_tls` in pool to force TLS.
+     *
+     * @return self
+     */
+    public function setPort($port)
+    {
+        $this->container['port'] = $port;
+
+        return $this;
+    }
 
     /**
      * Gets address
@@ -319,30 +399,6 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets max_conn
-     *
-     * @return int|null
-     */
-    public function getMaxConn()
-    {
-        return $this->container['max_conn'];
-    }
-
-    /**
-     * Sets max_conn
-     *
-     * @param int|null $max_conn Maximum number of connections. If the value is `0`, it inherits the value from pool's `max_conn_default`.
-     *
-     * @return self
-     */
-    public function setMaxConn($max_conn)
-    {
-        $this->container['max_conn'] = $max_conn;
-
-        return $this;
-    }
-
-    /**
      * Gets override_host
      *
      * @return string|null
@@ -362,62 +418,6 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOverrideHost($override_host)
     {
         $this->container['override_host'] = $override_host;
-
-        return $this;
-    }
-
-    /**
-     * Gets port
-     *
-     * @return int|null
-     */
-    public function getPort()
-    {
-        return $this->container['port'];
-    }
-
-    /**
-     * Sets port
-     *
-     * @param int|null $port Port number. Setting port `443` does not force TLS. Set `use_tls` in pool to force TLS.
-     *
-     * @return self
-     */
-    public function setPort($port)
-    {
-        $this->container['port'] = $port;
-
-        return $this;
-    }
-
-    /**
-     * Gets weight
-     *
-     * @return int|null
-     */
-    public function getWeight()
-    {
-        return $this->container['weight'];
-    }
-
-    /**
-     * Sets weight
-     *
-     * @param int|null $weight Weight (`1-100`) used to load balance this server against others.
-     *
-     * @return self
-     */
-    public function setWeight($weight)
-    {
-
-        if (!is_null($weight) && ($weight > 100)) {
-            throw new \InvalidArgumentException('invalid value for $weight when calling Server., must be smaller than or equal to 100.');
-        }
-        if (!is_null($weight) && ($weight < 1)) {
-            throw new \InvalidArgumentException('invalid value for $weight when calling Server., must be bigger than or equal to 1.');
-        }
-
-        $this->container['weight'] = $weight;
 
         return $this;
     }

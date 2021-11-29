@@ -55,8 +55,8 @@ class WafRulesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]',
-        'included' => 'AnyOfWafTagWafRuleRevision[]'
+        'data' => '\Fastly\Model\WafRuleResponseData[]',
+        'included' => '\Fastly\Model\IncludedWithWafRuleItem[]'
     ];
 
     /**
@@ -271,7 +271,7 @@ class WafRulesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafRuleResponseData[]|null
      */
     public function getData()
     {
@@ -281,7 +281,7 @@ class WafRulesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafRuleResponseData[]|null $data data
      *
      * @return self
      */
@@ -295,7 +295,7 @@ class WafRulesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets included
      *
-     * @return AnyOfWafTagWafRuleRevision[]|null
+     * @return \Fastly\Model\IncludedWithWafRuleItem[]|null
      */
     public function getIncluded()
     {
@@ -305,7 +305,7 @@ class WafRulesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets included
      *
-     * @param AnyOfWafTagWafRuleRevision[]|null $included included
+     * @param \Fastly\Model\IncludedWithWafRuleItem[]|null $included included
      *
      * @return self
      */

@@ -53,9 +53,9 @@ class TlsSubscriptionData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'type' => '\Fastly\Model\TypeTlsSubscription',
         'attributes' => '\Fastly\Model\TlsSubscriptionDataAttributes',
-        'relationships' => 'AnyOfObjectObjectRelationshipTlsDomainsRelationshipTlsCertificates',
-        'type' => '\Fastly\Model\TypeTlsSubscription'
+        'relationships' => '\Fastly\Model\RelationshipsForTlsSubscription'
     ];
 
     /**
@@ -66,9 +66,9 @@ class TlsSubscriptionData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'type' => null,
         'attributes' => null,
-        'relationships' => null,
-        'type' => null
+        'relationships' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class TlsSubscriptionData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'type' => 'type',
         'attributes' => 'attributes',
-        'relationships' => 'relationships',
-        'type' => 'type'
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -109,9 +109,9 @@ class TlsSubscriptionData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'type' => 'setType',
         'attributes' => 'setAttributes',
-        'relationships' => 'setRelationships',
-        'type' => 'setType'
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -120,9 +120,9 @@ class TlsSubscriptionData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'type' => 'getType',
         'attributes' => 'getAttributes',
-        'relationships' => 'getRelationships',
-        'type' => 'getType'
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -185,9 +185,9 @@ class TlsSubscriptionData implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
         $this->container['relationships'] = $data['relationships'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -213,6 +213,30 @@ class TlsSubscriptionData implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeTlsSubscription|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeTlsSubscription|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
 
     /**
      * Gets attributes
@@ -241,7 +265,7 @@ class TlsSubscriptionData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets relationships
      *
-     * @return AnyOfObjectObjectRelationshipTlsDomainsRelationshipTlsCertificates|null
+     * @return \Fastly\Model\RelationshipsForTlsSubscription|null
      */
     public function getRelationships()
     {
@@ -251,37 +275,13 @@ class TlsSubscriptionData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets relationships
      *
-     * @param AnyOfObjectObjectRelationshipTlsDomainsRelationshipTlsCertificates|null $relationships relationships
+     * @param \Fastly\Model\RelationshipsForTlsSubscription|null $relationships relationships
      *
      * @return self
      */
     public function setRelationships($relationships)
     {
         $this->container['relationships'] = $relationships;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeTlsSubscription|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeTlsSubscription|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
 
         return $this;
     }

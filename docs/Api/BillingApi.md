@@ -14,6 +14,7 @@ $apiInstance = new Fastly\Api\BillingApi(
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**getInvoice()**](BillingApi.md#getInvoice) | **GET** /billing/v2/year/{year}/month/{month} | Get an invoice
+[**getInvoiceById()**](BillingApi.md#getInvoiceById) | **GET** /billing/v2/account_customers/{customer_id}/invoices/{invoice_id} | Get an invoice
 [**getInvoiceMtd()**](BillingApi.md#getInvoiceMtd) | **GET** /billing/v2/account_customers/{customer_id}/mtd_invoice | Get month-to-date billing estimate
 
 
@@ -50,6 +51,39 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `getInvoiceById()`
+
+```php
+getInvoiceById($options) // Get an invoice
+```
+
+Get the invoice for the given invoice_id.
+
+### Example
+```php
+try {
+    $apiInstance->getInvoiceById($options);
+} catch (Exception $e) {
+    echo 'Exception when calling BillingApi->getInvoiceById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
+**invoice_id** | **string** | Alphanumeric string identifying the invoice. |
+
+### Return type
+
+void (empty response body)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `getInvoiceMtd()`
 
 ```php
@@ -73,7 +107,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 **month** | **string** | 2-digit month. | [optional]
 **year** | **string** | 4-digit year. | [optional]
 

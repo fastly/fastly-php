@@ -53,9 +53,9 @@ class TlsBulkCertificateData implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'type' => '\Fastly\Model\TypeTlsBulkCertificate',
         'attributes' => '\Fastly\Model\TlsBulkCertificateDataAttributes',
-        'relationships' => 'AnyOfRelationshipTlsConfigurationsObject',
-        'type' => '\Fastly\Model\TypeTlsBulkCertificate'
+        'relationships' => '\Fastly\Model\RelationshipsForTlsBulkCertificate'
     ];
 
     /**
@@ -66,9 +66,9 @@ class TlsBulkCertificateData implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'type' => null,
         'attributes' => null,
-        'relationships' => null,
-        'type' => null
+        'relationships' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class TlsBulkCertificateData implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
+        'type' => 'type',
         'attributes' => 'attributes',
-        'relationships' => 'relationships',
-        'type' => 'type'
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -109,9 +109,9 @@ class TlsBulkCertificateData implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
+        'type' => 'setType',
         'attributes' => 'setAttributes',
-        'relationships' => 'setRelationships',
-        'type' => 'setType'
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -120,9 +120,9 @@ class TlsBulkCertificateData implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
+        'type' => 'getType',
         'attributes' => 'getAttributes',
-        'relationships' => 'getRelationships',
-        'type' => 'getType'
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -185,9 +185,9 @@ class TlsBulkCertificateData implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
         $this->container['relationships'] = $data['relationships'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -213,6 +213,30 @@ class TlsBulkCertificateData implements ModelInterface, ArrayAccess, \JsonSerial
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeTlsBulkCertificate|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeTlsBulkCertificate|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
 
     /**
      * Gets attributes
@@ -241,7 +265,7 @@ class TlsBulkCertificateData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets relationships
      *
-     * @return AnyOfRelationshipTlsConfigurationsObject|null
+     * @return \Fastly\Model\RelationshipsForTlsBulkCertificate|null
      */
     public function getRelationships()
     {
@@ -251,37 +275,13 @@ class TlsBulkCertificateData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets relationships
      *
-     * @param AnyOfRelationshipTlsConfigurationsObject|null $relationships relationships
+     * @param \Fastly\Model\RelationshipsForTlsBulkCertificate|null $relationships relationships
      *
      * @return self
      */
     public function setRelationships($relationships)
     {
         $this->container['relationships'] = $relationships;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeTlsBulkCertificate|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeTlsBulkCertificate|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
 
         return $this;
     }

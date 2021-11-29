@@ -53,22 +53,22 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'mixed',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
-        'placement' => '\Fastly\Model\LoggingPlacement',
+        'placement' => 'string',
+        'format_version' => 'int',
         'response_condition' => 'string',
+        'format' => 'mixed',
         'tls_ca_cert' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
         'tls_hostname' => 'string',
-        'request_max_bytes' => 'int',
         'request_max_entries' => 'int',
+        'request_max_bytes' => 'int',
         'index' => 'string',
-        'password' => 'string',
-        'pipeline' => 'string',
         'url' => 'string',
-        'user' => 'string'
+        'pipeline' => 'string',
+        'user' => 'string',
+        'password' => 'string'
     ];
 
     /**
@@ -79,22 +79,22 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
-        'format_version' => null,
         'name' => null,
         'placement' => null,
+        'format_version' => null,
         'response_condition' => null,
+        'format' => null,
         'tls_ca_cert' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
         'tls_hostname' => null,
-        'request_max_bytes' => null,
         'request_max_entries' => null,
+        'request_max_bytes' => null,
         'index' => null,
-        'password' => null,
-        'pipeline' => null,
         'url' => null,
-        'user' => null
+        'pipeline' => null,
+        'user' => null,
+        'password' => null
     ];
 
     /**
@@ -124,22 +124,22 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
-        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
+        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
+        'format' => 'format',
         'tls_ca_cert' => 'tls_ca_cert',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
         'tls_hostname' => 'tls_hostname',
-        'request_max_bytes' => 'request_max_bytes',
         'request_max_entries' => 'request_max_entries',
+        'request_max_bytes' => 'request_max_bytes',
         'index' => 'index',
-        'password' => 'password',
-        'pipeline' => 'pipeline',
         'url' => 'url',
-        'user' => 'user'
+        'pipeline' => 'pipeline',
+        'user' => 'user',
+        'password' => 'password'
     ];
 
     /**
@@ -148,22 +148,22 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
-        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
+        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
+        'format' => 'setFormat',
         'tls_ca_cert' => 'setTlsCaCert',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
         'tls_hostname' => 'setTlsHostname',
-        'request_max_bytes' => 'setRequestMaxBytes',
         'request_max_entries' => 'setRequestMaxEntries',
+        'request_max_bytes' => 'setRequestMaxBytes',
         'index' => 'setIndex',
-        'password' => 'setPassword',
-        'pipeline' => 'setPipeline',
         'url' => 'setUrl',
-        'user' => 'setUser'
+        'pipeline' => 'setPipeline',
+        'user' => 'setUser',
+        'password' => 'setPassword'
     ];
 
     /**
@@ -172,22 +172,22 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
-        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
+        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
+        'format' => 'getFormat',
         'tls_ca_cert' => 'getTlsCaCert',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
         'tls_hostname' => 'getTlsHostname',
-        'request_max_bytes' => 'getRequestMaxBytes',
         'request_max_entries' => 'getRequestMaxEntries',
+        'request_max_bytes' => 'getRequestMaxBytes',
         'index' => 'getIndex',
-        'password' => 'getPassword',
-        'pipeline' => 'getPipeline',
         'url' => 'getUrl',
-        'user' => 'getUser'
+        'pipeline' => 'getPipeline',
+        'user' => 'getUser',
+        'password' => 'getPassword'
     ];
 
     /**
@@ -231,8 +231,40 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$fastlyModelName;
     }
 
+    const PLACEMENT_NONE = 'none';
+    const PLACEMENT_WAF_DEBUG = 'waf_debug';
+    const PLACEMENT_NULL = 'null';
+    const FORMAT_VERSION_v1 = 1;
+    const FORMAT_VERSION_v2 = 2;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlacementAllowableValues()
+    {
+        return [
+            self::PLACEMENT_NONE,
+            self::PLACEMENT_WAF_DEBUG,
+            self::PLACEMENT_NULL,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatVersionAllowableValues()
+    {
+        return [
+            self::FORMAT_VERSION_v1,
+            self::FORMAT_VERSION_v2,
+        ];
+    }
     
 
     /**
@@ -250,22 +282,22 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
         $this->container['tls_hostname'] = $data['tls_hostname'] ?? 'null';
-        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
         $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
+        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
         $this->container['index'] = $data['index'] ?? null;
-        $this->container['password'] = $data['password'] ?? null;
-        $this->container['pipeline'] = $data['pipeline'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
+        $this->container['pipeline'] = $data['pipeline'] ?? null;
         $this->container['user'] = $data['user'] ?? null;
+        $this->container['password'] = $data['password'] ?? null;
     }
 
     /**
@@ -276,6 +308,24 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format_version', must be one of '%s'",
+                $this->container['format_version'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -291,54 +341,6 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets format
-     *
-     * @return mixed|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -367,7 +369,7 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets placement
      *
-     * @return \Fastly\Model\LoggingPlacement|null
+     * @return string|null
      */
     public function getPlacement()
     {
@@ -377,13 +379,57 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets placement
      *
-     * @param \Fastly\Model\LoggingPlacement|null $placement placement
+     * @param string|null $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
      *
      * @return self
      */
     public function setPlacement($placement)
     {
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($placement) && !in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['placement'] = $placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return int|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -408,6 +454,30 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return mixed|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
 
         return $this;
     }
@@ -509,30 +579,6 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets request_max_bytes
-     *
-     * @return int|null
-     */
-    public function getRequestMaxBytes()
-    {
-        return $this->container['request_max_bytes'];
-    }
-
-    /**
-     * Sets request_max_bytes
-     *
-     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` for unbounded.
-     *
-     * @return self
-     */
-    public function setRequestMaxBytes($request_max_bytes)
-    {
-        $this->container['request_max_bytes'] = $request_max_bytes;
-
-        return $this;
-    }
-
-    /**
      * Gets request_max_entries
      *
      * @return int|null
@@ -552,6 +598,30 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setRequestMaxEntries($request_max_entries)
     {
         $this->container['request_max_entries'] = $request_max_entries;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_max_bytes
+     *
+     * @return int|null
+     */
+    public function getRequestMaxBytes()
+    {
+        return $this->container['request_max_bytes'];
+    }
+
+    /**
+     * Sets request_max_bytes
+     *
+     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` for unbounded.
+     *
+     * @return self
+     */
+    public function setRequestMaxBytes($request_max_bytes)
+    {
+        $this->container['request_max_bytes'] = $request_max_bytes;
 
         return $this;
     }
@@ -581,25 +651,25 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets password
+     * Gets url
      *
      * @return string|null
      */
-    public function getPassword()
+    public function getUrl()
     {
-        return $this->container['password'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets password
+     * Sets url
      *
-     * @param string|null $password Basic Auth password.
+     * @param string|null $url The URL to stream logs to. Must use HTTPS.
      *
      * @return self
      */
-    public function setPassword($password)
+    public function setUrl($url)
     {
-        $this->container['password'] = $password;
+        $this->container['url'] = $url;
 
         return $this;
     }
@@ -629,30 +699,6 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets url
-     *
-     * @return string|null
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string|null $url The URL to stream logs to. Must use HTTPS.
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
      * Gets user
      *
      * @return string|null
@@ -672,6 +718,30 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setUser($user)
     {
         $this->container['user'] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Gets password
+     *
+     * @return string|null
+     */
+    public function getPassword()
+    {
+        return $this->container['password'];
+    }
+
+    /**
+     * Sets password
+     *
+     * @param string|null $password Basic Auth password.
+     *
+     * @return self
+     */
+    public function setPassword($password)
+    {
+        $this->container['password'] = $password;
 
         return $this;
     }

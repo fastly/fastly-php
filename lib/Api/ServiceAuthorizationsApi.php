@@ -392,7 +392,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -410,7 +410,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -464,7 +464,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -486,7 +486,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -524,7 +524,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1118,18 +1118,26 @@ class ServiceAuthorizationsApi
         $multipart = false;
 
         // query params
-        if (is_array($page_number)) {
-            $page_number = ObjectSerializer::serializeCollection($page_number, 'simple', true);
-        }
         if ($page_number !== null) {
-            $queryParams['page[number]'] = $page_number;
+            if('form' === 'form' && is_array($page_number)) {
+                foreach($page_number as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[number]'] = $page_number;
+            }
         }
         // query params
-        if (is_array($page_size)) {
-            $page_size = ObjectSerializer::serializeCollection($page_size, 'simple', true);
-        }
         if ($page_size !== null) {
-            $queryParams['page[size]'] = $page_size;
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[size]'] = $page_size;
+            }
         }
 
 
@@ -1204,7 +1212,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1223,7 +1231,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1313,7 +1321,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1335,7 +1343,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1384,7 +1392,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1489,7 +1497,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization service_authorization (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1509,7 +1517,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1600,7 +1608,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
      * @throws \InvalidArgumentException
@@ -1623,7 +1631,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
      * @throws \InvalidArgumentException
@@ -1673,7 +1681,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
      * @throws \InvalidArgumentException

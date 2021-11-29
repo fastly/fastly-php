@@ -97,6 +97,7 @@ Class | Method | Description
 [*BackendApi*](docs/Api/BackendApi.md) | [**listBackends**](docs/Api/BackendApi.md#listbackends) | List backends
 [*BackendApi*](docs/Api/BackendApi.md) | [**updateBackend**](docs/Api/BackendApi.md#updatebackend) | Update a backend
 [*BillingApi*](docs/Api/BillingApi.md) | [**getInvoice**](docs/Api/BillingApi.md#getinvoice) | Get an invoice
+[*BillingApi*](docs/Api/BillingApi.md) | [**getInvoiceById**](docs/Api/BillingApi.md#getinvoicebyid) | Get an invoice
 [*BillingApi*](docs/Api/BillingApi.md) | [**getInvoiceMtd**](docs/Api/BillingApi.md#getinvoicemtd) | Get month-to-date billing estimate
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**addBillingAddr**](docs/Api/BillingAddressApi.md#addbillingaddr) | Add a billing address to a customer
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**deleteBillingAddr**](docs/Api/BillingAddressApi.md#deletebillingaddr) | Delete a billing address
@@ -306,14 +307,17 @@ Class | Method | Description
 [*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**getLogSyslog**](docs/Api/LoggingSyslogApi.md#getlogsyslog) | Get a syslog log endpoint
 [*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**listLogSyslog**](docs/Api/LoggingSyslogApi.md#listlogsyslog) | List Syslog log endpoints
 [*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**updateLogSyslog**](docs/Api/LoggingSyslogApi.md#updatelogsyslog) | Update a syslog log endpoint
-[*PackageApi*](docs/Api/PackageApi.md) | [**getPackage**](docs/Api/PackageApi.md#getpackage) | Get details of the service&#39;s Compute@Edge package.
-[*PackageApi*](docs/Api/PackageApi.md) | [**putPackage**](docs/Api/PackageApi.md#putpackage) | Upload a Compute@Edge package.
 [*PoolApi*](docs/Api/PoolApi.md) | [**createServerPool**](docs/Api/PoolApi.md#createserverpool) | Create a server pool
 [*PoolApi*](docs/Api/PoolApi.md) | [**deleteServerPool**](docs/Api/PoolApi.md#deleteserverpool) | Delete a server pool
 [*PoolApi*](docs/Api/PoolApi.md) | [**getServerPool**](docs/Api/PoolApi.md#getserverpool) | Get a server pool
 [*PoolApi*](docs/Api/PoolApi.md) | [**listServerPools**](docs/Api/PoolApi.md#listserverpools) | List server pools
 [*PoolApi*](docs/Api/PoolApi.md) | [**updateServerPool**](docs/Api/PoolApi.md#updateserverpool) | Update a server pool
+[*PopApi*](docs/Api/PopApi.md) | [**listPops**](docs/Api/PopApi.md#listpops) | List Fastly POPs
 [*PublicIpListApi*](docs/Api/PublicIpListApi.md) | [**listFastlyIps**](docs/Api/PublicIpListApi.md#listfastlyips) | List Fastly&#39;s public IPs
+[*PurgeApi*](docs/Api/PurgeApi.md) | [**bulkPurgeTag**](docs/Api/PurgeApi.md#bulkpurgetag) | Purge multiple surrogate key tags
+[*PurgeApi*](docs/Api/PurgeApi.md) | [**purgeAll**](docs/Api/PurgeApi.md#purgeall) | Purge everything from a service
+[*PurgeApi*](docs/Api/PurgeApi.md) | [**purgeSingleUrl**](docs/Api/PurgeApi.md#purgesingleurl) | Purge a URL
+[*PurgeApi*](docs/Api/PurgeApi.md) | [**purgeTag**](docs/Api/PurgeApi.md#purgetag) | Purge by surrogate key tag
 [*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**createRateLimiter**](docs/Api/RateLimiterApi.md#createratelimiter) | Create a rate limiter
 [*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**deleteRateLimiter**](docs/Api/RateLimiterApi.md#deleteratelimiter) | Delete a rate limiter
 [*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**getRateLimiter**](docs/Api/RateLimiterApi.md#getratelimiter) | Get a rate limiter
@@ -391,11 +395,11 @@ Class | Method | Description
 [*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**listTlsKeys**](docs/Api/TlsPrivateKeysApi.md#listtlskeys) | List TLS private keys
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**createTlsSub**](docs/Api/TlsSubscriptionsApi.md#createtlssub) | Create a TLS subscription
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**deleteTlsSub**](docs/Api/TlsSubscriptionsApi.md#deletetlssub) | Delete a TLS subscription
+[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId**](docs/Api/TlsSubscriptionsApi.md#deletetlssubscriptionstlssubscriptionidauthorizationstlsauthorizationidglobalsignemailchallengesglobalsignemailchallengeid) | Delete a GlobalSign email challenge
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**getTlsSub**](docs/Api/TlsSubscriptionsApi.md#gettlssub) | Get a TLS subscription
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**listTlsSubs**](docs/Api/TlsSubscriptionsApi.md#listtlssubs) | List TLS subscriptions
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**patchTlsSub**](docs/Api/TlsSubscriptionsApi.md#patchtlssub) | Update a TLS subscription
-[*TlsSubscriptionsOtherApi*](docs/Api/TlsSubscriptionsOtherApi.md) | [**deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId**](docs/Api/TlsSubscriptionsOtherApi.md#deletetlssubscriptionstlssubscriptionidauthorizationstlsauthorizationidglobalsignemailchallengesglobalsignemailchallengeid) | Delete a GlobalSign email challenge
-[*TlsSubscriptionsOtherApi*](docs/Api/TlsSubscriptionsOtherApi.md) | [**postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges**](docs/Api/TlsSubscriptionsOtherApi.md#posttlssubscriptionstlssubscriptionidauthorizationstlsauthorizationidglobalsignemailchallenges) | Creates a GlobalSign email challenge.
+[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges**](docs/Api/TlsSubscriptionsApi.md#posttlssubscriptionstlssubscriptionidauthorizationstlsauthorizationidglobalsignemailchallenges) | Creates a GlobalSign email challenge.
 [*TokensApi*](docs/Api/TokensApi.md) | [**bulkRevokeTokens**](docs/Api/TokensApi.md#bulkrevoketokens) | Revoke multiple tokens
 [*TokensApi*](docs/Api/TokensApi.md) | [**createToken**](docs/Api/TokensApi.md#createtoken) | Create a token
 [*TokensApi*](docs/Api/TokensApi.md) | [**getTokenCurrent**](docs/Api/TokensApi.md#gettokencurrent) | Get the current token

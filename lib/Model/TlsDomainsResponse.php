@@ -55,7 +55,7 @@ class TlsDomainsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsDomainData[]'
     ];
 
     /**
@@ -265,7 +265,7 @@ class TlsDomainsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsDomainData[]|null
      */
     public function getData()
     {
@@ -275,7 +275,7 @@ class TlsDomainsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsDomainData[]|null $data data
      *
      * @return self
      */

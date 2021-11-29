@@ -56,8 +56,8 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'access_key' => 'string',
         'bucket_name' => 'string',
         'path' => 'string',
-        'public_key' => 'string',
         'region' => 'string',
+        'public_key' => 'string',
         'user' => 'string'
     ];
 
@@ -72,8 +72,8 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'access_key' => null,
         'bucket_name' => null,
         'path' => null,
-        'public_key' => null,
         'region' => null,
+        'public_key' => null,
         'user' => null
     ];
 
@@ -107,8 +107,8 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'access_key' => 'access_key',
         'bucket_name' => 'bucket_name',
         'path' => 'path',
-        'public_key' => 'public_key',
         'region' => 'region',
+        'public_key' => 'public_key',
         'user' => 'user'
     ];
 
@@ -121,8 +121,8 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'access_key' => 'setAccessKey',
         'bucket_name' => 'setBucketName',
         'path' => 'setPath',
-        'public_key' => 'setPublicKey',
         'region' => 'setRegion',
+        'public_key' => 'setPublicKey',
         'user' => 'setUser'
     ];
 
@@ -135,8 +135,8 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         'access_key' => 'getAccessKey',
         'bucket_name' => 'getBucketName',
         'path' => 'getPath',
-        'public_key' => 'getPublicKey',
         'region' => 'getRegion',
+        'public_key' => 'getPublicKey',
         'user' => 'getUser'
     ];
 
@@ -187,6 +187,7 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     const REGION_LON = 'LON';
     const REGION_SYD = 'SYD';
     const REGION_HKG = 'HKG';
+    const REGION_NULL = 'null';
     
 
     
@@ -204,6 +205,7 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
             self::REGION_LON,
             self::REGION_SYD,
             self::REGION_HKG,
+            self::REGION_NULL,
         ];
     }
     
@@ -226,8 +228,8 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['access_key'] = $data['access_key'] ?? null;
         $this->container['bucket_name'] = $data['bucket_name'] ?? null;
         $this->container['path'] = $data['path'] ?? 'null';
-        $this->container['public_key'] = $data['public_key'] ?? 'null';
         $this->container['region'] = $data['region'] ?? null;
+        $this->container['public_key'] = $data['public_key'] ?? 'null';
         $this->container['user'] = $data['user'] ?? null;
     }
 
@@ -337,30 +339,6 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets public_key
-     *
-     * @return string|null
-     */
-    public function getPublicKey()
-    {
-        return $this->container['public_key'];
-    }
-
-    /**
-     * Sets public_key
-     *
-     * @param string|null $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
-     *
-     * @return self
-     */
-    public function setPublicKey($public_key)
-    {
-        $this->container['public_key'] = $public_key;
-
-        return $this;
-    }
-
-    /**
      * Gets region
      *
      * @return string|null
@@ -390,6 +368,30 @@ class LoggingCloudfilesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
         $this->container['region'] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Gets public_key
+     *
+     * @return string|null
+     */
+    public function getPublicKey()
+    {
+        return $this->container['public_key'];
+    }
+
+    /**
+     * Sets public_key
+     *
+     * @param string|null $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+     *
+     * @return self
+     */
+    public function setPublicKey($public_key)
+    {
+        $this->container['public_key'] = $public_key;
 
         return $this;
     }

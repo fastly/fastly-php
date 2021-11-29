@@ -43,13 +43,13 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 **comment** | **string** | A freeform descriptive note. | [optional]
 **name** | **string** | Name of the condition. Required. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
+**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
 **statement** | **string** | A conditional expression in VCL used to determine if the condition is met. | [optional]
-**type** | **string** | Type of the condition. Required. | [optional]
+**type** | **string** | Type of the condition. Required. | [optional] [one of: 'REQUEST', 'CACHE', 'RESPONSE', 'PREFETCH']
 
 ### Return type
 
@@ -81,9 +81,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**condition_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**condition_name** | **string** | Name of the condition. Required. |
 
 ### Return type
 
@@ -115,9 +115,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**condition_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**condition_name** | **string** | Name of the condition. Required. |
 
 ### Return type
 
@@ -149,8 +149,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -182,14 +182,14 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**condition_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**condition_name** | **string** | Name of the condition. Required. |
 **comment** | **string** | A freeform descriptive note. | [optional]
 **name** | **string** | Name of the condition. Required. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
+**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
 **statement** | **string** | A conditional expression in VCL used to determine if the condition is met. | [optional]
-**type** | **string** | Type of the condition. Required. | [optional]
+**type** | **string** | Type of the condition. Required. | [optional] [one of: 'REQUEST', 'CACHE', 'RESPONSE', 'PREFETCH']
 
 ### Return type
 

@@ -53,7 +53,7 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\Event[]'
     ];
 
     /**
@@ -205,7 +205,7 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\Event[]|null
      */
     public function getData()
     {
@@ -215,7 +215,7 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\Event[]|null $data data
      *
      * @return self
      */

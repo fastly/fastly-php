@@ -55,7 +55,7 @@ class ServiceAuthorizationsResponse implements ModelInterface, ArrayAccess, \Jso
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\ServiceAuthorizationResponseData[]'
     ];
 
     /**
@@ -265,7 +265,7 @@ class ServiceAuthorizationsResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\ServiceAuthorizationResponseData[]|null
      */
     public function getData()
     {
@@ -275,7 +275,7 @@ class ServiceAuthorizationsResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\ServiceAuthorizationResponseData[]|null $data data
      *
      * @return self
      */

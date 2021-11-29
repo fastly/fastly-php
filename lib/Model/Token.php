@@ -53,9 +53,9 @@ class Token implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'services' => 'string[]',
         'name' => 'string',
-        'scope' => 'string',
-        'services' => 'string[]'
+        'scope' => 'string'
     ];
 
     /**
@@ -66,9 +66,9 @@ class Token implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'services' => null,
         'name' => null,
-        'scope' => null,
-        'services' => null
+        'scope' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class Token implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'services' => 'services',
         'name' => 'name',
-        'scope' => 'scope',
-        'services' => 'services'
+        'scope' => 'scope'
     ];
 
     /**
@@ -109,9 +109,9 @@ class Token implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'services' => 'setServices',
         'name' => 'setName',
-        'scope' => 'setScope',
-        'services' => 'setServices'
+        'scope' => 'setScope'
     ];
 
     /**
@@ -120,9 +120,9 @@ class Token implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'services' => 'getServices',
         'name' => 'getName',
-        'scope' => 'getScope',
-        'services' => 'getServices'
+        'scope' => 'getScope'
     ];
 
     /**
@@ -204,9 +204,9 @@ class Token implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['services'] = $data['services'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['scope'] = $data['scope'] ?? SCOPE__GLOBAL;
-        $this->container['services'] = $data['services'] ?? null;
     }
 
     /**
@@ -241,6 +241,30 @@ class Token implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets services
+     *
+     * @return string[]|null
+     */
+    public function getServices()
+    {
+        return $this->container['services'];
+    }
+
+    /**
+     * Sets services
+     *
+     * @param string[]|null $services List of alphanumeric strings identifying services (optional). If no services are specified, the token will have access to all services on the account.
+     *
+     * @return self
+     */
+    public function setServices($services)
+    {
+        $this->container['services'] = $services;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -296,30 +320,6 @@ class Token implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['scope'] = $scope;
-
-        return $this;
-    }
-
-    /**
-     * Gets services
-     *
-     * @return string[]|null
-     */
-    public function getServices()
-    {
-        return $this->container['services'];
-    }
-
-    /**
-     * Sets services
-     *
-     * @param string[]|null $services List of alphanumeric strings identifying services (optional). If no services are specified, the token will have access to all services on the account.
-     *
-     * @return self
-     */
-    public function setServices($services)
-    {
-        $this->container['services'] = $services;
 
         return $this;
     }

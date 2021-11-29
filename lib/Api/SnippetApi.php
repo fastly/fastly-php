@@ -115,13 +115,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -140,13 +140,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -236,13 +236,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -264,13 +264,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -319,13 +319,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -335,11 +335,11 @@ class SnippetApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
-        $content = array_key_exists('content', $options) ? $options['content'] : null;
-        $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
-        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
+        $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
+        $content = array_key_exists('content', $options) ? $options['content'] : null;
+        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -381,24 +381,24 @@ class SnippetApi
         }
 
         // form params
-        if ($content !== null) {
-            $formParams['content'] = ObjectSerializer::toFormValue($content);
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
         // form params
         if ($dynamic !== null) {
             $formParams['dynamic'] = ObjectSerializer::toFormValue($dynamic);
         }
         // form params
-        if ($name !== null) {
-            $formParams['name'] = ObjectSerializer::toFormValue($name);
+        if ($type !== null) {
+            $formParams['type'] = ObjectSerializer::toFormValue($type);
+        }
+        // form params
+        if ($content !== null) {
+            $formParams['content'] = ObjectSerializer::toFormValue($content);
         }
         // form params
         if ($priority !== null) {
             $formParams['priority'] = ObjectSerializer::toFormValue($priority);
-        }
-        // form params
-        if ($type !== null) {
-            $formParams['type'] = ObjectSerializer::toFormValue($type);
         }
 
         if ($multipart) {
@@ -470,9 +470,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $snippet_name snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -491,9 +491,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -583,9 +583,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -607,9 +607,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -658,9 +658,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -795,9 +795,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $snippet_name snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -816,9 +816,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -908,9 +908,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -932,9 +932,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -983,9 +983,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1120,8 +1120,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $snippet_id snippet_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1140,8 +1140,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $snippet_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1231,8 +1231,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $snippet_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1254,8 +1254,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $snippet_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1304,8 +1304,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $snippet_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1425,8 +1425,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1445,8 +1445,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1536,8 +1536,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1559,8 +1559,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1609,8 +1609,8 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1730,9 +1730,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $snippet_name snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1751,9 +1751,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1843,9 +1843,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1867,9 +1867,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1918,9 +1918,9 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $snippet_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $snippet_name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2055,13 +2055,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $snippet_id snippet_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2080,13 +2080,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $snippet_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2176,13 +2176,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $snippet_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2204,13 +2204,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $snippet_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2259,13 +2259,13 @@ class SnippetApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $snippet_id (required)
-     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
+     * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
+     * @param  string $priority Numeric string value. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2275,11 +2275,11 @@ class SnippetApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $snippet_id = array_key_exists('snippet_id', $options) ? $options['snippet_id'] : null;
-        $content = array_key_exists('content', $options) ? $options['content'] : null;
-        $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
-        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
+        $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
+        $content = array_key_exists('content', $options) ? $options['content'] : null;
+        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -2321,24 +2321,24 @@ class SnippetApi
         }
 
         // form params
-        if ($content !== null) {
-            $formParams['content'] = ObjectSerializer::toFormValue($content);
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
         // form params
         if ($dynamic !== null) {
             $formParams['dynamic'] = ObjectSerializer::toFormValue($dynamic);
         }
         // form params
-        if ($name !== null) {
-            $formParams['name'] = ObjectSerializer::toFormValue($name);
+        if ($type !== null) {
+            $formParams['type'] = ObjectSerializer::toFormValue($type);
+        }
+        // form params
+        if ($content !== null) {
+            $formParams['content'] = ObjectSerializer::toFormValue($content);
         }
         // form params
         if ($priority !== null) {
             $formParams['priority'] = ObjectSerializer::toFormValue($priority);
-        }
-        // form params
-        if ($type !== null) {
-            $formParams['type'] = ObjectSerializer::toFormValue($type);
         }
 
         if ($multipart) {

@@ -115,7 +115,7 @@ class VclDiffApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $from_version_id The version number of the service to which changes in the generated VCL are being compared. Can either be a positive number from 1 to your maximum version or a negative number from -1 down (-1 is latest version etc). (required)
      * @param  int $to_version_id The version number of the service from which changes in the generated VCL are being compared. Uses same numbering scheme as &#x60;from&#x60;. (required)
      * @param  string $format Optional method to format the diff field. (optional, default to 'text')
@@ -137,7 +137,7 @@ class VclDiffApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $from_version_id The version number of the service to which changes in the generated VCL are being compared. Can either be a positive number from 1 to your maximum version or a negative number from -1 down (-1 is latest version etc). (required)
      * @param  int $to_version_id The version number of the service from which changes in the generated VCL are being compared. Uses same numbering scheme as &#x60;from&#x60;. (required)
      * @param  string $format Optional method to format the diff field. (optional, default to 'text')
@@ -230,7 +230,7 @@ class VclDiffApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $from_version_id The version number of the service to which changes in the generated VCL are being compared. Can either be a positive number from 1 to your maximum version or a negative number from -1 down (-1 is latest version etc). (required)
      * @param  int $to_version_id The version number of the service from which changes in the generated VCL are being compared. Uses same numbering scheme as &#x60;from&#x60;. (required)
      * @param  string $format Optional method to format the diff field. (optional, default to 'text')
@@ -255,7 +255,7 @@ class VclDiffApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $from_version_id The version number of the service to which changes in the generated VCL are being compared. Can either be a positive number from 1 to your maximum version or a negative number from -1 down (-1 is latest version etc). (required)
      * @param  int $to_version_id The version number of the service from which changes in the generated VCL are being compared. Uses same numbering scheme as &#x60;from&#x60;. (required)
      * @param  string $format Optional method to format the diff field. (optional, default to 'text')
@@ -307,7 +307,7 @@ class VclDiffApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $from_version_id The version number of the service to which changes in the generated VCL are being compared. Can either be a positive number from 1 to your maximum version or a negative number from -1 down (-1 is latest version etc). (required)
      * @param  int $to_version_id The version number of the service from which changes in the generated VCL are being compared. Uses same numbering scheme as &#x60;from&#x60;. (required)
      * @param  string $format Optional method to format the diff field. (optional, default to 'text')

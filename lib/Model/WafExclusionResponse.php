@@ -53,7 +53,7 @@ class WafExclusionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'Data'
+        'data' => '\Fastly\Model\WafExclusionResponseData'
     ];
 
     /**
@@ -205,7 +205,7 @@ class WafExclusionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets data
      *
-     * @return Data|null
+     * @return \Fastly\Model\WafExclusionResponseData|null
      */
     public function getData()
     {
@@ -215,7 +215,7 @@ class WafExclusionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets data
      *
-     * @param Data|null $data data
+     * @param \Fastly\Model\WafExclusionResponseData|null $data data
      *
      * @return self
      */

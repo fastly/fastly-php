@@ -53,7 +53,7 @@ class WafFirewallsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]',
+        'data' => '\Fastly\Model\WafFirewallResponseData[]',
         'included' => '\Fastly\Model\SchemasWafFirewallVersion[]'
     ];
 
@@ -211,7 +211,7 @@ class WafFirewallsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafFirewallResponseData[]|null
      */
     public function getData()
     {
@@ -221,7 +221,7 @@ class WafFirewallsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafFirewallResponseData[]|null $data data
      *
      * @return self
      */

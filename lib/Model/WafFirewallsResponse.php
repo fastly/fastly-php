@@ -55,7 +55,7 @@ class WafFirewallsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]',
+        'data' => '\Fastly\Model\WafFirewallResponseData[]',
         'included' => '\Fastly\Model\SchemasWafFirewallVersion[]'
     ];
 
@@ -271,7 +271,7 @@ class WafFirewallsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafFirewallResponseData[]|null
      */
     public function getData()
     {
@@ -281,7 +281,7 @@ class WafFirewallsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafFirewallResponseData[]|null $data data
      *
      * @return self
      */

@@ -53,7 +53,7 @@ class WafRuleRevisionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]',
+        'data' => '\Fastly\Model\WafRuleRevisionResponseData[]',
         'included' => '\Fastly\Model\WafRule[]'
     ];
 
@@ -211,7 +211,7 @@ class WafRuleRevisionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafRuleRevisionResponseData[]|null
      */
     public function getData()
     {
@@ -221,7 +221,7 @@ class WafRuleRevisionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafRuleRevisionResponseData[]|null $data data
      *
      * @return self
      */

@@ -53,8 +53,8 @@ class LoggingGcsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'secret_key' => 'string',
-        'user' => 'string'
+        'user' => 'string',
+        'secret_key' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class LoggingGcsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'secret_key' => null,
-        'user' => null
+        'user' => null,
+        'secret_key' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class LoggingGcsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'secret_key' => 'secret_key',
-        'user' => 'user'
+        'user' => 'user',
+        'secret_key' => 'secret_key'
     ];
 
     /**
@@ -106,8 +106,8 @@ class LoggingGcsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'secret_key' => 'setSecretKey',
-        'user' => 'setUser'
+        'user' => 'setUser',
+        'secret_key' => 'setSecretKey'
     ];
 
     /**
@@ -116,8 +116,8 @@ class LoggingGcsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'secret_key' => 'getSecretKey',
-        'user' => 'getUser'
+        'user' => 'getUser',
+        'secret_key' => 'getSecretKey'
     ];
 
     /**
@@ -180,8 +180,8 @@ class LoggingGcsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['secret_key'] = $data['secret_key'] ?? null;
         $this->container['user'] = $data['user'] ?? null;
+        $this->container['secret_key'] = $data['secret_key'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class LoggingGcsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets secret_key
-     *
-     * @return string|null
-     */
-    public function getSecretKey()
-    {
-        return $this->container['secret_key'];
-    }
-
-    /**
-     * Sets secret_key
-     *
-     * @param string|null $secret_key Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Required.
-     *
-     * @return self
-     */
-    public function setSecretKey($secret_key)
-    {
-        $this->container['secret_key'] = $secret_key;
-
-        return $this;
-    }
-
-    /**
      * Gets user
      *
      * @return string|null
@@ -252,6 +228,30 @@ class LoggingGcsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUser($user)
     {
         $this->container['user'] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Gets secret_key
+     *
+     * @return string|null
+     */
+    public function getSecretKey()
+    {
+        return $this->container['secret_key'];
+    }
+
+    /**
+     * Sets secret_key
+     *
+     * @param string|null $secret_key Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Required.
+     *
+     * @return self
+     */
+    public function setSecretKey($secret_key)
+    {
+        $this->container['secret_key'] = $secret_key;
 
         return $this;
     }

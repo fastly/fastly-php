@@ -53,15 +53,15 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'string',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
-        'placement' => '\Fastly\Model\LoggingPlacement',
+        'placement' => 'string',
+        'format_version' => 'int',
         'response_condition' => 'string',
-        'secret_key' => 'string',
+        'format' => 'string',
         'user' => 'string',
-        'project_id' => 'string',
-        'topic' => 'string'
+        'secret_key' => 'string',
+        'topic' => 'string',
+        'project_id' => 'string'
     ];
 
     /**
@@ -72,15 +72,15 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
-        'format_version' => null,
         'name' => null,
         'placement' => null,
+        'format_version' => null,
         'response_condition' => null,
-        'secret_key' => null,
+        'format' => null,
         'user' => null,
-        'project_id' => null,
-        'topic' => null
+        'secret_key' => null,
+        'topic' => null,
+        'project_id' => null
     ];
 
     /**
@@ -110,15 +110,15 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
-        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
+        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'secret_key' => 'secret_key',
+        'format' => 'format',
         'user' => 'user',
-        'project_id' => 'project_id',
-        'topic' => 'topic'
+        'secret_key' => 'secret_key',
+        'topic' => 'topic',
+        'project_id' => 'project_id'
     ];
 
     /**
@@ -127,15 +127,15 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
-        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
+        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'secret_key' => 'setSecretKey',
+        'format' => 'setFormat',
         'user' => 'setUser',
-        'project_id' => 'setProjectId',
-        'topic' => 'setTopic'
+        'secret_key' => 'setSecretKey',
+        'topic' => 'setTopic',
+        'project_id' => 'setProjectId'
     ];
 
     /**
@@ -144,15 +144,15 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
-        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
+        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'secret_key' => 'getSecretKey',
+        'format' => 'getFormat',
         'user' => 'getUser',
-        'project_id' => 'getProjectId',
-        'topic' => 'getTopic'
+        'secret_key' => 'getSecretKey',
+        'topic' => 'getTopic',
+        'project_id' => 'getProjectId'
     ];
 
     /**
@@ -196,8 +196,40 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$fastlyModelName;
     }
 
+    const PLACEMENT_NONE = 'none';
+    const PLACEMENT_WAF_DEBUG = 'waf_debug';
+    const PLACEMENT_NULL = 'null';
+    const FORMAT_VERSION_v1 = 1;
+    const FORMAT_VERSION_v2 = 2;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlacementAllowableValues()
+    {
+        return [
+            self::PLACEMENT_NONE,
+            self::PLACEMENT_WAF_DEBUG,
+            self::PLACEMENT_NULL,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatVersionAllowableValues()
+    {
+        return [
+            self::FORMAT_VERSION_v1,
+            self::FORMAT_VERSION_v2,
+        ];
+    }
     
 
     /**
@@ -215,15 +247,15 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['secret_key'] = $data['secret_key'] ?? null;
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['user'] = $data['user'] ?? null;
-        $this->container['project_id'] = $data['project_id'] ?? null;
+        $this->container['secret_key'] = $data['secret_key'] ?? null;
         $this->container['topic'] = $data['topic'] ?? null;
+        $this->container['project_id'] = $data['project_id'] ?? null;
     }
 
     /**
@@ -234,6 +266,24 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format_version', must be one of '%s'",
+                $this->container['format_version'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -249,54 +299,6 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -325,7 +327,7 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets placement
      *
-     * @return \Fastly\Model\LoggingPlacement|null
+     * @return string|null
      */
     public function getPlacement()
     {
@@ -335,13 +337,57 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets placement
      *
-     * @param \Fastly\Model\LoggingPlacement|null $placement placement
+     * @param string|null $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
      *
      * @return self
      */
     public function setPlacement($placement)
     {
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($placement) && !in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['placement'] = $placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return int|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -371,25 +417,25 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets secret_key
+     * Gets format
      *
      * @return string|null
      */
-    public function getSecretKey()
+    public function getFormat()
     {
-        return $this->container['secret_key'];
+        return $this->container['format'];
     }
 
     /**
-     * Sets secret_key
+     * Sets format
      *
-     * @param string|null $secret_key Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Required.
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
      *
      * @return self
      */
-    public function setSecretKey($secret_key)
+    public function setFormat($format)
     {
-        $this->container['secret_key'] = $secret_key;
+        $this->container['format'] = $format;
 
         return $this;
     }
@@ -419,25 +465,25 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets project_id
+     * Gets secret_key
      *
      * @return string|null
      */
-    public function getProjectId()
+    public function getSecretKey()
     {
-        return $this->container['project_id'];
+        return $this->container['secret_key'];
     }
 
     /**
-     * Sets project_id
+     * Sets secret_key
      *
-     * @param string|null $project_id Your Google Cloud Platform project ID. Required
+     * @param string|null $secret_key Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Required.
      *
      * @return self
      */
-    public function setProjectId($project_id)
+    public function setSecretKey($secret_key)
     {
-        $this->container['project_id'] = $project_id;
+        $this->container['secret_key'] = $secret_key;
 
         return $this;
     }
@@ -462,6 +508,30 @@ class LoggingGooglePubsub implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTopic($topic)
     {
         $this->container['topic'] = $topic;
+
+        return $this;
+    }
+
+    /**
+     * Gets project_id
+     *
+     * @return string|null
+     */
+    public function getProjectId()
+    {
+        return $this->container['project_id'];
+    }
+
+    /**
+     * Sets project_id
+     *
+     * @param string|null $project_id Your Google Cloud Platform project ID. Required
+     *
+     * @return self
+     */
+    public function setProjectId($project_id)
+    {
+        $this->container['project_id'] = $project_id;
 
         return $this;
     }

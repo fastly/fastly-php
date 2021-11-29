@@ -53,22 +53,22 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'string',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
-        'placement' => '\Fastly\Model\LoggingPlacement',
+        'placement' => 'string',
+        'format_version' => 'int',
         'response_condition' => 'string',
-        'compression_codec' => '\Fastly\Model\LoggingCompressionCodec',
-        'gzip_level' => 'int',
-        'message_type' => '\Fastly\Model\LoggingMessageType',
-        'period' => 'int',
+        'format' => 'string',
+        'message_type' => 'string',
         'timestamp_format' => 'string',
+        'period' => 'int',
+        'gzip_level' => 'int',
+        'compression_codec' => 'string',
+        'path' => 'string',
         'account_name' => 'string',
         'container' => 'string',
-        'file_max_bytes' => 'int',
-        'path' => 'string',
-        'public_key' => 'string',
         'sas_token' => 'string',
+        'public_key' => 'string',
+        'file_max_bytes' => 'int',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -84,22 +84,22 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
-        'format_version' => null,
         'name' => null,
         'placement' => null,
+        'format_version' => null,
         'response_condition' => null,
-        'compression_codec' => null,
-        'gzip_level' => null,
+        'format' => null,
         'message_type' => null,
-        'period' => null,
         'timestamp_format' => null,
+        'period' => null,
+        'gzip_level' => null,
+        'compression_codec' => null,
+        'path' => null,
         'account_name' => null,
         'container' => null,
-        'file_max_bytes' => null,
-        'path' => null,
-        'public_key' => null,
         'sas_token' => null,
+        'public_key' => null,
+        'file_max_bytes' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -134,22 +134,22 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
-        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
+        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'compression_codec' => 'compression_codec',
-        'gzip_level' => 'gzip_level',
+        'format' => 'format',
         'message_type' => 'message_type',
-        'period' => 'period',
         'timestamp_format' => 'timestamp_format',
+        'period' => 'period',
+        'gzip_level' => 'gzip_level',
+        'compression_codec' => 'compression_codec',
+        'path' => 'path',
         'account_name' => 'account_name',
         'container' => 'container',
-        'file_max_bytes' => 'file_max_bytes',
-        'path' => 'path',
-        'public_key' => 'public_key',
         'sas_token' => 'sas_token',
+        'public_key' => 'public_key',
+        'file_max_bytes' => 'file_max_bytes',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -163,22 +163,22 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
-        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
+        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'compression_codec' => 'setCompressionCodec',
-        'gzip_level' => 'setGzipLevel',
+        'format' => 'setFormat',
         'message_type' => 'setMessageType',
-        'period' => 'setPeriod',
         'timestamp_format' => 'setTimestampFormat',
+        'period' => 'setPeriod',
+        'gzip_level' => 'setGzipLevel',
+        'compression_codec' => 'setCompressionCodec',
+        'path' => 'setPath',
         'account_name' => 'setAccountName',
         'container' => 'setContainer',
-        'file_max_bytes' => 'setFileMaxBytes',
-        'path' => 'setPath',
-        'public_key' => 'setPublicKey',
         'sas_token' => 'setSasToken',
+        'public_key' => 'setPublicKey',
+        'file_max_bytes' => 'setFileMaxBytes',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -192,22 +192,22 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
-        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
+        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'compression_codec' => 'getCompressionCodec',
-        'gzip_level' => 'getGzipLevel',
+        'format' => 'getFormat',
         'message_type' => 'getMessageType',
-        'period' => 'getPeriod',
         'timestamp_format' => 'getTimestampFormat',
+        'period' => 'getPeriod',
+        'gzip_level' => 'getGzipLevel',
+        'compression_codec' => 'getCompressionCodec',
+        'path' => 'getPath',
         'account_name' => 'getAccountName',
         'container' => 'getContainer',
-        'file_max_bytes' => 'getFileMaxBytes',
-        'path' => 'getPath',
-        'public_key' => 'getPublicKey',
         'sas_token' => 'getSasToken',
+        'public_key' => 'getPublicKey',
+        'file_max_bytes' => 'getFileMaxBytes',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -256,8 +256,76 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$fastlyModelName;
     }
 
+    const PLACEMENT_NONE = 'none';
+    const PLACEMENT_WAF_DEBUG = 'waf_debug';
+    const PLACEMENT_NULL = 'null';
+    const FORMAT_VERSION_v1 = 1;
+    const FORMAT_VERSION_v2 = 2;
+    const MESSAGE_TYPE_CLASSIC = 'classic';
+    const MESSAGE_TYPE_LOGGLY = 'loggly';
+    const MESSAGE_TYPE_LOGPLEX = 'logplex';
+    const MESSAGE_TYPE_BLANK = 'blank';
+    const COMPRESSION_CODEC_ZSTD = 'zstd';
+    const COMPRESSION_CODEC_SNAPPY = 'snappy';
+    const COMPRESSION_CODEC_GZIP = 'gzip';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlacementAllowableValues()
+    {
+        return [
+            self::PLACEMENT_NONE,
+            self::PLACEMENT_WAF_DEBUG,
+            self::PLACEMENT_NULL,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatVersionAllowableValues()
+    {
+        return [
+            self::FORMAT_VERSION_v1,
+            self::FORMAT_VERSION_v2,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMessageTypeAllowableValues()
+    {
+        return [
+            self::MESSAGE_TYPE_CLASSIC,
+            self::MESSAGE_TYPE_LOGGLY,
+            self::MESSAGE_TYPE_LOGPLEX,
+            self::MESSAGE_TYPE_BLANK,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCompressionCodecAllowableValues()
+    {
+        return [
+            self::COMPRESSION_CODEC_ZSTD,
+            self::COMPRESSION_CODEC_SNAPPY,
+            self::COMPRESSION_CODEC_GZIP,
+        ];
+    }
     
 
     /**
@@ -275,22 +343,22 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['compression_codec'] = $data['compression_codec'] ?? null;
-        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
-        $this->container['message_type'] = $data['message_type'] ?? null;
-        $this->container['period'] = $data['period'] ?? 3600;
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['message_type'] = $data['message_type'] ?? MESSAGE_TYPE_CLASSIC;
         $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
+        $this->container['period'] = $data['period'] ?? 3600;
+        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
+        $this->container['compression_codec'] = $data['compression_codec'] ?? null;
+        $this->container['path'] = $data['path'] ?? 'null';
         $this->container['account_name'] = $data['account_name'] ?? null;
         $this->container['container'] = $data['container'] ?? null;
-        $this->container['file_max_bytes'] = $data['file_max_bytes'] ?? null;
-        $this->container['path'] = $data['path'] ?? 'null';
-        $this->container['public_key'] = $data['public_key'] ?? 'null';
         $this->container['sas_token'] = $data['sas_token'] ?? null;
+        $this->container['public_key'] = $data['public_key'] ?? 'null';
+        $this->container['file_max_bytes'] = $data['file_max_bytes'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -306,6 +374,42 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format_version', must be one of '%s'",
+                $this->container['format_version'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMessageTypeAllowableValues();
+        if (!is_null($this->container['message_type']) && !in_array($this->container['message_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'message_type', must be one of '%s'",
+                $this->container['message_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCompressionCodecAllowableValues();
+        if (!is_null($this->container['compression_codec']) && !in_array($this->container['compression_codec'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'compression_codec', must be one of '%s'",
+                $this->container['compression_codec'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         if (!is_null($this->container['file_max_bytes']) && ($this->container['file_max_bytes'] < 1048576)) {
             $invalidProperties[] = "invalid value for 'file_max_bytes', must be bigger than or equal to 1048576.";
@@ -325,54 +429,6 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -401,7 +457,7 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets placement
      *
-     * @return \Fastly\Model\LoggingPlacement|null
+     * @return string|null
      */
     public function getPlacement()
     {
@@ -411,13 +467,57 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets placement
      *
-     * @param \Fastly\Model\LoggingPlacement|null $placement placement
+     * @param string|null $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
      *
      * @return self
      */
     public function setPlacement($placement)
     {
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($placement) && !in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['placement'] = $placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return int|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -447,49 +547,25 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets compression_codec
+     * Gets format
      *
-     * @return \Fastly\Model\LoggingCompressionCodec|null
+     * @return string|null
      */
-    public function getCompressionCodec()
+    public function getFormat()
     {
-        return $this->container['compression_codec'];
+        return $this->container['format'];
     }
 
     /**
-     * Sets compression_codec
+     * Sets format
      *
-     * @param \Fastly\Model\LoggingCompressionCodec|null $compression_codec compression_codec
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
      *
      * @return self
      */
-    public function setCompressionCodec($compression_codec)
+    public function setFormat($format)
     {
-        $this->container['compression_codec'] = $compression_codec;
-
-        return $this;
-    }
-
-    /**
-     * Gets gzip_level
-     *
-     * @return int|null
-     */
-    public function getGzipLevel()
-    {
-        return $this->container['gzip_level'];
-    }
-
-    /**
-     * Sets gzip_level
-     *
-     * @param int|null $gzip_level What level of gzip encoding to have when sending logs (default `0`, no compression). If an explicit non-zero value is set, then `compression_codec` will default to \"gzip.\" Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-     *
-     * @return self
-     */
-    public function setGzipLevel($gzip_level)
-    {
-        $this->container['gzip_level'] = $gzip_level;
+        $this->container['format'] = $format;
 
         return $this;
     }
@@ -497,7 +573,7 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets message_type
      *
-     * @return \Fastly\Model\LoggingMessageType|null
+     * @return string|null
      */
     public function getMessageType()
     {
@@ -507,13 +583,47 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets message_type
      *
-     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
+     * @param string|null $message_type How the message should be formatted.
      *
      * @return self
      */
     public function setMessageType($message_type)
     {
+        $allowedValues = $this->getMessageTypeAllowableValues();
+        if (!is_null($message_type) && !in_array($message_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'message_type', must be one of '%s'",
+                    $message_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['message_type'] = $message_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp_format
+     *
+     * @return string|null
+     */
+    public function getTimestampFormat()
+    {
+        return $this->container['timestamp_format'];
+    }
+
+    /**
+     * Sets timestamp_format
+     *
+     * @param string|null $timestamp_format Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setTimestampFormat($timestamp_format)
+    {
+        $this->container['timestamp_format'] = $timestamp_format;
 
         return $this;
     }
@@ -543,25 +653,83 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets timestamp_format
+     * Gets gzip_level
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getTimestampFormat()
+    public function getGzipLevel()
     {
-        return $this->container['timestamp_format'];
+        return $this->container['gzip_level'];
     }
 
     /**
-     * Sets timestamp_format
+     * Sets gzip_level
      *
-     * @param string|null $timestamp_format Date and time in ISO 8601 format.
+     * @param int|null $gzip_level What level of gzip encoding to have when sending logs (default `0`, no compression). If an explicit non-zero value is set, then `compression_codec` will default to \"gzip.\" Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
      *
      * @return self
      */
-    public function setTimestampFormat($timestamp_format)
+    public function setGzipLevel($gzip_level)
     {
-        $this->container['timestamp_format'] = $timestamp_format;
+        $this->container['gzip_level'] = $gzip_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets compression_codec
+     *
+     * @return string|null
+     */
+    public function getCompressionCodec()
+    {
+        return $this->container['compression_codec'];
+    }
+
+    /**
+     * Sets compression_codec
+     *
+     * @param string|null $compression_codec The codec used for compression of your logs. Valid values are `zstd`, `snappy`, and `gzip`. If the specified codec is \"gzip\", `gzip_level` will default to 3. To specify a different level, leave `compression_codec` blank and explicitly set the level using `gzip_level`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+     *
+     * @return self
+     */
+    public function setCompressionCodec($compression_codec)
+    {
+        $allowedValues = $this->getCompressionCodecAllowableValues();
+        if (!is_null($compression_codec) && !in_array($compression_codec, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'compression_codec', must be one of '%s'",
+                    $compression_codec,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['compression_codec'] = $compression_codec;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string|null
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string|null $path The path to upload logs to.
+     *
+     * @return self
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }
@@ -615,54 +783,25 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets file_max_bytes
-     *
-     * @return int|null
-     */
-    public function getFileMaxBytes()
-    {
-        return $this->container['file_max_bytes'];
-    }
-
-    /**
-     * Sets file_max_bytes
-     *
-     * @param int|null $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
-     *
-     * @return self
-     */
-    public function setFileMaxBytes($file_max_bytes)
-    {
-
-        if (!is_null($file_max_bytes) && ($file_max_bytes < 1048576)) {
-            throw new \InvalidArgumentException('invalid value for $file_max_bytes when calling LoggingAzureblobResponse., must be bigger than or equal to 1048576.');
-        }
-
-        $this->container['file_max_bytes'] = $file_max_bytes;
-
-        return $this;
-    }
-
-    /**
-     * Gets path
+     * Gets sas_token
      *
      * @return string|null
      */
-    public function getPath()
+    public function getSasToken()
     {
-        return $this->container['path'];
+        return $this->container['sas_token'];
     }
 
     /**
-     * Sets path
+     * Sets sas_token
      *
-     * @param string|null $path The path to upload logs to.
+     * @param string|null $sas_token The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
      *
      * @return self
      */
-    public function setPath($path)
+    public function setSasToken($sas_token)
     {
-        $this->container['path'] = $path;
+        $this->container['sas_token'] = $sas_token;
 
         return $this;
     }
@@ -692,25 +831,30 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets sas_token
+     * Gets file_max_bytes
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getSasToken()
+    public function getFileMaxBytes()
     {
-        return $this->container['sas_token'];
+        return $this->container['file_max_bytes'];
     }
 
     /**
-     * Sets sas_token
+     * Sets file_max_bytes
      *
-     * @param string|null $sas_token The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
+     * @param int|null $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
      *
      * @return self
      */
-    public function setSasToken($sas_token)
+    public function setFileMaxBytes($file_max_bytes)
     {
-        $this->container['sas_token'] = $sas_token;
+
+        if (!is_null($file_max_bytes) && ($file_max_bytes < 1048576)) {
+            throw new \InvalidArgumentException('invalid value for $file_max_bytes when calling LoggingAzureblobResponse., must be bigger than or equal to 1048576.');
+        }
+
+        $this->container['file_max_bytes'] = $file_max_bytes;
 
         return $this;
     }

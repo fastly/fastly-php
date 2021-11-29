@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\Fastly\Model\TlsConfigurationDataAttributes**](TlsConfigurationDataAttributes.md) |  | [optional]
-**relationships** | [**AnyOfObjectObject**](AnyOfObjectObject.md) |  | [optional]
-**type** | [**\Fastly\Model\TypeTlsConfiguration**](TypeTlsConfiguration.md) |  | [optional]
+**type** | [**\Fastly\Model\TypeTlsConfiguration**](TypeTlsConfiguration.md) |  | [optional] 
+**attributes** | [**\Fastly\Model\TlsConfigurationDataAttributes**](TlsConfigurationDataAttributes.md) |  | [optional] 
+**relationships** | [**\Fastly\Model\RelationshipsForTlsConfiguration**](RelationshipsForTlsConfiguration.md) |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

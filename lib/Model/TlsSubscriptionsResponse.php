@@ -55,7 +55,7 @@ class TlsSubscriptionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsSubscriptionResponse[]'
     ];
 
     /**
@@ -265,7 +265,7 @@ class TlsSubscriptionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsSubscriptionResponse[]|null
      */
     public function getData()
     {
@@ -275,7 +275,7 @@ class TlsSubscriptionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsSubscriptionResponse[]|null $data data
      *
      * @return self
      */

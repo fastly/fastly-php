@@ -115,7 +115,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -138,7 +138,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -232,7 +232,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -258,7 +258,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -311,7 +311,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -366,18 +366,26 @@ class StatsApi
             }
         }
         // query params
-        if (is_array($start_time)) {
-            $start_time = ObjectSerializer::serializeCollection($start_time, 'simple', true);
-        }
         if ($start_time !== null) {
-            $queryParams['start_time'] = $start_time;
+            if('form' === 'form' && is_array($start_time)) {
+                foreach($start_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['start_time'] = $start_time;
+            }
         }
         // query params
-        if (is_array($end_time)) {
-            $end_time = ObjectSerializer::serializeCollection($end_time, 'simple', true);
-        }
         if ($end_time !== null) {
-            $queryParams['end_time'] = $end_time;
+            if('form' === 'form' && is_array($end_time)) {
+                foreach($end_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['end_time'] = $end_time;
+            }
         }
 
 

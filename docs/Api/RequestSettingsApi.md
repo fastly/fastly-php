@@ -43,8 +43,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -76,9 +76,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**request_settings_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**request_settings_name** | **string** | Name for the request settings. |
 
 ### Return type
 
@@ -110,9 +110,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**request_settings_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**request_settings_name** | **string** | Name for the request settings. |
 
 ### Return type
 
@@ -144,8 +144,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -177,10 +177,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**request_settings_name** | **string** |  |
-**action** | **string** | Allows you to terminate request handling and immediately perform an action. | [optional]
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**request_settings_name** | **string** | Name for the request settings. |
+**action** | **string** | Allows you to terminate request handling and immediately perform an action. | [optional] [one of: 'lookup', 'pass']
 **bypass_busy_wait** | **int** | Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. | [optional]
 **default_host** | **string** | Sets the host header. | [optional]
 **force_miss** | **int** | Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable. | [optional]
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 **name** | **string** | Name for the request settings. | [optional]
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional]
 **timer_support** | **int** | Injects the X-Timer info into the request for viewing origin fetch durations. | [optional]
-**xff** | **string** | Short for X-Forwarded-For. | [optional]
+**xff** | **string** | Short for X-Forwarded-For. | [optional] [one of: 'clear', 'leave', 'append', 'append_all', 'overwrite']
 
 ### Return type
 

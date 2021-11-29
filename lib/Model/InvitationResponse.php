@@ -53,7 +53,7 @@ class InvitationResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'Data'
+        'data' => '\Fastly\Model\InvitationResponseData'
     ];
 
     /**
@@ -205,7 +205,7 @@ class InvitationResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return Data|null
+     * @return \Fastly\Model\InvitationResponseData|null
      */
     public function getData()
     {
@@ -215,7 +215,7 @@ class InvitationResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param Data|null $data data
+     * @param \Fastly\Model\InvitationResponseData|null $data data
      *
      * @return self
      */

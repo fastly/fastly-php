@@ -74,7 +74,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_private_key_id** | **string** |  |
+**tls_private_key_id** | **string** | Alphanumeric string identifying a private Key. |
 
 ### Return type
 
@@ -106,7 +106,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_private_key_id** | **string** |  |
+**tls_private_key_id** | **string** | Alphanumeric string identifying a private Key. |
 
 ### Return type
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **filter_in_use** | **string** | Limit the returned keys to those without any matching TLS certificates. The only valid value is false. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 
 ### Return type
 

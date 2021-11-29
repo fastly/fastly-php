@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Alphanumeric string identifying a Dictionary. | [optional] [readonly]
+**id** | **string** | Alphanumeric string identifying a Dictionary. | [optional] [readonly] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

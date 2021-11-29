@@ -53,8 +53,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'key' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'key' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'key' => null,
-        'name' => null
+        'name' => null,
+        'key' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'name' => 'name'
+        'name' => 'name',
+        'key' => 'key'
     ];
 
     /**
@@ -106,8 +106,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'name' => 'setName'
+        'name' => 'setName',
+        'key' => 'setKey'
     ];
 
     /**
@@ -116,8 +116,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'name' => 'getName'
+        'name' => 'getName',
+        'key' => 'getKey'
     ];
 
     /**
@@ -180,8 +180,8 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['key'] = $data['key'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets key
-     *
-     * @return string|null
-     */
-    public function getKey()
-    {
-        return $this->container['key'];
-    }
-
-    /**
-     * Sets key
-     *
-     * @param string|null $key The contents of the private key. Must be a PEM-formatted key. Not returned in response body. Required.
-     *
-     * @return self
-     */
-    public function setKey($key)
-    {
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -252,6 +228,30 @@ class TlsPrivateKeyDataAttributes implements ModelInterface, ArrayAccess, \JsonS
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets key
+     *
+     * @return string|null
+     */
+    public function getKey()
+    {
+        return $this->container['key'];
+    }
+
+    /**
+     * Sets key
+     *
+     * @param string|null $key The contents of the private key. Must be a PEM-formatted key. Not returned in response body. Required.
+     *
+     * @return self
+     */
+    public function setKey($key)
+    {
+        $this->container['key'] = $key;
 
         return $this;
     }

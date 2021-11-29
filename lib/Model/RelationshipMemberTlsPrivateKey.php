@@ -53,8 +53,8 @@ class RelationshipMemberTlsPrivateKey implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string',
-        'type' => '\Fastly\Model\TypeTlsPrivateKey'
+        'type' => '\Fastly\Model\TypeTlsPrivateKey',
+        'id' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class RelationshipMemberTlsPrivateKey implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null,
-        'type' => null
+        'type' => null,
+        'id' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class RelationshipMemberTlsPrivateKey implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'type' => 'type'
+        'type' => 'type',
+        'id' => 'id'
     ];
 
     /**
@@ -106,8 +106,8 @@ class RelationshipMemberTlsPrivateKey implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'type' => 'setType'
+        'type' => 'setType',
+        'id' => 'setId'
     ];
 
     /**
@@ -116,8 +116,8 @@ class RelationshipMemberTlsPrivateKey implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'type' => 'getType'
+        'type' => 'getType',
+        'id' => 'getId'
     ];
 
     /**
@@ -180,8 +180,8 @@ class RelationshipMemberTlsPrivateKey implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class RelationshipMemberTlsPrivateKey implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Alphanumeric string identifying a private Key.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return \Fastly\Model\TypeTlsPrivateKey|null
@@ -252,6 +228,30 @@ class RelationshipMemberTlsPrivateKey implements ModelInterface, ArrayAccess, \J
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Alphanumeric string identifying a private Key.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

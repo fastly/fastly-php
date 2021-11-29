@@ -53,8 +53,8 @@ class WafRuleResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'WafRule',
-        'included' => 'AnyOfWafTagWafRuleRevision[]'
+        'data' => '\Fastly\Model\WafRuleResponseData',
+        'included' => '\Fastly\Model\IncludedWithWafRuleItem[]'
     ];
 
     /**
@@ -211,7 +211,7 @@ class WafRuleResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return WafRule|null
+     * @return \Fastly\Model\WafRuleResponseData|null
      */
     public function getData()
     {
@@ -221,7 +221,7 @@ class WafRuleResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param WafRule|null $data data
+     * @param \Fastly\Model\WafRuleResponseData|null $data data
      *
      * @return self
      */
@@ -235,7 +235,7 @@ class WafRuleResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets included
      *
-     * @return AnyOfWafTagWafRuleRevision[]|null
+     * @return \Fastly\Model\IncludedWithWafRuleItem[]|null
      */
     public function getIncluded()
     {
@@ -245,7 +245,7 @@ class WafRuleResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets included
      *
-     * @param AnyOfWafTagWafRuleRevision[]|null $included included
+     * @param \Fastly\Model\IncludedWithWafRuleItem[]|null $included included
      *
      * @return self
      */

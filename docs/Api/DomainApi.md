@@ -25,7 +25,7 @@ Method | Fastly API endpoint | Description
 ## `checkDomain()`
 
 ```php
-checkDomain($options): AnyOfObjectStringBoolean[] // Validate DNS configuration for a single domain on a service
+checkDomain($options): \Fastly\Model\DomainCheckItem[] // Validate DNS configuration for a single domain on a service
 ```
 
 Checks the status of a specific domain's DNS record for a Service Version. Returns an array in the same format as domain/check_all.
@@ -45,13 +45,13 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**domain_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**domain_name** | **string** | The name of the domain or domains associated with this service. |
 
 ### Return type
 
-[**AnyOfObjectStringBoolean[]**](../Model/AnyOfObjectStringBoolean.md)
+[**\Fastly\Model\DomainCheckItem[]**](../Model/DomainCheckItem.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -79,8 +79,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -112,8 +112,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 **comment** | **string** | A freeform descriptive note. | [optional]
 **name** | **string** | The name of the domain or domains associated with this service. | [optional]
 
@@ -147,9 +147,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**domain_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**domain_name** | **string** | The name of the domain or domains associated with this service. |
 
 ### Return type
 
@@ -181,9 +181,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**domain_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**domain_name** | **string** | The name of the domain or domains associated with this service. |
 
 ### Return type
 
@@ -215,8 +215,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -248,9 +248,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**domain_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**domain_name** | **string** | The name of the domain or domains associated with this service. |
 **comment** | **string** | A freeform descriptive note. | [optional]
 **name** | **string** | The name of the domain or domains associated with this service. | [optional]
 

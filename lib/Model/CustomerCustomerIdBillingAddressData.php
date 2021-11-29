@@ -53,8 +53,8 @@ class CustomerCustomerIdBillingAddressData implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'attributes' => '\Fastly\Model\BillingAddress',
-        'type' => '\Fastly\Model\TypeBillingAddress'
+        'type' => '\Fastly\Model\TypeBillingAddress',
+        'attributes' => '\Fastly\Model\BillingAddress'
     ];
 
     /**
@@ -65,8 +65,8 @@ class CustomerCustomerIdBillingAddressData implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'attributes' => null,
-        'type' => null
+        'type' => null,
+        'attributes' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class CustomerCustomerIdBillingAddressData implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'type' => 'type'
+        'type' => 'type',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -106,8 +106,8 @@ class CustomerCustomerIdBillingAddressData implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'type' => 'setType'
+        'type' => 'setType',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -116,8 +116,8 @@ class CustomerCustomerIdBillingAddressData implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'type' => 'getType'
+        'type' => 'getType',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -180,8 +180,8 @@ class CustomerCustomerIdBillingAddressData implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->container['attributes'] = $data['attributes'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['attributes'] = $data['attributes'] ?? null;
     }
 
     /**
@@ -209,30 +209,6 @@ class CustomerCustomerIdBillingAddressData implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets attributes
-     *
-     * @return \Fastly\Model\BillingAddress|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \Fastly\Model\BillingAddress|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return \Fastly\Model\TypeBillingAddress|null
@@ -252,6 +228,30 @@ class CustomerCustomerIdBillingAddressData implements ModelInterface, ArrayAcces
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return \Fastly\Model\BillingAddress|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \Fastly\Model\BillingAddress|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

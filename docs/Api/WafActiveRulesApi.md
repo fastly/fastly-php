@@ -46,8 +46,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**version_id** | **int** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**version_id** | **int** | Integer identifying a service version. |
 **body** | **object** |  | [optional]
 
 ### Return type
@@ -80,9 +80,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**version_id** | **int** |  |
-**body** | **\Fastly\Model\Data** |  | [optional]
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**version_id** | **int** | Integer identifying a service version. |
+**body** | **\Fastly\Model\WafActiveRuleData** |  | [optional]
 
 ### Return type
 
@@ -94,7 +94,7 @@ void (empty response body)
 ## `createWafActiveRule()`
 
 ```php
-createWafActiveRule($options): OneOfWafActiveRuleResponseWafActiveRulesResponse // Add a rule to a WAF as an active rule
+createWafActiveRule($options): \Fastly\Model\WafActiveRuleCreationResponse // Add a rule to a WAF as an active rule
 ```
 
 Create an active rule for a particular firewall version.
@@ -114,13 +114,13 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**version_id** | **int** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**version_id** | **int** | Integer identifying a service version. |
 **waf_active_rule** | [**\Fastly\Model\WafActiveRule**](../Model/WafActiveRule.md) |  | [optional]
 
 ### Return type
 
-[**OneOfWafActiveRuleResponseWafActiveRulesResponse**](../Model/OneOfWafActiveRuleResponseWafActiveRulesResponse.md)
+[**\Fastly\Model\WafActiveRuleCreationResponse**](../Model/WafActiveRuleCreationResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -148,9 +148,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**version_id** | **int** |  |
-**waf_tag_name** | **string** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**version_id** | **int** | Integer identifying a service version. |
+**waf_tag_name** | **string** | Name of the tag. |
 **waf_active_rule** | [**\Fastly\Model\WafActiveRule**](../Model/WafActiveRule.md) |  | [optional]
 
 ### Return type
@@ -183,9 +183,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**version_id** | **int** |  |
-**waf_rule_id** | **string** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**version_id** | **int** | Integer identifying a service version. |
+**waf_rule_id** | **string** | Alphanumeric string identifying a WAF rule. |
 
 ### Return type
 
@@ -217,10 +217,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**version_id** | **int** |  |
-**waf_rule_id** | **string** |  |
-**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. | [optional]
+**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: `waf_rule_revision` and `waf_firewall_version`. | [optional]
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**version_id** | **int** | Integer identifying a service version. |
+**waf_rule_id** | **string** | Alphanumeric string identifying a WAF rule. |
 
 ### Return type
 
@@ -252,15 +252,15 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**version_id** | **int** |  |
 **filter_status** | **string** | Limit results to active rules with the specified status. | [optional]
 **filter_waf_rule_revision_message** | **string** | Limit results to active rules with the specified message. | [optional]
 **filter_waf_rule_revision_modsec_rule_id** | **string** | Limit results to active rules that represent the specified ModSecurity modsec_rule_id. | [optional]
 **filter_outdated** | **string** | Limit results to active rules referencing an outdated rule revision. | [optional]
-**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. | [optional]
+**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: `waf_rule_revision` and `waf_firewall_version`. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -292,9 +292,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**version_id** | **int** |  |
-**waf_rule_id** | **string** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**version_id** | **int** | Integer identifying a service version. |
+**waf_rule_id** | **string** | Alphanumeric string identifying a WAF rule. |
 **waf_active_rule** | [**\Fastly\Model\WafActiveRule**](../Model/WafActiveRule.md) |  | [optional]
 
 ### Return type

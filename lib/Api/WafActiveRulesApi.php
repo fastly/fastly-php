@@ -115,8 +115,8 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $version_id version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  object $body body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -135,8 +135,8 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  object $body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -191,8 +191,8 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  object $body (optional)
      *
      * @throws \InvalidArgumentException
@@ -215,8 +215,8 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  object $body (optional)
      *
      * @throws \InvalidArgumentException
@@ -255,8 +255,8 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  object $body (optional)
      *
      * @throws \InvalidArgumentException
@@ -384,9 +384,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  \Fastly\Model\Data $body body (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\WafActiveRuleData $body body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -404,9 +404,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  \Fastly\Model\Data $body (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\WafActiveRuleData $body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -460,9 +460,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  \Fastly\Model\Data $body (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\WafActiveRuleData $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -484,9 +484,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  \Fastly\Model\Data $body (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\WafActiveRuleData $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -524,9 +524,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  \Fastly\Model\Data $body (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\WafActiveRuleData $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -653,13 +653,13 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $version_id version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule waf_active_rule (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return OneOfWafActiveRuleResponseWafActiveRulesResponse
+     * @return \Fastly\Model\WafActiveRuleCreationResponse
      */
     public function createWafActiveRule($options)
     {
@@ -674,13 +674,13 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of OneOfWafActiveRuleResponseWafActiveRulesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\WafActiveRuleCreationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWafActiveRuleWithHttpInfo($options)
     {
@@ -717,20 +717,20 @@ class WafActiveRulesApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 201:
-                    if ('OneOfWafActiveRuleResponseWafActiveRulesResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\WafActiveRuleCreationResponse' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'OneOfWafActiveRuleResponseWafActiveRulesResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\WafActiveRuleCreationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'OneOfWafActiveRuleResponseWafActiveRulesResponse';
+            $returnType = '\Fastly\Model\WafActiveRuleCreationResponse';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -749,7 +749,7 @@ class WafActiveRulesApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'OneOfWafActiveRuleResponseWafActiveRulesResponse',
+                        '\Fastly\Model\WafActiveRuleCreationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -766,8 +766,8 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \InvalidArgumentException
@@ -790,8 +790,8 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \InvalidArgumentException
@@ -799,7 +799,7 @@ class WafActiveRulesApi
      */
     public function createWafActiveRuleAsyncWithHttpInfo($options)
     {
-        $returnType = 'OneOfWafActiveRuleResponseWafActiveRulesResponse';
+        $returnType = '\Fastly\Model\WafActiveRuleCreationResponse';
         $request = $this->createWafActiveRuleRequest($options);
 
         return $this->client
@@ -841,8 +841,8 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \InvalidArgumentException
@@ -970,9 +970,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $waf_tag_name waf_tag_name (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_tag_name Name of the tag. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule waf_active_rule (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -991,9 +991,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_tag_name (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_tag_name Name of the tag. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1048,9 +1048,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_tag_name (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_tag_name Name of the tag. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \InvalidArgumentException
@@ -1073,9 +1073,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_tag_name (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_tag_name Name of the tag. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \InvalidArgumentException
@@ -1114,9 +1114,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_tag_name (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_tag_name Name of the tag. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \InvalidArgumentException
@@ -1259,9 +1259,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $waf_rule_id waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1279,9 +1279,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1335,9 +1335,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1359,9 +1359,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1399,9 +1399,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1536,10 +1536,10 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $waf_rule_id waf_rule_id (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1558,10 +1558,10 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1651,10 +1651,10 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1676,10 +1676,10 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1728,10 +1728,10 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1739,10 +1739,10 @@ class WafActiveRulesApi
     public function getWafActiveRuleRequest($options)
     {
         // unbox the parameters from the associative array
+        $include = array_key_exists('include', $options) ? $options['include'] : null;
         $firewall_id = array_key_exists('firewall_id', $options) ? $options['firewall_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $waf_rule_id = array_key_exists('waf_rule_id', $options) ? $options['waf_rule_id'] : null;
-        $include = array_key_exists('include', $options) ? $options['include'] : null;
 
         // verify the required parameter 'firewall_id' is set
         if ($firewall_id === null || (is_array($firewall_id) && count($firewall_id) === 0)) {
@@ -1878,8 +1878,6 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $version_id version_id (required)
      * @param  string $filter_status Limit results to active rules with the specified status. (optional)
      * @param  string $filter_waf_rule_revision_message Limit results to active rules with the specified message. (optional)
      * @param  string $filter_waf_rule_revision_modsec_rule_id Limit results to active rules that represent the specified ModSecurity modsec_rule_id. (optional)
@@ -1887,6 +1885,8 @@ class WafActiveRulesApi
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1905,8 +1905,6 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
      * @param  string $filter_status Limit results to active rules with the specified status. (optional)
      * @param  string $filter_waf_rule_revision_message Limit results to active rules with the specified message. (optional)
      * @param  string $filter_waf_rule_revision_modsec_rule_id Limit results to active rules that represent the specified ModSecurity modsec_rule_id. (optional)
@@ -1914,6 +1912,8 @@ class WafActiveRulesApi
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2003,8 +2003,6 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
      * @param  string $filter_status Limit results to active rules with the specified status. (optional)
      * @param  string $filter_waf_rule_revision_message Limit results to active rules with the specified message. (optional)
      * @param  string $filter_waf_rule_revision_modsec_rule_id Limit results to active rules that represent the specified ModSecurity modsec_rule_id. (optional)
@@ -2012,6 +2010,8 @@ class WafActiveRulesApi
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2033,8 +2033,6 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
      * @param  string $filter_status Limit results to active rules with the specified status. (optional)
      * @param  string $filter_waf_rule_revision_message Limit results to active rules with the specified message. (optional)
      * @param  string $filter_waf_rule_revision_modsec_rule_id Limit results to active rules that represent the specified ModSecurity modsec_rule_id. (optional)
@@ -2042,6 +2040,8 @@ class WafActiveRulesApi
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2090,8 +2090,6 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
      * @param  string $filter_status Limit results to active rules with the specified status. (optional)
      * @param  string $filter_waf_rule_revision_message Limit results to active rules with the specified message. (optional)
      * @param  string $filter_waf_rule_revision_modsec_rule_id Limit results to active rules that represent the specified ModSecurity modsec_rule_id. (optional)
@@ -2099,6 +2097,8 @@ class WafActiveRulesApi
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule_revision&#x60; and &#x60;waf_firewall_version&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2106,8 +2106,6 @@ class WafActiveRulesApi
     public function listWafActiveRulesRequest($options)
     {
         // unbox the parameters from the associative array
-        $firewall_id = array_key_exists('firewall_id', $options) ? $options['firewall_id'] : null;
-        $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $filter_status = array_key_exists('filter_status', $options) ? $options['filter_status'] : null;
         $filter_waf_rule_revision_message = array_key_exists('filter_waf_rule_revision_message', $options) ? $options['filter_waf_rule_revision_message'] : null;
         $filter_waf_rule_revision_modsec_rule_id = array_key_exists('filter_waf_rule_revision_modsec_rule_id', $options) ? $options['filter_waf_rule_revision_modsec_rule_id'] : null;
@@ -2115,6 +2113,15 @@ class WafActiveRulesApi
         $include = array_key_exists('include', $options) ? $options['include'] : null;
         $page_number = array_key_exists('page_number', $options) ? $options['page_number'] : null;
         $page_size = array_key_exists('page_size', $options) ? $options['page_size'] : 20;
+        $firewall_id = array_key_exists('firewall_id', $options) ? $options['firewall_id'] : null;
+        $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+
+        if ($page_size !== null && $page_size > 100) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling WafActiveRulesApi.listWafActiveRules, must be smaller than or equal to 100.');
+        }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling WafActiveRulesApi.listWafActiveRules, must be bigger than or equal to 1.');
+        }
 
         // verify the required parameter 'firewall_id' is set
         if ($firewall_id === null || (is_array($firewall_id) && count($firewall_id) === 0)) {
@@ -2128,13 +2135,6 @@ class WafActiveRulesApi
                 'Missing the required parameter $version_id when calling listWafActiveRules'
             );
         }
-        if ($page_size !== null && $page_size > 100) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling WafActiveRulesApi.listWafActiveRules, must be smaller than or equal to 100.');
-        }
-        if ($page_size !== null && $page_size < 1) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling WafActiveRulesApi.listWafActiveRules, must be bigger than or equal to 1.');
-        }
-
 
         $resourcePath = '/waf/firewalls/{firewall_id}/versions/{version_id}/active-rules';
         $formParams = [];
@@ -2199,18 +2199,26 @@ class WafActiveRulesApi
             }
         }
         // query params
-        if (is_array($page_number)) {
-            $page_number = ObjectSerializer::serializeCollection($page_number, 'simple', true);
-        }
         if ($page_number !== null) {
-            $queryParams['page[number]'] = $page_number;
+            if('form' === 'form' && is_array($page_number)) {
+                foreach($page_number as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[number]'] = $page_number;
+            }
         }
         // query params
-        if (is_array($page_size)) {
-            $page_size = ObjectSerializer::serializeCollection($page_size, 'simple', true);
-        }
         if ($page_size !== null) {
-            $queryParams['page[size]'] = $page_size;
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[size]'] = $page_size;
+            }
         }
 
 
@@ -2301,9 +2309,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $waf_rule_id waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule waf_active_rule (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -2323,9 +2331,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -2416,9 +2424,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \InvalidArgumentException
@@ -2441,9 +2449,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \InvalidArgumentException
@@ -2493,9 +2501,9 @@ class WafActiveRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
-     * @param  int $version_id (required)
-     * @param  string $waf_rule_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  \Fastly\Model\WafActiveRule $waf_active_rule (optional)
      *
      * @throws \InvalidArgumentException

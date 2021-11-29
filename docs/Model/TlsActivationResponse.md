@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**Data**](Data.md) |  | [optional]
+**data** | [**\Fastly\Model\TlsActivationResponseData**](TlsActivationResponseData.md) |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

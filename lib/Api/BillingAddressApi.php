@@ -115,7 +115,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject $inline_object inline_object (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -135,7 +135,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject $inline_object (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -226,7 +226,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject $inline_object (optional)
      *
      * @throws \InvalidArgumentException
@@ -249,7 +249,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject $inline_object (optional)
      *
      * @throws \InvalidArgumentException
@@ -299,7 +299,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject $inline_object (optional)
      *
      * @throws \InvalidArgumentException
@@ -412,7 +412,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -430,7 +430,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -484,7 +484,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -506,7 +506,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -544,7 +544,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -649,7 +649,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -668,7 +668,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -758,7 +758,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -780,7 +780,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -829,7 +829,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -934,7 +934,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject1 $inline_object1 inline_object1 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -954,7 +954,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject1 $inline_object1 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1045,7 +1045,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject1 $inline_object1 (optional)
      *
      * @throws \InvalidArgumentException
@@ -1068,7 +1068,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject1 $inline_object1 (optional)
      *
      * @throws \InvalidArgumentException
@@ -1118,7 +1118,7 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\InlineObject1 $inline_object1 (optional)
      *
      * @throws \InvalidArgumentException

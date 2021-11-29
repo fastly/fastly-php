@@ -332,18 +332,26 @@ class HistoricalApi
         $multipart = false;
 
         // query params
-        if (is_array($from)) {
-            $from = ObjectSerializer::serializeCollection($from, 'simple', true);
-        }
         if ($from !== null) {
-            $queryParams['from'] = $from;
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
         }
         // query params
-        if (is_array($to)) {
-            $to = ObjectSerializer::serializeCollection($to, 'simple', true);
-        }
         if ($to !== null) {
-            $queryParams['to'] = $to;
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
         }
         // query params
         if ($by !== null) {
@@ -657,18 +665,26 @@ class HistoricalApi
         $multipart = false;
 
         // query params
-        if (is_array($from)) {
-            $from = ObjectSerializer::serializeCollection($from, 'simple', true);
-        }
         if ($from !== null) {
-            $queryParams['from'] = $from;
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
         }
         // query params
-        if (is_array($to)) {
-            $to = ObjectSerializer::serializeCollection($to, 'simple', true);
-        }
         if ($to !== null) {
-            $queryParams['to'] = $to;
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
         }
         // query params
         if ($by !== null) {
@@ -994,18 +1010,26 @@ class HistoricalApi
         $multipart = false;
 
         // query params
-        if (is_array($from)) {
-            $from = ObjectSerializer::serializeCollection($from, 'simple', true);
-        }
         if ($from !== null) {
-            $queryParams['from'] = $from;
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
         }
         // query params
-        if (is_array($to)) {
-            $to = ObjectSerializer::serializeCollection($to, 'simple', true);
-        }
         if ($to !== null) {
-            $queryParams['to'] = $to;
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
         }
         // query params
         if ($by !== null) {
@@ -1110,7 +1134,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $by Duration of sample windows. One of:    * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
@@ -1133,7 +1157,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $by Duration of sample windows. One of:    * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
@@ -1227,7 +1251,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $by Duration of sample windows. One of:    * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
@@ -1253,7 +1277,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $by Duration of sample windows. One of:    * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
@@ -1306,7 +1330,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $by Duration of sample windows. One of:    * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
@@ -1339,18 +1363,26 @@ class HistoricalApi
         $multipart = false;
 
         // query params
-        if (is_array($from)) {
-            $from = ObjectSerializer::serializeCollection($from, 'simple', true);
-        }
         if ($from !== null) {
-            $queryParams['from'] = $from;
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
         }
         // query params
-        if (is_array($to)) {
-            $to = ObjectSerializer::serializeCollection($to, 'simple', true);
-        }
         if ($to !== null) {
-            $queryParams['to'] = $to;
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
         }
         // query params
         if ($by !== null) {
@@ -1455,7 +1487,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
@@ -1479,7 +1511,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
@@ -1574,7 +1606,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
@@ -1601,7 +1633,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
@@ -1655,7 +1687,7 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
@@ -1696,18 +1728,26 @@ class HistoricalApi
         $multipart = false;
 
         // query params
-        if (is_array($from)) {
-            $from = ObjectSerializer::serializeCollection($from, 'simple', true);
-        }
         if ($from !== null) {
-            $queryParams['from'] = $from;
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
         }
         // query params
-        if (is_array($to)) {
-            $to = ObjectSerializer::serializeCollection($to, 'simple', true);
-        }
         if ($to !== null) {
-            $queryParams['to'] = $to;
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
         }
         // query params
         if ($by !== null) {
@@ -2302,18 +2342,26 @@ class HistoricalApi
         $multipart = false;
 
         // query params
-        if (is_array($from)) {
-            $from = ObjectSerializer::serializeCollection($from, 'simple', true);
-        }
         if ($from !== null) {
-            $queryParams['from'] = $from;
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
         }
         // query params
-        if (is_array($to)) {
-            $to = ObjectSerializer::serializeCollection($to, 'simple', true);
-        }
         if ($to !== null) {
-            $queryParams['to'] = $to;
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
         }
         // query params
         if ($by !== null) {
@@ -2960,18 +3008,26 @@ class HistoricalApi
         $multipart = false;
 
         // query params
-        if (is_array($from)) {
-            $from = ObjectSerializer::serializeCollection($from, 'simple', true);
-        }
         if ($from !== null) {
-            $queryParams['from'] = $from;
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
         }
         // query params
-        if (is_array($to)) {
-            $to = ObjectSerializer::serializeCollection($to, 'simple', true);
-        }
         if ($to !== null) {
-            $queryParams['to'] = $to;
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
         }
         // query params
         if ($by !== null) {

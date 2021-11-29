@@ -40,9 +40,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**waf_rule_id** | **string** |  |
-**waf_rule_revision_number** | **int** |  |
-**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule&#x60;, &#x60;vcl&#x60;, and &#x60;source&#x60;. The &#x60;vcl&#x60; and &#x60;source&#x60; relationships show the WAF VCL and corresponding ModSecurity source. These fields are blank unless the relationship is included. | [optional]
+**waf_rule_id** | **string** | Alphanumeric string identifying a WAF rule. |
+**waf_rule_revision_number** | **float** | Revision number. |
+**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: `waf_rule`, `vcl`, and `source`. The `vcl` and `source` relationships show the WAF VCL and corresponding ModSecurity source. These fields are blank unless the relationship is included. | [optional]
 
 ### Return type
 
@@ -74,10 +74,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**waf_rule_id** | **string** |  |
+**waf_rule_id** | **string** | Alphanumeric string identifying a WAF rule. |
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
-**include** | **string** | Include relationships. Optional. | [optional] [default to &#39;waf_rule&#39;]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
+**include** | **string** | Include relationships. Optional. | [optional] [one of: 'waf_rule'] [defaults to 'waf_rule']
 
 ### Return type
 

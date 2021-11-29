@@ -72,8 +72,8 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
         'gzips' => '\Fastly\Model\GzipResponse[]',
         'headers' => '\Fastly\Model\HeaderResponse[]',
         'healthchecks' => '\Fastly\Model\HealthcheckResponse[]',
-        'request_settings' => '\Fastly\Model\SchemasRequestSettingsResponse[]',
-        'response_objects' => '\Fastly\Model\SchemasResponseObjectResponse[]',
+        'request_settings' => '\Fastly\Model\RequestSettingsResponse[]',
+        'response_objects' => '\Fastly\Model\ResponseObjectResponse[]',
         'settings' => 'Settings',
         'snippets' => '\Fastly\Model\SchemasSnippetResponse[]',
         'vcls' => '\Fastly\Model\SchemasVclResponse[]',
@@ -805,7 +805,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets request_settings
      *
-     * @return \Fastly\Model\SchemasRequestSettingsResponse[]|null
+     * @return \Fastly\Model\RequestSettingsResponse[]|null
      */
     public function getRequestSettings()
     {
@@ -815,7 +815,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets request_settings
      *
-     * @param \Fastly\Model\SchemasRequestSettingsResponse[]|null $request_settings List of request settings for this service.
+     * @param \Fastly\Model\RequestSettingsResponse[]|null $request_settings List of request settings for this service.
      *
      * @return self
      */
@@ -829,7 +829,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets response_objects
      *
-     * @return \Fastly\Model\SchemasResponseObjectResponse[]|null
+     * @return \Fastly\Model\ResponseObjectResponse[]|null
      */
     public function getResponseObjects()
     {
@@ -839,7 +839,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response_objects
      *
-     * @param \Fastly\Model\SchemasResponseObjectResponse[]|null $response_objects List of response objects for this service.
+     * @param \Fastly\Model\ResponseObjectResponse[]|null $response_objects List of response objects for this service.
      *
      * @return self
      */

@@ -55,7 +55,7 @@ class WafRuleRevisionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]',
+        'data' => '\Fastly\Model\WafRuleRevisionResponseData[]',
         'included' => '\Fastly\Model\WafRule[]'
     ];
 
@@ -271,7 +271,7 @@ class WafRuleRevisionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafRuleRevisionResponseData[]|null
      */
     public function getData()
     {
@@ -281,7 +281,7 @@ class WafRuleRevisionsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafRuleRevisionResponseData[]|null $data data
      *
      * @return self
      */

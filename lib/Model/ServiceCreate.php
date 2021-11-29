@@ -54,8 +54,8 @@ class ServiceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'comment' => 'string',
-        'customer_id' => 'string',
         'name' => 'string',
+        'customer_id' => 'string',
         'type' => 'string'
     ];
 
@@ -68,8 +68,8 @@ class ServiceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'comment' => null,
-        'customer_id' => null,
         'name' => null,
+        'customer_id' => null,
         'type' => null
     ];
 
@@ -101,8 +101,8 @@ class ServiceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'comment' => 'comment',
-        'customer_id' => 'customer_id',
         'name' => 'name',
+        'customer_id' => 'customer_id',
         'type' => 'type'
     ];
 
@@ -113,8 +113,8 @@ class ServiceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'comment' => 'setComment',
-        'customer_id' => 'setCustomerId',
         'name' => 'setName',
+        'customer_id' => 'setCustomerId',
         'type' => 'setType'
     ];
 
@@ -125,8 +125,8 @@ class ServiceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'comment' => 'getComment',
-        'customer_id' => 'getCustomerId',
         'name' => 'getName',
+        'customer_id' => 'getCustomerId',
         'type' => 'getType'
     ];
 
@@ -206,8 +206,8 @@ class ServiceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['comment'] = $data['comment'] ?? null;
-        $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
     }
 
@@ -269,30 +269,6 @@ class ServiceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets customer_id
-     *
-     * @return string|null
-     */
-    public function getCustomerId()
-    {
-        return $this->container['customer_id'];
-    }
-
-    /**
-     * Sets customer_id
-     *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
-     *
-     * @return self
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->container['customer_id'] = $customer_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -312,6 +288,30 @@ class ServiceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_id
+     *
+     * @return string|null
+     */
+    public function getCustomerId()
+    {
+        return $this->container['customer_id'];
+    }
+
+    /**
+     * Sets customer_id
+     *
+     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     *
+     * @return self
+     */
+    public function setCustomerId($customer_id)
+    {
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }

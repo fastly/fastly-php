@@ -53,7 +53,7 @@ class TlsSubscriptionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsSubscriptionResponse[]'
     ];
 
     /**
@@ -205,7 +205,7 @@ class TlsSubscriptionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsSubscriptionResponse[]|null
      */
     public function getData()
     {
@@ -215,7 +215,7 @@ class TlsSubscriptionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsSubscriptionResponse[]|null $data data
      *
      * @return self
      */

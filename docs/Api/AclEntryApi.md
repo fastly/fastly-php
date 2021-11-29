@@ -44,8 +44,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**acl_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**acl_id** | **string** | Alphanumeric string identifying a ACL. |
 **acl_entries** | [**\Fastly\Model\AclEntries**](../Model/AclEntries.md) |  | [optional]
 
 ### Return type
@@ -78,8 +78,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**acl_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**acl_id** | **string** | Alphanumeric string identifying a ACL. |
 **acl_entry** | [**\Fastly\Model\AclEntry**](../Model/AclEntry.md) |  | [optional]
 
 ### Return type
@@ -112,9 +112,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**acl_id** | **string** |  |
-**acl_entry_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**acl_id** | **string** | Alphanumeric string identifying a ACL. |
+**acl_entry_id** | **string** | Alphanumeric string identifying an ACL Entry. |
 
 ### Return type
 
@@ -146,9 +146,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**acl_id** | **string** |  |
-**acl_entry_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**acl_id** | **string** | Alphanumeric string identifying a ACL. |
+**acl_entry_id** | **string** | Alphanumeric string identifying an ACL Entry. |
 
 ### Return type
 
@@ -180,12 +180,12 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**acl_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**acl_id** | **string** | Alphanumeric string identifying a ACL. |
 **page** | **int** | Current page. | [optional]
-**per_page** | **int** | Number of records per page. | [optional] [default to 20]
-**sort** | **string** | Field on which to sort. | [optional] [default to &#39;created&#39;]
-**direction** | **string** | Direction in which to sort results. | [optional] [default to &#39;ascend&#39;]
+**per_page** | **int** | Number of records per page. | [optional] [defaults to 20]
+**sort** | **string** | Field on which to sort. | [optional] [defaults to 'created']
+**direction** | **string** | Direction in which to sort results. | [optional] [one of: 'ascend', 'descend'] [defaults to 'ascend']
 
 ### Return type
 
@@ -217,9 +217,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**acl_id** | **string** |  |
-**acl_entry_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**acl_id** | **string** | Alphanumeric string identifying a ACL. |
+**acl_entry_id** | **string** | Alphanumeric string identifying an ACL Entry. |
 **acl_entry** | [**\Fastly\Model\AclEntry**](../Model/AclEntry.md) |  | [optional]
 
 ### Return type

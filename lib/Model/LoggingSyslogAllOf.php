@@ -53,9 +53,9 @@ class LoggingSyslogAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'message_type' => '\Fastly\Model\LoggingMessageType',
         'hostname' => 'string',
         'ipv4' => 'string',
-        'message_type' => '\Fastly\Model\LoggingMessageType',
         'token' => 'string',
         'use_tls' => '\Fastly\Model\LoggingUseTls'
     ];
@@ -68,9 +68,9 @@ class LoggingSyslogAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'message_type' => null,
         'hostname' => null,
         'ipv4' => null,
-        'message_type' => null,
         'token' => null,
         'use_tls' => null
     ];
@@ -102,9 +102,9 @@ class LoggingSyslogAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
+        'message_type' => 'message_type',
         'hostname' => 'hostname',
         'ipv4' => 'ipv4',
-        'message_type' => 'message_type',
         'token' => 'token',
         'use_tls' => 'use_tls'
     ];
@@ -115,9 +115,9 @@ class LoggingSyslogAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
+        'message_type' => 'setMessageType',
         'hostname' => 'setHostname',
         'ipv4' => 'setIpv4',
-        'message_type' => 'setMessageType',
         'token' => 'setToken',
         'use_tls' => 'setUseTls'
     ];
@@ -128,9 +128,9 @@ class LoggingSyslogAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
+        'message_type' => 'getMessageType',
         'hostname' => 'getHostname',
         'ipv4' => 'getIpv4',
-        'message_type' => 'getMessageType',
         'token' => 'getToken',
         'use_tls' => 'getUseTls'
     ];
@@ -195,9 +195,9 @@ class LoggingSyslogAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
+        $this->container['message_type'] = $data['message_type'] ?? null;
         $this->container['hostname'] = $data['hostname'] ?? null;
         $this->container['ipv4'] = $data['ipv4'] ?? null;
-        $this->container['message_type'] = $data['message_type'] ?? null;
         $this->container['token'] = $data['token'] ?? 'null';
         $this->container['use_tls'] = $data['use_tls'] ?? null;
     }
@@ -225,6 +225,30 @@ class LoggingSyslogAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets message_type
+     *
+     * @return \Fastly\Model\LoggingMessageType|null
+     */
+    public function getMessageType()
+    {
+        return $this->container['message_type'];
+    }
+
+    /**
+     * Sets message_type
+     *
+     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
+     *
+     * @return self
+     */
+    public function setMessageType($message_type)
+    {
+        $this->container['message_type'] = $message_type;
+
+        return $this;
+    }
 
     /**
      * Gets hostname
@@ -270,30 +294,6 @@ class LoggingSyslogAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setIpv4($ipv4)
     {
         $this->container['ipv4'] = $ipv4;
-
-        return $this;
-    }
-
-    /**
-     * Gets message_type
-     *
-     * @return \Fastly\Model\LoggingMessageType|null
-     */
-    public function getMessageType()
-    {
-        return $this->container['message_type'];
-    }
-
-    /**
-     * Sets message_type
-     *
-     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
-     *
-     * @return self
-     */
-    public function setMessageType($message_type)
-    {
-        $this->container['message_type'] = $message_type;
 
         return $this;
     }
