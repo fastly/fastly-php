@@ -237,7 +237,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['comment'] = $data['comment'] ?? null;
         $this->container['ip'] = $data['ip'] ?? null;
-        $this->container['negated'] = $data['negated'] ?? NEGATED_0;
+        $this->container['negated'] = $data['negated'] ?? self::NEGATED_0;
         $this->container['subnet'] = $data['subnet'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
