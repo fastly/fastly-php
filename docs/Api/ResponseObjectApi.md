@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\ResponseObjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -43,8 +44,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -76,9 +77,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**response_object_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**response_object_name** | **string** | Name for the request settings. |
 
 ### Return type
 
@@ -110,9 +111,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**response_object_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**response_object_name** | **string** | Name for the request settings. |
 
 ### Return type
 
@@ -144,8 +145,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -177,9 +178,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**response_object_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**response_object_name** | **string** | Name for the request settings. |
 
 ### Return type
 

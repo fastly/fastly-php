@@ -2,7 +2,7 @@
 /**
  * HistoricalUsageMonthResponseAllOfData
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -54,8 +54,8 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
       */
     protected static $fastlyTypes = [
         'customer_id' => 'string',
-        'services' => 'array<string,\Fastly\Model\array>',
-        'total' => 'array<string,\Fastly\Model\array>'
+        'services' => 'array<string,array<string,\Fastly\Model\AdditionalProperties>>',
+        'total' => 'array<string,object>'
     ];
 
     /**
@@ -166,9 +166,6 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -241,7 +238,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
     /**
      * Gets services
      *
-     * @return array<string,\Fastly\Model\array>|null
+     * @return array<string,array<string,\Fastly\Model\AdditionalProperties>>|null
      */
     public function getServices()
     {
@@ -251,7 +248,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
     /**
      * Sets services
      *
-     * @param array<string,\Fastly\Model\array>|null $services services
+     * @param array<string,array<string,\Fastly\Model\AdditionalProperties>>|null $services services
      *
      * @return self
      */
@@ -265,7 +262,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
     /**
      * Gets total
      *
-     * @return array<string,\Fastly\Model\array>|null
+     * @return array<string,object>|null
      */
     public function getTotal()
     {
@@ -275,7 +272,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
     /**
      * Sets total
      *
-     * @param array<string,\Fastly\Model\array>|null $total total
+     * @param array<string,object>|null $total total
      *
      * @return self
      */

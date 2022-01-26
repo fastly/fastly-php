@@ -2,7 +2,7 @@
 /**
  * TypeEvent
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeEvent
      * Possible values of this enum
      */
     const EVENT = 'event';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeEvent
     public static function getAllowableEnumValues()
     {
         return [
-            self::EVENT,
+            self::EVENT
         ];
     }
 }

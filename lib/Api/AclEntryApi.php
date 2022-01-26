@@ -1,7 +1,7 @@
 <?php
 /**
  * AclEntryApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class AclEntryApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,8 +116,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $acl_id acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntries $acl_entries acl_entries (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -136,8 +137,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntries $acl_entries (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -155,9 +156,16 @@ class AclEntryApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -168,21 +176,20 @@ class AclEntryApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -193,11 +200,10 @@ class AclEntryApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -228,8 +234,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntries $acl_entries (optional)
      *
      * @throws \InvalidArgumentException
@@ -252,8 +258,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntries $acl_entries (optional)
      *
      * @throws \InvalidArgumentException
@@ -268,11 +274,10 @@ class AclEntryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -292,7 +297,7 @@ class AclEntryApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -303,8 +308,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntries $acl_entries (optional)
      *
      * @throws \InvalidArgumentException
@@ -395,7 +400,7 @@ class AclEntryApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -416,7 +421,7 @@ class AclEntryApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -432,8 +437,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $acl_id acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry acl_entry (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -453,8 +458,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -472,9 +477,16 @@ class AclEntryApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -485,21 +497,20 @@ class AclEntryApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\AclEntryResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -510,11 +521,10 @@ class AclEntryApi
             }
 
             $returnType = '\Fastly\Model\AclEntryResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -545,8 +555,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry (optional)
      *
      * @throws \InvalidArgumentException
@@ -569,8 +579,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry (optional)
      *
      * @throws \InvalidArgumentException
@@ -585,11 +595,10 @@ class AclEntryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -609,7 +618,7 @@ class AclEntryApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -620,8 +629,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry (optional)
      *
      * @throws \InvalidArgumentException
@@ -712,7 +721,7 @@ class AclEntryApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -733,7 +742,7 @@ class AclEntryApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -749,9 +758,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $acl_id acl_id (required)
-     * @param  string $acl_entry_id acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -770,9 +779,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -789,9 +798,16 @@ class AclEntryApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -802,21 +818,20 @@ class AclEntryApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -827,11 +842,10 @@ class AclEntryApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -862,9 +876,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -886,9 +900,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -902,11 +916,10 @@ class AclEntryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -926,7 +939,7 @@ class AclEntryApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -937,9 +950,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1037,7 +1050,7 @@ class AclEntryApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1058,7 +1071,7 @@ class AclEntryApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1074,9 +1087,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $acl_id acl_id (required)
-     * @param  string $acl_entry_id acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1095,9 +1108,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1114,9 +1127,16 @@ class AclEntryApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1127,21 +1147,20 @@ class AclEntryApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\AclEntry' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1152,11 +1171,10 @@ class AclEntryApi
             }
 
             $returnType = '\Fastly\Model\AclEntry';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1187,9 +1205,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1211,9 +1229,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1227,11 +1245,10 @@ class AclEntryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1251,7 +1268,7 @@ class AclEntryApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1262,9 +1279,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1362,7 +1379,7 @@ class AclEntryApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1383,7 +1400,7 @@ class AclEntryApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1399,8 +1416,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $acl_id acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1423,8 +1440,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1445,9 +1462,16 @@ class AclEntryApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1458,21 +1482,20 @@ class AclEntryApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\AclEntryResponse[]' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1483,11 +1506,10 @@ class AclEntryApi
             }
 
             $returnType = '\Fastly\Model\AclEntryResponse[]';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1518,8 +1540,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1545,8 +1567,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1564,11 +1586,10 @@ class AclEntryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1588,7 +1609,7 @@ class AclEntryApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1599,8 +1620,8 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1647,32 +1668,48 @@ class AclEntryApi
         $multipart = false;
 
         // query params
-        if (is_array($page)) {
-            $page = ObjectSerializer::serializeCollection($page, 'simple', true);
-        }
         if ($page !== null) {
-            $queryParams['page'] = $page;
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
         }
         // query params
-        if (is_array($per_page)) {
-            $per_page = ObjectSerializer::serializeCollection($per_page, 'simple', true);
-        }
         if ($per_page !== null) {
-            $queryParams['per_page'] = $per_page;
+            if('form' === 'form' && is_array($per_page)) {
+                foreach($per_page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['per_page'] = $per_page;
+            }
         }
         // query params
-        if (is_array($sort)) {
-            $sort = ObjectSerializer::serializeCollection($sort, 'simple', true);
-        }
         if ($sort !== null) {
-            $queryParams['sort'] = $sort;
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort'] = $sort;
+            }
         }
         // query params
-        if (is_array($direction)) {
-            $direction = ObjectSerializer::serializeCollection($direction, 'simple', true);
-        }
         if ($direction !== null) {
-            $queryParams['direction'] = $direction;
+            if('form' === 'form' && is_array($direction)) {
+                foreach($direction as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['direction'] = $direction;
+            }
         }
 
 
@@ -1726,7 +1763,7 @@ class AclEntryApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1747,7 +1784,7 @@ class AclEntryApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1763,9 +1800,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $acl_id acl_id (required)
-     * @param  string $acl_entry_id acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry acl_entry (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1785,9 +1822,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1805,9 +1842,16 @@ class AclEntryApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1818,21 +1862,20 @@ class AclEntryApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\AclEntry' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1843,11 +1886,10 @@ class AclEntryApi
             }
 
             $returnType = '\Fastly\Model\AclEntry';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1878,9 +1920,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry (optional)
      *
      * @throws \InvalidArgumentException
@@ -1903,9 +1945,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry (optional)
      *
      * @throws \InvalidArgumentException
@@ -1920,11 +1962,10 @@ class AclEntryApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1944,7 +1985,7 @@ class AclEntryApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1955,9 +1996,9 @@ class AclEntryApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $acl_id (required)
-     * @param  string $acl_entry_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
+     * @param  string $acl_entry_id Alphanumeric string identifying an ACL Entry. (required)
      * @param  \Fastly\Model\AclEntry $acl_entry (optional)
      *
      * @throws \InvalidArgumentException
@@ -2063,7 +2104,7 @@ class AclEntryApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2084,7 +2125,7 @@ class AclEntryApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

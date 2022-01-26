@@ -2,7 +2,7 @@
 /**
  * WafActiveRuleDataAttributes
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafActiveRuleDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -54,7 +54,7 @@ class WafActiveRuleDataAttributes implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $fastlyTypes = [
         'modsec_rule_id' => 'int',
-        'revision' => 'int',
+        'revision' => 'OneOfNumberString',
         'status' => 'string'
     ];
 
@@ -169,9 +169,7 @@ class WafActiveRuleDataAttributes implements ModelInterface, ArrayAccess, \JsonS
     const STATUS_LOG = 'log';
     const STATUS_BLOCK = 'block';
     const STATUS_SCORE = 'score';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -185,7 +183,6 @@ class WafActiveRuleDataAttributes implements ModelInterface, ArrayAccess, \JsonS
             self::STATUS_SCORE,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -267,7 +264,7 @@ class WafActiveRuleDataAttributes implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets revision
      *
-     * @return int|null
+     * @return OneOfNumberString|null
      */
     public function getRevision()
     {
@@ -277,7 +274,7 @@ class WafActiveRuleDataAttributes implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets revision
      *
-     * @param int|null $revision Revision number.
+     * @param OneOfNumberString|null $revision revision
      *
      * @return self
      */

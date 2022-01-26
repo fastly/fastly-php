@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\WafFirewallsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -75,7 +76,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
 **waf_firewall** | [**\Fastly\Model\WafFirewall**](../Model/WafFirewall.md) |  | [optional]
 
 ### Return type
@@ -108,9 +109,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
 **filter_service_version_number** | **string** | Limit the results returned to a specific service version. | [optional]
-**include** | **string** | Include related objects. Optional. | [optional] [default to &#39;waf_firewall_versions&#39;]
+**include** | **string** | Include related objects. Optional. | [optional] [one of: 'waf_firewall_versions'] [defaults to 'waf_firewall_versions']
 
 ### Return type
 
@@ -143,10 +144,10 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 **filter_service_id** | **string** | Limit the results returned to a specific service. | [optional]
 **filter_service_version_number** | **string** | Limit the results returned to a specific service version. | [optional]
-**include** | **string** | Include related objects. Optional. | [optional] [default to &#39;waf_firewall_versions&#39;]
+**include** | **string** | Include related objects. Optional. | [optional] [one of: 'waf_firewall_versions'] [defaults to 'waf_firewall_versions']
 
 ### Return type
 
@@ -178,7 +179,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
 **waf_firewall** | [**\Fastly\Model\WafFirewall**](../Model/WafFirewall.md) |  | [optional]
 
 ### Return type

@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\StarApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -74,7 +75,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**star_id** | **string** |  |
+**star_id** | **string** | Alphanumeric string identifying a star. |
 
 ### Return type
 
@@ -106,7 +107,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**star_id** | **string** |  |
+**star_id** | **string** | Alphanumeric string identifying a star. |
 
 ### Return type
 
@@ -136,7 +137,7 @@ try {
 
 Note: the input parameter is an associative array with the keys listed below.
 
-This endpoint does not need any parameter.
+This endpoint does not need any parameters.
 
 ### Return type
 

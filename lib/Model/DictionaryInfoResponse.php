@@ -2,7 +2,7 @@
 /**
  * DictionaryInfoResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,9 +53,9 @@ class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'digest' => 'string',
+        'last_updated' => 'string',
         'item_count' => 'int',
-        'last_updated' => 'string'
+        'digest' => 'string'
     ];
 
     /**
@@ -66,9 +66,9 @@ class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'digest' => null,
+        'last_updated' => null,
         'item_count' => null,
-        'last_updated' => null
+        'digest' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'digest' => 'digest',
+        'last_updated' => 'last_updated',
         'item_count' => 'item_count',
-        'last_updated' => 'last_updated'
+        'digest' => 'digest'
     ];
 
     /**
@@ -109,9 +109,9 @@ class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'digest' => 'setDigest',
+        'last_updated' => 'setLastUpdated',
         'item_count' => 'setItemCount',
-        'last_updated' => 'setLastUpdated'
+        'digest' => 'setDigest'
     ];
 
     /**
@@ -120,9 +120,9 @@ class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'digest' => 'getDigest',
+        'last_updated' => 'getLastUpdated',
         'item_count' => 'getItemCount',
-        'last_updated' => 'getLastUpdated'
+        'digest' => 'getDigest'
     ];
 
     /**
@@ -166,9 +166,6 @@ class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -185,9 +182,9 @@ class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['digest'] = $data['digest'] ?? null;
-        $this->container['item_count'] = $data['item_count'] ?? null;
         $this->container['last_updated'] = $data['last_updated'] ?? null;
+        $this->container['item_count'] = $data['item_count'] ?? null;
+        $this->container['digest'] = $data['digest'] ?? null;
     }
 
     /**
@@ -215,25 +212,25 @@ class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets digest
+     * Gets last_updated
      *
      * @return string|null
      */
-    public function getDigest()
+    public function getLastUpdated()
     {
-        return $this->container['digest'];
+        return $this->container['last_updated'];
     }
 
     /**
-     * Sets digest
+     * Sets last_updated
      *
-     * @param string|null $digest A hash of all the dictionary content.
+     * @param string|null $last_updated Timestamp (UTC) when the dictionary was last updated or an item was added or removed.
      *
      * @return self
      */
-    public function setDigest($digest)
+    public function setLastUpdated($last_updated)
     {
-        $this->container['digest'] = $digest;
+        $this->container['last_updated'] = $last_updated;
 
         return $this;
     }
@@ -263,25 +260,25 @@ class DictionaryInfoResponse implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets last_updated
+     * Gets digest
      *
      * @return string|null
      */
-    public function getLastUpdated()
+    public function getDigest()
     {
-        return $this->container['last_updated'];
+        return $this->container['digest'];
     }
 
     /**
-     * Sets last_updated
+     * Sets digest
      *
-     * @param string|null $last_updated Timestamp (UTC) when the dictionary was last updated or an item was added or removed.
+     * @param string|null $digest A hash of all the dictionary content.
      *
      * @return self
      */
-    public function setLastUpdated($last_updated)
+    public function setDigest($digest)
     {
-        $this->container['last_updated'] = $last_updated;
+        $this->container['digest'] = $digest;
 
         return $this;
     }

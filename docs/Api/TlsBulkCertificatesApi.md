@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\TlsBulkCertificatesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -43,7 +44,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**certificate_id** | **string** |  |
+**certificate_id** | **string** | Alphanumeric string identifying a TLS bulk certificate. |
 
 ### Return type
 
@@ -75,7 +76,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**certificate_id** | **string** |  |
+**certificate_id** | **string** | Alphanumeric string identifying a TLS bulk certificate. |
 
 ### Return type
 
@@ -107,10 +108,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**filter_tls_domain_id_match** | **string** | Filter certificates by their matching, fully-qualified domain name. Returns all partial matches. Must provide a value longer than 3 characters. | [optional]
+**filter_tls_domain_id** | **string** | Filter certificates by their matching, fully-qualified domain name. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
-**sort** | **string** | The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
+**sort** | **string** | The order in which to list the results by creation date. | [optional] [one of: 'created_at', '-created_at'] [defaults to 'created_at']
 
 ### Return type
 
@@ -142,7 +143,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**certificate_id** | **string** |  |
+**certificate_id** | **string** | Alphanumeric string identifying a TLS bulk certificate. |
 **tls_bulk_certificate** | [**\Fastly\Model\TlsBulkCertificate**](../Model/TlsBulkCertificate.md) |  | [optional]
 
 ### Return type

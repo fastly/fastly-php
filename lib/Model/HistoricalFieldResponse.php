@@ -2,7 +2,7 @@
 /**
  * HistoricalFieldResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,10 +53,10 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'status' => 'string',
         'meta' => '\Fastly\Model\HistoricalMeta',
         'msg' => 'string',
-        'status' => 'string',
-        'data' => 'array<string,\Fastly\Model\array>'
+        'data' => 'array<string,array>'
     ];
 
     /**
@@ -67,9 +67,9 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'status' => null,
         'meta' => null,
         'msg' => null,
-        'status' => null,
         'data' => null
     ];
 
@@ -100,9 +100,9 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'status' => 'status',
         'meta' => 'meta',
         'msg' => 'msg',
-        'status' => 'status',
         'data' => 'data'
     ];
 
@@ -112,9 +112,9 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'status' => 'setStatus',
         'meta' => 'setMeta',
         'msg' => 'setMsg',
-        'status' => 'setStatus',
         'data' => 'setData'
     ];
 
@@ -124,9 +124,9 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'status' => 'getStatus',
         'meta' => 'getMeta',
         'msg' => 'getMsg',
-        'status' => 'getStatus',
         'data' => 'getData'
     ];
 
@@ -171,9 +171,6 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -190,9 +187,9 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['meta'] = $data['meta'] ?? null;
         $this->container['msg'] = $data['msg'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['data'] = $data['data'] ?? null;
     }
 
@@ -219,6 +216,30 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Whether or not we were able to successfully execute the query.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
 
     /**
      * Gets meta
@@ -269,33 +290,9 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Whether or not we were able to successfully execute the query.
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets data
      *
-     * @return array<string,\Fastly\Model\array>|null
+     * @return array<string,array>|null
      */
     public function getData()
     {
@@ -305,7 +302,7 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets data
      *
-     * @param array<string,\Fastly\Model\array>|null $data data
+     * @param array<string,array>|null $data data
      *
      * @return self
      */

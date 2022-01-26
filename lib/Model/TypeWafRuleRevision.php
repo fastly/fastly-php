@@ -2,7 +2,7 @@
 /**
  * TypeWafRuleRevision
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeWafRuleRevision
      * Possible values of this enum
      */
     const WAF_RULE_REVISION = 'waf_rule_revision';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeWafRuleRevision
     public static function getAllowableEnumValues()
     {
         return [
-            self::WAF_RULE_REVISION,
+            self::WAF_RULE_REVISION
         ];
     }
 }

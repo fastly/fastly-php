@@ -2,7 +2,7 @@
 /**
  * LoggingSplunk
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,19 +53,19 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'string',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
-        'placement' => '\Fastly\Model\LoggingPlacement',
+        'placement' => 'string',
+        'format_version' => 'int',
         'response_condition' => 'string',
+        'format' => 'string',
         'tls_ca_cert' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
         'tls_hostname' => 'string',
-        'request_max_bytes' => 'int',
         'request_max_entries' => 'int',
-        'token' => 'string',
+        'request_max_bytes' => 'int',
         'url' => 'string',
+        'token' => 'string',
         'use_tls' => '\Fastly\Model\LoggingUseTls'
     ];
 
@@ -77,19 +77,19 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
-        'format_version' => null,
         'name' => null,
         'placement' => null,
+        'format_version' => null,
         'response_condition' => null,
+        'format' => null,
         'tls_ca_cert' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
         'tls_hostname' => null,
-        'request_max_bytes' => null,
         'request_max_entries' => null,
-        'token' => null,
+        'request_max_bytes' => null,
         'url' => null,
+        'token' => null,
         'use_tls' => null
     ];
 
@@ -120,19 +120,19 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
-        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
+        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
+        'format' => 'format',
         'tls_ca_cert' => 'tls_ca_cert',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
         'tls_hostname' => 'tls_hostname',
-        'request_max_bytes' => 'request_max_bytes',
         'request_max_entries' => 'request_max_entries',
-        'token' => 'token',
+        'request_max_bytes' => 'request_max_bytes',
         'url' => 'url',
+        'token' => 'token',
         'use_tls' => 'use_tls'
     ];
 
@@ -142,19 +142,19 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
-        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
+        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
+        'format' => 'setFormat',
         'tls_ca_cert' => 'setTlsCaCert',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
         'tls_hostname' => 'setTlsHostname',
-        'request_max_bytes' => 'setRequestMaxBytes',
         'request_max_entries' => 'setRequestMaxEntries',
-        'token' => 'setToken',
+        'request_max_bytes' => 'setRequestMaxBytes',
         'url' => 'setUrl',
+        'token' => 'setToken',
         'use_tls' => 'setUseTls'
     ];
 
@@ -164,19 +164,19 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
-        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
+        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
+        'format' => 'getFormat',
         'tls_ca_cert' => 'getTlsCaCert',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
         'tls_hostname' => 'getTlsHostname',
-        'request_max_bytes' => 'getRequestMaxBytes',
         'request_max_entries' => 'getRequestMaxEntries',
-        'token' => 'getToken',
+        'request_max_bytes' => 'getRequestMaxBytes',
         'url' => 'getUrl',
+        'token' => 'getToken',
         'use_tls' => 'getUseTls'
     ];
 
@@ -221,9 +221,38 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
+    const PLACEMENT_NONE = 'none';
+    const PLACEMENT_WAF_DEBUG = 'waf_debug';
+    const PLACEMENT_NULL = 'null';
+    const FORMAT_VERSION_v1 = 1;
+    const FORMAT_VERSION_v2 = 2;
 
-    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlacementAllowableValues()
+    {
+        return [
+            self::PLACEMENT_NONE,
+            self::PLACEMENT_WAF_DEBUG,
+            self::PLACEMENT_NULL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatVersionAllowableValues()
+    {
+        return [
+            self::FORMAT_VERSION_v1,
+            self::FORMAT_VERSION_v2,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -240,19 +269,19 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
         $this->container['tls_hostname'] = $data['tls_hostname'] ?? 'null';
-        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
         $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
-        $this->container['token'] = $data['token'] ?? null;
+        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
         $this->container['url'] = $data['url'] ?? null;
+        $this->container['token'] = $data['token'] ?? null;
         $this->container['use_tls'] = $data['use_tls'] ?? null;
     }
 
@@ -264,6 +293,24 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format_version', must be one of '%s'",
+                $this->container['format_version'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -279,54 +326,6 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -355,7 +354,7 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets placement
      *
-     * @return \Fastly\Model\LoggingPlacement|null
+     * @return string|null
      */
     public function getPlacement()
     {
@@ -365,13 +364,57 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets placement
      *
-     * @param \Fastly\Model\LoggingPlacement|null $placement placement
+     * @param string|null $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
      *
      * @return self
      */
     public function setPlacement($placement)
     {
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($placement) && !in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['placement'] = $placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return int|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -396,6 +439,30 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
 
         return $this;
     }
@@ -497,30 +564,6 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets request_max_bytes
-     *
-     * @return int|null
-     */
-    public function getRequestMaxBytes()
-    {
-        return $this->container['request_max_bytes'];
-    }
-
-    /**
-     * Sets request_max_bytes
-     *
-     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` for unbounded.
-     *
-     * @return self
-     */
-    public function setRequestMaxBytes($request_max_bytes)
-    {
-        $this->container['request_max_bytes'] = $request_max_bytes;
-
-        return $this;
-    }
-
-    /**
      * Gets request_max_entries
      *
      * @return int|null
@@ -545,25 +588,25 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets token
+     * Gets request_max_bytes
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getToken()
+    public function getRequestMaxBytes()
     {
-        return $this->container['token'];
+        return $this->container['request_max_bytes'];
     }
 
     /**
-     * Sets token
+     * Sets request_max_bytes
      *
-     * @param string|null $token A Splunk token for use in posting logs over HTTP to your collector.
+     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` for unbounded.
      *
      * @return self
      */
-    public function setToken($token)
+    public function setRequestMaxBytes($request_max_bytes)
     {
-        $this->container['token'] = $token;
+        $this->container['request_max_bytes'] = $request_max_bytes;
 
         return $this;
     }
@@ -588,6 +631,30 @@ class LoggingSplunk implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUrl($url)
     {
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets token
+     *
+     * @return string|null
+     */
+    public function getToken()
+    {
+        return $this->container['token'];
+    }
+
+    /**
+     * Sets token
+     *
+     * @param string|null $token A Splunk token for use in posting logs over HTTP to your collector.
+     *
+     * @return self
+     */
+    public function setToken($token)
+    {
+        $this->container['token'] = $token;
 
         return $this;
     }

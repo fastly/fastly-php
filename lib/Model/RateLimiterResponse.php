@@ -2,7 +2,7 @@
 /**
  * RateLimiterResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,18 +53,18 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'action' => 'string',
-        'client_key' => 'string[]',
-        'feature_revision' => 'int',
-        'http_methods' => 'string[]',
-        'logger_type' => 'string',
         'name' => 'string',
+        'uri_dictionary_name' => 'string',
+        'http_methods' => 'string[]',
+        'rps_limit' => 'int',
+        'window_size' => 'int',
+        'client_key' => 'string[]',
         'penalty_box_duration' => 'int',
+        'action' => 'string',
         'response' => '\Fastly\Model\RateLimiterResponse1',
         'response_object_name' => 'string',
-        'rps_limit' => 'int',
-        'uri_dictionary_name' => 'string',
-        'window_size' => 'int',
+        'logger_type' => 'string',
+        'feature_revision' => 'int',
         'service_id' => 'string',
         'version' => 'int',
         'created_at' => 'string',
@@ -81,18 +81,18 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'action' => null,
-        'client_key' => null,
-        'feature_revision' => null,
-        'http_methods' => null,
-        'logger_type' => null,
         'name' => null,
+        'uri_dictionary_name' => null,
+        'http_methods' => null,
+        'rps_limit' => null,
+        'window_size' => null,
+        'client_key' => null,
         'penalty_box_duration' => null,
+        'action' => null,
         'response' => null,
         'response_object_name' => null,
-        'rps_limit' => null,
-        'uri_dictionary_name' => null,
-        'window_size' => null,
+        'logger_type' => null,
+        'feature_revision' => null,
         'service_id' => null,
         'version' => null,
         'created_at' => null,
@@ -128,18 +128,18 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'action' => 'action',
-        'client_key' => 'client_key',
-        'feature_revision' => 'feature_revision',
-        'http_methods' => 'http_methods',
-        'logger_type' => 'logger_type',
         'name' => 'name',
+        'uri_dictionary_name' => 'uri_dictionary_name',
+        'http_methods' => 'http_methods',
+        'rps_limit' => 'rps_limit',
+        'window_size' => 'window_size',
+        'client_key' => 'client_key',
         'penalty_box_duration' => 'penalty_box_duration',
+        'action' => 'action',
         'response' => 'response',
         'response_object_name' => 'response_object_name',
-        'rps_limit' => 'rps_limit',
-        'uri_dictionary_name' => 'uri_dictionary_name',
-        'window_size' => 'window_size',
+        'logger_type' => 'logger_type',
+        'feature_revision' => 'feature_revision',
         'service_id' => 'service_id',
         'version' => 'version',
         'created_at' => 'created_at',
@@ -154,18 +154,18 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'action' => 'setAction',
-        'client_key' => 'setClientKey',
-        'feature_revision' => 'setFeatureRevision',
-        'http_methods' => 'setHttpMethods',
-        'logger_type' => 'setLoggerType',
         'name' => 'setName',
+        'uri_dictionary_name' => 'setUriDictionaryName',
+        'http_methods' => 'setHttpMethods',
+        'rps_limit' => 'setRpsLimit',
+        'window_size' => 'setWindowSize',
+        'client_key' => 'setClientKey',
         'penalty_box_duration' => 'setPenaltyBoxDuration',
+        'action' => 'setAction',
         'response' => 'setResponse',
         'response_object_name' => 'setResponseObjectName',
-        'rps_limit' => 'setRpsLimit',
-        'uri_dictionary_name' => 'setUriDictionaryName',
-        'window_size' => 'setWindowSize',
+        'logger_type' => 'setLoggerType',
+        'feature_revision' => 'setFeatureRevision',
         'service_id' => 'setServiceId',
         'version' => 'setVersion',
         'created_at' => 'setCreatedAt',
@@ -180,18 +180,18 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'action' => 'getAction',
-        'client_key' => 'getClientKey',
-        'feature_revision' => 'getFeatureRevision',
-        'http_methods' => 'getHttpMethods',
-        'logger_type' => 'getLoggerType',
         'name' => 'getName',
+        'uri_dictionary_name' => 'getUriDictionaryName',
+        'http_methods' => 'getHttpMethods',
+        'rps_limit' => 'getRpsLimit',
+        'window_size' => 'getWindowSize',
+        'client_key' => 'getClientKey',
         'penalty_box_duration' => 'getPenaltyBoxDuration',
+        'action' => 'getAction',
         'response' => 'getResponse',
         'response_object_name' => 'getResponseObjectName',
-        'rps_limit' => 'getRpsLimit',
-        'uri_dictionary_name' => 'getUriDictionaryName',
-        'window_size' => 'getWindowSize',
+        'logger_type' => 'getLoggerType',
+        'feature_revision' => 'getFeatureRevision',
         'service_id' => 'getServiceId',
         'version' => 'getVersion',
         'created_at' => 'getCreatedAt',
@@ -241,9 +241,6 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$fastlyModelName;
     }
 
-    const ACTION_RESPONSE = 'response';
-    const ACTION_RESPONSE_OBJECT = 'response_object';
-    const ACTION_LOG_ONLY = 'log_only';
     const HTTP_METHODS_HEAD = 'HEAD';
     const HTTP_METHODS_OPTIONS = 'OPTIONS';
     const HTTP_METHODS_GET = 'GET';
@@ -252,6 +249,12 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     const HTTP_METHODS_PATCH = 'PATCH';
     const HTTP_METHODS_DELETE = 'DELETE';
     const HTTP_METHODS_TRACE = 'TRACE';
+    const WINDOW_SIZE_one_second = 1;
+    const WINDOW_SIZE_ten_seconds = 10;
+    const WINDOW_SIZE_one_minute = 60;
+    const ACTION_RESPONSE = 'response';
+    const ACTION_RESPONSE_OBJECT = 'response_object';
+    const ACTION_LOG_ONLY = 'log_only';
     const LOGGER_TYPE_AZUREBLOB = 'azureblob';
     const LOGGER_TYPE_BIGQUERY = 'bigquery';
     const LOGGER_TYPE_CLOUDFILES = 'cloudfiles';
@@ -281,26 +284,7 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     const LOGGER_TYPE_STACKDRIVER = 'stackdriver';
     const LOGGER_TYPE_SUMOLOGIC = 'sumologic';
     const LOGGER_TYPE_SYSLOG = 'syslog';
-    const WINDOW_SIZE_one_second = 1;
-    const WINDOW_SIZE_ten_seconds = 10;
-    const WINDOW_SIZE_one_minute = 60;
-    
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getActionAllowableValues()
-    {
-        return [
-            self::ACTION_RESPONSE,
-            self::ACTION_RESPONSE_OBJECT,
-            self::ACTION_LOG_ONLY,
-        ];
-    }
-    
     /**
      * Gets allowable values of the enum
      *
@@ -319,7 +303,35 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
             self::HTTP_METHODS_TRACE,
         ];
     }
-    
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getWindowSizeAllowableValues()
+    {
+        return [
+            self::WINDOW_SIZE_one_second,
+            self::WINDOW_SIZE_ten_seconds,
+            self::WINDOW_SIZE_one_minute,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getActionAllowableValues()
+    {
+        return [
+            self::ACTION_RESPONSE,
+            self::ACTION_RESPONSE_OBJECT,
+            self::ACTION_LOG_ONLY,
+        ];
+    }
+
     /**
      * Gets allowable values of the enum
      *
@@ -359,21 +371,6 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LOGGER_TYPE_SYSLOG,
         ];
     }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getWindowSizeAllowableValues()
-    {
-        return [
-            self::WINDOW_SIZE_one_second,
-            self::WINDOW_SIZE_ten_seconds,
-            self::WINDOW_SIZE_one_minute,
-        ];
-    }
-    
 
     /**
      * Associative array for storing property values
@@ -390,18 +387,18 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['action'] = $data['action'] ?? null;
-        $this->container['client_key'] = $data['client_key'] ?? null;
-        $this->container['feature_revision'] = $data['feature_revision'] ?? null;
-        $this->container['http_methods'] = $data['http_methods'] ?? null;
-        $this->container['logger_type'] = $data['logger_type'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['uri_dictionary_name'] = $data['uri_dictionary_name'] ?? null;
+        $this->container['http_methods'] = $data['http_methods'] ?? null;
+        $this->container['rps_limit'] = $data['rps_limit'] ?? null;
+        $this->container['window_size'] = $data['window_size'] ?? null;
+        $this->container['client_key'] = $data['client_key'] ?? null;
         $this->container['penalty_box_duration'] = $data['penalty_box_duration'] ?? null;
+        $this->container['action'] = $data['action'] ?? null;
         $this->container['response'] = $data['response'] ?? null;
         $this->container['response_object_name'] = $data['response_object_name'] ?? null;
-        $this->container['rps_limit'] = $data['rps_limit'] ?? null;
-        $this->container['uri_dictionary_name'] = $data['uri_dictionary_name'] ?? null;
-        $this->container['window_size'] = $data['window_size'] ?? null;
+        $this->container['logger_type'] = $data['logger_type'] ?? null;
+        $this->container['feature_revision'] = $data['feature_revision'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -419,6 +416,55 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['uri_dictionary_name']) && (mb_strlen($this->container['uri_dictionary_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'uri_dictionary_name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['uri_dictionary_name']) && (mb_strlen($this->container['uri_dictionary_name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'uri_dictionary_name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['http_methods']) && (count($this->container['http_methods']) < 1)) {
+            $invalidProperties[] = "invalid value for 'http_methods', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['rps_limit']) && ($this->container['rps_limit'] > 10000)) {
+            $invalidProperties[] = "invalid value for 'rps_limit', must be smaller than or equal to 10000.";
+        }
+
+        if (!is_null($this->container['rps_limit']) && ($this->container['rps_limit'] < 10)) {
+            $invalidProperties[] = "invalid value for 'rps_limit', must be bigger than or equal to 10.";
+        }
+
+        $allowedValues = $this->getWindowSizeAllowableValues();
+        if (!is_null($this->container['window_size']) && !in_array($this->container['window_size'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'window_size', must be one of '%s'",
+                $this->container['window_size'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['client_key']) && (count($this->container['client_key']) < 1)) {
+            $invalidProperties[] = "invalid value for 'client_key', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['penalty_box_duration']) && ($this->container['penalty_box_duration'] > 60)) {
+            $invalidProperties[] = "invalid value for 'penalty_box_duration', must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['penalty_box_duration']) && ($this->container['penalty_box_duration'] < 1)) {
+            $invalidProperties[] = "invalid value for 'penalty_box_duration', must be bigger than or equal to 1.";
+        }
+
         $allowedValues = $this->getActionAllowableValues();
         if (!is_null($this->container['action']) && !in_array($this->container['action'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -432,39 +478,6 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'action', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['client_key']) && (count($this->container['client_key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'client_key', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['http_methods']) && (count($this->container['http_methods']) < 1)) {
-            $invalidProperties[] = "invalid value for 'http_methods', number of items must be greater than or equal to 1.";
-        }
-
-        $allowedValues = $this->getLoggerTypeAllowableValues();
-        if (!is_null($this->container['logger_type']) && !in_array($this->container['logger_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'logger_type', must be one of '%s'",
-                $this->container['logger_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['penalty_box_duration']) && ($this->container['penalty_box_duration'] > 60)) {
-            $invalidProperties[] = "invalid value for 'penalty_box_duration', must be smaller than or equal to 60.";
-        }
-
-        if (!is_null($this->container['penalty_box_duration']) && ($this->container['penalty_box_duration'] < 1)) {
-            $invalidProperties[] = "invalid value for 'penalty_box_duration', must be bigger than or equal to 1.";
-        }
-
         if (!is_null($this->container['response_object_name']) && (mb_strlen($this->container['response_object_name']) > 255)) {
             $invalidProperties[] = "invalid value for 'response_object_name', the character length must be smaller than or equal to 255.";
         }
@@ -473,27 +486,11 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'response_object_name', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['rps_limit']) && ($this->container['rps_limit'] > 10000)) {
-            $invalidProperties[] = "invalid value for 'rps_limit', must be smaller than or equal to 10000.";
-        }
-
-        if (!is_null($this->container['rps_limit']) && ($this->container['rps_limit'] < 10)) {
-            $invalidProperties[] = "invalid value for 'rps_limit', must be bigger than or equal to 10.";
-        }
-
-        if (!is_null($this->container['uri_dictionary_name']) && (mb_strlen($this->container['uri_dictionary_name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'uri_dictionary_name', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['uri_dictionary_name']) && (mb_strlen($this->container['uri_dictionary_name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'uri_dictionary_name', the character length must be bigger than or equal to 1.";
-        }
-
-        $allowedValues = $this->getWindowSizeAllowableValues();
-        if (!is_null($this->container['window_size']) && !in_array($this->container['window_size'], $allowedValues, true)) {
+        $allowedValues = $this->getLoggerTypeAllowableValues();
+        if (!is_null($this->container['logger_type']) && !in_array($this->container['logger_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'window_size', must be one of '%s'",
-                $this->container['window_size'],
+                "invalid value '%s' for 'logger_type', must be one of '%s'",
+                $this->container['logger_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -514,93 +511,63 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets action
+     * Gets name
      *
      * @return string|null
      */
-    public function getAction()
+    public function getName()
     {
-        return $this->container['action'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets action
+     * Sets name
      *
-     * @param string|null $action The action to take when a rate limiter violation is detected.
+     * @param string|null $name A human readable name for the rate limiting rule.
      *
      * @return self
      */
-    public function setAction($action)
+    public function setName($name)
     {
-        $allowedValues = $this->getActionAllowableValues();
-        if (!is_null($action) && !in_array($action, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'action', must be one of '%s'",
-                    $action,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!is_null($name) && (mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling RateLimiterResponse., must be smaller than or equal to 255.');
+        }
+        if (!is_null($name) && (mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling RateLimiterResponse., must be bigger than or equal to 1.');
         }
 
-        if (!is_null($action) && (mb_strlen($action) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $action when calling RateLimiterResponse., must be bigger than or equal to 1.');
-        }
-
-        $this->container['action'] = $action;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets client_key
+     * Gets uri_dictionary_name
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getClientKey()
+    public function getUriDictionaryName()
     {
-        return $this->container['client_key'];
+        return $this->container['uri_dictionary_name'];
     }
 
     /**
-     * Sets client_key
+     * Sets uri_dictionary_name
      *
-     * @param string[]|null $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include `req.http.Fastly-Client-IP`, `req.http.User-Agent`, or a custom header like `req.http.API-Key`.
+     * @param string|null $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
      *
      * @return self
      */
-    public function setClientKey($client_key)
+    public function setUriDictionaryName($uri_dictionary_name)
     {
-
-
-        if (!is_null($client_key) && (count($client_key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $client_key when calling RateLimiterResponse., number of items must be greater than or equal to 1.');
+        if (!is_null($uri_dictionary_name) && (mb_strlen($uri_dictionary_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $uri_dictionary_name when calling RateLimiterResponse., must be smaller than or equal to 255.');
         }
-        $this->container['client_key'] = $client_key;
+        if (!is_null($uri_dictionary_name) && (mb_strlen($uri_dictionary_name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $uri_dictionary_name when calling RateLimiterResponse., must be bigger than or equal to 1.');
+        }
 
-        return $this;
-    }
-
-    /**
-     * Gets feature_revision
-     *
-     * @return int|null
-     */
-    public function getFeatureRevision()
-    {
-        return $this->container['feature_revision'];
-    }
-
-    /**
-     * Sets feature_revision
-     *
-     * @param int|null $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision.
-     *
-     * @return self
-     */
-    public function setFeatureRevision($feature_revision)
-    {
-        $this->container['feature_revision'] = $feature_revision;
+        $this->container['uri_dictionary_name'] = $uri_dictionary_name;
 
         return $this;
     }
@@ -644,66 +611,96 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets logger_type
+     * Gets rps_limit
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getLoggerType()
+    public function getRpsLimit()
     {
-        return $this->container['logger_type'];
+        return $this->container['rps_limit'];
     }
 
     /**
-     * Sets logger_type
+     * Sets rps_limit
      *
-     * @param string|null $logger_type Name of the type of logging endpoint to be used when action is `log_only`. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries.
+     * @param int|null $rps_limit Upper limit of requests per second allowed by the rate limiter.
      *
      * @return self
      */
-    public function setLoggerType($logger_type)
+    public function setRpsLimit($rps_limit)
     {
-        $allowedValues = $this->getLoggerTypeAllowableValues();
-        if (!is_null($logger_type) && !in_array($logger_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'logger_type', must be one of '%s'",
-                    $logger_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (!is_null($rps_limit) && ($rps_limit > 10000)) {
+            throw new \InvalidArgumentException('invalid value for $rps_limit when calling RateLimiterResponse., must be smaller than or equal to 10000.');
         }
-        $this->container['logger_type'] = $logger_type;
+        if (!is_null($rps_limit) && ($rps_limit < 10)) {
+            throw new \InvalidArgumentException('invalid value for $rps_limit when calling RateLimiterResponse., must be bigger than or equal to 10.');
+        }
+
+        $this->container['rps_limit'] = $rps_limit;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets window_size
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getName()
+    public function getWindowSize()
     {
-        return $this->container['name'];
+        return $this->container['window_size'];
     }
 
     /**
-     * Sets name
+     * Sets window_size
      *
-     * @param string|null $name A human readable name for the rate limiting rule.
+     * @param int|null $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.
      *
      * @return self
      */
-    public function setName($name)
+    public function setWindowSize($window_size)
     {
-        if (!is_null($name) && (mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling RateLimiterResponse., must be smaller than or equal to 255.');
+        $allowedValues = $this->getWindowSizeAllowableValues();
+        if (!is_null($window_size) && !in_array($window_size, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'window_size', must be one of '%s'",
+                    $window_size,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        if (!is_null($name) && (mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling RateLimiterResponse., must be bigger than or equal to 1.');
-        }
+        $this->container['window_size'] = $window_size;
 
-        $this->container['name'] = $name;
+        return $this;
+    }
+
+    /**
+     * Gets client_key
+     *
+     * @return string[]|null
+     */
+    public function getClientKey()
+    {
+        return $this->container['client_key'];
+    }
+
+    /**
+     * Sets client_key
+     *
+     * @param string[]|null $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include `req.http.Fastly-Client-IP`, `req.http.User-Agent`, or a custom header like `req.http.API-Key`.
+     *
+     * @return self
+     */
+    public function setClientKey($client_key)
+    {
+
+
+        if (!is_null($client_key) && (count($client_key) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $client_key when calling RateLimiterResponse., number of items must be greater than or equal to 1.');
+        }
+        $this->container['client_key'] = $client_key;
 
         return $this;
     }
@@ -721,7 +718,7 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets penalty_box_duration
      *
-     * @param int|null $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected.
+     * @param int|null $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected.
      *
      * @return self
      */
@@ -736,6 +733,45 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         }
 
         $this->container['penalty_box_duration'] = $penalty_box_duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return string|null
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string|null $action The action to take when a rate limiter violation is detected.
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        $allowedValues = $this->getActionAllowableValues();
+        if (!is_null($action) && !in_array($action, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'action', must be one of '%s'",
+                    $action,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+
+        if (!is_null($action) && (mb_strlen($action) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $action when calling RateLimiterResponse., must be bigger than or equal to 1.');
+        }
+
+        $this->container['action'] = $action;
 
         return $this;
     }
@@ -796,98 +832,59 @@ class RateLimiterResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets rps_limit
-     *
-     * @return int|null
-     */
-    public function getRpsLimit()
-    {
-        return $this->container['rps_limit'];
-    }
-
-    /**
-     * Sets rps_limit
-     *
-     * @param int|null $rps_limit Upper limit of requests per second allowed by the rate limiter.
-     *
-     * @return self
-     */
-    public function setRpsLimit($rps_limit)
-    {
-
-        if (!is_null($rps_limit) && ($rps_limit > 10000)) {
-            throw new \InvalidArgumentException('invalid value for $rps_limit when calling RateLimiterResponse., must be smaller than or equal to 10000.');
-        }
-        if (!is_null($rps_limit) && ($rps_limit < 10)) {
-            throw new \InvalidArgumentException('invalid value for $rps_limit when calling RateLimiterResponse., must be bigger than or equal to 10.');
-        }
-
-        $this->container['rps_limit'] = $rps_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets uri_dictionary_name
+     * Gets logger_type
      *
      * @return string|null
      */
-    public function getUriDictionaryName()
+    public function getLoggerType()
     {
-        return $this->container['uri_dictionary_name'];
+        return $this->container['logger_type'];
     }
 
     /**
-     * Sets uri_dictionary_name
+     * Sets logger_type
      *
-     * @param string|null $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
+     * @param string|null $logger_type Name of the type of logging endpoint to be used when action is `log_only`. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries.
      *
      * @return self
      */
-    public function setUriDictionaryName($uri_dictionary_name)
+    public function setLoggerType($logger_type)
     {
-        if (!is_null($uri_dictionary_name) && (mb_strlen($uri_dictionary_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $uri_dictionary_name when calling RateLimiterResponse., must be smaller than or equal to 255.');
-        }
-        if (!is_null($uri_dictionary_name) && (mb_strlen($uri_dictionary_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $uri_dictionary_name when calling RateLimiterResponse., must be bigger than or equal to 1.');
-        }
-
-        $this->container['uri_dictionary_name'] = $uri_dictionary_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets window_size
-     *
-     * @return int|null
-     */
-    public function getWindowSize()
-    {
-        return $this->container['window_size'];
-    }
-
-    /**
-     * Sets window_size
-     *
-     * @param int|null $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.
-     *
-     * @return self
-     */
-    public function setWindowSize($window_size)
-    {
-        $allowedValues = $this->getWindowSizeAllowableValues();
-        if (!is_null($window_size) && !in_array($window_size, $allowedValues, true)) {
+        $allowedValues = $this->getLoggerTypeAllowableValues();
+        if (!is_null($logger_type) && !in_array($logger_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'window_size', must be one of '%s'",
-                    $window_size,
+                    "Invalid value '%s' for 'logger_type', must be one of '%s'",
+                    $logger_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['window_size'] = $window_size;
+        $this->container['logger_type'] = $logger_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets feature_revision
+     *
+     * @return int|null
+     */
+    public function getFeatureRevision()
+    {
+        return $this->container['feature_revision'];
+    }
+
+    /**
+     * Sets feature_revision
+     *
+     * @param int|null $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision.
+     *
+     * @return self
+     */
+    public function setFeatureRevision($feature_revision)
+    {
+        $this->container['feature_revision'] = $feature_revision;
 
         return $this;
     }

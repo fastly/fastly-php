@@ -2,7 +2,7 @@
 /**
  * ServiceCreateAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class ServiceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -158,9 +158,7 @@ class ServiceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
 
     const TYPE_VCL = 'vcl';
     const TYPE_WASM = 'wasm';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -173,7 +171,6 @@ class ServiceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
             self::TYPE_WASM,
         ];
     }
-    
 
     /**
      * Associative array for storing property values

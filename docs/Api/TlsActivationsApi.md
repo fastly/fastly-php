@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\TlsActivationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -75,7 +76,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_activation_id** | **string** |  |
+**tls_activation_id** | **string** | Alphanumeric string identifying a TLS activation. |
 
 ### Return type
 
@@ -107,8 +108,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_activation_id** | **string** |  |
-**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_certificate&#x60;, &#x60;tls_configuration&#x60;, and &#x60;tls_domain&#x60;. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_certificate`, `tls_configuration`, and `tls_domain`. | [optional]
+**tls_activation_id** | **string** | Alphanumeric string identifying a TLS activation. |
 
 ### Return type
 
@@ -143,9 +144,9 @@ Name | Type | Description  | Notes
 **filter_tls_certificate_id** | **string** | Limit the returned activations to a specific certificate. | [optional]
 **filter_tls_configuration_id** | **string** | Limit the returned activations to a specific TLS configuration. | [optional]
 **filter_tls_domain_id** | **string** | Limit the returned rules to a specific domain name. | [optional]
-**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_certificate&#x60;, &#x60;tls_configuration&#x60;, and &#x60;tls_domain&#x60;. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_certificate`, `tls_configuration`, and `tls_domain`. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 
 ### Return type
 
@@ -177,7 +178,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_activation_id** | **string** |  |
+**tls_activation_id** | **string** | Alphanumeric string identifying a TLS activation. |
 **tls_activation** | [**\Fastly\Model\TlsActivation**](../Model/TlsActivation.md) |  | [optional]
 
 ### Return type

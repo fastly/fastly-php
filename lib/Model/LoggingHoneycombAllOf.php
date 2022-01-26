@@ -2,7 +2,7 @@
 /**
  * LoggingHoneycombAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,8 +53,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'dataset' => 'string',
         'format' => 'mixed',
+        'dataset' => 'string',
         'token' => 'string'
     ];
 
@@ -66,8 +66,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'dataset' => null,
         'format' => null,
+        'dataset' => null,
         'token' => null
     ];
 
@@ -98,8 +98,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'dataset' => 'dataset',
         'format' => 'format',
+        'dataset' => 'dataset',
         'token' => 'token'
     ];
 
@@ -109,8 +109,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'dataset' => 'setDataset',
         'format' => 'setFormat',
+        'dataset' => 'setDataset',
         'token' => 'setToken'
     ];
 
@@ -120,8 +120,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'dataset' => 'getDataset',
         'format' => 'getFormat',
+        'dataset' => 'getDataset',
         'token' => 'getToken'
     ];
 
@@ -166,9 +166,6 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -185,8 +182,8 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['dataset'] = $data['dataset'] ?? null;
         $this->container['format'] = $data['format'] ?? null;
+        $this->container['dataset'] = $data['dataset'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
     }
 
@@ -215,30 +212,6 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets dataset
-     *
-     * @return string|null
-     */
-    public function getDataset()
-    {
-        return $this->container['dataset'];
-    }
-
-    /**
-     * Sets dataset
-     *
-     * @param string|null $dataset The Honeycomb Dataset you want to log to.
-     *
-     * @return self
-     */
-    public function setDataset($dataset)
-    {
-        $this->container['dataset'] = $dataset;
-
-        return $this;
-    }
-
-    /**
      * Gets format
      *
      * @return mixed|null
@@ -258,6 +231,30 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets dataset
+     *
+     * @return string|null
+     */
+    public function getDataset()
+    {
+        return $this->container['dataset'];
+    }
+
+    /**
+     * Sets dataset
+     *
+     * @param string|null $dataset The Honeycomb Dataset you want to log to.
+     *
+     * @return self
+     */
+    public function setDataset($dataset)
+    {
+        $this->container['dataset'] = $dataset;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 /**
  * Service
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class Service implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -54,8 +54,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'comment' => 'string',
-        'customer_id' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'customer_id' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'comment' => null,
-        'customer_id' => null,
-        'name' => null
+        'name' => null,
+        'customer_id' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'comment' => 'comment',
-        'customer_id' => 'customer_id',
-        'name' => 'name'
+        'name' => 'name',
+        'customer_id' => 'customer_id'
     ];
 
     /**
@@ -110,8 +110,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'comment' => 'setComment',
-        'customer_id' => 'setCustomerId',
-        'name' => 'setName'
+        'name' => 'setName',
+        'customer_id' => 'setCustomerId'
     ];
 
     /**
@@ -121,8 +121,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'comment' => 'getComment',
-        'customer_id' => 'getCustomerId',
-        'name' => 'getName'
+        'name' => 'getName',
+        'customer_id' => 'getCustomerId'
     ];
 
     /**
@@ -166,9 +166,6 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -186,8 +183,8 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['comment'] = $data['comment'] ?? null;
-        $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['customer_id'] = $data['customer_id'] ?? null;
     }
 
     /**
@@ -239,30 +236,6 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets customer_id
-     *
-     * @return string|null
-     */
-    public function getCustomerId()
-    {
-        return $this->container['customer_id'];
-    }
-
-    /**
-     * Sets customer_id
-     *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
-     *
-     * @return self
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->container['customer_id'] = $customer_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -282,6 +255,30 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_id
+     *
+     * @return string|null
+     */
+    public function getCustomerId()
+    {
+        return $this->container['customer_id'];
+    }
+
+    /**
+     * Sets customer_id
+     *
+     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     *
+     * @return self
+     */
+    public function setCustomerId($customer_id)
+    {
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }

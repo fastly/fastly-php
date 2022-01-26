@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\VersionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -47,8 +48,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -80,8 +81,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -113,7 +114,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 
 ### Return type
 
@@ -145,8 +146,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -178,8 +179,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -211,7 +212,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 
 ### Return type
 
@@ -243,8 +244,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -276,15 +277,15 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**active** | **bool** | Whether this is the active version or not. | [optional] [default to false]
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**active** | **bool** | Whether this is the active version or not. | [optional] [defaults to false]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **deployed** | **bool** | Unused at this time. | [optional]
-**locked** | **bool** | Whether this version is locked or not. Objects can not be added or edited on locked versions. | [optional] [default to false]
+**locked** | **bool** | Whether this version is locked or not. Objects can not be added or edited on locked versions. | [optional] [defaults to false]
 **number** | **int** | The number of this version. | [optional]
-**staging** | **bool** | Unused at this time. | [optional] [default to false]
-**testing** | **bool** | Unused at this time. | [optional] [default to false]
+**staging** | **bool** | Unused at this time. | [optional] [defaults to false]
+**testing** | **bool** | Unused at this time. | [optional] [defaults to false]
 
 ### Return type
 
@@ -316,8 +317,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 

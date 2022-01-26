@@ -2,7 +2,7 @@
 /**
  * TypeServiceAuthorization
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeServiceAuthorization
      * Possible values of this enum
      */
     const SERVICE_AUTHORIZATION = 'service_authorization';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeServiceAuthorization
     public static function getAllowableEnumValues()
     {
         return [
-            self::SERVICE_AUTHORIZATION,
+            self::SERVICE_AUTHORIZATION
         ];
     }
 }

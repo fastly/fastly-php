@@ -2,7 +2,7 @@
 /**
  * BillingEstimateResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,13 +53,13 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'customer_id' => 'string',
         'end_time' => 'string',
-        'invoice_id' => 'string',
-        'regions' => 'array<string,array<string,object>>',
         'start_time' => 'string',
+        'invoice_id' => 'string',
+        'customer_id' => 'string',
         'status' => '\Fastly\Model\BillingStatus',
         'total' => '\Fastly\Model\BillingTotal',
+        'regions' => 'array<string,array<string,object>>',
         'lines' => '\Fastly\Model\BillingEstimateResponseAllOfLines[]'
     ];
 
@@ -71,13 +71,13 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'customer_id' => null,
         'end_time' => null,
-        'invoice_id' => null,
-        'regions' => null,
         'start_time' => null,
+        'invoice_id' => null,
+        'customer_id' => null,
         'status' => null,
         'total' => null,
+        'regions' => null,
         'lines' => null
     ];
 
@@ -108,13 +108,13 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'customer_id' => 'customer_id',
         'end_time' => 'end_time',
-        'invoice_id' => 'invoice_id',
-        'regions' => 'regions',
         'start_time' => 'start_time',
+        'invoice_id' => 'invoice_id',
+        'customer_id' => 'customer_id',
         'status' => 'status',
         'total' => 'total',
+        'regions' => 'regions',
         'lines' => 'lines'
     ];
 
@@ -124,13 +124,13 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'customer_id' => 'setCustomerId',
         'end_time' => 'setEndTime',
-        'invoice_id' => 'setInvoiceId',
-        'regions' => 'setRegions',
         'start_time' => 'setStartTime',
+        'invoice_id' => 'setInvoiceId',
+        'customer_id' => 'setCustomerId',
         'status' => 'setStatus',
         'total' => 'setTotal',
+        'regions' => 'setRegions',
         'lines' => 'setLines'
     ];
 
@@ -140,13 +140,13 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'customer_id' => 'getCustomerId',
         'end_time' => 'getEndTime',
-        'invoice_id' => 'getInvoiceId',
-        'regions' => 'getRegions',
         'start_time' => 'getStartTime',
+        'invoice_id' => 'getInvoiceId',
+        'customer_id' => 'getCustomerId',
         'status' => 'getStatus',
         'total' => 'getTotal',
+        'regions' => 'getRegions',
         'lines' => 'getLines'
     ];
 
@@ -191,9 +191,6 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -210,13 +207,13 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['end_time'] = $data['end_time'] ?? null;
-        $this->container['invoice_id'] = $data['invoice_id'] ?? null;
-        $this->container['regions'] = $data['regions'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
+        $this->container['invoice_id'] = $data['invoice_id'] ?? null;
+        $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['total'] = $data['total'] ?? null;
+        $this->container['regions'] = $data['regions'] ?? null;
         $this->container['lines'] = $data['lines'] ?? null;
     }
 
@@ -245,30 +242,6 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets customer_id
-     *
-     * @return string|null
-     */
-    public function getCustomerId()
-    {
-        return $this->container['customer_id'];
-    }
-
-    /**
-     * Sets customer_id
-     *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
-     *
-     * @return self
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->container['customer_id'] = $customer_id;
-
-        return $this;
-    }
-
-    /**
      * Gets end_time
      *
      * @return string|null
@@ -288,6 +261,30 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setEndTime($end_time)
     {
         $this->container['end_time'] = $end_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_time
+     *
+     * @return string|null
+     */
+    public function getStartTime()
+    {
+        return $this->container['start_time'];
+    }
+
+    /**
+     * Sets start_time
+     *
+     * @param string|null $start_time Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setStartTime($start_time)
+    {
+        $this->container['start_time'] = $start_time;
 
         return $this;
     }
@@ -317,49 +314,25 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets regions
-     *
-     * @return array<string,array<string,object>>|null
-     */
-    public function getRegions()
-    {
-        return $this->container['regions'];
-    }
-
-    /**
-     * Sets regions
-     *
-     * @param array<string,array<string,object>>|null $regions regions
-     *
-     * @return self
-     */
-    public function setRegions($regions)
-    {
-        $this->container['regions'] = $regions;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_time
+     * Gets customer_id
      *
      * @return string|null
      */
-    public function getStartTime()
+    public function getCustomerId()
     {
-        return $this->container['start_time'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets start_time
+     * Sets customer_id
      *
-     * @param string|null $start_time Date and time in ISO 8601 format.
+     * @param string|null $customer_id Alphanumeric string identifying the customer.
      *
      * @return self
      */
-    public function setStartTime($start_time)
+    public function setCustomerId($customer_id)
     {
-        $this->container['start_time'] = $start_time;
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }
@@ -408,6 +381,30 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setTotal($total)
     {
         $this->container['total'] = $total;
+
+        return $this;
+    }
+
+    /**
+     * Gets regions
+     *
+     * @return array<string,array<string,object>>|null
+     */
+    public function getRegions()
+    {
+        return $this->container['regions'];
+    }
+
+    /**
+     * Sets regions
+     *
+     * @param array<string,array<string,object>>|null $regions regions
+     *
+     * @return self
+     */
+    public function setRegions($regions)
+    {
+        $this->container['regions'] = $regions;
 
         return $this;
     }

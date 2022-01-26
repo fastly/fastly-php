@@ -2,7 +2,7 @@
 /**
  * HeaderResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -242,12 +242,9 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     const ACTION_REGEX = 'regex';
     const ACTION_REGEX_REPEAT = 'regex_repeat';
     const TYPE_REQUEST = 'request';
-    const TYPE_FETCH = 'fetch';
     const TYPE_CACHE = 'cache';
     const TYPE_RESPONSE = 'response';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -263,7 +260,7 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ACTION_REGEX_REPEAT,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -273,12 +270,10 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::TYPE_REQUEST,
-            self::TYPE_FETCH,
             self::TYPE_CACHE,
             self::TYPE_RESPONSE,
         ];
     }
-    
 
     /**
      * Associative array for storing property values

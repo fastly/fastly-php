@@ -1,7 +1,7 @@
 <?php
 /**
  * WafFirewallsApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class WafFirewallsApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -120,6 +121,7 @@ class WafFirewallsApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\WafFirewallResponse
+     * @deprecated
      */
     public function createWafFirewall($options)
     {
@@ -139,6 +141,7 @@ class WafFirewallsApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\WafFirewallResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createWafFirewallWithHttpInfo($options)
     {
@@ -151,9 +154,16 @@ class WafFirewallsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -164,21 +174,20 @@ class WafFirewallsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 201:
                     if ('\Fastly\Model\WafFirewallResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -189,11 +198,10 @@ class WafFirewallsApi
             }
 
             $returnType = '\Fastly\Model\WafFirewallResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -228,6 +236,7 @@ class WafFirewallsApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createWafFirewallAsync($options)
     {
@@ -250,6 +259,7 @@ class WafFirewallsApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createWafFirewallAsyncWithHttpInfo($options)
     {
@@ -260,11 +270,10 @@ class WafFirewallsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -284,7 +293,7 @@ class WafFirewallsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -299,6 +308,7 @@ class WafFirewallsApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createWafFirewallRequest($options)
     {
@@ -355,7 +365,7 @@ class WafFirewallsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -376,7 +386,7 @@ class WafFirewallsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -392,12 +402,13 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall waf_firewall (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
+     * @deprecated
      */
     public function deleteWafFirewall($options)
     {
@@ -411,12 +422,13 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function deleteWafFirewallWithHttpInfo($options)
     {
@@ -429,9 +441,16 @@ class WafFirewallsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -442,11 +461,11 @@ class WafFirewallsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
@@ -466,11 +485,12 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteWafFirewallAsync($options)
     {
@@ -489,11 +509,12 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteWafFirewallAsyncWithHttpInfo($options)
     {
@@ -517,7 +538,7 @@ class WafFirewallsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -528,11 +549,12 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function deleteWafFirewallRequest($options)
     {
@@ -604,7 +626,7 @@ class WafFirewallsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -625,7 +647,7 @@ class WafFirewallsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -641,13 +663,14 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\WafFirewallResponse
+     * @deprecated
      */
     public function getWafFirewall($options)
     {
@@ -662,13 +685,14 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\WafFirewallResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWafFirewallWithHttpInfo($options)
     {
@@ -681,9 +705,16 @@ class WafFirewallsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -694,21 +725,20 @@ class WafFirewallsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\WafFirewallResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -719,11 +749,10 @@ class WafFirewallsApi
             }
 
             $returnType = '\Fastly\Model\WafFirewallResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -754,12 +783,13 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWafFirewallAsync($options)
     {
@@ -778,12 +808,13 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWafFirewallAsyncWithHttpInfo($options)
     {
@@ -794,11 +825,10 @@ class WafFirewallsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -818,7 +848,7 @@ class WafFirewallsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -829,12 +859,13 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  string $filter_service_version_number Limit the results returned to a specific service version. (optional)
      * @param  string $include Include related objects. Optional. (optional, default to 'waf_firewall_versions')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWafFirewallRequest($options)
     {
@@ -923,7 +954,7 @@ class WafFirewallsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -944,7 +975,7 @@ class WafFirewallsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -969,6 +1000,7 @@ class WafFirewallsApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\WafFirewallsResponse
+     * @deprecated
      */
     public function listWafFirewalls($options)
     {
@@ -992,6 +1024,7 @@ class WafFirewallsApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\WafFirewallsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function listWafFirewallsWithHttpInfo($options)
     {
@@ -1004,9 +1037,16 @@ class WafFirewallsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1017,21 +1057,20 @@ class WafFirewallsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\WafFirewallsResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1042,11 +1081,10 @@ class WafFirewallsApi
             }
 
             $returnType = '\Fastly\Model\WafFirewallsResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1085,6 +1123,7 @@ class WafFirewallsApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listWafFirewallsAsync($options)
     {
@@ -1111,6 +1150,7 @@ class WafFirewallsApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listWafFirewallsAsyncWithHttpInfo($options)
     {
@@ -1121,11 +1161,10 @@ class WafFirewallsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1145,7 +1184,7 @@ class WafFirewallsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1164,6 +1203,7 @@ class WafFirewallsApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function listWafFirewallsRequest($options)
     {
@@ -1190,18 +1230,26 @@ class WafFirewallsApi
         $multipart = false;
 
         // query params
-        if (is_array($page_number)) {
-            $page_number = ObjectSerializer::serializeCollection($page_number, 'simple', true);
-        }
         if ($page_number !== null) {
-            $queryParams['page[number]'] = $page_number;
+            if('form' === 'form' && is_array($page_number)) {
+                foreach($page_number as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[number]'] = $page_number;
+            }
         }
         // query params
-        if (is_array($page_size)) {
-            $page_size = ObjectSerializer::serializeCollection($page_size, 'simple', true);
-        }
         if ($page_size !== null) {
-            $queryParams['page[size]'] = $page_size;
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[size]'] = $page_size;
+            }
         }
         // query params
         if ($filter_service_id !== null) {
@@ -1272,7 +1320,7 @@ class WafFirewallsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1293,7 +1341,7 @@ class WafFirewallsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1309,12 +1357,13 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall waf_firewall (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\WafFirewallResponse
+     * @deprecated
      */
     public function updateWafFirewall($options)
     {
@@ -1329,12 +1378,13 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\WafFirewallResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function updateWafFirewallWithHttpInfo($options)
     {
@@ -1347,9 +1397,16 @@ class WafFirewallsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1360,21 +1417,20 @@ class WafFirewallsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\WafFirewallResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1385,11 +1441,10 @@ class WafFirewallsApi
             }
 
             $returnType = '\Fastly\Model\WafFirewallResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1420,11 +1475,12 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateWafFirewallAsync($options)
     {
@@ -1443,11 +1499,12 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateWafFirewallAsyncWithHttpInfo($options)
     {
@@ -1458,11 +1515,10 @@ class WafFirewallsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1482,7 +1538,7 @@ class WafFirewallsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1493,11 +1549,12 @@ class WafFirewallsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $firewall_id (required)
+     * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewall $waf_firewall (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function updateWafFirewallRequest($options)
     {
@@ -1569,7 +1626,7 @@ class WafFirewallsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1590,7 +1647,7 @@ class WafFirewallsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

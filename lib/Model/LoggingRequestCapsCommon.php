@@ -2,7 +2,7 @@
 /**
  * LoggingRequestCapsCommon
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,8 +53,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'request_max_bytes' => 'int',
-        'request_max_entries' => 'int'
+        'request_max_entries' => 'int',
+        'request_max_bytes' => 'int'
     ];
 
     /**
@@ -65,8 +65,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'request_max_bytes' => null,
-        'request_max_entries' => null
+        'request_max_entries' => null,
+        'request_max_bytes' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'request_max_bytes' => 'request_max_bytes',
-        'request_max_entries' => 'request_max_entries'
+        'request_max_entries' => 'request_max_entries',
+        'request_max_bytes' => 'request_max_bytes'
     ];
 
     /**
@@ -106,8 +106,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'request_max_bytes' => 'setRequestMaxBytes',
-        'request_max_entries' => 'setRequestMaxEntries'
+        'request_max_entries' => 'setRequestMaxEntries',
+        'request_max_bytes' => 'setRequestMaxBytes'
     ];
 
     /**
@@ -116,8 +116,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'request_max_bytes' => 'getRequestMaxBytes',
-        'request_max_entries' => 'getRequestMaxEntries'
+        'request_max_entries' => 'getRequestMaxEntries',
+        'request_max_bytes' => 'getRequestMaxBytes'
     ];
 
     /**
@@ -161,9 +161,6 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -180,8 +177,8 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
         $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
+        $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;
     }
 
     /**
@@ -209,30 +206,6 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets request_max_bytes
-     *
-     * @return int|null
-     */
-    public function getRequestMaxBytes()
-    {
-        return $this->container['request_max_bytes'];
-    }
-
-    /**
-     * Sets request_max_bytes
-     *
-     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` for unbounded.
-     *
-     * @return self
-     */
-    public function setRequestMaxBytes($request_max_bytes)
-    {
-        $this->container['request_max_bytes'] = $request_max_bytes;
-
-        return $this;
-    }
-
-    /**
      * Gets request_max_entries
      *
      * @return int|null
@@ -252,6 +225,30 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
     public function setRequestMaxEntries($request_max_entries)
     {
         $this->container['request_max_entries'] = $request_max_entries;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_max_bytes
+     *
+     * @return int|null
+     */
+    public function getRequestMaxBytes()
+    {
+        return $this->container['request_max_bytes'];
+    }
+
+    /**
+     * Sets request_max_bytes
+     *
+     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` for unbounded.
+     *
+     * @return self
+     */
+    public function setRequestMaxBytes($request_max_bytes)
+    {
+        $this->container['request_max_bytes'] = $request_max_bytes;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 /**
  * TokenResponseAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,13 +53,13 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'created_at' => 'string',
-        'expires_at' => 'string',
         'id' => 'string',
-        'ip' => 'string',
+        'user_id' => 'string',
+        'created_at' => 'string',
         'last_used_at' => 'string',
-        'user_agent' => 'string',
-        'user_id' => 'string'
+        'expires_at' => 'string',
+        'ip' => 'string',
+        'user_agent' => 'string'
     ];
 
     /**
@@ -70,13 +70,13 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'created_at' => null,
-        'expires_at' => null,
         'id' => null,
-        'ip' => null,
+        'user_id' => null,
+        'created_at' => null,
         'last_used_at' => null,
-        'user_agent' => null,
-        'user_id' => null
+        'expires_at' => null,
+        'ip' => null,
+        'user_agent' => null
     ];
 
     /**
@@ -106,13 +106,13 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_at' => 'created_at',
-        'expires_at' => 'expires_at',
         'id' => 'id',
-        'ip' => 'ip',
+        'user_id' => 'user_id',
+        'created_at' => 'created_at',
         'last_used_at' => 'last_used_at',
-        'user_agent' => 'user_agent',
-        'user_id' => 'user_id'
+        'expires_at' => 'expires_at',
+        'ip' => 'ip',
+        'user_agent' => 'user_agent'
     ];
 
     /**
@@ -121,13 +121,13 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'created_at' => 'setCreatedAt',
-        'expires_at' => 'setExpiresAt',
         'id' => 'setId',
-        'ip' => 'setIp',
+        'user_id' => 'setUserId',
+        'created_at' => 'setCreatedAt',
         'last_used_at' => 'setLastUsedAt',
-        'user_agent' => 'setUserAgent',
-        'user_id' => 'setUserId'
+        'expires_at' => 'setExpiresAt',
+        'ip' => 'setIp',
+        'user_agent' => 'setUserAgent'
     ];
 
     /**
@@ -136,13 +136,13 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'created_at' => 'getCreatedAt',
-        'expires_at' => 'getExpiresAt',
         'id' => 'getId',
-        'ip' => 'getIp',
+        'user_id' => 'getUserId',
+        'created_at' => 'getCreatedAt',
         'last_used_at' => 'getLastUsedAt',
-        'user_agent' => 'getUserAgent',
-        'user_id' => 'getUserId'
+        'expires_at' => 'getExpiresAt',
+        'ip' => 'getIp',
+        'user_agent' => 'getUserAgent'
     ];
 
     /**
@@ -186,9 +186,6 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -205,13 +202,13 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['expires_at'] = $data['expires_at'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['ip'] = $data['ip'] ?? null;
-        $this->container['last_used_at'] = $data['last_used_at'] ?? null;
-        $this->container['user_agent'] = $data['user_agent'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['last_used_at'] = $data['last_used_at'] ?? null;
+        $this->container['expires_at'] = $data['expires_at'] ?? null;
+        $this->container['ip'] = $data['ip'] ?? null;
+        $this->container['user_agent'] = $data['user_agent'] ?? null;
     }
 
     /**
@@ -239,54 +236,6 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets created_at
-     *
-     * @return string|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param string|null $created_at Time-stamp (UTC) of when the token was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at
-     *
-     * @return string|null
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param string|null $expires_at Time-stamp (UTC) of when the token will expire (optional).
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string|null
@@ -311,25 +260,49 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets ip
+     * Gets user_id
      *
      * @return string|null
      */
-    public function getIp()
+    public function getUserId()
     {
-        return $this->container['ip'];
+        return $this->container['user_id'];
     }
 
     /**
-     * Sets ip
+     * Sets user_id
      *
-     * @param string|null $ip IP Address of the client that last used the token.
+     * @param string|null $user_id Alphanumeric string identifying the user.
      *
      * @return self
      */
-    public function setIp($ip)
+    public function setUserId($user_id)
     {
-        $this->container['ip'] = $ip;
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string|null $created_at Time-stamp (UTC) of when the token was created.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -359,6 +332,54 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets expires_at
+     *
+     * @return string|null
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param string|null $expires_at Time-stamp (UTC) of when the token will expire (optional).
+     *
+     * @return self
+     */
+    public function setExpiresAt($expires_at)
+    {
+        $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets ip
+     *
+     * @return string|null
+     */
+    public function getIp()
+    {
+        return $this->container['ip'];
+    }
+
+    /**
+     * Sets ip
+     *
+     * @param string|null $ip IP Address of the client that last used the token.
+     *
+     * @return self
+     */
+    public function setIp($ip)
+    {
+        $this->container['ip'] = $ip;
+
+        return $this;
+    }
+
+    /**
      * Gets user_agent
      *
      * @return string|null
@@ -378,30 +399,6 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setUserAgent($user_agent)
     {
         $this->container['user_agent'] = $user_agent;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return string|null
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param string|null $user_id Alphanumeric string identifying the user.
-     *
-     * @return self
-     */
-    public function setUserId($user_id)
-    {
-        $this->container['user_id'] = $user_id;
 
         return $this;
     }

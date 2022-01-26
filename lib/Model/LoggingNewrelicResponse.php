@@ -2,7 +2,7 @@
 /**
  * LoggingNewrelicResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,13 +53,13 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'mixed',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
-        'placement' => '\Fastly\Model\LoggingPlacement',
+        'placement' => 'string',
+        'format_version' => 'int',
         'response_condition' => 'string',
-        'region' => 'string',
+        'format' => 'mixed',
         'token' => 'string',
+        'region' => 'string',
         'created_at' => 'string',
         'deleted_at' => 'string',
         'updated_at' => 'string',
@@ -75,13 +75,13 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
-        'format_version' => null,
         'name' => null,
         'placement' => null,
+        'format_version' => null,
         'response_condition' => null,
-        'region' => null,
+        'format' => null,
         'token' => null,
+        'region' => null,
         'created_at' => null,
         'deleted_at' => null,
         'updated_at' => null,
@@ -116,13 +116,13 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
-        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
+        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'region' => 'region',
+        'format' => 'format',
         'token' => 'token',
+        'region' => 'region',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -136,13 +136,13 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
-        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
+        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'region' => 'setRegion',
+        'format' => 'setFormat',
         'token' => 'setToken',
+        'region' => 'setRegion',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -156,13 +156,13 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
-        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
+        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'region' => 'getRegion',
+        'format' => 'getFormat',
         'token' => 'getToken',
+        'region' => 'getRegion',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -211,11 +211,41 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$fastlyModelName;
     }
 
+    const PLACEMENT_NONE = 'none';
+    const PLACEMENT_WAF_DEBUG = 'waf_debug';
+    const PLACEMENT_NULL = 'null';
+    const FORMAT_VERSION_v1 = 1;
+    const FORMAT_VERSION_v2 = 2;
     const REGION_US = 'US';
     const REGION_EU = 'EU';
-    
 
-    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlacementAllowableValues()
+    {
+        return [
+            self::PLACEMENT_NONE,
+            self::PLACEMENT_WAF_DEBUG,
+            self::PLACEMENT_NULL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatVersionAllowableValues()
+    {
+        return [
+            self::FORMAT_VERSION_v1,
+            self::FORMAT_VERSION_v2,
+        ];
+    }
+
     /**
      * Gets allowable values of the enum
      *
@@ -228,7 +258,6 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
             self::REGION_EU,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -245,13 +274,13 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['region'] = $data['region'] ?? REGION_US;
+        $this->container['format'] = $data['format'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
+        $this->container['region'] = $data['region'] ?? 'US';
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -267,6 +296,24 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format_version', must be one of '%s'",
+                $this->container['format_version'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getRegionAllowableValues();
         if (!is_null($this->container['region']) && !in_array($this->container['region'], $allowedValues, true)) {
@@ -291,54 +338,6 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets format
-     *
-     * @return mixed|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest.
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -367,7 +366,7 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets placement
      *
-     * @return \Fastly\Model\LoggingPlacement|null
+     * @return string|null
      */
     public function getPlacement()
     {
@@ -377,13 +376,57 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets placement
      *
-     * @param \Fastly\Model\LoggingPlacement|null $placement placement
+     * @param string|null $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
      *
      * @return self
      */
     public function setPlacement($placement)
     {
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($placement) && !in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['placement'] = $placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return int|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -408,6 +451,54 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setResponseCondition($response_condition)
     {
         $this->container['response_condition'] = $response_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return mixed|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets token
+     *
+     * @return string|null
+     */
+    public function getToken()
+    {
+        return $this->container['token'];
+    }
+
+    /**
+     * Sets token
+     *
+     * @param string|null $token The Insert API key from the Account page of your New Relic account. Required.
+     *
+     * @return self
+     */
+    public function setToken($token)
+    {
+        $this->container['token'] = $token;
 
         return $this;
     }
@@ -442,30 +533,6 @@ class LoggingNewrelicResponse implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
         $this->container['region'] = $region;
-
-        return $this;
-    }
-
-    /**
-     * Gets token
-     *
-     * @return string|null
-     */
-    public function getToken()
-    {
-        return $this->container['token'];
-    }
-
-    /**
-     * Sets token
-     *
-     * @param string|null $token The Insert API key from the Account page of your New Relic account. Required.
-     *
-     * @return self
-     */
-    public function setToken($token)
-    {
-        $this->container['token'] = $token;
 
         return $this;
     }

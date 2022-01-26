@@ -2,7 +2,7 @@
 /**
  * LoggingLogentriesAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -54,9 +54,9 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $fastlyTypes = [
         'port' => 'int',
-        'region' => 'string',
         'token' => 'string',
-        'use_tls' => '\Fastly\Model\LoggingUseTls'
+        'use_tls' => '\Fastly\Model\LoggingUseTls',
+        'region' => 'string'
     ];
 
     /**
@@ -68,9 +68,9 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $fastlyFormats = [
         'port' => null,
-        'region' => null,
         'token' => null,
-        'use_tls' => null
+        'use_tls' => null,
+        'region' => null
     ];
 
     /**
@@ -101,9 +101,9 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'port' => 'port',
-        'region' => 'region',
         'token' => 'token',
-        'use_tls' => 'use_tls'
+        'use_tls' => 'use_tls',
+        'region' => 'region'
     ];
 
     /**
@@ -113,9 +113,9 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'port' => 'setPort',
-        'region' => 'setRegion',
         'token' => 'setToken',
-        'use_tls' => 'setUseTls'
+        'use_tls' => 'setUseTls',
+        'region' => 'setRegion'
     ];
 
     /**
@@ -125,9 +125,9 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'port' => 'getPort',
-        'region' => 'getRegion',
         'token' => 'getToken',
-        'use_tls' => 'getUseTls'
+        'use_tls' => 'getUseTls',
+        'region' => 'getRegion'
     ];
 
     /**
@@ -178,9 +178,7 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     const REGION_CA = 'CA';
     const REGION_AU = 'AU';
     const REGION_AP = 'AP';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -198,7 +196,6 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
             self::REGION_AP,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -216,9 +213,9 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['port'] = $data['port'] ?? 20000;
-        $this->container['region'] = $data['region'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
         $this->container['use_tls'] = $data['use_tls'] ?? null;
+        $this->container['region'] = $data['region'] ?? null;
     }
 
     /**
@@ -279,40 +276,6 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets region
-     *
-     * @return string|null
-     */
-    public function getRegion()
-    {
-        return $this->container['region'];
-    }
-
-    /**
-     * Sets region
-     *
-     * @param string|null $region The region to which to stream logs.
-     *
-     * @return self
-     */
-    public function setRegion($region)
-    {
-        $allowedValues = $this->getRegionAllowableValues();
-        if (!is_null($region) && !in_array($region, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'region', must be one of '%s'",
-                    $region,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['region'] = $region;
-
-        return $this;
-    }
-
-    /**
      * Gets token
      *
      * @return string|null
@@ -356,6 +319,40 @@ class LoggingLogentriesAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     public function setUseTls($use_tls)
     {
         $this->container['use_tls'] = $use_tls;
+
+        return $this;
+    }
+
+    /**
+     * Gets region
+     *
+     * @return string|null
+     */
+    public function getRegion()
+    {
+        return $this->container['region'];
+    }
+
+    /**
+     * Sets region
+     *
+     * @param string|null $region The region to which to stream logs.
+     *
+     * @return self
+     */
+    public function setRegion($region)
+    {
+        $allowedValues = $this->getRegionAllowableValues();
+        if (!is_null($region) && !in_array($region, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'region', must be one of '%s'",
+                    $region,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['region'] = $region;
 
         return $this;
     }

@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\BillingAddressApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -42,8 +43,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
-**inline_object** | [**\Fastly\Model\InlineObject**](../Model/InlineObject.md) |  | [optional]
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
+**inline_object3** | [**\Fastly\Model\InlineObject3**](../Model/InlineObject3.md) |  | [optional]
 
 ### Return type
 
@@ -75,7 +76,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 
 ### Return type
 
@@ -107,7 +108,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
 
 ### Return type
 
@@ -139,8 +140,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**customer_id** | **string** |  |
-**inline_object1** | [**\Fastly\Model\InlineObject1**](../Model/InlineObject1.md) |  | [optional]
+**customer_id** | **string** | Alphanumeric string identifying the customer. |
+**inline_object4** | [**\Fastly\Model\InlineObject4**](../Model/InlineObject4.md) |  | [optional]
 
 ### Return type
 

@@ -2,7 +2,7 @@
 /**
  * RoleUser
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,10 +38,13 @@ class RoleUser
      * Possible values of this enum
      */
     const USER = 'user';
+
     const BILLING = 'billing';
+
     const ENGINEER = 'engineer';
+
     const SUPERUSER = 'superuser';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -52,7 +55,7 @@ class RoleUser
             self::USER,
             self::BILLING,
             self::ENGINEER,
-            self::SUPERUSER,
+            self::SUPERUSER
         ];
     }
 }

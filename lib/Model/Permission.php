@@ -2,7 +2,7 @@
 /**
  * Permission
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,10 +38,13 @@ class Permission
      * Possible values of this enum
      */
     const FULL = 'full';
+
     const READ_ONLY = 'read_only';
+
     const PURGE_SELECT = 'purge_select';
+
     const PURGE_ALL = 'purge_all';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -52,7 +55,7 @@ class Permission
             self::FULL,
             self::READ_ONLY,
             self::PURGE_SELECT,
-            self::PURGE_ALL,
+            self::PURGE_ALL
         ];
     }
 }

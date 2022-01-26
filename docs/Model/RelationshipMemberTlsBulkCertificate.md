@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Alphanumeric string identifying a TLS bulk certificate. | [optional] [readonly]
-**type** | [**\Fastly\Model\TypeTlsBulkCertificate**](TypeTlsBulkCertificate.md) |  | [optional]
+**type** | [**\Fastly\Model\TypeTlsBulkCertificate**](TypeTlsBulkCertificate.md) |  | [optional] 
+**id** | **string** | Alphanumeric string identifying a TLS bulk certificate. | [optional] [readonly] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

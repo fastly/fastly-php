@@ -2,7 +2,7 @@
 /**
  * InvitationDataAttributes
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -173,9 +173,7 @@ class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSeri
 
     const STATUS_CODE_inactive = 0;
     const STATUS_CODE_active = 1;
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -188,7 +186,6 @@ class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSeri
             self::STATUS_CODE_active,
         ];
     }
-    
 
     /**
      * Associative array for storing property values

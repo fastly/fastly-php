@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\ServiceAuthorizationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -77,7 +78,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_authorization_id** | **string** |  |
+**service_authorization_id** | **string** | Alphanumeric string identifying a service authorization. |
 
 ### Return type
 
@@ -109,7 +110,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inline_object2** | [**\Fastly\Model\InlineObject2**](../Model/InlineObject2.md) |  | [optional]
+**inline_object1** | [**\Fastly\Model\InlineObject1**](../Model/InlineObject1.md) |  | [optional]
 
 ### Return type
 
@@ -142,7 +143,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 
 ### Return type
 
@@ -174,7 +175,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_authorization_id** | **string** |  |
+**service_authorization_id** | **string** | Alphanumeric string identifying a service authorization. |
 
 ### Return type
 
@@ -206,7 +207,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_authorization_id** | **string** |  |
+**service_authorization_id** | **string** | Alphanumeric string identifying a service authorization. |
 **service_authorization** | [**\Fastly\Model\ServiceAuthorization**](../Model/ServiceAuthorization.md) |  | [optional]
 
 ### Return type
@@ -239,7 +240,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**inline_object3** | [**\Fastly\Model\InlineObject3**](../Model/InlineObject3.md) |  | [optional]
+**inline_object2** | [**\Fastly\Model\InlineObject2**](../Model/InlineObject2.md) |  | [optional]
 
 ### Return type
 

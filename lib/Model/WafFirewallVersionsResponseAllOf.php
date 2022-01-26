@@ -2,7 +2,7 @@
 /**
  * WafFirewallVersionsResponseAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,8 +53,8 @@ class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]',
-        'included' => 'AnyOfWafFirewallVersionWafActiveRule[]'
+        'data' => '\Fastly\Model\WafFirewallVersionResponseData[]',
+        'included' => '\Fastly\Model\IncludedWithWafFirewallVersionItem[]'
     ];
 
     /**
@@ -161,9 +161,6 @@ class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -211,7 +208,7 @@ class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafFirewallVersionResponseData[]|null
      */
     public function getData()
     {
@@ -221,7 +218,7 @@ class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafFirewallVersionResponseData[]|null $data data
      *
      * @return self
      */
@@ -235,7 +232,7 @@ class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \
     /**
      * Gets included
      *
-     * @return AnyOfWafFirewallVersionWafActiveRule[]|null
+     * @return \Fastly\Model\IncludedWithWafFirewallVersionItem[]|null
      */
     public function getIncluded()
     {
@@ -245,7 +242,7 @@ class WafFirewallVersionsResponseAllOf implements ModelInterface, ArrayAccess, \
     /**
      * Sets included
      *
-     * @param AnyOfWafFirewallVersionWafActiveRule[]|null $included included
+     * @param \Fastly\Model\IncludedWithWafFirewallVersionItem[]|null $included included
      *
      * @return self
      */

@@ -2,7 +2,7 @@
 /**
  * WafExclusionsResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafExclusionsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -55,8 +55,8 @@ class WafExclusionsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]',
-        'included' => 'AnyOfWafRuleWafRuleRevision[]'
+        'data' => '\Fastly\Model\WafExclusionResponseData[]',
+        'included' => '\Fastly\Model\IncludedWithWafExclusionItem[]'
     ];
 
     /**
@@ -171,9 +171,6 @@ class WafExclusionsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -271,7 +268,7 @@ class WafExclusionsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafExclusionResponseData[]|null
      */
     public function getData()
     {
@@ -281,7 +278,7 @@ class WafExclusionsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafExclusionResponseData[]|null $data data
      *
      * @return self
      */
@@ -295,7 +292,7 @@ class WafExclusionsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets included
      *
-     * @return AnyOfWafRuleWafRuleRevision[]|null
+     * @return \Fastly\Model\IncludedWithWafExclusionItem[]|null
      */
     public function getIncluded()
     {
@@ -305,7 +302,7 @@ class WafExclusionsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets included
      *
-     * @param AnyOfWafRuleWafRuleRevision[]|null $included included
+     * @param \Fastly\Model\IncludedWithWafExclusionItem[]|null $included included
      *
      * @return self
      */

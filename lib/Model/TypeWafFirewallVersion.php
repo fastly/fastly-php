@@ -2,7 +2,7 @@
 /**
  * TypeWafFirewallVersion
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeWafFirewallVersion
      * Possible values of this enum
      */
     const WAF_FIREWALL_VERSION = 'waf_firewall_version';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeWafFirewallVersion
     public static function getAllowableEnumValues()
     {
         return [
-            self::WAF_FIREWALL_VERSION,
+            self::WAF_FIREWALL_VERSION
         ];
     }
 }

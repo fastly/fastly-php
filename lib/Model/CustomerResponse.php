@@ -2,7 +2,7 @@
 /**
  * CustomerResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -293,9 +293,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
     const BILLING_NETWORK_TYPE__PUBLIC = 'public';
     const BILLING_NETWORK_TYPE__PRIVATE = 'private';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -308,7 +306,6 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             self::BILLING_NETWORK_TYPE__PRIVATE,
         ];
     }
-    
 
     /**
      * Associative array for storing property values

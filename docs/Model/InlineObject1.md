@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\CustomerCustomerIdBillingAddressData1**](CustomerCustomerIdBillingAddressData1.md) |  | [optional]
+**data** | [**\Fastly\Model\ServiceAuthorizationsData[]**](ServiceAuthorizationsData.md) |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

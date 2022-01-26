@@ -1,7 +1,7 @@
 <?php
 /**
  * TlsBulkCertificatesApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class TlsBulkCertificatesApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,7 +116,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -133,7 +134,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -150,9 +151,16 @@ class TlsBulkCertificatesApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -163,11 +171,11 @@ class TlsBulkCertificatesApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
@@ -187,7 +195,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -209,7 +217,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -236,7 +244,7 @@ class TlsBulkCertificatesApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -247,7 +255,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -315,7 +323,7 @@ class TlsBulkCertificatesApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -336,7 +344,7 @@ class TlsBulkCertificatesApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -352,7 +360,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -371,7 +379,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -388,9 +396,16 @@ class TlsBulkCertificatesApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -401,21 +416,20 @@ class TlsBulkCertificatesApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\TlsBulkCertificateResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -426,11 +440,10 @@ class TlsBulkCertificatesApi
             }
 
             $returnType = '\Fastly\Model\TlsBulkCertificateResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -461,7 +474,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -483,7 +496,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -497,11 +510,10 @@ class TlsBulkCertificatesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -521,7 +533,7 @@ class TlsBulkCertificatesApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -532,7 +544,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -600,7 +612,7 @@ class TlsBulkCertificatesApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -621,7 +633,7 @@ class TlsBulkCertificatesApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -637,7 +649,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $filter_tls_domain_id_match Filter certificates by their matching, fully-qualified domain name. Returns all partial matches. Must provide a value longer than 3 characters. (optional)
+     * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -659,7 +671,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $filter_tls_domain_id_match Filter certificates by their matching, fully-qualified domain name. Returns all partial matches. Must provide a value longer than 3 characters. (optional)
+     * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -679,9 +691,16 @@ class TlsBulkCertificatesApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -692,21 +711,20 @@ class TlsBulkCertificatesApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\TlsBulkCertificatesResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -717,11 +735,10 @@ class TlsBulkCertificatesApi
             }
 
             $returnType = '\Fastly\Model\TlsBulkCertificatesResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -752,7 +769,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $filter_tls_domain_id_match Filter certificates by their matching, fully-qualified domain name. Returns all partial matches. Must provide a value longer than 3 characters. (optional)
+     * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -777,7 +794,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $filter_tls_domain_id_match Filter certificates by their matching, fully-qualified domain name. Returns all partial matches. Must provide a value longer than 3 characters. (optional)
+     * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -794,11 +811,10 @@ class TlsBulkCertificatesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -818,7 +834,7 @@ class TlsBulkCertificatesApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -829,7 +845,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $filter_tls_domain_id_match Filter certificates by their matching, fully-qualified domain name. Returns all partial matches. Must provide a value longer than 3 characters. (optional)
+     * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -840,7 +856,7 @@ class TlsBulkCertificatesApi
     public function listTlsBulkCertsRequest($options)
     {
         // unbox the parameters from the associative array
-        $filter_tls_domain_id_match = array_key_exists('filter_tls_domain_id_match', $options) ? $options['filter_tls_domain_id_match'] : null;
+        $filter_tls_domain_id = array_key_exists('filter_tls_domain_id', $options) ? $options['filter_tls_domain_id'] : null;
         $page_number = array_key_exists('page_number', $options) ? $options['page_number'] : null;
         $page_size = array_key_exists('page_size', $options) ? $options['page_size'] : 20;
         $sort = array_key_exists('sort', $options) ? $options['sort'] : 'created_at';
@@ -861,36 +877,48 @@ class TlsBulkCertificatesApi
         $multipart = false;
 
         // query params
-        if ($filter_tls_domain_id_match !== null) {
-            if('form' === 'form' && is_array($filter_tls_domain_id_match)) {
-                foreach($filter_tls_domain_id_match as $key => $value) {
+        if ($filter_tls_domain_id !== null) {
+            if('form' === 'form' && is_array($filter_tls_domain_id)) {
+                foreach($filter_tls_domain_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
             }
             else {
-                $queryParams['filter[tls_domain.id][match]'] = $filter_tls_domain_id_match;
+                $queryParams['filter[tls_domain.id]'] = $filter_tls_domain_id;
             }
         }
         // query params
-        if (is_array($page_number)) {
-            $page_number = ObjectSerializer::serializeCollection($page_number, 'simple', true);
-        }
         if ($page_number !== null) {
-            $queryParams['page[number]'] = $page_number;
+            if('form' === 'form' && is_array($page_number)) {
+                foreach($page_number as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[number]'] = $page_number;
+            }
         }
         // query params
-        if (is_array($page_size)) {
-            $page_size = ObjectSerializer::serializeCollection($page_size, 'simple', true);
-        }
         if ($page_size !== null) {
-            $queryParams['page[size]'] = $page_size;
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[size]'] = $page_size;
+            }
         }
         // query params
-        if (is_array($sort)) {
-            $sort = ObjectSerializer::serializeCollection($sort, 'simple', true);
-        }
         if ($sort !== null) {
-            $queryParams['sort'] = $sort;
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort'] = $sort;
+            }
         }
 
 
@@ -928,7 +956,7 @@ class TlsBulkCertificatesApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -949,7 +977,7 @@ class TlsBulkCertificatesApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -965,7 +993,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate tls_bulk_certificate (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -985,7 +1013,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1003,9 +1031,16 @@ class TlsBulkCertificatesApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1016,21 +1051,20 @@ class TlsBulkCertificatesApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\TlsBulkCertificateResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1041,11 +1075,10 @@ class TlsBulkCertificatesApi
             }
 
             $returnType = '\Fastly\Model\TlsBulkCertificateResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1076,7 +1109,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
      *
      * @throws \InvalidArgumentException
@@ -1099,7 +1132,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
      *
      * @throws \InvalidArgumentException
@@ -1114,11 +1147,10 @@ class TlsBulkCertificatesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1138,7 +1170,7 @@ class TlsBulkCertificatesApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1149,7 +1181,7 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $certificate_id (required)
+     * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
      *
      * @throws \InvalidArgumentException
@@ -1225,7 +1257,7 @@ class TlsBulkCertificatesApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1246,7 +1278,7 @@ class TlsBulkCertificatesApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1298,9 +1330,16 @@ class TlsBulkCertificatesApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1311,21 +1350,20 @@ class TlsBulkCertificatesApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 201:
                     if ('\Fastly\Model\TlsBulkCertificateResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1336,11 +1374,10 @@ class TlsBulkCertificatesApi
             }
 
             $returnType = '\Fastly\Model\TlsBulkCertificateResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1407,11 +1444,10 @@ class TlsBulkCertificatesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1431,7 +1467,7 @@ class TlsBulkCertificatesApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1502,7 +1538,7 @@ class TlsBulkCertificatesApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1523,7 +1559,7 @@ class TlsBulkCertificatesApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

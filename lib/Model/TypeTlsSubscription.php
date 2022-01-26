@@ -2,7 +2,7 @@
 /**
  * TypeTlsSubscription
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeTlsSubscription
      * Possible values of this enum
      */
     const TLS_SUBSCRIPTION = 'tls_subscription';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeTlsSubscription
     public static function getAllowableEnumValues()
     {
         return [
-            self::TLS_SUBSCRIPTION,
+            self::TLS_SUBSCRIPTION
         ];
     }
 }

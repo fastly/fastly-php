@@ -2,7 +2,7 @@
 /**
  * Realtime
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,9 +53,9 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'timestamp' => 'int',
         'aggregate_delay' => 'int',
-        'data' => '\Fastly\Model\RealtimeEntry[]',
-        'timestamp' => 'int'
+        'data' => '\Fastly\Model\RealtimeEntry[]'
     ];
 
     /**
@@ -66,9 +66,9 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'timestamp' => null,
         'aggregate_delay' => null,
-        'data' => null,
-        'timestamp' => null
+        'data' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'timestamp' => 'Timestamp',
         'aggregate_delay' => 'AggregateDelay',
-        'data' => 'Data',
-        'timestamp' => 'Timestamp'
+        'data' => 'Data'
     ];
 
     /**
@@ -109,9 +109,9 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'timestamp' => 'setTimestamp',
         'aggregate_delay' => 'setAggregateDelay',
-        'data' => 'setData',
-        'timestamp' => 'setTimestamp'
+        'data' => 'setData'
     ];
 
     /**
@@ -120,9 +120,9 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'timestamp' => 'getTimestamp',
         'aggregate_delay' => 'getAggregateDelay',
-        'data' => 'getData',
-        'timestamp' => 'getTimestamp'
+        'data' => 'getData'
     ];
 
     /**
@@ -166,9 +166,6 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -185,9 +182,9 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['timestamp'] = $data['timestamp'] ?? null;
         $this->container['aggregate_delay'] = $data['aggregate_delay'] ?? null;
         $this->container['data'] = $data['data'] ?? null;
-        $this->container['timestamp'] = $data['timestamp'] ?? null;
     }
 
     /**
@@ -213,6 +210,30 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets timestamp
+     *
+     * @return int|null
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param int|null $timestamp timestamp
+     *
+     * @return self
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
+
+        return $this;
+    }
 
     /**
      * Gets aggregate_delay
@@ -258,30 +279,6 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setData($data)
     {
         $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return int|null
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param int|null $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

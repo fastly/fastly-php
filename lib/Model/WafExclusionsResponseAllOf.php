@@ -2,7 +2,7 @@
 /**
  * WafExclusionsResponseAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafExclusionsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,8 +53,8 @@ class WafExclusionsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]',
-        'included' => 'AnyOfWafRuleWafRuleRevision[]'
+        'data' => '\Fastly\Model\WafExclusionResponseData[]',
+        'included' => '\Fastly\Model\IncludedWithWafExclusionItem[]'
     ];
 
     /**
@@ -161,9 +161,6 @@ class WafExclusionsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -211,7 +208,7 @@ class WafExclusionsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafExclusionResponseData[]|null
      */
     public function getData()
     {
@@ -221,7 +218,7 @@ class WafExclusionsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafExclusionResponseData[]|null $data data
      *
      * @return self
      */
@@ -235,7 +232,7 @@ class WafExclusionsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets included
      *
-     * @return AnyOfWafRuleWafRuleRevision[]|null
+     * @return \Fastly\Model\IncludedWithWafExclusionItem[]|null
      */
     public function getIncluded()
     {
@@ -245,7 +242,7 @@ class WafExclusionsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets included
      *
-     * @param AnyOfWafRuleWafRuleRevision[]|null $included included
+     * @param \Fastly\Model\IncludedWithWafExclusionItem[]|null $included included
      *
      * @return self
      */

@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\ContentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -13,13 +14,13 @@ $apiInstance = new Fastly\Api\ContentApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
-[**contentCheck()**](ContentApi.md#contentCheck) | **GET** /content/edge_check | Check status of content in each data center cache
+[**contentCheck()**](ContentApi.md#contentCheck) | **GET** /content/edge_check | Check status of content in each POP&#39;s cache
 
 
 ## `contentCheck()`
 
 ```php
-contentCheck($options): \Fastly\Model\Content[] // Check status of content in each data center cache
+contentCheck($options): \Fastly\Model\Content[] // Check status of content in each POP's cache
 ```
 
 Retrieve headers and MD5 hash of the content for a particular URL from each Fastly edge server. This API is limited to 200 requests per hour.

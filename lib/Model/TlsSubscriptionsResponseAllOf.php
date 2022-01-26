@@ -2,7 +2,7 @@
 /**
  * TlsSubscriptionsResponseAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class TlsSubscriptionsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,7 +53,7 @@ class TlsSubscriptionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsSubscriptionResponse[]'
     ];
 
     /**
@@ -156,9 +156,6 @@ class TlsSubscriptionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -205,7 +202,7 @@ class TlsSubscriptionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsSubscriptionResponse[]|null
      */
     public function getData()
     {
@@ -215,7 +212,7 @@ class TlsSubscriptionsResponseAllOf implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsSubscriptionResponse[]|null $data data
      *
      * @return self
      */

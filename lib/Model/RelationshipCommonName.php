@@ -2,7 +2,7 @@
 /**
  * RelationshipCommonName
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class RelationshipCommonName implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,7 +53,7 @@ class RelationshipCommonName implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'common_name' => '\Fastly\Model\RelationshipCommonNameCommonName'
+        'common_name' => '\Fastly\Model\RelationshipTlsDomainTlsDomain'
     ];
 
     /**
@@ -156,9 +156,6 @@ class RelationshipCommonName implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -205,7 +202,7 @@ class RelationshipCommonName implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets common_name
      *
-     * @return \Fastly\Model\RelationshipCommonNameCommonName|null
+     * @return \Fastly\Model\RelationshipTlsDomainTlsDomain|null
      */
     public function getCommonName()
     {
@@ -215,7 +212,7 @@ class RelationshipCommonName implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets common_name
      *
-     * @param \Fastly\Model\RelationshipCommonNameCommonName|null $common_name common_name
+     * @param \Fastly\Model\RelationshipTlsDomainTlsDomain|null $common_name common_name
      *
      * @return self
      */

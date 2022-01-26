@@ -1,7 +1,7 @@
 <?php
 /**
  * RateLimiterApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class RateLimiterApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,20 +116,20 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -147,20 +148,20 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -177,9 +178,16 @@ class RateLimiterApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -190,21 +198,20 @@ class RateLimiterApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\RateLimiterResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -215,11 +222,10 @@ class RateLimiterApi
             }
 
             $returnType = '\Fastly\Model\RateLimiterResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -250,20 +256,20 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -285,20 +291,20 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -312,11 +318,10 @@ class RateLimiterApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -336,7 +341,7 @@ class RateLimiterApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -347,20 +352,20 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -370,18 +375,18 @@ class RateLimiterApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
-        $action = array_key_exists('action', $options) ? $options['action'] : null;
-        $client_key = array_key_exists('client_key', $options) ? $options['client_key'] : null;
-        $feature_revision = array_key_exists('feature_revision', $options) ? $options['feature_revision'] : null;
-        $http_methods = array_key_exists('http_methods', $options) ? $options['http_methods'] : null;
-        $logger_type = array_key_exists('logger_type', $options) ? $options['logger_type'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
+        $uri_dictionary_name = array_key_exists('uri_dictionary_name', $options) ? $options['uri_dictionary_name'] : null;
+        $http_methods = array_key_exists('http_methods', $options) ? $options['http_methods'] : null;
+        $rps_limit = array_key_exists('rps_limit', $options) ? $options['rps_limit'] : null;
+        $window_size = array_key_exists('window_size', $options) ? $options['window_size'] : null;
+        $client_key = array_key_exists('client_key', $options) ? $options['client_key'] : null;
         $penalty_box_duration = array_key_exists('penalty_box_duration', $options) ? $options['penalty_box_duration'] : null;
+        $action = array_key_exists('action', $options) ? $options['action'] : null;
         $response = array_key_exists('response', $options) ? $options['response'] : null;
         $response_object_name = array_key_exists('response_object_name', $options) ? $options['response_object_name'] : null;
-        $rps_limit = array_key_exists('rps_limit', $options) ? $options['rps_limit'] : null;
-        $uri_dictionary_name = array_key_exists('uri_dictionary_name', $options) ? $options['uri_dictionary_name'] : null;
-        $window_size = array_key_exists('window_size', $options) ? $options['window_size'] : null;
+        $logger_type = array_key_exists('logger_type', $options) ? $options['logger_type'] : null;
+        $feature_revision = array_key_exists('feature_revision', $options) ? $options['feature_revision'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -395,10 +400,6 @@ class RateLimiterApi
                 'Missing the required parameter $version_id when calling createRateLimiter'
             );
         }
-        if ($action !== null && strlen($action) < 1) {
-            throw new \InvalidArgumentException('invalid length for "$action" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 1.');
-        }
-
         if ($name !== null && strlen($name) > 255) {
             throw new \InvalidArgumentException('invalid length for "$name" when calling RateLimiterApi.createRateLimiter, must be smaller than or equal to 255.');
         }
@@ -406,18 +407,15 @@ class RateLimiterApi
             throw new \InvalidArgumentException('invalid length for "$name" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 1.');
         }
 
-        if ($penalty_box_duration !== null && $penalty_box_duration > 60) {
-            throw new \InvalidArgumentException('invalid value for "$penalty_box_duration" when calling RateLimiterApi.createRateLimiter, must be smaller than or equal to 60.');
+        if ($uri_dictionary_name !== null && strlen($uri_dictionary_name) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$uri_dictionary_name" when calling RateLimiterApi.createRateLimiter, must be smaller than or equal to 255.');
         }
-        if ($penalty_box_duration !== null && $penalty_box_duration < 1) {
-            throw new \InvalidArgumentException('invalid value for "$penalty_box_duration" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 1.');
+        if ($uri_dictionary_name !== null && strlen($uri_dictionary_name) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$uri_dictionary_name" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 1.');
         }
 
-        if ($response_object_name !== null && strlen($response_object_name) > 255) {
-            throw new \InvalidArgumentException('invalid length for "$response_object_name" when calling RateLimiterApi.createRateLimiter, must be smaller than or equal to 255.');
-        }
-        if ($response_object_name !== null && strlen($response_object_name) < 1) {
-            throw new \InvalidArgumentException('invalid length for "$response_object_name" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 1.');
+        if ($http_methods !== null && count($http_methods) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$http_methods" when calling RateLimiterApi.createRateLimiter, number of items must be greater than or equal to 1.');
         }
 
         if ($rps_limit !== null && $rps_limit > 10000) {
@@ -427,11 +425,26 @@ class RateLimiterApi
             throw new \InvalidArgumentException('invalid value for "$rps_limit" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 10.');
         }
 
-        if ($uri_dictionary_name !== null && strlen($uri_dictionary_name) > 255) {
-            throw new \InvalidArgumentException('invalid length for "$uri_dictionary_name" when calling RateLimiterApi.createRateLimiter, must be smaller than or equal to 255.');
+        if ($client_key !== null && count($client_key) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$client_key" when calling RateLimiterApi.createRateLimiter, number of items must be greater than or equal to 1.');
         }
-        if ($uri_dictionary_name !== null && strlen($uri_dictionary_name) < 1) {
-            throw new \InvalidArgumentException('invalid length for "$uri_dictionary_name" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 1.');
+
+        if ($penalty_box_duration !== null && $penalty_box_duration > 60) {
+            throw new \InvalidArgumentException('invalid value for "$penalty_box_duration" when calling RateLimiterApi.createRateLimiter, must be smaller than or equal to 60.');
+        }
+        if ($penalty_box_duration !== null && $penalty_box_duration < 1) {
+            throw new \InvalidArgumentException('invalid value for "$penalty_box_duration" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 1.');
+        }
+
+        if ($action !== null && strlen($action) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$action" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 1.');
+        }
+
+        if ($response_object_name !== null && strlen($response_object_name) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$response_object_name" when calling RateLimiterApi.createRateLimiter, must be smaller than or equal to 255.');
+        }
+        if ($response_object_name !== null && strlen($response_object_name) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$response_object_name" when calling RateLimiterApi.createRateLimiter, must be bigger than or equal to 1.');
         }
 
 
@@ -462,32 +475,36 @@ class RateLimiterApi
         }
 
         // form params
-        if ($action !== null) {
-            $formParams['action'] = ObjectSerializer::toFormValue($action);
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
         // form params
-        if ($client_key !== null) {
-            $formParams['client_key'] = ObjectSerializer::toFormValue($client_key);
-        }
-        // form params
-        if ($feature_revision !== null) {
-            $formParams['feature_revision'] = ObjectSerializer::toFormValue($feature_revision);
+        if ($uri_dictionary_name !== null) {
+            $formParams['uri_dictionary_name'] = ObjectSerializer::toFormValue($uri_dictionary_name);
         }
         // form params
         if ($http_methods !== null) {
             $formParams['http_methods'] = ObjectSerializer::toFormValue($http_methods);
         }
         // form params
-        if ($logger_type !== null) {
-            $formParams['logger_type'] = ObjectSerializer::toFormValue($logger_type);
+        if ($rps_limit !== null) {
+            $formParams['rps_limit'] = ObjectSerializer::toFormValue($rps_limit);
         }
         // form params
-        if ($name !== null) {
-            $formParams['name'] = ObjectSerializer::toFormValue($name);
+        if ($window_size !== null) {
+            $formParams['window_size'] = ObjectSerializer::toFormValue($window_size);
+        }
+        // form params
+        if ($client_key !== null) {
+            $formParams['client_key'] = ObjectSerializer::toFormValue($client_key);
         }
         // form params
         if ($penalty_box_duration !== null) {
             $formParams['penalty_box_duration'] = ObjectSerializer::toFormValue($penalty_box_duration);
+        }
+        // form params
+        if ($action !== null) {
+            $formParams['action'] = ObjectSerializer::toFormValue($action);
         }
         // form params
         if ($response !== null) {
@@ -498,16 +515,12 @@ class RateLimiterApi
             $formParams['response_object_name'] = ObjectSerializer::toFormValue($response_object_name);
         }
         // form params
-        if ($rps_limit !== null) {
-            $formParams['rps_limit'] = ObjectSerializer::toFormValue($rps_limit);
+        if ($logger_type !== null) {
+            $formParams['logger_type'] = ObjectSerializer::toFormValue($logger_type);
         }
         // form params
-        if ($uri_dictionary_name !== null) {
-            $formParams['uri_dictionary_name'] = ObjectSerializer::toFormValue($uri_dictionary_name);
-        }
-        // form params
-        if ($window_size !== null) {
-            $formParams['window_size'] = ObjectSerializer::toFormValue($window_size);
+        if ($feature_revision !== null) {
+            $formParams['feature_revision'] = ObjectSerializer::toFormValue($feature_revision);
         }
 
         if ($multipart) {
@@ -542,7 +555,7 @@ class RateLimiterApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -563,7 +576,7 @@ class RateLimiterApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -579,7 +592,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -598,7 +611,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -615,9 +628,16 @@ class RateLimiterApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -628,21 +648,20 @@ class RateLimiterApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -653,11 +672,10 @@ class RateLimiterApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -688,7 +706,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -710,7 +728,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -724,11 +742,10 @@ class RateLimiterApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -748,7 +765,7 @@ class RateLimiterApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -759,7 +776,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -827,7 +844,7 @@ class RateLimiterApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -848,7 +865,7 @@ class RateLimiterApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -864,7 +881,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -883,7 +900,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -900,9 +917,16 @@ class RateLimiterApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -913,21 +937,20 @@ class RateLimiterApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\RateLimiterResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -938,11 +961,10 @@ class RateLimiterApi
             }
 
             $returnType = '\Fastly\Model\RateLimiterResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -973,7 +995,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -995,7 +1017,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1009,11 +1031,10 @@ class RateLimiterApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1033,7 +1054,7 @@ class RateLimiterApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1044,7 +1065,7 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1112,7 +1133,7 @@ class RateLimiterApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1133,7 +1154,7 @@ class RateLimiterApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1149,8 +1170,8 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1169,8 +1190,8 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1187,9 +1208,16 @@ class RateLimiterApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1200,21 +1228,20 @@ class RateLimiterApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\RateLimiterResponse[]' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1225,11 +1252,10 @@ class RateLimiterApi
             }
 
             $returnType = '\Fastly\Model\RateLimiterResponse[]';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1260,8 +1286,8 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1283,8 +1309,8 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1298,11 +1324,10 @@ class RateLimiterApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1322,7 +1347,7 @@ class RateLimiterApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1333,8 +1358,8 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1417,7 +1442,7 @@ class RateLimiterApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1438,7 +1463,7 @@ class RateLimiterApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1454,19 +1479,19 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id rate_limiter_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1485,19 +1510,19 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1514,9 +1539,16 @@ class RateLimiterApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1527,21 +1559,20 @@ class RateLimiterApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\RateLimiterResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1552,11 +1583,10 @@ class RateLimiterApi
             }
 
             $returnType = '\Fastly\Model\RateLimiterResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1587,19 +1617,19 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1621,19 +1651,19 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1647,11 +1677,10 @@ class RateLimiterApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1671,7 +1700,7 @@ class RateLimiterApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1682,19 +1711,19 @@ class RateLimiterApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $rate_limiter_id (required)
-     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
-     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
-     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
-     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
-     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
      * @param  string $name A human readable name for the rate limiting rule. (optional)
-     * @param  int $penalty_box_duration Length of time in seconds that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+     * @param  string[] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
+     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
+     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string[] $client_key Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. (optional)
+     * @param  int $penalty_box_duration Length of time in minutes that the rate limiter is in effect after the initial violation is detected. (optional)
+     * @param  string $action The action to take when a rate limiter violation is detected. (optional)
      * @param  \Fastly\Model\RateLimiterResponse1 $response (optional)
      * @param  string $response_object_name Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. (optional)
-     * @param  int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
-     * @param  string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
-     * @param  int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
+     * @param  string $logger_type Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. (optional)
+     * @param  int $feature_revision Revision number of the rate limiting feature implementation. Defaults to the most recent revision. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1703,18 +1732,18 @@ class RateLimiterApi
     {
         // unbox the parameters from the associative array
         $rate_limiter_id = array_key_exists('rate_limiter_id', $options) ? $options['rate_limiter_id'] : null;
-        $action = array_key_exists('action', $options) ? $options['action'] : null;
-        $client_key = array_key_exists('client_key', $options) ? $options['client_key'] : null;
-        $feature_revision = array_key_exists('feature_revision', $options) ? $options['feature_revision'] : null;
-        $http_methods = array_key_exists('http_methods', $options) ? $options['http_methods'] : null;
-        $logger_type = array_key_exists('logger_type', $options) ? $options['logger_type'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
+        $uri_dictionary_name = array_key_exists('uri_dictionary_name', $options) ? $options['uri_dictionary_name'] : null;
+        $http_methods = array_key_exists('http_methods', $options) ? $options['http_methods'] : null;
+        $rps_limit = array_key_exists('rps_limit', $options) ? $options['rps_limit'] : null;
+        $window_size = array_key_exists('window_size', $options) ? $options['window_size'] : null;
+        $client_key = array_key_exists('client_key', $options) ? $options['client_key'] : null;
         $penalty_box_duration = array_key_exists('penalty_box_duration', $options) ? $options['penalty_box_duration'] : null;
+        $action = array_key_exists('action', $options) ? $options['action'] : null;
         $response = array_key_exists('response', $options) ? $options['response'] : null;
         $response_object_name = array_key_exists('response_object_name', $options) ? $options['response_object_name'] : null;
-        $rps_limit = array_key_exists('rps_limit', $options) ? $options['rps_limit'] : null;
-        $uri_dictionary_name = array_key_exists('uri_dictionary_name', $options) ? $options['uri_dictionary_name'] : null;
-        $window_size = array_key_exists('window_size', $options) ? $options['window_size'] : null;
+        $logger_type = array_key_exists('logger_type', $options) ? $options['logger_type'] : null;
+        $feature_revision = array_key_exists('feature_revision', $options) ? $options['feature_revision'] : null;
 
         // verify the required parameter 'rate_limiter_id' is set
         if ($rate_limiter_id === null || (is_array($rate_limiter_id) && count($rate_limiter_id) === 0)) {
@@ -1722,10 +1751,6 @@ class RateLimiterApi
                 'Missing the required parameter $rate_limiter_id when calling updateRateLimiter'
             );
         }
-        if ($action !== null && strlen($action) < 1) {
-            throw new \InvalidArgumentException('invalid length for "$action" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 1.');
-        }
-
         if ($name !== null && strlen($name) > 255) {
             throw new \InvalidArgumentException('invalid length for "$name" when calling RateLimiterApi.updateRateLimiter, must be smaller than or equal to 255.');
         }
@@ -1733,18 +1758,15 @@ class RateLimiterApi
             throw new \InvalidArgumentException('invalid length for "$name" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 1.');
         }
 
-        if ($penalty_box_duration !== null && $penalty_box_duration > 60) {
-            throw new \InvalidArgumentException('invalid value for "$penalty_box_duration" when calling RateLimiterApi.updateRateLimiter, must be smaller than or equal to 60.');
+        if ($uri_dictionary_name !== null && strlen($uri_dictionary_name) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$uri_dictionary_name" when calling RateLimiterApi.updateRateLimiter, must be smaller than or equal to 255.');
         }
-        if ($penalty_box_duration !== null && $penalty_box_duration < 1) {
-            throw new \InvalidArgumentException('invalid value for "$penalty_box_duration" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 1.');
+        if ($uri_dictionary_name !== null && strlen($uri_dictionary_name) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$uri_dictionary_name" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 1.');
         }
 
-        if ($response_object_name !== null && strlen($response_object_name) > 255) {
-            throw new \InvalidArgumentException('invalid length for "$response_object_name" when calling RateLimiterApi.updateRateLimiter, must be smaller than or equal to 255.');
-        }
-        if ($response_object_name !== null && strlen($response_object_name) < 1) {
-            throw new \InvalidArgumentException('invalid length for "$response_object_name" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 1.');
+        if ($http_methods !== null && count($http_methods) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$http_methods" when calling RateLimiterApi.updateRateLimiter, number of items must be greater than or equal to 1.');
         }
 
         if ($rps_limit !== null && $rps_limit > 10000) {
@@ -1754,11 +1776,26 @@ class RateLimiterApi
             throw new \InvalidArgumentException('invalid value for "$rps_limit" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 10.');
         }
 
-        if ($uri_dictionary_name !== null && strlen($uri_dictionary_name) > 255) {
-            throw new \InvalidArgumentException('invalid length for "$uri_dictionary_name" when calling RateLimiterApi.updateRateLimiter, must be smaller than or equal to 255.');
+        if ($client_key !== null && count($client_key) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$client_key" when calling RateLimiterApi.updateRateLimiter, number of items must be greater than or equal to 1.');
         }
-        if ($uri_dictionary_name !== null && strlen($uri_dictionary_name) < 1) {
-            throw new \InvalidArgumentException('invalid length for "$uri_dictionary_name" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 1.');
+
+        if ($penalty_box_duration !== null && $penalty_box_duration > 60) {
+            throw new \InvalidArgumentException('invalid value for "$penalty_box_duration" when calling RateLimiterApi.updateRateLimiter, must be smaller than or equal to 60.');
+        }
+        if ($penalty_box_duration !== null && $penalty_box_duration < 1) {
+            throw new \InvalidArgumentException('invalid value for "$penalty_box_duration" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 1.');
+        }
+
+        if ($action !== null && strlen($action) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$action" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 1.');
+        }
+
+        if ($response_object_name !== null && strlen($response_object_name) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$response_object_name" when calling RateLimiterApi.updateRateLimiter, must be smaller than or equal to 255.');
+        }
+        if ($response_object_name !== null && strlen($response_object_name) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$response_object_name" when calling RateLimiterApi.updateRateLimiter, must be bigger than or equal to 1.');
         }
 
 
@@ -1781,32 +1818,36 @@ class RateLimiterApi
         }
 
         // form params
-        if ($action !== null) {
-            $formParams['action'] = ObjectSerializer::toFormValue($action);
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
         // form params
-        if ($client_key !== null) {
-            $formParams['client_key'] = ObjectSerializer::toFormValue($client_key);
-        }
-        // form params
-        if ($feature_revision !== null) {
-            $formParams['feature_revision'] = ObjectSerializer::toFormValue($feature_revision);
+        if ($uri_dictionary_name !== null) {
+            $formParams['uri_dictionary_name'] = ObjectSerializer::toFormValue($uri_dictionary_name);
         }
         // form params
         if ($http_methods !== null) {
             $formParams['http_methods'] = ObjectSerializer::toFormValue($http_methods);
         }
         // form params
-        if ($logger_type !== null) {
-            $formParams['logger_type'] = ObjectSerializer::toFormValue($logger_type);
+        if ($rps_limit !== null) {
+            $formParams['rps_limit'] = ObjectSerializer::toFormValue($rps_limit);
         }
         // form params
-        if ($name !== null) {
-            $formParams['name'] = ObjectSerializer::toFormValue($name);
+        if ($window_size !== null) {
+            $formParams['window_size'] = ObjectSerializer::toFormValue($window_size);
+        }
+        // form params
+        if ($client_key !== null) {
+            $formParams['client_key'] = ObjectSerializer::toFormValue($client_key);
         }
         // form params
         if ($penalty_box_duration !== null) {
             $formParams['penalty_box_duration'] = ObjectSerializer::toFormValue($penalty_box_duration);
+        }
+        // form params
+        if ($action !== null) {
+            $formParams['action'] = ObjectSerializer::toFormValue($action);
         }
         // form params
         if ($response !== null) {
@@ -1817,16 +1858,12 @@ class RateLimiterApi
             $formParams['response_object_name'] = ObjectSerializer::toFormValue($response_object_name);
         }
         // form params
-        if ($rps_limit !== null) {
-            $formParams['rps_limit'] = ObjectSerializer::toFormValue($rps_limit);
+        if ($logger_type !== null) {
+            $formParams['logger_type'] = ObjectSerializer::toFormValue($logger_type);
         }
         // form params
-        if ($uri_dictionary_name !== null) {
-            $formParams['uri_dictionary_name'] = ObjectSerializer::toFormValue($uri_dictionary_name);
-        }
-        // form params
-        if ($window_size !== null) {
-            $formParams['window_size'] = ObjectSerializer::toFormValue($window_size);
+        if ($feature_revision !== null) {
+            $formParams['feature_revision'] = ObjectSerializer::toFormValue($feature_revision);
         }
 
         if ($multipart) {
@@ -1861,7 +1898,7 @@ class RateLimiterApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1882,7 +1919,7 @@ class RateLimiterApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

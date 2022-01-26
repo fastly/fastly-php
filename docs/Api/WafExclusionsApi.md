@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\WafExclusionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -43,8 +44,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**firewall_version_number** | **int** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**firewall_version_number** | **int** | Integer identifying a WAF firewall version. |
 **waf_exclusion** | [**\Fastly\Model\WafExclusion**](../Model/WafExclusion.md) |  | [optional]
 
 ### Return type
@@ -77,9 +78,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**firewall_version_number** | **int** |  |
-**exclusion_number** | **int** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**firewall_version_number** | **int** | Integer identifying a WAF firewall version. |
+**exclusion_number** | **int** | A numeric ID identifying a WAF exclusion. |
 
 ### Return type
 
@@ -111,9 +112,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**firewall_version_number** | **int** |  |
-**exclusion_number** | **int** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**firewall_version_number** | **int** | Integer identifying a WAF firewall version. |
+**exclusion_number** | **int** | A numeric ID identifying a WAF exclusion. |
 
 ### Return type
 
@@ -145,14 +146,14 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**firewall_version_number** | **int** |  |
-**filter_exclusion_type** | **string** | Filters the results based on this exclusion type. | [optional]
+**filter_exclusion_type** | **string** | Filters the results based on this exclusion type. | [optional] [one of: 'rule', 'variable', 'waf']
 **filter_name** | **string** | Filters the results based on name. | [optional]
 **filter_waf_rules_modsec_rule_id** | **int** | Filters the results based on this ModSecurity rule ID. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
-**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rules&#x60; and &#x60;waf_rule_revisions&#x60;. | [optional]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
+**include** | **string** | Include relationships. Optional, comma-separated values. Permitted values: `waf_rules` and `waf_rule_revisions`. | [optional]
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**firewall_version_number** | **int** | Integer identifying a WAF firewall version. |
 
 ### Return type
 
@@ -184,9 +185,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** |  |
-**firewall_version_number** | **int** |  |
-**exclusion_number** | **int** |  |
+**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
+**firewall_version_number** | **int** | Integer identifying a WAF firewall version. |
+**exclusion_number** | **int** | A numeric ID identifying a WAF exclusion. |
 **waf_exclusion** | [**\Fastly\Model\WafExclusion**](../Model/WafExclusion.md) |  | [optional]
 
 ### Return type

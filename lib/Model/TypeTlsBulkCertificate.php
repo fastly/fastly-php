@@ -2,7 +2,7 @@
 /**
  * TypeTlsBulkCertificate
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeTlsBulkCertificate
      * Possible values of this enum
      */
     const TLS_BULK_CERTIFICATE = 'tls_bulk_certificate';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeTlsBulkCertificate
     public static function getAllowableEnumValues()
     {
         return [
-            self::TLS_BULK_CERTIFICATE,
+            self::TLS_BULK_CERTIFICATE
         ];
     }
 }

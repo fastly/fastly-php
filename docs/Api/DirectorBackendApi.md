@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\DirectorBackendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -41,10 +42,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**director_name** | **string** |  |
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**backend_name** | **string** |  |
+**director_name** | **string** | Name for the Director. |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**backend_name** | **string** | The name of the backend. |
 
 ### Return type
 
@@ -76,10 +77,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**director_name** | **string** |  |
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**backend_name** | **string** |  |
+**director_name** | **string** | Name for the Director. |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**backend_name** | **string** | The name of the backend. |
 
 ### Return type
 
@@ -111,10 +112,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**director_name** | **string** |  |
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**backend_name** | **string** |  |
+**director_name** | **string** | Name for the Director. |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**backend_name** | **string** | The name of the backend. |
 
 ### Return type
 

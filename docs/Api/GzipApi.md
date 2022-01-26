@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\GzipApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -43,8 +44,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 **cache_condition** | **string** | Name of the cache condition controlling when this configuration applies. | [optional]
 **content_types** | **string** | Space-separated list of content types to compress. If you omit this field a default list will be used. | [optional]
 **extensions** | **string** | Space-separated list of file extensions to compress. If you omit this field a default list will be used. | [optional]
@@ -80,9 +81,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**gzip_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**gzip_name** | **string** | Name of the gzip configuration. |
 
 ### Return type
 
@@ -114,9 +115,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**gzip_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**gzip_name** | **string** | Name of the gzip configuration. |
 
 ### Return type
 
@@ -148,8 +149,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -181,9 +182,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**gzip_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**gzip_name** | **string** | Name of the gzip configuration. |
 **cache_condition** | **string** | Name of the cache condition controlling when this configuration applies. | [optional]
 **content_types** | **string** | Space-separated list of content types to compress. If you omit this field a default list will be used. | [optional]
 **extensions** | **string** | Space-separated list of file extensions to compress. If you omit this field a default list will be used. | [optional]

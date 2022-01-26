@@ -2,7 +2,7 @@
 /**
  * HistoricalMeta
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -35,7 +35,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -54,10 +54,10 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'by' => 'string',
+        'to' => 'string',
         'from' => 'string',
-        'region' => 'string',
-        'to' => 'string'
+        'by' => 'string',
+        'region' => 'string'
     ];
 
     /**
@@ -68,10 +68,10 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'by' => null,
+        'to' => null,
         'from' => null,
-        'region' => null,
-        'to' => null
+        'by' => null,
+        'region' => null
     ];
 
     /**
@@ -101,10 +101,10 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'by' => 'by',
+        'to' => 'to',
         'from' => 'from',
-        'region' => 'region',
-        'to' => 'to'
+        'by' => 'by',
+        'region' => 'region'
     ];
 
     /**
@@ -113,10 +113,10 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'by' => 'setBy',
+        'to' => 'setTo',
         'from' => 'setFrom',
-        'region' => 'setRegion',
-        'to' => 'setTo'
+        'by' => 'setBy',
+        'region' => 'setRegion'
     ];
 
     /**
@@ -125,10 +125,10 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'by' => 'getBy',
+        'to' => 'getTo',
         'from' => 'getFrom',
-        'region' => 'getRegion',
-        'to' => 'getTo'
+        'by' => 'getBy',
+        'region' => 'getRegion'
     ];
 
     /**
@@ -172,9 +172,6 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -191,10 +188,10 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['by'] = $data['by'] ?? null;
-        $this->container['from'] = $data['from'] ?? null;
-        $this->container['region'] = $data['region'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
+        $this->container['from'] = $data['from'] ?? null;
+        $this->container['by'] = $data['by'] ?? null;
+        $this->container['region'] = $data['region'] ?? null;
     }
 
     /**
@@ -222,25 +219,25 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets by
+     * Gets to
      *
      * @return string|null
      */
-    public function getBy()
+    public function getTo()
     {
-        return $this->container['by'];
+        return $this->container['to'];
     }
 
     /**
-     * Sets by
+     * Sets to
      *
-     * @param string|null $by by
+     * @param string|null $to to
      *
      * @return self
      */
-    public function setBy($by)
+    public function setTo($to)
     {
-        $this->container['by'] = $by;
+        $this->container['to'] = $to;
 
         return $this;
     }
@@ -270,6 +267,30 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets by
+     *
+     * @return string|null
+     */
+    public function getBy()
+    {
+        return $this->container['by'];
+    }
+
+    /**
+     * Sets by
+     *
+     * @param string|null $by by
+     *
+     * @return self
+     */
+    public function setBy($by)
+    {
+        $this->container['by'] = $by;
+
+        return $this;
+    }
+
+    /**
      * Gets region
      *
      * @return string|null
@@ -289,30 +310,6 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRegion($region)
     {
         $this->container['region'] = $region;
-
-        return $this;
-    }
-
-    /**
-     * Gets to
-     *
-     * @return string|null
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param string|null $to to
-     *
-     * @return self
-     */
-    public function setTo($to)
-    {
-        $this->container['to'] = $to;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 /**
  * ObjectSerializer
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -80,7 +80,7 @@ class ObjectSerializer
                 foreach ($data::fastlyTypes() as $property => $fastlyType) {
                     $getter = $data::getters()[$property];
                     $value = $data->$getter();
-                    if ($value !== null && !in_array($fastlyType, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
+                    if ($value !== null && !in_array($fastlyType, ['\DateTime', '\SplFileObject', 'array', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
                         $callable = [$fastlyType, 'getAllowableEnumValues'];
                         if (is_callable($callable)) {
                             /** array $callable */
@@ -268,11 +268,11 @@ class ObjectSerializer
 
         if (strcasecmp(substr($class, -2), '[]') === 0) {
             $data = is_string($data) ? json_decode($data) : $data;
-            
+
             if (!is_array($data)) {
                 throw new \InvalidArgumentException("Invalid array '$class'");
             }
-            
+
             $subClass = substr($class, 0, -2);
             $values = [];
             foreach ($data as $key => $value) {
@@ -299,6 +299,9 @@ class ObjectSerializer
         if ($class === 'object') {
             settype($data, 'array');
             return $data;
+        } else if ($class === 'mixed') {
+            settype($data, gettype($data));
+            return $data;
         }
 
         if ($class === '\DateTime') {
@@ -324,7 +327,7 @@ class ObjectSerializer
         }
 
         /** @psalm-suppress ParadoxicalCondition */
-        if (in_array($class, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
+        if (in_array($class, ['\DateTime', '\SplFileObject', 'array', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
             settype($data, $class);
             return $data;
         }

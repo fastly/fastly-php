@@ -2,7 +2,7 @@
 /**
  * InlineResponse400
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class InlineResponse400 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -161,9 +161,7 @@ class InlineResponse400 implements ModelInterface, ArrayAccess, \JsonSerializabl
     const CODE_INVALID_SCOPE = 'invalid_scope';
     const CODE_ACCOUNT_LOCKED = 'account_locked';
     const CODE__2FA_VERIFY = '2fa.verify';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -179,7 +177,6 @@ class InlineResponse400 implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::CODE__2FA_VERIFY,
         ];
     }
-    
 
     /**
      * Associative array for storing property values

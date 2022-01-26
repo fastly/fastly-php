@@ -2,7 +2,7 @@
 /**
  * BillingStatus
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,8 +53,8 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'sent_at' => 'string',
-        'status' => 'string'
+        'status' => 'string',
+        'sent_at' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'sent_at' => null,
-        'status' => null
+        'status' => null,
+        'sent_at' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'sent_at' => 'sent_at',
-        'status' => 'status'
+        'status' => 'status',
+        'sent_at' => 'sent_at'
     ];
 
     /**
@@ -106,8 +106,8 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'sent_at' => 'setSentAt',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'sent_at' => 'setSentAt'
     ];
 
     /**
@@ -116,8 +116,8 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'sent_at' => 'getSentAt',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'sent_at' => 'getSentAt'
     ];
 
     /**
@@ -165,9 +165,7 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATUS_OUTSTANDING = 'Outstanding';
     const STATUS_PAID = 'Paid';
     const STATUS_MTD = 'MTD';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -182,7 +180,6 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_MTD,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -199,8 +196,8 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['sent_at'] = $data['sent_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['sent_at'] = $data['sent_at'] ?? null;
     }
 
     /**
@@ -237,30 +234,6 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets sent_at
-     *
-     * @return string|null
-     */
-    public function getSentAt()
-    {
-        return $this->container['sent_at'];
-    }
-
-    /**
-     * Sets sent_at
-     *
-     * @param string|null $sent_at sent_at
-     *
-     * @return self
-     */
-    public function setSentAt($sent_at)
-    {
-        $this->container['sent_at'] = $sent_at;
-
-        return $this;
-    }
-
-    /**
      * Gets status
      *
      * @return string|null
@@ -290,6 +263,30 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent_at
+     *
+     * @return string|null
+     */
+    public function getSentAt()
+    {
+        return $this->container['sent_at'];
+    }
+
+    /**
+     * Sets sent_at
+     *
+     * @param string|null $sent_at sent_at
+     *
+     * @return self
+     */
+    public function setSentAt($sent_at)
+    {
+        $this->container['sent_at'] = $sent_at;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 /**
  * TypeUser
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeUser
      * Possible values of this enum
      */
     const USER = 'user';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeUser
     public static function getAllowableEnumValues()
     {
         return [
-            self::USER,
+            self::USER
         ];
     }
 }

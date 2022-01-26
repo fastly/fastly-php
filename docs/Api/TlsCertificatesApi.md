@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\TlsCertificatesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -75,7 +76,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_certificate_id** | **string** |  |
+**tls_certificate_id** | **string** | Alphanumeric string identifying a TLS certificate. |
 
 ### Return type
 
@@ -107,7 +108,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_certificate_id** | **string** |  |
+**tls_certificate_id** | **string** | Alphanumeric string identifying a TLS certificate. |
 
 ### Return type
 
@@ -141,10 +142,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **filter_not_after** | **string** | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). | [optional]
 **filter_tls_domains_id** | **string** | Limit the returned certificates to those that include the specific domain. | [optional]
-**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
-**sort** | **string** | The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
+**sort** | **string** | The order in which to list the results by creation date. | [optional] [one of: 'created_at', '-created_at'] [defaults to 'created_at']
 
 ### Return type
 
@@ -176,7 +177,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**tls_certificate_id** | **string** |  |
+**tls_certificate_id** | **string** | Alphanumeric string identifying a TLS certificate. |
 **tls_certificate** | [**\Fastly\Model\TlsCertificate**](../Model/TlsCertificate.md) |  | [optional]
 
 ### Return type

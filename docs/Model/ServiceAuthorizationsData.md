@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional]
-**type** | [**\Fastly\Model\TypeServiceAuthorization**](TypeServiceAuthorization.md) |  | [optional]
+**type** | [**\Fastly\Model\TypeServiceAuthorization**](TypeServiceAuthorization.md) |  | [optional] 
+**id** | **string** |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

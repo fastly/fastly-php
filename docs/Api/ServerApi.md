@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\ServerApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -43,15 +44,15 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**pool_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**pool_id** | **string** | Alphanumeric string identifying a Pool. |
+**weight** | **int** | Weight (`1-100`) used to load balance this server against others. | [optional] [defaults to 100]
+**max_conn** | **int** | Maximum number of connections. If the value is `0`, it inherits the value from pool&#39;s `max_conn_default`. | [optional] [defaults to 0]
+**port** | **int** | Port number. Setting port `443` does not force TLS. Set `use_tls` in pool to force TLS. | [optional] [defaults to 80]
 **address** | **string** | A hostname, IPv4, or IPv6 address for the server. Required. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
-**disabled** | **bool** | Allows servers to be enabled and disabled in a pool. | [optional] [default to false]
-**max_conn** | **int** | Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. | [optional] [default to 0]
-**override_host** | **string** | The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] [default to &#39;null&#39;]
-**port** | **int** | Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. | [optional] [default to 80]
-**weight** | **int** | Weight (&#x60;1-100&#x60;) used to load balance this server against others. | [optional] [default to 100]
+**disabled** | **bool** | Allows servers to be enabled and disabled in a pool. | [optional] [defaults to false]
+**override_host** | **string** | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] [defaults to 'null']
 
 ### Return type
 
@@ -83,9 +84,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**pool_id** | **string** |  |
-**server_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**pool_id** | **string** | Alphanumeric string identifying a Pool. |
+**server_id** | **string** | Alphanumeric string identifying a Server. |
 
 ### Return type
 
@@ -117,9 +118,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**pool_id** | **string** |  |
-**server_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**pool_id** | **string** | Alphanumeric string identifying a Pool. |
+**server_id** | **string** | Alphanumeric string identifying a Server. |
 
 ### Return type
 
@@ -151,8 +152,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**pool_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**pool_id** | **string** | Alphanumeric string identifying a Pool. |
 
 ### Return type
 
@@ -184,16 +185,16 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**pool_id** | **string** |  |
-**server_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**pool_id** | **string** | Alphanumeric string identifying a Pool. |
+**server_id** | **string** | Alphanumeric string identifying a Server. |
+**weight** | **int** | Weight (`1-100`) used to load balance this server against others. | [optional] [defaults to 100]
+**max_conn** | **int** | Maximum number of connections. If the value is `0`, it inherits the value from pool&#39;s `max_conn_default`. | [optional] [defaults to 0]
+**port** | **int** | Port number. Setting port `443` does not force TLS. Set `use_tls` in pool to force TLS. | [optional] [defaults to 80]
 **address** | **string** | A hostname, IPv4, or IPv6 address for the server. Required. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
-**disabled** | **bool** | Allows servers to be enabled and disabled in a pool. | [optional] [default to false]
-**max_conn** | **int** | Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. | [optional] [default to 0]
-**override_host** | **string** | The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] [default to &#39;null&#39;]
-**port** | **int** | Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. | [optional] [default to 80]
-**weight** | **int** | Weight (&#x60;1-100&#x60;) used to load balance this server against others. | [optional] [default to 100]
+**disabled** | **bool** | Allows servers to be enabled and disabled in a pool. | [optional] [defaults to false]
+**override_host** | **string** | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] [defaults to 'null']
 
 ### Return type
 

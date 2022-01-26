@@ -2,7 +2,7 @@
 /**
  * TypeService
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeService
      * Possible values of this enum
      */
     const SERVICE = 'service';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeService
     public static function getAllowableEnumValues()
     {
         return [
-            self::SERVICE,
+            self::SERVICE
         ];
     }
 }

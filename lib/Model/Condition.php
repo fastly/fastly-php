@@ -2,7 +2,7 @@
 /**
  * Condition
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -180,9 +180,7 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
     const TYPE_CACHE = 'CACHE';
     const TYPE_RESPONSE = 'RESPONSE';
     const TYPE_PREFETCH = 'PREFETCH';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -197,7 +195,6 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TYPE_PREFETCH,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
