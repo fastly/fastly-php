@@ -1,6 +1,5 @@
 {
     "name": "fastly/fastly",
-    "version": "1.0.0-alpha2",
     "description": "A PHP client library for interacting with most facets of the Fastly API.",
     "keywords": [
         "fastly",
