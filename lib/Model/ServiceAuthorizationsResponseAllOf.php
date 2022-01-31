@@ -2,7 +2,7 @@
 /**
  * ServiceAuthorizationsResponseAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class ServiceAuthorizationsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,7 +53,7 @@ class ServiceAuthorizationsResponseAllOf implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\ServiceAuthorizationResponseData[]'
     ];
 
     /**
@@ -156,9 +156,6 @@ class ServiceAuthorizationsResponseAllOf implements ModelInterface, ArrayAccess,
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -205,7 +202,7 @@ class ServiceAuthorizationsResponseAllOf implements ModelInterface, ArrayAccess,
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\ServiceAuthorizationResponseData[]|null
      */
     public function getData()
     {
@@ -215,7 +212,7 @@ class ServiceAuthorizationsResponseAllOf implements ModelInterface, ArrayAccess,
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\ServiceAuthorizationResponseData[]|null $data data
      *
      * @return self
      */

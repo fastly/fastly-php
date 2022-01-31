@@ -2,7 +2,7 @@
 /**
  * RelationshipMemberTlsDomain
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,8 +53,8 @@ class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string',
-        'type' => '\Fastly\Model\TypeTlsDomain'
+        'type' => '\Fastly\Model\TypeTlsDomain',
+        'id' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null,
-        'type' => null
+        'type' => null,
+        'id' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'type' => 'type'
+        'type' => 'type',
+        'id' => 'id'
     ];
 
     /**
@@ -106,8 +106,8 @@ class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'type' => 'setType'
+        'type' => 'setType',
+        'id' => 'setId'
     ];
 
     /**
@@ -116,8 +116,8 @@ class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'type' => 'getType'
+        'type' => 'getType',
+        'id' => 'getId'
     ];
 
     /**
@@ -161,9 +161,6 @@ class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonS
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -180,8 +177,8 @@ class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -209,30 +206,6 @@ class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id The domain name.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return \Fastly\Model\TypeTlsDomain|null
@@ -252,6 +225,30 @@ class RelationshipMemberTlsDomain implements ModelInterface, ArrayAccess, \JsonS
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id The domain name.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

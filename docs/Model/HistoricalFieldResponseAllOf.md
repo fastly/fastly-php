@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**array<string,\Fastly\Model\array>**](array.md) |  | [optional]
+**data** | **array&lt;string,array&gt;** |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

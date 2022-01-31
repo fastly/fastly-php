@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**array<string,string>[]**](array.md) |  | [optional]
+**data** | **array&lt;string,string&gt;[]** |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

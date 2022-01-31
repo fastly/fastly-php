@@ -2,7 +2,7 @@
 /**
  * TypeTlsDnsRecord
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -37,8 +37,8 @@ class TypeTlsDnsRecord
     /**
      * Possible values of this enum
      */
-    const TLS_DNS_RECORD = 'tls_dns_record';
-    
+    const DNS_RECORD = 'dns_record';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeTlsDnsRecord
     public static function getAllowableEnumValues()
     {
         return [
-            self::TLS_DNS_RECORD,
+            self::DNS_RECORD
         ];
     }
 }

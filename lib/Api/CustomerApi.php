@@ -1,7 +1,7 @@
 <?php
 /**
  * CustomerApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class CustomerApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,7 +116,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -134,7 +135,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -151,9 +152,16 @@ class CustomerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -164,21 +172,20 @@ class CustomerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -189,11 +196,10 @@ class CustomerApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -224,7 +230,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -246,7 +252,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -260,11 +266,10 @@ class CustomerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -284,7 +289,7 @@ class CustomerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -295,7 +300,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -363,7 +368,7 @@ class CustomerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -384,7 +389,7 @@ class CustomerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -400,7 +405,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -419,7 +424,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -436,9 +441,16 @@ class CustomerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -449,21 +461,20 @@ class CustomerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\CustomerResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -474,11 +485,10 @@ class CustomerApi
             }
 
             $returnType = '\Fastly\Model\CustomerResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -509,7 +519,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -531,7 +541,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -545,11 +555,10 @@ class CustomerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -569,7 +578,7 @@ class CustomerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -580,7 +589,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -648,7 +657,7 @@ class CustomerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -669,7 +678,7 @@ class CustomerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -719,9 +728,16 @@ class CustomerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -732,21 +748,20 @@ class CustomerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\CustomerResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -757,11 +772,10 @@ class CustomerApi
             }
 
             $returnType = '\Fastly\Model\CustomerResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -826,11 +840,10 @@ class CustomerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -850,7 +863,7 @@ class CustomerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -913,7 +926,7 @@ class CustomerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -934,7 +947,7 @@ class CustomerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -950,7 +963,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -969,7 +982,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -986,9 +999,16 @@ class CustomerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -999,21 +1019,20 @@ class CustomerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\SchemasUserResponse[]' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1024,11 +1043,10 @@ class CustomerApi
             }
 
             $returnType = '\Fastly\Model\SchemasUserResponse[]';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1059,7 +1077,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1081,7 +1099,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1095,11 +1113,10 @@ class CustomerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1119,7 +1136,7 @@ class CustomerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1130,7 +1147,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1198,7 +1215,7 @@ class CustomerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1219,7 +1236,7 @@ class CustomerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1235,7 +1252,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)
@@ -1278,7 +1295,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)
@@ -1319,9 +1336,16 @@ class CustomerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1332,21 +1356,20 @@ class CustomerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\CustomerResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1357,11 +1380,10 @@ class CustomerApi
             }
 
             $returnType = '\Fastly\Model\CustomerResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1392,7 +1414,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)
@@ -1438,7 +1460,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)
@@ -1476,11 +1498,10 @@ class CustomerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1500,7 +1521,7 @@ class CustomerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1511,7 +1532,7 @@ class CustomerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $billing_contact_id The alphanumeric string representing the primary billing contact. (optional)
      * @param  string $billing_network_type Customer&#39;s current network revenue type. (optional)
      * @param  string $billing_ref Used for adding purchased orders to customer&#39;s account. (optional)
@@ -1723,7 +1744,7 @@ class CustomerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1744,7 +1765,7 @@ class CustomerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

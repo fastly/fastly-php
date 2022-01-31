@@ -2,7 +2,7 @@
 /**
  * VclDiff
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,10 +53,10 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'diff' => 'string',
-        'format' => 'string',
         'from' => 'int',
-        'to' => 'int'
+        'to' => 'int',
+        'format' => 'string',
+        'diff' => 'string'
     ];
 
     /**
@@ -67,10 +67,10 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'diff' => null,
-        'format' => null,
         'from' => null,
-        'to' => null
+        'to' => null,
+        'format' => null,
+        'diff' => null
     ];
 
     /**
@@ -100,10 +100,10 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'diff' => 'diff',
-        'format' => 'format',
         'from' => 'from',
-        'to' => 'to'
+        'to' => 'to',
+        'format' => 'format',
+        'diff' => 'diff'
     ];
 
     /**
@@ -112,10 +112,10 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'diff' => 'setDiff',
-        'format' => 'setFormat',
         'from' => 'setFrom',
-        'to' => 'setTo'
+        'to' => 'setTo',
+        'format' => 'setFormat',
+        'diff' => 'setDiff'
     ];
 
     /**
@@ -124,10 +124,10 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'diff' => 'getDiff',
-        'format' => 'getFormat',
         'from' => 'getFrom',
-        'to' => 'getTo'
+        'to' => 'getTo',
+        'format' => 'getFormat',
+        'diff' => 'getDiff'
     ];
 
     /**
@@ -174,9 +174,7 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
     const FORMAT_TEXT = 'text';
     const FORMAT_HTML = 'html';
     const FORMAT_HTML_SIMPLE = 'html_simple';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -190,7 +188,6 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
             self::FORMAT_HTML_SIMPLE,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -207,10 +204,10 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['diff'] = $data['diff'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['diff'] = $data['diff'] ?? null;
     }
 
     /**
@@ -245,64 +242,6 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets diff
-     *
-     * @return string|null
-     */
-    public function getDiff()
-    {
-        return $this->container['diff'];
-    }
-
-    /**
-     * Sets diff
-     *
-     * @param string|null $diff The differences between two specified versions.
-     *
-     * @return self
-     */
-    public function setDiff($diff)
-    {
-        $this->container['diff'] = $diff;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format The format in which compared VCL changes are being returned in.
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $allowedValues = $this->getFormatAllowableValues();
-        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format', must be one of '%s'",
-                    $format,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format'] = $format;
-
-        return $this;
-    }
 
     /**
      * Gets from
@@ -348,6 +287,64 @@ class VclDiff implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTo($to)
     {
         $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format The format in which compared VCL changes are being returned in.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets diff
+     *
+     * @return string|null
+     */
+    public function getDiff()
+    {
+        return $this->container['diff'];
+    }
+
+    /**
+     * Sets diff
+     *
+     * @param string|null $diff The differences between two specified versions.
+     *
+     * @return self
+     */
+    public function setDiff($diff)
+    {
+        $this->container['diff'] = $diff;
 
         return $this;
     }

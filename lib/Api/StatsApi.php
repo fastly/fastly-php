@@ -1,7 +1,7 @@
 <?php
 /**
  * StatsApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class StatsApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,7 +116,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -138,7 +139,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -159,9 +160,16 @@ class StatsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -172,21 +180,20 @@ class StatsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\Stats' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -197,11 +204,10 @@ class StatsApi
             }
 
             $returnType = '\Fastly\Model\Stats';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -232,7 +238,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -258,7 +264,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -276,11 +282,10 @@ class StatsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -300,7 +305,7 @@ class StatsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -311,7 +316,7 @@ class StatsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      * @param  int $start_time Epoch timestamp. Limits the results returned. (optional)
@@ -366,18 +371,26 @@ class StatsApi
             }
         }
         // query params
-        if (is_array($start_time)) {
-            $start_time = ObjectSerializer::serializeCollection($start_time, 'simple', true);
-        }
         if ($start_time !== null) {
-            $queryParams['start_time'] = $start_time;
+            if('form' === 'form' && is_array($start_time)) {
+                foreach($start_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['start_time'] = $start_time;
+            }
         }
         // query params
-        if (is_array($end_time)) {
-            $end_time = ObjectSerializer::serializeCollection($end_time, 'simple', true);
-        }
         if ($end_time !== null) {
-            $queryParams['end_time'] = $end_time;
+            if('form' === 'form' && is_array($end_time)) {
+                foreach($end_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['end_time'] = $end_time;
+            }
         }
 
 
@@ -423,7 +436,7 @@ class StatsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -444,7 +457,7 @@ class StatsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

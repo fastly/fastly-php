@@ -2,7 +2,7 @@
 /**
  * SchemasWafFirewallVersionData
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -45,7 +45,7 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $fastlyModelName = 'schemas_waf_firewall_version_data';
+    protected static $fastlyModelName = 'schemas-waf_firewall_version_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,8 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'attributes' => '\Fastly\Model\SchemasWafFirewallVersionDataAttributes',
-        'type' => '\Fastly\Model\TypeWafFirewallVersion'
+        'type' => '\Fastly\Model\TypeWafFirewallVersion',
+        'attributes' => '\Fastly\Model\WafFirewallVersionDataAttributes'
     ];
 
     /**
@@ -65,8 +65,8 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'attributes' => null,
-        'type' => null
+        'type' => null,
+        'attributes' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'type' => 'type'
+        'type' => 'type',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -106,8 +106,8 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'type' => 'setType'
+        'type' => 'setType',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -116,8 +116,8 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'type' => 'getType'
+        'type' => 'getType',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -161,9 +161,6 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -180,8 +177,8 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['attributes'] = $data['attributes'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['attributes'] = $data['attributes'] ?? null;
     }
 
     /**
@@ -209,30 +206,6 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets attributes
-     *
-     * @return \Fastly\Model\SchemasWafFirewallVersionDataAttributes|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \Fastly\Model\SchemasWafFirewallVersionDataAttributes|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return \Fastly\Model\TypeWafFirewallVersion|null
@@ -252,6 +225,30 @@ class SchemasWafFirewallVersionData implements ModelInterface, ArrayAccess, \Jso
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return \Fastly\Model\WafFirewallVersionDataAttributes|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \Fastly\Model\WafFirewallVersionDataAttributes|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 /**
  * SchemasSnippetResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,11 +53,11 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'content' => 'string',
-        'dynamic' => 'string',
         'name' => 'string',
-        'priority' => 'string',
+        'dynamic' => 'string',
         'type' => 'string',
+        'content' => 'string',
+        'priority' => 'string',
         'service_id' => 'string',
         'version' => 'int',
         'created_at' => 'string',
@@ -74,11 +74,11 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'content' => null,
-        'dynamic' => null,
         'name' => null,
-        'priority' => null,
+        'dynamic' => null,
         'type' => null,
+        'content' => null,
+        'priority' => null,
         'service_id' => null,
         'version' => null,
         'created_at' => null,
@@ -114,11 +114,11 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'content' => 'content',
-        'dynamic' => 'dynamic',
         'name' => 'name',
-        'priority' => 'priority',
+        'dynamic' => 'dynamic',
         'type' => 'type',
+        'content' => 'content',
+        'priority' => 'priority',
         'service_id' => 'service_id',
         'version' => 'version',
         'created_at' => 'created_at',
@@ -133,11 +133,11 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'content' => 'setContent',
-        'dynamic' => 'setDynamic',
         'name' => 'setName',
-        'priority' => 'setPriority',
+        'dynamic' => 'setDynamic',
         'type' => 'setType',
+        'content' => 'setContent',
+        'priority' => 'setPriority',
         'service_id' => 'setServiceId',
         'version' => 'setVersion',
         'created_at' => 'setCreatedAt',
@@ -152,11 +152,11 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'content' => 'getContent',
-        'dynamic' => 'getDynamic',
         'name' => 'getName',
-        'priority' => 'getPriority',
+        'dynamic' => 'getDynamic',
         'type' => 'getType',
+        'content' => 'getContent',
+        'priority' => 'getPriority',
         'service_id' => 'getServiceId',
         'version' => 'getVersion',
         'created_at' => 'getCreatedAt',
@@ -219,9 +219,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     const TYPE_DELIVER = 'deliver';
     const TYPE_LOG = 'log';
     const TYPE_NONE = 'none';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -234,7 +232,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
             self::DYNAMIC__1,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -256,7 +254,6 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
             self::TYPE_NONE,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -273,11 +270,11 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['content'] = $data['content'] ?? null;
-        $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? '100';
+        $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['content'] = $data['content'] ?? null;
+        $this->container['priority'] = $data['priority'] ?? '100';
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -329,25 +326,25 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets content
+     * Gets name
      *
      * @return string|null
      */
-    public function getContent()
+    public function getName()
     {
-        return $this->container['content'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets content
+     * Sets name
      *
-     * @param string|null $content The VCL code that specifies exactly what the snippet does.
+     * @param string|null $name The name for the snippet.
      *
      * @return self
      */
-    public function setContent($content)
+    public function setName($name)
     {
-        $this->container['content'] = $content;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -387,54 +384,6 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name for the snippet.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets priority
-     *
-     * @return string|null
-     */
-    public function getPriority()
-    {
-        return $this->container['priority'];
-    }
-
-    /**
-     * Sets priority
-     *
-     * @param string|null $priority Numeric string value. Priority determines execution order. Lower numbers execute first.
-     *
-     * @return self
-     */
-    public function setPriority($priority)
-    {
-        $this->container['priority'] = $priority;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return string|null
@@ -464,6 +413,54 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets content
+     *
+     * @return string|null
+     */
+    public function getContent()
+    {
+        return $this->container['content'];
+    }
+
+    /**
+     * Sets content
+     *
+     * @param string|null $content The VCL code that specifies exactly what the snippet does.
+     *
+     * @return self
+     */
+    public function setContent($content)
+    {
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets priority
+     *
+     * @return string|null
+     */
+    public function getPriority()
+    {
+        return $this->container['priority'];
+    }
+
+    /**
+     * Sets priority
+     *
+     * @param string|null $priority Numeric string value. Priority determines execution order. Lower numbers execute first.
+     *
+     * @return self
+     */
+    public function setPriority($priority)
+    {
+        $this->container['priority'] = $priority;
 
         return $this;
     }

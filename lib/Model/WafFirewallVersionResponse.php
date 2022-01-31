@@ -2,7 +2,7 @@
 /**
  * WafFirewallVersionResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafFirewallVersionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,8 +53,8 @@ class WafFirewallVersionResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'Data',
-        'included' => 'AnyOfWafFirewallVersionWafActiveRule[]'
+        'data' => '\Fastly\Model\WafFirewallVersionResponseData',
+        'included' => '\Fastly\Model\IncludedWithWafFirewallVersionItem[]'
     ];
 
     /**
@@ -161,9 +161,6 @@ class WafFirewallVersionResponse implements ModelInterface, ArrayAccess, \JsonSe
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -211,7 +208,7 @@ class WafFirewallVersionResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets data
      *
-     * @return Data|null
+     * @return \Fastly\Model\WafFirewallVersionResponseData|null
      */
     public function getData()
     {
@@ -221,7 +218,7 @@ class WafFirewallVersionResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets data
      *
-     * @param Data|null $data data
+     * @param \Fastly\Model\WafFirewallVersionResponseData|null $data data
      *
      * @return self
      */
@@ -235,7 +232,7 @@ class WafFirewallVersionResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets included
      *
-     * @return AnyOfWafFirewallVersionWafActiveRule[]|null
+     * @return \Fastly\Model\IncludedWithWafFirewallVersionItem[]|null
      */
     public function getIncluded()
     {
@@ -245,7 +242,7 @@ class WafFirewallVersionResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets included
      *
-     * @param AnyOfWafFirewallVersionWafActiveRule[]|null $included included
+     * @param \Fastly\Model\IncludedWithWafFirewallVersionItem[]|null $included included
      *
      * @return self
      */

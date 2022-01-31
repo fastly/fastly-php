@@ -1,7 +1,7 @@
 <?php
 /**
  * DictionaryItemApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class DictionaryItemApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,9 +116,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 inline_object4 (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  \Fastly\Model\InlineObject $inline_object inline_object (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -136,9 +137,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  \Fastly\Model\InlineObject $inline_object (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -155,9 +156,16 @@ class DictionaryItemApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -168,21 +176,20 @@ class DictionaryItemApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -193,11 +200,10 @@ class DictionaryItemApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -228,9 +234,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  \Fastly\Model\InlineObject $inline_object (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -252,9 +258,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  \Fastly\Model\InlineObject $inline_object (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -268,11 +274,10 @@ class DictionaryItemApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -292,7 +297,7 @@ class DictionaryItemApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -303,9 +308,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  \Fastly\Model\InlineObject $inline_object (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -315,7 +320,7 @@ class DictionaryItemApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $dictionary_id = array_key_exists('dictionary_id', $options) ? $options['dictionary_id'] : null;
-        $inline_object4 = array_key_exists('inline_object4', $options) ? $options['inline_object4'] : null;
+        $inline_object = array_key_exists('inline_object', $options) ? $options['inline_object'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -369,11 +374,11 @@ class DictionaryItemApi
         }
 
         // for model (json/xml)
-        if (isset($inline_object4)) {
+        if (isset($inline_object)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object4));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object));
             } else {
-                $httpBody = $inline_object4;
+                $httpBody = $inline_object;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -395,7 +400,7 @@ class DictionaryItemApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -416,7 +421,7 @@ class DictionaryItemApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -432,8 +437,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -454,8 +459,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -474,9 +479,16 @@ class DictionaryItemApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -487,21 +499,20 @@ class DictionaryItemApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\DictionaryItemResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -512,11 +523,10 @@ class DictionaryItemApi
             }
 
             $returnType = '\Fastly\Model\DictionaryItemResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -547,8 +557,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -572,8 +582,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -589,11 +599,10 @@ class DictionaryItemApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -613,7 +622,7 @@ class DictionaryItemApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -624,8 +633,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -720,7 +729,7 @@ class DictionaryItemApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -741,7 +750,7 @@ class DictionaryItemApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -757,9 +766,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
-     * @param  string $dictionary_item_key dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -778,9 +787,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -797,9 +806,16 @@ class DictionaryItemApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -810,21 +826,20 @@ class DictionaryItemApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -835,11 +850,10 @@ class DictionaryItemApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -870,9 +884,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -894,9 +908,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -910,11 +924,10 @@ class DictionaryItemApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -934,7 +947,7 @@ class DictionaryItemApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -945,9 +958,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1045,7 +1058,7 @@ class DictionaryItemApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1066,7 +1079,7 @@ class DictionaryItemApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1082,9 +1095,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
-     * @param  string $dictionary_item_key dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1103,9 +1116,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1122,9 +1135,16 @@ class DictionaryItemApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1135,21 +1155,20 @@ class DictionaryItemApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\DictionaryItemResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1160,11 +1179,10 @@ class DictionaryItemApi
             }
 
             $returnType = '\Fastly\Model\DictionaryItemResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1195,9 +1213,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1219,9 +1237,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1235,11 +1253,10 @@ class DictionaryItemApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1259,7 +1276,7 @@ class DictionaryItemApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1270,9 +1287,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1370,7 +1387,7 @@ class DictionaryItemApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1391,7 +1408,7 @@ class DictionaryItemApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1407,8 +1424,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1431,8 +1448,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1453,9 +1470,16 @@ class DictionaryItemApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1466,21 +1490,20 @@ class DictionaryItemApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\DictionaryItemResponse[]' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1491,11 +1514,10 @@ class DictionaryItemApi
             }
 
             $returnType = '\Fastly\Model\DictionaryItemResponse[]';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1526,8 +1548,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1553,8 +1575,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1572,11 +1594,10 @@ class DictionaryItemApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1596,7 +1617,7 @@ class DictionaryItemApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1607,8 +1628,8 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
@@ -1655,32 +1676,48 @@ class DictionaryItemApi
         $multipart = false;
 
         // query params
-        if (is_array($page)) {
-            $page = ObjectSerializer::serializeCollection($page, 'simple', true);
-        }
         if ($page !== null) {
-            $queryParams['page'] = $page;
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
         }
         // query params
-        if (is_array($per_page)) {
-            $per_page = ObjectSerializer::serializeCollection($per_page, 'simple', true);
-        }
         if ($per_page !== null) {
-            $queryParams['per_page'] = $per_page;
+            if('form' === 'form' && is_array($per_page)) {
+                foreach($per_page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['per_page'] = $per_page;
+            }
         }
         // query params
-        if (is_array($sort)) {
-            $sort = ObjectSerializer::serializeCollection($sort, 'simple', true);
-        }
         if ($sort !== null) {
-            $queryParams['sort'] = $sort;
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort'] = $sort;
+            }
         }
         // query params
-        if (is_array($direction)) {
-            $direction = ObjectSerializer::serializeCollection($direction, 'simple', true);
-        }
         if ($direction !== null) {
-            $queryParams['direction'] = $direction;
+            if('form' === 'form' && is_array($direction)) {
+                foreach($direction as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['direction'] = $direction;
+            }
         }
 
 
@@ -1734,7 +1771,7 @@ class DictionaryItemApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1755,7 +1792,7 @@ class DictionaryItemApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1771,9 +1808,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
-     * @param  string $dictionary_item_key dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -1794,9 +1831,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -1815,9 +1852,16 @@ class DictionaryItemApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1828,21 +1872,20 @@ class DictionaryItemApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\DictionaryItemResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1853,11 +1896,10 @@ class DictionaryItemApi
             }
 
             $returnType = '\Fastly\Model\DictionaryItemResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1888,9 +1930,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -1914,9 +1956,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -1932,11 +1974,10 @@ class DictionaryItemApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1956,7 +1997,7 @@ class DictionaryItemApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1967,9 +2008,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2079,7 +2120,7 @@ class DictionaryItemApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2100,7 +2141,7 @@ class DictionaryItemApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2116,9 +2157,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $dictionary_id dictionary_id (required)
-     * @param  string $dictionary_item_key dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2139,9 +2180,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2160,9 +2201,16 @@ class DictionaryItemApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -2173,21 +2221,20 @@ class DictionaryItemApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\DictionaryItemResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -2198,11 +2245,10 @@ class DictionaryItemApi
             }
 
             $returnType = '\Fastly\Model\DictionaryItemResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -2233,9 +2279,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2259,9 +2305,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2277,11 +2323,10 @@ class DictionaryItemApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -2301,7 +2346,7 @@ class DictionaryItemApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -2312,9 +2357,9 @@ class DictionaryItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $dictionary_id (required)
-     * @param  string $dictionary_item_key (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+     * @param  string $dictionary_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
      *
@@ -2424,7 +2469,7 @@ class DictionaryItemApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2445,7 +2490,7 @@ class DictionaryItemApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

@@ -2,7 +2,7 @@
 /**
  * RequestSettingsResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -243,9 +243,7 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     const XFF_APPEND = 'append';
     const XFF_APPEND_ALL = 'append_all';
     const XFF_OVERWRITE = 'overwrite';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -258,7 +256,7 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
             self::ACTION_PASS,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -274,7 +272,6 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
             self::XFF_OVERWRITE,
         ];
     }
-    
 
     /**
      * Associative array for storing property values

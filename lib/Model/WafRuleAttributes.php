@@ -2,7 +2,7 @@
 /**
  * WafRuleAttributes
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafRuleAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -172,9 +172,7 @@ class WafRuleAttributes implements ModelInterface, ArrayAccess, \JsonSerializabl
     const TYPE_STRICT = 'strict';
     const TYPE_SCORE = 'score';
     const TYPE_THRESHOLD = 'threshold';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -188,7 +186,7 @@ class WafRuleAttributes implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::PUBLISHER_OWASP,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -202,7 +200,6 @@ class WafRuleAttributes implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::TYPE_THRESHOLD,
         ];
     }
-    
 
     /**
      * Associative array for storing property values

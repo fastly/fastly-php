@@ -2,7 +2,7 @@
 /**
  * TypeTlsDomain
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeTlsDomain
      * Possible values of this enum
      */
     const TLS_DOMAIN = 'tls_domain';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeTlsDomain
     public static function getAllowableEnumValues()
     {
         return [
-            self::TLS_DOMAIN,
+            self::TLS_DOMAIN
         ];
     }
 }

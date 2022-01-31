@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\EventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -40,7 +41,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**event_id** | **string** |  |
+**event_id** | **string** | Alphanumeric string identifying an event. |
 
 ### Return type
 
@@ -72,13 +73,13 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**filter_event_type** | **string** | Limit the returned events to a specific &#x60;event_type&#x60;. | [optional]
+**filter_event_type** | **string** | Limit the returned events to a specific `event_type`. | [optional]
 **filter_customer_id** | **string** | Limit the results returned to a specific customer. | [optional]
 **filter_service_id** | **string** | Limit the results returned to a specific service. | [optional]
 **filter_user_id** | **string** | Limit the results returned to a specific user. | [optional]
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
-**sort** | **string** | The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
+**sort** | **string** | The order in which to list the results by creation date. | [optional] [one of: 'created_at', '-created_at'] [defaults to 'created_at']
 
 ### Return type
 

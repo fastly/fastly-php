@@ -2,7 +2,7 @@
 /**
  * LoggingScalyrAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,9 +53,9 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'project_id' => 'string',
         'region' => 'string',
-        'token' => 'string'
+        'token' => 'string',
+        'project_id' => 'string'
     ];
 
     /**
@@ -66,9 +66,9 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'project_id' => null,
         'region' => null,
-        'token' => null
+        'token' => null,
+        'project_id' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'project_id' => 'project_id',
         'region' => 'region',
-        'token' => 'token'
+        'token' => 'token',
+        'project_id' => 'project_id'
     ];
 
     /**
@@ -109,9 +109,9 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'project_id' => 'setProjectId',
         'region' => 'setRegion',
-        'token' => 'setToken'
+        'token' => 'setToken',
+        'project_id' => 'setProjectId'
     ];
 
     /**
@@ -120,9 +120,9 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'project_id' => 'getProjectId',
         'region' => 'getRegion',
-        'token' => 'getToken'
+        'token' => 'getToken',
+        'project_id' => 'getProjectId'
     ];
 
     /**
@@ -168,9 +168,7 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
 
     const REGION_US = 'US';
     const REGION_EU = 'EU';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -183,7 +181,6 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
             self::REGION_EU,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -200,9 +197,9 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['project_id'] = $data['project_id'] ?? 'logplex';
-        $this->container['region'] = $data['region'] ?? REGION_US;
+        $this->container['region'] = $data['region'] ?? 'US';
         $this->container['token'] = $data['token'] ?? null;
+        $this->container['project_id'] = $data['project_id'] ?? 'logplex';
     }
 
     /**
@@ -237,30 +234,6 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets project_id
-     *
-     * @return string|null
-     */
-    public function getProjectId()
-    {
-        return $this->container['project_id'];
-    }
-
-    /**
-     * Sets project_id
-     *
-     * @param string|null $project_id The name of the logfile within Scalyr.
-     *
-     * @return self
-     */
-    public function setProjectId($project_id)
-    {
-        $this->container['project_id'] = $project_id;
-
-        return $this;
-    }
 
     /**
      * Gets region
@@ -316,6 +289,30 @@ class LoggingScalyrAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setToken($token)
     {
         $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Gets project_id
+     *
+     * @return string|null
+     */
+    public function getProjectId()
+    {
+        return $this->container['project_id'];
+    }
+
+    /**
+     * Sets project_id
+     *
+     * @param string|null $project_id The name of the logfile within Scalyr.
+     *
+     * @return self
+     */
+    public function setProjectId($project_id)
+    {
+        $this->container['project_id'] = $project_id;
 
         return $this;
     }

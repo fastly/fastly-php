@@ -2,7 +2,7 @@
 /**
  * LoggingNewrelicAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -54,8 +54,8 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $fastlyTypes = [
         'format' => 'mixed',
-        'region' => 'string',
-        'token' => 'string'
+        'token' => 'string',
+        'region' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $fastlyFormats = [
         'format' => null,
-        'region' => null,
-        'token' => null
+        'token' => null,
+        'region' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'format' => 'format',
-        'region' => 'region',
-        'token' => 'token'
+        'token' => 'token',
+        'region' => 'region'
     ];
 
     /**
@@ -110,8 +110,8 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'format' => 'setFormat',
-        'region' => 'setRegion',
-        'token' => 'setToken'
+        'token' => 'setToken',
+        'region' => 'setRegion'
     ];
 
     /**
@@ -121,8 +121,8 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'format' => 'getFormat',
-        'region' => 'getRegion',
-        'token' => 'getToken'
+        'token' => 'getToken',
+        'region' => 'getRegion'
     ];
 
     /**
@@ -168,9 +168,7 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
 
     const REGION_US = 'US';
     const REGION_EU = 'EU';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -183,7 +181,6 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
             self::REGION_EU,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -201,8 +198,8 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['format'] = $data['format'] ?? null;
-        $this->container['region'] = $data['region'] ?? REGION_US;
         $this->container['token'] = $data['token'] ?? null;
+        $this->container['region'] = $data['region'] ?? 'US';
     }
 
     /**
@@ -263,6 +260,30 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets token
+     *
+     * @return string|null
+     */
+    public function getToken()
+    {
+        return $this->container['token'];
+    }
+
+    /**
+     * Sets token
+     *
+     * @param string|null $token The Insert API key from the Account page of your New Relic account. Required.
+     *
+     * @return self
+     */
+    public function setToken($token)
+    {
+        $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
      * Gets region
      *
      * @return string|null
@@ -292,30 +313,6 @@ class LoggingNewrelicAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
         $this->container['region'] = $region;
-
-        return $this;
-    }
-
-    /**
-     * Gets token
-     *
-     * @return string|null
-     */
-    public function getToken()
-    {
-        return $this->container['token'];
-    }
-
-    /**
-     * Sets token
-     *
-     * @param string|null $token The Insert API key from the Account page of your New Relic account. Required.
-     *
-     * @return self
-     */
-    public function setToken($token)
-    {
-        $this->container['token'] = $token;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 /**
  * TlsDomainsResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class TlsDomainsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -55,7 +55,7 @@ class TlsDomainsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsDomainData[]'
     ];
 
     /**
@@ -166,9 +166,6 @@ class TlsDomainsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -265,7 +262,7 @@ class TlsDomainsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsDomainData[]|null
      */
     public function getData()
     {
@@ -275,7 +272,7 @@ class TlsDomainsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsDomainData[]|null $data data
      *
      * @return self
      */

@@ -2,7 +2,7 @@
 /**
  * ServiceAuthorizationData
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,9 +53,9 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'type' => '\Fastly\Model\TypeServiceAuthorization',
         'attributes' => '\Fastly\Model\ServiceAuthorizationDataAttributes',
-        'relationships' => 'object',
-        'type' => '\Fastly\Model\TypeServiceAuthorization'
+        'relationships' => 'mixed'
     ];
 
     /**
@@ -66,9 +66,9 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'type' => null,
         'attributes' => null,
-        'relationships' => null,
-        'type' => null
+        'relationships' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
+        'type' => 'type',
         'attributes' => 'attributes',
-        'relationships' => 'relationships',
-        'type' => 'type'
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -109,9 +109,9 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
+        'type' => 'setType',
         'attributes' => 'setAttributes',
-        'relationships' => 'setRelationships',
-        'type' => 'setType'
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -120,9 +120,9 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
+        'type' => 'getType',
         'attributes' => 'getAttributes',
-        'relationships' => 'getRelationships',
-        'type' => 'getType'
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -166,9 +166,6 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -185,9 +182,9 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
         $this->container['relationships'] = $data['relationships'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -213,6 +210,30 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeServiceAuthorization|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeServiceAuthorization|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
 
     /**
      * Gets attributes
@@ -241,7 +262,7 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets relationships
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getRelationships()
     {
@@ -251,37 +272,13 @@ class ServiceAuthorizationData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets relationships
      *
-     * @param object|null $relationships relationships
+     * @param mixed|null $relationships relationships
      *
      * @return self
      */
     public function setRelationships($relationships)
     {
         $this->container['relationships'] = $relationships;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return \Fastly\Model\TypeServiceAuthorization|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \Fastly\Model\TypeServiceAuthorization|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
 
         return $this;
     }

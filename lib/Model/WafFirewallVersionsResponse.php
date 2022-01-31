@@ -2,7 +2,7 @@
 /**
  * WafFirewallVersionsResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafFirewallVersionsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -55,8 +55,8 @@ class WafFirewallVersionsResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]',
-        'included' => 'AnyOfWafFirewallVersionWafActiveRule[]'
+        'data' => '\Fastly\Model\WafFirewallVersionResponseData[]',
+        'included' => '\Fastly\Model\IncludedWithWafFirewallVersionItem[]'
     ];
 
     /**
@@ -171,9 +171,6 @@ class WafFirewallVersionsResponse implements ModelInterface, ArrayAccess, \JsonS
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -271,7 +268,7 @@ class WafFirewallVersionsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafFirewallVersionResponseData[]|null
      */
     public function getData()
     {
@@ -281,7 +278,7 @@ class WafFirewallVersionsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafFirewallVersionResponseData[]|null $data data
      *
      * @return self
      */
@@ -295,7 +292,7 @@ class WafFirewallVersionsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets included
      *
-     * @return AnyOfWafFirewallVersionWafActiveRule[]|null
+     * @return \Fastly\Model\IncludedWithWafFirewallVersionItem[]|null
      */
     public function getIncluded()
     {
@@ -305,7 +302,7 @@ class WafFirewallVersionsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets included
      *
-     * @param AnyOfWafFirewallVersionWafActiveRule[]|null $included included
+     * @param \Fastly\Model\IncludedWithWafFirewallVersionItem[]|null $included included
      *
      * @return self
      */

@@ -1,7 +1,7 @@
 <?php
 /**
  * LoggingGcsApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class LoggingGcsApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,20 +116,20 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -150,20 +151,20 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -183,9 +184,16 @@ class LoggingGcsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -196,21 +204,20 @@ class LoggingGcsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\LoggingGcsResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -221,11 +228,10 @@ class LoggingGcsApi
             }
 
             $returnType = '\Fastly\Model\LoggingGcsResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -256,20 +262,20 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -294,20 +300,20 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -324,11 +330,10 @@ class LoggingGcsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -348,7 +353,7 @@ class LoggingGcsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -359,20 +364,20 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -385,18 +390,18 @@ class LoggingGcsApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
-        $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
-        $period = array_key_exists('period', $options) ? $options['period'] : 3600;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : 'classic';
         $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
-        $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
+        $period = array_key_exists('period', $options) ? $options['period'] : 3600;
+        $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
+        $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
         $user = array_key_exists('user', $options) ? $options['user'] : null;
+        $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
         $bucket_name = array_key_exists('bucket_name', $options) ? $options['bucket_name'] : null;
         $path = array_key_exists('path', $options) ? $options['path'] : null;
         $public_key = array_key_exists('public_key', $options) ? $options['public_key'] : 'null';
@@ -441,14 +446,6 @@ class LoggingGcsApi
         }
 
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -457,36 +454,44 @@ class LoggingGcsApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($compression_codec !== null) {
-            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
-        }
-        // form params
-        if ($gzip_level !== null) {
-            $formParams['gzip_level'] = ObjectSerializer::toFormValue($gzip_level);
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($message_type !== null) {
             $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
         }
         // form params
-        if ($period !== null) {
-            $formParams['period'] = ObjectSerializer::toFormValue($period);
-        }
-        // form params
         if ($timestamp_format !== null) {
             $formParams['timestamp_format'] = ObjectSerializer::toFormValue($timestamp_format);
         }
         // form params
-        if ($secret_key !== null) {
-            $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
+        if ($period !== null) {
+            $formParams['period'] = ObjectSerializer::toFormValue($period);
+        }
+        // form params
+        if ($gzip_level !== null) {
+            $formParams['gzip_level'] = ObjectSerializer::toFormValue($gzip_level);
+        }
+        // form params
+        if ($compression_codec !== null) {
+            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
         }
         // form params
         if ($user !== null) {
             $formParams['user'] = ObjectSerializer::toFormValue($user);
+        }
+        // form params
+        if ($secret_key !== null) {
+            $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
         }
         // form params
         if ($bucket_name !== null) {
@@ -533,7 +538,7 @@ class LoggingGcsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -554,7 +559,7 @@ class LoggingGcsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -570,9 +575,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $logging_gcs_name logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -591,9 +596,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -610,9 +615,16 @@ class LoggingGcsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -623,21 +635,20 @@ class LoggingGcsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -648,11 +659,10 @@ class LoggingGcsApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -683,9 +693,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -707,9 +717,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -723,11 +733,10 @@ class LoggingGcsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -747,7 +756,7 @@ class LoggingGcsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -758,9 +767,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -858,7 +867,7 @@ class LoggingGcsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -879,7 +888,7 @@ class LoggingGcsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -895,9 +904,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $logging_gcs_name logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -916,9 +925,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -935,9 +944,16 @@ class LoggingGcsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -948,21 +964,20 @@ class LoggingGcsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\LoggingGcsResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -973,11 +988,10 @@ class LoggingGcsApi
             }
 
             $returnType = '\Fastly\Model\LoggingGcsResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1008,9 +1022,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1032,9 +1046,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1048,11 +1062,10 @@ class LoggingGcsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1072,7 +1085,7 @@ class LoggingGcsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1083,9 +1096,9 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1183,7 +1196,7 @@ class LoggingGcsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1204,7 +1217,7 @@ class LoggingGcsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1220,8 +1233,8 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1240,8 +1253,8 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1258,9 +1271,16 @@ class LoggingGcsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1271,21 +1291,20 @@ class LoggingGcsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\LoggingGcsResponse[]' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1296,11 +1315,10 @@ class LoggingGcsApi
             }
 
             $returnType = '\Fastly\Model\LoggingGcsResponse[]';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1331,8 +1349,8 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1354,8 +1372,8 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1369,11 +1387,10 @@ class LoggingGcsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1393,7 +1410,7 @@ class LoggingGcsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1404,8 +1421,8 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1488,7 +1505,7 @@ class LoggingGcsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1509,7 +1526,7 @@ class LoggingGcsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1525,21 +1542,21 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $logging_gcs_name logging_gcs_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -1561,21 +1578,21 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -1595,9 +1612,16 @@ class LoggingGcsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1608,21 +1632,20 @@ class LoggingGcsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\LoggingGcsResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1633,11 +1656,10 @@ class LoggingGcsApi
             }
 
             $returnType = '\Fastly\Model\LoggingGcsResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1668,21 +1690,21 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -1707,21 +1729,21 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -1738,11 +1760,10 @@ class LoggingGcsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1762,7 +1783,7 @@ class LoggingGcsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1773,21 +1794,21 @@ class LoggingGcsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_gcs_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_gcs_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  \Fastly\Model\LoggingCompressionCodec $compression_codec (optional)
-     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  \Fastly\Model\LoggingMessageType $message_type (optional)
-     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format Date and time in ISO 8601 format. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
+     * @param  int $gzip_level What level of gzip encoding to have when sending logs (default &#x60;0&#x60;, no compression). If an explicit non-zero value is set, then &#x60;compression_codec&#x60; will default to \\\&quot;gzip.\\\&quot; Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
+     * @param  string $compression_codec The codec used for compression of your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. If the specified codec is \\\&quot;gzip\\\&quot;, &#x60;gzip_level&#x60; will default to 3. To specify a different level, leave &#x60;compression_codec&#x60; blank and explicitly set the level using &#x60;gzip_level&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $bucket_name The name of the GCS bucket. (optional)
      * @param  string $path (optional)
      * @param  string $public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (optional, default to 'null')
@@ -1801,18 +1822,18 @@ class LoggingGcsApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_gcs_name = array_key_exists('logging_gcs_name', $options) ? $options['logging_gcs_name'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
-        $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : null;
-        $period = array_key_exists('period', $options) ? $options['period'] : 3600;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : 'classic';
         $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
-        $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
+        $period = array_key_exists('period', $options) ? $options['period'] : 3600;
+        $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
+        $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
         $user = array_key_exists('user', $options) ? $options['user'] : null;
+        $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
         $bucket_name = array_key_exists('bucket_name', $options) ? $options['bucket_name'] : null;
         $path = array_key_exists('path', $options) ? $options['path'] : null;
         $public_key = array_key_exists('public_key', $options) ? $options['public_key'] : 'null';
@@ -1871,14 +1892,6 @@ class LoggingGcsApi
         }
 
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1887,36 +1900,44 @@ class LoggingGcsApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($compression_codec !== null) {
-            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
-        }
-        // form params
-        if ($gzip_level !== null) {
-            $formParams['gzip_level'] = ObjectSerializer::toFormValue($gzip_level);
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($message_type !== null) {
             $formParams['message_type'] = ObjectSerializer::toFormValue($message_type);
         }
         // form params
-        if ($period !== null) {
-            $formParams['period'] = ObjectSerializer::toFormValue($period);
-        }
-        // form params
         if ($timestamp_format !== null) {
             $formParams['timestamp_format'] = ObjectSerializer::toFormValue($timestamp_format);
         }
         // form params
-        if ($secret_key !== null) {
-            $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
+        if ($period !== null) {
+            $formParams['period'] = ObjectSerializer::toFormValue($period);
+        }
+        // form params
+        if ($gzip_level !== null) {
+            $formParams['gzip_level'] = ObjectSerializer::toFormValue($gzip_level);
+        }
+        // form params
+        if ($compression_codec !== null) {
+            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
         }
         // form params
         if ($user !== null) {
             $formParams['user'] = ObjectSerializer::toFormValue($user);
+        }
+        // form params
+        if ($secret_key !== null) {
+            $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
         }
         // form params
         if ($bucket_name !== null) {
@@ -1963,7 +1984,7 @@ class LoggingGcsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1984,7 +2005,7 @@ class LoggingGcsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

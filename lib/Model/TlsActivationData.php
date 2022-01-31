@@ -2,7 +2,7 @@
 /**
  * TlsActivationData
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,8 +53,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'relationships' => 'AnyOfObjectObjectObject',
-        'type' => '\Fastly\Model\TypeTlsActivation'
+        'type' => '\Fastly\Model\TypeTlsActivation',
+        'relationships' => '\Fastly\Model\RelationshipsForTlsActivation'
     ];
 
     /**
@@ -65,8 +65,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'relationships' => null,
-        'type' => null
+        'type' => null,
+        'relationships' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'relationships' => 'relationships',
-        'type' => 'type'
+        'type' => 'type',
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -106,8 +106,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'relationships' => 'setRelationships',
-        'type' => 'setType'
+        'type' => 'setType',
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -116,8 +116,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'relationships' => 'getRelationships',
-        'type' => 'getType'
+        'type' => 'getType',
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -161,9 +161,6 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -180,8 +177,8 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['relationships'] = $data['relationships'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['relationships'] = $data['relationships'] ?? null;
     }
 
     /**
@@ -209,30 +206,6 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets relationships
-     *
-     * @return AnyOfObjectObjectObject|null
-     */
-    public function getRelationships()
-    {
-        return $this->container['relationships'];
-    }
-
-    /**
-     * Sets relationships
-     *
-     * @param AnyOfObjectObjectObject|null $relationships relationships
-     *
-     * @return self
-     */
-    public function setRelationships($relationships)
-    {
-        $this->container['relationships'] = $relationships;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return \Fastly\Model\TypeTlsActivation|null
@@ -252,6 +225,30 @@ class TlsActivationData implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets relationships
+     *
+     * @return \Fastly\Model\RelationshipsForTlsActivation|null
+     */
+    public function getRelationships()
+    {
+        return $this->container['relationships'];
+    }
+
+    /**
+     * Sets relationships
+     *
+     * @param \Fastly\Model\RelationshipsForTlsActivation|null $relationships relationships
+     *
+     * @return self
+     */
+    public function setRelationships($relationships)
+    {
+        $this->container['relationships'] = $relationships;
 
         return $this;
     }

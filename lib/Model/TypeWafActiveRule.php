@@ -2,7 +2,7 @@
 /**
  * TypeWafActiveRule
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeWafActiveRule
      * Possible values of this enum
      */
     const WAF_ACTIVE_RULE = 'waf_active_rule';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeWafActiveRule
     public static function getAllowableEnumValues()
     {
         return [
-            self::WAF_ACTIVE_RULE,
+            self::WAF_ACTIVE_RULE
         ];
     }
 }

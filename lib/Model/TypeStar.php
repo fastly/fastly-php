@@ -2,7 +2,7 @@
 /**
  * TypeStar
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeStar
      * Possible values of this enum
      */
     const STAR = 'star';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeStar
     public static function getAllowableEnumValues()
     {
         return [
-            self::STAR,
+            self::STAR
         ];
     }
 }

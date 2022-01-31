@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\Fastly\Model\WafRuleRevisionAttributes**](WafRuleRevisionAttributes.md) |  | [optional]
-**id** | **string** | Alphanumeric string identifying a WAF rule revision. | [optional] [readonly]
-**type** | [**\Fastly\Model\TypeWafRuleRevision**](TypeWafRuleRevision.md) |  | [optional]
+**type** | [**\Fastly\Model\TypeWafRuleRevision**](TypeWafRuleRevision.md) |  | [optional] 
+**id** | **string** | Alphanumeric string identifying a WAF rule revision. | [optional] [readonly] 
+**attributes** | [**\Fastly\Model\WafRuleRevisionAttributes**](WafRuleRevisionAttributes.md) |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

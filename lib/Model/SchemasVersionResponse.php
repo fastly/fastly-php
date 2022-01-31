@@ -2,7 +2,7 @@
 /**
  * SchemasVersionResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -206,9 +206,6 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values

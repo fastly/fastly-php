@@ -2,7 +2,7 @@
 /**
  * Dictionary
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class Dictionary implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -161,9 +161,6 @@ class Dictionary implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -221,7 +218,7 @@ class Dictionary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Name for the Dictionary.
+     * @param string|null $name Name for the Dictionary (must start with an alphabetic character and can contain only alphanumeric characters, underscores, and whitespace).
      *
      * @return self
      */

@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\SnippetApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -45,13 +46,13 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
-**dynamic** | **string** | Sets the snippet version. | [optional]
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 **name** | **string** | The name for the snippet. | [optional]
-**priority** | **string** | Numeric string value. Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
-**type** | **string** | The location in generated VCL where the snippet should be placed. | [optional]
+**dynamic** | **string** | Sets the snippet version. | [optional] [one of: '0', '1']
+**type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] [one of: 'init', 'recv', 'hash', 'hit', 'miss', 'pass', 'fetch', 'error', 'deliver', 'log', 'none']
+**content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
+**priority** | **string** | Numeric string value. Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
 
 ### Return type
 
@@ -83,9 +84,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**snippet_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**snippet_name** | **string** | The name for the snippet. |
 
 ### Return type
 
@@ -117,9 +118,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**snippet_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**snippet_name** | **string** | The name for the snippet. |
 
 ### Return type
 
@@ -151,8 +152,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**snippet_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**snippet_id** | **string** | Alphanumeric string identifying a VCL Snippet. |
 
 ### Return type
 
@@ -184,8 +185,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -217,9 +218,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**snippet_name** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**snippet_name** | **string** | The name for the snippet. |
 
 ### Return type
 
@@ -251,13 +252,13 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**snippet_id** | **string** |  |
-**content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
-**dynamic** | **string** | Sets the snippet version. | [optional]
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**snippet_id** | **string** | Alphanumeric string identifying a VCL Snippet. |
 **name** | **string** | The name for the snippet. | [optional]
-**priority** | **string** | Numeric string value. Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
-**type** | **string** | The location in generated VCL where the snippet should be placed. | [optional]
+**dynamic** | **string** | Sets the snippet version. | [optional] [one of: '0', '1']
+**type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] [one of: 'init', 'recv', 'hash', 'hit', 'miss', 'pass', 'fetch', 'error', 'deliver', 'log', 'none']
+**content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
+**priority** | **string** | Numeric string value. Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
 
 ### Return type
 

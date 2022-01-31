@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**msg** | **string** |  | [optional]
+**msg** | **string** |  | [optional] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

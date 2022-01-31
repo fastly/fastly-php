@@ -2,7 +2,7 @@
 /**
  * CacheSetting
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class CacheSetting implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -179,9 +179,7 @@ class CacheSetting implements ModelInterface, ArrayAccess, \JsonSerializable
     const ACTION_PASS = 'pass';
     const ACTION_DELIVER = 'deliver';
     const ACTION_RESTART = 'restart';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -195,7 +193,6 @@ class CacheSetting implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ACTION_RESTART,
         ];
     }
-    
 
     /**
      * Associative array for storing property values

@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\UserApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -45,10 +46,10 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**limit_services** | **bool** | Indicates that the user has limited access to the customer&#39;s services. | [optional]
-**locked** | **bool** | Indicates whether the is account is locked for editing or not. | [optional]
 **login** | **string** | The login associated with the user (typically, an email address). | [optional]
 **name** | **string** | The real life name of the user. | [optional]
+**limit_services** | **bool** | Indicates that the user has limited access to the customer&#39;s services. | [optional]
+**locked** | **bool** | Indicates whether the is account is locked for editing or not. | [optional]
 **require_new_password** | **bool** | Indicates if a new password is required at next login. | [optional]
 **role** | [**\Fastly\Model\RoleUser**](../Model/RoleUser.md) |  | [optional]
 **two_factor_auth_enabled** | **bool** | Indicates if 2FA is enabled on the user. | [optional]
@@ -84,7 +85,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**user_id** | **string** |  |
+**user_id** | **string** | Alphanumeric string identifying the user. |
 
 ### Return type
 
@@ -114,7 +115,7 @@ try {
 
 Note: the input parameter is an associative array with the keys listed below.
 
-This endpoint does not need any parameter.
+This endpoint does not need any parameters.
 
 ### Return type
 
@@ -146,7 +147,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**user_id** | **string** |  |
+**user_id** | **string** | Alphanumeric string identifying the user. |
 
 ### Return type
 
@@ -178,7 +179,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**user_login** | **string** |  |
+**user_login** | **string** | The login associated with the user (typically, an email address). |
 
 ### Return type
 
@@ -210,11 +211,11 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**user_id** | **string** |  |
-**limit_services** | **bool** | Indicates that the user has limited access to the customer&#39;s services. | [optional]
-**locked** | **bool** | Indicates whether the is account is locked for editing or not. | [optional]
+**user_id** | **string** | Alphanumeric string identifying the user. |
 **login** | **string** | The login associated with the user (typically, an email address). | [optional]
 **name** | **string** | The real life name of the user. | [optional]
+**limit_services** | **bool** | Indicates that the user has limited access to the customer&#39;s services. | [optional]
+**locked** | **bool** | Indicates whether the is account is locked for editing or not. | [optional]
 **require_new_password** | **bool** | Indicates if a new password is required at next login. | [optional]
 **role** | [**\Fastly\Model\RoleUser**](../Model/RoleUser.md) |  | [optional]
 **two_factor_auth_enabled** | **bool** | Indicates if 2FA is enabled on the user. | [optional]
@@ -250,8 +251,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**new_password** | **string** | The user&#39;s new password. | [optional]
 **old_password** | **string** | The user&#39;s current password. | [optional]
+**new_password** | **string** | The user&#39;s new password. | [optional]
 
 ### Return type
 

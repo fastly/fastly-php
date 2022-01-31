@@ -2,7 +2,7 @@
 /**
  * BillingEstimateResponseAllOfLine
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,15 +53,15 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'amount' => 'float',
-        'client_plan_id' => 'string',
-        'client_service_id' => 'string',
-        'description' => 'string',
-        'per_unit_cost' => 'float',
         'plan_no' => 'int',
+        'description' => 'string',
+        'units' => 'float',
+        'per_unit_cost' => 'float',
         'service_no' => 'float',
         'service_type' => 'string',
-        'units' => 'float'
+        'amount' => 'float',
+        'client_service_id' => 'string',
+        'client_plan_id' => 'string'
     ];
 
     /**
@@ -72,15 +72,15 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'amount' => null,
-        'client_plan_id' => null,
-        'client_service_id' => null,
-        'description' => null,
-        'per_unit_cost' => null,
         'plan_no' => null,
+        'description' => null,
+        'units' => null,
+        'per_unit_cost' => null,
         'service_no' => null,
         'service_type' => null,
-        'units' => null
+        'amount' => null,
+        'client_service_id' => null,
+        'client_plan_id' => null
     ];
 
     /**
@@ -110,15 +110,15 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'client_plan_id' => 'client_plan_id',
-        'client_service_id' => 'client_service_id',
-        'description' => 'description',
-        'per_unit_cost' => 'per_unit_cost',
         'plan_no' => 'plan_no',
+        'description' => 'description',
+        'units' => 'units',
+        'per_unit_cost' => 'per_unit_cost',
         'service_no' => 'service_no',
         'service_type' => 'service_type',
-        'units' => 'units'
+        'amount' => 'amount',
+        'client_service_id' => 'client_service_id',
+        'client_plan_id' => 'client_plan_id'
     ];
 
     /**
@@ -127,15 +127,15 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'client_plan_id' => 'setClientPlanId',
-        'client_service_id' => 'setClientServiceId',
-        'description' => 'setDescription',
-        'per_unit_cost' => 'setPerUnitCost',
         'plan_no' => 'setPlanNo',
+        'description' => 'setDescription',
+        'units' => 'setUnits',
+        'per_unit_cost' => 'setPerUnitCost',
         'service_no' => 'setServiceNo',
         'service_type' => 'setServiceType',
-        'units' => 'setUnits'
+        'amount' => 'setAmount',
+        'client_service_id' => 'setClientServiceId',
+        'client_plan_id' => 'setClientPlanId'
     ];
 
     /**
@@ -144,15 +144,15 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'client_plan_id' => 'getClientPlanId',
-        'client_service_id' => 'getClientServiceId',
-        'description' => 'getDescription',
-        'per_unit_cost' => 'getPerUnitCost',
         'plan_no' => 'getPlanNo',
+        'description' => 'getDescription',
+        'units' => 'getUnits',
+        'per_unit_cost' => 'getPerUnitCost',
         'service_no' => 'getServiceNo',
         'service_type' => 'getServiceType',
-        'units' => 'getUnits'
+        'amount' => 'getAmount',
+        'client_service_id' => 'getClientServiceId',
+        'client_plan_id' => 'getClientPlanId'
     ];
 
     /**
@@ -196,9 +196,6 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -215,15 +212,15 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['client_plan_id'] = $data['client_plan_id'] ?? null;
-        $this->container['client_service_id'] = $data['client_service_id'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['per_unit_cost'] = $data['per_unit_cost'] ?? null;
         $this->container['plan_no'] = $data['plan_no'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['units'] = $data['units'] ?? null;
+        $this->container['per_unit_cost'] = $data['per_unit_cost'] ?? null;
         $this->container['service_no'] = $data['service_no'] ?? null;
         $this->container['service_type'] = $data['service_type'] ?? null;
-        $this->container['units'] = $data['units'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['client_service_id'] = $data['client_service_id'] ?? null;
+        $this->container['client_plan_id'] = $data['client_plan_id'] ?? null;
     }
 
     /**
@@ -251,73 +248,25 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets amount
+     * Gets plan_no
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getAmount()
+    public function getPlanNo()
     {
-        return $this->container['amount'];
+        return $this->container['plan_no'];
     }
 
     /**
-     * Sets amount
+     * Sets plan_no
      *
-     * @param float|null $amount amount
+     * @param int|null $plan_no plan_no
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setPlanNo($plan_no)
     {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets client_plan_id
-     *
-     * @return string|null
-     */
-    public function getClientPlanId()
-    {
-        return $this->container['client_plan_id'];
-    }
-
-    /**
-     * Sets client_plan_id
-     *
-     * @param string|null $client_plan_id client_plan_id
-     *
-     * @return self
-     */
-    public function setClientPlanId($client_plan_id)
-    {
-        $this->container['client_plan_id'] = $client_plan_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets client_service_id
-     *
-     * @return string|null
-     */
-    public function getClientServiceId()
-    {
-        return $this->container['client_service_id'];
-    }
-
-    /**
-     * Sets client_service_id
-     *
-     * @param string|null $client_service_id client_service_id
-     *
-     * @return self
-     */
-    public function setClientServiceId($client_service_id)
-    {
-        $this->container['client_service_id'] = $client_service_id;
+        $this->container['plan_no'] = $plan_no;
 
         return $this;
     }
@@ -347,6 +296,30 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets units
+     *
+     * @return float|null
+     */
+    public function getUnits()
+    {
+        return $this->container['units'];
+    }
+
+    /**
+     * Sets units
+     *
+     * @param float|null $units units
+     *
+     * @return self
+     */
+    public function setUnits($units)
+    {
+        $this->container['units'] = $units;
+
+        return $this;
+    }
+
+    /**
      * Gets per_unit_cost
      *
      * @return float|null
@@ -366,30 +339,6 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
     public function setPerUnitCost($per_unit_cost)
     {
         $this->container['per_unit_cost'] = $per_unit_cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets plan_no
-     *
-     * @return int|null
-     */
-    public function getPlanNo()
-    {
-        return $this->container['plan_no'];
-    }
-
-    /**
-     * Sets plan_no
-     *
-     * @param int|null $plan_no plan_no
-     *
-     * @return self
-     */
-    public function setPlanNo($plan_no)
-    {
-        $this->container['plan_no'] = $plan_no;
 
         return $this;
     }
@@ -443,25 +392,73 @@ class BillingEstimateResponseAllOfLine implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets units
+     * Gets amount
      *
      * @return float|null
      */
-    public function getUnits()
+    public function getAmount()
     {
-        return $this->container['units'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets units
+     * Sets amount
      *
-     * @param float|null $units units
+     * @param float|null $amount amount
      *
      * @return self
      */
-    public function setUnits($units)
+    public function setAmount($amount)
     {
-        $this->container['units'] = $units;
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_service_id
+     *
+     * @return string|null
+     */
+    public function getClientServiceId()
+    {
+        return $this->container['client_service_id'];
+    }
+
+    /**
+     * Sets client_service_id
+     *
+     * @param string|null $client_service_id client_service_id
+     *
+     * @return self
+     */
+    public function setClientServiceId($client_service_id)
+    {
+        $this->container['client_service_id'] = $client_service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_plan_id
+     *
+     * @return string|null
+     */
+    public function getClientPlanId()
+    {
+        return $this->container['client_plan_id'];
+    }
+
+    /**
+     * Sets client_plan_id
+     *
+     * @param string|null $client_plan_id client_plan_id
+     *
+     * @return self
+     */
+    public function setClientPlanId($client_plan_id)
+    {
+        $this->container['client_plan_id'] = $client_plan_id;
 
         return $this;
     }

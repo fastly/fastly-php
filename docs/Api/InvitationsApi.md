@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\InvitationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -73,7 +74,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**invitation_id** | **string** |  |
+**invitation_id** | **string** | Alphanumeric string identifying an invitation. |
 
 ### Return type
 
@@ -106,7 +107,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **page_number** | **int** | Current page. | [optional]
-**page_size** | **int** | Number of records per page. | [optional] [default to 20]
+**page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 
 ### Return type
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * TlsConfigurationsApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class TlsConfigurationsApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,8 +116,8 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id tls_configuration_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -135,8 +136,8 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -153,9 +154,16 @@ class TlsConfigurationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -166,21 +174,20 @@ class TlsConfigurationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\TlsConfigurationResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -191,11 +198,10 @@ class TlsConfigurationsApi
             }
 
             $returnType = '\Fastly\Model\TlsConfigurationResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -226,8 +232,8 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -249,8 +255,8 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -264,11 +270,10 @@ class TlsConfigurationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -288,7 +293,7 @@ class TlsConfigurationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -299,8 +304,8 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id (required)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -308,8 +313,8 @@ class TlsConfigurationsApi
     public function getTlsConfigRequest($options)
     {
         // unbox the parameters from the associative array
-        $tls_configuration_id = array_key_exists('tls_configuration_id', $options) ? $options['tls_configuration_id'] : null;
         $include = array_key_exists('include', $options) ? $options['include'] : null;
+        $tls_configuration_id = array_key_exists('tls_configuration_id', $options) ? $options['tls_configuration_id'] : null;
 
         // verify the required parameter 'tls_configuration_id' is set
         if ($tls_configuration_id === null || (is_array($tls_configuration_id) && count($tls_configuration_id) === 0)) {
@@ -380,7 +385,7 @@ class TlsConfigurationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -401,7 +406,7 @@ class TlsConfigurationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -459,9 +464,16 @@ class TlsConfigurationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -472,21 +484,20 @@ class TlsConfigurationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\TlsConfigurationsResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -497,11 +508,10 @@ class TlsConfigurationsApi
             }
 
             $returnType = '\Fastly\Model\TlsConfigurationsResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -574,11 +584,10 @@ class TlsConfigurationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -598,7 +607,7 @@ class TlsConfigurationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -663,18 +672,26 @@ class TlsConfigurationsApi
             }
         }
         // query params
-        if (is_array($page_number)) {
-            $page_number = ObjectSerializer::serializeCollection($page_number, 'simple', true);
-        }
         if ($page_number !== null) {
-            $queryParams['page[number]'] = $page_number;
+            if('form' === 'form' && is_array($page_number)) {
+                foreach($page_number as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[number]'] = $page_number;
+            }
         }
         // query params
-        if (is_array($page_size)) {
-            $page_size = ObjectSerializer::serializeCollection($page_size, 'simple', true);
-        }
         if ($page_size !== null) {
-            $queryParams['page[size]'] = $page_size;
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[size]'] = $page_size;
+            }
         }
 
 
@@ -712,7 +729,7 @@ class TlsConfigurationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -733,7 +750,7 @@ class TlsConfigurationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -749,7 +766,7 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id tls_configuration_id (required)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration tls_configuration (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -769,7 +786,7 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id (required)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -787,9 +804,16 @@ class TlsConfigurationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -800,21 +824,20 @@ class TlsConfigurationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\TlsConfigurationResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -825,11 +848,10 @@ class TlsConfigurationsApi
             }
 
             $returnType = '\Fastly\Model\TlsConfigurationResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -860,7 +882,7 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id (required)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration (optional)
      *
      * @throws \InvalidArgumentException
@@ -883,7 +905,7 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id (required)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration (optional)
      *
      * @throws \InvalidArgumentException
@@ -898,11 +920,10 @@ class TlsConfigurationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -922,7 +943,7 @@ class TlsConfigurationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -933,7 +954,7 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_configuration_id (required)
+     * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration (optional)
      *
      * @throws \InvalidArgumentException
@@ -1009,7 +1030,7 @@ class TlsConfigurationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1030,7 +1051,7 @@ class TlsConfigurationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

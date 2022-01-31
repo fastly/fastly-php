@@ -2,7 +2,7 @@
 /**
  * TypeServiceInvitation
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeServiceInvitation
      * Possible values of this enum
      */
     const SERVICE_INVITATION = 'service_invitation';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeServiceInvitation
     public static function getAllowableEnumValues()
     {
         return [
-            self::SERVICE_INVITATION,
+            self::SERVICE_INVITATION
         ];
     }
 }

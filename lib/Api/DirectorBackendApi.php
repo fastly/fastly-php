@@ -1,7 +1,7 @@
 <?php
 /**
  * DirectorBackendApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class DirectorBackendApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,10 +116,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name director_name (required)
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $backend_name backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -137,10 +138,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -157,9 +158,16 @@ class DirectorBackendApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -170,21 +178,20 @@ class DirectorBackendApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\DirectorBackend' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -195,11 +202,10 @@ class DirectorBackendApi
             }
 
             $returnType = '\Fastly\Model\DirectorBackend';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -230,10 +236,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -255,10 +261,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -272,11 +278,10 @@ class DirectorBackendApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -296,7 +301,7 @@ class DirectorBackendApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -307,10 +312,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -423,7 +428,7 @@ class DirectorBackendApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -444,7 +449,7 @@ class DirectorBackendApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -460,10 +465,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name director_name (required)
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $backend_name backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -482,10 +487,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -502,9 +507,16 @@ class DirectorBackendApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -515,21 +527,20 @@ class DirectorBackendApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -540,11 +551,10 @@ class DirectorBackendApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -575,10 +585,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -600,10 +610,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -617,11 +627,10 @@ class DirectorBackendApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -641,7 +650,7 @@ class DirectorBackendApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -652,10 +661,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -768,7 +777,7 @@ class DirectorBackendApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -789,7 +798,7 @@ class DirectorBackendApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -805,10 +814,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name director_name (required)
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $backend_name backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -827,10 +836,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -847,9 +856,16 @@ class DirectorBackendApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -860,21 +876,20 @@ class DirectorBackendApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\DirectorBackend' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -885,11 +900,10 @@ class DirectorBackendApi
             }
 
             $returnType = '\Fastly\Model\DirectorBackend';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -920,10 +934,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -945,10 +959,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -962,11 +976,10 @@ class DirectorBackendApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -986,7 +999,7 @@ class DirectorBackendApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -997,10 +1010,10 @@ class DirectorBackendApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $director_name (required)
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $backend_name (required)
+     * @param  string $director_name Name for the Director. (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $backend_name The name of the backend. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1113,7 +1126,7 @@ class DirectorBackendApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1134,7 +1147,7 @@ class DirectorBackendApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

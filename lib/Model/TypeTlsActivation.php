@@ -2,7 +2,7 @@
 /**
  * TypeTlsActivation
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeTlsActivation
      * Possible values of this enum
      */
     const TLS_ACTIVATION = 'tls_activation';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeTlsActivation
     public static function getAllowableEnumValues()
     {
         return [
-            self::TLS_ACTIVATION,
+            self::TLS_ACTIVATION
         ];
     }
 }

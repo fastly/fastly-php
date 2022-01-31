@@ -2,7 +2,7 @@
 /**
  * NestedVersion
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -66,14 +66,14 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
         'service_id' => 'string',
         'backends' => '\Fastly\Model\BackendResponse[]',
         'cache_settings' => '\Fastly\Model\CacheSettingResponse[]',
-        'conditions' => '\Fastly\Model\ConditionResponse[]',
+        'conditions' => '\Fastly\Model\SchemasConditionResponse[]',
         'directors' => '\Fastly\Model\SchemasDirector[]',
         'domains' => '\Fastly\Model\DomainResponse[]',
         'gzips' => '\Fastly\Model\GzipResponse[]',
         'headers' => '\Fastly\Model\HeaderResponse[]',
         'healthchecks' => '\Fastly\Model\HealthcheckResponse[]',
-        'request_settings' => '\Fastly\Model\SchemasRequestSettingsResponse[]',
-        'response_objects' => '\Fastly\Model\SchemasResponseObjectResponse[]',
+        'request_settings' => '\Fastly\Model\RequestSettingsResponse[]',
+        'response_objects' => '\Fastly\Model\ResponseObjectResponse[]',
         'settings' => 'Settings',
         'snippets' => '\Fastly\Model\SchemasSnippetResponse[]',
         'vcls' => '\Fastly\Model\SchemasVclResponse[]',
@@ -276,9 +276,6 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -661,7 +658,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets conditions
      *
-     * @return \Fastly\Model\ConditionResponse[]|null
+     * @return \Fastly\Model\SchemasConditionResponse[]|null
      */
     public function getConditions()
     {
@@ -671,7 +668,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets conditions
      *
-     * @param \Fastly\Model\ConditionResponse[]|null $conditions List of conditions associated to this service.
+     * @param \Fastly\Model\SchemasConditionResponse[]|null $conditions List of conditions associated to this service.
      *
      * @return self
      */
@@ -805,7 +802,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets request_settings
      *
-     * @return \Fastly\Model\SchemasRequestSettingsResponse[]|null
+     * @return \Fastly\Model\RequestSettingsResponse[]|null
      */
     public function getRequestSettings()
     {
@@ -815,7 +812,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets request_settings
      *
-     * @param \Fastly\Model\SchemasRequestSettingsResponse[]|null $request_settings List of request settings for this service.
+     * @param \Fastly\Model\RequestSettingsResponse[]|null $request_settings List of request settings for this service.
      *
      * @return self
      */
@@ -829,7 +826,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets response_objects
      *
-     * @return \Fastly\Model\SchemasResponseObjectResponse[]|null
+     * @return \Fastly\Model\ResponseObjectResponse[]|null
      */
     public function getResponseObjects()
     {
@@ -839,7 +836,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response_objects
      *
-     * @param \Fastly\Model\SchemasResponseObjectResponse[]|null $response_objects List of response objects for this service.
+     * @param \Fastly\Model\ResponseObjectResponse[]|null $response_objects List of response objects for this service.
      *
      * @return self
      */

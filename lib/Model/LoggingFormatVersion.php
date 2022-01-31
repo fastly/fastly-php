@@ -2,7 +2,7 @@
 /**
  * LoggingFormatVersion
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -37,9 +37,10 @@ class LoggingFormatVersion
     /**
      * Possible values of this enum
      */
-    const v1 = 1;
-    const v2 = 2;
-    
+    const NUMBER_v1 = 1;
+
+    const NUMBER_v2 = 2;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -47,8 +48,8 @@ class LoggingFormatVersion
     public static function getAllowableEnumValues()
     {
         return [
-            self::v1,
-            self::v2,
+            self::NUMBER_v1,
+            self::NUMBER_v2
         ];
     }
 }

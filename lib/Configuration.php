@@ -1,7 +1,7 @@
 <?php
 /**
  * Configuration
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -24,7 +24,7 @@ namespace Fastly;
 
 /**
  * Configuration Class Doc Comment
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -118,7 +118,7 @@ class Configuration
     /**
      * Sets API token
      *
-     * @param string $key              API token or token
+     * @param string $key              API token
      *
      * @return $this
      */
@@ -131,7 +131,7 @@ class Configuration
     /**
      * Gets API token
      *
-     * @return null|string API token or token
+     * @return null|string API token
      */
     public function getApiToken()
     {
@@ -365,7 +365,7 @@ class Configuration
     }
 
     /**
-     * Sets the detault configuration instance
+     * Sets the default configuration instance
      *
      * @param Configuration $config An instance of the Configuration Object
      *

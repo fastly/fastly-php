@@ -2,7 +2,7 @@
 /**
  * TypeTlsPrivateKey
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeTlsPrivateKey
      * Possible values of this enum
      */
     const TLS_PRIVATE_KEY = 'tls_private_key';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeTlsPrivateKey
     public static function getAllowableEnumValues()
     {
         return [
-            self::TLS_PRIVATE_KEY,
+            self::TLS_PRIVATE_KEY
         ];
     }
 }

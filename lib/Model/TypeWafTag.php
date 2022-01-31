@@ -2,7 +2,7 @@
 /**
  * TypeWafTag
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeWafTag
      * Possible values of this enum
      */
     const WAF_TAG = 'waf_tag';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeWafTag
     public static function getAllowableEnumValues()
     {
         return [
-            self::WAF_TAG,
+            self::WAF_TAG
         ];
     }
 }

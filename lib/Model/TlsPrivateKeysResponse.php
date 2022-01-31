@@ -2,7 +2,7 @@
 /**
  * TlsPrivateKeysResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class TlsPrivateKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -55,7 +55,7 @@ class TlsPrivateKeysResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsPrivateKeyResponseData[]'
     ];
 
     /**
@@ -166,9 +166,6 @@ class TlsPrivateKeysResponse implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -265,7 +262,7 @@ class TlsPrivateKeysResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsPrivateKeyResponseData[]|null
      */
     public function getData()
     {
@@ -275,7 +272,7 @@ class TlsPrivateKeysResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsPrivateKeyResponseData[]|null $data data
      *
      * @return self
      */

@@ -2,7 +2,7 @@
 /**
  * WafFirewallResponse
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafFirewallResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,7 +53,7 @@ class WafFirewallResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'Data',
+        'data' => '\Fastly\Model\WafFirewallResponseData',
         'included' => '\Fastly\Model\SchemasWafFirewallVersion[]'
     ];
 
@@ -161,9 +161,6 @@ class WafFirewallResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -211,7 +208,7 @@ class WafFirewallResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets data
      *
-     * @return Data|null
+     * @return \Fastly\Model\WafFirewallResponseData|null
      */
     public function getData()
     {
@@ -221,7 +218,7 @@ class WafFirewallResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets data
      *
-     * @param Data|null $data data
+     * @param \Fastly\Model\WafFirewallResponseData|null $data data
      *
      * @return self
      */

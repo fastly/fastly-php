@@ -2,7 +2,7 @@
 /**
  * LoggingMessageType
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,10 +38,13 @@ class LoggingMessageType
      * Possible values of this enum
      */
     const CLASSIC = 'classic';
+
     const LOGGLY = 'loggly';
+
     const LOGPLEX = 'logplex';
+
     const BLANK = 'blank';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -52,7 +55,7 @@ class LoggingMessageType
             self::CLASSIC,
             self::LOGGLY,
             self::LOGPLEX,
-            self::BLANK,
+            self::BLANK
         ];
     }
 }

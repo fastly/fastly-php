@@ -2,7 +2,7 @@
 /**
  * WafRuleRevisionAttributes
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafRuleRevisionAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -56,7 +56,7 @@ class WafRuleRevisionAttributes implements ModelInterface, ArrayAccess, \JsonSer
         'message' => 'string',
         'modsec_rule_id' => 'int',
         'paranoia_level' => 'int',
-        'revision' => 'int',
+        'revision' => 'float',
         'severity' => 'int',
         'source' => 'string',
         'state' => 'string',
@@ -193,9 +193,7 @@ class WafRuleRevisionAttributes implements ModelInterface, ArrayAccess, \JsonSer
 
     const STATE_LATEST = 'latest';
     const STATE_OUTDATED = 'outdated';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -208,7 +206,6 @@ class WafRuleRevisionAttributes implements ModelInterface, ArrayAccess, \JsonSer
             self::STATE_OUTDATED,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -343,7 +340,7 @@ class WafRuleRevisionAttributes implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets revision
      *
-     * @return int|null
+     * @return float|null
      */
     public function getRevision()
     {
@@ -353,7 +350,7 @@ class WafRuleRevisionAttributes implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets revision
      *
-     * @param int|null $revision Revision number.
+     * @param float|null $revision Revision number.
      *
      * @return self
      */

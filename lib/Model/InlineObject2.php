@@ -2,7 +2,7 @@
 /**
  * InlineObject2
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,7 +53,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\ServiceAuthorizationsData[]'
+        'data' => '\Fastly\Model\ServiceAuthorization[]'
     ];
 
     /**
@@ -156,9 +156,6 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -205,7 +202,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \Fastly\Model\ServiceAuthorizationsData[]|null
+     * @return \Fastly\Model\ServiceAuthorization[]|null
      */
     public function getData()
     {
@@ -215,7 +212,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \Fastly\Model\ServiceAuthorizationsData[]|null $data data
+     * @param \Fastly\Model\ServiceAuthorization[]|null $data data
      *
      * @return self
      */

@@ -1,7 +1,7 @@
 <?php
 /**
  * LoggingPubsubApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class LoggingPubsubApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,17 +116,17 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -144,17 +145,17 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -171,9 +172,16 @@ class LoggingPubsubApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -184,21 +192,20 @@ class LoggingPubsubApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\LoggingGooglePubsubResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -209,11 +216,10 @@ class LoggingPubsubApi
             }
 
             $returnType = '\Fastly\Model\LoggingGooglePubsubResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -244,17 +250,17 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -276,17 +282,17 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -300,11 +306,10 @@ class LoggingPubsubApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -324,7 +329,7 @@ class LoggingPubsubApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -335,17 +340,17 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -355,15 +360,15 @@ class LoggingPubsubApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $user = array_key_exists('user', $options) ? $options['user'] : null;
-        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : null;
+        $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
         $topic = array_key_exists('topic', $options) ? $options['topic'] : null;
+        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -405,14 +410,6 @@ class LoggingPubsubApi
         }
 
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -421,24 +418,32 @@ class LoggingPubsubApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($secret_key !== null) {
-            $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($user !== null) {
             $formParams['user'] = ObjectSerializer::toFormValue($user);
         }
         // form params
-        if ($project_id !== null) {
-            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
+        if ($secret_key !== null) {
+            $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
         }
         // form params
         if ($topic !== null) {
             $formParams['topic'] = ObjectSerializer::toFormValue($topic);
+        }
+        // form params
+        if ($project_id !== null) {
+            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
 
         if ($multipart) {
@@ -473,7 +478,7 @@ class LoggingPubsubApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -494,7 +499,7 @@ class LoggingPubsubApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -510,9 +515,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $logging_google_pubsub_name logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -531,9 +536,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -550,9 +555,16 @@ class LoggingPubsubApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -563,21 +575,20 @@ class LoggingPubsubApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -588,11 +599,10 @@ class LoggingPubsubApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -623,9 +633,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -647,9 +657,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -663,11 +673,10 @@ class LoggingPubsubApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -687,7 +696,7 @@ class LoggingPubsubApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -698,9 +707,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -798,7 +807,7 @@ class LoggingPubsubApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -819,7 +828,7 @@ class LoggingPubsubApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -835,9 +844,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $logging_google_pubsub_name logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -856,9 +865,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -875,9 +884,16 @@ class LoggingPubsubApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -888,21 +904,20 @@ class LoggingPubsubApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\LoggingGooglePubsubResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -913,11 +928,10 @@ class LoggingPubsubApi
             }
 
             $returnType = '\Fastly\Model\LoggingGooglePubsubResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -948,9 +962,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -972,9 +986,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -988,11 +1002,10 @@ class LoggingPubsubApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1012,7 +1025,7 @@ class LoggingPubsubApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1023,9 +1036,9 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1123,7 +1136,7 @@ class LoggingPubsubApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1144,7 +1157,7 @@ class LoggingPubsubApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1160,8 +1173,8 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1180,8 +1193,8 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1198,9 +1211,16 @@ class LoggingPubsubApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1211,21 +1231,20 @@ class LoggingPubsubApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\LoggingGooglePubsubResponse[]' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1236,11 +1255,10 @@ class LoggingPubsubApi
             }
 
             $returnType = '\Fastly\Model\LoggingGooglePubsubResponse[]';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1271,8 +1289,8 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1294,8 +1312,8 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1309,11 +1327,10 @@ class LoggingPubsubApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1333,7 +1350,7 @@ class LoggingPubsubApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1344,8 +1361,8 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1428,7 +1445,7 @@ class LoggingPubsubApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1449,7 +1466,7 @@ class LoggingPubsubApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1465,18 +1482,18 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  int $version_id version_id (required)
-     * @param  string $logging_google_pubsub_name logging_google_pubsub_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1495,18 +1512,18 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1523,9 +1540,16 @@ class LoggingPubsubApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1536,21 +1560,20 @@ class LoggingPubsubApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\LoggingGooglePubsubResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1561,11 +1584,10 @@ class LoggingPubsubApi
             }
 
             $returnType = '\Fastly\Model\LoggingGooglePubsubResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1596,18 +1618,18 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1629,18 +1651,18 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1654,11 +1676,10 @@ class LoggingPubsubApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1678,7 +1699,7 @@ class LoggingPubsubApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1689,18 +1710,18 @@ class LoggingPubsubApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  int $version_id (required)
-     * @param  string $logging_google_pubsub_name (required)
-     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
-     * @param  \Fastly\Model\LoggingFormatVersion $format_version (optional)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $logging_google_pubsub_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
-     * @param  \Fastly\Model\LoggingPlacement $placement (optional)
+     * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
-     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
+     * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Required. (optional)
-     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
+     * @param  string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Required. (optional)
      * @param  string $topic The Google Cloud Pub/Sub topic to which logs will be published. Required. (optional)
+     * @param  string $project_id Your Google Cloud Platform project ID. Required (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1711,15 +1732,15 @@ class LoggingPubsubApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $logging_google_pubsub_name = array_key_exists('logging_google_pubsub_name', $options) ? $options['logging_google_pubsub_name'] : null;
-        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
-        $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
+        $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $user = array_key_exists('user', $options) ? $options['user'] : null;
-        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : null;
+        $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
         $topic = array_key_exists('topic', $options) ? $options['topic'] : null;
+        $project_id = array_key_exists('project_id', $options) ? $options['project_id'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1775,14 +1796,6 @@ class LoggingPubsubApi
         }
 
         // form params
-        if ($format !== null) {
-            $formParams['format'] = ObjectSerializer::toFormValue($format);
-        }
-        // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
@@ -1791,24 +1804,32 @@ class LoggingPubsubApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
+        }
+        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
-        if ($secret_key !== null) {
-            $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
+        if ($format !== null) {
+            $formParams['format'] = ObjectSerializer::toFormValue($format);
         }
         // form params
         if ($user !== null) {
             $formParams['user'] = ObjectSerializer::toFormValue($user);
         }
         // form params
-        if ($project_id !== null) {
-            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
+        if ($secret_key !== null) {
+            $formParams['secret_key'] = ObjectSerializer::toFormValue($secret_key);
         }
         // form params
         if ($topic !== null) {
             $formParams['topic'] = ObjectSerializer::toFormValue($topic);
+        }
+        // form params
+        if ($project_id !== null) {
+            $formParams['project_id'] = ObjectSerializer::toFormValue($project_id);
         }
 
         if ($multipart) {
@@ -1843,7 +1864,7 @@ class LoggingPubsubApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1864,7 +1885,7 @@ class LoggingPubsubApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

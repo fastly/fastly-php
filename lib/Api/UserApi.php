@@ -1,7 +1,7 @@
 <?php
 /**
  * UserApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class UserApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,10 +116,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -141,10 +142,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -165,9 +166,16 @@ class UserApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -178,21 +186,20 @@ class UserApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\UserResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -203,11 +210,10 @@ class UserApi
             }
 
             $returnType = '\Fastly\Model\UserResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -238,10 +244,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -267,10 +273,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -288,11 +294,10 @@ class UserApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -312,7 +317,7 @@ class UserApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -323,10 +328,10 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -338,10 +343,10 @@ class UserApi
     public function createUserRequest($options)
     {
         // unbox the parameters from the associative array
-        $limit_services = array_key_exists('limit_services', $options) ? $options['limit_services'] : null;
-        $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $login = array_key_exists('login', $options) ? $options['login'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
+        $limit_services = array_key_exists('limit_services', $options) ? $options['limit_services'] : null;
+        $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $require_new_password = array_key_exists('require_new_password', $options) ? $options['require_new_password'] : null;
         $role = array_key_exists('role', $options) ? $options['role'] : null;
         $two_factor_auth_enabled = array_key_exists('two_factor_auth_enabled', $options) ? $options['two_factor_auth_enabled'] : null;
@@ -359,20 +364,20 @@ class UserApi
 
 
         // form params
-        if ($limit_services !== null) {
-            $formParams['limit_services'] = ObjectSerializer::toFormValue($limit_services);
-        }
-        // form params
-        if ($locked !== null) {
-            $formParams['locked'] = ObjectSerializer::toFormValue($locked);
-        }
-        // form params
         if ($login !== null) {
             $formParams['login'] = ObjectSerializer::toFormValue($login);
         }
         // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
+        }
+        // form params
+        if ($limit_services !== null) {
+            $formParams['limit_services'] = ObjectSerializer::toFormValue($limit_services);
+        }
+        // form params
+        if ($locked !== null) {
+            $formParams['locked'] = ObjectSerializer::toFormValue($locked);
         }
         // form params
         if ($require_new_password !== null) {
@@ -423,7 +428,7 @@ class UserApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -439,7 +444,7 @@ class UserApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -455,7 +460,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -474,7 +479,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -491,9 +496,16 @@ class UserApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -504,21 +516,20 @@ class UserApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -529,11 +540,10 @@ class UserApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -564,7 +574,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -586,7 +596,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -600,11 +610,10 @@ class UserApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -624,7 +633,7 @@ class UserApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -635,7 +644,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -703,7 +712,7 @@ class UserApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -719,7 +728,7 @@ class UserApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -769,9 +778,16 @@ class UserApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -782,21 +798,20 @@ class UserApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\UserResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -807,11 +822,10 @@ class UserApi
             }
 
             $returnType = '\Fastly\Model\UserResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -876,11 +890,10 @@ class UserApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -900,7 +913,7 @@ class UserApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -963,7 +976,7 @@ class UserApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -979,7 +992,7 @@ class UserApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -995,7 +1008,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1014,7 +1027,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1031,9 +1044,16 @@ class UserApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1044,21 +1064,20 @@ class UserApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\UserResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1069,11 +1088,10 @@ class UserApi
             }
 
             $returnType = '\Fastly\Model\UserResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1104,7 +1122,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1126,7 +1144,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1140,11 +1158,10 @@ class UserApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1164,7 +1181,7 @@ class UserApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1175,7 +1192,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1243,7 +1260,7 @@ class UserApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1259,7 +1276,7 @@ class UserApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1275,7 +1292,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1294,7 +1311,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1311,9 +1328,16 @@ class UserApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1324,21 +1348,20 @@ class UserApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1349,11 +1372,10 @@ class UserApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1384,7 +1406,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1406,7 +1428,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1420,11 +1442,10 @@ class UserApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1444,7 +1465,7 @@ class UserApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1455,7 +1476,7 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_login (required)
+     * @param  string $user_login The login associated with the user (typically, an email address). (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1523,7 +1544,7 @@ class UserApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1544,7 +1565,7 @@ class UserApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1560,11 +1581,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1587,11 +1608,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1612,9 +1633,16 @@ class UserApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1625,21 +1653,20 @@ class UserApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\UserResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1650,11 +1677,10 @@ class UserApi
             }
 
             $returnType = '\Fastly\Model\UserResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1685,11 +1711,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1715,11 +1741,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1737,11 +1763,10 @@ class UserApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1761,7 +1786,7 @@ class UserApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1772,11 +1797,11 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $user_id (required)
-     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
-     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
+     * @param  string $user_id Alphanumeric string identifying the user. (required)
      * @param  string $login The login associated with the user (typically, an email address). (optional)
      * @param  string $name The real life name of the user. (optional)
+     * @param  bool $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
+     * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
@@ -1789,10 +1814,10 @@ class UserApi
     {
         // unbox the parameters from the associative array
         $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
-        $limit_services = array_key_exists('limit_services', $options) ? $options['limit_services'] : null;
-        $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $login = array_key_exists('login', $options) ? $options['login'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
+        $limit_services = array_key_exists('limit_services', $options) ? $options['limit_services'] : null;
+        $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $require_new_password = array_key_exists('require_new_password', $options) ? $options['require_new_password'] : null;
         $role = array_key_exists('role', $options) ? $options['role'] : null;
         $two_factor_auth_enabled = array_key_exists('two_factor_auth_enabled', $options) ? $options['two_factor_auth_enabled'] : null;
@@ -1824,20 +1849,20 @@ class UserApi
         }
 
         // form params
-        if ($limit_services !== null) {
-            $formParams['limit_services'] = ObjectSerializer::toFormValue($limit_services);
-        }
-        // form params
-        if ($locked !== null) {
-            $formParams['locked'] = ObjectSerializer::toFormValue($locked);
-        }
-        // form params
         if ($login !== null) {
             $formParams['login'] = ObjectSerializer::toFormValue($login);
         }
         // form params
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
+        }
+        // form params
+        if ($limit_services !== null) {
+            $formParams['limit_services'] = ObjectSerializer::toFormValue($limit_services);
+        }
+        // form params
+        if ($locked !== null) {
+            $formParams['locked'] = ObjectSerializer::toFormValue($locked);
         }
         // form params
         if ($require_new_password !== null) {
@@ -1888,7 +1913,7 @@ class UserApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1909,7 +1934,7 @@ class UserApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1921,12 +1946,12 @@ class UserApi
     /**
      * Operation updateUserPassword
      *
-     * Update the user's password
+     * Update the user&#39;s password
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1941,12 +1966,12 @@ class UserApi
     /**
      * Operation updateUserPasswordWithHttpInfo
      *
-     * Update the user's password
+     * Update the user&#39;s password
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1963,9 +1988,16 @@ class UserApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1976,21 +2008,20 @@ class UserApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\UserResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -2001,11 +2032,10 @@ class UserApi
             }
 
             $returnType = '\Fastly\Model\UserResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -2032,12 +2062,12 @@ class UserApi
     /**
      * Operation updateUserPasswordAsync
      *
-     * Update the user's password
+     * Update the user&#39;s password
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2055,12 +2085,12 @@ class UserApi
     /**
      * Operation updateUserPasswordAsyncWithHttpInfo
      *
-     * Update the user's password
+     * Update the user&#39;s password
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2074,11 +2104,10 @@ class UserApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -2098,7 +2127,7 @@ class UserApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -2109,8 +2138,8 @@ class UserApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $new_password The user&#39;s new password. (optional)
      * @param  string $old_password The user&#39;s current password. (optional)
+     * @param  string $new_password The user&#39;s new password. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2118,8 +2147,8 @@ class UserApi
     public function updateUserPasswordRequest($options)
     {
         // unbox the parameters from the associative array
-        $new_password = array_key_exists('new_password', $options) ? $options['new_password'] : null;
         $old_password = array_key_exists('old_password', $options) ? $options['old_password'] : null;
+        $new_password = array_key_exists('new_password', $options) ? $options['new_password'] : null;
 
 
         $resourcePath = '/current_user/password';
@@ -2133,12 +2162,12 @@ class UserApi
 
 
         // form params
-        if ($new_password !== null) {
-            $formParams['new_password'] = ObjectSerializer::toFormValue($new_password);
-        }
-        // form params
         if ($old_password !== null) {
             $formParams['old_password'] = ObjectSerializer::toFormValue($old_password);
+        }
+        // form params
+        if ($new_password !== null) {
+            $formParams['new_password'] = ObjectSerializer::toFormValue($new_password);
         }
 
         if ($multipart) {
@@ -2173,7 +2202,7 @@ class UserApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2189,7 +2218,7 @@ class UserApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

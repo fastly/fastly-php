@@ -2,7 +2,7 @@
 /**
  * PaginationLinks
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -55,8 +55,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'first' => 'string',
         'last' => 'string',
-        'next' => 'string',
-        'prev' => 'string'
+        'prev' => 'string',
+        'next' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyFormats = [
         'first' => null,
         'last' => null,
-        'next' => null,
-        'prev' => null
+        'prev' => null,
+        'next' => null
     ];
 
     /**
@@ -102,8 +102,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'first' => 'first',
         'last' => 'last',
-        'next' => 'next',
-        'prev' => 'prev'
+        'prev' => 'prev',
+        'next' => 'next'
     ];
 
     /**
@@ -114,8 +114,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'first' => 'setFirst',
         'last' => 'setLast',
-        'next' => 'setNext',
-        'prev' => 'setPrev'
+        'prev' => 'setPrev',
+        'next' => 'setNext'
     ];
 
     /**
@@ -126,8 +126,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'first' => 'getFirst',
         'last' => 'getLast',
-        'next' => 'getNext',
-        'prev' => 'getPrev'
+        'prev' => 'getPrev',
+        'next' => 'getNext'
     ];
 
     /**
@@ -171,9 +171,6 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -192,8 +189,8 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['first'] = $data['first'] ?? null;
         $this->container['last'] = $data['last'] ?? null;
-        $this->container['next'] = $data['next'] ?? null;
         $this->container['prev'] = $data['prev'] ?? null;
+        $this->container['next'] = $data['next'] ?? null;
     }
 
     /**
@@ -269,30 +266,6 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets next
-     *
-     * @return string|null
-     */
-    public function getNext()
-    {
-        return $this->container['next'];
-    }
-
-    /**
-     * Sets next
-     *
-     * @param string|null $next The next page of data.
-     *
-     * @return self
-     */
-    public function setNext($next)
-    {
-        $this->container['next'] = $next;
-
-        return $this;
-    }
-
-    /**
      * Gets prev
      *
      * @return string|null
@@ -312,6 +285,30 @@ class PaginationLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrev($prev)
     {
         $this->container['prev'] = $prev;
+
+        return $this;
+    }
+
+    /**
+     * Gets next
+     *
+     * @return string|null
+     */
+    public function getNext()
+    {
+        return $this->container['next'];
+    }
+
+    /**
+     * Sets next
+     *
+     * @param string|null $next The next page of data.
+     *
+     * @return self
+     */
+    public function setNext($next)
+    {
+        $this->container['next'] = $next;
 
         return $this;
     }

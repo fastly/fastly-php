@@ -2,7 +2,7 @@
 /**
  * WafRulesResponseAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafRulesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,8 +53,8 @@ class WafRulesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]',
-        'included' => 'AnyOfWafTagWafRuleRevision[]'
+        'data' => '\Fastly\Model\WafRuleResponseData[]',
+        'included' => '\Fastly\Model\IncludedWithWafRuleItem[]'
     ];
 
     /**
@@ -161,9 +161,6 @@ class WafRulesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -211,7 +208,7 @@ class WafRulesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\WafRuleResponseData[]|null
      */
     public function getData()
     {
@@ -221,7 +218,7 @@ class WafRulesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\WafRuleResponseData[]|null $data data
      *
      * @return self
      */
@@ -235,7 +232,7 @@ class WafRulesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets included
      *
-     * @return AnyOfWafTagWafRuleRevision[]|null
+     * @return \Fastly\Model\IncludedWithWafRuleItem[]|null
      */
     public function getIncluded()
     {
@@ -245,7 +242,7 @@ class WafRulesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets included
      *
-     * @param AnyOfWafTagWafRuleRevision[]|null $included included
+     * @param \Fastly\Model\IncludedWithWafRuleItem[]|null $included included
      *
      * @return self
      */

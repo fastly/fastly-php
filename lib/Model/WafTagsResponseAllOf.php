@@ -2,7 +2,7 @@
 /**
  * WafTagsResponseAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafTagsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -161,9 +161,6 @@ class WafTagsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values

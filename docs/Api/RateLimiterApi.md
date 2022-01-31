@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\RateLimiterApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -43,20 +44,20 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
-**action** | **string** | The action to take when a rate limiter violation is detected. | [optional]
-**client_key** | [**string[]**](../Model/string.md) | Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. | [optional]
-**feature_revision** | **int** | Revision number of the rate limiting feature implementation. Defaults to the most recent revision. | [optional]
-**http_methods** | [**string[]**](../Model/string.md) | Array of HTTP methods to apply rate limiting to. | [optional]
-**logger_type** | **string** | Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. | [optional]
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 **name** | **string** | A human readable name for the rate limiting rule. | [optional]
-**penalty_box_duration** | **int** | Length of time in seconds that the rate limiter is in effect after the initial violation is detected. | [optional]
-**response** | [**\Fastly\Model\RateLimiterResponse1**](../Model/RateLimiterResponse1.md) |  | [optional]
-**response_object_name** | **string** | Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. | [optional]
+**uri_dictionary_name** | **string** | The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional]
+**http_methods** | [**string[]**](../Model/string.md) | Array of HTTP methods to apply rate limiting to. | [optional] [one of: 'HEAD', 'OPTIONS', 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'TRACE']
 **rps_limit** | **int** | Upper limit of requests per second allowed by the rate limiter. | [optional]
-**uri_dictionary_name** | **string** | The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. | [optional]
-**window_size** | **int** | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. | [optional]
+**window_size** | **int** | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. | [optional] [one of: 1, 10, 60]
+**client_key** | [**string[]**](../Model/string.md) | Array of VCL variables used to generate a counter key to identify a client. Example variables include `req.http.Fastly-Client-IP`, `req.http.User-Agent`, or a custom header like `req.http.API-Key`. | [optional]
+**penalty_box_duration** | **int** | Length of time in minutes that the rate limiter is in effect after the initial violation is detected. | [optional]
+**action** | **string** | The action to take when a rate limiter violation is detected. | [optional] [one of: 'response', 'response_object', 'log_only']
+**response** | [**\Fastly\Model\RateLimiterResponse1**](../Model/RateLimiterResponse1.md) |  | [optional]
+**response_object_name** | **string** | Name of existing response object. Required if `action` is `response_object`. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. | [optional]
+**logger_type** | **string** | Name of the type of logging endpoint to be used when action is `log_only`. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. | [optional] [one of: 'azureblob', 'bigquery', 'cloudfiles', 'datadog', 'digitalocean', 'elasticsearch', 'ftp', 'gcs', 'googleanalytics', 'heroku', 'honeycomb', 'http', 'https', 'kafka', 'kinesis', 'logentries', 'loggly', 'logshuttle', 'newrelic', 'openstack', 'papertrail', 'pubsub', 's3', 'scalyr', 'sftp', 'splunk', 'stackdriver', 'sumologic', 'syslog']
+**feature_revision** | **int** | Revision number of the rate limiting feature implementation. Defaults to the most recent revision. | [optional]
 
 ### Return type
 
@@ -88,7 +89,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**rate_limiter_id** | **string** |  |
+**rate_limiter_id** | **string** | Alphanumeric string identifying the rate limiter. |
 
 ### Return type
 
@@ -120,7 +121,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**rate_limiter_id** | **string** |  |
+**rate_limiter_id** | **string** | Alphanumeric string identifying the rate limiter. |
 
 ### Return type
 
@@ -152,8 +153,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
-**version_id** | **int** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
 
 ### Return type
 
@@ -185,19 +186,19 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**rate_limiter_id** | **string** |  |
-**action** | **string** | The action to take when a rate limiter violation is detected. | [optional]
-**client_key** | [**string[]**](../Model/string.md) | Array of VCL variables used to generate a counter key to identify a client. Example variables include &#x60;req.http.Fastly-Client-IP&#x60;, &#x60;req.http.User-Agent&#x60;, or a custom header like &#x60;req.http.API-Key&#x60;. | [optional]
-**feature_revision** | **int** | Revision number of the rate limiting feature implementation. Defaults to the most recent revision. | [optional]
-**http_methods** | [**string[]**](../Model/string.md) | Array of HTTP methods to apply rate limiting to. | [optional]
-**logger_type** | **string** | Name of the type of logging endpoint to be used when action is &#x60;log_only&#x60;. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. | [optional]
+**rate_limiter_id** | **string** | Alphanumeric string identifying the rate limiter. |
 **name** | **string** | A human readable name for the rate limiting rule. | [optional]
-**penalty_box_duration** | **int** | Length of time in seconds that the rate limiter is in effect after the initial violation is detected. | [optional]
-**response** | [**\Fastly\Model\RateLimiterResponse1**](../Model/RateLimiterResponse1.md) |  | [optional]
-**response_object_name** | **string** | Name of existing response object. Required if &#x60;action&#x60; is &#x60;response_object&#x60;. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. | [optional]
+**uri_dictionary_name** | **string** | The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional]
+**http_methods** | [**string[]**](../Model/string.md) | Array of HTTP methods to apply rate limiting to. | [optional] [one of: 'HEAD', 'OPTIONS', 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'TRACE']
 **rps_limit** | **int** | Upper limit of requests per second allowed by the rate limiter. | [optional]
-**uri_dictionary_name** | **string** | The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. | [optional]
-**window_size** | **int** | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. | [optional]
+**window_size** | **int** | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. | [optional] [one of: 1, 10, 60]
+**client_key** | [**string[]**](../Model/string.md) | Array of VCL variables used to generate a counter key to identify a client. Example variables include `req.http.Fastly-Client-IP`, `req.http.User-Agent`, or a custom header like `req.http.API-Key`. | [optional]
+**penalty_box_duration** | **int** | Length of time in minutes that the rate limiter is in effect after the initial violation is detected. | [optional]
+**action** | **string** | The action to take when a rate limiter violation is detected. | [optional] [one of: 'response', 'response_object', 'log_only']
+**response** | [**\Fastly\Model\RateLimiterResponse1**](../Model/RateLimiterResponse1.md) |  | [optional]
+**response_object_name** | **string** | Name of existing response object. Required if `action` is `response_object`. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration. | [optional]
+**logger_type** | **string** | Name of the type of logging endpoint to be used when action is `log_only`. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries. | [optional] [one of: 'azureblob', 'bigquery', 'cloudfiles', 'datadog', 'digitalocean', 'elasticsearch', 'ftp', 'gcs', 'googleanalytics', 'heroku', 'honeycomb', 'http', 'https', 'kafka', 'kinesis', 'logentries', 'loggly', 'logshuttle', 'newrelic', 'openstack', 'papertrail', 'pubsub', 's3', 'scalyr', 'sftp', 'splunk', 'stackdriver', 'sumologic', 'syslog']
+**feature_revision** | **int** | Revision number of the rate limiting feature implementation. Defaults to the most recent revision. | [optional]
 
 ### Return type
 

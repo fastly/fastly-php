@@ -2,7 +2,7 @@
 /**
  * TypeWafExclusion
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeWafExclusion
      * Possible values of this enum
      */
     const WAF_EXCLUSION = 'waf_exclusion';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeWafExclusion
     public static function getAllowableEnumValues()
     {
         return [
-            self::WAF_EXCLUSION,
+            self::WAF_EXCLUSION
         ];
     }
 }

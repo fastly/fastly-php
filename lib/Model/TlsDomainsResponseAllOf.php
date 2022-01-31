@@ -2,7 +2,7 @@
 /**
  * TlsDomainsResponseAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class TlsDomainsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,7 +53,7 @@ class TlsDomainsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Data[]'
+        'data' => '\Fastly\Model\TlsDomainData[]'
     ];
 
     /**
@@ -156,9 +156,6 @@ class TlsDomainsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -205,7 +202,7 @@ class TlsDomainsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Data[]|null
+     * @return \Fastly\Model\TlsDomainData[]|null
      */
     public function getData()
     {
@@ -215,7 +212,7 @@ class TlsDomainsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Data[]|null $data data
+     * @param \Fastly\Model\TlsDomainData[]|null $data data
      *
      * @return self
      */

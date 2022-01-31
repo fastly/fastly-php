@@ -2,7 +2,7 @@
 /**
  * LoggingUseTls
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -37,9 +37,10 @@ class LoggingUseTls
     /**
      * Possible values of this enum
      */
-    const no_tls = 0;
-    const use_tls = 1;
-    
+    const NUMBER_no_tls = 0;
+
+    const NUMBER_use_tls = 1;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -47,8 +48,8 @@ class LoggingUseTls
     public static function getAllowableEnumValues()
     {
         return [
-            self::no_tls,
-            self::use_tls,
+            self::NUMBER_no_tls,
+            self::NUMBER_use_tls
         ];
     }
 }

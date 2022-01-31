@@ -1,7 +1,7 @@
 <?php
 /**
  * BillingApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class BillingApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -153,9 +154,16 @@ class BillingApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -166,21 +174,20 @@ class BillingApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\BillingResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -191,11 +198,10 @@ class BillingApi
             }
 
             $returnType = '\Fastly\Model\BillingResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -264,11 +270,10 @@ class BillingApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -288,7 +293,7 @@ class BillingApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -353,11 +358,11 @@ class BillingApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json', 'text/csv', 'application/pdf']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json', 'text/csv', 'application/pdf'],
                 []
             );
         }
@@ -383,7 +388,7 @@ class BillingApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -404,7 +409,271 @@ class BillingApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getInvoiceById
+     *
+     * Get an invoice
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function getInvoiceById($options)
+    {
+        $this->getInvoiceByIdWithHttpInfo($options);
+    }
+
+    /**
+     * Operation getInvoiceByIdWithHttpInfo
+     *
+     * Get an invoice
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getInvoiceByIdWithHttpInfo($options)
+    {
+        $request = $this->getInvoiceByIdRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getInvoiceByIdAsync
+     *
+     * Get an invoice
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInvoiceByIdAsync($options)
+    {
+        return $this->getInvoiceByIdAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getInvoiceByIdAsyncWithHttpInfo
+     *
+     * Get an invoice
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInvoiceByIdAsyncWithHttpInfo($options)
+    {
+        $returnType = '';
+        $request = $this->getInvoiceByIdRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getInvoiceById'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getInvoiceByIdRequest($options)
+    {
+        // unbox the parameters from the associative array
+        $customer_id = array_key_exists('customer_id', $options) ? $options['customer_id'] : null;
+        $invoice_id = array_key_exists('invoice_id', $options) ? $options['invoice_id'] : null;
+
+        // verify the required parameter 'customer_id' is set
+        if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $customer_id when calling getInvoiceById'
+            );
+        }
+        // verify the required parameter 'invoice_id' is set
+        if ($invoice_id === null || (is_array($invoice_id) && count($invoice_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $invoice_id when calling getInvoiceById'
+            );
+        }
+
+        $resourcePath = '/billing/v2/account_customers/{customer_id}/invoices/{invoice_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($customer_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'customer_id' . '}',
+                ObjectSerializer::toPathValue($customer_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($invoice_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'invoice_id' . '}',
+                ObjectSerializer::toPathValue($invoice_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/csv', 'application/pdf']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/csv', 'application/pdf'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -420,7 +689,7 @@ class BillingApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      *
@@ -441,7 +710,7 @@ class BillingApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      *
@@ -460,9 +729,16 @@ class BillingApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -473,21 +749,20 @@ class BillingApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\BillingEstimateResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -498,11 +773,10 @@ class BillingApi
             }
 
             $returnType = '\Fastly\Model\BillingEstimateResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -533,7 +807,7 @@ class BillingApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      *
@@ -557,7 +831,7 @@ class BillingApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      *
@@ -573,11 +847,10 @@ class BillingApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -597,7 +870,7 @@ class BillingApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -608,7 +881,7 @@ class BillingApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $customer_id (required)
+     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
      *
@@ -702,7 +975,7 @@ class BillingApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -723,7 +996,7 @@ class BillingApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

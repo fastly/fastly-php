@@ -2,7 +2,7 @@
 /**
  * WafExclusionDataAttributes
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class WafExclusionDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -184,14 +184,13 @@ class WafExclusionDataAttributes implements ModelInterface, ArrayAccess, \JsonSe
     const EXCLUSION_TYPE_RULE = 'rule';
     const EXCLUSION_TYPE_VARIABLE = 'variable';
     const EXCLUSION_TYPE_WAF = 'waf';
-    const VARIABLE_COOKIES = 'req.cookies';
-    const VARIABLE_HEADERS = 'req.headers';
-    const VARIABLE_POST = 'req.post';
-    const VARIABLE_POST_FILENAME = 'req.post_filename';
-    const VARIABLE_QS = 'req.qs';
-    
+    const VARIABLE_REQ_COOKIES = 'req.cookies';
+    const VARIABLE_REQ_HEADERS = 'req.headers';
+    const VARIABLE_REQ_POST = 'req.post';
+    const VARIABLE_REQ_POST_FILENAME = 'req.post_filename';
+    const VARIABLE_REQ_QS = 'req.qs';
+    const VARIABLE_NULL = 'null';
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -205,7 +204,7 @@ class WafExclusionDataAttributes implements ModelInterface, ArrayAccess, \JsonSe
             self::EXCLUSION_TYPE_WAF,
         ];
     }
-    
+
     /**
      * Gets allowable values of the enum
      *
@@ -214,14 +213,14 @@ class WafExclusionDataAttributes implements ModelInterface, ArrayAccess, \JsonSe
     public function getVariableAllowableValues()
     {
         return [
-            self::VARIABLE_COOKIES,
-            self::VARIABLE_HEADERS,
-            self::VARIABLE_POST,
-            self::VARIABLE_POST_FILENAME,
-            self::VARIABLE_QS,
+            self::VARIABLE_REQ_COOKIES,
+            self::VARIABLE_REQ_HEADERS,
+            self::VARIABLE_REQ_POST,
+            self::VARIABLE_REQ_POST_FILENAME,
+            self::VARIABLE_REQ_QS,
+            self::VARIABLE_NULL,
         ];
     }
-    
 
     /**
      * Associative array for storing property values

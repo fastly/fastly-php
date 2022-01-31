@@ -2,7 +2,7 @@
 /**
  * LoggingS3AllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -62,8 +62,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => 'string',
         'redundancy' => 'string',
         'secret_key' => 'string',
-        'server_side_encryption' => 'string',
-        'server_side_encryption_kms_key_id' => 'string'
+        'server_side_encryption_kms_key_id' => 'string',
+        'server_side_encryption' => 'string'
     ];
 
     /**
@@ -83,8 +83,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => null,
         'redundancy' => null,
         'secret_key' => null,
-        'server_side_encryption' => null,
-        'server_side_encryption_kms_key_id' => null
+        'server_side_encryption_kms_key_id' => null,
+        'server_side_encryption' => null
     ];
 
     /**
@@ -123,8 +123,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => 'public_key',
         'redundancy' => 'redundancy',
         'secret_key' => 'secret_key',
-        'server_side_encryption' => 'server_side_encryption',
-        'server_side_encryption_kms_key_id' => 'server_side_encryption_kms_key_id'
+        'server_side_encryption_kms_key_id' => 'server_side_encryption_kms_key_id',
+        'server_side_encryption' => 'server_side_encryption'
     ];
 
     /**
@@ -142,8 +142,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => 'setPublicKey',
         'redundancy' => 'setRedundancy',
         'secret_key' => 'setSecretKey',
-        'server_side_encryption' => 'setServerSideEncryption',
-        'server_side_encryption_kms_key_id' => 'setServerSideEncryptionKmsKeyId'
+        'server_side_encryption_kms_key_id' => 'setServerSideEncryptionKmsKeyId',
+        'server_side_encryption' => 'setServerSideEncryption'
     ];
 
     /**
@@ -161,8 +161,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_key' => 'getPublicKey',
         'redundancy' => 'getRedundancy',
         'secret_key' => 'getSecretKey',
-        'server_side_encryption' => 'getServerSideEncryption',
-        'server_side_encryption_kms_key_id' => 'getServerSideEncryptionKmsKeyId'
+        'server_side_encryption_kms_key_id' => 'getServerSideEncryptionKmsKeyId',
+        'server_side_encryption' => 'getServerSideEncryption'
     ];
 
     /**
@@ -206,9 +206,6 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -234,8 +231,8 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['public_key'] = $data['public_key'] ?? 'null';
         $this->container['redundancy'] = $data['redundancy'] ?? 'null';
         $this->container['secret_key'] = $data['secret_key'] ?? null;
-        $this->container['server_side_encryption'] = $data['server_side_encryption'] ?? 'null';
         $this->container['server_side_encryption_kms_key_id'] = $data['server_side_encryption_kms_key_id'] ?? 'null';
+        $this->container['server_side_encryption'] = $data['server_side_encryption'] ?? 'null';
     }
 
     /**
@@ -479,30 +476,6 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets server_side_encryption
-     *
-     * @return string|null
-     */
-    public function getServerSideEncryption()
-    {
-        return $this->container['server_side_encryption'];
-    }
-
-    /**
-     * Sets server_side_encryption
-     *
-     * @param string|null $server_side_encryption Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
-     *
-     * @return self
-     */
-    public function setServerSideEncryption($server_side_encryption)
-    {
-        $this->container['server_side_encryption'] = $server_side_encryption;
-
-        return $this;
-    }
-
-    /**
      * Gets server_side_encryption_kms_key_id
      *
      * @return string|null
@@ -522,6 +495,30 @@ class LoggingS3AllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServerSideEncryptionKmsKeyId($server_side_encryption_kms_key_id)
     {
         $this->container['server_side_encryption_kms_key_id'] = $server_side_encryption_kms_key_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets server_side_encryption
+     *
+     * @return string|null
+     */
+    public function getServerSideEncryption()
+    {
+        return $this->container['server_side_encryption'];
+    }
+
+    /**
+     * Sets server_side_encryption
+     *
+     * @param string|null $server_side_encryption Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
+     *
+     * @return self
+     */
+    public function setServerSideEncryption($server_side_encryption)
+    {
+        $this->container['server_side_encryption'] = $server_side_encryption;
 
         return $this;
     }

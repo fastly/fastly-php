@@ -5,7 +5,8 @@
 $apiInstance = new Fastly\Api\RealtimeApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 ```
 
@@ -41,7 +42,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 
 ### Return type
 
@@ -73,7 +74,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 **max_entries** | **int** | Maximum number of results to show. |
 
 ### Return type
@@ -106,7 +107,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**service_id** | **string** |  |
+**service_id** | **string** | Alphanumeric string identifying the service. |
 **timestamp_in_seconds** | **int** | Timestamp in seconds (Unix epoch time). |
 
 ### Return type

@@ -2,7 +2,7 @@
 /**
  * SchemasBackend
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class SchemasBackend implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -296,9 +296,6 @@ class SchemasBackend implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -815,7 +812,7 @@ class SchemasBackend implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shield
      *
-     * @param string|null $shield Data center POP code of the data center to use as a [shield](https://docs.fastly.com/en/guides/shielding).
+     * @param string|null $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
      *
      * @return self
      */
@@ -974,6 +971,7 @@ class SchemasBackend implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets ssl_hostname
      *
      * @return string|null
+     * @deprecated
      */
     public function getSslHostname()
     {
@@ -986,6 +984,7 @@ class SchemasBackend implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param string|null $ssl_hostname Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation.
      *
      * @return self
+     * @deprecated
      */
     public function setSslHostname($ssl_hostname)
     {

@@ -1,7 +1,7 @@
 <?php
 /**
  * ServerApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class ServerApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -115,15 +116,15 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $pool_id pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -142,15 +143,15 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -167,9 +168,16 @@ class ServerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -180,21 +188,20 @@ class ServerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\ServerResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -205,11 +212,10 @@ class ServerApi
             }
 
             $returnType = '\Fastly\Model\ServerResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -240,15 +246,15 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -270,15 +276,15 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -292,11 +298,10 @@ class ServerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -316,7 +321,7 @@ class ServerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -327,15 +332,15 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -345,13 +350,13 @@ class ServerApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $pool_id = array_key_exists('pool_id', $options) ? $options['pool_id'] : null;
+        $weight = array_key_exists('weight', $options) ? $options['weight'] : 100;
+        $max_conn = array_key_exists('max_conn', $options) ? $options['max_conn'] : 0;
+        $port = array_key_exists('port', $options) ? $options['port'] : 80;
         $address = array_key_exists('address', $options) ? $options['address'] : null;
         $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $disabled = array_key_exists('disabled', $options) ? $options['disabled'] : false;
-        $max_conn = array_key_exists('max_conn', $options) ? $options['max_conn'] : 0;
         $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : 'null';
-        $port = array_key_exists('port', $options) ? $options['port'] : 80;
-        $weight = array_key_exists('weight', $options) ? $options['weight'] : 100;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -400,6 +405,18 @@ class ServerApi
         }
 
         // form params
+        if ($weight !== null) {
+            $formParams['weight'] = ObjectSerializer::toFormValue($weight);
+        }
+        // form params
+        if ($max_conn !== null) {
+            $formParams['max_conn'] = ObjectSerializer::toFormValue($max_conn);
+        }
+        // form params
+        if ($port !== null) {
+            $formParams['port'] = ObjectSerializer::toFormValue($port);
+        }
+        // form params
         if ($address !== null) {
             $formParams['address'] = ObjectSerializer::toFormValue($address);
         }
@@ -412,20 +429,8 @@ class ServerApi
             $formParams['disabled'] = ObjectSerializer::toFormValue($disabled);
         }
         // form params
-        if ($max_conn !== null) {
-            $formParams['max_conn'] = ObjectSerializer::toFormValue($max_conn);
-        }
-        // form params
         if ($override_host !== null) {
             $formParams['override_host'] = ObjectSerializer::toFormValue($override_host);
-        }
-        // form params
-        if ($port !== null) {
-            $formParams['port'] = ObjectSerializer::toFormValue($port);
-        }
-        // form params
-        if ($weight !== null) {
-            $formParams['weight'] = ObjectSerializer::toFormValue($weight);
         }
 
         if ($multipart) {
@@ -460,7 +465,7 @@ class ServerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -481,7 +486,7 @@ class ServerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -497,9 +502,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $pool_id pool_id (required)
-     * @param  string $server_id server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -518,9 +523,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -537,9 +542,16 @@ class ServerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -550,21 +562,20 @@ class ServerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -575,11 +586,10 @@ class ServerApi
             }
 
             $returnType = 'object';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -610,9 +620,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -634,9 +644,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -650,11 +660,10 @@ class ServerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -674,7 +683,7 @@ class ServerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -685,9 +694,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -785,7 +794,7 @@ class ServerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -806,7 +815,7 @@ class ServerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -822,9 +831,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $pool_id pool_id (required)
-     * @param  string $server_id server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -843,9 +852,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -862,9 +871,16 @@ class ServerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -875,21 +891,20 @@ class ServerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\ServerResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -900,11 +915,10 @@ class ServerApi
             }
 
             $returnType = '\Fastly\Model\ServerResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -935,9 +949,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -959,9 +973,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -975,11 +989,10 @@ class ServerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -999,7 +1012,7 @@ class ServerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1010,9 +1023,9 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1110,7 +1123,7 @@ class ServerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1131,7 +1144,7 @@ class ServerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1147,8 +1160,8 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $pool_id pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1167,8 +1180,8 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1185,9 +1198,16 @@ class ServerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1198,21 +1218,20 @@ class ServerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\ServerResponse[]' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1223,11 +1242,10 @@ class ServerApi
             }
 
             $returnType = '\Fastly\Model\ServerResponse[]';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1258,8 +1276,8 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1281,8 +1299,8 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1296,11 +1314,10 @@ class ServerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1320,7 +1337,7 @@ class ServerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1331,8 +1348,8 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1415,7 +1432,7 @@ class ServerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1436,7 +1453,7 @@ class ServerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1452,16 +1469,16 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id service_id (required)
-     * @param  string $pool_id pool_id (required)
-     * @param  string $server_id server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1480,16 +1497,16 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1506,9 +1523,16 @@ class ServerApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1519,21 +1543,20 @@ class ServerApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\ServerResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1544,11 +1567,10 @@ class ServerApi
             }
 
             $returnType = '\Fastly\Model\ServerResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1579,16 +1601,16 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1610,16 +1632,16 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1633,11 +1655,10 @@ class ServerApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1657,7 +1678,7 @@ class ServerApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1668,16 +1689,16 @@ class ServerApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_id (required)
-     * @param  string $pool_id (required)
-     * @param  string $server_id (required)
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $pool_id Alphanumeric string identifying a Pool. (required)
+     * @param  string $server_id Alphanumeric string identifying a Server. (required)
+     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
+     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
+     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
      * @param  string $address A hostname, IPv4, or IPv6 address for the server. Required. (optional)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  bool $disabled Allows servers to be enabled and disabled in a pool. (optional, default to false)
-     * @param  int $max_conn Maximum number of connections. If the value is &#x60;0&#x60;, it inherits the value from pool&#39;s &#x60;max_conn_default&#x60;. (optional, default to 0)
      * @param  string $override_host The hostname to override the Host header. Defaults to &#x60;null&#x60; meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. (optional, default to 'null')
-     * @param  int $port Port number. Setting port &#x60;443&#x60; does not force TLS. Set &#x60;use_tls&#x60; in pool to force TLS. (optional, default to 80)
-     * @param  int $weight Weight (&#x60;1-100&#x60;) used to load balance this server against others. (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1688,13 +1709,13 @@ class ServerApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $pool_id = array_key_exists('pool_id', $options) ? $options['pool_id'] : null;
         $server_id = array_key_exists('server_id', $options) ? $options['server_id'] : null;
+        $weight = array_key_exists('weight', $options) ? $options['weight'] : 100;
+        $max_conn = array_key_exists('max_conn', $options) ? $options['max_conn'] : 0;
+        $port = array_key_exists('port', $options) ? $options['port'] : 80;
         $address = array_key_exists('address', $options) ? $options['address'] : null;
         $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $disabled = array_key_exists('disabled', $options) ? $options['disabled'] : false;
-        $max_conn = array_key_exists('max_conn', $options) ? $options['max_conn'] : 0;
         $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : 'null';
-        $port = array_key_exists('port', $options) ? $options['port'] : 80;
-        $weight = array_key_exists('weight', $options) ? $options['weight'] : 100;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1757,6 +1778,18 @@ class ServerApi
         }
 
         // form params
+        if ($weight !== null) {
+            $formParams['weight'] = ObjectSerializer::toFormValue($weight);
+        }
+        // form params
+        if ($max_conn !== null) {
+            $formParams['max_conn'] = ObjectSerializer::toFormValue($max_conn);
+        }
+        // form params
+        if ($port !== null) {
+            $formParams['port'] = ObjectSerializer::toFormValue($port);
+        }
+        // form params
         if ($address !== null) {
             $formParams['address'] = ObjectSerializer::toFormValue($address);
         }
@@ -1769,20 +1802,8 @@ class ServerApi
             $formParams['disabled'] = ObjectSerializer::toFormValue($disabled);
         }
         // form params
-        if ($max_conn !== null) {
-            $formParams['max_conn'] = ObjectSerializer::toFormValue($max_conn);
-        }
-        // form params
         if ($override_host !== null) {
             $formParams['override_host'] = ObjectSerializer::toFormValue($override_host);
-        }
-        // form params
-        if ($port !== null) {
-            $formParams['port'] = ObjectSerializer::toFormValue($port);
-        }
-        // form params
-        if ($weight !== null) {
-            $formParams['weight'] = ObjectSerializer::toFormValue($weight);
         }
 
         if ($multipart) {
@@ -1817,7 +1838,7 @@ class ServerApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1838,7 +1859,7 @@ class ServerApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

@@ -2,7 +2,7 @@
 /**
  * LoggingGenericCommon
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,11 +53,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'compression_codec' => '\Fastly\Model\LoggingCompressionCodec',
-        'gzip_level' => 'int',
-        'message_type' => '\Fastly\Model\LoggingMessageType',
+        'message_type' => 'string',
+        'timestamp_format' => 'string',
         'period' => 'int',
-        'timestamp_format' => 'string'
+        'gzip_level' => 'int',
+        'compression_codec' => 'string'
     ];
 
     /**
@@ -68,11 +68,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'compression_codec' => null,
-        'gzip_level' => null,
         'message_type' => null,
+        'timestamp_format' => null,
         'period' => null,
-        'timestamp_format' => null
+        'gzip_level' => null,
+        'compression_codec' => null
     ];
 
     /**
@@ -102,11 +102,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'compression_codec' => 'compression_codec',
-        'gzip_level' => 'gzip_level',
         'message_type' => 'message_type',
+        'timestamp_format' => 'timestamp_format',
         'period' => 'period',
-        'timestamp_format' => 'timestamp_format'
+        'gzip_level' => 'gzip_level',
+        'compression_codec' => 'compression_codec'
     ];
 
     /**
@@ -115,11 +115,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'compression_codec' => 'setCompressionCodec',
-        'gzip_level' => 'setGzipLevel',
         'message_type' => 'setMessageType',
+        'timestamp_format' => 'setTimestampFormat',
         'period' => 'setPeriod',
-        'timestamp_format' => 'setTimestampFormat'
+        'gzip_level' => 'setGzipLevel',
+        'compression_codec' => 'setCompressionCodec'
     ];
 
     /**
@@ -128,11 +128,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'compression_codec' => 'getCompressionCodec',
-        'gzip_level' => 'getGzipLevel',
         'message_type' => 'getMessageType',
+        'timestamp_format' => 'getTimestampFormat',
         'period' => 'getPeriod',
-        'timestamp_format' => 'getTimestampFormat'
+        'gzip_level' => 'getGzipLevel',
+        'compression_codec' => 'getCompressionCodec'
     ];
 
     /**
@@ -176,9 +176,42 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$fastlyModelName;
     }
 
-    
+    const MESSAGE_TYPE_CLASSIC = 'classic';
+    const MESSAGE_TYPE_LOGGLY = 'loggly';
+    const MESSAGE_TYPE_LOGPLEX = 'logplex';
+    const MESSAGE_TYPE_BLANK = 'blank';
+    const COMPRESSION_CODEC_ZSTD = 'zstd';
+    const COMPRESSION_CODEC_SNAPPY = 'snappy';
+    const COMPRESSION_CODEC_GZIP = 'gzip';
 
-    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMessageTypeAllowableValues()
+    {
+        return [
+            self::MESSAGE_TYPE_CLASSIC,
+            self::MESSAGE_TYPE_LOGGLY,
+            self::MESSAGE_TYPE_LOGPLEX,
+            self::MESSAGE_TYPE_BLANK,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCompressionCodecAllowableValues()
+    {
+        return [
+            self::COMPRESSION_CODEC_ZSTD,
+            self::COMPRESSION_CODEC_SNAPPY,
+            self::COMPRESSION_CODEC_GZIP,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -195,11 +228,11 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['compression_codec'] = $data['compression_codec'] ?? null;
-        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
-        $this->container['message_type'] = $data['message_type'] ?? null;
-        $this->container['period'] = $data['period'] ?? 3600;
+        $this->container['message_type'] = $data['message_type'] ?? 'classic';
         $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
+        $this->container['period'] = $data['period'] ?? 3600;
+        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
+        $this->container['compression_codec'] = $data['compression_codec'] ?? null;
     }
 
     /**
@@ -210,6 +243,24 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getMessageTypeAllowableValues();
+        if (!is_null($this->container['message_type']) && !in_array($this->container['message_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'message_type', must be one of '%s'",
+                $this->container['message_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCompressionCodecAllowableValues();
+        if (!is_null($this->container['compression_codec']) && !in_array($this->container['compression_codec'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'compression_codec', must be one of '%s'",
+                $this->container['compression_codec'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -227,57 +278,9 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets compression_codec
-     *
-     * @return \Fastly\Model\LoggingCompressionCodec|null
-     */
-    public function getCompressionCodec()
-    {
-        return $this->container['compression_codec'];
-    }
-
-    /**
-     * Sets compression_codec
-     *
-     * @param \Fastly\Model\LoggingCompressionCodec|null $compression_codec compression_codec
-     *
-     * @return self
-     */
-    public function setCompressionCodec($compression_codec)
-    {
-        $this->container['compression_codec'] = $compression_codec;
-
-        return $this;
-    }
-
-    /**
-     * Gets gzip_level
-     *
-     * @return int|null
-     */
-    public function getGzipLevel()
-    {
-        return $this->container['gzip_level'];
-    }
-
-    /**
-     * Sets gzip_level
-     *
-     * @param int|null $gzip_level What level of gzip encoding to have when sending logs (default `0`, no compression). If an explicit non-zero value is set, then `compression_codec` will default to \"gzip.\" Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-     *
-     * @return self
-     */
-    public function setGzipLevel($gzip_level)
-    {
-        $this->container['gzip_level'] = $gzip_level;
-
-        return $this;
-    }
-
-    /**
      * Gets message_type
      *
-     * @return \Fastly\Model\LoggingMessageType|null
+     * @return string|null
      */
     public function getMessageType()
     {
@@ -287,13 +290,47 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets message_type
      *
-     * @param \Fastly\Model\LoggingMessageType|null $message_type message_type
+     * @param string|null $message_type How the message should be formatted.
      *
      * @return self
      */
     public function setMessageType($message_type)
     {
+        $allowedValues = $this->getMessageTypeAllowableValues();
+        if (!is_null($message_type) && !in_array($message_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'message_type', must be one of '%s'",
+                    $message_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['message_type'] = $message_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp_format
+     *
+     * @return string|null
+     */
+    public function getTimestampFormat()
+    {
+        return $this->container['timestamp_format'];
+    }
+
+    /**
+     * Sets timestamp_format
+     *
+     * @param string|null $timestamp_format Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setTimestampFormat($timestamp_format)
+    {
+        $this->container['timestamp_format'] = $timestamp_format;
 
         return $this;
     }
@@ -323,25 +360,59 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets timestamp_format
+     * Gets gzip_level
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getTimestampFormat()
+    public function getGzipLevel()
     {
-        return $this->container['timestamp_format'];
+        return $this->container['gzip_level'];
     }
 
     /**
-     * Sets timestamp_format
+     * Sets gzip_level
      *
-     * @param string|null $timestamp_format Date and time in ISO 8601 format.
+     * @param int|null $gzip_level What level of gzip encoding to have when sending logs (default `0`, no compression). If an explicit non-zero value is set, then `compression_codec` will default to \"gzip.\" Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
      *
      * @return self
      */
-    public function setTimestampFormat($timestamp_format)
+    public function setGzipLevel($gzip_level)
     {
-        $this->container['timestamp_format'] = $timestamp_format;
+        $this->container['gzip_level'] = $gzip_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets compression_codec
+     *
+     * @return string|null
+     */
+    public function getCompressionCodec()
+    {
+        return $this->container['compression_codec'];
+    }
+
+    /**
+     * Sets compression_codec
+     *
+     * @param string|null $compression_codec The codec used for compression of your logs. Valid values are `zstd`, `snappy`, and `gzip`. If the specified codec is \"gzip\", `gzip_level` will default to 3. To specify a different level, leave `compression_codec` blank and explicitly set the level using `gzip_level`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+     *
+     * @return self
+     */
+    public function setCompressionCodec($compression_codec)
+    {
+        $allowedValues = $this->getCompressionCodecAllowableValues();
+        if (!is_null($compression_codec) && !in_array($compression_codec, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'compression_codec', must be one of '%s'",
+                    $compression_codec,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['compression_codec'] = $compression_codec;
 
         return $this;
     }

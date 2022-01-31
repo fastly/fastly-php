@@ -1,7 +1,7 @@
 <?php
 /**
  * ServiceAuthorizationsApi
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -25,6 +25,7 @@ namespace Fastly\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -85,7 +86,7 @@ class ServiceAuthorizationsApi
      *
      * @param int $hostIndex Host index (required)
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -151,9 +152,16 @@ class ServiceAuthorizationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -164,21 +172,20 @@ class ServiceAuthorizationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\ServiceAuthorizationResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -189,11 +196,10 @@ class ServiceAuthorizationsApi
             }
 
             $returnType = '\Fastly\Model\ServiceAuthorizationResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -260,11 +266,10 @@ class ServiceAuthorizationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -284,7 +289,7 @@ class ServiceAuthorizationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -355,7 +360,7 @@ class ServiceAuthorizationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -376,7 +381,7 @@ class ServiceAuthorizationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -392,7 +397,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -410,7 +415,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -427,9 +432,16 @@ class ServiceAuthorizationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -440,11 +452,11 @@ class ServiceAuthorizationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
@@ -464,7 +476,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -486,7 +498,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -513,7 +525,7 @@ class ServiceAuthorizationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -524,7 +536,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -592,7 +604,7 @@ class ServiceAuthorizationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -613,7 +625,7 @@ class ServiceAuthorizationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -629,7 +641,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject2 $inline_object2 inline_object2 (optional)
+     * @param  \Fastly\Model\InlineObject1 $inline_object1 inline_object1 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -648,7 +660,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject2 $inline_object2 (optional)
+     * @param  \Fastly\Model\InlineObject1 $inline_object1 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -665,9 +677,16 @@ class ServiceAuthorizationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -678,21 +697,20 @@ class ServiceAuthorizationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 204:
                     if ('\Fastly\Model\InlineResponse204' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -703,11 +721,10 @@ class ServiceAuthorizationsApi
             }
 
             $returnType = '\Fastly\Model\InlineResponse204';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -738,7 +755,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject2 $inline_object2 (optional)
+     * @param  \Fastly\Model\InlineObject1 $inline_object1 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -760,7 +777,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject2 $inline_object2 (optional)
+     * @param  \Fastly\Model\InlineObject1 $inline_object1 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -774,11 +791,10 @@ class ServiceAuthorizationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -798,7 +814,7 @@ class ServiceAuthorizationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -809,7 +825,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject2 $inline_object2 (optional)
+     * @param  \Fastly\Model\InlineObject1 $inline_object1 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -817,7 +833,7 @@ class ServiceAuthorizationsApi
     public function deleteServiceAuthorization2Request($options)
     {
         // unbox the parameters from the associative array
-        $inline_object2 = array_key_exists('inline_object2', $options) ? $options['inline_object2'] : null;
+        $inline_object1 = array_key_exists('inline_object1', $options) ? $options['inline_object1'] : null;
 
 
         $resourcePath = '/service-authorizations';
@@ -843,11 +859,11 @@ class ServiceAuthorizationsApi
         }
 
         // for model (json/xml)
-        if (isset($inline_object2)) {
+        if (isset($inline_object1)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object2));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object1));
             } else {
-                $httpBody = $inline_object2;
+                $httpBody = $inline_object1;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -869,7 +885,7 @@ class ServiceAuthorizationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -890,7 +906,7 @@ class ServiceAuthorizationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -944,9 +960,16 @@ class ServiceAuthorizationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -957,21 +980,20 @@ class ServiceAuthorizationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\ServiceAuthorizationsResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -982,11 +1004,10 @@ class ServiceAuthorizationsApi
             }
 
             $returnType = '\Fastly\Model\ServiceAuthorizationsResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1055,11 +1076,10 @@ class ServiceAuthorizationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1079,7 +1099,7 @@ class ServiceAuthorizationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1118,18 +1138,26 @@ class ServiceAuthorizationsApi
         $multipart = false;
 
         // query params
-        if (is_array($page_number)) {
-            $page_number = ObjectSerializer::serializeCollection($page_number, 'simple', true);
-        }
         if ($page_number !== null) {
-            $queryParams['page[number]'] = $page_number;
+            if('form' === 'form' && is_array($page_number)) {
+                foreach($page_number as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[number]'] = $page_number;
+            }
         }
         // query params
-        if (is_array($page_size)) {
-            $page_size = ObjectSerializer::serializeCollection($page_size, 'simple', true);
-        }
         if ($page_size !== null) {
-            $queryParams['page[size]'] = $page_size;
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page[size]'] = $page_size;
+            }
         }
 
 
@@ -1167,7 +1195,7 @@ class ServiceAuthorizationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1188,7 +1216,7 @@ class ServiceAuthorizationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1204,7 +1232,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1223,7 +1251,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1240,9 +1268,16 @@ class ServiceAuthorizationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1253,21 +1288,20 @@ class ServiceAuthorizationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\ServiceAuthorizationResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1278,11 +1312,10 @@ class ServiceAuthorizationsApi
             }
 
             $returnType = '\Fastly\Model\ServiceAuthorizationResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1313,7 +1346,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1335,7 +1368,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1349,11 +1382,10 @@ class ServiceAuthorizationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1373,7 +1405,7 @@ class ServiceAuthorizationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1384,7 +1416,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1452,7 +1484,7 @@ class ServiceAuthorizationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1473,7 +1505,7 @@ class ServiceAuthorizationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1489,7 +1521,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization service_authorization (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1509,7 +1541,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1527,9 +1559,16 @@ class ServiceAuthorizationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1540,21 +1579,20 @@ class ServiceAuthorizationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\ServiceAuthorizationResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1565,11 +1603,10 @@ class ServiceAuthorizationsApi
             }
 
             $returnType = '\Fastly\Model\ServiceAuthorizationResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1600,7 +1637,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
      * @throws \InvalidArgumentException
@@ -1623,7 +1660,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
      * @throws \InvalidArgumentException
@@ -1638,11 +1675,10 @@ class ServiceAuthorizationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1662,7 +1698,7 @@ class ServiceAuthorizationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1673,7 +1709,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $service_authorization_id (required)
+     * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
      * @throws \InvalidArgumentException
@@ -1749,7 +1785,7 @@ class ServiceAuthorizationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -1770,7 +1806,7 @@ class ServiceAuthorizationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1786,7 +1822,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 inline_object3 (optional)
+     * @param  \Fastly\Model\InlineObject2 $inline_object2 inline_object2 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1805,7 +1841,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 (optional)
+     * @param  \Fastly\Model\InlineObject2 $inline_object2 (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1822,9 +1858,16 @@ class ServiceAuthorizationsApi
             } catch (RequestException $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
+                    (int) $e->getCode(),
                     $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                     $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
                 );
             }
 
@@ -1835,21 +1878,20 @@ class ServiceAuthorizationsApi
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
                         $statusCode,
-                        $request->getUri()
+                        (string) $request->getUri()
                     ),
                     $statusCode,
                     $response->getHeaders(),
-                    $response->getBody()
+                    (string) $response->getBody()
                 );
             }
 
-            $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
                     if ('\Fastly\Model\ServiceAuthorizationsResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1860,11 +1902,10 @@ class ServiceAuthorizationsApi
             }
 
             $returnType = '\Fastly\Model\ServiceAuthorizationsResponse';
-            $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
+                $content = $response->getBody(); //stream goes to serializer
             } else {
-                $content = (string) $responseBody;
+                $content = (string) $response->getBody();
             }
 
             return [
@@ -1895,7 +1936,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 (optional)
+     * @param  \Fastly\Model\InlineObject2 $inline_object2 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1917,7 +1958,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 (optional)
+     * @param  \Fastly\Model\InlineObject2 $inline_object2 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1931,11 +1972,10 @@ class ServiceAuthorizationsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
+                        $content = $response->getBody(); //stream goes to serializer
                     } else {
-                        $content = (string) $responseBody;
+                        $content = (string) $response->getBody();
                     }
 
                     return [
@@ -1955,7 +1995,7 @@ class ServiceAuthorizationsApi
                         ),
                         $statusCode,
                         $response->getHeaders(),
-                        $response->getBody()
+                        (string) $response->getBody()
                     );
                 }
             );
@@ -1966,7 +2006,7 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 (optional)
+     * @param  \Fastly\Model\InlineObject2 $inline_object2 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1974,7 +2014,7 @@ class ServiceAuthorizationsApi
     public function updateServiceAuthorization2Request($options)
     {
         // unbox the parameters from the associative array
-        $inline_object3 = array_key_exists('inline_object3', $options) ? $options['inline_object3'] : null;
+        $inline_object2 = array_key_exists('inline_object2', $options) ? $options['inline_object2'] : null;
 
 
         $resourcePath = '/service-authorizations';
@@ -2000,11 +2040,11 @@ class ServiceAuthorizationsApi
         }
 
         // for model (json/xml)
-        if (isset($inline_object3)) {
+        if (isset($inline_object2)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object3));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object2));
             } else {
-                $httpBody = $inline_object3;
+                $httpBody = $inline_object2;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2026,7 +2066,7 @@ class ServiceAuthorizationsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -2047,7 +2087,7 @@ class ServiceAuthorizationsApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

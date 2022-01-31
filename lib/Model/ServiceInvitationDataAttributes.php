@@ -2,7 +2,7 @@
 /**
  * ServiceInvitationDataAttributes
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class ServiceInvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -160,9 +160,7 @@ class ServiceInvitationDataAttributes implements ModelInterface, ArrayAccess, \J
     const PERMISSION_READ_ONLY = 'read_only';
     const PERMISSION_PURGE_SELECT = 'purge_select';
     const PERMISSION_PURGE_ALL = 'purge_all';
-    
 
-    
     /**
      * Gets allowable values of the enum
      *
@@ -177,7 +175,6 @@ class ServiceInvitationDataAttributes implements ModelInterface, ArrayAccess, \J
             self::PERMISSION_PURGE_ALL,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -194,7 +191,7 @@ class ServiceInvitationDataAttributes implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['permission'] = $data['permission'] ?? PERMISSION_FULL;
+        $this->container['permission'] = $data['permission'] ?? 'full';
     }
 
     /**

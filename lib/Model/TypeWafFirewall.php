@@ -2,7 +2,7 @@
 /**
  * TypeWafFirewall
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeWafFirewall
      * Possible values of this enum
      */
     const WAF_FIREWALL = 'waf_firewall';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeWafFirewall
     public static function getAllowableEnumValues()
     {
         return [
-            self::WAF_FIREWALL,
+            self::WAF_FIREWALL
         ];
     }
 }

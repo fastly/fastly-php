@@ -2,7 +2,7 @@
 /**
  * InlineObject4
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,7 +53,7 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'items' => 'DictionaryItem[]'
+        'data' => '\Fastly\Model\CustomerCustomerIdBillingAddressData1'
     ];
 
     /**
@@ -64,7 +64,7 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'items' => null
+        'data' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'items' => 'items'
+        'data' => 'data'
     ];
 
     /**
@@ -103,7 +103,7 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'items' => 'setItems'
+        'data' => 'setData'
     ];
 
     /**
@@ -112,7 +112,7 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'items' => 'getItems'
+        'data' => 'getData'
     ];
 
     /**
@@ -156,9 +156,6 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -175,7 +172,7 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -203,25 +200,25 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets items
+     * Gets data
      *
-     * @return DictionaryItem[]|null
+     * @return \Fastly\Model\CustomerCustomerIdBillingAddressData1|null
      */
-    public function getItems()
+    public function getData()
     {
-        return $this->container['items'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets items
+     * Sets data
      *
-     * @param DictionaryItem[]|null $items items
+     * @param \Fastly\Model\CustomerCustomerIdBillingAddressData1|null $data data
      *
      * @return self
      */
-    public function setItems($items)
+    public function setData($data)
     {
-        $this->container['items'] = $items;
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 /**
  * TypeCustomer
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeCustomer
      * Possible values of this enum
      */
     const CUSTOMER = 'customer';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeCustomer
     public static function getAllowableEnumValues()
     {
         return [
-            self::CUSTOMER,
+            self::CUSTOMER
         ];
     }
 }

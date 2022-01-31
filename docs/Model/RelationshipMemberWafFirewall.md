@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Alphanumeric string identifying a WAF Firewall. | [optional] [readonly]
-**type** | [**\Fastly\Model\TypeWafFirewall**](TypeWafFirewall.md) |  | [optional]
+**type** | [**\Fastly\Model\TypeWafFirewall**](TypeWafFirewall.md) |  | [optional] 
+**id** | **string** | Alphanumeric string identifying a WAF Firewall. | [optional] [readonly] 
+
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

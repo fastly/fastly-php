@@ -2,7 +2,7 @@
 /**
  * TypeBillingAddress
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,7 +38,7 @@ class TypeBillingAddress
      * Possible values of this enum
      */
     const BILLING_ADDRESS = 'billing_address';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +46,7 @@ class TypeBillingAddress
     public static function getAllowableEnumValues()
     {
         return [
-            self::BILLING_ADDRESS,
+            self::BILLING_ADDRESS
         ];
     }
 }

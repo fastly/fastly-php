@@ -2,7 +2,7 @@
 /**
  * LoggingScalyr
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,14 +53,14 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'string',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'name' => 'string',
-        'placement' => '\Fastly\Model\LoggingPlacement',
+        'placement' => 'string',
+        'format_version' => 'int',
         'response_condition' => 'string',
-        'project_id' => 'string',
+        'format' => 'string',
         'region' => 'string',
-        'token' => 'string'
+        'token' => 'string',
+        'project_id' => 'string'
     ];
 
     /**
@@ -71,14 +71,14 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'format' => null,
-        'format_version' => null,
         'name' => null,
         'placement' => null,
+        'format_version' => null,
         'response_condition' => null,
-        'project_id' => null,
+        'format' => null,
         'region' => null,
-        'token' => null
+        'token' => null,
+        'project_id' => null
     ];
 
     /**
@@ -108,14 +108,14 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
-        'format_version' => 'format_version',
         'name' => 'name',
         'placement' => 'placement',
+        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
-        'project_id' => 'project_id',
+        'format' => 'format',
         'region' => 'region',
-        'token' => 'token'
+        'token' => 'token',
+        'project_id' => 'project_id'
     ];
 
     /**
@@ -124,14 +124,14 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
-        'format_version' => 'setFormatVersion',
         'name' => 'setName',
         'placement' => 'setPlacement',
+        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
-        'project_id' => 'setProjectId',
+        'format' => 'setFormat',
         'region' => 'setRegion',
-        'token' => 'setToken'
+        'token' => 'setToken',
+        'project_id' => 'setProjectId'
     ];
 
     /**
@@ -140,14 +140,14 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
-        'format_version' => 'getFormatVersion',
         'name' => 'getName',
         'placement' => 'getPlacement',
+        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
-        'project_id' => 'getProjectId',
+        'format' => 'getFormat',
         'region' => 'getRegion',
-        'token' => 'getToken'
+        'token' => 'getToken',
+        'project_id' => 'getProjectId'
     ];
 
     /**
@@ -191,11 +191,41 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
+    const PLACEMENT_NONE = 'none';
+    const PLACEMENT_WAF_DEBUG = 'waf_debug';
+    const PLACEMENT_NULL = 'null';
+    const FORMAT_VERSION_v1 = 1;
+    const FORMAT_VERSION_v2 = 2;
     const REGION_US = 'US';
     const REGION_EU = 'EU';
-    
 
-    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlacementAllowableValues()
+    {
+        return [
+            self::PLACEMENT_NONE,
+            self::PLACEMENT_WAF_DEBUG,
+            self::PLACEMENT_NULL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatVersionAllowableValues()
+    {
+        return [
+            self::FORMAT_VERSION_v1,
+            self::FORMAT_VERSION_v2,
+        ];
+    }
+
     /**
      * Gets allowable values of the enum
      *
@@ -208,7 +238,6 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
             self::REGION_EU,
         ];
     }
-    
 
     /**
      * Associative array for storing property values
@@ -225,14 +254,14 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
-        $this->container['project_id'] = $data['project_id'] ?? 'logplex';
-        $this->container['region'] = $data['region'] ?? REGION_US;
+        $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['region'] = $data['region'] ?? 'US';
         $this->container['token'] = $data['token'] ?? null;
+        $this->container['project_id'] = $data['project_id'] ?? 'logplex';
     }
 
     /**
@@ -243,6 +272,24 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format_version', must be one of '%s'",
+                $this->container['format_version'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getRegionAllowableValues();
         if (!is_null($this->container['region']) && !in_array($this->container['region'], $allowedValues, true)) {
@@ -267,54 +314,6 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -343,7 +342,7 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets placement
      *
-     * @return \Fastly\Model\LoggingPlacement|null
+     * @return string|null
      */
     public function getPlacement()
     {
@@ -353,13 +352,57 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets placement
      *
-     * @param \Fastly\Model\LoggingPlacement|null $placement placement
+     * @param string|null $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
      *
      * @return self
      */
     public function setPlacement($placement)
     {
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($placement) && !in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['placement'] = $placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return int|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -389,25 +432,25 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets project_id
+     * Gets format
      *
      * @return string|null
      */
-    public function getProjectId()
+    public function getFormat()
     {
-        return $this->container['project_id'];
+        return $this->container['format'];
     }
 
     /**
-     * Sets project_id
+     * Sets format
      *
-     * @param string|null $project_id The name of the logfile within Scalyr.
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
      *
      * @return self
      */
-    public function setProjectId($project_id)
+    public function setFormat($format)
     {
-        $this->container['project_id'] = $project_id;
+        $this->container['format'] = $format;
 
         return $this;
     }
@@ -466,6 +509,30 @@ class LoggingScalyr implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setToken($token)
     {
         $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Gets project_id
+     *
+     * @return string|null
+     */
+    public function getProjectId()
+    {
+        return $this->container['project_id'];
+    }
+
+    /**
+     * Sets project_id
+     *
+     * @param string|null $project_id The name of the logfile within Scalyr.
+     *
+     * @return self
+     */
+    public function setProjectId($project_id)
+    {
+        $this->container['project_id'] = $project_id;
 
         return $this;
     }

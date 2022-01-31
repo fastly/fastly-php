@@ -2,7 +2,7 @@
 /**
  * LoggingPlacement
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -38,9 +38,11 @@ class LoggingPlacement
      * Possible values of this enum
      */
     const NONE = 'none';
+
     const WAF_DEBUG = 'waf_debug';
+
     const NULL = 'null';
-    
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -50,7 +52,7 @@ class LoggingPlacement
         return [
             self::NONE,
             self::WAF_DEBUG,
-            self::NULL,
+            self::NULL
         ];
     }
 }

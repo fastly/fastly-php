@@ -2,7 +2,7 @@
 /**
  * LoggingGooglePubsubAllOf
  *
- * PHP version 7.2
+ * PHP version 7.3
  *
  * @category Class
  * @package  Fastly
@@ -34,7 +34,7 @@ use \Fastly\ObjectSerializer;
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
- * @template TValue mixed|null  
+ * @template TValue mixed|null
  */
 class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
@@ -53,9 +53,9 @@ class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'topic' => 'string',
         'format' => 'string',
-        'project_id' => 'string',
-        'topic' => 'string'
+        'project_id' => 'string'
     ];
 
     /**
@@ -66,9 +66,9 @@ class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'topic' => null,
         'format' => null,
-        'project_id' => null,
-        'topic' => null
+        'project_id' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
+        'topic' => 'topic',
         'format' => 'format',
-        'project_id' => 'project_id',
-        'topic' => 'topic'
+        'project_id' => 'project_id'
     ];
 
     /**
@@ -109,9 +109,9 @@ class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
+        'topic' => 'setTopic',
         'format' => 'setFormat',
-        'project_id' => 'setProjectId',
-        'topic' => 'setTopic'
+        'project_id' => 'setProjectId'
     ];
 
     /**
@@ -120,9 +120,9 @@ class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
+        'topic' => 'getTopic',
         'format' => 'getFormat',
-        'project_id' => 'getProjectId',
-        'topic' => 'getTopic'
+        'project_id' => 'getProjectId'
     ];
 
     /**
@@ -166,9 +166,6 @@ class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$fastlyModelName;
     }
 
-    
-
-    
 
     /**
      * Associative array for storing property values
@@ -185,9 +182,9 @@ class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
+        $this->container['topic'] = $data['topic'] ?? null;
         $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['project_id'] = $data['project_id'] ?? null;
-        $this->container['topic'] = $data['topic'] ?? null;
     }
 
     /**
@@ -213,6 +210,30 @@ class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets topic
+     *
+     * @return string|null
+     */
+    public function getTopic()
+    {
+        return $this->container['topic'];
+    }
+
+    /**
+     * Sets topic
+     *
+     * @param string|null $topic The Google Cloud Pub/Sub topic to which logs will be published. Required.
+     *
+     * @return self
+     */
+    public function setTopic($topic)
+    {
+        $this->container['topic'] = $topic;
+
+        return $this;
+    }
 
     /**
      * Gets format
@@ -258,30 +279,6 @@ class LoggingGooglePubsubAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     public function setProjectId($project_id)
     {
         $this->container['project_id'] = $project_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets topic
-     *
-     * @return string|null
-     */
-    public function getTopic()
-    {
-        return $this->container['topic'];
-    }
-
-    /**
-     * Sets topic
-     *
-     * @param string|null $topic The Google Cloud Pub/Sub topic to which logs will be published. Required.
-     *
-     * @return self
-     */
-    public function setTopic($topic)
-    {
-        $this->container['topic'] = $topic;
 
         return $this;
     }
