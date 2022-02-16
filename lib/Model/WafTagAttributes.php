@@ -212,7 +212,7 @@ class WafTagAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Name of the tag.
+     * @param string|null $name name
      *
      * @return self
      */

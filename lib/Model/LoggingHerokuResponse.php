@@ -60,9 +60,9 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'format' => 'string',
         'token' => 'string',
         'url' => 'string',
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'service_id' => 'string',
         'version' => 'int'
     ];
@@ -82,9 +82,9 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'format' => null,
         'token' => null,
         'url' => null,
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
         'service_id' => null,
         'version' => null
     ];
@@ -506,7 +506,7 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -516,7 +516,7 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -530,7 +530,7 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -540,7 +540,7 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -554,7 +554,7 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -564,7 +564,7 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -588,7 +588,7 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */
@@ -612,7 +612,7 @@ class LoggingHerokuResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets version
      *
-     * @param int|null $version Integer identifying a service version.
+     * @param int|null $version version
      *
      * @return self
      */

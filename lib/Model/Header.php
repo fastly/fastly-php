@@ -536,7 +536,7 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response_condition
      *
-     * @param string|null $response_condition response_condition
+     * @param string|null $response_condition Optional name of a response condition to apply.
      *
      * @return self
      */

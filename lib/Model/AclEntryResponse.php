@@ -57,9 +57,9 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'string',
         'ip' => 'string',
         'subnet' => 'int',
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'acl_id' => 'string',
         'id' => 'string',
         'service_id' => 'string'
@@ -77,9 +77,9 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => null,
         'ip' => null,
         'subnet' => null,
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
         'acl_id' => null,
         'id' => null,
         'service_id' => null
@@ -386,7 +386,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -396,7 +396,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -410,7 +410,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -420,7 +420,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -434,7 +434,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -444,7 +444,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -468,7 +468,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets acl_id
      *
-     * @param string|null $acl_id Alphanumeric string identifying a ACL.
+     * @param string|null $acl_id acl_id
      *
      * @return self
      */
@@ -492,7 +492,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying an ACL Entry.
+     * @param string|null $id id
      *
      * @return self
      */
@@ -516,7 +516,7 @@ class AclEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */

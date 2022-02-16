@@ -230,7 +230,7 @@ class ServiceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying the service.
+     * @param string|null $id id
      *
      * @return self
      */

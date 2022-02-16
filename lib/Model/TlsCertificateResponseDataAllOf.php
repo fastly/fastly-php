@@ -218,7 +218,7 @@ class TlsCertificateResponseDataAllOf implements ModelInterface, ArrayAccess, \J
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a TLS certificate.
+     * @param string|null $id id
      *
      * @return self
      */

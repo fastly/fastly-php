@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 ## `deleteLogSplunk()`
 
 ```php
-deleteLogSplunk($options): object // Delete a Splunk log endpoint
+deleteLogSplunk($options): \Fastly\Model\InlineResponse200 // Delete a Splunk log endpoint
 ```
 
 Delete the Splunk logging object for a particular service and version.
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

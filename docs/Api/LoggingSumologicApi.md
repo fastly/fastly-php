@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 ## `deleteLogSumologic()`
 
 ```php
-deleteLogSumologic($options): object // Delete a Sumologic log endpoint
+deleteLogSumologic($options): \Fastly\Model\InlineResponse200 // Delete a Sumologic log endpoint
 ```
 
 Delete the Sumologic for a particular service and version.
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

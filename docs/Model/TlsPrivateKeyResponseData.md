@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**\Fastly\Model\TypeTlsPrivateKey**](TypeTlsPrivateKey.md) |  | [optional] 
-**id** | **string** | Alphanumeric string identifying a private Key. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **attributes** | [**Timestamps**](Timestamps.md) |  | [optional] 
 
 

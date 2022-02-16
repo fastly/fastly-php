@@ -218,7 +218,7 @@ class ServiceAuthorizationResponseDataAllOf implements ModelInterface, ArrayAcce
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a service authorization.
+     * @param string|null $id id
      *
      * @return self
      */

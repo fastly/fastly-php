@@ -278,7 +278,7 @@ class WafFirewallResponseData implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a WAF Firewall.
+     * @param string|null $id id
      *
      * @return self
      */

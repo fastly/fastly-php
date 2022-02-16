@@ -55,7 +55,7 @@ class WafExclusionResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $fastlyTypes = [
         'type' => '\Fastly\Model\TypeWafExclusion',
         'attributes' => 'Timestamps',
-        'relationships' => 'AnyOfRelationshipWafRulesRelationshipWafRuleRevisions',
+        'relationships' => '\Fastly\Model\WafExclusionResponseDataRelationships',
         'id' => 'string'
     ];
 
@@ -268,7 +268,7 @@ class WafExclusionResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets relationships
      *
-     * @return AnyOfRelationshipWafRulesRelationshipWafRuleRevisions|null
+     * @return \Fastly\Model\WafExclusionResponseDataRelationships|null
      */
     public function getRelationships()
     {
@@ -278,7 +278,7 @@ class WafExclusionResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets relationships
      *
-     * @param AnyOfRelationshipWafRulesRelationshipWafRuleRevisions|null $relationships relationships
+     * @param \Fastly\Model\WafExclusionResponseDataRelationships|null $relationships relationships
      *
      * @return self
      */

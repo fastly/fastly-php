@@ -181,14 +181,14 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'compute_req_body_bytes' => 'int',
         'compute_resp_header_bytes' => 'int',
         'compute_resp_body_bytes' => 'int',
-        'imgvideo' => 'float',
-        'imgvideo_frames' => 'float',
-        'imgvideo_resp_header_bytes' => 'float',
-        'imgvideo_resp_body_bytes' => 'float',
-        'imgvideo_shield' => 'float',
-        'imgvideo_shield_frames' => 'float',
-        'imgvideo_shield_resp_header_bytes' => 'float',
-        'imgvideo_shield_resp_body_bytes' => 'float',
+        'imgvideo' => 'int',
+        'imgvideo_frames' => 'int',
+        'imgvideo_resp_header_bytes' => 'int',
+        'imgvideo_resp_body_bytes' => 'int',
+        'imgvideo_shield' => 'int',
+        'imgvideo_shield_frames' => 'int',
+        'imgvideo_shield_resp_header_bytes' => 'int',
+        'imgvideo_shield_resp_body_bytes' => 'int',
         'log_bytes' => 'int',
         'edge_requests' => 'int',
         'edge_resp_header_bytes' => 'int',
@@ -4325,7 +4325,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets imgvideo
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideo()
     {
@@ -4335,7 +4335,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets imgvideo
      *
-     * @param float|null $imgvideo Number of video responses that came from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo Number of video responses that came from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -4349,7 +4349,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets imgvideo_frames
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoFrames()
     {
@@ -4359,7 +4359,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets imgvideo_frames
      *
-     * @param float|null $imgvideo_frames Number of video frames that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
+     * @param int|null $imgvideo_frames Number of video frames that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
      *
      * @return self
      */
@@ -4373,7 +4373,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets imgvideo_resp_header_bytes
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoRespHeaderBytes()
     {
@@ -4383,7 +4383,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets imgvideo_resp_header_bytes
      *
-     * @param float|null $imgvideo_resp_header_bytes Total header bytes of video delivered from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_resp_header_bytes Total header bytes of video delivered from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -4397,7 +4397,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets imgvideo_resp_body_bytes
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoRespBodyBytes()
     {
@@ -4407,7 +4407,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets imgvideo_resp_body_bytes
      *
-     * @param float|null $imgvideo_resp_body_bytes Total body bytes of video delivered from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_resp_body_bytes Total body bytes of video delivered from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -4421,7 +4421,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets imgvideo_shield
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoShield()
     {
@@ -4431,7 +4431,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets imgvideo_shield
      *
-     * @param float|null $imgvideo_shield Number of video responses delivered via a shield that came from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_shield Number of video responses delivered via a shield that came from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -4445,7 +4445,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets imgvideo_shield_frames
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoShieldFrames()
     {
@@ -4455,7 +4455,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets imgvideo_shield_frames
      *
-     * @param float|null $imgvideo_shield_frames Number of video frames delivered via a shield that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
+     * @param int|null $imgvideo_shield_frames Number of video frames delivered via a shield that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
      *
      * @return self
      */
@@ -4469,7 +4469,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets imgvideo_shield_resp_header_bytes
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoShieldRespHeaderBytes()
     {
@@ -4479,7 +4479,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets imgvideo_shield_resp_header_bytes
      *
-     * @param float|null $imgvideo_shield_resp_header_bytes Total header bytes of video delivered via a shield from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_shield_resp_header_bytes Total header bytes of video delivered via a shield from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -4493,7 +4493,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets imgvideo_shield_resp_body_bytes
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoShieldRespBodyBytes()
     {
@@ -4503,7 +4503,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets imgvideo_shield_resp_body_bytes
      *
-     * @param float|null $imgvideo_shield_resp_body_bytes Total body bytes of video delivered via a shield from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_shield_resp_body_bytes Total body bytes of video delivered via a shield from the Fastly Image Optimizer service.
      *
      * @return self
      */

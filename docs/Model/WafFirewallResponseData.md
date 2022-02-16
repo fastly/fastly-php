@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**\Fastly\Model\TypeWafFirewall**](TypeWafFirewall.md) |  | [optional] 
 **attributes** | [**Timestamps**](Timestamps.md) |  | [optional] 
-**id** | **string** | Alphanumeric string identifying a WAF Firewall. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **relationships** | [**\Fastly\Model\RelationshipWafFirewallVersions**](RelationshipWafFirewallVersions.md) |  | [optional] 
 
 

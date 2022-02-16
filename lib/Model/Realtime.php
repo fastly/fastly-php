@@ -224,7 +224,7 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets timestamp
      *
-     * @param int|null $timestamp timestamp
+     * @param int|null $timestamp Value to use for subsequent requests.
      *
      * @return self
      */

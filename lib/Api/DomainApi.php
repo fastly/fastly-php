@@ -1089,7 +1089,7 @@ class DomainApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Fastly\Model\InlineResponse200
      */
     public function deleteDomain($options)
     {
@@ -1110,7 +1110,7 @@ class DomainApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteDomainWithHttpInfo($options)
     {
@@ -1153,20 +1153,20 @@ class DomainApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Fastly\Model\InlineResponse200';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1184,7 +1184,7 @@ class DomainApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Fastly\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1234,7 +1234,7 @@ class DomainApi
      */
     public function deleteDomainAsyncWithHttpInfo($options)
     {
-        $returnType = 'object';
+        $returnType = '\Fastly\Model\InlineResponse200';
         $request = $this->deleteDomainRequest($options);
 
         return $this->client
@@ -1746,7 +1746,7 @@ class DomainApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\DomainResponse
+     * @return \Fastly\Model\DomainResponse[]
      */
     public function listDomains($options)
     {
@@ -1766,7 +1766,7 @@ class DomainApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\DomainResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\DomainResponse[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listDomainsWithHttpInfo($options)
     {
@@ -1809,20 +1809,20 @@ class DomainApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\DomainResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\DomainResponse[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\DomainResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\DomainResponse[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\DomainResponse';
+            $returnType = '\Fastly\Model\DomainResponse[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1840,7 +1840,7 @@ class DomainApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\DomainResponse',
+                        '\Fastly\Model\DomainResponse[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1888,7 +1888,7 @@ class DomainApi
      */
     public function listDomainsAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\DomainResponse';
+        $returnType = '\Fastly\Model\DomainResponse[]';
         $request = $this->listDomainsRequest($options);
 
         return $this->client

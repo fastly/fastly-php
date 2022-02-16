@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Alphanumeric string identifying a WAF active rule. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **attributes** | [**Timestamps**](Timestamps.md) |  | [optional] 
-**relationships** | [**AnyOfRelationshipWafFirewallVersionRelationshipWafRuleRevision**](AnyOfRelationshipWafFirewallVersionRelationshipWafRuleRevision.md) |  | [optional] 
+**relationships** | [**\Fastly\Model\WafActiveRuleResponseDataRelationships**](WafActiveRuleResponseDataRelationships.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

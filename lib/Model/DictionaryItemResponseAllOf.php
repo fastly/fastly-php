@@ -218,7 +218,7 @@ class DictionaryItemResponseAllOf implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets dictionary_id
      *
-     * @param string|null $dictionary_id Alphanumeric string identifying a Dictionary.
+     * @param string|null $dictionary_id dictionary_id
      *
      * @return self
      */
@@ -242,7 +242,7 @@ class DictionaryItemResponseAllOf implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */

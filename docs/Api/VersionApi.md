@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 ## `validateServiceVersion()`
 
 ```php
-validateServiceVersion($options): object // Validate a service version
+validateServiceVersion($options): \Fastly\Model\InlineResponse200 // Validate a service version
 ```
 
 Validate the version for a particular service and version.
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

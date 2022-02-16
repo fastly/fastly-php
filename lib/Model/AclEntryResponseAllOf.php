@@ -224,7 +224,7 @@ class AclEntryResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets acl_id
      *
-     * @param string|null $acl_id Alphanumeric string identifying a ACL.
+     * @param string|null $acl_id acl_id
      *
      * @return self
      */
@@ -248,7 +248,7 @@ class AclEntryResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying an ACL Entry.
+     * @param string|null $id id
      *
      * @return self
      */
@@ -272,7 +272,7 @@ class AclEntryResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */

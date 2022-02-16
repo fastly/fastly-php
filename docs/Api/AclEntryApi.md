@@ -25,7 +25,7 @@ Method | Fastly API endpoint | Description
 ## `bulkUpdateAclEntries()`
 
 ```php
-bulkUpdateAclEntries($options): object // Update multiple ACL entries
+bulkUpdateAclEntries($options): \Fastly\Model\InlineResponse200 // Update multiple ACL entries
 ```
 
 Update multiple ACL entries on the same ACL.
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 ## `deleteAclEntry()`
 
 ```php
-deleteAclEntry($options): object // Delete an ACL entry
+deleteAclEntry($options): \Fastly\Model\InlineResponse200 // Delete an ACL entry
 ```
 
 Delete an ACL entry from a specified ACL.
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 ## `getAclEntry()`
 
 ```php
-getAclEntry($options): \Fastly\Model\AclEntry // Describe an ACL entry
+getAclEntry($options): \Fastly\Model\AclEntryResponse // Describe an ACL entry
 ```
 
 Retrieve a single ACL entry.
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\AclEntry**](../Model/AclEntry.md)
+[**\Fastly\Model\AclEntryResponse**](../Model/AclEntryResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 ## `updateAclEntry()`
 
 ```php
-updateAclEntry($options): \Fastly\Model\AclEntry // Update an ACL entry
+updateAclEntry($options): \Fastly\Model\AclEntryResponse // Update an ACL entry
 ```
 
 Update an ACL entry for a specified ACL.
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\AclEntry**](../Model/AclEntry.md)
+[**\Fastly\Model\AclEntryResponse**](../Model/AclEntryResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

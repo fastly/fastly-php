@@ -580,7 +580,7 @@ class LoggingDigitalocean implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets timestamp_format
      *
-     * @param string|null $timestamp_format Date and time in ISO 8601 format.
+     * @param string|null $timestamp_format A timestamp format
      *
      * @return self
      */

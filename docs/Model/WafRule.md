@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**\Fastly\Model\TypeWafRule**](TypeWafRule.md) |  | [optional] 
-**id** | **string** | Alphanumeric string identifying a WAF rule. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **attributes** | [**\Fastly\Model\WafRuleAttributes**](WafRuleAttributes.md) |  | [optional] 
 
 

@@ -14,7 +14,6 @@ $apiInstance = new Fastly\Api\DictionaryItemApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
-[**bulkUpdateDictionaryItem()**](DictionaryItemApi.md#bulkUpdateDictionaryItem) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/items | Update multiple entries in an edge dictionary
 [**createDictionaryItem()**](DictionaryItemApi.md#createDictionaryItem) | **POST** /service/{service_id}/dictionary/{dictionary_id}/item | Create an entry in an edge dictionary
 [**deleteDictionaryItem()**](DictionaryItemApi.md#deleteDictionaryItem) | **DELETE** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Delete an item from an edge dictionary
 [**getDictionaryItem()**](DictionaryItemApi.md#getDictionaryItem) | **GET** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Get an item from an edge dictionary
@@ -22,40 +21,6 @@ Method | Fastly API endpoint | Description
 [**updateDictionaryItem()**](DictionaryItemApi.md#updateDictionaryItem) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Update an entry in an edge dictionary
 [**upsertDictionaryItem()**](DictionaryItemApi.md#upsertDictionaryItem) | **PUT** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Insert or update an entry in an edge dictionary
 
-
-## `bulkUpdateDictionaryItem()`
-
-```php
-bulkUpdateDictionaryItem($options): object // Update multiple entries in an edge dictionary
-```
-
-Update DictionaryItem in batch for given service, dictionary ID and key/value pairs for items.
-
-### Example
-```php
-try {
-    $result = $apiInstance->bulkUpdateDictionaryItem($options);
-} catch (Exception $e) {
-    echo 'Exception when calling DictionaryItemApi->bulkUpdateDictionaryItem: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**service_id** | **string** | Alphanumeric string identifying the service. |
-**dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
-**inline_object** | [**\Fastly\Model\InlineObject**](../Model/InlineObject.md) |  | [optional]
-
-### Return type
-
-**object**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
 
 ## `createDictionaryItem()`
 
@@ -95,7 +60,7 @@ Name | Type | Description  | Notes
 ## `deleteDictionaryItem()`
 
 ```php
-deleteDictionaryItem($options): object // Delete an item from an edge dictionary
+deleteDictionaryItem($options): \Fastly\Model\InlineResponse200 // Delete an item from an edge dictionary
 ```
 
 Delete DictionaryItem given service, dictionary ID, and item key.
@@ -121,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

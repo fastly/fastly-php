@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] [readonly] 
-**version** | **int** | Integer identifying a service version. | [optional] [readonly] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

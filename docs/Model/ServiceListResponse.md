@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**deleted_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**updated_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **comment** | **string** | A freeform descriptive note. | [optional] 
 **name** | **string** | The name of the service. | [optional] 
-**customer_id** | **string** | Alphanumeric string identifying the customer. | [optional] [readonly] 
+**customer_id** | **string** |  | [optional] [readonly] 
 **type** | **string** | The type of this service. | [optional]  [one of: 'vcl', 'wasm']
-**id** | **string** | Alphanumeric string identifying the service. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **version** | **int** | Current [version](/reference/api/services/version/) of the service. | [optional] 
 **versions** | [**\Fastly\Model\SchemasVersionResponse[]**](SchemasVersionResponse.md) | A list of [versions](/reference/api/services/version/) associated with the service. | [optional] 
 

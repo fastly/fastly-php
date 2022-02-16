@@ -126,7 +126,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
@@ -158,7 +158,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
@@ -266,7 +266,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
@@ -301,7 +301,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
@@ -362,7 +362,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
@@ -551,7 +551,7 @@ class HeaderApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Fastly\Model\InlineResponse200
      */
     public function deleteHeaderObject($options)
     {
@@ -572,7 +572,7 @@ class HeaderApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteHeaderObjectWithHttpInfo($options)
     {
@@ -615,20 +615,20 @@ class HeaderApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Fastly\Model\InlineResponse200';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -646,7 +646,7 @@ class HeaderApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Fastly\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -696,7 +696,7 @@ class HeaderApi
      */
     public function deleteHeaderObjectAsyncWithHttpInfo($options)
     {
-        $returnType = 'object';
+        $returnType = '\Fastly\Model\InlineResponse200';
         $request = $this->deleteHeaderObjectRequest($options);
 
         return $this->client
@@ -1523,7 +1523,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
@@ -1556,7 +1556,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
@@ -1665,7 +1665,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
@@ -1701,7 +1701,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
@@ -1763,7 +1763,7 @@ class HeaderApi
      * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
      * @param  string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
-     * @param  string $response_condition (optional)
+     * @param  string $response_condition Optional name of a response condition to apply. (optional)
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)

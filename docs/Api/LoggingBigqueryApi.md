@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 ## `deleteLogBigquery()`
 
 ```php
-deleteLogBigquery($options): object // Delete a BigQuery log endpoint
+deleteLogBigquery($options): \Fastly\Model\InlineResponse200 // Delete a BigQuery log endpoint
 ```
 
 Delete a BigQuery logging object for a particular service and version.
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

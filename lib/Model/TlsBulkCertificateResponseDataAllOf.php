@@ -218,7 +218,7 @@ class TlsBulkCertificateResponseDataAllOf implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a TLS bulk certificate.
+     * @param string|null $id id
      *
      * @return self
      */

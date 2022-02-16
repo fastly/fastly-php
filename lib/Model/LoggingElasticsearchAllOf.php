@@ -58,7 +58,7 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'pipeline' => 'string',
         'user' => 'string',
         'password' => 'string',
-        'format' => 'mixed'
+        'format' => 'string'
     ];
 
     /**
@@ -352,7 +352,7 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets format
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getFormat()
     {
@@ -362,7 +362,7 @@ class LoggingElasticsearchAllOf implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets format
      *
-     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
      *
      * @return self
      */

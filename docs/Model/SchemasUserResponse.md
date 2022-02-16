@@ -12,12 +12,12 @@ Name | Type | Description | Notes
 **role** | [**\Fastly\Model\RoleUser**](RoleUser.md) |  | [optional] 
 **two_factor_auth_enabled** | **bool** | Indicates if 2FA is enabled on the user. | [optional] 
 **two_factor_setup_required** | **bool** | Indicates if 2FA is required by the user&#39;s customer account. | [optional] 
-**created_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**deleted_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**updated_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**id** | **string** | Alphanumeric string identifying the user. | [optional] [readonly] 
+**created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **email_hash** | **string** | The alphanumeric string identifying a email login. | [optional] 
-**customer_id** | **string** | Alphanumeric string identifying the customer. | [optional] [readonly] 
+**customer_id** | **string** |  | [optional] [readonly] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

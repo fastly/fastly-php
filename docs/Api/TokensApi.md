@@ -14,76 +14,12 @@ $apiInstance = new Fastly\Api\TokensApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
-[**bulkRevokeTokens()**](TokensApi.md#bulkRevokeTokens) | **DELETE** /tokens | Revoke multiple tokens
-[**createToken()**](TokensApi.md#createToken) | **POST** /tokens | Create a token
 [**getTokenCurrent()**](TokensApi.md#getTokenCurrent) | **GET** /tokens/self | Get the current token
 [**listTokensCustomer()**](TokensApi.md#listTokensCustomer) | **GET** /customer/{customer_id}/tokens | List tokens for a customer
 [**listTokensUser()**](TokensApi.md#listTokensUser) | **GET** /tokens | List tokens for the authenticated user
 [**revokeToken()**](TokensApi.md#revokeToken) | **DELETE** /tokens/{token_id} | Revoke a token
 [**revokeTokenCurrent()**](TokensApi.md#revokeTokenCurrent) | **DELETE** /tokens/self | Revoke the current token
 
-
-## `bulkRevokeTokens()`
-
-```php
-bulkRevokeTokens($options) // Revoke multiple tokens
-```
-
-Revoke Tokens in bulk format. Users may only revoke their own tokens. Superusers may revoke tokens of others.
-
-### Example
-```php
-try {
-    $apiInstance->bulkRevokeTokens($options);
-} catch (Exception $e) {
-    echo 'Exception when calling TokensApi->bulkRevokeTokens: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**body** | **object** |  | [optional]
-
-### Return type
-
-void (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-
-## `createToken()`
-
-```php
-createToken($options): \Fastly\Model\TokenCreatedResponse // Create a token
-```
-
-Create an API token. If two-factor authentication is enabled for your account, review [the instructions](/reference/api/auth/) for including a one-time password in the request.
-
-### Example
-```php
-try {
-    $result = $apiInstance->createToken($options);
-} catch (Exception $e) {
-    echo 'Exception when calling TokensApi->createToken: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-This endpoint does not need any parameters.
-
-### Return type
-
-[**\Fastly\Model\TokenCreatedResponse**](../Model/TokenCreatedResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
 
 ## `getTokenCurrent()`
 

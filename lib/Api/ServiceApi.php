@@ -118,7 +118,7 @@ class ServiceApi
      *
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id customer_id (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -140,7 +140,7 @@ class ServiceApi
      *
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -238,7 +238,7 @@ class ServiceApi
      *
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \InvalidArgumentException
@@ -263,7 +263,7 @@ class ServiceApi
      *
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \InvalidArgumentException
@@ -314,7 +314,7 @@ class ServiceApi
      *
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id (optional)
      * @param  string $type The type of this service. (optional)
      *
      * @throws \InvalidArgumentException
@@ -429,7 +429,7 @@ class ServiceApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Fastly\Model\InlineResponse200
      */
     public function deleteService($options)
     {
@@ -448,7 +448,7 @@ class ServiceApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteServiceWithHttpInfo($options)
     {
@@ -491,20 +491,20 @@ class ServiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Fastly\Model\InlineResponse200';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -522,7 +522,7 @@ class ServiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Fastly\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -568,7 +568,7 @@ class ServiceApi
      */
     public function deleteServiceAsyncWithHttpInfo($options)
     {
-        $returnType = 'object';
+        $returnType = '\Fastly\Model\InlineResponse200';
         $request = $this->deleteServiceRequest($options);
 
         return $this->client
@@ -2220,7 +2220,7 @@ class ServiceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id customer_id (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2242,7 +2242,7 @@ class ServiceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2340,7 +2340,7 @@ class ServiceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2365,7 +2365,7 @@ class ServiceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2416,7 +2416,7 @@ class ServiceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name The name of the service. (optional)
-     * @param  string $customer_id Alphanumeric string identifying the customer. (optional)
+     * @param  string $customer_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

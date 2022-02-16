@@ -54,7 +54,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'admin' => 'bool',
-        'created_at' => 'string',
+        'created_at' => '\DateTime',
         'customer_id' => 'string',
         'description' => 'string',
         'event_type' => 'string',
@@ -73,7 +73,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'admin' => null,
-        'created_at' => null,
+        'created_at' => 'date-time',
         'customer_id' => null,
         'description' => null,
         'event_type' => null,
@@ -548,7 +548,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -558,7 +558,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -582,7 +582,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */
@@ -712,7 +712,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */
@@ -736,7 +736,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_id
      *
-     * @param string|null $user_id Alphanumeric string identifying the user.
+     * @param string|null $user_id user_id
      *
      * @return self
      */

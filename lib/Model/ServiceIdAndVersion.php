@@ -218,7 +218,7 @@ class ServiceIdAndVersion implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */
@@ -242,7 +242,7 @@ class ServiceIdAndVersion implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets version
      *
-     * @param int|null $version Integer identifying a service version.
+     * @param int|null $version version
      *
      * @return self
      */

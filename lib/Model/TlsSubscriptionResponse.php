@@ -53,7 +53,7 @@ class TlsSubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'Data'
+        'data' => 'TlsSubscriptionData'
     ];
 
     /**
@@ -202,7 +202,7 @@ class TlsSubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets data
      *
-     * @return Data|null
+     * @return TlsSubscriptionData|null
      */
     public function getData()
     {
@@ -212,7 +212,7 @@ class TlsSubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets data
      *
-     * @param Data|null $data data
+     * @param TlsSubscriptionData|null $data data
      *
      * @return self
      */

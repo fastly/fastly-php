@@ -248,7 +248,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying an event.
+     * @param string|null $id id
      *
      * @return self
      */

@@ -53,7 +53,7 @@ class ServiceDetailAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'active_version' => '\Fastly\Model\NestedVersion',
+        'active_version' => 'NestedVersion',
         'version' => '\Fastly\Model\NestedVersion'
     ];
 
@@ -208,7 +208,7 @@ class ServiceDetailAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets active_version
      *
-     * @return \Fastly\Model\NestedVersion|null
+     * @return NestedVersion|null
      */
     public function getActiveVersion()
     {
@@ -218,7 +218,7 @@ class ServiceDetailAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets active_version
      *
-     * @param \Fastly\Model\NestedVersion|null $active_version active_version
+     * @param NestedVersion|null $active_version active_version
      *
      * @return self
      */

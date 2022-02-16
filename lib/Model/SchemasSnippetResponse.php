@@ -54,15 +54,15 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $fastlyTypes = [
         'name' => 'string',
-        'dynamic' => 'string',
+        'dynamic' => 'int',
         'type' => 'string',
         'content' => 'string',
-        'priority' => 'string',
+        'priority' => 'int',
         'service_id' => 'string',
         'version' => 'int',
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'id' => 'string'
     ];
 
@@ -81,9 +81,9 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'priority' => null,
         'service_id' => null,
         'version' => null,
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
         'id' => null
     ];
 
@@ -206,8 +206,8 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$fastlyModelName;
     }
 
-    const DYNAMIC__0 = '0';
-    const DYNAMIC__1 = '1';
+    const DYNAMIC_0 = 0;
+    const DYNAMIC_1 = 1;
     const TYPE_INIT = 'init';
     const TYPE_RECV = 'recv';
     const TYPE_HASH = 'hash';
@@ -228,8 +228,8 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function getDynamicAllowableValues()
     {
         return [
-            self::DYNAMIC__0,
-            self::DYNAMIC__1,
+            self::DYNAMIC_0,
+            self::DYNAMIC_1,
         ];
     }
 
@@ -274,7 +274,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['content'] = $data['content'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? '100';
+        $this->container['priority'] = $data['priority'] ?? 100;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -352,7 +352,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets dynamic
      *
-     * @return string|null
+     * @return int|null
      */
     public function getDynamic()
     {
@@ -362,7 +362,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets dynamic
      *
-     * @param string|null $dynamic Sets the snippet version.
+     * @param int|null $dynamic Sets the snippet version.
      *
      * @return self
      */
@@ -444,7 +444,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets priority
      *
-     * @return string|null
+     * @return int|null
      */
     public function getPriority()
     {
@@ -454,7 +454,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets priority
      *
-     * @param string|null $priority Numeric string value. Priority determines execution order. Lower numbers execute first.
+     * @param int|null $priority Priority determines execution order. Lower numbers execute first.
      *
      * @return self
      */
@@ -478,7 +478,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */
@@ -502,7 +502,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets version
      *
-     * @param int|null $version Integer identifying a service version.
+     * @param int|null $version version
      *
      * @return self
      */
@@ -516,7 +516,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -526,7 +526,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -540,7 +540,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -550,7 +550,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -564,7 +564,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -574,7 +574,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -598,7 +598,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a VCL Snippet.
+     * @param string|null $id id
      *
      * @return self
      */

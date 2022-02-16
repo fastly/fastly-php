@@ -18,7 +18,6 @@ Method | Fastly API endpoint | Description
 [**deleteDirector()**](DirectorApi.md#deleteDirector) | **DELETE** /service/{service_id}/version/{version_id}/director/{director_name} | Delete a director
 [**getDirector()**](DirectorApi.md#getDirector) | **GET** /service/{service_id}/version/{version_id}/director/{director_name} | Get a director
 [**listDirectors()**](DirectorApi.md#listDirectors) | **GET** /service/{service_id}/version/{version_id}/director | List directors
-[**updateDirector()**](DirectorApi.md#updateDirector) | **PUT** /service/{service_id}/version/{version_id}/director/{director_name} | Update a director
 
 
 ## `createDirector()`
@@ -46,7 +45,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
-**backends** | [**\Fastly\Model\SchemasBackend[]**](../Model/\Fastly\Model\SchemasBackend.md) | List of backends associated to a director. | [optional]
+**backends** | [**\Fastly\Model\Backend[]**](../Model/\Fastly\Model\Backend.md) | List of backends associated to a director. | [optional]
 **capacity** | **int** | Unused. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **name** | **string** | Name for the Director. | [optional]
@@ -65,7 +64,7 @@ Name | Type | Description  | Notes
 ## `deleteDirector()`
 
 ```php
-deleteDirector($options): object // Delete a director
+deleteDirector($options): \Fastly\Model\InlineResponse200 // Delete a director
 ```
 
 Delete the director for a particular service and version.
@@ -91,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -159,40 +158,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\DirectorResponse[]**](../Model/DirectorResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-
-## `updateDirector()`
-
-```php
-updateDirector($options): \Fastly\Model\DirectorResponse // Update a director
-```
-
-Update the director for a particular service and version.
-
-### Example
-```php
-try {
-    $result = $apiInstance->updateDirector($options);
-} catch (Exception $e) {
-    echo 'Exception when calling DirectorApi->updateDirector: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**service_id** | **string** | Alphanumeric string identifying the service. |
-**version_id** | **int** | Integer identifying a service version. |
-**director_name** | **string** | Name for the Director. |
-
-### Return type
-
-[**\Fastly\Model\DirectorResponse**](../Model/DirectorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

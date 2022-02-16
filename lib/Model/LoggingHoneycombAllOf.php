@@ -53,7 +53,7 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'format' => 'mixed',
+        'format' => 'string',
         'dataset' => 'string',
         'token' => 'string'
     ];
@@ -214,7 +214,7 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets format
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getFormat()
     {
@@ -224,7 +224,7 @@ class LoggingHoneycombAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets format
      *
-     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest.
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest.
      *
      * @return self
      */

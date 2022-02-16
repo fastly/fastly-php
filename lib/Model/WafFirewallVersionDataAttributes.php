@@ -848,7 +848,7 @@ class WafFirewallVersionDataAttributes implements ModelInterface, ArrayAccess, \
     /**
      * Sets number
      *
-     * @param int|null $number Integer identifying a WAF firewall version.
+     * @param int|null $number number
      *
      * @return self
      */

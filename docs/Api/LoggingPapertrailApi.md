@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 ## `deleteLogPapertrail()`
 
 ```php
-deleteLogPapertrail($options): object // Delete a Papertrail log endpoint
+deleteLogPapertrail($options): \Fastly\Model\InlineResponse200 // Delete a Papertrail log endpoint
 ```
 
 Delete the Papertrail for a particular service and version.
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

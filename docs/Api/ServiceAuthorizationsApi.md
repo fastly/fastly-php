@@ -16,11 +16,9 @@ Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createServiceAuthorization()**](ServiceAuthorizationsApi.md#createServiceAuthorization) | **POST** /service-authorizations | Create service authorization
 [**deleteServiceAuthorization()**](ServiceAuthorizationsApi.md#deleteServiceAuthorization) | **DELETE** /service-authorizations/{service_authorization_id} | Delete service authorization
-[**deleteServiceAuthorization2()**](ServiceAuthorizationsApi.md#deleteServiceAuthorization2) | **DELETE** /service-authorizations | Delete service authorizations
 [**listServiceAuthorization()**](ServiceAuthorizationsApi.md#listServiceAuthorization) | **GET** /service-authorizations | List service authorizations
 [**showServiceAuthorization()**](ServiceAuthorizationsApi.md#showServiceAuthorization) | **GET** /service-authorizations/{service_authorization_id} | Show service authorization
 [**updateServiceAuthorization()**](ServiceAuthorizationsApi.md#updateServiceAuthorization) | **PATCH** /service-authorizations/{service_authorization_id} | Update service authorization
-[**updateServiceAuthorization2()**](ServiceAuthorizationsApi.md#updateServiceAuthorization2) | **PATCH** /service-authorizations | Update service authorizations
 
 
 ## `createServiceAuthorization()`
@@ -83,38 +81,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-
-## `deleteServiceAuthorization2()`
-
-```php
-deleteServiceAuthorization2($options): \Fastly\Model\InlineResponse204 // Delete service authorizations
-```
-
-Delete service authorizations.
-
-### Example
-```php
-try {
-    $result = $apiInstance->deleteServiceAuthorization2($options);
-} catch (Exception $e) {
-    echo 'Exception when calling ServiceAuthorizationsApi->deleteServiceAuthorization2: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**inline_object1** | [**\Fastly\Model\InlineObject1**](../Model/InlineObject1.md) |  | [optional]
-
-### Return type
-
-[**\Fastly\Model\InlineResponse204**](../Model/InlineResponse204.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -213,38 +179,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\ServiceAuthorizationResponse**](../Model/ServiceAuthorizationResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-
-## `updateServiceAuthorization2()`
-
-```php
-updateServiceAuthorization2($options): \Fastly\Model\ServiceAuthorizationsResponse // Update service authorizations
-```
-
-Update service authorizations.
-
-### Example
-```php
-try {
-    $result = $apiInstance->updateServiceAuthorization2($options);
-} catch (Exception $e) {
-    echo 'Exception when calling ServiceAuthorizationsApi->updateServiceAuthorization2: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**inline_object2** | [**\Fastly\Model\InlineObject2**](../Model/InlineObject2.md) |  | [optional]
-
-### Return type
-
-[**\Fastly\Model\ServiceAuthorizationsResponse**](../Model/ServiceAuthorizationsResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

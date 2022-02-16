@@ -302,7 +302,7 @@ class WafFirewallDataAttributes implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets service_version_number
      *
-     * @param int|null $service_version_number Integer identifying a service version.
+     * @param int|null $service_version_number service_version_number
      *
      * @return self
      */

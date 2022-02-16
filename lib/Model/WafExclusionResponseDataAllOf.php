@@ -55,7 +55,7 @@ class WafExclusionResponseDataAllOf implements ModelInterface, ArrayAccess, \Jso
     protected static $fastlyTypes = [
         'id' => 'string',
         'attributes' => 'Timestamps',
-        'relationships' => 'AnyOfRelationshipWafRulesRelationshipWafRuleRevisions'
+        'relationships' => '\Fastly\Model\WafExclusionResponseDataRelationships'
     ];
 
     /**
@@ -262,7 +262,7 @@ class WafExclusionResponseDataAllOf implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets relationships
      *
-     * @return AnyOfRelationshipWafRulesRelationshipWafRuleRevisions|null
+     * @return \Fastly\Model\WafExclusionResponseDataRelationships|null
      */
     public function getRelationships()
     {
@@ -272,7 +272,7 @@ class WafExclusionResponseDataAllOf implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets relationships
      *
-     * @param AnyOfRelationshipWafRulesRelationshipWafRuleRevisions|null $relationships relationships
+     * @param \Fastly\Model\WafExclusionResponseDataRelationships|null $relationships relationships
      *
      * @return self
      */

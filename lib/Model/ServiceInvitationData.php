@@ -272,7 +272,7 @@ class ServiceInvitationData implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets relationships
      *
-     * @param RelationshipService|null $relationships relationships
+     * @param RelationshipService|null $relationships Service the accepting user will have access to.
      *
      * @return self
      */

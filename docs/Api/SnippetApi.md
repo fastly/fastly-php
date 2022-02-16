@@ -19,7 +19,6 @@ Method | Fastly API endpoint | Description
 [**getSnippet()**](SnippetApi.md#getSnippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Get a versioned snippet
 [**getSnippetDynamic()**](SnippetApi.md#getSnippetDynamic) | **GET** /service/{service_id}/snippet/{snippet_id} | Get a dynamic snippet
 [**listSnippets()**](SnippetApi.md#listSnippets) | **GET** /service/{service_id}/version/{version_id}/snippet | List snippets
-[**updateSnippet()**](SnippetApi.md#updateSnippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Update a versioned snippet
 [**updateSnippetDynamic()**](SnippetApi.md#updateSnippetDynamic) | **PUT** /service/{service_id}/snippet/{snippet_id} | Update a dynamic snippet
 
 
@@ -49,10 +48,10 @@ Name | Type | Description  | Notes
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
 **name** | **string** | The name for the snippet. | [optional]
-**dynamic** | **string** | Sets the snippet version. | [optional] [one of: '0', '1']
+**dynamic** | **int** | Sets the snippet version. | [optional] [one of: 0, 1]
 **type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] [one of: 'init', 'recv', 'hash', 'hit', 'miss', 'pass', 'fetch', 'error', 'deliver', 'log', 'none']
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
-**priority** | **string** | Numeric string value. Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
+**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
 
 ### Return type
 
@@ -64,7 +63,7 @@ Name | Type | Description  | Notes
 ## `deleteSnippet()`
 
 ```php
-deleteSnippet($options): object // Delete a snippet
+deleteSnippet($options): \Fastly\Model\InlineResponse200 // Delete a snippet
 ```
 
 Delete a specific snippet for a particular service and version.
@@ -90,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -195,40 +194,6 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
-## `updateSnippet()`
-
-```php
-updateSnippet($options): \Fastly\Model\SnippetResponse // Update a versioned snippet
-```
-
-Update a specific snippet for a particular service and version.
-
-### Example
-```php
-try {
-    $result = $apiInstance->updateSnippet($options);
-} catch (Exception $e) {
-    echo 'Exception when calling SnippetApi->updateSnippet: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**service_id** | **string** | Alphanumeric string identifying the service. |
-**version_id** | **int** | Integer identifying a service version. |
-**snippet_name** | **string** | The name for the snippet. |
-
-### Return type
-
-[**\Fastly\Model\SnippetResponse**](../Model/SnippetResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-
 ## `updateSnippetDynamic()`
 
 ```php
@@ -255,10 +220,10 @@ Name | Type | Description  | Notes
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **snippet_id** | **string** | Alphanumeric string identifying a VCL Snippet. |
 **name** | **string** | The name for the snippet. | [optional]
-**dynamic** | **string** | Sets the snippet version. | [optional] [one of: '0', '1']
+**dynamic** | **int** | Sets the snippet version. | [optional] [one of: 0, 1]
 **type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] [one of: 'init', 'recv', 'hash', 'hit', 'miss', 'pass', 'fetch', 'error', 'deliver', 'log', 'none']
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
-**priority** | **string** | Numeric string value. Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
+**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
 
 ### Return type
 

@@ -53,9 +53,9 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'comment' => 'string',
         'name' => 'string',
         'customer_id' => 'string',
@@ -73,9 +73,9 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
         'comment' => null,
         'name' => null,
         'customer_id' => null,
@@ -280,7 +280,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -290,7 +290,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -314,7 +314,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -338,7 +338,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -410,7 +410,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */
@@ -468,7 +468,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying the service.
+     * @param string|null $id id
      *
      * @return self
      */

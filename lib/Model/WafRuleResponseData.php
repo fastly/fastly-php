@@ -254,7 +254,7 @@ class WafRuleResponseData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a WAF rule.
+     * @param string|null $id id
      *
      * @return self
      */

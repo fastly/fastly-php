@@ -55,14 +55,14 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $fastlyTypes = [
         'comment' => 'string',
         'name' => 'string',
-        'priority' => 'int',
+        'priority' => 'string',
         'statement' => 'string',
-        'type' => 'string',
         'service_id' => 'string',
-        'version' => 'int',
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string'
+        'version' => 'string',
+        'type' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -77,12 +77,12 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => null,
         'priority' => null,
         'statement' => null,
-        'type' => null,
         'service_id' => null,
         'version' => null,
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null
+        'type' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -116,9 +116,9 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'name',
         'priority' => 'priority',
         'statement' => 'statement',
-        'type' => 'type',
         'service_id' => 'service_id',
         'version' => 'version',
+        'type' => 'type',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at'
@@ -134,9 +134,9 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'setName',
         'priority' => 'setPriority',
         'statement' => 'setStatement',
-        'type' => 'setType',
         'service_id' => 'setServiceId',
         'version' => 'setVersion',
+        'type' => 'setType',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt'
@@ -152,9 +152,9 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'getName',
         'priority' => 'getPriority',
         'statement' => 'getStatement',
-        'type' => 'getType',
         'service_id' => 'getServiceId',
         'version' => 'getVersion',
+        'type' => 'getType',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt'
@@ -238,11 +238,11 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $this->container['comment'] = $data['comment'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? 100;
+        $this->container['priority'] = $data['priority'] ?? '100';
         $this->container['statement'] = $data['statement'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -332,7 +332,7 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets priority
      *
-     * @return int|null
+     * @return string|null
      */
     public function getPriority()
     {
@@ -342,7 +342,7 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets priority
      *
-     * @param int|null $priority Priority determines execution order. Lower numbers execute first.
+     * @param string|null $priority A numeric string. Priority determines execution order. Lower numbers execute first.
      *
      * @return self
      */
@@ -373,6 +373,54 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setStatement($statement)
     {
         $this->container['statement'] = $statement;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id service_id
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string|null $version A numeric string that represents the service version.
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }
@@ -412,57 +460,9 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets service_id
-     *
-     * @return string|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string|null $service_id Alphanumeric string identifying the service.
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return int|null
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param int|null $version Integer identifying a service version.
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
-
-        return $this;
-    }
-
-    /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -472,7 +472,7 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -486,7 +486,7 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -496,7 +496,7 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -520,7 +520,7 @@ class ConditionResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */

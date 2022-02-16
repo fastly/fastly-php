@@ -218,7 +218,7 @@ class VersionCreateResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets number
      *
-     * @param int|null $number Integer identifying a service version.
+     * @param int|null $number number
      *
      * @return self
      */
@@ -242,7 +242,7 @@ class VersionCreateResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */

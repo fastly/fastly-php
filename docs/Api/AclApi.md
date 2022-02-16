@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 ## `deleteAcl()`
 
 ```php
-deleteAcl($options): object // Delete an ACL
+deleteAcl($options): \Fastly\Model\InlineResponse200 // Delete an ACL
 ```
 
 Delete an ACL from the specified service version. To remove an ACL from use, the ACL must be deleted from a draft version and the version without the ACL must be activated.
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ## `updateAcl()`
 
 ```php
-updateAcl($options): \Fastly\Model\Acl // Update an ACL
+updateAcl($options): \Fastly\Model\AclResponse // Update an ACL
 ```
 
 Update an ACL for a particular service and version.
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\Acl**](../Model/Acl.md)
+[**\Fastly\Model\AclResponse**](../Model/AclResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

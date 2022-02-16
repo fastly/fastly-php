@@ -212,7 +212,7 @@ class CustomerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying the customer.
+     * @param string|null $id id
      *
      * @return self
      */

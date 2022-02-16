@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ## `deleteServerPool()`
 
 ```php
-deleteServerPool($options): object // Delete a server pool
+deleteServerPool($options): \Fastly\Model\InlineResponse200 // Delete a server pool
 ```
 
 Deletes a specific pool for a particular service and version.
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

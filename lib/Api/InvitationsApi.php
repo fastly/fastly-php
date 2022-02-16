@@ -364,6 +364,11 @@ class InvitationsApi
             }
         }
 
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -603,6 +608,11 @@ class InvitationsApi
             }
         }
 
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -908,6 +918,11 @@ class InvitationsApi
             }
         }
 
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

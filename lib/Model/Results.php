@@ -135,14 +135,14 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'imgopto_resp_header_bytes' => 'int',
         'imgopto_shield_resp_body_bytes' => 'int',
         'imgopto_shield_resp_header_bytes' => 'int',
-        'imgvideo' => 'float',
-        'imgvideo_frames' => 'float',
-        'imgvideo_resp_header_bytes' => 'float',
-        'imgvideo_resp_body_bytes' => 'float',
-        'imgvideo_shield_resp_header_bytes' => 'float',
-        'imgvideo_shield_resp_body_bytes' => 'float',
-        'imgvideo_shield' => 'float',
-        'imgvideo_shield_frames' => 'float',
+        'imgvideo' => 'int',
+        'imgvideo_frames' => 'int',
+        'imgvideo_resp_header_bytes' => 'int',
+        'imgvideo_resp_body_bytes' => 'int',
+        'imgvideo_shield_resp_header_bytes' => 'int',
+        'imgvideo_shield_resp_body_bytes' => 'int',
+        'imgvideo_shield' => 'int',
+        'imgvideo_shield_frames' => 'int',
         'status_200' => 'int',
         'status_204' => 'int',
         'status_206' => 'int',
@@ -3209,7 +3209,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets imgvideo
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideo()
     {
@@ -3219,7 +3219,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets imgvideo
      *
-     * @param float|null $imgvideo Number of video responses that came from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo Number of video responses that came from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -3233,7 +3233,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets imgvideo_frames
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoFrames()
     {
@@ -3243,7 +3243,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets imgvideo_frames
      *
-     * @param float|null $imgvideo_frames Number of video frames that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
+     * @param int|null $imgvideo_frames Number of video frames that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
      *
      * @return self
      */
@@ -3257,7 +3257,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets imgvideo_resp_header_bytes
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoRespHeaderBytes()
     {
@@ -3267,7 +3267,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets imgvideo_resp_header_bytes
      *
-     * @param float|null $imgvideo_resp_header_bytes Total header bytes of video delivered from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_resp_header_bytes Total header bytes of video delivered from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -3281,7 +3281,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets imgvideo_resp_body_bytes
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoRespBodyBytes()
     {
@@ -3291,7 +3291,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets imgvideo_resp_body_bytes
      *
-     * @param float|null $imgvideo_resp_body_bytes Total body bytes of video delivered from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_resp_body_bytes Total body bytes of video delivered from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -3305,7 +3305,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets imgvideo_shield_resp_header_bytes
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoShieldRespHeaderBytes()
     {
@@ -3315,7 +3315,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets imgvideo_shield_resp_header_bytes
      *
-     * @param float|null $imgvideo_shield_resp_header_bytes Total header bytes of video delivered via a shield from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_shield_resp_header_bytes Total header bytes of video delivered via a shield from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -3329,7 +3329,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets imgvideo_shield_resp_body_bytes
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoShieldRespBodyBytes()
     {
@@ -3339,7 +3339,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets imgvideo_shield_resp_body_bytes
      *
-     * @param float|null $imgvideo_shield_resp_body_bytes Total body bytes of video delivered via a shield from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_shield_resp_body_bytes Total body bytes of video delivered via a shield from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -3353,7 +3353,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets imgvideo_shield
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoShield()
     {
@@ -3363,7 +3363,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets imgvideo_shield
      *
-     * @param float|null $imgvideo_shield Number of video responses delivered via a shield that came from the Fastly Image Optimizer service.
+     * @param int|null $imgvideo_shield Number of video responses delivered via a shield that came from the Fastly Image Optimizer service.
      *
      * @return self
      */
@@ -3377,7 +3377,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets imgvideo_shield_frames
      *
-     * @return float|null
+     * @return int|null
      */
     public function getImgvideoShieldFrames()
     {
@@ -3387,7 +3387,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets imgvideo_shield_frames
      *
-     * @param float|null $imgvideo_shield_frames Number of video frames delivered via a shield that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
+     * @param int|null $imgvideo_shield_frames Number of video frames delivered via a shield that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
      *
      * @return self
      */

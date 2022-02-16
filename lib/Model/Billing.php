@@ -53,8 +53,8 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'end_time' => 'string',
-        'start_time' => 'string',
+        'end_time' => '\DateTime',
+        'start_time' => '\DateTime',
         'invoice_id' => 'string',
         'customer_id' => 'string',
         'status' => '\Fastly\Model\BillingStatus',
@@ -70,8 +70,8 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'end_time' => null,
-        'start_time' => null,
+        'end_time' => 'date-time',
+        'start_time' => 'date-time',
         'invoice_id' => null,
         'customer_id' => null,
         'status' => null,
@@ -238,7 +238,7 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets end_time
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getEndTime()
     {
@@ -248,7 +248,7 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets end_time
      *
-     * @param string|null $end_time Date and time in ISO 8601 format.
+     * @param \DateTime|null $end_time Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets start_time
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getStartTime()
     {
@@ -272,7 +272,7 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_time
      *
-     * @param string|null $start_time Date and time in ISO 8601 format.
+     * @param \DateTime|null $start_time Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -296,7 +296,7 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_id
      *
-     * @param string|null $invoice_id Alphanumeric string identifying the invoice.
+     * @param string|null $invoice_id invoice_id
      *
      * @return self
      */
@@ -320,7 +320,7 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */

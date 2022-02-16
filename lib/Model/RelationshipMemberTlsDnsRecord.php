@@ -242,7 +242,7 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets id
      *
-     * @param string|null $id The IP address or hostname of the DNS record.
+     * @param string|null $id id
      *
      * @return self
      */

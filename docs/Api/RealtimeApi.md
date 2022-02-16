@@ -16,7 +16,7 @@ Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**getStatsLast120Seconds()**](RealtimeApi.md#getStatsLast120Seconds) | **GET** /v1/channel/{service_id}/ts/h | Get real-time data for the last 120 seconds
 [**getStatsLast120SecondsLimitEntries()**](RealtimeApi.md#getStatsLast120SecondsLimitEntries) | **GET** /v1/channel/{service_id}/ts/h/limit/{max_entries} | Get a limited number of real-time data entries
-[**getStatsLastSecond()**](RealtimeApi.md#getStatsLastSecond) | **GET** /v1/channel/{service_id}/ts/{timestamp_in_seconds} | Get real-time data for the last second
+[**getStatsLastSecond()**](RealtimeApi.md#getStatsLastSecond) | **GET** /v1/channel/{service_id}/ts/{timestamp_in_seconds} | Get real-time data from specified time
 
 
 ## `getStatsLast120Seconds()`
@@ -87,10 +87,10 @@ Name | Type | Description  | Notes
 ## `getStatsLastSecond()`
 
 ```php
-getStatsLastSecond($options): \Fastly\Model\Realtime // Get real-time data for the last second
+getStatsLastSecond($options): \Fastly\Model\Realtime // Get real-time data from specified time
 ```
 
-Get real-time data for the last second. For the first request, the timestamp can be `0`. The response will then return a new timestamp field, which should be used for the next request.
+Get real-time data for the specified reporting period. Specify `0` to get a single entry for the last complete second. The `Timestamp` field included in the response provides the time index of the latest entry in the dataset and can be provided as the `start_timestamp` of the next request for a seamless continuation of the dataset from one request to the next.
 
 ### Example
 ```php

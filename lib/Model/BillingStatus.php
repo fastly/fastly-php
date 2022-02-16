@@ -54,7 +54,7 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'status' => 'string',
-        'sent_at' => 'string'
+        'sent_at' => '\DateTime'
     ];
 
     /**
@@ -270,7 +270,8 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sent_at
      *
-     * @return string|null
+     * @return \DateTime|null
+     * @deprecated
      */
     public function getSentAt()
     {
@@ -280,9 +281,10 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sent_at
      *
-     * @param string|null $sent_at sent_at
+     * @param \DateTime|null $sent_at sent_at
      *
      * @return self
+     * @deprecated
      */
     public function setSentAt($sent_at)
     {

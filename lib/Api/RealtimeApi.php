@@ -710,7 +710,7 @@ class RealtimeApi
     /**
      * Operation getStatsLastSecond
      *
-     * Get real-time data for the last second
+     * Get real-time data from specified time
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -730,7 +730,7 @@ class RealtimeApi
     /**
      * Operation getStatsLastSecondWithHttpInfo
      *
-     * Get real-time data for the last second
+     * Get real-time data from specified time
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -826,7 +826,7 @@ class RealtimeApi
     /**
      * Operation getStatsLastSecondAsync
      *
-     * Get real-time data for the last second
+     * Get real-time data from specified time
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -849,7 +849,7 @@ class RealtimeApi
     /**
      * Operation getStatsLastSecondAsyncWithHttpInfo
      *
-     * Get real-time data for the last second
+     * Get real-time data from specified time
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *

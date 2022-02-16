@@ -57,7 +57,7 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
         'placement' => 'string',
         'format_version' => 'int',
         'response_condition' => 'string',
-        'format' => 'mixed',
+        'format' => 'string',
         'tls_ca_cert' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
@@ -458,7 +458,7 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets format
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getFormat()
     {
@@ -468,7 +468,7 @@ class LoggingElasticsearch implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets format
      *
-     * @param mixed|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
      *
      * @return self
      */

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**backends** | [**\Fastly\Model\SchemasBackend[]**](SchemasBackend.md) | List of backends associated to a director. | [optional] 
+**backends** | [**\Fastly\Model\Backend[]**](Backend.md) | List of backends associated to a director. | [optional] 
 **capacity** | **int** | Unused. | [optional] 
 **comment** | **string** | A freeform descriptive note. | [optional] 
 **name** | **string** | Name for the Director. | [optional] 
@@ -12,11 +12,11 @@ Name | Type | Description | Notes
 **shield** | **string** | Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional]  [defaults to 'null']
 **type** | **int** | What type of load balance group to use. | [optional]  [one of: 1, 3, 4]
 **retries** | **int** | How many backends to search if it fails. | [optional]  [defaults to 5]
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] [readonly] 
-**version** | **int** | Integer identifying a service version. | [optional] [readonly] 
-**created_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**deleted_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**updated_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
+**created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

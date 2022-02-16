@@ -68,9 +68,9 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'bucket_name' => 'string',
         'path' => 'string',
         'public_key' => 'string',
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'service_id' => 'string',
         'version' => 'int'
     ];
@@ -98,9 +98,9 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'bucket_name' => null,
         'path' => null,
         'public_key' => null,
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
         'service_id' => null,
         'version' => null
     ];
@@ -604,7 +604,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets timestamp_format
      *
-     * @param string|null $timestamp_format Date and time in ISO 8601 format.
+     * @param string|null $timestamp_format A timestamp format
      *
      * @return self
      */
@@ -782,7 +782,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets path
      *
-     * @param string|null $path path
+     * @param string|null $path The path to upload logs to.
      *
      * @return self
      */
@@ -820,7 +820,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -830,7 +830,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -844,7 +844,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -854,7 +854,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -868,7 +868,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -878,7 +878,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -902,7 +902,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */
@@ -926,7 +926,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets version
      *
-     * @param int|null $version Integer identifying a service version.
+     * @param int|null $version version
      *
      * @return self
      */

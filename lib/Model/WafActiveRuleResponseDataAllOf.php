@@ -55,7 +55,7 @@ class WafActiveRuleResponseDataAllOf implements ModelInterface, ArrayAccess, \Js
     protected static $fastlyTypes = [
         'id' => 'string',
         'attributes' => 'Timestamps',
-        'relationships' => 'AnyOfRelationshipWafFirewallVersionRelationshipWafRuleRevision'
+        'relationships' => '\Fastly\Model\WafActiveRuleResponseDataRelationships'
     ];
 
     /**
@@ -224,7 +224,7 @@ class WafActiveRuleResponseDataAllOf implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a WAF active rule.
+     * @param string|null $id id
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class WafActiveRuleResponseDataAllOf implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets relationships
      *
-     * @return AnyOfRelationshipWafFirewallVersionRelationshipWafRuleRevision|null
+     * @return \Fastly\Model\WafActiveRuleResponseDataRelationships|null
      */
     public function getRelationships()
     {
@@ -272,7 +272,7 @@ class WafActiveRuleResponseDataAllOf implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets relationships
      *
-     * @param AnyOfRelationshipWafFirewallVersionRelationshipWafRuleRevision|null $relationships relationships
+     * @param \Fastly\Model\WafActiveRuleResponseDataRelationships|null $relationships relationships
      *
      * @return self
      */

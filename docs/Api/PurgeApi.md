@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 ## `purgeAll()`
 
 ```php
-purgeAll($options): object // Purge everything from a service
+purgeAll($options): \Fastly\Model\InlineResponse200 // Purge everything from a service
 ```
 
 Instant Purge everything from a service.  Purge-all requests cannot be done in soft mode and will always immediately invalidate all cached content associated with the service. To do a soft-purge-all, consider applying a constant [surrogate key](https://docs.fastly.com/en/guides/getting-started-with-surrogate-keys) tag (e.g., `\"all\"`) to all objects.
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
