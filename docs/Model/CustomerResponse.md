@@ -28,10 +28,10 @@ Name | Type | Description | Notes
 **pricing_plan_id** | **string** | The alphanumeric string identifying the pricing plan. | [optional] 
 **security_contact_id** | **string** | The alphanumeric string identifying the account&#39;s security contact. | [optional] 
 **technical_contact_id** | **string** | The alphanumeric string identifying the account&#39;s technical contact. | [optional] 
-**created_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**deleted_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**updated_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**id** | **string** | Alphanumeric string identifying the customer. | [optional] [readonly] 
+**created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

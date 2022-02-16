@@ -33,11 +33,11 @@ Name | Type | Description | Notes
 **ssl_sni_hostname** | **string** | Overrides `ssl_hostname`, but only for SNI in the handshake. Does not affect cert validation at all. | [optional] 
 **use_ssl** | **bool** | Whether or not to require TLS for connections to this backend. | [optional] 
 **weight** | **int** | Weight used to load balance this backend against others. May be any positive integer. If `auto_loadbalance` is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have `auto_loadbalance` set to true. | [optional] 
-**created_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**deleted_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**updated_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] [readonly] 
-**version** | **int** | Integer identifying a service version. | [optional] [readonly] 
+**created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 **locked** | **bool** | Indicates whether the version of the service this backend is attached to accepts edits. | [optional] [readonly] 
 
 

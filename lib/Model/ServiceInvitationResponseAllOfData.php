@@ -218,7 +218,7 @@ class ServiceInvitationResponseAllOfData implements ModelInterface, ArrayAccess,
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying an invitation.
+     * @param string|null $id id
      *
      * @return self
      */

@@ -212,7 +212,7 @@ class AclResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a ACL.
+     * @param string|null $id id
      *
      * @return self
      */

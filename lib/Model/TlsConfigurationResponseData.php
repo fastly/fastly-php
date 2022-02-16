@@ -302,7 +302,7 @@ class TlsConfigurationResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a TLS configuration.
+     * @param string|null $id id
      *
      * @return self
      */

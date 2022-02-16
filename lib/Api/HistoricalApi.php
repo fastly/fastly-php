@@ -2152,7 +2152,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2173,7 +2172,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2270,7 +2268,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2294,7 +2291,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2344,7 +2340,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2354,7 +2349,6 @@ class HistoricalApi
         // unbox the parameters from the associative array
         $from = array_key_exists('from', $options) ? $options['from'] : null;
         $to = array_key_exists('to', $options) ? $options['to'] : null;
-        $by = array_key_exists('by', $options) ? $options['by'] : 'day';
 
 
         $resourcePath = '/stats/usage';
@@ -2384,17 +2378,6 @@ class HistoricalApi
             }
             else {
                 $queryParams['to'] = $to;
-            }
-        }
-        // query params
-        if ($by !== null) {
-            if('form' === 'form' && is_array($by)) {
-                foreach($by as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['by'] = $by;
             }
         }
 
@@ -2792,7 +2775,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2813,7 +2795,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2910,7 +2891,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2934,7 +2914,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2984,7 +2963,6 @@ class HistoricalApi
      *
      * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
      * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2994,7 +2972,6 @@ class HistoricalApi
         // unbox the parameters from the associative array
         $from = array_key_exists('from', $options) ? $options['from'] : null;
         $to = array_key_exists('to', $options) ? $options['to'] : null;
-        $by = array_key_exists('by', $options) ? $options['by'] : 'day';
 
 
         $resourcePath = '/stats/usage_by_service';
@@ -3024,17 +3001,6 @@ class HistoricalApi
             }
             else {
                 $queryParams['to'] = $to;
-            }
-        }
-        // query params
-        if ($by !== null) {
-            if('form' === 'form' && is_array($by)) {
-                foreach($by as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['by'] = $by;
             }
         }
 

@@ -212,7 +212,7 @@ class PoolResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a Pool.
+     * @param string|null $id id
      *
      * @return self
      */

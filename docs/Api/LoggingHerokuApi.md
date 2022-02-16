@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 ## `deleteLogHeroku()`
 
 ```php
-deleteLogHeroku($options): object // Delete the Heroku log endpoint
+deleteLogHeroku($options): \Fastly\Model\InlineResponse200 // Delete the Heroku log endpoint
 ```
 
 Delete the Heroku for a particular service and version.
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

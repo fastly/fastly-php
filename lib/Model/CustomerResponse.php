@@ -77,9 +77,9 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'pricing_plan_id' => 'string',
         'security_contact_id' => 'string',
         'technical_contact_id' => 'string',
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'id' => 'string'
     ];
 
@@ -115,9 +115,9 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'pricing_plan_id' => null,
         'security_contact_id' => null,
         'technical_contact_id' => null,
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
         'id' => null
     ];
 
@@ -974,7 +974,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -984,7 +984,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -998,7 +998,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -1008,7 +1008,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -1022,7 +1022,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -1032,7 +1032,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -1056,7 +1056,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying the customer.
+     * @param string|null $id id
      *
      * @return self
      */

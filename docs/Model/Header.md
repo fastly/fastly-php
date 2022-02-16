@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional]  [defaults to 100]
 **regex** | **string** | Regular expression to use. Only applies to `regex` and `regex_repeat` actions. | [optional] 
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional] 
-**response_condition** | **string** |  | [optional] 
+**response_condition** | **string** | Optional name of a response condition to apply. | [optional] 
 **src** | **string** | Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional] 
 **substitution** | **string** | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional] 
 **type** | **string** | Accepts a string value. | [optional]  [one of: 'request', 'cache', 'response']

@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 ## `deleteDomain()`
 
 ```php
-deleteDomain($options): object // Remove a domain from a service
+deleteDomain($options): \Fastly\Model\InlineResponse200 // Remove a domain from a service
 ```
 
 Delete the domain for a particular service and versions.
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 ## `listDomains()`
 
 ```php
-listDomains($options): \Fastly\Model\DomainResponse // List domains
+listDomains($options): \Fastly\Model\DomainResponse[] // List domains
 ```
 
 List all the domains for a particular service and version.
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\DomainResponse**](../Model/DomainResponse.md)
+[**\Fastly\Model\DomainResponse[]**](../Model/DomainResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

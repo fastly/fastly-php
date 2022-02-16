@@ -9,7 +9,7 @@ assignees: ''
 
 **Version**
 
-Please provide the version of fastly-php you're using.
+Please provide the version of `fastly-php` that you're using.
 
 **What happened**
 

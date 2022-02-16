@@ -57,8 +57,8 @@ class TokenCreatedResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'name' => 'string',
         'scope' => 'string',
         'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'id' => 'string',
         'user_id' => 'string',
         'last_used_at' => 'string',
@@ -80,8 +80,8 @@ class TokenCreatedResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'name' => null,
         'scope' => null,
         'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null,
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
         'id' => null,
         'user_id' => null,
         'last_used_at' => null,
@@ -408,7 +408,7 @@ class TokenCreatedResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -418,7 +418,7 @@ class TokenCreatedResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -432,7 +432,7 @@ class TokenCreatedResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -442,7 +442,7 @@ class TokenCreatedResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -466,7 +466,7 @@ class TokenCreatedResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a token.
+     * @param string|null $id id
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class TokenCreatedResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets user_id
      *
-     * @param string|null $user_id Alphanumeric string identifying the user.
+     * @param string|null $user_id user_id
      *
      * @return self
      */

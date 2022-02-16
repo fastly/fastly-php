@@ -53,7 +53,7 @@ class BillingResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'line_items' => 'Timestamps[]'
+        'line_items' => '\Fastly\Model\BillingResponseLineItem[]'
     ];
 
     /**
@@ -202,7 +202,7 @@ class BillingResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets line_items
      *
-     * @return Timestamps[]|null
+     * @return \Fastly\Model\BillingResponseLineItem[]|null
      */
     public function getLineItems()
     {
@@ -212,7 +212,7 @@ class BillingResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets line_items
      *
-     * @param Timestamps[]|null $line_items line_items
+     * @param \Fastly\Model\BillingResponseLineItem[]|null $line_items line_items
      *
      * @return self
      */

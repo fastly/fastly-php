@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 ## `deleteLogLogshuttle()`
 
 ```php
-deleteLogLogshuttle($options): object // Delete a Log Shuttle log endpoint
+deleteLogLogshuttle($options): \Fastly\Model\InlineResponse200 // Delete a Log Shuttle log endpoint
 ```
 
 Delete the Log Shuttle logging endpoint for a particular service and version.
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

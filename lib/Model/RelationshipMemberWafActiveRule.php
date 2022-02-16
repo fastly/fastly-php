@@ -242,7 +242,7 @@ class RelationshipMemberWafActiveRule implements ModelInterface, ArrayAccess, \J
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a WAF active rule.
+     * @param string|null $id id
      *
      * @return self
      */

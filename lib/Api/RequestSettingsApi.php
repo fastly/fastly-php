@@ -110,315 +110,6 @@ class RequestSettingsApi
     }
 
     /**
-     * Operation createRequestSettings
-     *
-     * Create a Request Settings object
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  int $version_id Integer identifying a service version. (required)
-     *
-     * @throws \Fastly\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Fastly\Model\RequestSettingsResponse
-     */
-    public function createRequestSettings($options)
-    {
-        list($response) = $this->createRequestSettingsWithHttpInfo($options);
-        return $response;
-    }
-
-    /**
-     * Operation createRequestSettingsWithHttpInfo
-     *
-     * Create a Request Settings object
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  int $version_id Integer identifying a service version. (required)
-     *
-     * @throws \Fastly\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\RequestSettingsResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createRequestSettingsWithHttpInfo($options)
-    {
-        $request = $this->createRequestSettingsRequest($options);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\Fastly\Model\RequestSettingsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\RequestSettingsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Fastly\Model\RequestSettingsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Fastly\Model\RequestSettingsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createRequestSettingsAsync
-     *
-     * Create a Request Settings object
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  int $version_id Integer identifying a service version. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createRequestSettingsAsync($options)
-    {
-        return $this->createRequestSettingsAsyncWithHttpInfo($options)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createRequestSettingsAsyncWithHttpInfo
-     *
-     * Create a Request Settings object
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  int $version_id Integer identifying a service version. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createRequestSettingsAsyncWithHttpInfo($options)
-    {
-        $returnType = '\Fastly\Model\RequestSettingsResponse';
-        $request = $this->createRequestSettingsRequest($options);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'createRequestSettings'
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  int $version_id Integer identifying a service version. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createRequestSettingsRequest($options)
-    {
-        // unbox the parameters from the associative array
-        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
-        $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
-
-        // verify the required parameter 'service_id' is set
-        if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $service_id when calling createRequestSettings'
-            );
-        }
-        // verify the required parameter 'version_id' is set
-        if ($version_id === null || (is_array($version_id) && count($version_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $version_id when calling createRequestSettings'
-            );
-        }
-
-        $resourcePath = '/service/{service_id}/version/{version_id}/request_settings';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($service_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'service_id' . '}',
-                ObjectSerializer::toPathValue($service_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($version_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'version_id' . '}',
-                ObjectSerializer::toPathValue($version_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/x-www-form-urlencoded']
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-        // this endpoint requires API token authentication
-        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
-        if ($apiToken !== null) {
-            $headers['Fastly-Key'] = $apiToken;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation deleteRequestSettings
      *
      * Delete a Request Settings object
@@ -431,7 +122,7 @@ class RequestSettingsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Fastly\Model\InlineResponse200
      */
     public function deleteRequestSettings($options)
     {
@@ -452,7 +143,7 @@ class RequestSettingsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteRequestSettingsWithHttpInfo($options)
     {
@@ -495,20 +186,20 @@ class RequestSettingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Fastly\Model\InlineResponse200';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -526,7 +217,7 @@ class RequestSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Fastly\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -576,7 +267,7 @@ class RequestSettingsApi
      */
     public function deleteRequestSettingsAsyncWithHttpInfo($options)
     {
-        $returnType = 'object';
+        $returnType = '\Fastly\Model\InlineResponse200';
         $request = $this->deleteRequestSettingsRequest($options);
 
         return $this->client

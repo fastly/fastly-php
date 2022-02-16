@@ -242,7 +242,7 @@ class RelationshipMemberWafFirewall implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a WAF Firewall.
+     * @param string|null $id id
      *
      * @return self
      */

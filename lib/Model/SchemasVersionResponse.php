@@ -60,9 +60,9 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'number' => 'int',
         'staging' => 'bool',
         'testing' => 'bool',
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'service_id' => 'string'
     ];
 
@@ -81,9 +81,9 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'number' => null,
         'staging' => null,
         'testing' => null,
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
         'service_id' => null
     ];
 
@@ -430,7 +430,7 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -440,7 +440,7 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -464,7 +464,7 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -478,7 +478,7 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -488,7 +488,7 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -512,7 +512,7 @@ class SchemasVersionResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */

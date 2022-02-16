@@ -248,7 +248,7 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a token.
+     * @param string|null $id id
      *
      * @return self
      */
@@ -272,7 +272,7 @@ class TokenResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets user_id
      *
-     * @param string|null $user_id Alphanumeric string identifying the user.
+     * @param string|null $user_id user_id
      *
      * @return self
      */

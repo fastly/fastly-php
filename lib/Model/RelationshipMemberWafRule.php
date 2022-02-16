@@ -242,7 +242,7 @@ class RelationshipMemberWafRule implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a WAF rule.
+     * @param string|null $id id
      *
      * @return self
      */

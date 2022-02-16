@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bucket_name** | **string** | The name of the GCS bucket. | [optional] 
-**path** | **string** |  | [optional] 
+**path** | **string** | The path to upload logs to. | [optional] 
 **public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional]  [defaults to 'null']
 
 

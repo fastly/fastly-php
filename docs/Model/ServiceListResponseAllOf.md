@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Alphanumeric string identifying the service. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **version** | **int** | Current [version](/reference/api/services/version/) of the service. | [optional] 
 **versions** | [**\Fastly\Model\SchemasVersionResponse[]**](SchemasVersionResponse.md) | A list of [versions](/reference/api/services/version/) associated with the service. | [optional] 
 

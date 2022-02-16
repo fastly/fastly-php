@@ -54,10 +54,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'name' => 'string',
-        'dynamic' => 'string',
+        'dynamic' => 'int',
         'type' => 'string',
         'content' => 'string',
-        'priority' => 'string'
+        'priority' => 'int'
     ];
 
     /**
@@ -176,8 +176,8 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    const DYNAMIC__0 = '0';
-    const DYNAMIC__1 = '1';
+    const DYNAMIC_0 = 0;
+    const DYNAMIC_1 = 1;
     const TYPE_INIT = 'init';
     const TYPE_RECV = 'recv';
     const TYPE_HASH = 'hash';
@@ -198,8 +198,8 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getDynamicAllowableValues()
     {
         return [
-            self::DYNAMIC__0,
-            self::DYNAMIC__1,
+            self::DYNAMIC_0,
+            self::DYNAMIC_1,
         ];
     }
 
@@ -244,7 +244,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['content'] = $data['content'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? '100';
+        $this->container['priority'] = $data['priority'] ?? 100;
     }
 
     /**
@@ -316,7 +316,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dynamic
      *
-     * @return string|null
+     * @return int|null
      */
     public function getDynamic()
     {
@@ -326,7 +326,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dynamic
      *
-     * @param string|null $dynamic Sets the snippet version.
+     * @param int|null $dynamic Sets the snippet version.
      *
      * @return self
      */
@@ -408,7 +408,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets priority
      *
-     * @return string|null
+     * @return int|null
      */
     public function getPriority()
     {
@@ -418,7 +418,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets priority
      *
-     * @param string|null $priority Numeric string value. Priority determines execution order. Lower numbers execute first.
+     * @param int|null $priority Priority determines execution order. Lower numbers execute first.
      *
      * @return self
      */

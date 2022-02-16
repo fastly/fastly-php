@@ -242,7 +242,7 @@ class RelationshipMemberTlsSubscription implements ModelInterface, ArrayAccess, 
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a TLS subscription.
+     * @param string|null $id id
      *
      * @return self
      */

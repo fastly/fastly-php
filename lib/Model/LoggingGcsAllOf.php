@@ -248,7 +248,7 @@ class LoggingGcsAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets path
      *
-     * @param string|null $path path
+     * @param string|null $path The path to upload logs to.
      *
      * @return self
      */

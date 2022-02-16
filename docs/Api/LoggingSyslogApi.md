@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 ## `deleteLogSyslog()`
 
 ```php
-deleteLogSyslog($options): object // Delete a syslog log endpoint
+deleteLogSyslog($options): \Fastly\Model\InlineResponse200 // Delete a syslog log endpoint
 ```
 
 Delete the Syslog for a particular service and version.
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

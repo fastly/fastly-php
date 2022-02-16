@@ -55,8 +55,10 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'comment' => 'string',
         'name' => 'string',
-        'priority' => 'int',
+        'priority' => 'string',
         'statement' => 'string',
+        'service_id' => 'string',
+        'version' => 'string',
         'type' => 'string'
     ];
 
@@ -72,6 +74,8 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'priority' => null,
         'statement' => null,
+        'service_id' => null,
+        'version' => null,
         'type' => null
     ];
 
@@ -106,6 +110,8 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'priority' => 'priority',
         'statement' => 'statement',
+        'service_id' => 'service_id',
+        'version' => 'version',
         'type' => 'type'
     ];
 
@@ -119,6 +125,8 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'priority' => 'setPriority',
         'statement' => 'setStatement',
+        'service_id' => 'setServiceId',
+        'version' => 'setVersion',
         'type' => 'setType'
     ];
 
@@ -132,6 +140,8 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'priority' => 'getPriority',
         'statement' => 'getStatement',
+        'service_id' => 'getServiceId',
+        'version' => 'getVersion',
         'type' => 'getType'
     ];
 
@@ -213,8 +223,10 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['comment'] = $data['comment'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? 100;
+        $this->container['priority'] = $data['priority'] ?? '100';
         $this->container['statement'] = $data['statement'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
     }
 
@@ -302,7 +314,7 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets priority
      *
-     * @return int|null
+     * @return string|null
      */
     public function getPriority()
     {
@@ -312,7 +324,7 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets priority
      *
-     * @param int|null $priority Priority determines execution order. Lower numbers execute first.
+     * @param string|null $priority A numeric string. Priority determines execution order. Lower numbers execute first.
      *
      * @return self
      */
@@ -343,6 +355,54 @@ class Condition implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStatement($statement)
     {
         $this->container['statement'] = $statement;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id service_id
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string|null $version A numeric string that represents the service version.
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }

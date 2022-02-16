@@ -242,7 +242,7 @@ class RelationshipMemberTlsActivation implements ModelInterface, ArrayAccess, \J
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a TLS activation.
+     * @param string|null $id id
      *
      * @return self
      */

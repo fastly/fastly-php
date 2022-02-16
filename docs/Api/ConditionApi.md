@@ -48,8 +48,10 @@ Name | Type | Description  | Notes
 **version_id** | **int** | Integer identifying a service version. |
 **comment** | **string** | A freeform descriptive note. | [optional]
 **name** | **string** | Name of the condition. Required. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
+**priority** | **string** | A numeric string. Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
 **statement** | **string** | A conditional expression in VCL used to determine if the condition is met. | [optional]
+**service_id** | [**string**](../Model/string.md) |  | [optional]
+**version** | **string** | A numeric string that represents the service version. | [optional]
 **type** | **string** | Type of the condition. Required. | [optional] [one of: 'REQUEST', 'CACHE', 'RESPONSE', 'PREFETCH']
 
 ### Return type
@@ -62,7 +64,7 @@ Name | Type | Description  | Notes
 ## `deleteCondition()`
 
 ```php
-deleteCondition($options): object // Delete a condition
+deleteCondition($options): \Fastly\Model\InlineResponse200 // Delete a condition
 ```
 
 Deletes the specified condition.
@@ -88,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -188,8 +190,10 @@ Name | Type | Description  | Notes
 **condition_name** | **string** | Name of the condition. Required. |
 **comment** | **string** | A freeform descriptive note. | [optional]
 **name** | **string** | Name of the condition. Required. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
+**priority** | **string** | A numeric string. Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
 **statement** | **string** | A conditional expression in VCL used to determine if the condition is met. | [optional]
+**service_id** | [**string**](../Model/string.md) |  | [optional]
+**version** | **string** | A numeric string that represents the service version. | [optional]
 **type** | **string** | Type of the condition. Required. | [optional] [one of: 'REQUEST', 'CACHE', 'RESPONSE', 'PREFETCH']
 
 ### Return type

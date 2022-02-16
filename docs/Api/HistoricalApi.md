@@ -240,7 +240,7 @@ This endpoint does not need any parameters.
 getUsage($options): \Fastly\Model\HistoricalUsageAggregateResponse // Get usage statistics
 ```
 
-Returns usage information aggregated across all Fastly services and grouped by region.
+Returns usage information aggregated across all Fastly services and grouped by region. To aggregate across all Fastly services by time period, see [`/stats/aggregate`](#get-hist-stats-aggregated).
 
 ### Example
 ```php
@@ -259,7 +259,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **from** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
 **to** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
-**by** | **string** | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. | [optional] [one of: 'hour', 'minute', 'day'] [defaults to 'day']
 
 ### Return type
 
@@ -308,7 +307,7 @@ Name | Type | Description  | Notes
 getUsageService($options): \Fastly\Model\HistoricalUsageServiceResponse // Get usage statistics per service
 ```
 
-Returns usage information aggregated by service and grouped by service and region.
+Returns usage information aggregated by service and grouped by service and region. For service stats by time period, see [`/stats`](#get-hist-stats) and [`/stats/field/:field`](#get-hist-stats-field).
 
 ### Example
 ```php
@@ -327,7 +326,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **from** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
 **to** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
-**by** | **string** | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. | [optional] [one of: 'hour', 'minute', 'day'] [defaults to 'day']
 
 ### Return type
 

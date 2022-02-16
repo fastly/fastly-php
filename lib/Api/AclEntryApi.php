@@ -122,7 +122,7 @@ class AclEntryApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Fastly\Model\InlineResponse200
      */
     public function bulkUpdateAclEntries($options)
     {
@@ -143,7 +143,7 @@ class AclEntryApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkUpdateAclEntriesWithHttpInfo($options)
     {
@@ -186,20 +186,20 @@ class AclEntryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Fastly\Model\InlineResponse200';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -217,7 +217,7 @@ class AclEntryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Fastly\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -267,7 +267,7 @@ class AclEntryApi
      */
     public function bulkUpdateAclEntriesAsyncWithHttpInfo($options)
     {
-        $returnType = 'object';
+        $returnType = '\Fastly\Model\InlineResponse200';
         $request = $this->bulkUpdateAclEntriesRequest($options);
 
         return $this->client
@@ -764,7 +764,7 @@ class AclEntryApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Fastly\Model\InlineResponse200
      */
     public function deleteAclEntry($options)
     {
@@ -785,7 +785,7 @@ class AclEntryApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAclEntryWithHttpInfo($options)
     {
@@ -828,20 +828,20 @@ class AclEntryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Fastly\Model\InlineResponse200';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -859,7 +859,7 @@ class AclEntryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Fastly\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -909,7 +909,7 @@ class AclEntryApi
      */
     public function deleteAclEntryAsyncWithHttpInfo($options)
     {
-        $returnType = 'object';
+        $returnType = '\Fastly\Model\InlineResponse200';
         $request = $this->deleteAclEntryRequest($options);
 
         return $this->client
@@ -1093,7 +1093,7 @@ class AclEntryApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\AclEntry
+     * @return \Fastly\Model\AclEntryResponse
      */
     public function getAclEntry($options)
     {
@@ -1114,7 +1114,7 @@ class AclEntryApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\AclEntry, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\AclEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAclEntryWithHttpInfo($options)
     {
@@ -1157,20 +1157,20 @@ class AclEntryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\AclEntry' === '\SplFileObject') {
+                    if ('\Fastly\Model\AclEntryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\AclEntry', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AclEntryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\AclEntry';
+            $returnType = '\Fastly\Model\AclEntryResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1188,7 +1188,7 @@ class AclEntryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\AclEntry',
+                        '\Fastly\Model\AclEntryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1238,7 +1238,7 @@ class AclEntryApi
      */
     public function getAclEntryAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\AclEntry';
+        $returnType = '\Fastly\Model\AclEntryResponse';
         $request = $this->getAclEntryRequest($options);
 
         return $this->client
@@ -1807,7 +1807,7 @@ class AclEntryApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\AclEntry
+     * @return \Fastly\Model\AclEntryResponse
      */
     public function updateAclEntry($options)
     {
@@ -1829,7 +1829,7 @@ class AclEntryApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\AclEntry, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\AclEntryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAclEntryWithHttpInfo($options)
     {
@@ -1872,20 +1872,20 @@ class AclEntryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\AclEntry' === '\SplFileObject') {
+                    if ('\Fastly\Model\AclEntryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\AclEntry', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AclEntryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\AclEntry';
+            $returnType = '\Fastly\Model\AclEntryResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1903,7 +1903,7 @@ class AclEntryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\AclEntry',
+                        '\Fastly\Model\AclEntryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1955,7 +1955,7 @@ class AclEntryApi
      */
     public function updateAclEntryAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\AclEntry';
+        $returnType = '\Fastly\Model\AclEntryResponse';
         $request = $this->updateAclEntryRequest($options);
 
         return $this->client

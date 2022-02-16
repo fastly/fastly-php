@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **max_file_size** | **int** | The maximum allowed file size, in bytes. | [optional]  [defaults to 10000000]
 **max_num_args** | **int** | The maximum number of arguments allowed. | [optional]  [defaults to 255]
 **notice_anomaly_score** | **int** | Score value to add for notice anomalies. | [optional]  [defaults to 4]
-**number** | **int** | Integer identifying a WAF firewall version. | [optional] [readonly] 
+**number** | **int** |  | [optional] [readonly] 
 **paranoia_level** | **int** | The configured paranoia level. | [optional]  [defaults to 1]
 **php_injection_score_threshold** | **int** | PHP injection threshold. | [optional] 
 **rce_score_threshold** | **int** | Remote code execution threshold. | [optional] 

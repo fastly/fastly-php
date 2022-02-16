@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**\Fastly\Model\TypeTlsActivation**](TypeTlsActivation.md) |  | [optional] 
 **relationships** | [**\Fastly\Model\RelationshipsForTlsActivation**](RelationshipsForTlsActivation.md) |  | [optional] 
-**id** | **string** | Alphanumeric string identifying a TLS activation. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **attributes** | [**\Fastly\Model\Timestamps**](Timestamps.md) |  | [optional] 
 
 

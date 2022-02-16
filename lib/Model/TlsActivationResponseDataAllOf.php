@@ -218,7 +218,7 @@ class TlsActivationResponseDataAllOf implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a TLS activation.
+     * @param string|null $id id
      *
      * @return self
      */

@@ -54,8 +54,8 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
       */
     protected static $fastlyTypes = [
         'customer_id' => 'string',
-        'services' => 'array<string,array<string,\Fastly\Model\AdditionalProperties>>',
-        'total' => 'array<string,object>'
+        'services' => 'array<string,array<string,\Fastly\Model\HistoricalUsageResults>>',
+        'total' => '\Fastly\Model\HistoricalUsageResults'
     ];
 
     /**
@@ -224,7 +224,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
     /**
      * Gets services
      *
-     * @return array<string,array<string,\Fastly\Model\AdditionalProperties>>|null
+     * @return array<string,array<string,\Fastly\Model\HistoricalUsageResults>>|null
      */
     public function getServices()
     {
@@ -248,7 +248,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
     /**
      * Sets services
      *
-     * @param array<string,array<string,\Fastly\Model\AdditionalProperties>>|null $services services
+     * @param array<string,array<string,\Fastly\Model\HistoricalUsageResults>>|null $services services
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
     /**
      * Gets total
      *
-     * @return array<string,object>|null
+     * @return \Fastly\Model\HistoricalUsageResults|null
      */
     public function getTotal()
     {
@@ -272,7 +272,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
     /**
      * Sets total
      *
-     * @param array<string,object>|null $total total
+     * @param \Fastly\Model\HistoricalUsageResults|null $total total
      *
      * @return self
      */

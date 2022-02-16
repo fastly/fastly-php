@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ## `deleteUser()`
 
 ```php
-deleteUser($options): object // Delete a user
+deleteUser($options): \Fastly\Model\InlineResponse200 // Delete a user
 ```
 
 Delete a user.
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ## `requestPasswordReset()`
 
 ```php
-requestPasswordReset($options): object // Request a password reset
+requestPasswordReset($options): \Fastly\Model\InlineResponse200 // Request a password reset
 ```
 
 Requests a password reset for the specified user.
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

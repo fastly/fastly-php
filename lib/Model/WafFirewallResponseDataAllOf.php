@@ -224,7 +224,7 @@ class WafFirewallResponseDataAllOf implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a WAF Firewall.
+     * @param string|null $id id
      *
      * @return self
      */

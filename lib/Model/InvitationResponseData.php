@@ -302,7 +302,7 @@ class InvitationResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying an invitation.
+     * @param string|null $id id
      *
      * @return self
      */

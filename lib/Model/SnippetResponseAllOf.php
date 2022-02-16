@@ -212,7 +212,7 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a VCL Snippet.
+     * @param string|null $id id
      *
      * @return self
      */

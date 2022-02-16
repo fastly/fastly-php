@@ -511,7 +511,7 @@ class LoggingScalyrApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Fastly\Model\InlineResponse200
      */
     public function deleteLogScalyr($options)
     {
@@ -532,7 +532,7 @@ class LoggingScalyrApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteLogScalyrWithHttpInfo($options)
     {
@@ -575,20 +575,20 @@ class LoggingScalyrApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Fastly\Model\InlineResponse200';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -606,7 +606,7 @@ class LoggingScalyrApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Fastly\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -656,7 +656,7 @@ class LoggingScalyrApi
      */
     public function deleteLogScalyrAsyncWithHttpInfo($options)
     {
-        $returnType = 'object';
+        $returnType = '\Fastly\Model\InlineResponse200';
         $request = $this->deleteLogScalyrRequest($options);
 
         return $this->client

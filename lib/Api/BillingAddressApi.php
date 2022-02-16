@@ -117,7 +117,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 inline_object3 (optional)
+     * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -137,7 +137,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 (optional)
+     * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -233,7 +233,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 (optional)
+     * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -256,7 +256,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 (optional)
+     * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -305,7 +305,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject3 $inline_object3 (optional)
+     * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -314,7 +314,7 @@ class BillingAddressApi
     {
         // unbox the parameters from the associative array
         $customer_id = array_key_exists('customer_id', $options) ? $options['customer_id'] : null;
-        $inline_object3 = array_key_exists('inline_object3', $options) ? $options['inline_object3'] : null;
+        $billing_address_request = array_key_exists('billing_address_request', $options) ? $options['billing_address_request'] : null;
 
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
@@ -354,11 +354,11 @@ class BillingAddressApi
         }
 
         // for model (json/xml)
-        if (isset($inline_object3)) {
+        if (isset($billing_address_request)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object3));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($billing_address_request));
             } else {
-                $httpBody = $inline_object3;
+                $httpBody = $billing_address_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -951,7 +951,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 inline_object4 (optional)
+     * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -971,7 +971,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
+     * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1067,7 +1067,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
+     * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1090,7 +1090,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
+     * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1139,7 +1139,7 @@ class BillingAddressApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  \Fastly\Model\InlineObject4 $inline_object4 (optional)
+     * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1148,7 +1148,7 @@ class BillingAddressApi
     {
         // unbox the parameters from the associative array
         $customer_id = array_key_exists('customer_id', $options) ? $options['customer_id'] : null;
-        $inline_object4 = array_key_exists('inline_object4', $options) ? $options['inline_object4'] : null;
+        $update_billing_address_request = array_key_exists('update_billing_address_request', $options) ? $options['update_billing_address_request'] : null;
 
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
@@ -1188,11 +1188,11 @@ class BillingAddressApi
         }
 
         // for model (json/xml)
-        if (isset($inline_object4)) {
+        if (isset($update_billing_address_request)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object4));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($update_billing_address_request));
             } else {
-                $httpBody = $inline_object4;
+                $httpBody = $update_billing_address_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

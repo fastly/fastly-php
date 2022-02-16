@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 ## `deleteLogGcpPubsub()`
 
 ```php
-deleteLogGcpPubsub($options): object // Delete a GCP Cloud Pub/Sub log endpoint
+deleteLogGcpPubsub($options): \Fastly\Model\InlineResponse200 // Delete a GCP Cloud Pub/Sub log endpoint
 ```
 
 Delete a Pub/Sub logging object for a particular service and version.
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

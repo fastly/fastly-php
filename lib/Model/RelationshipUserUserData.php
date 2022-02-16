@@ -242,7 +242,7 @@ class RelationshipUserUserData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying the user.
+     * @param string|null $id id
      *
      * @return self
      */

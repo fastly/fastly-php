@@ -54,7 +54,7 @@ class WafActiveRuleDataAttributes implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $fastlyTypes = [
         'modsec_rule_id' => 'int',
-        'revision' => 'OneOfNumberString',
+        'revision' => '\Fastly\Model\WafRuleRevisionOrLatest',
         'status' => 'string'
     ];
 
@@ -264,7 +264,7 @@ class WafActiveRuleDataAttributes implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets revision
      *
-     * @return OneOfNumberString|null
+     * @return \Fastly\Model\WafRuleRevisionOrLatest|null
      */
     public function getRevision()
     {
@@ -274,7 +274,7 @@ class WafActiveRuleDataAttributes implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets revision
      *
-     * @param OneOfNumberString|null $revision revision
+     * @param \Fastly\Model\WafRuleRevisionOrLatest|null $revision revision
      *
      * @return self
      */

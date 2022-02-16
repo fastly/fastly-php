@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **array&lt;string,object&gt;** |  | [optional] 
+**data** | [**\Fastly\Model\HistoricalUsageResults**](HistoricalUsageResults.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

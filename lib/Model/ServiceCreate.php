@@ -302,7 +302,7 @@ class ServiceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */

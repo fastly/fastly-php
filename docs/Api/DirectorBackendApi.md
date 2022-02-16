@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 ## `deleteDirectorBackend()`
 
 ```php
-deleteDirectorBackend($options): object // Delete a director-backend relationship
+deleteDirectorBackend($options): \Fastly\Model\InlineResponse200 // Delete a director-backend relationship
 ```
 
 Deletes the relationship between a Backend and a Director. The Backend is no longer considered a member of the Director and thus will not have traffic balanced onto it from this Director.
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

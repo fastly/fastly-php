@@ -242,7 +242,7 @@ class RelationshipMemberCustomer implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying the customer.
+     * @param string|null $id id
      *
      * @return self
      */

@@ -55,8 +55,8 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'backends' => '\Fastly\Model\BackendResponse[]',
         'cache_settings' => '\Fastly\Model\CacheSettingResponse[]',
-        'conditions' => '\Fastly\Model\SchemasConditionResponse[]',
-        'directors' => '\Fastly\Model\SchemasDirector[]',
+        'conditions' => '\Fastly\Model\ConditionResponse[]',
+        'directors' => '\Fastly\Model\Director[]',
         'domains' => '\Fastly\Model\DomainResponse[]',
         'gzips' => '\Fastly\Model\GzipResponse[]',
         'headers' => '\Fastly\Model\HeaderResponse[]',
@@ -328,7 +328,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets conditions
      *
-     * @return \Fastly\Model\SchemasConditionResponse[]|null
+     * @return \Fastly\Model\ConditionResponse[]|null
      */
     public function getConditions()
     {
@@ -338,7 +338,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets conditions
      *
-     * @param \Fastly\Model\SchemasConditionResponse[]|null $conditions List of conditions associated to this service.
+     * @param \Fastly\Model\ConditionResponse[]|null $conditions List of conditions associated to this service.
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets directors
      *
-     * @return \Fastly\Model\SchemasDirector[]|null
+     * @return \Fastly\Model\Director[]|null
      */
     public function getDirectors()
     {
@@ -362,7 +362,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets directors
      *
-     * @param \Fastly\Model\SchemasDirector[]|null $directors List of directors associated to this service.
+     * @param \Fastly\Model\Director[]|null $directors List of directors associated to this service.
      *
      * @return self
      */
@@ -530,7 +530,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets settings
      *
-     * @param Settings|null $settings settings
+     * @param Settings|null $settings List of default settings for this service.
      *
      * @return self
      */

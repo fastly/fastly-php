@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**active_version** | [**\Fastly\Model\NestedVersion**](NestedVersion.md) |  | [optional] 
+**active_version** | [**NestedVersion**](NestedVersion.md) |  | [optional] 
 **version** | [**\Fastly\Model\NestedVersion**](NestedVersion.md) |  | [optional] 
 
 

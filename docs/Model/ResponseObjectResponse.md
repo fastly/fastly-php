@@ -11,11 +11,11 @@ Name | Type | Description | Notes
 **status** | **int** | The HTTP status code. | [optional]  [defaults to 200]
 **response** | **string** | The HTTP response. | [optional]  [defaults to 'Ok']
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] [readonly] 
-**version** | **int** | Integer identifying a service version. | [optional] [readonly] 
-**created_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**deleted_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**updated_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
+**created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

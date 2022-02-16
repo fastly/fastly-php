@@ -242,7 +242,7 @@ class RelationshipMemberService implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying the service.
+     * @param string|null $id id
      *
      * @return self
      */

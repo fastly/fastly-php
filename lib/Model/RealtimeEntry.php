@@ -225,7 +225,7 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recorded
      *
-     * @param int|null $recorded recorded
+     * @param int|null $recorded The Unix timestamp at which this record's data was generated.
      *
      * @return self
      */
@@ -249,7 +249,7 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets aggregated
      *
-     * @param RealtimeMeasurements|null $aggregated aggregated
+     * @param RealtimeMeasurements|null $aggregated Aggregates [measurements](#measurements-data-model) across all Fastly POPs.
      *
      * @return self
      */

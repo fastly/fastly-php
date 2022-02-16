@@ -53,7 +53,7 @@ class HistoricalUsageServiceResponseAllOf implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'array<string,object>'
+        'data' => '\Fastly\Model\HistoricalUsageResults'
     ];
 
     /**
@@ -202,7 +202,7 @@ class HistoricalUsageServiceResponseAllOf implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return array<string,object>|null
+     * @return \Fastly\Model\HistoricalUsageResults|null
      */
     public function getData()
     {
@@ -212,7 +212,7 @@ class HistoricalUsageServiceResponseAllOf implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param array<string,object>|null $data data
+     * @param \Fastly\Model\HistoricalUsageResults|null $data data
      *
      * @return self
      */

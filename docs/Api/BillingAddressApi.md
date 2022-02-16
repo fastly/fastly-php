@@ -44,7 +44,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **customer_id** | **string** | Alphanumeric string identifying the customer. |
-**inline_object3** | [**\Fastly\Model\InlineObject3**](../Model/InlineObject3.md) |  | [optional]
+**billing_address_request** | [**\Fastly\Model\BillingAddressRequest**](../Model/BillingAddressRequest.md) | Billing address | [optional]
 
 ### Return type
 
@@ -141,7 +141,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **customer_id** | **string** | Alphanumeric string identifying the customer. |
-**inline_object4** | [**\Fastly\Model\InlineObject4**](../Model/InlineObject4.md) |  | [optional]
+**update_billing_address_request** | [**\Fastly\Model\UpdateBillingAddressRequest**](../Model/UpdateBillingAddressRequest.md) | One or more billing address attributes | [optional]
 
 ### Return type
 

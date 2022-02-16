@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 ## `deleteGzipConfig()`
 
 ```php
-deleteGzipConfig($options): object // Delete a gzip configuration
+deleteGzipConfig($options): \Fastly\Model\InlineResponse200 // Delete a gzip configuration
 ```
 
 Delete a named gzip configuration on a particular service and version.
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Alphanumeric string identifying a TLS configuration. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **attributes** | [**Timestamps**](Timestamps.md) |  | [optional] 
 
 

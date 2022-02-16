@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Alphanumeric string identifying an invitation. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **attributes** | [**\Fastly\Model\Timestamps**](Timestamps.md) |  | [optional] 
 **relationships** | [**\Fastly\Model\RelationshipsForInvitation**](RelationshipsForInvitation.md) |  | [optional] 
 

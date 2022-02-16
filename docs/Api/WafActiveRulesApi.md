@@ -14,7 +14,6 @@ $apiInstance = new Fastly\Api\WafActiveRulesApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
-[**bulkDeleteWafActiveRules()**](WafActiveRulesApi.md#bulkDeleteWafActiveRules) | **DELETE** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | Delete multiple active rules from a WAF
 [**bulkUpdateWafActiveRules()**](WafActiveRulesApi.md#bulkUpdateWafActiveRules) | **PATCH** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/bulk | Update multiple active rules
 [**createWafActiveRule()**](WafActiveRulesApi.md#createWafActiveRule) | **POST** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | Add a rule to a WAF as an active rule
 [**createWafActiveRulesTag()**](WafActiveRulesApi.md#createWafActiveRulesTag) | **POST** /waf/firewalls/{firewall_id}/versions/{version_id}/tags/{waf_tag_name}/active-rules | Create active rules by tag
@@ -23,40 +22,6 @@ Method | Fastly API endpoint | Description
 [**listWafActiveRules()**](WafActiveRulesApi.md#listWafActiveRules) | **GET** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | List active rules on a WAF
 [**updateWafActiveRule()**](WafActiveRulesApi.md#updateWafActiveRule) | **PATCH** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/{waf_rule_id} | Update an active rule
 
-
-## `bulkDeleteWafActiveRules()`
-
-```php
-bulkDeleteWafActiveRules($options) // Delete multiple active rules from a WAF
-```
-
-Delete many active rules on a particular firewall version using the active rule ID. Limited to 500 rules per request.
-
-### Example
-```php
-try {
-    $apiInstance->bulkDeleteWafActiveRules($options);
-} catch (Exception $e) {
-    echo 'Exception when calling WafActiveRulesApi->bulkDeleteWafActiveRules: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**firewall_id** | **string** | Alphanumeric string identifying a WAF Firewall. |
-**version_id** | **int** | Integer identifying a service version. |
-**body** | **object** |  | [optional]
-
-### Return type
-
-void (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
 
 ## `bulkUpdateWafActiveRules()`
 

@@ -224,7 +224,7 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */
@@ -248,7 +248,7 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying a Server.
+     * @param string|null $id id
      *
      * @return self
      */
@@ -272,7 +272,7 @@ class ServerResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets pool_id
      *
-     * @param string|null $pool_id Alphanumeric string identifying a Pool.
+     * @param string|null $pool_id pool_id
      *
      * @return self
      */

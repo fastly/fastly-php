@@ -11,11 +11,11 @@ Name | Type | Description | Notes
 **format** | **mixed** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest. | [optional] 
 **token** | **string** | The Insert API key from the Account page of your New Relic account. Required. | [optional] 
 **region** | **string** | The region to which to stream logs. | [optional]  [one of: 'US', 'EU'] [defaults to 'US']
-**created_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**deleted_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**updated_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] [readonly] 
-**version** | **int** | Integer identifying a service version. | [optional] [readonly] 
+**created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

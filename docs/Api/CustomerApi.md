@@ -24,7 +24,7 @@ Method | Fastly API endpoint | Description
 ## `deleteCustomer()`
 
 ```php
-deleteCustomer($options): object // Delete a customer
+deleteCustomer($options): \Fastly\Model\InlineResponse200 // Delete a customer
 ```
 
 Delete a customer.
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

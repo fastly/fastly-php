@@ -120,8 +120,10 @@ class ConditionApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -145,8 +147,10 @@ class ConditionApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -246,8 +250,10 @@ class ConditionApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -274,8 +280,10 @@ class ConditionApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -328,8 +336,10 @@ class ConditionApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -342,8 +352,10 @@ class ConditionApi
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
-        $priority = array_key_exists('priority', $options) ? $options['priority'] : 100;
+        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
         $statement = array_key_exists('statement', $options) ? $options['statement'] : null;
+        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $version = array_key_exists('version', $options) ? $options['version'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
 
         // verify the required parameter 'service_id' is set
@@ -400,6 +412,14 @@ class ConditionApi
         // form params
         if ($statement !== null) {
             $formParams['statement'] = ObjectSerializer::toFormValue($statement);
+        }
+        // form params
+        if ($service_id !== null) {
+            $formParams['service_id'] = ObjectSerializer::toFormValue($service_id);
+        }
+        // form params
+        if ($version !== null) {
+            $formParams['version'] = ObjectSerializer::toFormValue($version);
         }
         // form params
         if ($type !== null) {
@@ -481,7 +501,7 @@ class ConditionApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \Fastly\Model\InlineResponse200
      */
     public function deleteCondition($options)
     {
@@ -502,7 +522,7 @@ class ConditionApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteConditionWithHttpInfo($options)
     {
@@ -545,20 +565,20 @@ class ConditionApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Fastly\Model\InlineResponse200';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -576,7 +596,7 @@ class ConditionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Fastly\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -626,7 +646,7 @@ class ConditionApi
      */
     public function deleteConditionAsyncWithHttpInfo($options)
     {
-        $returnType = 'object';
+        $returnType = '\Fastly\Model\InlineResponse200';
         $request = $this->deleteConditionRequest($options);
 
         return $this->client
@@ -1447,8 +1467,10 @@ class ConditionApi
      * @param  string $condition_name Name of the condition. Required. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1473,8 +1495,10 @@ class ConditionApi
      * @param  string $condition_name Name of the condition. Required. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1575,8 +1599,10 @@ class ConditionApi
      * @param  string $condition_name Name of the condition. Required. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1604,8 +1630,10 @@ class ConditionApi
      * @param  string $condition_name Name of the condition. Required. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1659,8 +1687,10 @@ class ConditionApi
      * @param  string $condition_name Name of the condition. Required. (required)
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  string $name Name of the condition. Required. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority A numeric string. Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      * @param  string $statement A conditional expression in VCL used to determine if the condition is met. (optional)
+     * @param  string $service_id (optional)
+     * @param  string $version A numeric string that represents the service version. (optional)
      * @param  string $type Type of the condition. Required. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1674,8 +1704,10 @@ class ConditionApi
         $condition_name = array_key_exists('condition_name', $options) ? $options['condition_name'] : null;
         $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
-        $priority = array_key_exists('priority', $options) ? $options['priority'] : 100;
+        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
         $statement = array_key_exists('statement', $options) ? $options['statement'] : null;
+        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $version = array_key_exists('version', $options) ? $options['version'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
 
         // verify the required parameter 'service_id' is set
@@ -1746,6 +1778,14 @@ class ConditionApi
         // form params
         if ($statement !== null) {
             $formParams['statement'] = ObjectSerializer::toFormValue($statement);
+        }
+        // form params
+        if ($service_id !== null) {
+            $formParams['service_id'] = ObjectSerializer::toFormValue($service_id);
+        }
+        // form params
+        if ($version !== null) {
+            $formParams['version'] = ObjectSerializer::toFormValue($version);
         }
         // form params
         if ($type !== null) {

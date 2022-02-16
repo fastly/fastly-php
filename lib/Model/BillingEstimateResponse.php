@@ -53,8 +53,8 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'end_time' => 'string',
-        'start_time' => 'string',
+        'end_time' => '\DateTime',
+        'start_time' => '\DateTime',
         'invoice_id' => 'string',
         'customer_id' => 'string',
         'status' => '\Fastly\Model\BillingStatus',
@@ -71,8 +71,8 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'end_time' => null,
-        'start_time' => null,
+        'end_time' => 'date-time',
+        'start_time' => 'date-time',
         'invoice_id' => null,
         'customer_id' => null,
         'status' => null,
@@ -244,7 +244,7 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets end_time
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getEndTime()
     {
@@ -254,7 +254,7 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets end_time
      *
-     * @param string|null $end_time Date and time in ISO 8601 format.
+     * @param \DateTime|null $end_time Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -268,7 +268,7 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets start_time
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getStartTime()
     {
@@ -278,7 +278,7 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets start_time
      *
-     * @param string|null $start_time Date and time in ISO 8601 format.
+     * @param \DateTime|null $start_time Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -302,7 +302,7 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets invoice_id
      *
-     * @param string|null $invoice_id Alphanumeric string identifying the invoice.
+     * @param string|null $invoice_id invoice_id
      *
      * @return self
      */
@@ -326,7 +326,7 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */

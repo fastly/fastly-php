@@ -60,9 +60,9 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'ttl' => 'int',
         'service_id' => 'string',
         'version' => 'int',
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string'
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -80,9 +80,9 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'ttl' => null,
         'service_id' => null,
         'version' => null,
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -422,7 +422,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */
@@ -446,7 +446,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets version
      *
-     * @param int|null $version Integer identifying a service version.
+     * @param int|null $version version
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -470,7 +470,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -484,7 +484,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -494,7 +494,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -518,7 +518,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */

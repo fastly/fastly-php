@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Alphanumeric string identifying a service authorization. | [optional] [readonly] 
+**id** | **string** |  | [optional] [readonly] 
 **attributes** | [**\Fastly\Model\Timestamps**](Timestamps.md) |  | [optional] 
 
 

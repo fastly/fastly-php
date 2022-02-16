@@ -16,11 +16,11 @@ Name | Type | Description | Notes
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional] 
 **timer_support** | **int** | Injects the X-Timer info into the request for viewing origin fetch durations. | [optional] 
 **xff** | **string** | Short for X-Forwarded-For. | [optional]  [one of: 'clear', 'leave', 'append', 'append_all', 'overwrite']
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] [readonly] 
-**version** | **int** | Integer identifying a service version. | [optional] [readonly] 
-**created_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**deleted_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**updated_at** | **string** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
+**created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
+**updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

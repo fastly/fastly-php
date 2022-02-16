@@ -30,6 +30,7 @@ use \Fastly\ObjectSerializer;
  * NestedVersion Class Doc Comment
  *
  * @category Class
+ * @description Configuration for the active [version](/reference/api/services/version/) of this service.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
@@ -60,14 +61,14 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
         'number' => 'int',
         'staging' => 'bool',
         'testing' => 'bool',
-        'created_at' => 'string',
-        'deleted_at' => 'string',
-        'updated_at' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'service_id' => 'string',
         'backends' => '\Fastly\Model\BackendResponse[]',
         'cache_settings' => '\Fastly\Model\CacheSettingResponse[]',
-        'conditions' => '\Fastly\Model\SchemasConditionResponse[]',
-        'directors' => '\Fastly\Model\SchemasDirector[]',
+        'conditions' => '\Fastly\Model\ConditionResponse[]',
+        'directors' => '\Fastly\Model\Director[]',
         'domains' => '\Fastly\Model\DomainResponse[]',
         'gzips' => '\Fastly\Model\GzipResponse[]',
         'headers' => '\Fastly\Model\HeaderResponse[]',
@@ -95,9 +96,9 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
         'number' => null,
         'staging' => null,
         'testing' => null,
-        'created_at' => null,
-        'deleted_at' => null,
-        'updated_at' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
         'service_id' => null,
         'backends' => null,
         'cache_settings' => null,
@@ -514,7 +515,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -524,7 +525,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -538,7 +539,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDeletedAt()
     {
@@ -548,7 +549,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param string|null $deleted_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -562,7 +563,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -572,7 +573,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date and time in ISO 8601 format.
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
      *
      * @return self
      */
@@ -596,7 +597,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_id
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param string|null $service_id service_id
      *
      * @return self
      */
@@ -658,7 +659,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets conditions
      *
-     * @return \Fastly\Model\SchemasConditionResponse[]|null
+     * @return \Fastly\Model\ConditionResponse[]|null
      */
     public function getConditions()
     {
@@ -668,7 +669,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets conditions
      *
-     * @param \Fastly\Model\SchemasConditionResponse[]|null $conditions List of conditions associated to this service.
+     * @param \Fastly\Model\ConditionResponse[]|null $conditions List of conditions associated to this service.
      *
      * @return self
      */
@@ -682,7 +683,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets directors
      *
-     * @return \Fastly\Model\SchemasDirector[]|null
+     * @return \Fastly\Model\Director[]|null
      */
     public function getDirectors()
     {
@@ -692,7 +693,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets directors
      *
-     * @param \Fastly\Model\SchemasDirector[]|null $directors List of directors associated to this service.
+     * @param \Fastly\Model\Director[]|null $directors List of directors associated to this service.
      *
      * @return self
      */
@@ -860,7 +861,7 @@ class NestedVersion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets settings
      *
-     * @param Settings|null $settings settings
+     * @param Settings|null $settings List of default settings for this service.
      *
      * @return self
      */

@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 ## `getInvoiceById()`
 
 ```php
-getInvoiceById($options) // Get an invoice
+getInvoiceById($options): \Fastly\Model\BillingResponse // Get an invoice
 ```
 
 Get the invoice for the given invoice_id.
@@ -63,7 +63,7 @@ Get the invoice for the given invoice_id.
 ### Example
 ```php
 try {
-    $apiInstance->getInvoiceById($options);
+    $result = $apiInstance->getInvoiceById($options);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->getInvoiceById: ', $e->getMessage(), PHP_EOL;
 }
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Fastly\Model\BillingResponse**](../Model/BillingResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

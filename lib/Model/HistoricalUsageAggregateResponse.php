@@ -56,7 +56,7 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
         'status' => 'string',
         'meta' => '\Fastly\Model\HistoricalMeta',
         'msg' => 'string',
-        'data' => 'array<string,object>'
+        'data' => '\Fastly\Model\HistoricalUsageResults'
     ];
 
     /**
@@ -292,7 +292,7 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets data
      *
-     * @return array<string,object>|null
+     * @return \Fastly\Model\HistoricalUsageResults|null
      */
     public function getData()
     {
@@ -302,7 +302,7 @@ class HistoricalUsageAggregateResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets data
      *
-     * @param array<string,object>|null $data data
+     * @param \Fastly\Model\HistoricalUsageResults|null $data data
      *
      * @return self
      */

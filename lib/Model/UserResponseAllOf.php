@@ -224,7 +224,7 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying the user.
+     * @param string|null $id id
      *
      * @return self
      */
@@ -272,7 +272,7 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */
