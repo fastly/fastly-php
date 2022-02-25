@@ -55,7 +55,7 @@ class WafTagsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
         'meta' => '\Fastly\Model\PaginationMeta',
-        'data' => 'WafTag[]',
+        'data' => '\Fastly\Model\WafTagsResponseDataItem[]',
         'included' => '\Fastly\Model\WafRule[]'
     ];
 
@@ -268,7 +268,7 @@ class WafTagsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return WafTag[]|null
+     * @return \Fastly\Model\WafTagsResponseDataItem[]|null
      */
     public function getData()
     {
@@ -278,7 +278,7 @@ class WafTagsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param WafTag[]|null $data data
+     * @param \Fastly\Model\WafTagsResponseDataItem[]|null $data data
      *
      * @return self
      */

@@ -64,8 +64,8 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'publish_key' => 'string',
         'paused' => 'bool',
         'versions' => '\Fastly\Model\SchemasVersionResponse[]',
-        'active_version' => 'NestedVersion',
-        'version' => '\Fastly\Model\NestedVersion'
+        'active_version' => '\Fastly\Model\ServiceVersionDetailOrNull',
+        'version' => '\Fastly\Model\ServiceVersionDetail'
     ];
 
     /**
@@ -572,7 +572,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets active_version
      *
-     * @return NestedVersion|null
+     * @return \Fastly\Model\ServiceVersionDetailOrNull|null
      */
     public function getActiveVersion()
     {
@@ -582,7 +582,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets active_version
      *
-     * @param NestedVersion|null $active_version active_version
+     * @param \Fastly\Model\ServiceVersionDetailOrNull|null $active_version active_version
      *
      * @return self
      */
@@ -596,7 +596,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets version
      *
-     * @return \Fastly\Model\NestedVersion|null
+     * @return \Fastly\Model\ServiceVersionDetail|null
      */
     public function getVersion()
     {
@@ -606,7 +606,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param \Fastly\Model\NestedVersion|null $version version
+     * @param \Fastly\Model\ServiceVersionDetail|null $version version
      *
      * @return self
      */

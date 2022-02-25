@@ -6,7 +6,7 @@ A PHP client library for interacting with most facets of the [Fastly API](https:
 
 **We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases. Please try out the library in a test environment, see what breaks without worrying about consequences, and give us [feedback](#issues).
 
-See [Fastly Product Lifecycle](https://docs.fastly.com/products/fastly-product-lifecycle) for details.
+Read about the [Fastly Product Lifecycle](https://docs.fastly.com/products/fastly-product-lifecycle).
 
 
 ## Installation
@@ -158,6 +158,7 @@ Class | Method | Description
 [*DomainApi*](docs/Api/DomainApi.md) | [**getDomain**](docs/Api/DomainApi.md#getdomain) | Describe a domain
 [*DomainApi*](docs/Api/DomainApi.md) | [**listDomains**](docs/Api/DomainApi.md#listdomains) | List domains
 [*DomainApi*](docs/Api/DomainApi.md) | [**updateDomain**](docs/Api/DomainApi.md#updatedomain) | Update a domain
+[*DomainOwnershipsApi*](docs/Api/DomainOwnershipsApi.md) | [**listDomainOwnerships**](docs/Api/DomainOwnershipsApi.md#listdomainownerships) | List domain-ownerships
 [*EventsApi*](docs/Api/EventsApi.md) | [**getEvent**](docs/Api/EventsApi.md#getevent) | Get an event
 [*EventsApi*](docs/Api/EventsApi.md) | [**listEvents**](docs/Api/EventsApi.md#listevents) | List events
 [*GzipApi*](docs/Api/GzipApi.md) | [**createGzipConfig**](docs/Api/GzipApi.md#creategzipconfig) | Create a gzip configuration
@@ -356,6 +357,11 @@ Class | Method | Description
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**getRequestSettings**](docs/Api/RequestSettingsApi.md#getrequestsettings) | Get a Request Settings object
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**listRequestSettings**](docs/Api/RequestSettingsApi.md#listrequestsettings) | List Request Settings objects
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**updateRequestSettings**](docs/Api/RequestSettingsApi.md#updaterequestsettings) | Update a Request Settings object
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**createResource**](docs/Api/ResourceApi.md#createresource) | Create a resource
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**deleteResource**](docs/Api/ResourceApi.md#deleteresource) | Delete a resource
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**getResource**](docs/Api/ResourceApi.md#getresource) | Display a resource
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**listResources**](docs/Api/ResourceApi.md#listresources) | List resources
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**updateResource**](docs/Api/ResourceApi.md#updateresource) | Update a resource
 [*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**deleteResponseObject**](docs/Api/ResponseObjectApi.md#deleteresponseobject) | Delete a Response Object
 [*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**getResponseObject**](docs/Api/ResponseObjectApi.md#getresponseobject) | Get a Response object
 [*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**listResponseObjects**](docs/Api/ResponseObjectApi.md#listresponseobjects) | List Response objects
@@ -412,13 +418,13 @@ Class | Method | Description
 [*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**deleteTlsKey**](docs/Api/TlsPrivateKeysApi.md#deletetlskey) | Delete a TLS private key
 [*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**getTlsKey**](docs/Api/TlsPrivateKeysApi.md#gettlskey) | Get a TLS private key
 [*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**listTlsKeys**](docs/Api/TlsPrivateKeysApi.md#listtlskeys) | List TLS private keys
+[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**createGlobalsignEmailChallenge**](docs/Api/TlsSubscriptionsApi.md#createglobalsignemailchallenge) | Creates a GlobalSign email challenge.
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**createTlsSub**](docs/Api/TlsSubscriptionsApi.md#createtlssub) | Create a TLS subscription
+[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**deleteGlobalsignEmailChallenge**](docs/Api/TlsSubscriptionsApi.md#deleteglobalsignemailchallenge) | Delete a GlobalSign email challenge
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**deleteTlsSub**](docs/Api/TlsSubscriptionsApi.md#deletetlssub) | Delete a TLS subscription
-[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId**](docs/Api/TlsSubscriptionsApi.md#deletetlssubscriptionstlssubscriptionidauthorizationstlsauthorizationidglobalsignemailchallengesglobalsignemailchallengeid) | Delete a GlobalSign email challenge
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**getTlsSub**](docs/Api/TlsSubscriptionsApi.md#gettlssub) | Get a TLS subscription
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**listTlsSubs**](docs/Api/TlsSubscriptionsApi.md#listtlssubs) | List TLS subscriptions
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**patchTlsSub**](docs/Api/TlsSubscriptionsApi.md#patchtlssub) | Update a TLS subscription
-[*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges**](docs/Api/TlsSubscriptionsApi.md#posttlssubscriptionstlssubscriptionidauthorizationstlsauthorizationidglobalsignemailchallenges) | Creates a GlobalSign email challenge.
 [*TokensApi*](docs/Api/TokensApi.md) | [**getTokenCurrent**](docs/Api/TokensApi.md#gettokencurrent) | Get the current token
 [*TokensApi*](docs/Api/TokensApi.md) | [**listTokensCustomer**](docs/Api/TokensApi.md#listtokenscustomer) | List tokens for a customer
 [*TokensApi*](docs/Api/TokensApi.md) | [**listTokensUser**](docs/Api/TokensApi.md#listtokensuser) | List tokens for the authenticated user

@@ -1004,6 +1004,7 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version Number identifying a version of the service. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1023,6 +1024,7 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version Number identifying a version of the service. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1118,6 +1120,7 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version Number identifying a version of the service. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1140,6 +1143,7 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version Number identifying a version of the service. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1188,6 +1192,7 @@ class ServiceApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version Number identifying a version of the service. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1196,6 +1201,7 @@ class ServiceApi
     {
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $version = array_key_exists('version', $options) ? $options['version'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1203,6 +1209,10 @@ class ServiceApi
                 'Missing the required parameter $service_id when calling getServiceDetail'
             );
         }
+        if ($version !== null && $version < 1) {
+            throw new \InvalidArgumentException('invalid value for "$version" when calling ServiceApi.getServiceDetail, must be bigger than or equal to 1.');
+        }
+
 
         $resourcePath = '/service/{service_id}/details';
         $formParams = [];
@@ -1211,6 +1221,17 @@ class ServiceApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($version !== null) {
+            if('form' === 'form' && is_array($version)) {
+                foreach($version as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['version'] = $version;
+            }
+        }
 
 
         // path params

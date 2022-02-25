@@ -147,6 +147,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
+**version** | **int** | Number identifying a version of the service. | [optional]
 
 ### Return type
 

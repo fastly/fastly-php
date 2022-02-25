@@ -53,7 +53,7 @@ class WafTagsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'WafTag[]',
+        'data' => '\Fastly\Model\WafTagsResponseDataItem[]',
         'included' => '\Fastly\Model\WafRule[]'
     ];
 
@@ -208,7 +208,7 @@ class WafTagsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets data
      *
-     * @return WafTag[]|null
+     * @return \Fastly\Model\WafTagsResponseDataItem[]|null
      */
     public function getData()
     {
@@ -218,7 +218,7 @@ class WafTagsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets data
      *
-     * @param WafTag[]|null $data data
+     * @param \Fastly\Model\WafTagsResponseDataItem[]|null $data data
      *
      * @return self
      */

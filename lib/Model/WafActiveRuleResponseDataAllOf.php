@@ -54,7 +54,7 @@ class WafActiveRuleResponseDataAllOf implements ModelInterface, ArrayAccess, \Js
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'attributes' => 'Timestamps',
+        'attributes' => '\Fastly\Model\WafActiveRuleResponseDataAttributes',
         'relationships' => '\Fastly\Model\WafActiveRuleResponseDataRelationships'
     ];
 
@@ -238,7 +238,7 @@ class WafActiveRuleResponseDataAllOf implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets attributes
      *
-     * @return Timestamps|null
+     * @return \Fastly\Model\WafActiveRuleResponseDataAttributes|null
      */
     public function getAttributes()
     {
@@ -248,7 +248,7 @@ class WafActiveRuleResponseDataAllOf implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets attributes
      *
-     * @param Timestamps|null $attributes attributes
+     * @param \Fastly\Model\WafActiveRuleResponseDataAttributes|null $attributes attributes
      *
      * @return self
      */

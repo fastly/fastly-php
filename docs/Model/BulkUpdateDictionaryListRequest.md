@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**DictionaryItem[]**](DictionaryItem.md) |  | [optional] 
+**items** | [**\Fastly\Model\BulkUpdateDictionaryItem[]**](BulkUpdateDictionaryItem.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

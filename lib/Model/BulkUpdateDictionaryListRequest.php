@@ -53,7 +53,7 @@ class BulkUpdateDictionaryListRequest implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'items' => 'DictionaryItem[]'
+        'items' => '\Fastly\Model\BulkUpdateDictionaryItem[]'
     ];
 
     /**
@@ -202,7 +202,7 @@ class BulkUpdateDictionaryListRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Gets items
      *
-     * @return DictionaryItem[]|null
+     * @return \Fastly\Model\BulkUpdateDictionaryItem[]|null
      */
     public function getItems()
     {
@@ -212,7 +212,7 @@ class BulkUpdateDictionaryListRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets items
      *
-     * @param DictionaryItem[]|null $items items
+     * @param \Fastly\Model\BulkUpdateDictionaryItem[]|null $items items
      *
      * @return self
      */

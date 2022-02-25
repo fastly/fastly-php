@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **links** | [**\Fastly\Model\PaginationLinks**](PaginationLinks.md) |  | [optional] 
 **meta** | [**\Fastly\Model\PaginationMeta**](PaginationMeta.md) |  | [optional] 
-**data** | [**WafTag[]**](WafTag.md) |  | [optional] 
+**data** | [**\Fastly\Model\WafTagsResponseDataItem[]**](WafTagsResponseDataItem.md) |  | [optional] 
 **included** | [**\Fastly\Model\WafRule[]**](WafRule.md) |  | [optional] 
 
 

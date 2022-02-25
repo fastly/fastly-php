@@ -14,14 +14,48 @@ $apiInstance = new Fastly\Api\TlsSubscriptionsApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
+[**createGlobalsignEmailChallenge()**](TlsSubscriptionsApi.md#createGlobalsignEmailChallenge) | **POST** /tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges | Creates a GlobalSign email challenge.
 [**createTlsSub()**](TlsSubscriptionsApi.md#createTlsSub) | **POST** /tls/subscriptions | Create a TLS subscription
+[**deleteGlobalsignEmailChallenge()**](TlsSubscriptionsApi.md#deleteGlobalsignEmailChallenge) | **DELETE** /tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges/{globalsign_email_challenge_id} | Delete a GlobalSign email challenge
 [**deleteTlsSub()**](TlsSubscriptionsApi.md#deleteTlsSub) | **DELETE** /tls/subscriptions/{tls_subscription_id} | Delete a TLS subscription
-[**deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId()**](TlsSubscriptionsApi.md#deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId) | **DELETE** /tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges/{globalsign_email_challenge_id} | Delete a GlobalSign email challenge
 [**getTlsSub()**](TlsSubscriptionsApi.md#getTlsSub) | **GET** /tls/subscriptions/{tls_subscription_id} | Get a TLS subscription
 [**listTlsSubs()**](TlsSubscriptionsApi.md#listTlsSubs) | **GET** /tls/subscriptions | List TLS subscriptions
 [**patchTlsSub()**](TlsSubscriptionsApi.md#patchTlsSub) | **PATCH** /tls/subscriptions/{tls_subscription_id} | Update a TLS subscription
-[**postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges()**](TlsSubscriptionsApi.md#postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges) | **POST** /tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges | Creates a GlobalSign email challenge.
 
+
+## `createGlobalsignEmailChallenge()`
+
+```php
+createGlobalsignEmailChallenge($options): object // Creates a GlobalSign email challenge.
+```
+
+Creates an email challenge for domain on a GlobalSign subscription. An email challenge will generate an email that can be used to validate domain ownership. If this challenge is created, then the domain can only be validated using email for the given subscription.
+
+### Example
+```php
+try {
+    $result = $apiInstance->createGlobalsignEmailChallenge($options);
+} catch (Exception $e) {
+    echo 'Exception when calling TlsSubscriptionsApi->createGlobalsignEmailChallenge: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**tls_subscription_id** | **string** |  |
+**tls_authorization_id** | **string** |  |
+**request_body** | [**array<string,object>**](../Model/object.md) |  | [optional]
+
+### Return type
+
+**object**
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 
 ## `createTlsSub()`
 
@@ -56,6 +90,40 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `deleteGlobalsignEmailChallenge()`
+
+```php
+deleteGlobalsignEmailChallenge($options) // Delete a GlobalSign email challenge
+```
+
+Deletes a GlobalSign email challenge. After a GlobalSign email challenge is deleted, the domain can use HTTP and DNS validation methods again.
+
+### Example
+```php
+try {
+    $apiInstance->deleteGlobalsignEmailChallenge($options);
+} catch (Exception $e) {
+    echo 'Exception when calling TlsSubscriptionsApi->deleteGlobalsignEmailChallenge: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**tls_subscription_id** | **string** |  |
+**globalsign_email_challenge_id** | **string** |  |
+**tls_authorization_id** | **string** |  |
+
+### Return type
+
+void (empty response body)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `deleteTlsSub()`
 
 ```php
@@ -80,40 +148,6 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **tls_subscription_id** | **string** | Alphanumeric string identifying a TLS subscription. |
-
-### Return type
-
-void (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-
-## `deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId()`
-
-```php
-deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId($options) // Delete a GlobalSign email challenge
-```
-
-Deletes a GlobalSign email challenge. After a GlobalSign email challenge is deleted, the domain can use HTTP and DNS validation methods again.
-
-### Example
-```php
-try {
-    $apiInstance->deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId($options);
-} catch (Exception $e) {
-    echo 'Exception when calling TlsSubscriptionsApi->deleteTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallengesGlobalsignEmailChallengeId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**tls_subscription_id** | **string** |  |
-**globalsign_email_challenge_id** | **string** |  |
-**tls_authorization_id** | **string** |  |
 
 ### Return type
 
@@ -223,40 +257,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\TlsSubscriptionResponse**](../Model/TlsSubscriptionResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-
-## `postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges()`
-
-```php
-postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges($options): object // Creates a GlobalSign email challenge.
-```
-
-Creates an email challenge for domain on a GlobalSign subscription. An email challenge will generate an email that can be used to validate domain ownership. If this challenge is created, then the domain can only be validated using email for the given subscription.
-
-### Example
-```php
-try {
-    $result = $apiInstance->postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges($options);
-} catch (Exception $e) {
-    echo 'Exception when calling TlsSubscriptionsApi->postTlsSubscriptionsTlsSubscriptionIdAuthorizationsTlsAuthorizationIdGlobalsignEmailChallenges: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Options
-
-Note: the input parameter is an associative array with the keys listed below.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**tls_subscription_id** | **string** |  |
-**tls_authorization_id** | **string** |  |
-**body** | **object** |  | [optional]
-
-### Return type
-
-**object**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

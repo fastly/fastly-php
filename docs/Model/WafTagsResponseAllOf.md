@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**WafTag[]**](WafTag.md) |  | [optional] 
+**data** | [**\Fastly\Model\WafTagsResponseDataItem[]**](WafTagsResponseDataItem.md) |  | [optional] 
 **included** | [**\Fastly\Model\WafRule[]**](WafRule.md) |  | [optional] 
 
 
