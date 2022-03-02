@@ -55,7 +55,7 @@ class UpdateBillingAddressRequestData implements ModelInterface, ArrayAccess, \J
     protected static $fastlyTypes = [
         'type' => '\Fastly\Model\TypeBillingAddress',
         'id' => 'string',
-        'attributes' => '\Fastly\Model\BillingAddress'
+        'attributes' => '\Fastly\Model\BillingAddressAttributes'
     ];
 
     /**
@@ -262,7 +262,7 @@ class UpdateBillingAddressRequestData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets attributes
      *
-     * @return \Fastly\Model\BillingAddress|null
+     * @return \Fastly\Model\BillingAddressAttributes|null
      */
     public function getAttributes()
     {
@@ -272,7 +272,7 @@ class UpdateBillingAddressRequestData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets attributes
      *
-     * @param \Fastly\Model\BillingAddress|null $attributes attributes
+     * @param \Fastly\Model\BillingAddressAttributes|null $attributes attributes
      *
      * @return self
      */

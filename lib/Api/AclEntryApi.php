@@ -118,7 +118,7 @@ class AclEntryApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
-     * @param  \Fastly\Model\AclEntries $acl_entries acl_entries (optional)
+     * @param  \Fastly\Model\BulkUpdateAclEntriesRequest $bulk_update_acl_entries_request bulk_update_acl_entries_request (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -139,7 +139,7 @@ class AclEntryApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
-     * @param  \Fastly\Model\AclEntries $acl_entries (optional)
+     * @param  \Fastly\Model\BulkUpdateAclEntriesRequest $bulk_update_acl_entries_request (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -236,7 +236,7 @@ class AclEntryApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
-     * @param  \Fastly\Model\AclEntries $acl_entries (optional)
+     * @param  \Fastly\Model\BulkUpdateAclEntriesRequest $bulk_update_acl_entries_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -260,7 +260,7 @@ class AclEntryApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
-     * @param  \Fastly\Model\AclEntries $acl_entries (optional)
+     * @param  \Fastly\Model\BulkUpdateAclEntriesRequest $bulk_update_acl_entries_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -310,7 +310,7 @@ class AclEntryApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $acl_id Alphanumeric string identifying a ACL. (required)
-     * @param  \Fastly\Model\AclEntries $acl_entries (optional)
+     * @param  \Fastly\Model\BulkUpdateAclEntriesRequest $bulk_update_acl_entries_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -320,7 +320,7 @@ class AclEntryApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $acl_id = array_key_exists('acl_id', $options) ? $options['acl_id'] : null;
-        $acl_entries = array_key_exists('acl_entries', $options) ? $options['acl_entries'] : null;
+        $bulk_update_acl_entries_request = array_key_exists('bulk_update_acl_entries_request', $options) ? $options['bulk_update_acl_entries_request'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -374,11 +374,11 @@ class AclEntryApi
         }
 
         // for model (json/xml)
-        if (isset($acl_entries)) {
+        if (isset($bulk_update_acl_entries_request)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($acl_entries));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($bulk_update_acl_entries_request));
             } else {
-                $httpBody = $acl_entries;
+                $httpBody = $bulk_update_acl_entries_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

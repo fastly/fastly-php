@@ -53,7 +53,7 @@ class BillingAddressResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\BillingAddressResponseAllOfData'
+        'data' => '\Fastly\Model\BillingAddressResponseData'
     ];
 
     /**
@@ -202,7 +202,7 @@ class BillingAddressResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets data
      *
-     * @return \Fastly\Model\BillingAddressResponseAllOfData|null
+     * @return \Fastly\Model\BillingAddressResponseData|null
      */
     public function getData()
     {
@@ -212,7 +212,7 @@ class BillingAddressResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets data
      *
-     * @param \Fastly\Model\BillingAddressResponseAllOfData|null $data data
+     * @param \Fastly\Model\BillingAddressResponseData|null $data data
      *
      * @return self
      */

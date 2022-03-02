@@ -54,7 +54,7 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'type' => '\Fastly\Model\TypeStar',
-        'relationships' => 'RelationshipUser'
+        'relationships' => '\Fastly\Model\RelationshipsForStar'
     ];
 
     /**
@@ -232,7 +232,7 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets relationships
      *
-     * @return RelationshipUser|null
+     * @return \Fastly\Model\RelationshipsForStar|null
      */
     public function getRelationships()
     {
@@ -242,7 +242,7 @@ class StarData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets relationships
      *
-     * @param RelationshipUser|null $relationships relationships
+     * @param \Fastly\Model\RelationshipsForStar|null $relationships relationships
      *
      * @return self
      */

@@ -54,7 +54,7 @@ class TlsConfigurationResponseData implements ModelInterface, ArrayAccess, \Json
       */
     protected static $fastlyTypes = [
         'type' => '\Fastly\Model\TypeTlsConfiguration',
-        'attributes' => 'Timestamps',
+        'attributes' => '\Fastly\Model\TlsConfigurationResponseAttributes',
         'relationships' => '\Fastly\Model\RelationshipsForTlsConfiguration',
         'id' => 'string'
     ];
@@ -244,7 +244,7 @@ class TlsConfigurationResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets attributes
      *
-     * @return Timestamps|null
+     * @return \Fastly\Model\TlsConfigurationResponseAttributes|null
      */
     public function getAttributes()
     {
@@ -254,7 +254,7 @@ class TlsConfigurationResponseData implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets attributes
      *
-     * @param Timestamps|null $attributes attributes
+     * @param \Fastly\Model\TlsConfigurationResponseAttributes|null $attributes attributes
      *
      * @return self
      */

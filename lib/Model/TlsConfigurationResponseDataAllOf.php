@@ -54,7 +54,7 @@ class TlsConfigurationResponseDataAllOf implements ModelInterface, ArrayAccess, 
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'attributes' => 'Timestamps'
+        'attributes' => '\Fastly\Model\TlsConfigurationResponseAttributes'
     ];
 
     /**
@@ -232,7 +232,7 @@ class TlsConfigurationResponseDataAllOf implements ModelInterface, ArrayAccess, 
     /**
      * Gets attributes
      *
-     * @return Timestamps|null
+     * @return \Fastly\Model\TlsConfigurationResponseAttributes|null
      */
     public function getAttributes()
     {
@@ -242,7 +242,7 @@ class TlsConfigurationResponseDataAllOf implements ModelInterface, ArrayAccess, 
     /**
      * Sets attributes
      *
-     * @param Timestamps|null $attributes attributes
+     * @param \Fastly\Model\TlsConfigurationResponseAttributes|null $attributes attributes
      *
      * @return self
      */

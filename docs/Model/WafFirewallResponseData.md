@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**\Fastly\Model\TypeWafFirewall**](TypeWafFirewall.md) |  | [optional] 
-**attributes** | [**Timestamps**](Timestamps.md) |  | [optional] 
+**attributes** | [**\Fastly\Model\WafFirewallResponseDataAttributes**](WafFirewallResponseDataAttributes.md) |  | [optional] 
 **id** | **string** |  | [optional] [readonly] 
 **relationships** | [**\Fastly\Model\RelationshipWafFirewallVersions**](RelationshipWafFirewallVersions.md) |  | [optional] 
 

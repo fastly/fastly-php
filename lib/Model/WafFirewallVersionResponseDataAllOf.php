@@ -54,7 +54,7 @@ class WafFirewallVersionResponseDataAllOf implements ModelInterface, ArrayAccess
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'attributes' => 'Timestamps',
+        'attributes' => '\Fastly\Model\WafFirewallVersionResponseDataAttributes',
         'relationships' => '\Fastly\Model\RelationshipsForWafFirewallVersion'
     ];
 
@@ -238,7 +238,7 @@ class WafFirewallVersionResponseDataAllOf implements ModelInterface, ArrayAccess
     /**
      * Gets attributes
      *
-     * @return Timestamps|null
+     * @return \Fastly\Model\WafFirewallVersionResponseDataAttributes|null
      */
     public function getAttributes()
     {
@@ -248,7 +248,7 @@ class WafFirewallVersionResponseDataAllOf implements ModelInterface, ArrayAccess
     /**
      * Sets attributes
      *
-     * @param Timestamps|null $attributes attributes
+     * @param \Fastly\Model\WafFirewallVersionResponseDataAttributes|null $attributes attributes
      *
      * @return self
      */

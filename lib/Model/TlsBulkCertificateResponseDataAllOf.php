@@ -54,7 +54,7 @@ class TlsBulkCertificateResponseDataAllOf implements ModelInterface, ArrayAccess
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'attributes' => 'Timestamps'
+        'attributes' => '\Fastly\Model\TlsBulkCertificateResponseAttributes'
     ];
 
     /**
@@ -232,7 +232,7 @@ class TlsBulkCertificateResponseDataAllOf implements ModelInterface, ArrayAccess
     /**
      * Gets attributes
      *
-     * @return Timestamps|null
+     * @return \Fastly\Model\TlsBulkCertificateResponseAttributes|null
      */
     public function getAttributes()
     {
@@ -242,7 +242,7 @@ class TlsBulkCertificateResponseDataAllOf implements ModelInterface, ArrayAccess
     /**
      * Sets attributes
      *
-     * @param Timestamps|null $attributes attributes
+     * @param \Fastly\Model\TlsBulkCertificateResponseAttributes|null $attributes attributes
      *
      * @return self
      */

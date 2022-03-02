@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Alphanumeric string identifying a Firewall version. | [optional] [readonly] 
-**attributes** | [**Timestamps**](Timestamps.md) |  | [optional] 
+**attributes** | [**\Fastly\Model\WafFirewallVersionResponseDataAttributes**](WafFirewallVersionResponseDataAttributes.md) |  | [optional] 
 **relationships** | [**\Fastly\Model\RelationshipsForWafFirewallVersion**](RelationshipsForWafFirewallVersion.md) |  | [optional] 
 
 

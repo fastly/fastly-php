@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **acl_id** | **string** | Alphanumeric string identifying a ACL. |
-**acl_entries** | [**\Fastly\Model\AclEntries**](../Model/AclEntries.md) |  | [optional]
+**bulk_update_acl_entries_request** | [**\Fastly\Model\BulkUpdateAclEntriesRequest**](../Model/BulkUpdateAclEntriesRequest.md) |  | [optional]
 
 ### Return type
 

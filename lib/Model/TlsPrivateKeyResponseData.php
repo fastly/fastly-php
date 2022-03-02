@@ -55,7 +55,7 @@ class TlsPrivateKeyResponseData implements ModelInterface, ArrayAccess, \JsonSer
     protected static $fastlyTypes = [
         'type' => '\Fastly\Model\TypeTlsPrivateKey',
         'id' => 'string',
-        'attributes' => 'Timestamps'
+        'attributes' => '\Fastly\Model\TlsPrivateKeyResponseAttributes'
     ];
 
     /**
@@ -262,7 +262,7 @@ class TlsPrivateKeyResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets attributes
      *
-     * @return Timestamps|null
+     * @return \Fastly\Model\TlsPrivateKeyResponseAttributes|null
      */
     public function getAttributes()
     {
@@ -272,7 +272,7 @@ class TlsPrivateKeyResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets attributes
      *
-     * @param Timestamps|null $attributes attributes
+     * @param \Fastly\Model\TlsPrivateKeyResponseAttributes|null $attributes attributes
      *
      * @return self
      */

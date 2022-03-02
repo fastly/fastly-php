@@ -54,7 +54,7 @@ class TlsCertificateResponseData implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $fastlyTypes = [
         'type' => '\Fastly\Model\TypeTlsCertificate',
-        'attributes' => 'Timestamps',
+        'attributes' => '\Fastly\Model\TlsCertificateResponseAttributes',
         'relationships' => '\Fastly\Model\RelationshipTlsDomains',
         'id' => 'string'
     ];
@@ -244,7 +244,7 @@ class TlsCertificateResponseData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets attributes
      *
-     * @return Timestamps|null
+     * @return \Fastly\Model\TlsCertificateResponseAttributes|null
      */
     public function getAttributes()
     {
@@ -254,7 +254,7 @@ class TlsCertificateResponseData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets attributes
      *
-     * @param Timestamps|null $attributes attributes
+     * @param \Fastly\Model\TlsCertificateResponseAttributes|null $attributes attributes
      *
      * @return self
      */
