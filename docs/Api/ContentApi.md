@@ -27,6 +27,8 @@ Retrieve headers and MD5 hash of the content for a particular URL from each Fast
 
 ### Example
 ```php
+    $options['url'] = https://www.example.com/foo/bar; // string | Full URL (host and path) to check on all nodes. if protocol is omitted, http will be assumed.
+
 try {
     $result = $apiInstance->contentCheck($options);
 } catch (Exception $e) {

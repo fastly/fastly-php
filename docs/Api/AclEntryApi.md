@@ -32,6 +32,10 @@ Update multiple ACL entries on the same ACL.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['acl_id'] = 'acl_id_example'; // string | Alphanumeric string identifying a ACL.
+$options['bulk_update_acl_entries_request'] = {"entries":[{"op":"create","ip":"192.168.0.1","subnet":8},{"op":"update","id":"6yxNzlOpW1V7JfSwvLGtOc","ip":"192.168.0.2","subnet":16},{"op":"delete","id":"6yxNzlOpW1V7JfSwvLGtOc"}]}; // \Fastly\Model\BulkUpdateAclEntriesRequest
+
 try {
     $result = $apiInstance->bulkUpdateAclEntries($options);
 } catch (Exception $e) {
@@ -66,6 +70,10 @@ Add an ACL entry to an ACL.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['acl_id'] = 'acl_id_example'; // string | Alphanumeric string identifying a ACL.
+$options['acl_entry'] = {"subnet":0,"ip":"127.0.0.1"}; // \Fastly\Model\AclEntry
+
 try {
     $result = $apiInstance->createAclEntry($options);
 } catch (Exception $e) {
@@ -100,6 +108,10 @@ Delete an ACL entry from a specified ACL.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['acl_id'] = 'acl_id_example'; // string | Alphanumeric string identifying a ACL.
+$options['acl_entry_id'] = 'acl_entry_id_example'; // string | Alphanumeric string identifying an ACL Entry.
+
 try {
     $result = $apiInstance->deleteAclEntry($options);
 } catch (Exception $e) {
@@ -134,6 +146,10 @@ Retrieve a single ACL entry.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['acl_id'] = 'acl_id_example'; // string | Alphanumeric string identifying a ACL.
+$options['acl_entry_id'] = 'acl_entry_id_example'; // string | Alphanumeric string identifying an ACL Entry.
+
 try {
     $result = $apiInstance->getAclEntry($options);
 } catch (Exception $e) {
@@ -168,6 +184,13 @@ List ACL entries for a specified ACL.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['acl_id'] = 'acl_id_example'; // string | Alphanumeric string identifying a ACL.
+$options['page'] = 1; // int | Current page.
+$options['per_page'] = 20; // int | Number of records per page.
+$options['sort'] = created; // string | Field on which to sort.
+$options['direction'] = ascend; // string | Direction in which to sort results.
+
 try {
     $result = $apiInstance->listAclEntries($options);
 } catch (Exception $e) {
@@ -205,6 +228,11 @@ Update an ACL entry for a specified ACL.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['acl_id'] = 'acl_id_example'; // string | Alphanumeric string identifying a ACL.
+$options['acl_entry_id'] = 'acl_entry_id_example'; // string | Alphanumeric string identifying an ACL Entry.
+$options['acl_entry'] = {"subnet":8}; // \Fastly\Model\AclEntry
+
 try {
     $result = $apiInstance->updateAclEntry($options);
 } catch (Exception $e) {

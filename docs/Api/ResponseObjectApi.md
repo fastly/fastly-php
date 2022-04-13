@@ -29,6 +29,10 @@ Deletes the specified Response Object.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['response_object_name'] = 'response_object_name_example'; // string | Name for the request settings.
+
 try {
     $result = $apiInstance->deleteResponseObject($options);
 } catch (Exception $e) {
@@ -63,6 +67,10 @@ Gets the specified Response Object.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['response_object_name'] = 'response_object_name_example'; // string | Name for the request settings.
+
 try {
     $result = $apiInstance->getResponseObject($options);
 } catch (Exception $e) {
@@ -97,6 +105,9 @@ Returns all Response Objects for the specified service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listResponseObjects($options);
 } catch (Exception $e) {

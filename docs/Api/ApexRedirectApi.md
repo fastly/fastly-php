@@ -30,6 +30,8 @@ Delete an apex redirect by its ID.
 
 ### Example
 ```php
+    $options['apex_redirect_id'] = 6QI9o6ZZrSP3y9gI0OhMwZ; // string
+
 try {
     $result = $apiInstance->deleteApexRedirect($options);
 } catch (Exception $e) {
@@ -62,6 +64,8 @@ Get an apex redirect by its ID.
 
 ### Example
 ```php
+    $options['apex_redirect_id'] = 6QI9o6ZZrSP3y9gI0OhMwZ; // string
+
 try {
     $result = $apiInstance->getApexRedirect($options);
 } catch (Exception $e) {
@@ -94,6 +98,9 @@ List all apex redirects for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listApexRedirects($options);
 } catch (Exception $e) {
@@ -127,6 +134,16 @@ Update an apex redirect by its ID.
 
 ### Example
 ```php
+    $options['apex_redirect_id'] = 6QI9o6ZZrSP3y9gI0OhMwZ; // string
+$options['service_id'] = 'service_id_example'; // string
+$options['version'] = 56; // int
+$options['created_at'] = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date and time in ISO 8601 format.
+$options['deleted_at'] = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date and time in ISO 8601 format.
+$options['updated_at'] = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date and time in ISO 8601 format.
+$options['status_code'] = 56; // int | HTTP status code used to redirect the client.
+$options['domains'] = array('domains_example'); // string[] | Array of apex domains that should redirect to their WWW subdomain.
+$options['feature_revision'] = 56; // int | Revision number of the apex redirect feature implementation. Defaults to the most recent revision.
+
 try {
     $result = $apiInstance->updateApexRedirect($options);
 } catch (Exception $e) {

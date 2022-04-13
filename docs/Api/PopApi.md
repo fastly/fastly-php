@@ -27,6 +27,7 @@ Get a list of all Fastly POPs.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->listPops($options);
 } catch (Exception $e) {

@@ -233,7 +233,13 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'edge_miss_resp_body_bytes' => 'int',
         'edge_miss_resp_header_bytes' => 'int',
         'origin_cache_fetch_resp_body_bytes' => 'int',
-        'origin_cache_fetch_resp_header_bytes' => 'int'
+        'origin_cache_fetch_resp_header_bytes' => 'int',
+        'shield_hit_requests' => 'int',
+        'shield_miss_requests' => 'int',
+        'shield_hit_resp_header_bytes' => 'int',
+        'shield_hit_resp_body_bytes' => 'int',
+        'shield_miss_resp_header_bytes' => 'int',
+        'shield_miss_resp_body_bytes' => 'int'
     ];
 
     /**
@@ -423,7 +429,13 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'edge_miss_resp_body_bytes' => null,
         'edge_miss_resp_header_bytes' => null,
         'origin_cache_fetch_resp_body_bytes' => null,
-        'origin_cache_fetch_resp_header_bytes' => null
+        'origin_cache_fetch_resp_header_bytes' => null,
+        'shield_hit_requests' => null,
+        'shield_miss_requests' => null,
+        'shield_hit_resp_header_bytes' => null,
+        'shield_hit_resp_body_bytes' => null,
+        'shield_miss_resp_header_bytes' => null,
+        'shield_miss_resp_body_bytes' => null
     ];
 
     /**
@@ -632,7 +644,13 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'edge_miss_resp_body_bytes' => 'edge_miss_resp_body_bytes',
         'edge_miss_resp_header_bytes' => 'edge_miss_resp_header_bytes',
         'origin_cache_fetch_resp_body_bytes' => 'origin_cache_fetch_resp_body_bytes',
-        'origin_cache_fetch_resp_header_bytes' => 'origin_cache_fetch_resp_header_bytes'
+        'origin_cache_fetch_resp_header_bytes' => 'origin_cache_fetch_resp_header_bytes',
+        'shield_hit_requests' => 'shield_hit_requests',
+        'shield_miss_requests' => 'shield_miss_requests',
+        'shield_hit_resp_header_bytes' => 'shield_hit_resp_header_bytes',
+        'shield_hit_resp_body_bytes' => 'shield_hit_resp_body_bytes',
+        'shield_miss_resp_header_bytes' => 'shield_miss_resp_header_bytes',
+        'shield_miss_resp_body_bytes' => 'shield_miss_resp_body_bytes'
     ];
 
     /**
@@ -820,7 +838,13 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'edge_miss_resp_body_bytes' => 'setEdgeMissRespBodyBytes',
         'edge_miss_resp_header_bytes' => 'setEdgeMissRespHeaderBytes',
         'origin_cache_fetch_resp_body_bytes' => 'setOriginCacheFetchRespBodyBytes',
-        'origin_cache_fetch_resp_header_bytes' => 'setOriginCacheFetchRespHeaderBytes'
+        'origin_cache_fetch_resp_header_bytes' => 'setOriginCacheFetchRespHeaderBytes',
+        'shield_hit_requests' => 'setShieldHitRequests',
+        'shield_miss_requests' => 'setShieldMissRequests',
+        'shield_hit_resp_header_bytes' => 'setShieldHitRespHeaderBytes',
+        'shield_hit_resp_body_bytes' => 'setShieldHitRespBodyBytes',
+        'shield_miss_resp_header_bytes' => 'setShieldMissRespHeaderBytes',
+        'shield_miss_resp_body_bytes' => 'setShieldMissRespBodyBytes'
     ];
 
     /**
@@ -1008,7 +1032,13 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'edge_miss_resp_body_bytes' => 'getEdgeMissRespBodyBytes',
         'edge_miss_resp_header_bytes' => 'getEdgeMissRespHeaderBytes',
         'origin_cache_fetch_resp_body_bytes' => 'getOriginCacheFetchRespBodyBytes',
-        'origin_cache_fetch_resp_header_bytes' => 'getOriginCacheFetchRespHeaderBytes'
+        'origin_cache_fetch_resp_header_bytes' => 'getOriginCacheFetchRespHeaderBytes',
+        'shield_hit_requests' => 'getShieldHitRequests',
+        'shield_miss_requests' => 'getShieldMissRequests',
+        'shield_hit_resp_header_bytes' => 'getShieldHitRespHeaderBytes',
+        'shield_hit_resp_body_bytes' => 'getShieldHitRespBodyBytes',
+        'shield_miss_resp_header_bytes' => 'getShieldMissRespHeaderBytes',
+        'shield_miss_resp_body_bytes' => 'getShieldMissRespBodyBytes'
     ];
 
     /**
@@ -1248,6 +1278,12 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['edge_miss_resp_header_bytes'] = $data['edge_miss_resp_header_bytes'] ?? null;
         $this->container['origin_cache_fetch_resp_body_bytes'] = $data['origin_cache_fetch_resp_body_bytes'] ?? null;
         $this->container['origin_cache_fetch_resp_header_bytes'] = $data['origin_cache_fetch_resp_header_bytes'] ?? null;
+        $this->container['shield_hit_requests'] = $data['shield_hit_requests'] ?? null;
+        $this->container['shield_miss_requests'] = $data['shield_miss_requests'] ?? null;
+        $this->container['shield_hit_resp_header_bytes'] = $data['shield_hit_resp_header_bytes'] ?? null;
+        $this->container['shield_hit_resp_body_bytes'] = $data['shield_hit_resp_body_bytes'] ?? null;
+        $this->container['shield_miss_resp_header_bytes'] = $data['shield_miss_resp_header_bytes'] ?? null;
+        $this->container['shield_miss_resp_body_bytes'] = $data['shield_miss_resp_body_bytes'] ?? null;
     }
 
     /**
@@ -5590,6 +5626,150 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setOriginCacheFetchRespHeaderBytes($origin_cache_fetch_resp_header_bytes)
     {
         $this->container['origin_cache_fetch_resp_header_bytes'] = $origin_cache_fetch_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_hit_requests
+     *
+     * @return int|null
+     */
+    public function getShieldHitRequests()
+    {
+        return $this->container['shield_hit_requests'];
+    }
+
+    /**
+     * Sets shield_hit_requests
+     *
+     * @param int|null $shield_hit_requests Number of requests that resulted in a hit at a shield.
+     *
+     * @return self
+     */
+    public function setShieldHitRequests($shield_hit_requests)
+    {
+        $this->container['shield_hit_requests'] = $shield_hit_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_miss_requests
+     *
+     * @return int|null
+     */
+    public function getShieldMissRequests()
+    {
+        return $this->container['shield_miss_requests'];
+    }
+
+    /**
+     * Sets shield_miss_requests
+     *
+     * @param int|null $shield_miss_requests Number of requests that resulted in a miss at a shield.
+     *
+     * @return self
+     */
+    public function setShieldMissRequests($shield_miss_requests)
+    {
+        $this->container['shield_miss_requests'] = $shield_miss_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_hit_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldHitRespHeaderBytes()
+    {
+        return $this->container['shield_hit_resp_header_bytes'];
+    }
+
+    /**
+     * Sets shield_hit_resp_header_bytes
+     *
+     * @param int|null $shield_hit_resp_header_bytes Header bytes delivered for shield hits.
+     *
+     * @return self
+     */
+    public function setShieldHitRespHeaderBytes($shield_hit_resp_header_bytes)
+    {
+        $this->container['shield_hit_resp_header_bytes'] = $shield_hit_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_hit_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldHitRespBodyBytes()
+    {
+        return $this->container['shield_hit_resp_body_bytes'];
+    }
+
+    /**
+     * Sets shield_hit_resp_body_bytes
+     *
+     * @param int|null $shield_hit_resp_body_bytes Body bytes delivered for shield hits.
+     *
+     * @return self
+     */
+    public function setShieldHitRespBodyBytes($shield_hit_resp_body_bytes)
+    {
+        $this->container['shield_hit_resp_body_bytes'] = $shield_hit_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_miss_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldMissRespHeaderBytes()
+    {
+        return $this->container['shield_miss_resp_header_bytes'];
+    }
+
+    /**
+     * Sets shield_miss_resp_header_bytes
+     *
+     * @param int|null $shield_miss_resp_header_bytes Header bytes delivered for shield misses.
+     *
+     * @return self
+     */
+    public function setShieldMissRespHeaderBytes($shield_miss_resp_header_bytes)
+    {
+        $this->container['shield_miss_resp_header_bytes'] = $shield_miss_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_miss_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldMissRespBodyBytes()
+    {
+        return $this->container['shield_miss_resp_body_bytes'];
+    }
+
+    /**
+     * Sets shield_miss_resp_body_bytes
+     *
+     * @param int|null $shield_miss_resp_body_bytes Body bytes delivered for shield misses.
+     *
+     * @return self
+     */
+    public function setShieldMissRespBodyBytes($shield_miss_resp_body_bytes)
+    {
+        $this->container['shield_miss_resp_body_bytes'] = $shield_miss_resp_body_bytes;
 
         return $this;
     }

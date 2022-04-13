@@ -31,6 +31,20 @@ Create a BigQuery logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name of the BigQuery logging object. Used as a primary key for API access.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = 'format_example'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+$options['user'] = 'user_example'; // string | Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Required.
+$options['secret_key'] = 'secret_key_example'; // string | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Required.
+$options['dataset'] = 'dataset_example'; // string | Your BigQuery dataset.
+$options['table'] = 'table_example'; // string | Your BigQuery table.
+$options['template_suffix'] = 'template_suffix_example'; // string | BigQuery table name suffix template. Optional.
+$options['project_id'] = 'project_id_example'; // string | Your Google Cloud Platform project ID. Required
+
 try {
     $result = $apiInstance->createLogBigquery($options);
 } catch (Exception $e) {
@@ -75,6 +89,10 @@ Delete a BigQuery logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_bigquery_name'] = 'logging_bigquery_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->deleteLogBigquery($options);
 } catch (Exception $e) {
@@ -109,6 +127,10 @@ Get the details for a BigQuery logging object for a particular service and versi
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_bigquery_name'] = 'logging_bigquery_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->getLogBigquery($options);
 } catch (Exception $e) {
@@ -143,6 +165,9 @@ List all of the BigQuery logging objects for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listLogBigquery($options);
 } catch (Exception $e) {
@@ -176,6 +201,21 @@ Update a BigQuery logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_bigquery_name'] = 'logging_bigquery_name_example'; // string | The name for the real-time logging configuration.
+$options['name'] = 'name_example'; // string | The name of the BigQuery logging object. Used as a primary key for API access.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = 'format_example'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+$options['user'] = 'user_example'; // string | Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Required.
+$options['secret_key'] = 'secret_key_example'; // string | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Required.
+$options['dataset'] = 'dataset_example'; // string | Your BigQuery dataset.
+$options['table'] = 'table_example'; // string | Your BigQuery table.
+$options['template_suffix'] = 'template_suffix_example'; // string | BigQuery table name suffix template. Optional.
+$options['project_id'] = 'project_id_example'; // string | Your Google Cloud Platform project ID. Required
+
 try {
     $result = $apiInstance->updateLogBigquery($options);
 } catch (Exception $e) {

@@ -31,6 +31,13 @@ Create a named gzip configuration on a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['cache_condition'] = 'cache_condition_example'; // string | Name of the cache condition controlling when this configuration applies.
+$options['content_types'] = 'content_types_example'; // string | Space-separated list of content types to compress. If you omit this field a default list will be used.
+$options['extensions'] = 'extensions_example'; // string | Space-separated list of file extensions to compress. If you omit this field a default list will be used.
+$options['name'] = 'name_example'; // string | Name of the gzip configuration.
+
 try {
     $result = $apiInstance->createGzipConfig($options);
 } catch (Exception $e) {
@@ -68,6 +75,10 @@ Delete a named gzip configuration on a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['gzip_name'] = 'gzip_name_example'; // string | Name of the gzip configuration.
+
 try {
     $result = $apiInstance->deleteGzipConfig($options);
 } catch (Exception $e) {
@@ -102,6 +113,10 @@ Get the gzip configuration for a particular service, version, and name.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['gzip_name'] = 'gzip_name_example'; // string | Name of the gzip configuration.
+
 try {
     $result = $apiInstance->getGzipConfigs($options);
 } catch (Exception $e) {
@@ -136,6 +151,9 @@ List all gzip configurations for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listGzipConfigs($options);
 } catch (Exception $e) {
@@ -169,6 +187,14 @@ Update a named gzip configuration on a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['gzip_name'] = 'gzip_name_example'; // string | Name of the gzip configuration.
+$options['cache_condition'] = 'cache_condition_example'; // string | Name of the cache condition controlling when this configuration applies.
+$options['content_types'] = 'content_types_example'; // string | Space-separated list of content types to compress. If you omit this field a default list will be used.
+$options['extensions'] = 'extensions_example'; // string | Space-separated list of file extensions to compress. If you omit this field a default list will be used.
+$options['name'] = 'name_example'; // string | Name of the gzip configuration.
+
 try {
     $result = $apiInstance->updateGzipConfig($options);
 } catch (Exception $e) {

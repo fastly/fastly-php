@@ -32,6 +32,9 @@ Clone a specific, existing firewall version into a new, draft firewall version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['firewall_version_number'] = 56; // int | Integer identifying a WAF firewall version.
+
 try {
     $result = $apiInstance->cloneWafFirewallVersion($options);
 } catch (Exception $e) {
@@ -65,6 +68,9 @@ Create a new, draft firewall version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['waf_firewall_version'] = {}; // \Fastly\Model\WafFirewallVersion
+
 try {
     $result = $apiInstance->createWafFirewallVersion($options);
 } catch (Exception $e) {
@@ -98,6 +104,9 @@ Deploy or activate a specific firewall version. If a firewall has been disabled,
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['firewall_version_number'] = 56; // int | Integer identifying a WAF firewall version.
+
 try {
     $result = $apiInstance->deployActivateWafFirewallVersion($options);
 } catch (Exception $e) {
@@ -131,6 +140,10 @@ Get details about a specific firewall version.
 
 ### Example
 ```php
+    $options['include'] = waf_firewall,waf_active_rules; // string | Include relationships. Optional, comma-separated values. Permitted values: `waf_firewall` and `waf_active_rules`.
+$options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['firewall_version_number'] = 56; // int | Integer identifying a WAF firewall version.
+
 try {
     $result = $apiInstance->getWafFirewallVersion($options);
 } catch (Exception $e) {
@@ -165,6 +178,11 @@ Get a list of firewall versions associated with a specific firewall.
 
 ### Example
 ```php
+    $options['include'] = waf_firewall; // string | Include relationships. Optional.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+$options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+
 try {
     $result = $apiInstance->listWafFirewallVersions($options);
 } catch (Exception $e) {
@@ -200,6 +218,10 @@ Update a specific firewall version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['firewall_version_number'] = 56; // int | Integer identifying a WAF firewall version.
+$options['waf_firewall_version'] = {"data":{"type":"waf_firewall_version","attributes":{"notice_anomaly_score":12}}}; // \Fastly\Model\WafFirewallVersion
+
 try {
     $result = $apiInstance->updateWafFirewallVersion($options);
 } catch (Exception $e) {

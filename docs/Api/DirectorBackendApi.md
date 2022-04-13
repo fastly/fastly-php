@@ -29,6 +29,11 @@ Establishes a relationship between a Backend and a Director. The Backend is then
 
 ### Example
 ```php
+    $options['director_name'] = 'director_name_example'; // string | Name for the Director.
+$options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['backend_name'] = 'backend_name_example'; // string | The name of the backend.
+
 try {
     $result = $apiInstance->createDirectorBackend($options);
 } catch (Exception $e) {
@@ -64,6 +69,11 @@ Deletes the relationship between a Backend and a Director. The Backend is no lon
 
 ### Example
 ```php
+    $options['director_name'] = 'director_name_example'; // string | Name for the Director.
+$options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['backend_name'] = 'backend_name_example'; // string | The name of the backend.
+
 try {
     $result = $apiInstance->deleteDirectorBackend($options);
 } catch (Exception $e) {
@@ -99,6 +109,11 @@ Returns the relationship between a Backend and a Director. If the Backend has be
 
 ### Example
 ```php
+    $options['director_name'] = 'director_name_example'; // string | Name for the Director.
+$options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['backend_name'] = 'backend_name_example'; // string | The name of the backend.
+
 try {
     $result = $apiInstance->getDirectorBackend($options);
 } catch (Exception $e) {

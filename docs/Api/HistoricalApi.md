@@ -35,6 +35,11 @@ Fetches historical stats for each of your Fastly services and groups the results
 
 ### Example
 ```php
+    $options['from'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as 'yesterday', or 'two weeks ago'. Default varies based on the value of `by`.
+$options['to'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.
+$options['by'] = day; // string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.
+$options['region'] = usa; // string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America.
+
 try {
     $result = $apiInstance->getHistStats($options);
 } catch (Exception $e) {
@@ -48,8 +53,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**from** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
-**to** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
+**from** | **string** | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of `by`. | [optional]
+**to** | **string** | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. | [optional] [defaults to 'now']
 **by** | **string** | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. | [optional] [one of: 'hour', 'minute', 'day'] [defaults to 'day']
 **region** | **string** | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America. | [optional] [one of: 'usa', 'europe', 'asia', 'asia_india', 'asia_southkorea', 'africa_std', 'southamerica_std']
 
@@ -70,6 +75,11 @@ Fetches historical stats information aggregated across all of your Fastly servic
 
 ### Example
 ```php
+    $options['from'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as 'yesterday', or 'two weeks ago'. Default varies based on the value of `by`.
+$options['to'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.
+$options['by'] = day; // string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.
+$options['region'] = usa; // string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America.
+
 try {
     $result = $apiInstance->getHistStatsAggregated($options);
 } catch (Exception $e) {
@@ -83,8 +93,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**from** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
-**to** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
+**from** | **string** | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of `by`. | [optional]
+**to** | **string** | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. | [optional] [defaults to 'now']
 **by** | **string** | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. | [optional] [one of: 'hour', 'minute', 'day'] [defaults to 'day']
 **region** | **string** | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America. | [optional] [one of: 'usa', 'europe', 'asia', 'asia_india', 'asia_southkorea', 'africa_std', 'southamerica_std']
 
@@ -105,6 +115,12 @@ Fetches the specified field from the historical stats for each of your services 
 
 ### Example
 ```php
+    $options['field'] = hit_ratio; // string | Name of the stats field.
+$options['from'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as 'yesterday', or 'two weeks ago'. Default varies based on the value of `by`.
+$options['to'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.
+$options['by'] = day; // string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.
+$options['region'] = usa; // string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America.
+
 try {
     $result = $apiInstance->getHistStatsField($options);
 } catch (Exception $e) {
@@ -119,8 +135,8 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **field** | **string** | Name of the stats field. |
-**from** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
-**to** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
+**from** | **string** | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of `by`. | [optional]
+**to** | **string** | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. | [optional] [defaults to 'now']
 **by** | **string** | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. | [optional] [one of: 'hour', 'minute', 'day'] [defaults to 'day']
 **region** | **string** | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America. | [optional] [one of: 'usa', 'europe', 'asia', 'asia_india', 'asia_southkorea', 'africa_std', 'southamerica_std']
 
@@ -141,6 +157,12 @@ Fetches historical stats for a given service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['from'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as 'yesterday', or 'two weeks ago'. Default varies based on the value of `by`.
+$options['to'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.
+$options['by'] = day; // string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.
+$options['region'] = usa; // string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America.
+
 try {
     $result = $apiInstance->getHistStatsService($options);
 } catch (Exception $e) {
@@ -155,8 +177,8 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
-**from** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
-**to** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
+**from** | **string** | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of `by`. | [optional]
+**to** | **string** | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. | [optional] [defaults to 'now']
 **by** | **string** | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. | [optional] [one of: 'hour', 'minute', 'day'] [defaults to 'day']
 **region** | **string** | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America. | [optional] [one of: 'usa', 'europe', 'asia', 'asia_india', 'asia_southkorea', 'africa_std', 'southamerica_std']
 
@@ -177,6 +199,13 @@ Fetches the specified field from the historical stats for a given service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['field'] = hit_ratio; // string | Name of the stats field.
+$options['from'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as 'yesterday', or 'two weeks ago'. Default varies based on the value of `by`.
+$options['to'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.
+$options['by'] = day; // string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.
+$options['region'] = usa; // string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America.
+
 try {
     $result = $apiInstance->getHistStatsServiceField($options);
 } catch (Exception $e) {
@@ -192,8 +221,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **field** | **string** | Name of the stats field. |
-**from** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
-**to** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
+**from** | **string** | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of `by`. | [optional]
+**to** | **string** | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. | [optional] [defaults to 'now']
 **by** | **string** | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. | [optional] [one of: 'hour', 'minute', 'day'] [defaults to 'day']
 **region** | **string** | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * `africa_std` - Africa.   * `southamerica_std` - South America. | [optional] [one of: 'usa', 'europe', 'asia', 'asia_india', 'asia_southkorea', 'africa_std', 'southamerica_std']
 
@@ -214,6 +243,7 @@ Fetches the list of codes for regions that are covered by the Fastly CDN service
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->getRegions($options);
 } catch (Exception $e) {
@@ -244,6 +274,9 @@ Returns usage information aggregated across all Fastly services and grouped by r
 
 ### Example
 ```php
+    $options['from'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as 'yesterday', or 'two weeks ago'. Default varies based on the value of `by`.
+$options['to'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.
+
 try {
     $result = $apiInstance->getUsage($options);
 } catch (Exception $e) {
@@ -257,8 +290,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**from** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
-**to** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
+**from** | **string** | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of `by`. | [optional]
+**to** | **string** | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. | [optional] [defaults to 'now']
 
 ### Return type
 
@@ -277,6 +310,10 @@ Returns month-to-date usage details for a given month and year. Usage details ar
 
 ### Example
 ```php
+    $options['year'] = 2020; // string | 4-digit year.
+$options['month'] = 05; // string | 2-digit month.
+$options['billable_units'] = true; // bool | If `true`, return results as billable units.
+
 try {
     $result = $apiInstance->getUsageMonth($options);
 } catch (Exception $e) {
@@ -311,6 +348,9 @@ Returns usage information aggregated by service and grouped by service and regio
 
 ### Example
 ```php
+    $options['from'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as 'yesterday', or 'two weeks ago'. Default varies based on the value of `by`.
+$options['to'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.
+
 try {
     $result = $apiInstance->getUsageService($options);
 } catch (Exception $e) {
@@ -324,8 +364,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**from** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
-**to** | **string** | Absolute, relative or epoch timestamp. Limits the results returned. | [optional]
+**from** | **string** | Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of `by`. | [optional]
+**to** | **string** | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. | [optional] [defaults to 'now']
 
 ### Return type
 

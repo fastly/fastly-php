@@ -31,6 +31,16 @@ Create a Papertrail for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['address'] = 'address_example'; // string | A hostname or IPv4 address.
+$options['port'] = 514; // int | The port number.
+
 try {
     $result = $apiInstance->createLogPapertrail($options);
 } catch (Exception $e) {
@@ -71,6 +81,10 @@ Delete the Papertrail for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_papertrail_name'] = 'logging_papertrail_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->deleteLogPapertrail($options);
 } catch (Exception $e) {
@@ -105,6 +119,10 @@ Get the Papertrail for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_papertrail_name'] = 'logging_papertrail_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->getLogPapertrail($options);
 } catch (Exception $e) {
@@ -139,6 +157,9 @@ List all of the Papertrails for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listLogPapertrail($options);
 } catch (Exception $e) {
@@ -172,6 +193,17 @@ Update the Papertrail for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_papertrail_name'] = 'logging_papertrail_name_example'; // string | The name for the real-time logging configuration.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['address'] = 'address_example'; // string | A hostname or IPv4 address.
+$options['port'] = 514; // int | The port number.
+
 try {
     $result = $apiInstance->updateLogPapertrail($options);
 } catch (Exception $e) {

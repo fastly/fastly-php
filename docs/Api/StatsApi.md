@@ -27,6 +27,12 @@ Get the stats from a service for a block of time. This lists all stats by PoP lo
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['month'] = 05; // string | 2-digit month.
+$options['year'] = 2020; // string | 4-digit year.
+$options['start_time'] = 1608560817; // int | Epoch timestamp. Limits the results returned.
+$options['end_time'] = 1608560817; // int | Epoch timestamp. Limits the results returned.
+
 try {
     $result = $apiInstance->getServiceStats($options);
 } catch (Exception $e) {

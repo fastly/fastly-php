@@ -27,6 +27,10 @@ Retrieve metadata for a single dictionary by ID for a version and service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
+
 try {
     $result = $apiInstance->getDictionaryInfo($options);
 } catch (Exception $e) {

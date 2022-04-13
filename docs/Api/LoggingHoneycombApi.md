@@ -31,6 +31,16 @@ Create a Honeycomb logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = 'format_example'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest.
+$options['dataset'] = 'dataset_example'; // string | The Honeycomb Dataset you want to log to.
+$options['token'] = 'token_example'; // string | The Write Key from the Account page of your Honeycomb account.
+
 try {
     $result = $apiInstance->createLogHoneycomb($options);
 } catch (Exception $e) {
@@ -71,6 +81,10 @@ Delete the Honeycomb logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_honeycomb_name'] = 'logging_honeycomb_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->deleteLogHoneycomb($options);
 } catch (Exception $e) {
@@ -105,6 +119,10 @@ Get the details of a Honeycomb logging object for a particular service and versi
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_honeycomb_name'] = 'logging_honeycomb_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->getLogHoneycomb($options);
 } catch (Exception $e) {
@@ -139,6 +157,9 @@ List all of the Honeycomb logging objects for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listLogHoneycomb($options);
 } catch (Exception $e) {
@@ -172,6 +193,17 @@ Update a Honeycomb logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_honeycomb_name'] = 'logging_honeycomb_name_example'; // string | The name for the real-time logging configuration.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = 'format_example'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest.
+$options['dataset'] = 'dataset_example'; // string | The Honeycomb Dataset you want to log to.
+$options['token'] = 'token_example'; // string | The Write Key from the Account page of your Honeycomb account.
+
 try {
     $result = $apiInstance->updateLogHoneycomb($options);
 } catch (Exception $e) {

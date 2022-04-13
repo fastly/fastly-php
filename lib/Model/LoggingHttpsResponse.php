@@ -680,7 +680,7 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets request_max_entries
      *
-     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` (no limit).
+     * @param int|null $request_max_entries The maximum number of logs sent in one request. Defaults `0` (10k).
      *
      * @return self
      */
@@ -704,7 +704,7 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets request_max_bytes
      *
-     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` (no limit).
+     * @param int|null $request_max_bytes The maximum number of bytes sent in one request. Defaults `0` (100MB).
      *
      * @return self
      */

@@ -29,6 +29,7 @@ Gets all documentation associated with the Fastly API.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->getDocs($options);
 } catch (Exception $e) {
@@ -59,6 +60,9 @@ Gets all documentation associated with a given Categorical Section where `sectio
 
 ### Example
 ```php
+    $options['section'] = backend; // string | The section to search for. Supports regular expressions.
+$options['invert'] = 'invert_example'; // string | Get everything that does not match section.
+
 try {
     $apiInstance->getDocsSection($options);
 } catch (Exception $e) {
@@ -92,6 +96,8 @@ Gets all documentation relating to a given 'Subject'.
 
 ### Example
 ```php
+    $options['subject'] = backend; // string | The subject to search for. Supports regular expressions.
+
 try {
     $apiInstance->getDocsSubject($options);
 } catch (Exception $e) {

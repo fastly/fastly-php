@@ -31,6 +31,16 @@ Create a New Relic Logs logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = NULL; // mixed | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest.
+$options['token'] = 'token_example'; // string | The Insert API key from the Account page of your New Relic account. Required.
+$options['region'] = 'US'; // string | The region to which to stream logs.
+
 try {
     $result = $apiInstance->createLogNewrelic($options);
 } catch (Exception $e) {
@@ -71,6 +81,10 @@ Delete the New Relic Logs logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_newrelic_name'] = 'logging_newrelic_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->deleteLogNewrelic($options);
 } catch (Exception $e) {
@@ -105,6 +119,10 @@ Get the details of a New Relic Logs logging object for a particular service and 
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_newrelic_name'] = 'logging_newrelic_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->getLogNewrelic($options);
 } catch (Exception $e) {
@@ -139,6 +157,9 @@ List all of the New Relic Logs logging objects for a particular service and vers
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listLogNewrelic($options);
 } catch (Exception $e) {
@@ -172,6 +193,17 @@ Update a New Relic Logs logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_newrelic_name'] = 'logging_newrelic_name_example'; // string | The name for the real-time logging configuration.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = NULL; // mixed | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that New Relic Logs can ingest.
+$options['token'] = 'token_example'; // string | The Insert API key from the Account page of your New Relic account. Required.
+$options['region'] = 'US'; // string | The region to which to stream logs.
+
 try {
     $result = $apiInstance->updateLogNewrelic($options);
 } catch (Exception $e) {

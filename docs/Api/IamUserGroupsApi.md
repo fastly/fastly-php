@@ -32,6 +32,8 @@ Delete a user group.
 
 ### Example
 ```php
+    $options['user_group_id'] = 'user_group_id_example'; // string | Alphanumeric string identifying the user group.
+
 try {
     $apiInstance->deleteAUserGroup($options);
 } catch (Exception $e) {
@@ -64,6 +66,8 @@ Get a user group.
 
 ### Example
 ```php
+    $options['user_group_id'] = 'user_group_id_example'; // string | Alphanumeric string identifying the user group.
+
 try {
     $result = $apiInstance->getAUserGroup($options);
 } catch (Exception $e) {
@@ -96,6 +100,10 @@ List members of a user group.
 
 ### Example
 ```php
+    $options['user_group_id'] = 'user_group_id_example'; // string | Alphanumeric string identifying the user group.
+$options['per_page'] = 20; // int | Number of records per page.
+$options['page'] = 1; // int | Current page.
+
 try {
     $result = $apiInstance->listUserGroupMembers($options);
 } catch (Exception $e) {
@@ -130,6 +138,10 @@ List roles in a user group.
 
 ### Example
 ```php
+    $options['user_group_id'] = 'user_group_id_example'; // string | Alphanumeric string identifying the user group.
+$options['per_page'] = 20; // int | Number of records per page.
+$options['page'] = 1; // int | Current page.
+
 try {
     $result = $apiInstance->listUserGroupRoles($options);
 } catch (Exception $e) {
@@ -164,6 +176,10 @@ List service groups in a user group.
 
 ### Example
 ```php
+    $options['user_group_id'] = 'user_group_id_example'; // string | Alphanumeric string identifying the user group.
+$options['per_page'] = 20; // int | Number of records per page.
+$options['page'] = 1; // int | Current page.
+
 try {
     $result = $apiInstance->listUserGroupServiceGroups($options);
 } catch (Exception $e) {
@@ -198,6 +214,9 @@ List all user groups.
 
 ### Example
 ```php
+    $options['per_page'] = 20; // int | Number of records per page.
+$options['page'] = 1; // int | Current page.
+
 try {
     $result = $apiInstance->listUserGroups($options);
 } catch (Exception $e) {

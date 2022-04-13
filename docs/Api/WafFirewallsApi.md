@@ -31,6 +31,8 @@ Create a firewall object for a particular service and service version using a de
 
 ### Example
 ```php
+    $options['waf_firewall'] = {"data":{"type":"waf_firewall","attributes":{"prefetch_condition":"WAF_Condition","response":"WAF_Error","service_id":"SU1Z0isxPaozGVKXdv0eY","service_version_number":1}}}; // \Fastly\Model\WafFirewall
+
 try {
     $result = $apiInstance->createWafFirewall($options);
 } catch (Exception $e) {
@@ -63,6 +65,9 @@ Delete the firewall object for a particular service and service version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['waf_firewall'] = {"data":{"id":"fW7g2uUGZzb2W9Euo4Mo0r","type":"waf_firewall","attributes":{"service_version_number":1}}}; // \Fastly\Model\WafFirewall
+
 try {
     $apiInstance->deleteWafFirewall($options);
 } catch (Exception $e) {
@@ -96,6 +101,10 @@ Get a specific firewall object.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['filter_service_version_number'] = 'filter_service_version_number_example'; // string | Limit the results returned to a specific service version.
+$options['include'] = 'waf_firewall_versions'; // string | Include related objects. Optional.
+
 try {
     $result = $apiInstance->getWafFirewall($options);
 } catch (Exception $e) {
@@ -130,6 +139,12 @@ List all firewall objects.
 
 ### Example
 ```php
+    $options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+$options['filter_service_id'] = 'filter_service_id_example'; // string | Limit the results returned to a specific service.
+$options['filter_service_version_number'] = 'filter_service_version_number_example'; // string | Limit the results returned to a specific service version.
+$options['include'] = 'waf_firewall_versions'; // string | Include related objects. Optional.
+
 try {
     $result = $apiInstance->listWafFirewalls($options);
 } catch (Exception $e) {
@@ -166,6 +181,9 @@ Update a firewall object for a particular service and service version. Specifyin
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['waf_firewall'] = {"update":{"summary":"Update a firewall object for a particular service and service version. Specifying a `service_version_number` is required.","value":{"data":{"id":"fW7g2uUGZzb2W9Euo4Mo0r","type":"waf_firewall","attributes":{"response":"NEW_RESPONSE","service_version_number":1}}}}}; // \Fastly\Model\WafFirewall
+
 try {
     $result = $apiInstance->updateWafFirewall($options);
 } catch (Exception $e) {

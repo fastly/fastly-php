@@ -27,6 +27,7 @@ List all permissions.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->listPermissions($options);
 } catch (Exception $e) {

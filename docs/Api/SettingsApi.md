@@ -27,6 +27,9 @@ Get the settings for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->getServiceSettings($options);
 } catch (Exception $e) {

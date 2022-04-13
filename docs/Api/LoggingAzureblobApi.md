@@ -31,6 +31,25 @@ Create an Azure Blob Storage logging endpoint for a particular service and versi
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = 2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['message_type'] = 'classic'; // string | How the message should be formatted.
+$options['timestamp_format'] = 'timestamp_format_example'; // string | A timestamp format
+$options['period'] = 3600; // int | How frequently log files are finalized so they can be available for reading (in seconds).
+$options['gzip_level'] = 0; // int | What level of gzip encoding to have when sending logs (default `0`, no compression). If an explicit non-zero value is set, then `compression_codec` will default to \\\"gzip.\\\" Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+$options['compression_codec'] = 'compression_codec_example'; // string | The codec used for compression of your logs. Valid values are `zstd`, `snappy`, and `gzip`. If the specified codec is \\\"gzip\\\", `gzip_level` will default to 3. To specify a different level, leave `compression_codec` blank and explicitly set the level using `gzip_level`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+$options['path'] = 'null'; // string | The path to upload logs to.
+$options['account_name'] = 'account_name_example'; // string | The unique Azure Blob Storage namespace in which your data objects are stored. Required.
+$options['container'] = 'container_example'; // string | The name of the Azure Blob Storage container in which to store logs. Required.
+$options['sas_token'] = 'sas_token_example'; // string | The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
+$options['public_key'] = 'null'; // string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+$options['file_max_bytes'] = 56; // int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+
 try {
     $result = $apiInstance->createLogAzure($options);
 } catch (Exception $e) {
@@ -80,6 +99,10 @@ Delete the Azure Blob Storage logging endpoint for a particular service and vers
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_azureblob_name'] = 'logging_azureblob_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->deleteLogAzure($options);
 } catch (Exception $e) {
@@ -114,6 +137,10 @@ Get the Azure Blob Storage logging endpoint for a particular service and version
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_azureblob_name'] = 'logging_azureblob_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->getLogAzure($options);
 } catch (Exception $e) {
@@ -148,6 +175,9 @@ List all of the Azure Blob Storage logging endpoints for a particular service an
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listLogAzure($options);
 } catch (Exception $e) {
@@ -181,6 +211,26 @@ Update the Azure Blob Storage logging endpoint for a particular service and vers
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_azureblob_name'] = 'logging_azureblob_name_example'; // string | The name for the real-time logging configuration.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['message_type'] = 'classic'; // string | How the message should be formatted.
+$options['timestamp_format'] = 'timestamp_format_example'; // string | A timestamp format
+$options['period'] = 3600; // int | How frequently log files are finalized so they can be available for reading (in seconds).
+$options['gzip_level'] = 0; // int | What level of gzip encoding to have when sending logs (default `0`, no compression). If an explicit non-zero value is set, then `compression_codec` will default to \\\"gzip.\\\" Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+$options['compression_codec'] = 'compression_codec_example'; // string | The codec used for compression of your logs. Valid values are `zstd`, `snappy`, and `gzip`. If the specified codec is \\\"gzip\\\", `gzip_level` will default to 3. To specify a different level, leave `compression_codec` blank and explicitly set the level using `gzip_level`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+$options['path'] = 'null'; // string | The path to upload logs to.
+$options['account_name'] = 'account_name_example'; // string | The unique Azure Blob Storage namespace in which your data objects are stored. Required.
+$options['container'] = 'container_example'; // string | The name of the Azure Blob Storage container in which to store logs. Required.
+$options['sas_token'] = 'sas_token_example'; // string | The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
+$options['public_key'] = 'null'; // string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+$options['file_max_bytes'] = 56; // int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+
 try {
     $result = $apiInstance->updateLogAzure($options);
 } catch (Exception $e) {

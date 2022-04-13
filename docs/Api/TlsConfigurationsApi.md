@@ -29,6 +29,9 @@ Show a TLS configuration.
 
 ### Example
 ```php
+    $options['include'] = dns_records; // string | Include related objects. Optional, comma-separated values. Permitted values: `dns_records`.
+$options['tls_configuration_id'] = 'tls_configuration_id_example'; // string | Alphanumeric string identifying a TLS configuration.
+
 try {
     $result = $apiInstance->getTlsConfig($options);
 } catch (Exception $e) {
@@ -62,6 +65,11 @@ List all TLS configurations.
 
 ### Example
 ```php
+    $options['filter_bulk'] = 'filter_bulk_example'; // string | Optionally filters by the bulk attribute.
+$options['include'] = dns_records; // string | Include related objects. Optional, comma-separated values. Permitted values: `dns_records`.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+
 try {
     $result = $apiInstance->listTlsConfigs($options);
 } catch (Exception $e) {
@@ -97,6 +105,9 @@ Update a TLS configuration.
 
 ### Example
 ```php
+    $options['tls_configuration_id'] = 'tls_configuration_id_example'; // string | Alphanumeric string identifying a TLS configuration.
+$options['tls_configuration'] = {"data":{"type":"tls_configuration","attributes":{"name":"New TLS configuration name"}}}; // \Fastly\Model\TlsConfiguration
+
 try {
     $result = $apiInstance->updateTlsConfig($options);
 } catch (Exception $e) {

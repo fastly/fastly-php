@@ -32,6 +32,11 @@ Create DictionaryItem given service, dictionary ID, item key, and item value.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
+$options['item_key'] = 'item_key_example'; // string | Item key, maximum 256 characters.
+$options['item_value'] = 'item_value_example'; // string | Item value, maximum 8000 characters.
+
 try {
     $result = $apiInstance->createDictionaryItem($options);
 } catch (Exception $e) {
@@ -67,6 +72,10 @@ Delete DictionaryItem given service, dictionary ID, and item key.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
+$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 256 characters.
+
 try {
     $result = $apiInstance->deleteDictionaryItem($options);
 } catch (Exception $e) {
@@ -101,6 +110,10 @@ Retrieve a single DictionaryItem given service, dictionary ID and item key.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
+$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 256 characters.
+
 try {
     $result = $apiInstance->getDictionaryItem($options);
 } catch (Exception $e) {
@@ -135,6 +148,13 @@ List of DictionaryItems given service and dictionary ID.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
+$options['page'] = 1; // int | Current page.
+$options['per_page'] = 20; // int | Number of records per page.
+$options['sort'] = created; // string | Field on which to sort.
+$options['direction'] = ascend; // string | Direction in which to sort results.
+
 try {
     $result = $apiInstance->listDictionaryItems($options);
 } catch (Exception $e) {
@@ -172,6 +192,12 @@ Update DictionaryItem given service, dictionary ID, item key, and item value.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
+$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 256 characters.
+$options['item_key'] = 'item_key_example'; // string | Item key, maximum 256 characters.
+$options['item_value'] = 'item_value_example'; // string | Item value, maximum 8000 characters.
+
 try {
     $result = $apiInstance->updateDictionaryItem($options);
 } catch (Exception $e) {
@@ -208,6 +234,12 @@ Upsert DictionaryItem given service, dictionary ID, item key, and item value.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
+$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 256 characters.
+$options['item_key'] = 'item_key_example'; // string | Item key, maximum 256 characters.
+$options['item_value'] = 'item_value_example'; // string | Item value, maximum 8000 characters.
+
 try {
     $result = $apiInstance->upsertDictionaryItem($options);
 } catch (Exception $e) {

@@ -30,6 +30,8 @@ Delete a role.
 
 ### Example
 ```php
+    $options['role_id'] = 'role_id_example'; // string | Alphanumeric string identifying the role.
+
 try {
     $apiInstance->deleteARole($options);
 } catch (Exception $e) {
@@ -62,6 +64,8 @@ Get a role.
 
 ### Example
 ```php
+    $options['role_id'] = 'role_id_example'; // string | Alphanumeric string identifying the role.
+
 try {
     $result = $apiInstance->getARole($options);
 } catch (Exception $e) {
@@ -94,6 +98,8 @@ List all permissions in a role.
 
 ### Example
 ```php
+    $options['role_id'] = 'role_id_example'; // string | Alphanumeric string identifying the role.
+
 try {
     $result = $apiInstance->listRolePermissions($options);
 } catch (Exception $e) {
@@ -126,6 +132,9 @@ List all roles.
 
 ### Example
 ```php
+    $options['per_page'] = 20; // int | Number of records per page.
+$options['page'] = 1; // int | Current page.
+
 try {
     $result = $apiInstance->listRoles($options);
 } catch (Exception $e) {

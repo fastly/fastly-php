@@ -27,6 +27,7 @@ List all domain-ownerships.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->listDomainOwnerships($options);
 } catch (Exception $e) {

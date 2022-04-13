@@ -37,6 +37,12 @@ Upload a VCL for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['content'] = 'content_example'; // string | The VCL code to be included.
+$options['main'] = True; // bool | Set to `true` when this is the main VCL, otherwise `false`.
+$options['name'] = 'name_example'; // string | The name of this VCL.
+
 try {
     $result = $apiInstance->createCustomVcl($options);
 } catch (Exception $e) {
@@ -73,6 +79,10 @@ Delete the uploaded VCL for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['vcl_name'] = 'vcl_name_example'; // string | The name of this VCL.
+
 try {
     $result = $apiInstance->deleteCustomVcl($options);
 } catch (Exception $e) {
@@ -107,6 +117,11 @@ Get the uploaded VCL for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['vcl_name'] = 'vcl_name_example'; // string | The name of this VCL.
+$options['no_content'] = '0'; // string | Omit VCL content.
+
 try {
     $result = $apiInstance->getCustomVcl($options);
 } catch (Exception $e) {
@@ -142,6 +157,9 @@ Return boilerplate VCL with the service's TTL from the [settings](/reference/api
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->getCustomVclBoilerplate($options);
 } catch (Exception $e) {
@@ -175,6 +193,9 @@ Display the generated VCL for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->getCustomVclGenerated($options);
 } catch (Exception $e) {
@@ -208,6 +229,9 @@ Display the content of generated VCL with HTML syntax highlighting. Include line
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $apiInstance->getCustomVclGeneratedHighlighted($options);
 } catch (Exception $e) {
@@ -241,6 +265,10 @@ Get the uploaded VCL for a particular service and version with HTML syntax highl
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['vcl_name'] = 'vcl_name_example'; // string | The name of this VCL.
+
 try {
     $apiInstance->getCustomVclHighlighted($options);
 } catch (Exception $e) {
@@ -275,6 +303,10 @@ Download the specified VCL.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['vcl_name'] = 'vcl_name_example'; // string | The name of this VCL.
+
 try {
     $result = $apiInstance->getCustomVclRaw($options);
 } catch (Exception $e) {
@@ -309,6 +341,9 @@ List the uploaded VCLs for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listCustomVcl($options);
 } catch (Exception $e) {
@@ -342,6 +377,10 @@ Set the specified VCL as the main.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['vcl_name'] = 'vcl_name_example'; // string | The name of this VCL.
+
 try {
     $result = $apiInstance->setCustomVclMain($options);
 } catch (Exception $e) {
@@ -376,6 +415,13 @@ Update the uploaded VCL for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['vcl_name'] = 'vcl_name_example'; // string | The name of this VCL.
+$options['content'] = 'content_example'; // string | The VCL code to be included.
+$options['main'] = True; // bool | Set to `true` when this is the main VCL, otherwise `false`.
+$options['name'] = 'name_example'; // string | The name of this VCL.
+
 try {
     $result = $apiInstance->updateCustomVcl($options);
 } catch (Exception $e) {

@@ -30,6 +30,8 @@ Create a TLS private key.
 
 ### Example
 ```php
+    $options['tls_private_key'] = {"data":{"type":"tls_private_key","attributes":{"key":"-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n","name":"My private key"}}}; // \Fastly\Model\TlsPrivateKey
+
 try {
     $result = $apiInstance->createTlsKey($options);
 } catch (Exception $e) {
@@ -62,6 +64,8 @@ Destroy a TLS private key. Only private keys not already matched to any certific
 
 ### Example
 ```php
+    $options['tls_private_key_id'] = 'tls_private_key_id_example'; // string | Alphanumeric string identifying a private Key.
+
 try {
     $apiInstance->deleteTlsKey($options);
 } catch (Exception $e) {
@@ -94,6 +98,8 @@ Show a TLS private key.
 
 ### Example
 ```php
+    $options['tls_private_key_id'] = 'tls_private_key_id_example'; // string | Alphanumeric string identifying a private Key.
+
 try {
     $result = $apiInstance->getTlsKey($options);
 } catch (Exception $e) {
@@ -126,6 +132,10 @@ List all TLS private keys.
 
 ### Example
 ```php
+    $options['filter_in_use'] = 'filter_in_use_example'; // string | Limit the returned keys to those without any matching TLS certificates. The only valid value is false.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+
 try {
     $result = $apiInstance->listTlsKeys($options);
 } catch (Exception $e) {

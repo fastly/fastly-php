@@ -30,6 +30,10 @@ Removes the specified Request Settings object.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['request_settings_name'] = 'request_settings_name_example'; // string | Name for the request settings.
+
 try {
     $result = $apiInstance->deleteRequestSettings($options);
 } catch (Exception $e) {
@@ -64,6 +68,10 @@ Gets the specified Request Settings object.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['request_settings_name'] = 'request_settings_name_example'; // string | Name for the request settings.
+
 try {
     $result = $apiInstance->getRequestSettings($options);
 } catch (Exception $e) {
@@ -98,6 +106,9 @@ Returns a list of all Request Settings objects for the given service and version
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listRequestSettings($options);
 } catch (Exception $e) {
@@ -131,6 +142,22 @@ Updates the specified Request Settings object.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['request_settings_name'] = 'request_settings_name_example'; // string | Name for the request settings.
+$options['action'] = 'action_example'; // string | Allows you to terminate request handling and immediately perform an action.
+$options['bypass_busy_wait'] = 56; // int | Disable collapsed forwarding, so you don't wait for other objects to origin.
+$options['default_host'] = 'default_host_example'; // string | Sets the host header.
+$options['force_miss'] = 56; // int | Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
+$options['force_ssl'] = 56; // int | Forces the request use SSL (redirects a non-SSL to SSL).
+$options['geo_headers'] = 56; // int | Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
+$options['hash_keys'] = 'hash_keys_example'; // string | Comma separated list of varnish request object fields that should be in the hash key.
+$options['max_stale_age'] = 56; // int | How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
+$options['name'] = 'name_example'; // string | Name for the request settings.
+$options['request_condition'] = 'request_condition_example'; // string | Condition which, if met, will select this configuration during a request. Optional.
+$options['timer_support'] = 56; // int | Injects the X-Timer info into the request for viewing origin fetch durations.
+$options['xff'] = 'xff_example'; // string | Short for X-Forwarded-For.
+
 try {
     $result = $apiInstance->updateRequestSettings($options);
 } catch (Exception $e) {

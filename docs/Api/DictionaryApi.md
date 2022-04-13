@@ -31,6 +31,11 @@ Create named dictionary for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | Name for the Dictionary (must start with an alphabetic character and can contain only alphanumeric characters, underscores, and whitespace).
+$options['write_only'] = false; // bool | Determines if items in the dictionary are readable or not.
+
 try {
     $result = $apiInstance->createDictionary($options);
 } catch (Exception $e) {
@@ -66,6 +71,10 @@ Delete named dictionary for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['dictionary_name'] = 'dictionary_name_example'; // string | Name for the Dictionary (must start with an alphabetic character and can contain only alphanumeric characters, underscores, and whitespace).
+
 try {
     $result = $apiInstance->deleteDictionary($options);
 } catch (Exception $e) {
@@ -100,6 +109,10 @@ Retrieve a single dictionary by name for the version and service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['dictionary_name'] = 'dictionary_name_example'; // string | Name for the Dictionary (must start with an alphabetic character and can contain only alphanumeric characters, underscores, and whitespace).
+
 try {
     $result = $apiInstance->getDictionary($options);
 } catch (Exception $e) {
@@ -134,6 +147,9 @@ List all dictionaries for the version of the service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listDictionaries($options);
 } catch (Exception $e) {
@@ -167,6 +183,12 @@ Update named dictionary for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['dictionary_name'] = 'dictionary_name_example'; // string | Name for the Dictionary (must start with an alphabetic character and can contain only alphanumeric characters, underscores, and whitespace).
+$options['name'] = 'name_example'; // string | Name for the Dictionary (must start with an alphabetic character and can contain only alphanumeric characters, underscores, and whitespace).
+$options['write_only'] = false; // bool | Determines if items in the dictionary are readable or not.
+
 try {
     $result = $apiInstance->updateDictionary($options);
 } catch (Exception $e) {

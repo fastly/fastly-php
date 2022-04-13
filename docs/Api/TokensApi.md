@@ -31,6 +31,7 @@ Get a single token based on the access_token used in the request.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->getTokenCurrent($options);
 } catch (Exception $e) {
@@ -61,6 +62,8 @@ List all tokens belonging to a specific customer.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+
 try {
     $result = $apiInstance->listTokensCustomer($options);
 } catch (Exception $e) {
@@ -93,6 +96,7 @@ List all tokens belonging to the authenticated user.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->listTokensUser($options);
 } catch (Exception $e) {
@@ -123,6 +127,8 @@ Revoke a specific token by its id.
 
 ### Example
 ```php
+    $options['token_id'] = 'token_id_example'; // string | Alphanumeric string identifying a token.
+
 try {
     $apiInstance->revokeToken($options);
 } catch (Exception $e) {
@@ -155,6 +161,7 @@ Revoke a token that is used to authenticate the request.
 
 ### Example
 ```php
+    
 try {
     $apiInstance->revokeTokenCurrent($options);
 } catch (Exception $e) {

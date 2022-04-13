@@ -31,6 +31,10 @@ Create a WAF exclusion for a particular firewall version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['firewall_version_number'] = 56; // int | Integer identifying a WAF firewall version.
+$options['waf_exclusion'] = {"data":{"type":"waf_exclusion","attributes":{"exclusion_type":"rule","condition":"req.url.basename == \"index.html\"","name":"test-waf-exclusion"},"relationships":{"waf_rules":{"data":[{"id":2500162,"type":"waf_rule"}]}}}}; // \Fastly\Model\WafExclusion
+
 try {
     $result = $apiInstance->createWafRuleExclusion($options);
 } catch (Exception $e) {
@@ -65,6 +69,10 @@ Delete a WAF exclusion for a particular firewall version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['firewall_version_number'] = 56; // int | Integer identifying a WAF firewall version.
+$options['exclusion_number'] = 56; // int | A numeric ID identifying a WAF exclusion.
+
 try {
     $apiInstance->deleteWafRuleExclusion($options);
 } catch (Exception $e) {
@@ -99,6 +107,10 @@ Get a specific WAF exclusion object.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['firewall_version_number'] = 56; // int | Integer identifying a WAF firewall version.
+$options['exclusion_number'] = 56; // int | A numeric ID identifying a WAF exclusion.
+
 try {
     $result = $apiInstance->getWafRuleExclusion($options);
 } catch (Exception $e) {
@@ -133,6 +145,15 @@ List all exclusions for a particular firewall version.
 
 ### Example
 ```php
+    $options['filter_exclusion_type'] = 'filter_exclusion_type_example'; // string | Filters the results based on this exclusion type.
+$options['filter_name'] = 'filter_name_example'; // string | Filters the results based on name.
+$options['filter_waf_rules_modsec_rule_id'] = 56; // int | Filters the results based on this ModSecurity rule ID.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+$options['include'] = waf_rules; // string | Include relationships. Optional, comma-separated values. Permitted values: `waf_rules` and `waf_rule_revisions`.
+$options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['firewall_version_number'] = 56; // int | Integer identifying a WAF firewall version.
+
 try {
     $result = $apiInstance->listWafRuleExclusions($options);
 } catch (Exception $e) {
@@ -172,6 +193,11 @@ Update a WAF exclusion for a particular firewall version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['firewall_version_number'] = 56; // int | Integer identifying a WAF firewall version.
+$options['exclusion_number'] = 56; // int | A numeric ID identifying a WAF exclusion.
+$options['waf_exclusion'] = {"data":{"type":"waf_exclusion","attributes":{"logging":false,"condition":"req.url.basename == \"index.html\" || req.url.basename == \"admin.html\"","name":"updated-test-waf-exclusion"}}}; // \Fastly\Model\WafExclusion
+
 try {
     $result = $apiInstance->updateWafRuleExclusion($options);
 } catch (Exception $e) {

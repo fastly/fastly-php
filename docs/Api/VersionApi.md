@@ -35,6 +35,9 @@ Activate the current version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->activateServiceVersion($options);
 } catch (Exception $e) {
@@ -68,6 +71,9 @@ Clone the current configuration into a new version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->cloneServiceVersion($options);
 } catch (Exception $e) {
@@ -101,6 +107,8 @@ Create a version for a particular service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+
 try {
     $result = $apiInstance->createServiceVersion($options);
 } catch (Exception $e) {
@@ -133,6 +141,9 @@ Deactivate the current version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->deactivateServiceVersion($options);
 } catch (Exception $e) {
@@ -166,6 +177,9 @@ Get the version for a particular service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->getServiceVersion($options);
 } catch (Exception $e) {
@@ -199,6 +213,8 @@ List the versions for a particular service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+
 try {
     $result = $apiInstance->listServiceVersions($options);
 } catch (Exception $e) {
@@ -231,6 +247,9 @@ Locks the specified version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->lockServiceVersion($options);
 } catch (Exception $e) {
@@ -264,6 +283,16 @@ Update a particular version for a particular service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['active'] = false; // bool | Whether this is the active version or not.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['deployed'] = True; // bool | Unused at this time.
+$options['locked'] = false; // bool | Whether this version is locked or not. Objects can not be added or edited on locked versions.
+$options['number'] = 56; // int | The number of this version.
+$options['staging'] = false; // bool | Unused at this time.
+$options['testing'] = false; // bool | Unused at this time.
+
 try {
     $result = $apiInstance->updateServiceVersion($options);
 } catch (Exception $e) {
@@ -304,6 +333,9 @@ Validate the version for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->validateServiceVersion($options);
 } catch (Exception $e) {

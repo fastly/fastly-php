@@ -212,7 +212,7 @@ class HistoricalResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets data
      *
-     * @param array<string,array>|null $data data
+     * @param array<string,array>|null $data Contains the results of the query, organized by *service ID*, into arrays where each element describes one service over a *time span*.
      *
      * @return self
      */

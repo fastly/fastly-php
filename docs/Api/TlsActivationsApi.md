@@ -31,6 +31,8 @@ Enable TLS for a particular TLS domain and certificate combination. These relati
 
 ### Example
 ```php
+    $options['tls_activation'] = {"data":{"type":"tls_activation","relationships":{"tls_certificate":{"data":[{"id":"cRTguUGZzb2W9Euo4moOr","type":"tls_certificate"}]},"tls_configuration":{"data":[{"id":"t7CguUGZzb2W9Euo5FoKa","type":"tls_configuration"}]},"tls_domain":{"data":[{"id":"example.com","type":"tls_domain"}]}}}}; // \Fastly\Model\TlsActivation
+
 try {
     $result = $apiInstance->createTlsActivation($options);
 } catch (Exception $e) {
@@ -63,6 +65,8 @@ Disable TLS on the domain associated with this TLS activation.
 
 ### Example
 ```php
+    $options['tls_activation_id'] = 'tls_activation_id_example'; // string | Alphanumeric string identifying a TLS activation.
+
 try {
     $apiInstance->deleteTlsActivation($options);
 } catch (Exception $e) {
@@ -95,6 +99,9 @@ Show a TLS activation.
 
 ### Example
 ```php
+    $options['include'] = tls_certificate,tls_configuration,tls_domain; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_certificate`, `tls_configuration`, and `tls_domain`.
+$options['tls_activation_id'] = 'tls_activation_id_example'; // string | Alphanumeric string identifying a TLS activation.
+
 try {
     $result = $apiInstance->getTlsActivation($options);
 } catch (Exception $e) {
@@ -128,6 +135,13 @@ List all TLS activations.
 
 ### Example
 ```php
+    $options['filter_tls_certificate_id'] = 'filter_tls_certificate_id_example'; // string | Limit the returned activations to a specific certificate.
+$options['filter_tls_configuration_id'] = 'filter_tls_configuration_id_example'; // string | Limit the returned activations to a specific TLS configuration.
+$options['filter_tls_domain_id'] = 'filter_tls_domain_id_example'; // string | Limit the returned rules to a specific domain name.
+$options['include'] = tls_certificate,tls_configuration,tls_domain; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_certificate`, `tls_configuration`, and `tls_domain`.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+
 try {
     $result = $apiInstance->listTlsActivations($options);
 } catch (Exception $e) {
@@ -165,6 +179,9 @@ Update the certificate used to terminate TLS traffic for the domain associated w
 
 ### Example
 ```php
+    $options['tls_activation_id'] = 'tls_activation_id_example'; // string | Alphanumeric string identifying a TLS activation.
+$options['tls_activation'] = {"data":{"type":"tls_activation","relationships":{"tls_certificate":{"data":[{"type":"tls_certificate","id":"cRTguUGZzb2W9Euo4moOr"}]}}}}; // \Fastly\Model\TlsActivation
+
 try {
     $result = $apiInstance->updateTlsActivation($options);
 } catch (Exception $e) {

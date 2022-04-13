@@ -28,6 +28,8 @@ Get a specific event.
 
 ### Example
 ```php
+    $options['event_id'] = 'event_id_example'; // string | Alphanumeric string identifying an event.
+
 try {
     $result = $apiInstance->getEvent($options);
 } catch (Exception $e) {
@@ -60,6 +62,14 @@ List all events for a particular customer. Events can be filtered by user, custo
 
 ### Example
 ```php
+    $options['filter_event_type'] = 'filter_event_type_example'; // string | Limit the returned events to a specific `event_type`.
+$options['filter_customer_id'] = x4xCwxxJxGCx123Rx5xTx; // string | Limit the results returned to a specific customer.
+$options['filter_service_id'] = 'filter_service_id_example'; // string | Limit the results returned to a specific service.
+$options['filter_user_id'] = 'filter_user_id_example'; // string | Limit the results returned to a specific user.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+$options['sort'] = created_at; // string | The order in which to list the results by creation date.
+
 try {
     $result = $apiInstance->listEvents($options);
 } catch (Exception $e) {

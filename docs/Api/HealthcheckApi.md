@@ -31,6 +31,21 @@ Create a healthcheck for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['check_interval'] = 56; // int | How often to run the healthcheck in milliseconds.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['expected_response'] = 56; // int | The status code expected from the host.
+$options['host'] = 'host_example'; // string | Which host to check.
+$options['http_version'] = 'http_version_example'; // string | Whether to use version 1.0 or 1.1 HTTP.
+$options['initial'] = 56; // int | When loading a config, the initial number of probes to be seen as OK.
+$options['method'] = 'method_example'; // string | Which HTTP method to use.
+$options['name'] = 'name_example'; // string | The name of the healthcheck.
+$options['path'] = 'path_example'; // string | The path to check.
+$options['threshold'] = 56; // int | How many healthchecks must succeed to be considered healthy.
+$options['timeout'] = 56; // int | Timeout in milliseconds.
+$options['window'] = 56; // int | The number of most recent healthcheck queries to keep for this healthcheck.
+
 try {
     $result = $apiInstance->createHealthcheck($options);
 } catch (Exception $e) {
@@ -76,6 +91,10 @@ Delete the healthcheck for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['healthcheck_name'] = 'healthcheck_name_example'; // string | The name of the healthcheck.
+
 try {
     $result = $apiInstance->deleteHealthcheck($options);
 } catch (Exception $e) {
@@ -110,6 +129,10 @@ Get the healthcheck for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['healthcheck_name'] = 'healthcheck_name_example'; // string | The name of the healthcheck.
+
 try {
     $result = $apiInstance->getHealthcheck($options);
 } catch (Exception $e) {
@@ -144,6 +167,9 @@ List all of the healthchecks for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listHealthchecks($options);
 } catch (Exception $e) {
@@ -177,6 +203,22 @@ Update the healthcheck for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['healthcheck_name'] = 'healthcheck_name_example'; // string | The name of the healthcheck.
+$options['check_interval'] = 56; // int | How often to run the healthcheck in milliseconds.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['expected_response'] = 56; // int | The status code expected from the host.
+$options['host'] = 'host_example'; // string | Which host to check.
+$options['http_version'] = 'http_version_example'; // string | Whether to use version 1.0 or 1.1 HTTP.
+$options['initial'] = 56; // int | When loading a config, the initial number of probes to be seen as OK.
+$options['method'] = 'method_example'; // string | Which HTTP method to use.
+$options['name'] = 'name_example'; // string | The name of the healthcheck.
+$options['path'] = 'path_example'; // string | The path to check.
+$options['threshold'] = 56; // int | How many healthchecks must succeed to be considered healthy.
+$options['timeout'] = 56; // int | Timeout in milliseconds.
+$options['window'] = 56; // int | The number of most recent healthcheck queries to keep for this healthcheck.
+
 try {
     $result = $apiInstance->updateHealthcheck($options);
 } catch (Exception $e) {

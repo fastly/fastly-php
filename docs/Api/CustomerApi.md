@@ -31,6 +31,8 @@ Delete a customer.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+
 try {
     $result = $apiInstance->deleteCustomer($options);
 } catch (Exception $e) {
@@ -63,6 +65,8 @@ Get a specific customer.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+
 try {
     $result = $apiInstance->getCustomer($options);
 } catch (Exception $e) {
@@ -95,6 +99,7 @@ Get the logged in customer.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->getLoggedInCustomer($options);
 } catch (Exception $e) {
@@ -125,6 +130,8 @@ List all users from a specified customer id.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+
 try {
     $result = $apiInstance->listUsers($options);
 } catch (Exception $e) {
@@ -157,6 +164,32 @@ Update a customer.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+$options['billing_contact_id'] = 'billing_contact_id_example'; // string | The alphanumeric string representing the primary billing contact.
+$options['billing_network_type'] = 'billing_network_type_example'; // string | Customer's current network revenue type.
+$options['billing_ref'] = 'billing_ref_example'; // string | Used for adding purchased orders to customer's account.
+$options['can_configure_wordpress'] = True; // bool | Whether this customer can view or edit wordpress.
+$options['can_reset_passwords'] = True; // bool | Whether this customer can reset passwords.
+$options['can_upload_vcl'] = True; // bool | Whether this customer can upload VCL.
+$options['force_2fa'] = True; // bool | Specifies whether 2FA is forced or not forced on the customer account. Logs out non-2FA users once 2FA is force enabled.
+$options['force_sso'] = True; // bool | Specifies whether SSO is forced or not forced on the customer account.
+$options['has_account_panel'] = True; // bool | Specifies whether the account has access or does not have access to the account panel.
+$options['has_improved_events'] = True; // bool | Specifies whether the account has access or does not have access to the improved events.
+$options['has_improved_ssl_config'] = True; // bool | Whether this customer can view or edit the SSL config.
+$options['has_openstack_logging'] = True; // bool | Specifies whether the account has enabled or not enabled openstack logging.
+$options['has_pci'] = True; // bool | Specifies whether the account can edit PCI for a service.
+$options['has_pci_passwords'] = True; // bool | Specifies whether PCI passwords are required for the account.
+$options['ip_whitelist'] = 'ip_whitelist_example'; // string | The range of IP addresses authorized to access the customer account.
+$options['legal_contact_id'] = 'legal_contact_id_example'; // string | The alphanumeric string identifying the account's legal contact.
+$options['name'] = 'name_example'; // string | The name of the customer, generally the company name.
+$options['owner_id'] = 'owner_id_example'; // string | The alphanumeric string identifying the account owner.
+$options['phone_number'] = 'phone_number_example'; // string | The phone number associated with the account.
+$options['postal_address'] = 'postal_address_example'; // string | The postal address associated with the account.
+$options['pricing_plan'] = 'pricing_plan_example'; // string | The pricing plan this customer is under.
+$options['pricing_plan_id'] = 'pricing_plan_id_example'; // string | The alphanumeric string identifying the pricing plan.
+$options['security_contact_id'] = 'security_contact_id_example'; // string | The alphanumeric string identifying the account's security contact.
+$options['technical_contact_id'] = 'technical_contact_id_example'; // string | The alphanumeric string identifying the account's technical contact.
+
 try {
     $result = $apiInstance->updateCustomer($options);
 } catch (Exception $e) {

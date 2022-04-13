@@ -29,6 +29,8 @@ Create an invitation.
 
 ### Example
 ```php
+    $options['invitation'] = {"data":{"type":"invitation","attributes":{"email":"thelma@example.com","limit_services":true,"role":"engineer"},"relationships":{"customer":{"data":[{"id":"44tb1D3asjhhuh2SH8e8YD","type":"customer"}]},"service_invitations":{"data":[{"type":"service_invitation","attributes":{"permission":"purge_all"},"relationships":{"service":{"data":[{"type":"service","id":"6yrrdleXQ9QDtum9rMB0nr"}]}}}]}}}}; // \Fastly\Model\Invitation
+
 try {
     $result = $apiInstance->createInvitation($options);
 } catch (Exception $e) {
@@ -61,6 +63,8 @@ Delete an invitation.
 
 ### Example
 ```php
+    $options['invitation_id'] = 'invitation_id_example'; // string | Alphanumeric string identifying an invitation.
+
 try {
     $apiInstance->deleteInvitation($options);
 } catch (Exception $e) {
@@ -93,6 +97,9 @@ List all invitations.
 
 ### Example
 ```php
+    $options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+
 try {
     $result = $apiInstance->listInvitations($options);
 } catch (Exception $e) {
