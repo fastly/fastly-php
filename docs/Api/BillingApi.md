@@ -29,6 +29,9 @@ Get the invoice for a given year and month. Can be any month from when the Custo
 
 ### Example
 ```php
+    $options['month'] = 05; // string | 2-digit month.
+$options['year'] = 2020; // string | 4-digit year.
+
 try {
     $result = $apiInstance->getInvoice($options);
 } catch (Exception $e) {
@@ -62,6 +65,9 @@ Get the invoice for the given invoice_id.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+$options['invoice_id'] = 'invoice_id_example'; // string | Alphanumeric string identifying the invoice.
+
 try {
     $result = $apiInstance->getInvoiceById($options);
 } catch (Exception $e) {
@@ -95,6 +101,10 @@ Get the current month-to-date estimate. This endpoint has two different response
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+$options['month'] = 05; // string | 2-digit month.
+$options['year'] = 2020; // string | 4-digit year.
+
 try {
     $result = $apiInstance->getInvoiceMtd($options);
 } catch (Exception $e) {

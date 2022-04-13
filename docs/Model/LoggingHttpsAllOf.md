@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **string** | The URL to send logs to. Must use HTTPS. Required. | [optional] 
-**request_max_entries** | **int** | The maximum number of logs sent in one request. Defaults `0` (no limit). | [optional]  [defaults to 0]
-**request_max_bytes** | **int** | The maximum number of bytes sent in one request. Defaults `0` (no limit). | [optional]  [defaults to 0]
+**request_max_entries** | **int** | The maximum number of logs sent in one request. Defaults `0` (10k). | [optional]  [defaults to 0]
+**request_max_bytes** | **int** | The maximum number of bytes sent in one request. Defaults `0` (100MB). | [optional]  [defaults to 0]
 **content_type** | **string** | Content type of the header sent with the request. | [optional]  [defaults to 'null']
 **header_name** | **string** | Name of the custom header sent with the request. | [optional]  [defaults to 'null']
 **message_type** | [**\Fastly\Model\LoggingMessageType**](LoggingMessageType.md) |  | [optional] 

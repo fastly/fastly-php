@@ -30,6 +30,8 @@ Delete a service group.
 
 ### Example
 ```php
+    $options['service_group_id'] = 'service_group_id_example'; // string | Alphanumeric string identifying the service group.
+
 try {
     $apiInstance->deleteAServiceGroup($options);
 } catch (Exception $e) {
@@ -62,6 +64,8 @@ Get a service group.
 
 ### Example
 ```php
+    $options['service_group_id'] = 'service_group_id_example'; // string | Alphanumeric string identifying the service group.
+
 try {
     $result = $apiInstance->getAServiceGroup($options);
 } catch (Exception $e) {
@@ -94,6 +98,10 @@ List services to a service group.
 
 ### Example
 ```php
+    $options['service_group_id'] = 'service_group_id_example'; // string | Alphanumeric string identifying the service group.
+$options['per_page'] = 20; // int | Number of records per page.
+$options['page'] = 1; // int | Current page.
+
 try {
     $result = $apiInstance->listServiceGroupServices($options);
 } catch (Exception $e) {
@@ -128,6 +136,9 @@ List all service groups.
 
 ### Example
 ```php
+    $options['per_page'] = 20; // int | Number of records per page.
+$options['page'] = 1; // int | Current page.
+
 try {
     $result = $apiInstance->listServiceGroups($options);
 } catch (Exception $e) {

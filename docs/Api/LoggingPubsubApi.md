@@ -31,6 +31,18 @@ Create a Pub/Sub logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['user'] = 'user_example'; // string | Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Required.
+$options['secret_key'] = 'secret_key_example'; // string | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Required.
+$options['topic'] = 'topic_example'; // string | The Google Cloud Pub/Sub topic to which logs will be published. Required.
+$options['project_id'] = 'project_id_example'; // string | Your Google Cloud Platform project ID. Required
+
 try {
     $result = $apiInstance->createLogGcpPubsub($options);
 } catch (Exception $e) {
@@ -73,6 +85,10 @@ Delete a Pub/Sub logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_google_pubsub_name'] = 'logging_google_pubsub_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->deleteLogGcpPubsub($options);
 } catch (Exception $e) {
@@ -107,6 +123,10 @@ Get the details for a Pub/Sub logging object for a particular service and versio
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_google_pubsub_name'] = 'logging_google_pubsub_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->getLogGcpPubsub($options);
 } catch (Exception $e) {
@@ -141,6 +161,9 @@ List all of the Pub/Sub logging objects for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listLogGcpPubsub($options);
 } catch (Exception $e) {
@@ -174,6 +197,19 @@ Update a Pub/Sub logging object for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_google_pubsub_name'] = 'logging_google_pubsub_name_example'; // string | The name for the real-time logging configuration.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['user'] = 'user_example'; // string | Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Required.
+$options['secret_key'] = 'secret_key_example'; // string | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Required.
+$options['topic'] = 'topic_example'; // string | The Google Cloud Pub/Sub topic to which logs will be published. Required.
+$options['project_id'] = 'project_id_example'; // string | Your Google Cloud Platform project ID. Required
+
 try {
     $result = $apiInstance->updateLogGcpPubsub($options);
 } catch (Exception $e) {

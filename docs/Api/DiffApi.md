@@ -27,6 +27,11 @@ Get diff between two versions.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['from_version_id'] = 1; // int | The version number of the service to which changes in the generated VCL are being compared. Can either be a positive number from 1 to your maximum version or a negative number from -1 down (-1 is latest version etc).
+$options['to_version_id'] = 2; // int | The version number of the service from which changes in the generated VCL are being compared. Uses same numbering scheme as `from`.
+$options['format'] = 'text'; // string | Optional method to format the diff field.
+
 try {
     $result = $apiInstance->diffServiceVersions($options);
 } catch (Exception $e) {

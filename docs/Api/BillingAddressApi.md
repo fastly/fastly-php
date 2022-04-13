@@ -30,6 +30,9 @@ Add a billing address to a customer.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+$options['billing_address_request'] = {"data":{"type":"billing_address","attributes":{"address_1":"80719 Dorothea Mountain","address_2":"Apt. 652","city":"New Rasheedville","state":"DE","country":"US","postal_code":"53538-5902"}}}; // \Fastly\Model\BillingAddressRequest | Billing address
+
 try {
     $result = $apiInstance->addBillingAddr($options);
 } catch (Exception $e) {
@@ -63,6 +66,8 @@ Delete a customer's billing address.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+
 try {
     $apiInstance->deleteBillingAddr($options);
 } catch (Exception $e) {
@@ -95,6 +100,8 @@ Get a customer's billing address.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+
 try {
     $result = $apiInstance->getBillingAddr($options);
 } catch (Exception $e) {
@@ -127,6 +134,9 @@ Update a customer's billing address. You may update only part of the customer's 
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+$options['update_billing_address_request'] = {"data":{"type":"billing_address","id":"3DTWpamEUGISvrUiDWkesQ","attributes":{"state":"DE"}}}; // \Fastly\Model\UpdateBillingAddressRequest | One or more billing address attributes
+
 try {
     $result = $apiInstance->updateBillingAddr($options);
 } catch (Exception $e) {

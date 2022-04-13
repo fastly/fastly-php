@@ -31,6 +31,16 @@ Creates a new condition.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['name'] = 'name_example'; // string | Name of the condition. Required.
+$options['priority'] = '100'; // string | A numeric string. Priority determines execution order. Lower numbers execute first.
+$options['statement'] = 'statement_example'; // string | A conditional expression in VCL used to determine if the condition is met.
+$options['service_id'] = 'service_id_example'; // string
+$options['version'] = 'version_example'; // string | A numeric string that represents the service version.
+$options['type'] = 'type_example'; // string | Type of the condition. Required.
+
 try {
     $result = $apiInstance->createCondition($options);
 } catch (Exception $e) {
@@ -71,6 +81,10 @@ Deletes the specified condition.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['condition_name'] = 'condition_name_example'; // string | Name of the condition. Required.
+
 try {
     $result = $apiInstance->deleteCondition($options);
 } catch (Exception $e) {
@@ -105,6 +119,10 @@ Gets the specified condition.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['condition_name'] = 'condition_name_example'; // string | Name of the condition. Required.
+
 try {
     $result = $apiInstance->getCondition($options);
 } catch (Exception $e) {
@@ -139,6 +157,9 @@ Gets all conditions for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listConditions($options);
 } catch (Exception $e) {
@@ -172,6 +193,17 @@ Updates the specified condition.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['condition_name'] = 'condition_name_example'; // string | Name of the condition. Required.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['name'] = 'name_example'; // string | Name of the condition. Required.
+$options['priority'] = '100'; // string | A numeric string. Priority determines execution order. Lower numbers execute first.
+$options['statement'] = 'statement_example'; // string | A conditional expression in VCL used to determine if the condition is met.
+$options['service_id'] = 'service_id_example'; // string
+$options['version'] = 'version_example'; // string | A numeric string that represents the service version.
+$options['type'] = 'type_example'; // string | Type of the condition. Required.
+
 try {
     $result = $apiInstance->updateCondition($options);
 } catch (Exception $e) {

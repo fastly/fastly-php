@@ -117,7 +117,7 @@ class WafRuleRevisionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
-     * @param  float $waf_rule_revision_number Revision number. (required)
+     * @param  int $waf_rule_revision_number Revision number. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule&#x60;, &#x60;vcl&#x60;, and &#x60;source&#x60;. The &#x60;vcl&#x60; and &#x60;source&#x60; relationships show the WAF VCL and corresponding ModSecurity source. These fields are blank unless the relationship is included. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -139,7 +139,7 @@ class WafRuleRevisionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
-     * @param  float $waf_rule_revision_number Revision number. (required)
+     * @param  int $waf_rule_revision_number Revision number. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule&#x60;, &#x60;vcl&#x60;, and &#x60;source&#x60;. The &#x60;vcl&#x60; and &#x60;source&#x60; relationships show the WAF VCL and corresponding ModSecurity source. These fields are blank unless the relationship is included. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -237,7 +237,7 @@ class WafRuleRevisionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
-     * @param  float $waf_rule_revision_number Revision number. (required)
+     * @param  int $waf_rule_revision_number Revision number. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule&#x60;, &#x60;vcl&#x60;, and &#x60;source&#x60;. The &#x60;vcl&#x60; and &#x60;source&#x60; relationships show the WAF VCL and corresponding ModSecurity source. These fields are blank unless the relationship is included. (optional)
      *
      * @throws \InvalidArgumentException
@@ -262,7 +262,7 @@ class WafRuleRevisionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
-     * @param  float $waf_rule_revision_number Revision number. (required)
+     * @param  int $waf_rule_revision_number Revision number. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule&#x60;, &#x60;vcl&#x60;, and &#x60;source&#x60;. The &#x60;vcl&#x60; and &#x60;source&#x60; relationships show the WAF VCL and corresponding ModSecurity source. These fields are blank unless the relationship is included. (optional)
      *
      * @throws \InvalidArgumentException
@@ -313,7 +313,7 @@ class WafRuleRevisionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
-     * @param  float $waf_rule_revision_number Revision number. (required)
+     * @param  int $waf_rule_revision_number Revision number. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule&#x60;, &#x60;vcl&#x60;, and &#x60;source&#x60;. The &#x60;vcl&#x60; and &#x60;source&#x60; relationships show the WAF VCL and corresponding ModSecurity source. These fields are blank unless the relationship is included. (optional)
      *
      * @throws \InvalidArgumentException

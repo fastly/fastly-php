@@ -28,6 +28,9 @@ List detailed information about the Compute@Edge package for the specified servi
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->getPackage($options);
 } catch (Exception $e) {
@@ -61,6 +64,11 @@ Upload a Compute@Edge package associated with the specified service version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['expect'] = 100-continue; // string | We recommend using the Expect header because it may identify issues with the request based upon the headers alone instead of requiring you to wait until the entire binary package upload has completed.
+$options['package'] = "/path/to/file.txt"; // \SplFileObject | The content of the Wasm binary package.
+
 try {
     $result = $apiInstance->putPackage($options);
 } catch (Exception $e) {

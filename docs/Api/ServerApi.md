@@ -31,6 +31,16 @@ Creates a single server for a particular service and pool.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['pool_id'] = 'pool_id_example'; // string | Alphanumeric string identifying a Pool.
+$options['weight'] = 100; // int | Weight (`1-100`) used to load balance this server against others.
+$options['max_conn'] = 0; // int | Maximum number of connections. If the value is `0`, it inherits the value from pool's `max_conn_default`.
+$options['port'] = 80; // int | Port number. Setting port `443` does not force TLS. Set `use_tls` in pool to force TLS.
+$options['address'] = 'address_example'; // string | A hostname, IPv4, or IPv6 address for the server. Required.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['disabled'] = false; // bool | Allows servers to be enabled and disabled in a pool.
+$options['override_host'] = 'null'; // string | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting.
+
 try {
     $result = $apiInstance->createPoolServer($options);
 } catch (Exception $e) {
@@ -71,6 +81,10 @@ Deletes a single server for a particular service and pool.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['pool_id'] = 'pool_id_example'; // string | Alphanumeric string identifying a Pool.
+$options['server_id'] = 'server_id_example'; // string | Alphanumeric string identifying a Server.
+
 try {
     $result = $apiInstance->deletePoolServer($options);
 } catch (Exception $e) {
@@ -105,6 +119,10 @@ Gets a single server for a particular service and pool.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['pool_id'] = 'pool_id_example'; // string | Alphanumeric string identifying a Pool.
+$options['server_id'] = 'server_id_example'; // string | Alphanumeric string identifying a Server.
+
 try {
     $result = $apiInstance->getPoolServer($options);
 } catch (Exception $e) {
@@ -139,6 +157,9 @@ Lists all servers for a particular service and pool.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['pool_id'] = 'pool_id_example'; // string | Alphanumeric string identifying a Pool.
+
 try {
     $result = $apiInstance->listPoolServers($options);
 } catch (Exception $e) {
@@ -172,6 +193,17 @@ Updates a single server for a particular service and pool.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['pool_id'] = 'pool_id_example'; // string | Alphanumeric string identifying a Pool.
+$options['server_id'] = 'server_id_example'; // string | Alphanumeric string identifying a Server.
+$options['weight'] = 100; // int | Weight (`1-100`) used to load balance this server against others.
+$options['max_conn'] = 0; // int | Maximum number of connections. If the value is `0`, it inherits the value from pool's `max_conn_default`.
+$options['port'] = 80; // int | Port number. Setting port `443` does not force TLS. Set `use_tls` in pool to force TLS.
+$options['address'] = 'address_example'; // string | A hostname, IPv4, or IPv6 address for the server. Required.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['disabled'] = false; // bool | Allows servers to be enabled and disabled in a pool.
+$options['override_host'] = 'null'; // string | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting.
+
 try {
     $result = $apiInstance->updatePoolServer($options);
 } catch (Exception $e) {

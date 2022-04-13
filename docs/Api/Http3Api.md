@@ -29,6 +29,15 @@ Enable HTTP/3 (QUIC) support for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['service_id'] = 'service_id_example'; // string
+$options['version'] = 56; // int
+$options['created_at'] = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date and time in ISO 8601 format.
+$options['deleted_at'] = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date and time in ISO 8601 format.
+$options['updated_at'] = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date and time in ISO 8601 format.
+$options['feature_revision'] = 56; // int | Revision number of the HTTP/3 feature implementation. Defaults to the most recent revision.
+
 try {
     $result = $apiInstance->createHttp3($options);
 } catch (Exception $e) {
@@ -68,6 +77,9 @@ Disable HTTP/3 (QUIC) support for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->deleteHttp3($options);
 } catch (Exception $e) {
@@ -101,6 +113,9 @@ Get the status of HTTP/3 (QUIC) support for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->getHttp3($options);
 } catch (Exception $e) {

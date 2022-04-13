@@ -30,6 +30,8 @@ Create star.
 
 ### Example
 ```php
+    $options['star'] = {"data":{"type":"star","relationships":{"user":{"data":{"type":"user","id":"6c7kAlo4vACNchGOdQxP37"}},"service":{"data":[{"type":"service","id":"SU1Z0isxPaozGVKXdv0eY"}]}}}}; // \Fastly\Model\Star
+
 try {
     $result = $apiInstance->createServiceStar($options);
 } catch (Exception $e) {
@@ -62,6 +64,8 @@ Delete star.
 
 ### Example
 ```php
+    $options['star_id'] = 'star_id_example'; // string | Alphanumeric string identifying a star.
+
 try {
     $apiInstance->deleteServiceStar($options);
 } catch (Exception $e) {
@@ -94,6 +98,8 @@ Show star.
 
 ### Example
 ```php
+    $options['star_id'] = 'star_id_example'; // string | Alphanumeric string identifying a star.
+
 try {
     $result = $apiInstance->getServiceStar($options);
 } catch (Exception $e) {
@@ -126,6 +132,7 @@ List stars.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->listServiceStars($options);
 } catch (Exception $e) {

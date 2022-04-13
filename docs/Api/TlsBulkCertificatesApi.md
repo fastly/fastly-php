@@ -31,6 +31,8 @@ Destroy a certificate. This disables TLS for all domains listed as SAN entries.
 
 ### Example
 ```php
+    $options['certificate_id'] = 'certificate_id_example'; // string | Alphanumeric string identifying a TLS bulk certificate.
+
 try {
     $apiInstance->deleteBulkTlsCert($options);
 } catch (Exception $e) {
@@ -63,6 +65,8 @@ Retrieve a single certificate.
 
 ### Example
 ```php
+    $options['certificate_id'] = 'certificate_id_example'; // string | Alphanumeric string identifying a TLS bulk certificate.
+
 try {
     $result = $apiInstance->getTlsBulkCert($options);
 } catch (Exception $e) {
@@ -95,6 +99,11 @@ List all certificates.
 
 ### Example
 ```php
+    $options['filter_tls_domain_id'] = 'filter_tls_domain_id_example'; // string | Filter certificates by their matching, fully-qualified domain name.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+$options['sort'] = created_at; // string | The order in which to list the results by creation date.
+
 try {
     $result = $apiInstance->listTlsBulkCerts($options);
 } catch (Exception $e) {
@@ -130,6 +139,9 @@ Replace a certificate with a newly reissued certificate. By using this endpoint,
 
 ### Example
 ```php
+    $options['certificate_id'] = 'certificate_id_example'; // string | Alphanumeric string identifying a TLS bulk certificate.
+$options['tls_bulk_certificate'] = {"data":{"id":"cRTguUGZzb2W9Euo4moOr","type":"tls_bulk_certificate","attributes":{"allow_untrusted_root":false,"cert_blob":"-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n","intermediates_blob":"-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n"}}}; // \Fastly\Model\TlsBulkCertificate
+
 try {
     $result = $apiInstance->updateBulkTlsCert($options);
 } catch (Exception $e) {
@@ -163,6 +175,8 @@ Upload a new certificate. TLS domains are automatically enabled upon certificate
 
 ### Example
 ```php
+    $options['tls_bulk_certificate'] = {"data":{"type":"tls_bulk_certificate","attributes":{"allow_untrusted_root":false,"cert_blob":"-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n","intermediates_blob":"-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n"},"relationships":{"tls_configurations":{"data":[{"type":"tls_configuration","id":"t7CguUGZzb2W9Euo5FoKa"}]}}}}; // \Fastly\Model\TlsBulkCertificate
+
 try {
     $result = $apiInstance->uploadTlsBulkCert($options);
 } catch (Exception $e) {

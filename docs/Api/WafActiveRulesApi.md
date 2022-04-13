@@ -33,6 +33,10 @@ Bulk update all active rules on a [firewall version](https://developer.fastly.co
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['body'] = {"type":"waf_active_rule","attributes":{"revision":"latest"}}; // \Fastly\Model\WafActiveRuleData
+
 try {
     $apiInstance->bulkUpdateWafActiveRules($options);
 } catch (Exception $e) {
@@ -67,6 +71,10 @@ Create an active rule for a particular firewall version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['waf_active_rule'] = {"data":{"type":"waf_active_rule","attributes":{"status":"log"},"relationships":{"waf_rule_revision":{"data":[{"type":"waf_rule_revision","id":"r3Vg2uUGZzb2W9Euo4mo0R"}]}}}}; // \Fastly\Model\WafActiveRule
+
 try {
     $result = $apiInstance->createWafActiveRule($options);
 } catch (Exception $e) {
@@ -101,6 +109,11 @@ Create active rules by tag. This endpoint will create active rules using the lat
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['waf_tag_name'] = 'waf_tag_name_example'; // string | Name of the tag.
+$options['waf_active_rule'] = {"data":{"type":"waf_active_rule","attributes":{"status":"log"}}}; // \Fastly\Model\WafActiveRule
+
 try {
     $apiInstance->createWafActiveRulesTag($options);
 } catch (Exception $e) {
@@ -136,6 +149,10 @@ Delete an active rule for a particular firewall version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['waf_rule_id'] = 'waf_rule_id_example'; // string | Alphanumeric string identifying a WAF rule.
+
 try {
     $apiInstance->deleteWafActiveRule($options);
 } catch (Exception $e) {
@@ -170,6 +187,11 @@ Get a specific active rule object. Includes details of the rule revision associa
 
 ### Example
 ```php
+    $options['include'] = waf_rule_revision,waf_firewall_version; // string | Include relationships. Optional, comma-separated values. Permitted values: `waf_rule_revision` and `waf_firewall_version`.
+$options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['waf_rule_id'] = 'waf_rule_id_example'; // string | Alphanumeric string identifying a WAF rule.
+
 try {
     $result = $apiInstance->getWafActiveRule($options);
 } catch (Exception $e) {
@@ -205,6 +227,16 @@ List all active rules for a particular firewall version.
 
 ### Example
 ```php
+    $options['filter_status'] = 'filter_status_example'; // string | Limit results to active rules with the specified status.
+$options['filter_waf_rule_revision_message'] = 'filter_waf_rule_revision_message_example'; // string | Limit results to active rules with the specified message.
+$options['filter_waf_rule_revision_modsec_rule_id'] = 'filter_waf_rule_revision_modsec_rule_id_example'; // string | Limit results to active rules that represent the specified ModSecurity modsec_rule_id.
+$options['filter_outdated'] = 'filter_outdated_example'; // string | Limit results to active rules referencing an outdated rule revision.
+$options['include'] = waf_rule_revision,waf_firewall_version; // string | Include relationships. Optional, comma-separated values. Permitted values: `waf_rule_revision` and `waf_firewall_version`.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+$options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listWafActiveRules($options);
 } catch (Exception $e) {
@@ -245,6 +277,11 @@ Update an active rule's status for a particular firewall version.
 
 ### Example
 ```php
+    $options['firewall_id'] = 'firewall_id_example'; // string | Alphanumeric string identifying a WAF Firewall.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['waf_rule_id'] = 'waf_rule_id_example'; // string | Alphanumeric string identifying a WAF rule.
+$options['waf_active_rule'] = {"data":{"id":"3krg2uUGZzb2W9Euo4moOR","type":"waf_active_rule","attributes":{"status":"block"}}}; // \Fastly\Model\WafActiveRule
+
 try {
     $result = $apiInstance->updateWafActiveRule($options);
 } catch (Exception $e) {

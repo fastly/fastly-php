@@ -30,6 +30,17 @@ Create a director for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['backends'] = array(new \Fastly\Model\\Fastly\Model\Backend()); // \Fastly\Model\Backend[] | List of backends associated to a director.
+$options['capacity'] = 56; // int | Unused.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['name'] = 'name_example'; // string | Name for the Director.
+$options['quorum'] = 75; // int | The percentage of capacity that needs to be up for a director to be considered up. `0` to `100`.
+$options['shield'] = 'null'; // string | Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
+$options['type'] = 1; // int | What type of load balance group to use.
+$options['retries'] = 5; // int | How many backends to search if it fails.
+
 try {
     $result = $apiInstance->createDirector($options);
 } catch (Exception $e) {
@@ -71,6 +82,10 @@ Delete the director for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['director_name'] = 'director_name_example'; // string | Name for the Director.
+
 try {
     $result = $apiInstance->deleteDirector($options);
 } catch (Exception $e) {
@@ -105,6 +120,10 @@ Get the director for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['director_name'] = 'director_name_example'; // string | Name for the Director.
+
 try {
     $result = $apiInstance->getDirector($options);
 } catch (Exception $e) {
@@ -139,6 +158,9 @@ List the directors for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listDirectors($options);
 } catch (Exception $e) {

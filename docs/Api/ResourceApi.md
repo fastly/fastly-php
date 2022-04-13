@@ -31,6 +31,11 @@ Create a resource.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name of the resource.
+$options['resource_id'] = 'resource_id_example'; // string | The ID of the linked resource.
+
 try {
     $result = $apiInstance->createResource($options);
 } catch (Exception $e) {
@@ -66,6 +71,10 @@ Delete a resource.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['resource_id'] = 'resource_id_example'; // string | An alphanumeric string identifying the resource.
+
 try {
     $result = $apiInstance->deleteResource($options);
 } catch (Exception $e) {
@@ -100,6 +109,10 @@ Display a resource by its identifier.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['resource_id'] = 'resource_id_example'; // string | An alphanumeric string identifying the resource.
+
 try {
     $result = $apiInstance->getResource($options);
 } catch (Exception $e) {
@@ -134,6 +147,9 @@ List resources.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listResources($options);
 } catch (Exception $e) {
@@ -167,6 +183,11 @@ Update a resource.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['resource_id'] = 'resource_id_example'; // string | An alphanumeric string identifying the resource.
+$options['name'] = 'name_example'; // string | The name of the resource.
+
 try {
     $result = $apiInstance->updateResource($options);
 } catch (Exception $e) {

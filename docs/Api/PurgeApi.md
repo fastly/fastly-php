@@ -30,6 +30,11 @@ Instant Purge a particular service of items tagged with surrogate keys. Up to 25
 
 ### Example
 ```php
+    $options['fastly_soft_purge'] = 1; // int | Optional header indicating that the operation should be a 'soft' purge, which marks the affected object as stale rather than making it inaccessible.
+$options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['surrogate_key'] = key_1 key_2 key_3; // string | Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified.
+$options['purge_response'] = {"surrogate_keys":["key_1","key_2","key_3"]}; // \Fastly\Model\PurgeResponse
+
 try {
     $result = $apiInstance->bulkPurgeTag($options);
 } catch (Exception $e) {
@@ -65,6 +70,8 @@ Instant Purge everything from a service.  Purge-all requests cannot be done in s
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+
 try {
     $result = $apiInstance->purgeAll($options);
 } catch (Exception $e) {
@@ -97,6 +104,9 @@ Instant Purge an individual URL.
 
 ### Example
 ```php
+    $options['fastly_soft_purge'] = 1; // int | Optional header indicating that the operation should be a 'soft' purge, which marks the affected object as stale rather than making it inaccessible.
+$options['host'] = www.example.com; // string | The hostname for the content you'll be purging.
+
 try {
     $result = $apiInstance->purgeSingleUrl($options);
 } catch (Exception $e) {
@@ -130,6 +140,10 @@ Instant Purge a particular service of items tagged with a Surrogate Key. Only on
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['surrogate_key'] = key_1; // string | Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request.
+$options['fastly_soft_purge'] = 1; // int | Optional header indicating that the operation should be a 'soft' purge, which marks the affected object as stale rather than making it inaccessible.
+
 try {
     $result = $apiInstance->purgeTag($options);
 } catch (Exception $e) {

@@ -116,8 +116,8 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id tls_subscription_id (required)
-     * @param  string $tls_authorization_id tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      * @param  array<string,object> $request_body request_body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -137,8 +137,8 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id (required)
-     * @param  string $tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      * @param  array<string,object> $request_body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -234,8 +234,8 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id (required)
-     * @param  string $tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      * @param  array<string,object> $request_body (optional)
      *
      * @throws \InvalidArgumentException
@@ -258,8 +258,8 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id (required)
-     * @param  string $tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      * @param  array<string,object> $request_body (optional)
      *
      * @throws \InvalidArgumentException
@@ -308,8 +308,8 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id (required)
-     * @param  string $tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      * @param  array<string,object> $request_body (optional)
      *
      * @throws \InvalidArgumentException
@@ -369,7 +369,7 @@ class TlsSubscriptionsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['application/json']
+                ['application/vnd.api+json']
             );
         }
 
@@ -731,9 +731,9 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id tls_subscription_id (required)
-     * @param  string $globalsign_email_challenge_id globalsign_email_challenge_id (required)
-     * @param  string $tls_authorization_id tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -751,9 +751,9 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id (required)
-     * @param  string $globalsign_email_challenge_id (required)
-     * @param  string $tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -814,9 +814,9 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id (required)
-     * @param  string $globalsign_email_challenge_id (required)
-     * @param  string $tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -838,9 +838,9 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id (required)
-     * @param  string $globalsign_email_challenge_id (required)
-     * @param  string $tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -878,9 +878,9 @@ class TlsSubscriptionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $tls_subscription_id (required)
-     * @param  string $globalsign_email_challenge_id (required)
-     * @param  string $tls_authorization_id (required)
+     * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
+     * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

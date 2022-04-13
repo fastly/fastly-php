@@ -27,6 +27,7 @@ List the public IP addresses for the Fastly network.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->listFastlyIps($options);
 } catch (Exception $e) {

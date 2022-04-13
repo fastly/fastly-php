@@ -33,6 +33,15 @@ Create a user.
 
 ### Example
 ```php
+    $options['login'] = 'login_example'; // string | The login associated with the user (typically, an email address).
+$options['name'] = 'name_example'; // string | The real life name of the user.
+$options['limit_services'] = True; // bool | Indicates that the user has limited access to the customer's services.
+$options['locked'] = True; // bool | Indicates whether the is account is locked for editing or not.
+$options['require_new_password'] = True; // bool | Indicates if a new password is required at next login.
+$options['role'] = new \Fastly\Model\RoleUser(); // \Fastly\Model\RoleUser
+$options['two_factor_auth_enabled'] = True; // bool | Indicates if 2FA is enabled on the user.
+$options['two_factor_setup_required'] = True; // bool | Indicates if 2FA is required by the user's customer account.
+
 try {
     $result = $apiInstance->createUser($options);
 } catch (Exception $e) {
@@ -72,6 +81,8 @@ Delete a user.
 
 ### Example
 ```php
+    $options['user_id'] = 'user_id_example'; // string | Alphanumeric string identifying the user.
+
 try {
     $result = $apiInstance->deleteUser($options);
 } catch (Exception $e) {
@@ -104,6 +115,7 @@ Get the logged in user.
 
 ### Example
 ```php
+    
 try {
     $result = $apiInstance->getCurrentUser($options);
 } catch (Exception $e) {
@@ -134,6 +146,8 @@ Get a specific user.
 
 ### Example
 ```php
+    $options['user_id'] = 'user_id_example'; // string | Alphanumeric string identifying the user.
+
 try {
     $result = $apiInstance->getUser($options);
 } catch (Exception $e) {
@@ -166,6 +180,8 @@ Requests a password reset for the specified user.
 
 ### Example
 ```php
+    $options['user_login'] = 'user_login_example'; // string | The login associated with the user (typically, an email address).
+
 try {
     $result = $apiInstance->requestPasswordReset($options);
 } catch (Exception $e) {
@@ -198,6 +214,16 @@ Update a user. Only users with the role of `superuser` can make changes to other
 
 ### Example
 ```php
+    $options['user_id'] = 'user_id_example'; // string | Alphanumeric string identifying the user.
+$options['login'] = 'login_example'; // string | The login associated with the user (typically, an email address).
+$options['name'] = 'name_example'; // string | The real life name of the user.
+$options['limit_services'] = True; // bool | Indicates that the user has limited access to the customer's services.
+$options['locked'] = True; // bool | Indicates whether the is account is locked for editing or not.
+$options['require_new_password'] = True; // bool | Indicates if a new password is required at next login.
+$options['role'] = new \Fastly\Model\RoleUser(); // \Fastly\Model\RoleUser
+$options['two_factor_auth_enabled'] = True; // bool | Indicates if 2FA is enabled on the user.
+$options['two_factor_setup_required'] = True; // bool | Indicates if 2FA is required by the user's customer account.
+
 try {
     $result = $apiInstance->updateUser($options);
 } catch (Exception $e) {
@@ -238,6 +264,9 @@ Update the user's password to a new one.
 
 ### Example
 ```php
+    $options['old_password'] = 'old_password_example'; // string | The user's current password.
+$options['new_password'] = 'new_password_example'; // string | The user's new password.
+
 try {
     $result = $apiInstance->updateUserPassword($options);
 } catch (Exception $e) {

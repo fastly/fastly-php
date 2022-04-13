@@ -116,8 +116,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -138,8 +138,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -236,8 +236,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -261,8 +261,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -312,8 +312,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -324,7 +324,7 @@ class HistoricalApi
     {
         // unbox the parameters from the associative array
         $from = array_key_exists('from', $options) ? $options['from'] : null;
-        $to = array_key_exists('to', $options) ? $options['to'] : null;
+        $to = array_key_exists('to', $options) ? $options['to'] : 'now';
         $by = array_key_exists('by', $options) ? $options['by'] : 'day';
         $region = array_key_exists('region', $options) ? $options['region'] : null;
 
@@ -453,8 +453,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -475,8 +475,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -573,8 +573,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -598,8 +598,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -649,8 +649,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -661,7 +661,7 @@ class HistoricalApi
     {
         // unbox the parameters from the associative array
         $from = array_key_exists('from', $options) ? $options['from'] : null;
-        $to = array_key_exists('to', $options) ? $options['to'] : null;
+        $to = array_key_exists('to', $options) ? $options['to'] : 'now';
         $by = array_key_exists('by', $options) ? $options['by'] : 'day';
         $region = array_key_exists('region', $options) ? $options['region'] : null;
 
@@ -791,8 +791,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -814,8 +814,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -913,8 +913,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -939,8 +939,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -991,8 +991,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1004,7 +1004,7 @@ class HistoricalApi
         // unbox the parameters from the associative array
         $field = array_key_exists('field', $options) ? $options['field'] : null;
         $from = array_key_exists('from', $options) ? $options['from'] : null;
-        $to = array_key_exists('to', $options) ? $options['to'] : null;
+        $to = array_key_exists('to', $options) ? $options['to'] : 'now';
         $by = array_key_exists('by', $options) ? $options['by'] : 'day';
         $region = array_key_exists('region', $options) ? $options['region'] : null;
 
@@ -1148,8 +1148,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1171,8 +1171,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1270,8 +1270,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1296,8 +1296,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1348,8 +1348,8 @@ class HistoricalApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1361,7 +1361,7 @@ class HistoricalApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $from = array_key_exists('from', $options) ? $options['from'] : null;
-        $to = array_key_exists('to', $options) ? $options['to'] : null;
+        $to = array_key_exists('to', $options) ? $options['to'] : 'now';
         $by = array_key_exists('by', $options) ? $options['by'] : 'day';
         $region = array_key_exists('region', $options) ? $options['region'] : null;
 
@@ -1506,8 +1506,8 @@ class HistoricalApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1530,8 +1530,8 @@ class HistoricalApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1630,8 +1630,8 @@ class HistoricalApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1657,8 +1657,8 @@ class HistoricalApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1710,8 +1710,8 @@ class HistoricalApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $field Name of the stats field. (required)
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      * @param  string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day. (optional, default to 'day')
      * @param  string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. (optional)
      *
@@ -1724,7 +1724,7 @@ class HistoricalApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $field = array_key_exists('field', $options) ? $options['field'] : null;
         $from = array_key_exists('from', $options) ? $options['from'] : null;
-        $to = array_key_exists('to', $options) ? $options['to'] : null;
+        $to = array_key_exists('to', $options) ? $options['to'] : 'now';
         $by = array_key_exists('by', $options) ? $options['by'] : 'day';
         $region = array_key_exists('region', $options) ? $options['region'] : null;
 
@@ -2150,8 +2150,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2170,8 +2170,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2266,8 +2266,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2289,8 +2289,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2338,8 +2338,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2348,7 +2348,7 @@ class HistoricalApi
     {
         // unbox the parameters from the associative array
         $from = array_key_exists('from', $options) ? $options['from'] : null;
-        $to = array_key_exists('to', $options) ? $options['to'] : null;
+        $to = array_key_exists('to', $options) ? $options['to'] : 'now';
 
 
         $resourcePath = '/stats/usage';
@@ -2773,8 +2773,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2793,8 +2793,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2889,8 +2889,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2912,8 +2912,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2961,8 +2961,8 @@ class HistoricalApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $from Absolute, relative or epoch timestamp. Limits the results returned. (optional)
-     * @param  string $to Absolute, relative or epoch timestamp. Limits the results returned. (optional)
+     * @param  string $from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. (optional)
+     * @param  string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;. (optional, default to 'now')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2971,7 +2971,7 @@ class HistoricalApi
     {
         // unbox the parameters from the associative array
         $from = array_key_exists('from', $options) ? $options['from'] : null;
-        $to = array_key_exists('to', $options) ? $options['to'] : null;
+        $to = array_key_exists('to', $options) ? $options['to'] : 'now';
 
 
         $resourcePath = '/stats/usage_by_service';

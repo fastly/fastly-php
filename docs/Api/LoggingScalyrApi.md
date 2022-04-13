@@ -31,6 +31,17 @@ Create a Scalyr for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['region'] = 'US'; // string | The region that log data will be sent to.
+$options['token'] = 'token_example'; // string | The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).
+$options['project_id'] = 'logplex'; // string | The name of the logfile within Scalyr.
+
 try {
     $result = $apiInstance->createLogScalyr($options);
 } catch (Exception $e) {
@@ -72,6 +83,10 @@ Delete the Scalyr for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_scalyr_name'] = 'logging_scalyr_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->deleteLogScalyr($options);
 } catch (Exception $e) {
@@ -106,6 +121,10 @@ Get the Scalyr for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_scalyr_name'] = 'logging_scalyr_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->getLogScalyr($options);
 } catch (Exception $e) {
@@ -140,6 +159,9 @@ List all of the Scalyrs for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listLogScalyr($options);
 } catch (Exception $e) {
@@ -173,6 +195,18 @@ Update the Scalyr for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_scalyr_name'] = 'logging_scalyr_name_example'; // string | The name for the real-time logging configuration.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+$options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
+$options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['region'] = 'US'; // string | The region that log data will be sent to.
+$options['token'] = 'token_example'; // string | The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).
+$options['project_id'] = 'logplex'; // string | The name of the logfile within Scalyr.
+
 try {
     $result = $apiInstance->updateLogScalyr($options);
 } catch (Exception $e) {

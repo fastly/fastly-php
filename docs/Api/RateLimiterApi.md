@@ -29,6 +29,8 @@ Delete a rate limiter by its ID.
 
 ### Example
 ```php
+    $options['rate_limiter_id'] = 'rate_limiter_id_example'; // string | Alphanumeric string identifying the rate limiter.
+
 try {
     $result = $apiInstance->deleteRateLimiter($options);
 } catch (Exception $e) {
@@ -61,6 +63,8 @@ Get a rate limiter by its ID.
 
 ### Example
 ```php
+    $options['rate_limiter_id'] = 'rate_limiter_id_example'; // string | Alphanumeric string identifying the rate limiter.
+
 try {
     $result = $apiInstance->getRateLimiter($options);
 } catch (Exception $e) {
@@ -93,6 +97,9 @@ List all rate limiters for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listRateLimiters($options);
 } catch (Exception $e) {

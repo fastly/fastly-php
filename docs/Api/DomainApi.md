@@ -33,6 +33,10 @@ Checks the status of a specific domain's DNS record for a Service Version. Retur
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['domain_name'] = 'domain_name_example'; // string | The name of the domain or domains associated with this service.
+
 try {
     $result = $apiInstance->checkDomain($options);
 } catch (Exception $e) {
@@ -67,6 +71,9 @@ Checks the status of all domains' DNS records for a Service Version. Returns an 
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->checkDomains($options);
 } catch (Exception $e) {
@@ -100,6 +107,11 @@ Create a domain for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['name'] = 'name_example'; // string | The name of the domain or domains associated with this service.
+
 try {
     $result = $apiInstance->createDomain($options);
 } catch (Exception $e) {
@@ -135,6 +147,10 @@ Delete the domain for a particular service and versions.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['domain_name'] = 'domain_name_example'; // string | The name of the domain or domains associated with this service.
+
 try {
     $result = $apiInstance->deleteDomain($options);
 } catch (Exception $e) {
@@ -169,6 +185,10 @@ Get the domain for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['domain_name'] = 'domain_name_example'; // string | The name of the domain or domains associated with this service.
+
 try {
     $result = $apiInstance->getDomain($options);
 } catch (Exception $e) {
@@ -203,6 +223,9 @@ List all the domains for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listDomains($options);
 } catch (Exception $e) {
@@ -236,6 +259,12 @@ Update the domain for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['domain_name'] = 'domain_name_example'; // string | The name of the domain or domains associated with this service.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['name'] = 'name_example'; // string | The name of the domain or domains associated with this service.
+
 try {
     $result = $apiInstance->updateDomain($options);
 } catch (Exception $e) {

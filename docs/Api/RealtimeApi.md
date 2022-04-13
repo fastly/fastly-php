@@ -29,6 +29,8 @@ Get data for the 120 seconds preceding the latest timestamp available for a serv
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+
 try {
     $result = $apiInstance->getStatsLast120Seconds($options);
 } catch (Exception $e) {
@@ -61,6 +63,9 @@ Get data for the 120 seconds preceding the latest timestamp available for a serv
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['max_entries'] = 1; // int | Maximum number of results to show.
+
 try {
     $result = $apiInstance->getStatsLast120SecondsLimitEntries($options);
 } catch (Exception $e) {
@@ -94,6 +99,9 @@ Get real-time data for the specified reporting period. Specify `0` to get a sing
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['timestamp_in_seconds'] = 56; // int | Timestamp in seconds (Unix epoch time).
+
 try {
     $result = $apiInstance->getStatsLastSecond($options);
 } catch (Exception $e) {

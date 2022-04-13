@@ -27,6 +27,11 @@ List all tags.
 
 ### Example
 ```php
+    $options['filter_name'] = 'filter_name_example'; // string | Limit the returned tags to a specific name.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+$options['include'] = waf_rules; // string | Include relationships. Optional.
+
 try {
     $result = $apiInstance->listWafTags($options);
 } catch (Exception $e) {

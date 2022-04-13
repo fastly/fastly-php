@@ -28,6 +28,9 @@ Get a specific rule. The `id` provided can be the ModSecurity Rule ID or the Fas
 
 ### Example
 ```php
+    $options['waf_rule_id'] = 'waf_rule_id_example'; // string | Alphanumeric string identifying a WAF rule.
+$options['include'] = waf_tags,waf_rule_revisions; // string | Include relationships. Optional, comma-separated values. Permitted values: `waf_tags` and `waf_rule_revisions`.
+
 try {
     $result = $apiInstance->getWafRule($options);
 } catch (Exception $e) {
@@ -61,6 +64,14 @@ List all available WAF rules.
 
 ### Example
 ```php
+    $options['filter_modsec_rule_id'] = 'filter_modsec_rule_id_example'; // string | Limit the returned rules to a specific ModSecurity rule ID.
+$options['filter_waf_tags_name'] = 'filter_waf_tags_name_example'; // string | Limit the returned rules to a set linked to a tag by name.
+$options['filter_waf_rule_revisions_source'] = 'filter_waf_rule_revisions_source_example'; // string | Limit the returned rules to a set linked to a source.
+$options['filter_waf_firewall_id_not_match'] = 'filter_waf_firewall_id_not_match_example'; // string | Limit the returned rules to a set not included in the active firewall version for a firewall.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+$options['include'] = waf_tags,waf_rule_revisions; // string | Include relationships. Optional, comma-separated values. Permitted values: `waf_tags` and `waf_rule_revisions`.
+
 try {
     $result = $apiInstance->listWafRules($options);
 } catch (Exception $e) {

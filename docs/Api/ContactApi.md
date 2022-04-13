@@ -28,6 +28,9 @@ Delete a contact.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+$options['contact_id'] = 'contact_id_example'; // string | An alphanumeric string identifying the customer contact.
+
 try {
     $result = $apiInstance->deleteContact($options);
 } catch (Exception $e) {
@@ -61,6 +64,8 @@ List all contacts from a specified customer ID.
 
 ### Example
 ```php
+    $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
+
 try {
     $result = $apiInstance->listContacts($options);
 } catch (Exception $e) {

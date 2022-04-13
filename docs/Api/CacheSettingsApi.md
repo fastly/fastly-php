@@ -31,6 +31,14 @@ Create a cache settings object.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['action'] = 'action_example'; // string | If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule.
+$options['cache_condition'] = 'cache_condition_example'; // string | Name of the cache condition controlling when this configuration applies.
+$options['name'] = 'name_example'; // string | Name for the cache settings object.
+$options['stale_ttl'] = 56; // int | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
+$options['ttl'] = 56; // int | Maximum time to consider the object fresh in the cache (the cache 'time to live').
+
 try {
     $result = $apiInstance->createCacheSettings($options);
 } catch (Exception $e) {
@@ -69,6 +77,10 @@ Delete a specific cache settings object.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['cache_settings_name'] = 'cache_settings_name_example'; // string | Name for the cache settings object.
+
 try {
     $result = $apiInstance->deleteCacheSettings($options);
 } catch (Exception $e) {
@@ -103,6 +115,10 @@ Get a specific cache settings object.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['cache_settings_name'] = 'cache_settings_name_example'; // string | Name for the cache settings object.
+
 try {
     $result = $apiInstance->getCacheSettings($options);
 } catch (Exception $e) {
@@ -137,6 +153,9 @@ Get a list of all cache settings for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listCacheSettings($options);
 } catch (Exception $e) {
@@ -170,6 +189,15 @@ Update a specific cache settings object.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['cache_settings_name'] = 'cache_settings_name_example'; // string | Name for the cache settings object.
+$options['action'] = 'action_example'; // string | If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule.
+$options['cache_condition'] = 'cache_condition_example'; // string | Name of the cache condition controlling when this configuration applies.
+$options['name'] = 'name_example'; // string | Name for the cache settings object.
+$options['stale_ttl'] = 56; // int | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
+$options['ttl'] = 56; // int | Maximum time to consider the object fresh in the cache (the cache 'time to live').
+
 try {
     $result = $apiInstance->updateCacheSettings($options);
 } catch (Exception $e) {

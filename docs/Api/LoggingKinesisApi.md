@@ -30,6 +30,18 @@ Create an Amazon Kinesis Data Streams logging object for a particular service an
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
+$options['placement'] = new \Fastly\Model\LoggingPlacement(); // \Fastly\Model\LoggingPlacement
+$options['format_version'] = new \Fastly\Model\LoggingFormatVersion(); // \Fastly\Model\LoggingFormatVersion
+$options['format'] = '{\"timestamp\":\"%{begin:%Y-%m-%dT%H:%M:%S}t\",\"time_elapsed\":\"%{time.elapsed.usec}V\",\"is_tls\":\"%{if(req.is_ssl, \\\"true\\\", \\\"false\\\")}V\",\"client_ip\":\"%{req.http.Fastly-Client-IP}V\",\"geo_city\":\"%{client.geo.city}V\",\"geo_country_code\":\"%{client.geo.country_code}V\",\"request\":\"%{req.request}V\",\"host\":\"%{req.http.Fastly-Orig-Host}V\",\"url\":\"%{json.escape(req.url)}V\",\"request_referer\":\"%{json.escape(req.http.Referer)}V\",\"request_user_agent\":\"%{json.escape(req.http.User-Agent)}V\",\"request_accept_language\":\"%{json.escape(req.http.Accept-Language)}V\",\"request_accept_charset\":\"%{json.escape(req.http.Accept-Charset)}V\",\"cache_status\":\"%{regsub(fastly_info.state, \\\"^(HIT-(SYNTH)|(HITPASS|HIT|MISS|PASS|ERROR|PIPE)).*\\\", \\\"\\\\2\\\\3\\\") }V\"}'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Kinesis can ingest.
+$options['topic'] = 'topic_example'; // string | The Amazon Kinesis stream to send logs to. Required.
+$options['region'] = 'region_example'; // string | The [AWS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) to stream logs to.
+$options['secret_key'] = 'secret_key_example'; // string | The secret key associated with the target Amazon Kinesis stream. Not required if `iam_role` is specified.
+$options['access_key'] = 'access_key_example'; // string | The access key associated with the target Amazon Kinesis stream. Not required if `iam_role` is specified.
+$options['iam_role'] = 'iam_role_example'; // string | The ARN for an IAM role granting Fastly access to the target Amazon Kinesis stream. Not required if `access_key` and `secret_key` are provided.
+
 try {
     $result = $apiInstance->createLogKinesis($options);
 } catch (Exception $e) {
@@ -72,6 +84,10 @@ Delete an Amazon Kinesis Data Streams logging object for a particular service an
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_kinesis_name'] = 'logging_kinesis_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->deleteLogKinesis($options);
 } catch (Exception $e) {
@@ -106,6 +122,10 @@ Get the details for an Amazon Kinesis Data Streams logging object for a particul
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_kinesis_name'] = 'logging_kinesis_name_example'; // string | The name for the real-time logging configuration.
+
 try {
     $result = $apiInstance->getLogKinesis($options);
 } catch (Exception $e) {
@@ -140,6 +160,9 @@ List all of the Amazon Kinesis Data Streams logging objects for a particular ser
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listLogKinesis($options);
 } catch (Exception $e) {

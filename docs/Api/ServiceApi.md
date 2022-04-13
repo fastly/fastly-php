@@ -34,6 +34,11 @@ Create a service.
 
 ### Example
 ```php
+    $options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['name'] = 'name_example'; // string | The name of the service.
+$options['customer_id'] = 'customer_id_example'; // string
+$options['type'] = 'type_example'; // string | The type of this service.
+
 try {
     $result = $apiInstance->createService($options);
 } catch (Exception $e) {
@@ -69,6 +74,8 @@ Delete a service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+
 try {
     $result = $apiInstance->deleteService($options);
 } catch (Exception $e) {
@@ -101,6 +108,8 @@ Get a specific service by id.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+
 try {
     $result = $apiInstance->getService($options);
 } catch (Exception $e) {
@@ -133,6 +142,9 @@ List detailed information on a specified service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version'] = 56; // int | Number identifying a version of the service.
+
 try {
     $result = $apiInstance->getServiceDetail($options);
 } catch (Exception $e) {
@@ -166,6 +178,8 @@ List the domains within a service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+
 try {
     $result = $apiInstance->listServiceDomains($options);
 } catch (Exception $e) {
@@ -198,6 +212,11 @@ List services.
 
 ### Example
 ```php
+    $options['page'] = 1; // int | Current page.
+$options['per_page'] = 20; // int | Number of records per page.
+$options['sort'] = created; // string | Field on which to sort.
+$options['direction'] = ascend; // string | Direction in which to sort results.
+
 try {
     $result = $apiInstance->listServices($options);
 } catch (Exception $e) {
@@ -233,6 +252,8 @@ Get a specific service by name.
 
 ### Example
 ```php
+    $options['name'] = 'name_example'; // string | The name of the service.
+
 try {
     $result = $apiInstance->searchService($options);
 } catch (Exception $e) {
@@ -265,6 +286,11 @@ Update a service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['comment'] = 'comment_example'; // string | A freeform descriptive note.
+$options['name'] = 'name_example'; // string | The name of the service.
+$options['customer_id'] = 'customer_id_example'; // string
+
 try {
     $result = $apiInstance->updateService($options);
 } catch (Exception $e) {

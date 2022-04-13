@@ -31,6 +31,10 @@ Create a new ACL attached to the specified service version. A new, empty ACL mus
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | Name for the ACL. Must start with an alphanumeric character and contain only alphanumeric characters, underscores, and whitespace.
+
 try {
     $result = $apiInstance->createAcl($options);
 } catch (Exception $e) {
@@ -65,6 +69,10 @@ Delete an ACL from the specified service version. To remove an ACL from use, the
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['acl_name'] = 'acl_name_example'; // string | Name for the ACL. Must start with an alphanumeric character and contain only alphanumeric characters, underscores, and whitespace.
+
 try {
     $result = $apiInstance->deleteAcl($options);
 } catch (Exception $e) {
@@ -99,6 +107,10 @@ Retrieve a single ACL by name for the version and service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['acl_name'] = 'acl_name_example'; // string | Name for the ACL. Must start with an alphanumeric character and contain only alphanumeric characters, underscores, and whitespace.
+
 try {
     $result = $apiInstance->getAcl($options);
 } catch (Exception $e) {
@@ -133,6 +145,9 @@ List ACLs.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listAcls($options);
 } catch (Exception $e) {
@@ -166,6 +181,11 @@ Update an ACL for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['acl_name'] = 'acl_name_example'; // string | Name for the ACL. Must start with an alphanumeric character and contain only alphanumeric characters, underscores, and whitespace.
+$options['name'] = 'name_example'; // string | Name for the ACL. Must start with an alphanumeric character and contain only alphanumeric characters, underscores, and whitespace.
+
 try {
     $result = $apiInstance->updateAcl($options);
 } catch (Exception $e) {

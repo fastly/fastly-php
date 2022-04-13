@@ -32,6 +32,14 @@ Create a snippet for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['name'] = 'name_example'; // string | The name for the snippet.
+$options['dynamic'] = 56; // int | Sets the snippet version.
+$options['type'] = 'type_example'; // string | The location in generated VCL where the snippet should be placed.
+$options['content'] = 'content_example'; // string | The VCL code that specifies exactly what the snippet does.
+$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
+
 try {
     $result = $apiInstance->createSnippet($options);
 } catch (Exception $e) {
@@ -70,6 +78,10 @@ Delete a specific snippet for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['snippet_name'] = 'snippet_name_example'; // string | The name for the snippet.
+
 try {
     $result = $apiInstance->deleteSnippet($options);
 } catch (Exception $e) {
@@ -104,6 +116,10 @@ Get a single snippet for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['snippet_name'] = 'snippet_name_example'; // string | The name for the snippet.
+
 try {
     $result = $apiInstance->getSnippet($options);
 } catch (Exception $e) {
@@ -138,6 +154,9 @@ Get a single dynamic snippet for a particular service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['snippet_id'] = 'snippet_id_example'; // string | Alphanumeric string identifying a VCL Snippet.
+
 try {
     $result = $apiInstance->getSnippetDynamic($options);
 } catch (Exception $e) {
@@ -171,6 +190,9 @@ List all snippets for a particular service and version.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
 try {
     $result = $apiInstance->listSnippets($options);
 } catch (Exception $e) {
@@ -204,6 +226,14 @@ Update a dynamic snippet for a particular service.
 
 ### Example
 ```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['snippet_id'] = 'snippet_id_example'; // string | Alphanumeric string identifying a VCL Snippet.
+$options['name'] = 'name_example'; // string | The name for the snippet.
+$options['dynamic'] = 56; // int | Sets the snippet version.
+$options['type'] = 'type_example'; // string | The location in generated VCL where the snippet should be placed.
+$options['content'] = 'content_example'; // string | The VCL code that specifies exactly what the snippet does.
+$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
+
 try {
     $result = $apiInstance->updateSnippetDynamic($options);
 } catch (Exception $e) {

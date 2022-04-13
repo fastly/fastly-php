@@ -184,6 +184,12 @@ Name | Type | Description | Notes
 **edge_miss_resp_header_bytes** | **int** | Header bytes delivered for edge misses. | [optional] 
 **origin_cache_fetch_resp_body_bytes** | **int** | Body bytes received from origin for cacheable content. | [optional] 
 **origin_cache_fetch_resp_header_bytes** | **int** | Header bytes received from an origin for cacheable content. | [optional] 
+**shield_hit_requests** | **int** | Number of requests that resulted in a hit at a shield. | [optional] 
+**shield_miss_requests** | **int** | Number of requests that resulted in a miss at a shield. | [optional] 
+**shield_hit_resp_header_bytes** | **int** | Header bytes delivered for shield hits. | [optional] 
+**shield_hit_resp_body_bytes** | **int** | Body bytes delivered for shield hits. | [optional] 
+**shield_miss_resp_header_bytes** | **int** | Header bytes delivered for shield misses. | [optional] 
+**shield_miss_resp_body_bytes** | **int** | Body bytes delivered for shield misses. | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -31,6 +31,8 @@ Create a TLS certificate.
 
 ### Example
 ```php
+    $options['tls_certificate'] = {"data":{"type":"tls_certificate","attributes":{"cert_blob":"-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n","name":"My certificate"}}}; // \Fastly\Model\TlsCertificate
+
 try {
     $result = $apiInstance->createTlsCert($options);
 } catch (Exception $e) {
@@ -63,6 +65,8 @@ Destroy a TLS certificate. TLS certificates already enabled for a domain cannot 
 
 ### Example
 ```php
+    $options['tls_certificate_id'] = 'tls_certificate_id_example'; // string | Alphanumeric string identifying a TLS certificate.
+
 try {
     $apiInstance->deleteTlsCert($options);
 } catch (Exception $e) {
@@ -95,6 +99,8 @@ Show a TLS certificate.
 
 ### Example
 ```php
+    $options['tls_certificate_id'] = 'tls_certificate_id_example'; // string | Alphanumeric string identifying a TLS certificate.
+
 try {
     $result = $apiInstance->getTlsCert($options);
 } catch (Exception $e) {
@@ -127,6 +133,13 @@ List all TLS certificates.
 
 ### Example
 ```php
+    $options['filter_not_after'] = 'filter_not_after_example'; // string | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]=2020-05-05).
+$options['filter_tls_domains_id'] = 'filter_tls_domains_id_example'; // string | Limit the returned certificates to those that include the specific domain.
+$options['include'] = 'include_example'; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`.
+$options['page_number'] = 1; // int | Current page.
+$options['page_size'] = 20; // int | Number of records per page.
+$options['sort'] = created_at; // string | The order in which to list the results by creation date.
+
 try {
     $result = $apiInstance->listTlsCerts($options);
 } catch (Exception $e) {
@@ -164,6 +177,9 @@ Replace a TLS certificate with a newly reissued TLS certificate, or update a TLS
 
 ### Example
 ```php
+    $options['tls_certificate_id'] = 'tls_certificate_id_example'; // string | Alphanumeric string identifying a TLS certificate.
+$options['tls_certificate'] = {"data":{"type":"tls_certificate","attributes":{"cert_blob":"-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n","name":"My certificate"}}}; // \Fastly\Model\TlsCertificate
+
 try {
     $result = $apiInstance->updateTlsCert($options);
 } catch (Exception $e) {
