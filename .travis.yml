@@ -1,16 +1,8 @@
 language: php
-
+# Bionic environment has preinstalled PHP from 7.1 to 7.4
+# https://docs.travis-ci.com/user/reference/bionic/#php-support
+dist: bionic
 php:
-  - 7.2
-  - 7.3
-  - 7.4
-
-before_install:
-  - composer self-update
-  - composer validate
-
-install:
-  - composer install --prefer-source --no-interaction
-
-script:
-  - vendor/bin/phpspec run
+    - 7.3
+    - 7.4
+before_install: "composer install"

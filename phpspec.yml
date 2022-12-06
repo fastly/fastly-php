@@ -1,2 +1,0 @@
-suites:
-    Fastly: { namespace: Fastly, spec_path: src }
