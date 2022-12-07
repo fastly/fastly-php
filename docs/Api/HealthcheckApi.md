@@ -36,7 +36,7 @@ $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['check_interval'] = 56; // int | How often to run the health check in milliseconds.
 $options['comment'] = 'comment_example'; // string | A freeform descriptive note.
 $options['expected_response'] = 56; // int | The status code expected from the host.
-$options['headers'] = array('headers_example'); // string[] | Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+$options['headers'] = array('headers_example'); // string[] | Array of custom headers that will be added to the health check probes.
 $options['host'] = 'host_example'; // string | Which host to check.
 $options['http_version'] = 'http_version_example'; // string | Whether to use version 1.0 or 1.1 HTTP.
 $options['initial'] = 56; // int | When loading a config, the initial number of probes to be seen as OK.
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 **check_interval** | **int** | How often to run the health check in milliseconds. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **expected_response** | **int** | The status code expected from the host. | [optional]
-**headers** | [**string[]**](../Model/string.md) | Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time. | [optional]
+**headers** | [**string[]**](../Model/string.md) | Array of custom headers that will be added to the health check probes. | [optional]
 **host** | **string** | Which host to check. | [optional]
 **http_version** | **string** | Whether to use version 1.0 or 1.1 HTTP. | [optional]
 **initial** | **int** | When loading a config, the initial number of probes to be seen as OK. | [optional]
@@ -211,7 +211,7 @@ $options['healthcheck_name'] = 'healthcheck_name_example'; // string | The name 
 $options['check_interval'] = 56; // int | How often to run the health check in milliseconds.
 $options['comment'] = 'comment_example'; // string | A freeform descriptive note.
 $options['expected_response'] = 56; // int | The status code expected from the host.
-$options['headers'] = array('headers_example'); // string[] | Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+$options['headers'] = array('headers_example'); // string[] | Array of custom headers that will be added to the health check probes.
 $options['host'] = 'host_example'; // string | Which host to check.
 $options['http_version'] = 'http_version_example'; // string | Whether to use version 1.0 or 1.1 HTTP.
 $options['initial'] = 56; // int | When loading a config, the initial number of probes to be seen as OK.
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 **check_interval** | **int** | How often to run the health check in milliseconds. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **expected_response** | **int** | The status code expected from the host. | [optional]
-**headers** | [**string[]**](../Model/string.md) | Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time. | [optional]
+**headers** | [**string[]**](../Model/string.md) | Array of custom headers that will be added to the health check probes. | [optional]
 **host** | **string** | Which host to check. | [optional]
 **http_version** | **string** | Whether to use version 1.0 or 1.1 HTTP. | [optional]
 **initial** | **int** | When loading a config, the initial number of probes to be seen as OK. | [optional]

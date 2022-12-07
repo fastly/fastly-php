@@ -386,7 +386,7 @@ class HealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets headers
      *
-     * @param string[]|null $headers Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+     * @param string[]|null $headers Array of custom headers that will be added to the health check probes.
      *
      * @return self
      */

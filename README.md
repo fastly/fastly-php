@@ -147,9 +147,6 @@ Class | Method | Description
 [*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**createDirectorBackend**](docs/Api/DirectorBackendApi.md#createdirectorbackend) | Create a director-backend relationship
 [*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**deleteDirectorBackend**](docs/Api/DirectorBackendApi.md#deletedirectorbackend) | Delete a director-backend relationship
 [*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**getDirectorBackend**](docs/Api/DirectorBackendApi.md#getdirectorbackend) | Get a director-backend relationship
-[*DocsApi*](docs/Api/DocsApi.md) | [**getDocs**](docs/Api/DocsApi.md#getdocs) | Get Fastly API docs as structured data
-[*DocsApi*](docs/Api/DocsApi.md) | [**getDocsSection**](docs/Api/DocsApi.md#getdocssection) | Get API docs matching a section filter
-[*DocsApi*](docs/Api/DocsApi.md) | [**getDocsSubject**](docs/Api/DocsApi.md#getdocssubject) | Get API docs for a single subject
 [*DomainApi*](docs/Api/DomainApi.md) | [**checkDomain**](docs/Api/DomainApi.md#checkdomain) | Validate DNS configuration for a single domain on a service
 [*DomainApi*](docs/Api/DomainApi.md) | [**checkDomains**](docs/Api/DomainApi.md#checkdomains) | Validate DNS configuration for all domains on a service
 [*DomainApi*](docs/Api/DomainApi.md) | [**createDomain**](docs/Api/DomainApi.md#createdomain) | Add a domain name to a service
@@ -157,7 +154,6 @@ Class | Method | Description
 [*DomainApi*](docs/Api/DomainApi.md) | [**getDomain**](docs/Api/DomainApi.md#getdomain) | Describe a domain
 [*DomainApi*](docs/Api/DomainApi.md) | [**listDomains**](docs/Api/DomainApi.md#listdomains) | List domains
 [*DomainApi*](docs/Api/DomainApi.md) | [**updateDomain**](docs/Api/DomainApi.md#updatedomain) | Update a domain
-[*DomainOwnershipsApi*](docs/Api/DomainOwnershipsApi.md) | [**listDomainOwnerships**](docs/Api/DomainOwnershipsApi.md#listdomainownerships) | List domain-ownerships
 [*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**disableProduct**](docs/Api/EnabledProductsApi.md#disableproduct) | Disable a product
 [*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**enableProduct**](docs/Api/EnabledProductsApi.md#enableproduct) | Enable a product
 [*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**getEnabledProduct**](docs/Api/EnabledProductsApi.md#getenabledproduct) | Get enabled product
