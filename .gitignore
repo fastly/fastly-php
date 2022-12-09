@@ -1,2 +1,13 @@
+composer.phar
 /vendor/
-bin/
+# composer.lock
+
+# php-cs-fixer cache
+.php_cs.cache
+
+# PHPUnit cache
+.phpunit.result.cache
+
+# Generator artifacts
+.openapi*
+.tmp*
