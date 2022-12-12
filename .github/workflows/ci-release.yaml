@@ -1,0 +1,60 @@
+name: Release CI
+on:
+  push:
+    tags:
+      - 'release/v?[0-9]*'
+
+env:
+  RELEASE_TAG: ${{ github.ref_name }}
+
+jobs:
+  publish:
+    name: Publish to Packagist
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          path: main
+      - name: Set up environment variables
+        run: ./.github/scripts/publish_env.sh >> $GITHUB_ENV
+        working-directory: ./main
+        shell: bash
+      - name: Install PHP and Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.3"
+          tools: composer:v2
+      - name: Pack API client
+        run: ./.github/scripts/pack.sh
+        working-directory: ./main
+        shell: bash
+      - name: Create tag for Packagist (Dry run)
+        if: ${{ env.DRY_RUN == '1' }}
+        working-directory: ./main
+        run: echo "git tag v${{ env.VERSION }} && git push"
+        shell: bash
+      - name: Create tag for Packagist
+        if: ${{ env.DRY_RUN != '1' }}
+        working-directory: ./main
+        run: |
+          git tag v${{ env.VERSION }}
+          git push origin v${{ env.VERSION }}
+        shell: bash
+      - name: Write release body file
+        run: API_CLIENT_NAME=PHP CODE_PATH=./main ./main/.github/scripts/release_body.sh > ./dist/release_body.txt
+        shell: bash
+      - name: Create release (dry run)
+        if: ${{ env.DRY_RUN == '1' }}
+        run: cat ./dist/release_body.txt
+      - name: Create GitHub release
+        if: ${{ env.DRY_RUN != '1' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          name: v${{ env.VERSION }}
+          body_path: ./dist/release_body.txt
+          files: |
+            ./dist/${{ env.PACKAGE_FILENAME }}
+          draft: false
+          tag_name: v${{ env.VERSION }}
+          prerelease: ${{ env.PUBLISH_TAG != 'latest' }}
