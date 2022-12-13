@@ -5,7 +5,7 @@ on:
       - 'release/v?[0-9]*'
 
 env:
-  RELEASE_TAG: ${{ github.ref_name }}
+  GITHUB_REF_NAME: ${{ github.ref_name }}
 
 jobs:
   publish:
@@ -32,7 +32,9 @@ jobs:
       - name: Create tag for Packagist (Dry run)
         if: ${{ env.DRY_RUN == '1' }}
         working-directory: ./main
-        run: echo "git tag v${{ env.VERSION }} && git push"
+        run: |
+          echo "git tag v${{ env.VERSION }}"
+          echo "git push origin v${{ env.VERSION }}"
         shell: bash
       - name: Create tag for Packagist
         if: ${{ env.DRY_RUN != '1' }}
