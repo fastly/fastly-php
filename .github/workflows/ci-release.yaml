@@ -31,22 +31,12 @@ jobs:
         run: ./.github/scripts/pack.sh
         working-directory: ./main
         shell: bash
-      - name: Create tag for Packagist (Dry run)
-        if: ${{ env.DRY_RUN == '1' }}
+      - name: Publish to Packagist
         working-directory: ./main
-        run: |
-          echo "git tag v${{ env.VERSION }}"
-          echo "git push origin v${{ env.VERSION }}"
-        shell: bash
-      - name: Create tag for Packagist
-        if: ${{ env.DRY_RUN != '1' }}
-        working-directory: ./main
-        run: |
-          git tag v${{ env.VERSION }}
-          git push origin v${{ env.VERSION }}
+        run: ./main/.github/scripts/publish.sh
         shell: bash
       - name: Write release body file
-        run: API_CLIENT_NAME=PHP CODE_PATH=./main ./main/.github/scripts/release_body.sh > ./dist/release_body.txt
+        run: CODE_PATH=./main ./main/.github/scripts/release_body.sh > ./dist/release_body.txt
         shell: bash
       - name: Create release (dry run)
         if: ${{ env.DRY_RUN == '1' }}
