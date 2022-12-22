@@ -1,16 +1,9 @@
 Fastly PHP Client [![Build Status](https://travis-ci.org/fastly/fastly-php.svg?branch=master)](https://travis-ci.org/fastly/fastly-php)
 ====
 
----
-
-🌱 Coming soon: 1.0.0
----------------------
-
-The current version of Fastly-PHP supports only a subset of the current Fastly API.  A new major release with significantly improved API coverage and comprehensive documentation is [now available as an alpha release on Packagist](https://packagist.org/packages/fastly/fastly#1.0.0-alpha1).  This is a **major breaking change** and will not be compatible with any code written for 0.x versions.
-
-**We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases.
-
----
+> NOTE: This version of Fastly PHP Client is no longer maintained.
+> Fastly now provides a [generated API client](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno) to cover the Fastly API.
+> The current version is available at https://github.com/fastly/fastly-php/tree/main. 
 
 Installation via Composer
 -------------------------
