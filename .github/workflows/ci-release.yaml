@@ -33,7 +33,7 @@ jobs:
         shell: bash
       - name: Publish to Packagist
         working-directory: ./main
-        run: ./main/.github/scripts/publish.sh
+        run: ./.github/scripts/publish.sh
         shell: bash
       - name: Write release body file
         run: CODE_PATH=./main ./main/.github/scripts/release_body.sh > ./dist/release_body.txt
