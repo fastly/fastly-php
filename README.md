@@ -2,6 +2,10 @@
 
 A PHP client library for interacting with most facets of the [Fastly API](https://developer.fastly.com/reference/api).
 
+> NOTE: This 1.x release is a new [generated API client](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno) for the Fastly API.
+> The previous 0.4.x version is no longer supported, but can be found at https://github.com/fastly/fastly-php/tree/v0.4.x.
+
+
 
 ## Installation
 
@@ -65,7 +69,7 @@ The Fastly API requires an [API token](https://developer.fastly.com/reference/ap
 Fastly\Configuration::getDefaultConfiguration()->setApiToken('YOUR_API_TOKEN');
 ```
 
-Alternatively, set the `FASTLY_API_TOKEN` environment variable instead of using `setApiToken`. 
+Alternatively, set the `FASTLY_API_TOKEN` environment variable instead of using `setApiToken`.
 
 ```php
 Fastly\Configuration::getDefaultConfiguration();
@@ -337,6 +341,14 @@ Class | Method | Description
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**getMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#getmutualauthentication) | Get a Mutual Authentication
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**listMutualAuthentications**](docs/Api/MutualAuthenticationApi.md#listmutualauthentications) | List Mutual Authentications
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**patchMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#patchmutualauthentication) | Update a Mutual Authentication
+[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**createStore**](docs/Api/ObjectStoreApi.md#createstore) | Create an object store.
+[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**deleteKeyFromStore**](docs/Api/ObjectStoreApi.md#deletekeyfromstore) | Delete object store key.
+[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**deleteStore**](docs/Api/ObjectStoreApi.md#deletestore) | Delete an object store.
+[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getKeys**](docs/Api/ObjectStoreApi.md#getkeys) | List object store keys.
+[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getStore**](docs/Api/ObjectStoreApi.md#getstore) | Describe an object store.
+[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getStores**](docs/Api/ObjectStoreApi.md#getstores) | List object stores.
+[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getValueForKey**](docs/Api/ObjectStoreApi.md#getvalueforkey) | Get object store key value.
+[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**setValueForKey**](docs/Api/ObjectStoreApi.md#setvalueforkey) | Insert object store key-value.
 [*PackageApi*](docs/Api/PackageApi.md) | [**getPackage**](docs/Api/PackageApi.md#getpackage) | Get details of the service&#39;s Compute@Edge package.
 [*PackageApi*](docs/Api/PackageApi.md) | [**putPackage**](docs/Api/PackageApi.md#putpackage) | Upload a Compute@Edge package.
 [*PoolApi*](docs/Api/PoolApi.md) | [**createServerPool**](docs/Api/PoolApi.md#createserverpool) | Create a server pool
@@ -388,6 +400,7 @@ Class | Method | Description
 [*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**showServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#showserviceauthorization) | Show service authorization
 [*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**updateServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#updateserviceauthorization) | Update service authorization
 [*SettingsApi*](docs/Api/SettingsApi.md) | [**getServiceSettings**](docs/Api/SettingsApi.md#getservicesettings) | Get service settings
+[*SettingsApi*](docs/Api/SettingsApi.md) | [**updateServiceSettings**](docs/Api/SettingsApi.md#updateservicesettings) | Update service settings
 [*SnippetApi*](docs/Api/SnippetApi.md) | [**createSnippet**](docs/Api/SnippetApi.md#createsnippet) | Create a snippet
 [*SnippetApi*](docs/Api/SnippetApi.md) | [**deleteSnippet**](docs/Api/SnippetApi.md#deletesnippet) | Delete a snippet
 [*SnippetApi*](docs/Api/SnippetApi.md) | [**getSnippet**](docs/Api/SnippetApi.md#getsnippet) | Get a versioned snippet
@@ -496,79 +509,6 @@ Class | Method | Description
 
 
 ## Issues
-
-The fastly-php API client currently does not support the following endpoints:
-
-- [`/customer/{customer_id}/contacts`](https://developer.fastly.com/reference/api/account/contact) (POST)
-- [`/metrics/domains/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/historical) (GET)
-- [`/metrics/origins/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/historical) (GET)
-- [`/rate-limiters/{rate_limiter_id}`](https://developer.fastly.com/reference/api/vcl-services/rate-limiter) (PUT)
-- [`/resources/stores/object/{store_id}/keys/{key_name}`](https://developer.fastly.com/reference/api/) (DELETE, GET, PUT)
-- [`/resources/stores/object/{store_id}/keys`](https://developer.fastly.com/reference/api/) (GET)
-- [`/resources/stores/object/{store_id}`](https://developer.fastly.com/reference/api/) (DELETE, GET)
-- [`/resources/stores/object`](https://developer.fastly.com/reference/api/) (GET, POST)
-- [`/resources/stores/secret/{store_id}/secrets/{secret_name}`](https://developer.fastly.com/reference/api/) (DELETE, GET)
-- [`/resources/stores/secret/{store_id}/secrets`](https://developer.fastly.com/reference/api/) (GET, POST)
-- [`/resources/stores/secret/{store_id}`](https://developer.fastly.com/reference/api/) (DELETE, GET)
-- [`/resources/stores/secret`](https://developer.fastly.com/reference/api/) (GET, POST)
-- [`/roles/{role_id}/permissions`](https://developer.fastly.com/reference/api/account/roles) (DELETE, POST)
-- [`/roles/{role_id}`](https://developer.fastly.com/reference/api/account/roles) (PATCH)
-- [`/roles`](https://developer.fastly.com/reference/api/account/roles) (POST)
-- [`/service-authorizations`](https://developer.fastly.com/reference/api/account/service-authorization) (DELETE, PATCH)
-- [`/service-groups/{service_group_id}/services`](https://developer.fastly.com/reference/api/account/service-groups) (DELETE, POST)
-- [`/service-groups/{service_group_id}`](https://developer.fastly.com/reference/api/account/service-groups) (PATCH)
-- [`/service-groups`](https://developer.fastly.com/reference/api/account/service-groups) (POST)
-- [`/service/{service_id}/dictionary/{dictionary_id}/items`](https://developer.fastly.com/reference/api/dictionaries/dictionary-item) (PATCH)
-- [`/service/{service_id}/version/{version_id}/apex-redirects`](https://developer.fastly.com/reference/api/vcl-services/apex-redirect) (POST)
-- [`/service/{service_id}/version/{version_id}/director/{director_name}`](https://developer.fastly.com/reference/api/load-balancing/directors/director) (PUT)
-- [`/service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name}`](https://developer.fastly.com/reference/api/logging/kafka) (PUT)
-- [`/service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name}`](https://developer.fastly.com/reference/api/logging/kinesis) (PUT)
-- [`/service/{service_id}/version/{version_id}/rate-limiters`](https://developer.fastly.com/reference/api/vcl-services/rate-limiter) (POST)
-- [`/service/{service_id}/version/{version_id}/request_settings`](https://developer.fastly.com/reference/api/vcl-services/request-settings) (POST)
-- [`/service/{service_id}/version/{version_id}/response_object/{response_object_name}`](https://developer.fastly.com/reference/api/vcl-services/response-object) (PUT)
-- [`/service/{service_id}/version/{version_id}/response_object`](https://developer.fastly.com/reference/api/vcl-services/response-object) (POST)
-- [`/service/{service_id}/version/{version_id}/settings`](https://developer.fastly.com/reference/api/vcl-services/settings) (PUT)
-- [`/service/{service_id}/version/{version_id}/snippet/{snippet_name}`](https://developer.fastly.com/reference/api/vcl-services/snippet) (PUT)
-- [`/service/{service_id}/version/{version_id}/wafs/{firewall_id}`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (GET, PATCH)
-- [`/service/{service_id}/version/{version_id}/wafs`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (GET, POST)
-- [`/service/{service_id}/wafs/{firewall_id}/owasp`](https://developer.fastly.com/reference/api/legacy-waf/owasp) (GET, PATCH, POST)
-- [`/service/{service_id}/wafs/{firewall_id}/rule_statuses`](https://developer.fastly.com/reference/api/legacy-waf/rule-status) (GET, POST)
-- [`/service/{service_id}/wafs/{firewall_id}/rules/{waf_rule_id}/rule_status`](https://developer.fastly.com/reference/api/legacy-waf/rule-status) (GET, PATCH)
-- [`/service/{service_id}/wafs/{firewall_id}/ruleset/preview`](https://developer.fastly.com/reference/api/legacy-waf/ruleset) (GET)
-- [`/service/{service_id}/wafs/{firewall_id}/ruleset`](https://developer.fastly.com/reference/api/legacy-waf/ruleset) (GET, PATCH)
-- [`/service/{service_id}/wafs/{firewall_id}/update_statuses/{update_status_id}`](https://developer.fastly.com/reference/api/legacy-waf/update-status) (GET)
-- [`/service/{service_id}/wafs/{firewall_id}/update_statuses`](https://developer.fastly.com/reference/api/legacy-waf/update-status) (GET)
-- [`/sudo`](https://developer.fastly.com/reference/api/utils/sudo) (POST)
-- [`/tls/activations/{tls_activation_id}`](https://developer.fastly.com/reference/api/tls/mutual-tls/activations) (GET, PATCH)
-- [`/tls/activations`](https://developer.fastly.com/reference/api/tls/mutual-tls/activations) (GET)
-- [`/tokens`](https://developer.fastly.com/reference/api/auth-tokens/user) (DELETE, POST)
-- [`/user-groups/{user_group_id}/members`](https://developer.fastly.com/reference/api/account/user-groups) (DELETE, POST)
-- [`/user-groups/{user_group_id}/roles`](https://developer.fastly.com/reference/api/account/user-groups) (DELETE, POST)
-- [`/user-groups/{user_group_id}/service-groups`](https://developer.fastly.com/reference/api/account/user-groups) (DELETE, POST)
-- [`/user-groups/{user_group_id}`](https://developer.fastly.com/reference/api/account/user-groups) (PATCH)
-- [`/user-groups`](https://developer.fastly.com/reference/api/account/user-groups) (POST)
-- [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
-- [`/v1/channel/{service_id}/ts/h`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
-- [`/v1/channel/{service_id}/ts/{start_timestamp}`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
-- [`/v1/domains/{service_id}/ts/h/limit/{max_entries}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/real-time) (GET)
-- [`/v1/domains/{service_id}/ts/h`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/real-time) (GET)
-- [`/v1/domains/{service_id}/ts/{start_timestamp}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/real-time) (GET)
-- [`/v1/origins/{service_id}/ts/h/limit/{max_entries}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/real-time) (GET)
-- [`/v1/origins/{service_id}/ts/h`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/real-time) (GET)
-- [`/v1/origins/{service_id}/ts/{start_timestamp}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/real-time) (GET)
-- [`/waf/firewalls/{firewall_id}/versions/{version_id}/active-rules`](https://developer.fastly.com/reference/api/waf/rules/active) (DELETE)
-- [`/wafs/configuration_sets/{configuration_set_id}/relationships/wafs`](https://developer.fastly.com/reference/api/legacy-waf/configuration-set) (GET, PATCH)
-- [`/wafs/configuration_sets`](https://developer.fastly.com/reference/api/legacy-waf/configuration-set) (GET)
-- [`/wafs/rules/{waf_rule_id}/vcl`](https://developer.fastly.com/reference/api/legacy-waf/rule) (GET)
-- [`/wafs/rules/{waf_rule_id}`](https://developer.fastly.com/reference/api/legacy-waf/rule) (GET)
-- [`/wafs/rules`](https://developer.fastly.com/reference/api/legacy-waf/rule) (GET)
-- [`/wafs/tags`](https://developer.fastly.com/reference/api/legacy-waf/tag) (GET)
-- [`/wafs/{firewall_id}/disable`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (PATCH)
-- [`/wafs/{firewall_id}/enable`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (PATCH)
-- [`/wafs/{firewall_id}/rules/{waf_rule_id}/vcl`](https://developer.fastly.com/reference/api/legacy-waf/rule) (GET)
-- [`/wafs/{firewall_id}`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (GET)
-- [`/wafs`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (GET)
-
 
 If you encounter any non-security-related bug or unexpected behavior, please [file an issue][bug]
 using the bug report template.

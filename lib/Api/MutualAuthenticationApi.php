@@ -665,6 +665,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  string $mutual_authentication_id Alphanumeric string identifying a mutual authentication. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -684,6 +685,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  string $mutual_authentication_id Alphanumeric string identifying a mutual authentication. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -791,6 +793,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  string $mutual_authentication_id Alphanumeric string identifying a mutual authentication. (required)
      *
      * @throws \InvalidArgumentException
@@ -813,6 +816,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  string $mutual_authentication_id Alphanumeric string identifying a mutual authentication. (required)
      *
      * @throws \InvalidArgumentException
@@ -861,6 +865,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  string $mutual_authentication_id Alphanumeric string identifying a mutual authentication. (required)
      *
      * @throws \InvalidArgumentException
@@ -869,6 +874,7 @@ class MutualAuthenticationApi
     public function getMutualAuthenticationRequest($options)
     {
         // unbox the parameters from the associative array
+        $include = array_key_exists('include', $options) ? $options['include'] : null;
         $mutual_authentication_id = array_key_exists('mutual_authentication_id', $options) ? $options['mutual_authentication_id'] : null;
 
         // verify the required parameter 'mutual_authentication_id' is set
@@ -885,6 +891,17 @@ class MutualAuthenticationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($include !== null) {
+            if('form' === 'form' && is_array($include)) {
+                foreach($include as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['include'] = ObjectSerializer::toString($include);
+            }
+        }
 
 
         // path params
@@ -966,6 +983,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      *
@@ -986,6 +1004,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      *
@@ -1094,6 +1113,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      *
@@ -1117,6 +1137,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      *
@@ -1166,6 +1187,7 @@ class MutualAuthenticationApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      *
@@ -1175,6 +1197,7 @@ class MutualAuthenticationApi
     public function listMutualAuthenticationsRequest($options)
     {
         // unbox the parameters from the associative array
+        $include = array_key_exists('include', $options) ? $options['include'] : null;
         $page_number = array_key_exists('page_number', $options) ? $options['page_number'] : null;
         $page_size = array_key_exists('page_size', $options) ? $options['page_size'] : 20;
 
@@ -1193,6 +1216,17 @@ class MutualAuthenticationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($include !== null) {
+            if('form' === 'form' && is_array($include)) {
+                foreach($include as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['include'] = ObjectSerializer::toString($include);
+            }
+        }
         // query params
         if ($page_number !== null) {
             if('form' === 'form' && is_array($page_number)) {

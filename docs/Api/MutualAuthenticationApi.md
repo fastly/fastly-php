@@ -99,7 +99,8 @@ Show a Mutual Authentication.
 
 ### Example
 ```php
-    $options['mutual_authentication_id'] = 'mutual_authentication_id_example'; // string | Alphanumeric string identifying a mutual authentication.
+    $options['include'] = 'include_example'; // string | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication.
+$options['mutual_authentication_id'] = 'mutual_authentication_id_example'; // string | Alphanumeric string identifying a mutual authentication.
 
 try {
     $result = $apiInstance->getMutualAuthentication($options);
@@ -114,6 +115,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**include** | **string** | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. | [optional]
 **mutual_authentication_id** | **string** | Alphanumeric string identifying a mutual authentication. |
 
 ### Return type
@@ -133,7 +135,8 @@ List all mutual authentications.
 
 ### Example
 ```php
-    $options['page_number'] = 1; // int | Current page.
+    $options['include'] = 'include_example'; // string | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication.
+$options['page_number'] = 1; // int | Current page.
 $options['page_size'] = 20; // int | Number of records per page.
 
 try {
@@ -149,6 +152,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**include** | **string** | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. | [optional]
 **page_number** | **int** | Current page. | [optional]
 **page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 
