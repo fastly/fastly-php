@@ -1,11 +1,11 @@
-# # EnabledProductLinks
+# # EnabledProductResponseService
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**self** | **string** |  | [optional] 
-**service** | **string** |  | [optional] 
+**id** | **string** | Service identifier | [optional] 
+**object** | **string** | Name of the object | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

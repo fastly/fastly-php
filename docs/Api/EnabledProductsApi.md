@@ -25,7 +25,7 @@ Method | Fastly API endpoint | Description
 disableProduct($options) // Disable a product
 ```
 
-Disable a product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
 
 ### Example
 ```php
@@ -58,10 +58,10 @@ void (empty response body)
 ## `enableProduct()`
 
 ```php
-enableProduct($options): \Fastly\Model\EnabledProduct // Enable a product
+enableProduct($options): \Fastly\Model\EnabledProductResponse // Enable a product
 ```
 
-Enable a product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
 
 ### Example
 ```php
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\EnabledProduct**](../Model/EnabledProduct.md)
+[**\Fastly\Model\EnabledProductResponse**](../Model/EnabledProductResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -94,10 +94,10 @@ Name | Type | Description  | Notes
 ## `getEnabledProduct()`
 
 ```php
-getEnabledProduct($options): \Fastly\Model\EnabledProduct // Get enabled product
+getEnabledProduct($options): \Fastly\Model\EnabledProductResponse // Get enabled product
 ```
 
-Get enabled product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
 
 ### Example
 ```php
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\EnabledProduct**](../Model/EnabledProduct.md)
+[**\Fastly\Model\EnabledProductResponse**](../Model/EnabledProductResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -342,13 +342,9 @@ Class | Method | Description
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**listMutualAuthentications**](docs/Api/MutualAuthenticationApi.md#listmutualauthentications) | List Mutual Authentications
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**patchMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#patchmutualauthentication) | Update a Mutual Authentication
 [*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**createStore**](docs/Api/ObjectStoreApi.md#createstore) | Create an object store.
-[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**deleteKeyFromStore**](docs/Api/ObjectStoreApi.md#deletekeyfromstore) | Delete object store key.
 [*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**deleteStore**](docs/Api/ObjectStoreApi.md#deletestore) | Delete an object store.
-[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getKeys**](docs/Api/ObjectStoreApi.md#getkeys) | List object store keys.
 [*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getStore**](docs/Api/ObjectStoreApi.md#getstore) | Describe an object store.
 [*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getStores**](docs/Api/ObjectStoreApi.md#getstores) | List object stores.
-[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getValueForKey**](docs/Api/ObjectStoreApi.md#getvalueforkey) | Get object store key value.
-[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**setValueForKey**](docs/Api/ObjectStoreApi.md#setvalueforkey) | Insert object store key-value.
 [*PackageApi*](docs/Api/PackageApi.md) | [**getPackage**](docs/Api/PackageApi.md#getpackage) | Get details of the service&#39;s Compute@Edge package.
 [*PackageApi*](docs/Api/PackageApi.md) | [**putPackage**](docs/Api/PackageApi.md#putpackage) | Upload a Compute@Edge package.
 [*PoolApi*](docs/Api/PoolApi.md) | [**createServerPool**](docs/Api/PoolApi.md#createserverpool) | Create a server pool
@@ -373,11 +369,11 @@ Class | Method | Description
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**getRequestSettings**](docs/Api/RequestSettingsApi.md#getrequestsettings) | Get a Request Settings object
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**listRequestSettings**](docs/Api/RequestSettingsApi.md#listrequestsettings) | List Request Settings objects
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**updateRequestSettings**](docs/Api/RequestSettingsApi.md#updaterequestsettings) | Update a Request Settings object
-[*ResourceApi*](docs/Api/ResourceApi.md) | [**createResource**](docs/Api/ResourceApi.md#createresource) | Create a resource
-[*ResourceApi*](docs/Api/ResourceApi.md) | [**deleteResource**](docs/Api/ResourceApi.md#deleteresource) | Delete a resource
-[*ResourceApi*](docs/Api/ResourceApi.md) | [**getResource**](docs/Api/ResourceApi.md#getresource) | Display a resource
-[*ResourceApi*](docs/Api/ResourceApi.md) | [**listResources**](docs/Api/ResourceApi.md#listresources) | List resources
-[*ResourceApi*](docs/Api/ResourceApi.md) | [**updateResource**](docs/Api/ResourceApi.md#updateresource) | Update a resource
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**createResource**](docs/Api/ResourceApi.md#createresource) | Create a resource link
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**deleteResource**](docs/Api/ResourceApi.md#deleteresource) | Delete a resource link
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**getResource**](docs/Api/ResourceApi.md#getresource) | Display a resource link
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**listResources**](docs/Api/ResourceApi.md#listresources) | List resource links
+[*ResourceApi*](docs/Api/ResourceApi.md) | [**updateResource**](docs/Api/ResourceApi.md#updateresource) | Update a resource link
 [*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**deleteResponseObject**](docs/Api/ResponseObjectApi.md#deleteresponseobject) | Delete a Response Object
 [*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**getResponseObject**](docs/Api/ResponseObjectApi.md#getresponseobject) | Get a Response object
 [*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**listResponseObjects**](docs/Api/ResponseObjectApi.md#listresponseobjects) | List Response objects

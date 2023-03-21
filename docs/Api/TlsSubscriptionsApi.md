@@ -215,7 +215,7 @@ List all TLS subscriptions.
 
 ### Example
 ```php
-    $options['filter_state'] = 'filter_state_example'; // string | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, and `renewing`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`).
+    $options['filter_state'] = 'filter_state_example'; // string | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`).
 $options['filter_tls_domains_id'] = 'filter_tls_domains_id_example'; // string | Limit the returned subscriptions to those that include the specific domain.
 $options['filter_has_active_order'] = True; // bool | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`.
 $options['include'] = tls_authorizations; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`.
@@ -236,7 +236,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**filter_state** | **string** | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, and `renewing`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`). | [optional]
+**filter_state** | **string** | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`). | [optional]
 **filter_tls_domains_id** | **string** | Limit the returned subscriptions to those that include the specific domain. | [optional]
 **filter_has_active_order** | **bool** | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`. | [optional]
 **include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`. | [optional]
@@ -257,13 +257,13 @@ Name | Type | Description  | Notes
 patchTlsSub($options): \Fastly\Model\TlsSubscriptionResponse // Update a TLS subscription
 ```
 
-Change the TLS domains or common name associated with this subscription, or update the TLS configuration for this set of domains.
+Change the TLS domains or common name associated with this subscription, update the TLS configuration for this set of domains, or retry a subscription with state `failed` by setting the state to `retry`.
 
 ### Example
 ```php
     $options['tls_subscription_id'] = 'tls_subscription_id_example'; // string | Alphanumeric string identifying a TLS subscription.
 $options['force'] = true; // bool | A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain.
-$options['tls_subscription'] = {"data":{"type":"tls_subscription","relationships":{"common_name":{"data":{"type":"tls_domain","id":"DOMAIN_NAME"}},"tls_domains":{"data":[{"type":"tls_domain","id":"DOMAIN_NAME"}]},"tls_configuration":{"data":{"type":"tls_configuration","id":"t7CguUGZzb2W9Euo5FoKa"}}}}}; // \Fastly\Model\TlsSubscription
+$options['tls_subscription'] = {"data":{"type":"tls_subscription","attributes":{"state":"retry"},"relationships":{"common_name":{"data":{"type":"tls_domain","id":"DOMAIN_NAME"}},"tls_domains":{"data":[{"type":"tls_domain","id":"DOMAIN_NAME"}]},"tls_configuration":{"data":{"type":"tls_configuration","id":"t7CguUGZzb2W9Euo5FoKa"}}}}}; // \Fastly\Model\TlsSubscription
 
 try {
     $result = $apiInstance->patchTlsSub($options);

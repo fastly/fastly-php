@@ -44,7 +44,7 @@ $options['healthcheck'] = 'healthcheck_example'; // string | The name of the hea
 $options['hostname'] = 'hostname_example'; // string | The hostname of the backend. May be used as an alternative to `address` to set the backend location.
 $options['ipv4'] = 'ipv4_example'; // string | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location.
 $options['ipv6'] = 'ipv6_example'; // string | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location.
-$options['keepalive_time'] = 56; // int | How long to keep a persistent connection to the backend between requests.
+$options['keepalive_time'] = 56; // int | How long in seconds to keep a persistent connection to the backend between requests.
 $options['max_conn'] = 56; // int | Maximum number of concurrent connections this backend will accept.
 $options['max_tls_version'] = 'max_tls_version_example'; // string | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
 $options['min_tls_version'] = 'min_tls_version_example'; // string | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 **hostname** | **string** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
 **ipv4** | **string** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
 **ipv6** | **string** | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
-**keepalive_time** | **int** | How long to keep a persistent connection to the backend between requests. | [optional]
+**keepalive_time** | **int** | How long in seconds to keep a persistent connection to the backend between requests. | [optional]
 **max_conn** | **int** | Maximum number of concurrent connections this backend will accept. | [optional]
 **max_tls_version** | **string** | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional]
 **min_tls_version** | **string** | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional]
@@ -253,7 +253,7 @@ $options['healthcheck'] = 'healthcheck_example'; // string | The name of the hea
 $options['hostname'] = 'hostname_example'; // string | The hostname of the backend. May be used as an alternative to `address` to set the backend location.
 $options['ipv4'] = 'ipv4_example'; // string | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location.
 $options['ipv6'] = 'ipv6_example'; // string | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location.
-$options['keepalive_time'] = 56; // int | How long to keep a persistent connection to the backend between requests.
+$options['keepalive_time'] = 56; // int | How long in seconds to keep a persistent connection to the backend between requests.
 $options['max_conn'] = 56; // int | Maximum number of concurrent connections this backend will accept.
 $options['max_tls_version'] = 'max_tls_version_example'; // string | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
 $options['min_tls_version'] = 'min_tls_version_example'; // string | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 **hostname** | **string** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
 **ipv4** | **string** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
 **ipv6** | **string** | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
-**keepalive_time** | **int** | How long to keep a persistent connection to the backend between requests. | [optional]
+**keepalive_time** | **int** | How long in seconds to keep a persistent connection to the backend between requests. | [optional]
 **max_conn** | **int** | Maximum number of concurrent connections this backend will accept. | [optional]
 **max_tls_version** | **string** | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional]
 **min_tls_version** | **string** | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional]

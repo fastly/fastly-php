@@ -236,7 +236,7 @@ class ResourceResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets id
      *
-     * @param string|null $id An alphanumeric string identifying the resource.
+     * @param string|null $id An alphanumeric string identifying the resource link.
      *
      * @return self
      */

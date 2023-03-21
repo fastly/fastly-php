@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceCreate
+ * EnabledProductResponse
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * ResourceCreate Class Doc Comment
+ * EnabledProductResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ResourceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class EnabledProductResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class ResourceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'resource_create';
+    protected static $fastlyModelName = 'enabled_product_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,9 @@ class ResourceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => 'string',
-        'resource_id' => 'string'
+        'product' => '\Fastly\Model\EnabledProductResponseProduct',
+        'service' => '\Fastly\Model\EnabledProductResponseService',
+        '_links' => '\Fastly\Model\EnabledProductResponseLinks'
     ];
 
     /**
@@ -65,8 +66,9 @@ class ResourceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'name' => null,
-        'resource_id' => null
+        'product' => null,
+        'service' => null,
+        '_links' => null
     ];
 
     /**
@@ -96,8 +98,9 @@ class ResourceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'resource_id' => 'resource_id'
+        'product' => 'product',
+        'service' => 'service',
+        '_links' => '_links'
     ];
 
     /**
@@ -106,8 +109,9 @@ class ResourceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'resource_id' => 'setResourceId'
+        'product' => 'setProduct',
+        'service' => 'setService',
+        '_links' => 'setLinks'
     ];
 
     /**
@@ -116,8 +120,9 @@ class ResourceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'resource_id' => 'getResourceId'
+        'product' => 'getProduct',
+        'service' => 'getService',
+        '_links' => 'getLinks'
     ];
 
     /**
@@ -177,8 +182,9 @@ class ResourceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['resource_id'] = $data['resource_id'] ?? null;
+        $this->container['product'] = $data['product'] ?? null;
+        $this->container['service'] = $data['service'] ?? null;
+        $this->container['_links'] = $data['_links'] ?? null;
     }
 
     /**
@@ -206,49 +212,73 @@ class ResourceCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets product
      *
-     * @return string|null
+     * @return \Fastly\Model\EnabledProductResponseProduct|null
      */
-    public function getName()
+    public function getProduct()
     {
-        return $this->container['name'];
+        return $this->container['product'];
     }
 
     /**
-     * Sets name
+     * Sets product
      *
-     * @param string|null $name The name of the resource.
+     * @param \Fastly\Model\EnabledProductResponseProduct|null $product product
      *
      * @return self
      */
-    public function setName($name)
+    public function setProduct($product)
     {
-        $this->container['name'] = $name;
+        $this->container['product'] = $product;
 
         return $this;
     }
 
     /**
-     * Gets resource_id
+     * Gets service
      *
-     * @return string|null
+     * @return \Fastly\Model\EnabledProductResponseService|null
      */
-    public function getResourceId()
+    public function getService()
     {
-        return $this->container['resource_id'];
+        return $this->container['service'];
     }
 
     /**
-     * Sets resource_id
+     * Sets service
      *
-     * @param string|null $resource_id The ID of the linked resource.
+     * @param \Fastly\Model\EnabledProductResponseService|null $service service
      *
      * @return self
      */
-    public function setResourceId($resource_id)
+    public function setService($service)
     {
-        $this->container['resource_id'] = $resource_id;
+        $this->container['service'] = $service;
+
+        return $this;
+    }
+
+    /**
+     * Gets _links
+     *
+     * @return \Fastly\Model\EnabledProductResponseLinks|null
+     */
+    public function getLinks()
+    {
+        return $this->container['_links'];
+    }
+
+    /**
+     * Sets _links
+     *
+     * @param \Fastly\Model\EnabledProductResponseLinks|null $_links _links
+     *
+     * @return self
+     */
+    public function setLinks($_links)
+    {
+        $this->container['_links'] = $_links;
 
         return $this;
     }

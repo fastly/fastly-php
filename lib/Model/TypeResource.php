@@ -39,6 +39,10 @@ class TypeResource
      */
     const OBJECT_STORE = 'object-store';
 
+    const SECRET_STORE = 'secret-store';
+
+    const CONFIG_STORE = 'config-store';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -46,7 +50,9 @@ class TypeResource
     public static function getAllowableEnumValues()
     {
         return [
-            self::OBJECT_STORE
+            self::OBJECT_STORE,
+            self::SECRET_STORE,
+            self::CONFIG_STORE
         ];
     }
 }

@@ -397,7 +397,7 @@ class EnabledProductsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\EnabledProduct
+     * @return \Fastly\Model\EnabledProductResponse
      */
     public function enableProduct($options)
     {
@@ -417,7 +417,7 @@ class EnabledProductsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\EnabledProduct, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\EnabledProductResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function enableProductWithHttpInfo($options)
     {
@@ -472,20 +472,20 @@ class EnabledProductsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\EnabledProduct' === '\SplFileObject') {
+                    if ('\Fastly\Model\EnabledProductResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\EnabledProduct', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\EnabledProductResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\EnabledProduct';
+            $returnType = '\Fastly\Model\EnabledProductResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -503,7 +503,7 @@ class EnabledProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\EnabledProduct',
+                        '\Fastly\Model\EnabledProductResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -551,7 +551,7 @@ class EnabledProductsApi
      */
     public function enableProductAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\EnabledProduct';
+        $returnType = '\Fastly\Model\EnabledProductResponse';
         $request = $this->enableProductRequest($options);
 
         return $this->client
@@ -718,7 +718,7 @@ class EnabledProductsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\EnabledProduct
+     * @return \Fastly\Model\EnabledProductResponse
      */
     public function getEnabledProduct($options)
     {
@@ -738,7 +738,7 @@ class EnabledProductsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\EnabledProduct, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\EnabledProductResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEnabledProductWithHttpInfo($options)
     {
@@ -793,20 +793,20 @@ class EnabledProductsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\EnabledProduct' === '\SplFileObject') {
+                    if ('\Fastly\Model\EnabledProductResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\EnabledProduct', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\EnabledProductResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\EnabledProduct';
+            $returnType = '\Fastly\Model\EnabledProductResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -824,7 +824,7 @@ class EnabledProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\EnabledProduct',
+                        '\Fastly\Model\EnabledProductResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -872,7 +872,7 @@ class EnabledProductsApi
      */
     public function getEnabledProductAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\EnabledProduct';
+        $returnType = '\Fastly\Model\EnabledProductResponse';
         $request = $this->getEnabledProductRequest($options);
 
         return $this->client

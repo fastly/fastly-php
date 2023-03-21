@@ -4,10 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**x** | **float** |  | [optional] 
-**y** | **float** |  | [optional] 
-**latitude** | **float** |  | [optional] 
-**longitude** | **float** |  | [optional] 
+**latitude** | **float** |  | 
+**longitude** | **float** |  | 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -175,6 +175,7 @@ class TlsSubscriptionResponseAttributes implements ModelInterface, ArrayAccess, 
     const STATE_PROCESSING = 'processing';
     const STATE_ISSUED = 'issued';
     const STATE_RENEWING = 'renewing';
+    const STATE_FAILED = 'failed';
 
     /**
      * Gets allowable values of the enum
@@ -188,6 +189,7 @@ class TlsSubscriptionResponseAttributes implements ModelInterface, ArrayAccess, 
             self::STATE_PROCESSING,
             self::STATE_ISSUED,
             self::STATE_RENEWING,
+            self::STATE_FAILED,
         ];
     }
 

@@ -1,5 +1,30 @@
 # Changelog
 
+## [v1.2.0](https://github.com/fastly/fastly-php/releases/tag/v1.0.0) (2023-03-21)
+
+## Bug fixes
+
+- fix(purge): switch authentication type to 'token'
+
+## Enhancements
+
+- feat(events): implement 'filter_created_at' property
+- feat(mutual-authentication): implement 'include' property
+- feat(object-store): implement new Object Store API endpoints
+- feat(settings): implement Service Settings 'update' endpoint
+
+## Documentation
+
+- docs(backend): keepalive_time
+- docs(pop): region, shield, latitude, longitude
+- docs(product-enablement): brotli_compression
+- docs(resource): terminology
+- docs(results): fanout properties
+- docs(tls/subscriptions): new 'failed' state
+- docs(user): 'login' modification note removed
+
+[Full Changelog](https://github.com/fastly/fastly-php/compare/v0.4.1...v1.0.0)
+
 ## [v1.0.0](https://github.com/fastly/fastly-php/releases/tag/v1.0.0) (2022-12-15)
 
 [Full Changelog](https://github.com/fastly/fastly-php/compare/v0.4.1...v1.0.0)

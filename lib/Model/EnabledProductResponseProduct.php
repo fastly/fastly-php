@@ -1,6 +1,6 @@
 <?php
 /**
- * GetStoresResponse
+ * EnabledProductResponseProduct
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * GetStoresResponse Class Doc Comment
+ * EnabledProductResponseProduct Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class GetStoresResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class EnabledProductResponseProduct implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class GetStoresResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $fastlyModelName = 'get_stores_response';
+    protected static $fastlyModelName = 'enabled_product_response_product';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,8 @@ class GetStoresResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\StoreResponse[]',
-        'meta' => '\Fastly\Model\GetStoresResponseMeta'
+        'id' => 'string',
+        'object' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class GetStoresResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null,
-        'meta' => null
+        'id' => null,
+        'object' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class GetStoresResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'meta' => 'meta'
+        'id' => 'id',
+        'object' => 'object'
     ];
 
     /**
@@ -106,8 +106,8 @@ class GetStoresResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'meta' => 'setMeta'
+        'id' => 'setId',
+        'object' => 'setObject'
     ];
 
     /**
@@ -116,8 +116,8 @@ class GetStoresResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'meta' => 'getMeta'
+        'id' => 'getId',
+        'object' => 'getObject'
     ];
 
     /**
@@ -177,8 +177,8 @@ class GetStoresResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
-        $this->container['meta'] = $data['meta'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['object'] = $data['object'] ?? null;
     }
 
     /**
@@ -206,49 +206,49 @@ class GetStoresResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets data
+     * Gets id
      *
-     * @return \Fastly\Model\StoreResponse[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getId()
     {
-        return $this->container['data'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets data
+     * Sets id
      *
-     * @param \Fastly\Model\StoreResponse[]|null $data data
+     * @param string|null $id Product identifier
      *
      * @return self
      */
-    public function setData($data)
+    public function setId($id)
     {
-        $this->container['data'] = $data;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets meta
+     * Gets object
      *
-     * @return \Fastly\Model\GetStoresResponseMeta|null
+     * @return string|null
      */
-    public function getMeta()
+    public function getObject()
     {
-        return $this->container['meta'];
+        return $this->container['object'];
     }
 
     /**
-     * Sets meta
+     * Sets object
      *
-     * @param \Fastly\Model\GetStoresResponseMeta|null $meta meta
+     * @param string|null $object Name of the object
      *
      * @return self
      */
-    public function setMeta($meta)
+    public function setObject($object)
     {
-        $this->container['meta'] = $meta;
+        $this->container['object'] = $object;
 
         return $this;
     }

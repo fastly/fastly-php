@@ -1,6 +1,6 @@
 <?php
 /**
- * EnabledProduct
+ * InlineResponse2002
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * EnabledProduct Class Doc Comment
+ * InlineResponse2002 Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class EnabledProduct implements ModelInterface, ArrayAccess, \JsonSerializable
+class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class EnabledProduct implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'enabled_product';
+    protected static $fastlyModelName = 'inline_response_200_2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,9 +53,8 @@ class EnabledProduct implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'product' => '\Fastly\Model\EnabledProductProduct',
-        'service' => '\Fastly\Model\EnabledProductProduct',
-        '_links' => '\Fastly\Model\EnabledProductLinks'
+        'data' => '\Fastly\Model\StoreResponse[]',
+        'meta' => '\Fastly\Model\InlineResponse2002Meta'
     ];
 
     /**
@@ -66,9 +65,8 @@ class EnabledProduct implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'product' => null,
-        'service' => null,
-        '_links' => null
+        'data' => null,
+        'meta' => null
     ];
 
     /**
@@ -98,9 +96,8 @@ class EnabledProduct implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'product' => 'product',
-        'service' => 'service',
-        '_links' => '_links'
+        'data' => 'data',
+        'meta' => 'meta'
     ];
 
     /**
@@ -109,9 +106,8 @@ class EnabledProduct implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'product' => 'setProduct',
-        'service' => 'setService',
-        '_links' => 'setLinks'
+        'data' => 'setData',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -120,9 +116,8 @@ class EnabledProduct implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'product' => 'getProduct',
-        'service' => 'getService',
-        '_links' => 'getLinks'
+        'data' => 'getData',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -182,9 +177,8 @@ class EnabledProduct implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['product'] = $data['product'] ?? null;
-        $this->container['service'] = $data['service'] ?? null;
-        $this->container['_links'] = $data['_links'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
     }
 
     /**
@@ -212,73 +206,49 @@ class EnabledProduct implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets product
+     * Gets data
      *
-     * @return \Fastly\Model\EnabledProductProduct|null
+     * @return \Fastly\Model\StoreResponse[]|null
      */
-    public function getProduct()
+    public function getData()
     {
-        return $this->container['product'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets product
+     * Sets data
      *
-     * @param \Fastly\Model\EnabledProductProduct|null $product product
+     * @param \Fastly\Model\StoreResponse[]|null $data data
      *
      * @return self
      */
-    public function setProduct($product)
+    public function setData($data)
     {
-        $this->container['product'] = $product;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets service
+     * Gets meta
      *
-     * @return \Fastly\Model\EnabledProductProduct|null
+     * @return \Fastly\Model\InlineResponse2002Meta|null
      */
-    public function getService()
+    public function getMeta()
     {
-        return $this->container['service'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets service
+     * Sets meta
      *
-     * @param \Fastly\Model\EnabledProductProduct|null $service service
+     * @param \Fastly\Model\InlineResponse2002Meta|null $meta meta
      *
      * @return self
      */
-    public function setService($service)
+    public function setMeta($meta)
     {
-        $this->container['service'] = $service;
-
-        return $this;
-    }
-
-    /**
-     * Gets _links
-     *
-     * @return \Fastly\Model\EnabledProductLinks|null
-     */
-    public function getLinks()
-    {
-        return $this->container['_links'];
-    }
-
-    /**
-     * Sets _links
-     *
-     * @param \Fastly\Model\EnabledProductLinks|null $_links _links
-     *
-     * @return self
-     */
-    public function setLinks($_links)
-    {
-        $this->container['_links'] = $_links;
+        $this->container['meta'] = $meta;
 
         return $this;
     }

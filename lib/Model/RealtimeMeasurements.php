@@ -252,6 +252,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => 'int',
         'fanout_recv_publishes' => 'int',
         'fanout_send_publishes' => 'int',
+        'object_store_class_a_operations' => 'int',
+        'object_store_class_b_operations' => 'int',
         'object_store_read_requests' => 'int',
         'object_store_write_requests' => 'int',
         'fanout_req_header_bytes' => 'int',
@@ -471,6 +473,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => null,
         'fanout_recv_publishes' => null,
         'fanout_send_publishes' => null,
+        'object_store_class_a_operations' => null,
+        'object_store_class_b_operations' => null,
         'object_store_read_requests' => null,
         'object_store_write_requests' => null,
         'fanout_req_header_bytes' => null,
@@ -709,6 +713,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => 'websocket_resp_body_bytes',
         'fanout_recv_publishes' => 'fanout_recv_publishes',
         'fanout_send_publishes' => 'fanout_send_publishes',
+        'object_store_class_a_operations' => 'object_store_class_a_operations',
+        'object_store_class_b_operations' => 'object_store_class_b_operations',
         'object_store_read_requests' => 'object_store_read_requests',
         'object_store_write_requests' => 'object_store_write_requests',
         'fanout_req_header_bytes' => 'fanout_req_header_bytes',
@@ -926,6 +932,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => 'setWebsocketRespBodyBytes',
         'fanout_recv_publishes' => 'setFanoutRecvPublishes',
         'fanout_send_publishes' => 'setFanoutSendPublishes',
+        'object_store_class_a_operations' => 'setObjectStoreClassAOperations',
+        'object_store_class_b_operations' => 'setObjectStoreClassBOperations',
         'object_store_read_requests' => 'setObjectStoreReadRequests',
         'object_store_write_requests' => 'setObjectStoreWriteRequests',
         'fanout_req_header_bytes' => 'setFanoutReqHeaderBytes',
@@ -1143,6 +1151,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => 'getWebsocketRespBodyBytes',
         'fanout_recv_publishes' => 'getFanoutRecvPublishes',
         'fanout_send_publishes' => 'getFanoutSendPublishes',
+        'object_store_class_a_operations' => 'getObjectStoreClassAOperations',
+        'object_store_class_b_operations' => 'getObjectStoreClassBOperations',
         'object_store_read_requests' => 'getObjectStoreReadRequests',
         'object_store_write_requests' => 'getObjectStoreWriteRequests',
         'fanout_req_header_bytes' => 'getFanoutReqHeaderBytes',
@@ -1411,6 +1421,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['websocket_resp_body_bytes'] = $data['websocket_resp_body_bytes'] ?? null;
         $this->container['fanout_recv_publishes'] = $data['fanout_recv_publishes'] ?? null;
         $this->container['fanout_send_publishes'] = $data['fanout_send_publishes'] ?? null;
+        $this->container['object_store_class_a_operations'] = $data['object_store_class_a_operations'] ?? null;
+        $this->container['object_store_class_b_operations'] = $data['object_store_class_b_operations'] ?? null;
         $this->container['object_store_read_requests'] = $data['object_store_read_requests'] ?? null;
         $this->container['object_store_write_requests'] = $data['object_store_write_requests'] ?? null;
         $this->container['fanout_req_header_bytes'] = $data['fanout_req_header_bytes'] ?? null;
@@ -6201,9 +6213,58 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets object_store_class_a_operations
+     *
+     * @return int|null
+     */
+    public function getObjectStoreClassAOperations()
+    {
+        return $this->container['object_store_class_a_operations'];
+    }
+
+    /**
+     * Sets object_store_class_a_operations
+     *
+     * @param int|null $object_store_class_a_operations The total number of class a operations for the object store.
+     *
+     * @return self
+     */
+    public function setObjectStoreClassAOperations($object_store_class_a_operations)
+    {
+        $this->container['object_store_class_a_operations'] = $object_store_class_a_operations;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_store_class_b_operations
+     *
+     * @return int|null
+     */
+    public function getObjectStoreClassBOperations()
+    {
+        return $this->container['object_store_class_b_operations'];
+    }
+
+    /**
+     * Sets object_store_class_b_operations
+     *
+     * @param int|null $object_store_class_b_operations The total number of class b operations for the object store.
+     *
+     * @return self
+     */
+    public function setObjectStoreClassBOperations($object_store_class_b_operations)
+    {
+        $this->container['object_store_class_b_operations'] = $object_store_class_b_operations;
+
+        return $this;
+    }
+
+    /**
      * Gets object_store_read_requests
      *
      * @return int|null
+     * @deprecated
      */
     public function getObjectStoreReadRequests()
     {
@@ -6213,9 +6274,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets object_store_read_requests
      *
-     * @param int|null $object_store_read_requests The total number of reads received for the object store.
+     * @param int|null $object_store_read_requests Use object_store_class_b_operations.
      *
      * @return self
+     * @deprecated
      */
     public function setObjectStoreReadRequests($object_store_read_requests)
     {
@@ -6228,6 +6290,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * Gets object_store_write_requests
      *
      * @return int|null
+     * @deprecated
      */
     public function getObjectStoreWriteRequests()
     {
@@ -6237,9 +6300,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets object_store_write_requests
      *
-     * @param int|null $object_store_write_requests The total number of writes received for the object store.
+     * @param int|null $object_store_write_requests Use object_store_class_a_operations.
      *
      * @return self
+     * @deprecated
      */
     public function setObjectStoreWriteRequests($object_store_write_requests)
     {

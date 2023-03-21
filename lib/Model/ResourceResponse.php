@@ -53,11 +53,11 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'resource_id' => 'string',
+        'name' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'name' => 'string',
-        'resource_id' => 'string',
         'id' => 'string',
         'href' => 'string',
         'service_id' => 'string',
@@ -73,11 +73,11 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'resource_id' => null,
+        'name' => null,
         'created_at' => 'date-time',
         'deleted_at' => 'date-time',
         'updated_at' => 'date-time',
-        'name' => null,
-        'resource_id' => null,
         'id' => null,
         'href' => null,
         'service_id' => null,
@@ -112,11 +112,11 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'resource_id' => 'resource_id',
+        'name' => 'name',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
-        'name' => 'name',
-        'resource_id' => 'resource_id',
         'id' => 'id',
         'href' => 'href',
         'service_id' => 'service_id',
@@ -130,11 +130,11 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'resource_id' => 'setResourceId',
+        'name' => 'setName',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
-        'name' => 'setName',
-        'resource_id' => 'setResourceId',
         'id' => 'setId',
         'href' => 'setHref',
         'service_id' => 'setServiceId',
@@ -148,11 +148,11 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'resource_id' => 'getResourceId',
+        'name' => 'getName',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
-        'name' => 'getName',
-        'resource_id' => 'getResourceId',
         'id' => 'getId',
         'href' => 'getHref',
         'service_id' => 'getServiceId',
@@ -217,11 +217,11 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['resource_id'] = $data['resource_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['resource_id'] = $data['resource_id'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['href'] = $data['href'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
@@ -252,6 +252,54 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets resource_id
+     *
+     * @return string|null
+     */
+    public function getResourceId()
+    {
+        return $this->container['resource_id'];
+    }
+
+    /**
+     * Sets resource_id
+     *
+     * @param string|null $resource_id The ID of the underlying linked resource.
+     *
+     * @return self
+     */
+    public function setResourceId($resource_id)
+    {
+        $this->container['resource_id'] = $resource_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name The name of the resource link.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
 
     /**
      * Gets created_at
@@ -326,54 +374,6 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name of the resource.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets resource_id
-     *
-     * @return string|null
-     */
-    public function getResourceId()
-    {
-        return $this->container['resource_id'];
-    }
-
-    /**
-     * Sets resource_id
-     *
-     * @param string|null $resource_id The ID of the linked resource.
-     *
-     * @return self
-     */
-    public function setResourceId($resource_id)
-    {
-        $this->container['resource_id'] = $resource_id;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string|null
@@ -386,7 +386,7 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id An alphanumeric string identifying the resource.
+     * @param string|null $id An alphanumeric string identifying the resource link.
      *
      * @return self
      */

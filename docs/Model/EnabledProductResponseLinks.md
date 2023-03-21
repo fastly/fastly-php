@@ -1,11 +1,11 @@
-# # KeyResponse
+# # EnabledProductResponseLinks
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **string[]** |  | [optional] 
-**meta** | [**\Fastly\Model\GetStoresResponseMeta**](GetStoresResponseMeta.md) |  | [optional] 
+**self** | **string** | Location of resource | [optional] 
+**service** | **string** | Location of the service resource | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

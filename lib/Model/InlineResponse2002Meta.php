@@ -1,6 +1,6 @@
 <?php
 /**
- * EnabledProductLinks
+ * InlineResponse2002Meta
  *
  * PHP version 7.3
  *
@@ -27,16 +27,17 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * EnabledProductLinks Class Doc Comment
+ * InlineResponse2002Meta Class Doc Comment
  *
  * @category Class
+ * @description Meta for the pagination.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class EnabledProductLinks implements ModelInterface, ArrayAccess, \JsonSerializable
+class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +46,7 @@ class EnabledProductLinks implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $fastlyModelName = 'enabled_product__links';
+    protected static $fastlyModelName = 'inline_response_200_2_meta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +54,8 @@ class EnabledProductLinks implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'self' => 'string',
-        'service' => 'string'
+        'next_cursor' => 'string',
+        'limit' => 'int'
     ];
 
     /**
@@ -65,8 +66,8 @@ class EnabledProductLinks implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'self' => 'uri',
-        'service' => 'uri'
+        'next_cursor' => null,
+        'limit' => null
     ];
 
     /**
@@ -96,8 +97,8 @@ class EnabledProductLinks implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self',
-        'service' => 'service'
+        'next_cursor' => 'next_cursor',
+        'limit' => 'limit'
     ];
 
     /**
@@ -106,8 +107,8 @@ class EnabledProductLinks implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf',
-        'service' => 'setService'
+        'next_cursor' => 'setNextCursor',
+        'limit' => 'setLimit'
     ];
 
     /**
@@ -116,8 +117,8 @@ class EnabledProductLinks implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf',
-        'service' => 'getService'
+        'next_cursor' => 'getNextCursor',
+        'limit' => 'getLimit'
     ];
 
     /**
@@ -177,8 +178,8 @@ class EnabledProductLinks implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = $data['self'] ?? null;
-        $this->container['service'] = $data['service'] ?? null;
+        $this->container['next_cursor'] = $data['next_cursor'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? null;
     }
 
     /**
@@ -206,49 +207,49 @@ class EnabledProductLinks implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets self
+     * Gets next_cursor
      *
      * @return string|null
      */
-    public function getSelf()
+    public function getNextCursor()
     {
-        return $this->container['self'];
+        return $this->container['next_cursor'];
     }
 
     /**
-     * Sets self
+     * Sets next_cursor
      *
-     * @param string|null $self self
+     * @param string|null $next_cursor Cursor for the next page.
      *
      * @return self
      */
-    public function setSelf($self)
+    public function setNextCursor($next_cursor)
     {
-        $this->container['self'] = $self;
+        $this->container['next_cursor'] = $next_cursor;
 
         return $this;
     }
 
     /**
-     * Gets service
+     * Gets limit
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getService()
+    public function getLimit()
     {
-        return $this->container['service'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets service
+     * Sets limit
      *
-     * @param string|null $service service
+     * @param int|null $limit Entries returned.
      *
      * @return self
      */
-    public function setService($service)
+    public function setLimit($limit)
     {
-        $this->container['service'] = $service;
+        $this->container['limit'] = $limit;
 
         return $this;
     }

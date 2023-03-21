@@ -422,6 +422,7 @@ class EventsApi
      * @param  string $filter_service_id Limit the results returned to a specific service. (optional)
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
+     * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -448,6 +449,7 @@ class EventsApi
      * @param  string $filter_service_id Limit the results returned to a specific service. (optional)
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
+     * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -562,6 +564,7 @@ class EventsApi
      * @param  string $filter_service_id Limit the results returned to a specific service. (optional)
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
+     * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -591,6 +594,7 @@ class EventsApi
      * @param  string $filter_service_id Limit the results returned to a specific service. (optional)
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
+     * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -646,6 +650,7 @@ class EventsApi
      * @param  string $filter_service_id Limit the results returned to a specific service. (optional)
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
+     * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -661,6 +666,7 @@ class EventsApi
         $filter_service_id = array_key_exists('filter_service_id', $options) ? $options['filter_service_id'] : null;
         $filter_user_id = array_key_exists('filter_user_id', $options) ? $options['filter_user_id'] : null;
         $filter_token_id = array_key_exists('filter_token_id', $options) ? $options['filter_token_id'] : null;
+        $filter_created_at = array_key_exists('filter_created_at', $options) ? $options['filter_created_at'] : null;
         $page_number = array_key_exists('page_number', $options) ? $options['page_number'] : null;
         $page_size = array_key_exists('page_size', $options) ? $options['page_size'] : 20;
         $sort = array_key_exists('sort', $options) ? $options['sort'] : 'created_at';
@@ -733,6 +739,17 @@ class EventsApi
             }
             else {
                 $queryParams['filter[token_id]'] = ObjectSerializer::toString($filter_token_id);
+            }
+        }
+        // query params
+        if ($filter_created_at !== null) {
+            if('form' === 'form' && is_array($filter_created_at)) {
+                foreach($filter_created_at as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['filter[created_at]'] = ObjectSerializer::toString($filter_created_at);
             }
         }
         // query params

@@ -53,6 +53,7 @@ class Resource implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'resource_id' => 'string',
         'name' => 'string'
     ];
 
@@ -64,6 +65,7 @@ class Resource implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'resource_id' => null,
         'name' => null
     ];
 
@@ -94,6 +96,7 @@ class Resource implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'resource_id' => 'resource_id',
         'name' => 'name'
     ];
 
@@ -103,6 +106,7 @@ class Resource implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'resource_id' => 'setResourceId',
         'name' => 'setName'
     ];
 
@@ -112,6 +116,7 @@ class Resource implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'resource_id' => 'getResourceId',
         'name' => 'getName'
     ];
 
@@ -172,6 +177,7 @@ class Resource implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['resource_id'] = $data['resource_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
     }
 
@@ -200,6 +206,30 @@ class Resource implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets resource_id
+     *
+     * @return string|null
+     */
+    public function getResourceId()
+    {
+        return $this->container['resource_id'];
+    }
+
+    /**
+     * Sets resource_id
+     *
+     * @param string|null $resource_id The ID of the underlying linked resource.
+     *
+     * @return self
+     */
+    public function setResourceId($resource_id)
+    {
+        $this->container['resource_id'] = $resource_id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string|null
@@ -212,7 +242,7 @@ class Resource implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The name of the resource.
+     * @param string|null $name The name of the resource link.
      *
      * @return self
      */

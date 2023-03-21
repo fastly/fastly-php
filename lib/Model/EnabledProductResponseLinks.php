@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceCreateAllOf
+ * EnabledProductResponseLinks
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * ResourceCreateAllOf Class Doc Comment
+ * EnabledProductResponseLinks Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ResourceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class EnabledProductResponseLinks implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class ResourceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $fastlyModelName = 'resource_create_allOf';
+    protected static $fastlyModelName = 'enabled_product_response__links';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,8 @@ class ResourceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'resource_id' => 'string'
+        'self' => 'string',
+        'service' => 'string'
     ];
 
     /**
@@ -64,7 +65,8 @@ class ResourceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'resource_id' => null
+        'self' => 'uri',
+        'service' => 'uri'
     ];
 
     /**
@@ -94,7 +96,8 @@ class ResourceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'resource_id' => 'resource_id'
+        'self' => 'self',
+        'service' => 'service'
     ];
 
     /**
@@ -103,7 +106,8 @@ class ResourceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'resource_id' => 'setResourceId'
+        'self' => 'setSelf',
+        'service' => 'setService'
     ];
 
     /**
@@ -112,7 +116,8 @@ class ResourceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'resource_id' => 'getResourceId'
+        'self' => 'getSelf',
+        'service' => 'getService'
     ];
 
     /**
@@ -172,7 +177,8 @@ class ResourceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['resource_id'] = $data['resource_id'] ?? null;
+        $this->container['self'] = $data['self'] ?? null;
+        $this->container['service'] = $data['service'] ?? null;
     }
 
     /**
@@ -200,25 +206,49 @@ class ResourceCreateAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets resource_id
+     * Gets self
      *
      * @return string|null
      */
-    public function getResourceId()
+    public function getSelf()
     {
-        return $this->container['resource_id'];
+        return $this->container['self'];
     }
 
     /**
-     * Sets resource_id
+     * Sets self
      *
-     * @param string|null $resource_id The ID of the linked resource.
+     * @param string|null $self Location of resource
      *
      * @return self
      */
-    public function setResourceId($resource_id)
+    public function setSelf($self)
     {
-        $this->container['resource_id'] = $resource_id;
+        $this->container['self'] = $self;
+
+        return $this;
+    }
+
+    /**
+     * Gets service
+     *
+     * @return string|null
+     */
+    public function getService()
+    {
+        return $this->container['service'];
+    }
+
+    /**
+     * Sets service
+     *
+     * @param string|null $service Location of the service resource
+     *
+     * @return self
+     */
+    public function setService($service)
+    {
+        $this->container['service'] = $service;
 
         return $this;
     }

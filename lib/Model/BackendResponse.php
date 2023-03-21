@@ -686,7 +686,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets keepalive_time
      *
-     * @param int|null $keepalive_time How long to keep a persistent connection to the backend between requests.
+     * @param int|null $keepalive_time How long in seconds to keep a persistent connection to the backend between requests.
      *
      * @return self
      */

@@ -14,27 +14,27 @@ $apiInstance = new Fastly\Api\ResourceApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
-[**createResource()**](ResourceApi.md#createResource) | **POST** /service/{service_id}/version/{version_id}/resource | Create a resource
-[**deleteResource()**](ResourceApi.md#deleteResource) | **DELETE** /service/{service_id}/version/{version_id}/resource/{resource_id} | Delete a resource
-[**getResource()**](ResourceApi.md#getResource) | **GET** /service/{service_id}/version/{version_id}/resource/{resource_id} | Display a resource
-[**listResources()**](ResourceApi.md#listResources) | **GET** /service/{service_id}/version/{version_id}/resource | List resources
-[**updateResource()**](ResourceApi.md#updateResource) | **PUT** /service/{service_id}/version/{version_id}/resource/{resource_id} | Update a resource
+[**createResource()**](ResourceApi.md#createResource) | **POST** /service/{service_id}/version/{version_id}/resource | Create a resource link
+[**deleteResource()**](ResourceApi.md#deleteResource) | **DELETE** /service/{service_id}/version/{version_id}/resource/{id} | Delete a resource link
+[**getResource()**](ResourceApi.md#getResource) | **GET** /service/{service_id}/version/{version_id}/resource/{id} | Display a resource link
+[**listResources()**](ResourceApi.md#listResources) | **GET** /service/{service_id}/version/{version_id}/resource | List resource links
+[**updateResource()**](ResourceApi.md#updateResource) | **PUT** /service/{service_id}/version/{version_id}/resource/{id} | Update a resource link
 
 
 ## `createResource()`
 
 ```php
-createResource($options): \Fastly\Model\ResourceResponse // Create a resource
+createResource($options): \Fastly\Model\ResourceResponse // Create a resource link
 ```
 
-Create a resource.
+Create a link between a resource and a service version.
 
 ### Example
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
-$options['name'] = 'name_example'; // string | The name of the resource.
-$options['resource_id'] = 'resource_id_example'; // string | The ID of the linked resource.
+$options['resource_id'] = 'resource_id_example'; // string | The ID of the underlying linked resource.
+$options['name'] = 'name_example'; // string | The name of the resource link.
 
 try {
     $result = $apiInstance->createResource($options);
@@ -51,8 +51,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
-**name** | **string** | The name of the resource. | [optional]
-**resource_id** | **string** | The ID of the linked resource. | [optional]
+**resource_id** | **string** | The ID of the underlying linked resource. | [optional]
+**name** | **string** | The name of the resource link. | [optional]
 
 ### Return type
 
@@ -64,16 +64,16 @@ Name | Type | Description  | Notes
 ## `deleteResource()`
 
 ```php
-deleteResource($options): \Fastly\Model\InlineResponse200 // Delete a resource
+deleteResource($options): \Fastly\Model\InlineResponse200 // Delete a resource link
 ```
 
-Delete a resource.
+Delete a link between a resource and a service version.
 
 ### Example
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
-$options['resource_id'] = 'resource_id_example'; // string | An alphanumeric string identifying the resource.
+$options['id'] = 'id_example'; // string | An alphanumeric string identifying the resource link.
 
 try {
     $result = $apiInstance->deleteResource($options);
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
-**resource_id** | **string** | An alphanumeric string identifying the resource. |
+**id** | **string** | An alphanumeric string identifying the resource link. |
 
 ### Return type
 
@@ -102,16 +102,16 @@ Name | Type | Description  | Notes
 ## `getResource()`
 
 ```php
-getResource($options): \Fastly\Model\ResourceResponse // Display a resource
+getResource($options): \Fastly\Model\ResourceResponse // Display a resource link
 ```
 
-Display a resource by its identifier.
+Display a resource link by its identifier.
 
 ### Example
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
-$options['resource_id'] = 'resource_id_example'; // string | An alphanumeric string identifying the resource.
+$options['id'] = 'id_example'; // string | An alphanumeric string identifying the resource link.
 
 try {
     $result = $apiInstance->getResource($options);
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
-**resource_id** | **string** | An alphanumeric string identifying the resource. |
+**id** | **string** | An alphanumeric string identifying the resource link. |
 
 ### Return type
 
@@ -140,10 +140,10 @@ Name | Type | Description  | Notes
 ## `listResources()`
 
 ```php
-listResources($options): \Fastly\Model\ResourceResponse[] // List resources
+listResources($options): \Fastly\Model\ResourceResponse[] // List resource links
 ```
 
-List resources.
+List links between resources and services
 
 ### Example
 ```php
@@ -176,17 +176,18 @@ Name | Type | Description  | Notes
 ## `updateResource()`
 
 ```php
-updateResource($options): \Fastly\Model\ResourceResponse // Update a resource
+updateResource($options): \Fastly\Model\ResourceResponse // Update a resource link
 ```
 
-Update a resource.
+Update a link between a resource and a service version.
 
 ### Example
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
-$options['resource_id'] = 'resource_id_example'; // string | An alphanumeric string identifying the resource.
-$options['name'] = 'name_example'; // string | The name of the resource.
+$options['id'] = 'id_example'; // string | An alphanumeric string identifying the resource link.
+$options['resource_id'] = 'resource_id_example'; // string | The ID of the underlying linked resource.
+$options['name'] = 'name_example'; // string | The name of the resource link.
 
 try {
     $result = $apiInstance->updateResource($options);
@@ -203,8 +204,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
-**resource_id** | **string** | An alphanumeric string identifying the resource. |
-**name** | **string** | The name of the resource. | [optional]
+**id** | **string** | An alphanumeric string identifying the resource link. |
+**resource_id** | **string** | The ID of the underlying linked resource. | [optional]
+**name** | **string** | The name of the resource link. | [optional]
 
 ### Return type
 
