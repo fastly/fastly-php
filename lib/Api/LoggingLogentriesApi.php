@@ -131,6 +131,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\LoggingLogentriesResponse
+     * @deprecated
      */
     public function createLogLogentries($options)
     {
@@ -160,6 +161,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\LoggingLogentriesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createLogLogentriesWithHttpInfo($options)
     {
@@ -276,6 +278,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createLogLogentriesAsync($options)
     {
@@ -308,6 +311,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createLogLogentriesAsyncWithHttpInfo($options)
     {
@@ -366,6 +370,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createLogLogentriesRequest($options)
     {
@@ -534,6 +539,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\InlineResponse200
+     * @deprecated
      */
     public function deleteLogLogentries($options)
     {
@@ -555,6 +561,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function deleteLogLogentriesWithHttpInfo($options)
     {
@@ -663,6 +670,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteLogLogentriesAsync($options)
     {
@@ -687,6 +695,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteLogLogentriesAsyncWithHttpInfo($options)
     {
@@ -737,6 +746,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function deleteLogLogentriesRequest($options)
     {
@@ -875,6 +885,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\LoggingLogentriesResponse
+     * @deprecated
      */
     public function getLogLogentries($options)
     {
@@ -896,6 +907,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\LoggingLogentriesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getLogLogentriesWithHttpInfo($options)
     {
@@ -1004,6 +1016,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getLogLogentriesAsync($options)
     {
@@ -1028,6 +1041,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getLogLogentriesAsyncWithHttpInfo($options)
     {
@@ -1078,6 +1092,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getLogLogentriesRequest($options)
     {
@@ -1215,6 +1230,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\LoggingLogentriesResponse[]
+     * @deprecated
      */
     public function listLogLogentries($options)
     {
@@ -1235,6 +1251,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\LoggingLogentriesResponse[], HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function listLogLogentriesWithHttpInfo($options)
     {
@@ -1342,6 +1359,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listLogLogentriesAsync($options)
     {
@@ -1365,6 +1383,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listLogLogentriesAsyncWithHttpInfo($options)
     {
@@ -1414,6 +1433,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function listLogLogentriesRequest($options)
     {
@@ -1546,6 +1566,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\LoggingLogentriesResponse
+     * @deprecated
      */
     public function updateLogLogentries($options)
     {
@@ -1576,6 +1597,7 @@ class LoggingLogentriesApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\LoggingLogentriesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function updateLogLogentriesWithHttpInfo($options)
     {
@@ -1693,6 +1715,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateLogLogentriesAsync($options)
     {
@@ -1726,6 +1749,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateLogLogentriesAsyncWithHttpInfo($options)
     {
@@ -1785,6 +1809,7 @@ class LoggingLogentriesApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function updateLogLogentriesRequest($options)
     {

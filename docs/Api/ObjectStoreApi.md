@@ -30,7 +30,8 @@ Create a new object store.
 
 ### Example
 ```php
-    $options['store'] = {"name":"my-store"}; // \Fastly\Model\Store
+    $options['location'] = 'location_example'; // string
+$options['store'] = {"name":"my-store"}; // \Fastly\Model\Store
 
 try {
     $result = $apiInstance->createStore($options);
@@ -45,6 +46,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**location** | **string** |  | [optional]
 **store** | [**\Fastly\Model\Store**](../Model/Store.md) |  | [optional]
 
 ### Return type
@@ -65,6 +67,7 @@ An object store must be empty before it can be deleted.  Deleting an object stor
 ### Example
 ```php
     $options['store_id'] = 'store_id_example'; // string
+$options['force'] = True; // bool
 
 try {
     $apiInstance->deleteStore($options);
@@ -80,6 +83,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **store_id** | **string** |  |
+**force** | **bool** |  | [optional]
 
 ### Return type
 
@@ -125,7 +129,7 @@ Name | Type | Description  | Notes
 ## `getStores()`
 
 ```php
-getStores($options): \Fastly\Model\InlineResponse2002 // List object stores.
+getStores($options): \Fastly\Model\InlineResponse2003 // List object stores.
 ```
 
 Get all stores for a given customer.
@@ -153,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\Fastly\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

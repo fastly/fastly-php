@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002
+ * InlineResponse2004Meta
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * InlineResponse2002 Class Doc Comment
+ * InlineResponse2004Meta Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializable
+class InlineResponse2004Meta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $fastlyModelName = 'inline_response_200_2';
+    protected static $fastlyModelName = 'inline_response_200_4_meta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'expires_at' => 'string'
+        'next_cursor' => 'string',
+        'limit' => 'int'
     ];
 
     /**
@@ -64,7 +65,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'expires_at' => null
+        'next_cursor' => null,
+        'limit' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'expires_at' => 'expires_at'
+        'next_cursor' => 'next_cursor',
+        'limit' => 'limit'
     ];
 
     /**
@@ -103,7 +106,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'expires_at' => 'setExpiresAt'
+        'next_cursor' => 'setNextCursor',
+        'limit' => 'setLimit'
     ];
 
     /**
@@ -112,7 +116,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'expires_at' => 'getExpiresAt'
+        'next_cursor' => 'getNextCursor',
+        'limit' => 'getLimit'
     ];
 
     /**
@@ -172,7 +177,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['expires_at'] = $data['expires_at'] ?? null;
+        $this->container['next_cursor'] = $data['next_cursor'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? null;
     }
 
     /**
@@ -200,25 +206,49 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets expires_at
+     * Gets next_cursor
      *
      * @return string|null
      */
-    public function getExpiresAt()
+    public function getNextCursor()
     {
-        return $this->container['expires_at'];
+        return $this->container['next_cursor'];
     }
 
     /**
-     * Sets expires_at
+     * Sets next_cursor
      *
-     * @param string|null $expires_at Time-stamp (GMT) when the domain_ownership validation will expire.
+     * @param string|null $next_cursor next_cursor
      *
      * @return self
      */
-    public function setExpiresAt($expires_at)
+    public function setNextCursor($next_cursor)
     {
-        $this->container['expires_at'] = $expires_at;
+        $this->container['next_cursor'] = $next_cursor;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit
+     *
+     * @return int|null
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit
+     *
+     * @param int|null $limit limit
+     *
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        $this->container['limit'] = $limit;
 
         return $this;
     }

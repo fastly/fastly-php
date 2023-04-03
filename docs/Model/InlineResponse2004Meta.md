@@ -1,10 +1,11 @@
-# # InlineResponse2002
+# # InlineResponse2004Meta
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**expires_at** | **string** | Time-stamp (GMT) when the domain_ownership validation will expire. | [optional] [readonly] 
+**next_cursor** | **string** |  | [optional] 
+**limit** | **int** |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

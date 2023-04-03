@@ -142,12 +142,17 @@ class ObjectSerializer
      * the path, by url-encoding.
      *
      * @param string $value a string which will be part of the path
+     * @param boolean $allow_reserved if set to true, then value will not be url-encoded. Default false.
      *
      * @return string the serialized object
      */
-    public static function toPathValue($value)
+    public static function toPathValue($value, $allow_reserved = false)
     {
-        return rawurlencode(self::toString($value));
+        $str_value = self::toString($value);
+        if (!$allow_reserved) {
+            $str_value = rawurlencode($str_value);
+        }
+        return $str_value;
     }
 
     /**

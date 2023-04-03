@@ -116,6 +116,7 @@ class ObjectStoreApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $location location (optional)
      * @param  \Fastly\Model\Store $store store (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -135,6 +136,7 @@ class ObjectStoreApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $location (optional)
      * @param  \Fastly\Model\Store $store (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -242,6 +244,7 @@ class ObjectStoreApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $location (optional)
      * @param  \Fastly\Model\Store $store (optional)
      *
      * @throws \InvalidArgumentException
@@ -264,6 +267,7 @@ class ObjectStoreApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $location (optional)
      * @param  \Fastly\Model\Store $store (optional)
      *
      * @throws \InvalidArgumentException
@@ -312,6 +316,7 @@ class ObjectStoreApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $location (optional)
      * @param  \Fastly\Model\Store $store (optional)
      *
      * @throws \InvalidArgumentException
@@ -320,6 +325,7 @@ class ObjectStoreApi
     public function createStoreRequest($options)
     {
         // unbox the parameters from the associative array
+        $location = array_key_exists('location', $options) ? $options['location'] : null;
         $store = array_key_exists('store', $options) ? $options['store'] : null;
 
 
@@ -330,6 +336,17 @@ class ObjectStoreApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($location !== null) {
+            if('form' === 'form' && is_array($location)) {
+                foreach($location as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['location'] = ObjectSerializer::toString($location);
+            }
+        }
 
 
 
@@ -410,6 +427,7 @@ class ObjectStoreApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $store_id store_id (required)
+     * @param  bool $force force (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -428,6 +446,7 @@ class ObjectStoreApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $store_id (required)
+     * @param  bool $force (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -501,6 +520,7 @@ class ObjectStoreApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $store_id (required)
+     * @param  bool $force (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -523,6 +543,7 @@ class ObjectStoreApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $store_id (required)
+     * @param  bool $force (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -561,6 +582,7 @@ class ObjectStoreApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $store_id (required)
+     * @param  bool $force (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -569,6 +591,7 @@ class ObjectStoreApi
     {
         // unbox the parameters from the associative array
         $store_id = array_key_exists('store_id', $options) ? $options['store_id'] : null;
+        $force = array_key_exists('force', $options) ? $options['force'] : null;
 
         // verify the required parameter 'store_id' is set
         if ($store_id === null || (is_array($store_id) && count($store_id) === 0)) {
@@ -585,6 +608,10 @@ class ObjectStoreApi
         $multipart = false;
 
 
+        // header params
+        if ($force !== null) {
+            $headerParams['force'] = ObjectSerializer::toHeaderValue($force);
+        }
 
         // path params
         if ($store_id !== null) {
@@ -971,7 +998,7 @@ class ObjectStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2002
+     * @return \Fastly\Model\InlineResponse2003
      */
     public function getStores($options)
     {
@@ -991,7 +1018,7 @@ class ObjectStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStoresWithHttpInfo($options)
     {
@@ -1046,20 +1073,20 @@ class ObjectStoreApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2002' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse2003' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2002', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2003', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2002';
+            $returnType = '\Fastly\Model\InlineResponse2003';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1077,7 +1104,7 @@ class ObjectStoreApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2002',
+                        '\Fastly\Model\InlineResponse2003',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1125,7 +1152,7 @@ class ObjectStoreApi
      */
     public function getStoresAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2002';
+        $returnType = '\Fastly\Model\InlineResponse2003';
         $request = $this->getStoresRequest($options);
 
         return $this->client

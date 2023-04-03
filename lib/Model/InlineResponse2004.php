@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002Meta
+ * InlineResponse2004
  *
  * PHP version 7.3
  *
@@ -27,17 +27,16 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * InlineResponse2002Meta Class Doc Comment
+ * InlineResponse2004 Class Doc Comment
  *
  * @category Class
- * @description Meta for the pagination.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerializable
+class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -46,7 +45,7 @@ class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $fastlyModelName = 'inline_response_200_2_meta';
+    protected static $fastlyModelName = 'inline_response_200_4';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,8 +53,8 @@ class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'next_cursor' => 'string',
-        'limit' => 'int'
+        'data' => 'string[]',
+        'meta' => '\Fastly\Model\InlineResponse2004Meta'
     ];
 
     /**
@@ -66,8 +65,8 @@ class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'next_cursor' => null,
-        'limit' => null
+        'data' => null,
+        'meta' => null
     ];
 
     /**
@@ -97,8 +96,8 @@ class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'next_cursor' => 'next_cursor',
-        'limit' => 'limit'
+        'data' => 'data',
+        'meta' => 'meta'
     ];
 
     /**
@@ -107,8 +106,8 @@ class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'next_cursor' => 'setNextCursor',
-        'limit' => 'setLimit'
+        'data' => 'setData',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -117,8 +116,8 @@ class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'next_cursor' => 'getNextCursor',
-        'limit' => 'getLimit'
+        'data' => 'getData',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -178,8 +177,8 @@ class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['next_cursor'] = $data['next_cursor'] ?? null;
-        $this->container['limit'] = $data['limit'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
     }
 
     /**
@@ -207,49 +206,49 @@ class InlineResponse2002Meta implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets next_cursor
+     * Gets data
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getNextCursor()
+    public function getData()
     {
-        return $this->container['next_cursor'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets next_cursor
+     * Sets data
      *
-     * @param string|null $next_cursor Cursor for the next page.
+     * @param string[]|null $data data
      *
      * @return self
      */
-    public function setNextCursor($next_cursor)
+    public function setData($data)
     {
-        $this->container['next_cursor'] = $next_cursor;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets limit
+     * Gets meta
      *
-     * @return int|null
+     * @return \Fastly\Model\InlineResponse2004Meta|null
      */
-    public function getLimit()
+    public function getMeta()
     {
-        return $this->container['limit'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets limit
+     * Sets meta
      *
-     * @param int|null $limit Entries returned.
+     * @param \Fastly\Model\InlineResponse2004Meta|null $meta meta
      *
      * @return self
      */
-    public function setLimit($limit)
+    public function setMeta($meta)
     {
-        $this->container['limit'] = $limit;
+        $this->container['meta'] = $meta;
 
         return $this;
     }

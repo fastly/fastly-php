@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002
+ * InlineResponse2003
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * InlineResponse2002 Class Doc Comment
+ * InlineResponse2003 Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializable
+class InlineResponse2003 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $fastlyModelName = 'inline_response_200_2';
+    protected static $fastlyModelName = 'inline_response_200_3';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'expires_at' => 'string'
+        'data' => '\Fastly\Model\StoreResponse[]',
+        'meta' => '\Fastly\Model\InlineResponse2003Meta'
     ];
 
     /**
@@ -64,7 +65,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'expires_at' => null
+        'data' => null,
+        'meta' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'expires_at' => 'expires_at'
+        'data' => 'data',
+        'meta' => 'meta'
     ];
 
     /**
@@ -103,7 +106,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'expires_at' => 'setExpiresAt'
+        'data' => 'setData',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -112,7 +116,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'expires_at' => 'getExpiresAt'
+        'data' => 'getData',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -172,7 +177,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['expires_at'] = $data['expires_at'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
     }
 
     /**
@@ -200,25 +206,49 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets expires_at
+     * Gets data
      *
-     * @return string|null
+     * @return \Fastly\Model\StoreResponse[]|null
      */
-    public function getExpiresAt()
+    public function getData()
     {
-        return $this->container['expires_at'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets expires_at
+     * Sets data
      *
-     * @param string|null $expires_at Time-stamp (GMT) when the domain_ownership validation will expire.
+     * @param \Fastly\Model\StoreResponse[]|null $data data
      *
      * @return self
      */
-    public function setExpiresAt($expires_at)
+    public function setData($data)
     {
-        $this->container['expires_at'] = $expires_at;
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \Fastly\Model\InlineResponse2003Meta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \Fastly\Model\InlineResponse2003Meta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        $this->container['meta'] = $meta;
 
         return $this;
     }
