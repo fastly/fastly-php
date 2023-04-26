@@ -431,7 +431,6 @@ Class | Method | Description
 [*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**getTlsConfig**](docs/Api/TlsConfigurationsApi.md#gettlsconfig) | Get a TLS configuration
 [*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**listTlsConfigs**](docs/Api/TlsConfigurationsApi.md#listtlsconfigs) | List TLS configurations
 [*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**updateTlsConfig**](docs/Api/TlsConfigurationsApi.md#updatetlsconfig) | Update a TLS configuration
-[*TlsCsrsApi*](docs/Api/TlsCsrsApi.md) | [**createCsr**](docs/Api/TlsCsrsApi.md#createcsr) | Create CSR
 [*TlsDomainsApi*](docs/Api/TlsDomainsApi.md) | [**listTlsDomains**](docs/Api/TlsDomainsApi.md#listtlsdomains) | List TLS domains
 [*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**createTlsKey**](docs/Api/TlsPrivateKeysApi.md#createtlskey) | Create a TLS private key
 [*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**deleteTlsKey**](docs/Api/TlsPrivateKeysApi.md#deletetlskey) | Delete a TLS private key

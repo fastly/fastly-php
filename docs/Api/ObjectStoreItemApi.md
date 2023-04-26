@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 ## `getValueForKey()`
 
 ```php
-getValueForKey($options): \SplFileObject // Get the value of an object store item
+getValueForKey($options): string // Get the value of an object store item
 ```
 
 Get the value associated with a key.
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\SplFileObject**
+**string**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 ## `setValueForKey()`
 
 ```php
-setValueForKey($options): \SplFileObject // Insert an item into an object store
+setValueForKey($options): string // Insert an item into an object store
 ```
 
 Set a new value for a new or existing key in an object store.
@@ -153,7 +153,7 @@ $options['add'] = True; // bool
 $options['append'] = True; // bool
 $options['prepend'] = True; // bool
 $options['background_fetch'] = True; // bool
-$options['body'] = "/path/to/file.txt"; // \SplFileObject
+$options['body'] = 'body_example'; // string
 
 try {
     $result = $apiInstance->setValueForKey($options);
@@ -177,11 +177,11 @@ Name | Type | Description  | Notes
 **append** | **bool** |  | [optional]
 **prepend** | **bool** |  | [optional]
 **background_fetch** | **bool** |  | [optional]
-**body** | **\SplFileObject****\SplFileObject** |  | [optional]
+**body** | **string** |  | [optional]
 
 ### Return type
 
-**\SplFileObject**
+**string**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

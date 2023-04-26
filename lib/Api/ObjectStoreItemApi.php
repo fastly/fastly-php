@@ -766,7 +766,7 @@ class ObjectStoreItemApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject
+     * @return string
      */
     public function getValueForKey($options)
     {
@@ -786,7 +786,7 @@ class ObjectStoreItemApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function getValueForKeyWithHttpInfo($options)
     {
@@ -841,20 +841,20 @@ class ObjectStoreItemApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\SplFileObject' === '\SplFileObject') {
+                    if ('string' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        ObjectSerializer::deserialize($content, 'string', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\SplFileObject';
+            $returnType = 'string';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -872,7 +872,7 @@ class ObjectStoreItemApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SplFileObject',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -920,7 +920,7 @@ class ObjectStoreItemApi
      */
     public function getValueForKeyAsyncWithHttpInfo($options)
     {
-        $returnType = '\SplFileObject';
+        $returnType = 'string';
         $request = $this->getValueForKeyRequest($options);
 
         return $this->client
@@ -1091,11 +1091,11 @@ class ObjectStoreItemApi
      * @param  bool $append append (optional)
      * @param  bool $prepend prepend (optional)
      * @param  bool $background_fetch background_fetch (optional)
-     * @param  \SplFileObject $body body (optional)
+     * @param  string $body body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject
+     * @return string
      */
     public function setValueForKey($options)
     {
@@ -1119,11 +1119,11 @@ class ObjectStoreItemApi
      * @param  bool $append (optional)
      * @param  bool $prepend (optional)
      * @param  bool $background_fetch (optional)
-     * @param  \SplFileObject $body (optional)
+     * @param  string $body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function setValueForKeyWithHttpInfo($options)
     {
@@ -1178,20 +1178,20 @@ class ObjectStoreItemApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\SplFileObject' === '\SplFileObject') {
+                    if ('string' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        ObjectSerializer::deserialize($content, 'string', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\SplFileObject';
+            $returnType = 'string';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1209,7 +1209,7 @@ class ObjectStoreItemApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SplFileObject',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1235,7 +1235,7 @@ class ObjectStoreItemApi
      * @param  bool $append (optional)
      * @param  bool $prepend (optional)
      * @param  bool $background_fetch (optional)
-     * @param  \SplFileObject $body (optional)
+     * @param  string $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1266,14 +1266,14 @@ class ObjectStoreItemApi
      * @param  bool $append (optional)
      * @param  bool $prepend (optional)
      * @param  bool $background_fetch (optional)
-     * @param  \SplFileObject $body (optional)
+     * @param  string $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function setValueForKeyAsyncWithHttpInfo($options)
     {
-        $returnType = '\SplFileObject';
+        $returnType = 'string';
         $request = $this->setValueForKeyRequest($options);
 
         return $this->client
@@ -1323,7 +1323,7 @@ class ObjectStoreItemApi
      * @param  bool $append (optional)
      * @param  bool $prepend (optional)
      * @param  bool $background_fetch (optional)
-     * @param  \SplFileObject $body (optional)
+     * @param  string $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
