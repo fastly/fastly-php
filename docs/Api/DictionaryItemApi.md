@@ -14,6 +14,7 @@ $apiInstance = new Fastly\Api\DictionaryItemApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
+[**bulkUpdateDictionaryItem()**](DictionaryItemApi.md#bulkUpdateDictionaryItem) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/items | Update multiple entries in an edge dictionary
 [**createDictionaryItem()**](DictionaryItemApi.md#createDictionaryItem) | **POST** /service/{service_id}/dictionary/{dictionary_id}/item | Create an entry in an edge dictionary
 [**deleteDictionaryItem()**](DictionaryItemApi.md#deleteDictionaryItem) | **DELETE** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Delete an item from an edge dictionary
 [**getDictionaryItem()**](DictionaryItemApi.md#getDictionaryItem) | **GET** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Get an item from an edge dictionary
@@ -21,6 +22,44 @@ Method | Fastly API endpoint | Description
 [**updateDictionaryItem()**](DictionaryItemApi.md#updateDictionaryItem) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Update an entry in an edge dictionary
 [**upsertDictionaryItem()**](DictionaryItemApi.md#upsertDictionaryItem) | **PUT** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Insert or update an entry in an edge dictionary
 
+
+## `bulkUpdateDictionaryItem()`
+
+```php
+bulkUpdateDictionaryItem($options): \Fastly\Model\InlineResponse200 // Update multiple entries in an edge dictionary
+```
+
+Update multiple items in the same dictionary. For faster updates to your service, group your changes into large batches. The maximum batch size is 1000 items. [Contact support](https://support.fastly.com/) to discuss raising this limit.
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
+$options['bulk_update_dictionary_list_request'] = {"items":[{"op":"create","item_key":"test-key","item_value":"new-value"},{"op":"update","item_key":"test-key-2","item_value":"new-value-2"},{"op":"upsert","item_key":"test-key-3","item_value":"new-value-3"},{"op":"delete","item_key":"test-key-4"}]}; // \Fastly\Model\BulkUpdateDictionaryListRequest
+
+try {
+    $result = $apiInstance->bulkUpdateDictionaryItem($options);
+} catch (Exception $e) {
+    echo 'Exception when calling DictionaryItemApi->bulkUpdateDictionaryItem: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
+**bulk_update_dictionary_list_request** | [**\Fastly\Model\BulkUpdateDictionaryListRequest**](../Model/BulkUpdateDictionaryListRequest.md) |  | [optional]
+
+### Return type
+
+[**\Fastly\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 
 ## `createDictionaryItem()`
 

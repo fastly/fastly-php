@@ -133,7 +133,8 @@ List all TLS certificates.
 
 ### Example
 ```php
-    $options['filter_not_after'] = 'filter_not_after_example'; // string | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]=2020-05-05).
+    $options['filter_in_use'] = 'filter_in_use_example'; // string | Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false.
+$options['filter_not_after'] = 'filter_not_after_example'; // string | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]=2020-05-05).
 $options['filter_tls_domains_id'] = 'filter_tls_domains_id_example'; // string | Limit the returned certificates to those that include the specific domain.
 $options['include'] = 'include_example'; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`.
 $options['page_number'] = 1; // int | Current page.
@@ -153,6 +154,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**filter_in_use** | **string** | Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false. | [optional]
 **filter_not_after** | **string** | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). | [optional]
 **filter_tls_domains_id** | **string** | Limit the returned certificates to those that include the specific domain. | [optional]
 **include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`. | [optional]

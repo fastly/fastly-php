@@ -1,8 +1,8 @@
-# Fastly\Api\ObjectStoreItemApi
+# Fastly\Api\KvStoreItemApi
 
 
 ```php
-$apiInstance = new Fastly\Api\ObjectStoreItemApi(
+$apiInstance = new Fastly\Api\KvStoreItemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -14,19 +14,19 @@ $apiInstance = new Fastly\Api\ObjectStoreItemApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
-[**deleteKeyFromStore()**](ObjectStoreItemApi.md#deleteKeyFromStore) | **DELETE** /resources/stores/object/{store_id}/keys/{key_name} | Delete object store item.
-[**getKeys()**](ObjectStoreItemApi.md#getKeys) | **GET** /resources/stores/object/{store_id}/keys | List object store keys.
-[**getValueForKey()**](ObjectStoreItemApi.md#getValueForKey) | **GET** /resources/stores/object/{store_id}/keys/{key_name} | Get the value of an object store item
-[**setValueForKey()**](ObjectStoreItemApi.md#setValueForKey) | **PUT** /resources/stores/object/{store_id}/keys/{key_name} | Insert an item into an object store
+[**deleteKeyFromStore()**](KvStoreItemApi.md#deleteKeyFromStore) | **DELETE** /resources/stores/kv/{store_id}/keys/{key_name} | Delete kv store item.
+[**getKeys()**](KvStoreItemApi.md#getKeys) | **GET** /resources/stores/kv/{store_id}/keys | List kv store keys.
+[**getValueForKey()**](KvStoreItemApi.md#getValueForKey) | **GET** /resources/stores/kv/{store_id}/keys/{key_name} | Get the value of an kv store item
+[**setValueForKey()**](KvStoreItemApi.md#setValueForKey) | **PUT** /resources/stores/kv/{store_id}/keys/{key_name} | Insert an item into an kv store
 
 
 ## `deleteKeyFromStore()`
 
 ```php
-deleteKeyFromStore($options) // Delete object store item.
+deleteKeyFromStore($options) // Delete kv store item.
 ```
 
-Delete an item from an object store
+Delete an item from an kv store
 
 ### Example
 ```php
@@ -37,7 +37,7 @@ $options['force'] = True; // bool
 try {
     $apiInstance->deleteKeyFromStore($options);
 } catch (Exception $e) {
-    echo 'Exception when calling ObjectStoreItemApi->deleteKeyFromStore: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreItemApi->deleteKeyFromStore: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -61,10 +61,10 @@ void (empty response body)
 ## `getKeys()`
 
 ```php
-getKeys($options): \Fastly\Model\InlineResponse2004 // List object store keys.
+getKeys($options): \Fastly\Model\InlineResponse2004 // List kv store keys.
 ```
 
-List the keys of all items within an object store.
+List the keys of all items within an kv store.
 
 ### Example
 ```php
@@ -76,7 +76,7 @@ $options['prefix'] = 'prefix_example'; // string
 try {
     $result = $apiInstance->getKeys($options);
 } catch (Exception $e) {
-    echo 'Exception when calling ObjectStoreItemApi->getKeys: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreItemApi->getKeys: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 ## `getValueForKey()`
 
 ```php
-getValueForKey($options): string // Get the value of an object store item
+getValueForKey($options): string // Get the value of an kv store item
 ```
 
 Get the value associated with a key.
@@ -114,7 +114,7 @@ $options['key_name'] = 'key_name_example'; // string
 try {
     $result = $apiInstance->getValueForKey($options);
 } catch (Exception $e) {
-    echo 'Exception when calling ObjectStoreItemApi->getValueForKey: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreItemApi->getValueForKey: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -137,10 +137,10 @@ Name | Type | Description  | Notes
 ## `setValueForKey()`
 
 ```php
-setValueForKey($options): string // Insert an item into an object store
+setValueForKey($options): string // Insert an item into an kv store
 ```
 
-Set a new value for a new or existing key in an object store.
+Set a new value for a new or existing key in an kv store.
 
 ### Example
 ```php
@@ -158,7 +158,7 @@ $options['body'] = 'body_example'; // string
 try {
     $result = $apiInstance->setValueForKey($options);
 } catch (Exception $e) {
-    echo 'Exception when calling ObjectStoreItemApi->setValueForKey: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreItemApi->setValueForKey: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * ObjectStoreItemApi
+ * KvStoreItemApi
  * PHP version 7.3
  *
  * @category Class
@@ -35,13 +35,13 @@ use Fastly\HeaderSelector;
 use Fastly\ObjectSerializer;
 
 /**
- * ObjectStoreItemApi Class Doc Comment
+ * KvStoreItemApi Class Doc Comment
  *
  * @category Class
  * @package  Fastly
  * @author   oss@fastly.com
  */
-class ObjectStoreItemApi
+class KvStoreItemApi
 {
     /**
      * @var ClientInterface
@@ -112,7 +112,7 @@ class ObjectStoreItemApi
     /**
      * Operation deleteKeyFromStore
      *
-     * Delete object store item.
+     * Delete kv store item.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -132,7 +132,7 @@ class ObjectStoreItemApi
     /**
      * Operation deleteKeyFromStoreWithHttpInfo
      *
-     * Delete object store item.
+     * Delete kv store item.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -207,7 +207,7 @@ class ObjectStoreItemApi
     /**
      * Operation deleteKeyFromStoreAsync
      *
-     * Delete object store item.
+     * Delete kv store item.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -231,7 +231,7 @@ class ObjectStoreItemApi
     /**
      * Operation deleteKeyFromStoreAsyncWithHttpInfo
      *
-     * Delete object store item.
+     * Delete kv store item.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -302,7 +302,7 @@ class ObjectStoreItemApi
             );
         }
 
-        $resourcePath = '/resources/stores/object/{store_id}/keys/{key_name}';
+        $resourcePath = '/resources/stores/kv/{store_id}/keys/{key_name}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -405,7 +405,7 @@ class ObjectStoreItemApi
     /**
      * Operation getKeys
      *
-     * List object store keys.
+     * List kv store keys.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -427,7 +427,7 @@ class ObjectStoreItemApi
     /**
      * Operation getKeysWithHttpInfo
      *
-     * List object store keys.
+     * List kv store keys.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -537,7 +537,7 @@ class ObjectStoreItemApi
     /**
      * Operation getKeysAsync
      *
-     * List object store keys.
+     * List kv store keys.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -562,7 +562,7 @@ class ObjectStoreItemApi
     /**
      * Operation getKeysAsyncWithHttpInfo
      *
-     * List object store keys.
+     * List kv store keys.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -640,7 +640,7 @@ class ObjectStoreItemApi
             );
         }
 
-        $resourcePath = '/resources/stores/object/{store_id}/keys';
+        $resourcePath = '/resources/stores/kv/{store_id}/keys';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -757,7 +757,7 @@ class ObjectStoreItemApi
     /**
      * Operation getValueForKey
      *
-     * Get the value of an object store item
+     * Get the value of an kv store item
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -777,7 +777,7 @@ class ObjectStoreItemApi
     /**
      * Operation getValueForKeyWithHttpInfo
      *
-     * Get the value of an object store item
+     * Get the value of an kv store item
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -885,7 +885,7 @@ class ObjectStoreItemApi
     /**
      * Operation getValueForKeyAsync
      *
-     * Get the value of an object store item
+     * Get the value of an kv store item
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -908,7 +908,7 @@ class ObjectStoreItemApi
     /**
      * Operation getValueForKeyAsyncWithHttpInfo
      *
-     * Get the value of an object store item
+     * Get the value of an kv store item
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -986,7 +986,7 @@ class ObjectStoreItemApi
             );
         }
 
-        $resourcePath = '/resources/stores/object/{store_id}/keys/{key_name}';
+        $resourcePath = '/resources/stores/kv/{store_id}/keys/{key_name}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1078,7 +1078,7 @@ class ObjectStoreItemApi
     /**
      * Operation setValueForKey
      *
-     * Insert an item into an object store
+     * Insert an item into an kv store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1106,7 +1106,7 @@ class ObjectStoreItemApi
     /**
      * Operation setValueForKeyWithHttpInfo
      *
-     * Insert an item into an object store
+     * Insert an item into an kv store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1222,7 +1222,7 @@ class ObjectStoreItemApi
     /**
      * Operation setValueForKeyAsync
      *
-     * Insert an item into an object store
+     * Insert an item into an kv store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1253,7 +1253,7 @@ class ObjectStoreItemApi
     /**
      * Operation setValueForKeyAsyncWithHttpInfo
      *
-     * Insert an item into an object store
+     * Insert an item into an kv store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1355,7 +1355,7 @@ class ObjectStoreItemApi
             );
         }
 
-        $resourcePath = '/resources/stores/object/{store_id}/keys/{key_name}';
+        $resourcePath = '/resources/stores/kv/{store_id}/keys/{key_name}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

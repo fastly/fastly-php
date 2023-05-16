@@ -1,6 +1,6 @@
 <?php
 /**
- * ObjectStoreApi
+ * KvStoreApi
  * PHP version 7.3
  *
  * @category Class
@@ -35,13 +35,13 @@ use Fastly\HeaderSelector;
 use Fastly\ObjectSerializer;
 
 /**
- * ObjectStoreApi Class Doc Comment
+ * KvStoreApi Class Doc Comment
  *
  * @category Class
  * @package  Fastly
  * @author   oss@fastly.com
  */
-class ObjectStoreApi
+class KvStoreApi
 {
     /**
      * @var ClientInterface
@@ -112,7 +112,7 @@ class ObjectStoreApi
     /**
      * Operation createStore
      *
-     * Create an object store.
+     * Create an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -132,7 +132,7 @@ class ObjectStoreApi
     /**
      * Operation createStoreWithHttpInfo
      *
-     * Create an object store.
+     * Create an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -240,7 +240,7 @@ class ObjectStoreApi
     /**
      * Operation createStoreAsync
      *
-     * Create an object store.
+     * Create an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -263,7 +263,7 @@ class ObjectStoreApi
     /**
      * Operation createStoreAsyncWithHttpInfo
      *
-     * Create an object store.
+     * Create an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -329,7 +329,7 @@ class ObjectStoreApi
         $store = array_key_exists('store', $options) ? $options['store'] : null;
 
 
-        $resourcePath = '/resources/stores/object';
+        $resourcePath = '/resources/stores/kv';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -422,7 +422,7 @@ class ObjectStoreApi
     /**
      * Operation deleteStore
      *
-     * Delete an object store.
+     * Delete an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -441,7 +441,7 @@ class ObjectStoreApi
     /**
      * Operation deleteStoreWithHttpInfo
      *
-     * Delete an object store.
+     * Delete an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -515,7 +515,7 @@ class ObjectStoreApi
     /**
      * Operation deleteStoreAsync
      *
-     * Delete an object store.
+     * Delete an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -538,7 +538,7 @@ class ObjectStoreApi
     /**
      * Operation deleteStoreAsyncWithHttpInfo
      *
-     * Delete an object store.
+     * Delete an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -600,7 +600,7 @@ class ObjectStoreApi
             );
         }
 
-        $resourcePath = '/resources/stores/object/{store_id}';
+        $resourcePath = '/resources/stores/kv/{store_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -688,7 +688,7 @@ class ObjectStoreApi
     /**
      * Operation getStore
      *
-     * Describe an object store.
+     * Describe an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -707,7 +707,7 @@ class ObjectStoreApi
     /**
      * Operation getStoreWithHttpInfo
      *
-     * Describe an object store.
+     * Describe an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -814,7 +814,7 @@ class ObjectStoreApi
     /**
      * Operation getStoreAsync
      *
-     * Describe an object store.
+     * Describe an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -836,7 +836,7 @@ class ObjectStoreApi
     /**
      * Operation getStoreAsyncWithHttpInfo
      *
-     * Describe an object store.
+     * Describe an kv store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -905,7 +905,7 @@ class ObjectStoreApi
             );
         }
 
-        $resourcePath = '/resources/stores/object/{store_id}';
+        $resourcePath = '/resources/stores/kv/{store_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -989,7 +989,7 @@ class ObjectStoreApi
     /**
      * Operation getStores
      *
-     * List object stores.
+     * List kv stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1009,7 +1009,7 @@ class ObjectStoreApi
     /**
      * Operation getStoresWithHttpInfo
      *
-     * List object stores.
+     * List kv stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1117,7 +1117,7 @@ class ObjectStoreApi
     /**
      * Operation getStoresAsync
      *
-     * List object stores.
+     * List kv stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1140,7 +1140,7 @@ class ObjectStoreApi
     /**
      * Operation getStoresAsyncWithHttpInfo
      *
-     * List object stores.
+     * List kv stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1206,7 +1206,7 @@ class ObjectStoreApi
         $limit = array_key_exists('limit', $options) ? $options['limit'] : 100;
 
 
-        $resourcePath = '/resources/stores/object';
+        $resourcePath = '/resources/stores/kv';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -966,6 +966,7 @@ class TlsCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $filter_in_use Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false. (optional)
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
@@ -990,6 +991,7 @@ class TlsCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $filter_in_use Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false. (optional)
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
@@ -1102,6 +1104,7 @@ class TlsCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $filter_in_use Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false. (optional)
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
@@ -1129,6 +1132,7 @@ class TlsCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $filter_in_use Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false. (optional)
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
@@ -1182,6 +1186,7 @@ class TlsCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  string $filter_in_use Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false. (optional)
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
@@ -1195,6 +1200,7 @@ class TlsCertificatesApi
     public function listTlsCertsRequest($options)
     {
         // unbox the parameters from the associative array
+        $filter_in_use = array_key_exists('filter_in_use', $options) ? $options['filter_in_use'] : null;
         $filter_not_after = array_key_exists('filter_not_after', $options) ? $options['filter_not_after'] : null;
         $filter_tls_domains_id = array_key_exists('filter_tls_domains_id', $options) ? $options['filter_tls_domains_id'] : null;
         $include = array_key_exists('include', $options) ? $options['include'] : null;
@@ -1217,6 +1223,17 @@ class TlsCertificatesApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($filter_in_use !== null) {
+            if('form' === 'form' && is_array($filter_in_use)) {
+                foreach($filter_in_use as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['filter[in_use]'] = ObjectSerializer::toString($filter_in_use);
+            }
+        }
         // query params
         if ($filter_not_after !== null) {
             if('form' === 'form' && is_array($filter_not_after)) {

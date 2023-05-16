@@ -1,8 +1,8 @@
-# Fastly\Api\ObjectStoreApi
+# Fastly\Api\KvStoreApi
 
 
 ```php
-$apiInstance = new Fastly\Api\ObjectStoreApi(
+$apiInstance = new Fastly\Api\KvStoreApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -14,19 +14,19 @@ $apiInstance = new Fastly\Api\ObjectStoreApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
-[**createStore()**](ObjectStoreApi.md#createStore) | **POST** /resources/stores/object | Create an object store.
-[**deleteStore()**](ObjectStoreApi.md#deleteStore) | **DELETE** /resources/stores/object/{store_id} | Delete an object store.
-[**getStore()**](ObjectStoreApi.md#getStore) | **GET** /resources/stores/object/{store_id} | Describe an object store.
-[**getStores()**](ObjectStoreApi.md#getStores) | **GET** /resources/stores/object | List object stores.
+[**createStore()**](KvStoreApi.md#createStore) | **POST** /resources/stores/kv | Create an kv store.
+[**deleteStore()**](KvStoreApi.md#deleteStore) | **DELETE** /resources/stores/kv/{store_id} | Delete an kv store.
+[**getStore()**](KvStoreApi.md#getStore) | **GET** /resources/stores/kv/{store_id} | Describe an kv store.
+[**getStores()**](KvStoreApi.md#getStores) | **GET** /resources/stores/kv | List kv stores.
 
 
 ## `createStore()`
 
 ```php
-createStore($options): \Fastly\Model\StoreResponse // Create an object store.
+createStore($options): \Fastly\Model\StoreResponse // Create an kv store.
 ```
 
-Create a new object store.
+Create a new kv store.
 
 ### Example
 ```php
@@ -36,7 +36,7 @@ $options['store'] = {"name":"my-store"}; // \Fastly\Model\Store
 try {
     $result = $apiInstance->createStore($options);
 } catch (Exception $e) {
-    echo 'Exception when calling ObjectStoreApi->createStore: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreApi->createStore: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -59,10 +59,10 @@ Name | Type | Description  | Notes
 ## `deleteStore()`
 
 ```php
-deleteStore($options) // Delete an object store.
+deleteStore($options) // Delete an kv store.
 ```
 
-An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a `409` (Conflict).
+An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a `409` (Conflict).
 
 ### Example
 ```php
@@ -72,7 +72,7 @@ $options['force'] = True; // bool
 try {
     $apiInstance->deleteStore($options);
 } catch (Exception $e) {
-    echo 'Exception when calling ObjectStoreApi->deleteStore: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreApi->deleteStore: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -95,10 +95,10 @@ void (empty response body)
 ## `getStore()`
 
 ```php
-getStore($options): \Fastly\Model\StoreResponse // Describe an object store.
+getStore($options): \Fastly\Model\StoreResponse // Describe an kv store.
 ```
 
-Get an object store by ID.
+Get an kv store by ID.
 
 ### Example
 ```php
@@ -107,7 +107,7 @@ Get an object store by ID.
 try {
     $result = $apiInstance->getStore($options);
 } catch (Exception $e) {
-    echo 'Exception when calling ObjectStoreApi->getStore: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreApi->getStore: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 ## `getStores()`
 
 ```php
-getStores($options): \Fastly\Model\InlineResponse2003 // List object stores.
+getStores($options): \Fastly\Model\InlineResponse2003 // List kv stores.
 ```
 
 Get all stores for a given customer.
@@ -142,7 +142,7 @@ $options['limit'] = 100; // int
 try {
     $result = $apiInstance->getStores($options);
 } catch (Exception $e) {
-    echo 'Exception when calling ObjectStoreApi->getStores: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreApi->getStores: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

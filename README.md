@@ -137,6 +137,7 @@ Class | Method | Description
 [*DictionaryApi*](docs/Api/DictionaryApi.md) | [**listDictionaries**](docs/Api/DictionaryApi.md#listdictionaries) | List edge dictionaries
 [*DictionaryApi*](docs/Api/DictionaryApi.md) | [**updateDictionary**](docs/Api/DictionaryApi.md#updatedictionary) | Update an edge dictionary
 [*DictionaryInfoApi*](docs/Api/DictionaryInfoApi.md) | [**getDictionaryInfo**](docs/Api/DictionaryInfoApi.md#getdictionaryinfo) | Get edge dictionary metadata
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**bulkUpdateDictionaryItem**](docs/Api/DictionaryItemApi.md#bulkupdatedictionaryitem) | Update multiple entries in an edge dictionary
 [*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**createDictionaryItem**](docs/Api/DictionaryItemApi.md#createdictionaryitem) | Create an entry in an edge dictionary
 [*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**deleteDictionaryItem**](docs/Api/DictionaryItemApi.md#deletedictionaryitem) | Delete an item from an edge dictionary
 [*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**getDictionaryItem**](docs/Api/DictionaryItemApi.md#getdictionaryitem) | Get an item from an edge dictionary
@@ -209,6 +210,14 @@ Class | Method | Description
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**createInvitation**](docs/Api/InvitationsApi.md#createinvitation) | Create an invitation
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**deleteInvitation**](docs/Api/InvitationsApi.md#deleteinvitation) | Delete an invitation
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**listInvitations**](docs/Api/InvitationsApi.md#listinvitations) | List invitations
+[*KvStoreApi*](docs/Api/KvStoreApi.md) | [**createStore**](docs/Api/KvStoreApi.md#createstore) | Create an kv store.
+[*KvStoreApi*](docs/Api/KvStoreApi.md) | [**deleteStore**](docs/Api/KvStoreApi.md#deletestore) | Delete an kv store.
+[*KvStoreApi*](docs/Api/KvStoreApi.md) | [**getStore**](docs/Api/KvStoreApi.md#getstore) | Describe an kv store.
+[*KvStoreApi*](docs/Api/KvStoreApi.md) | [**getStores**](docs/Api/KvStoreApi.md#getstores) | List kv stores.
+[*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**deleteKeyFromStore**](docs/Api/KvStoreItemApi.md#deletekeyfromstore) | Delete kv store item.
+[*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**getKeys**](docs/Api/KvStoreItemApi.md#getkeys) | List kv store keys.
+[*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**getValueForKey**](docs/Api/KvStoreItemApi.md#getvalueforkey) | Get the value of an kv store item
+[*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**setValueForKey**](docs/Api/KvStoreItemApi.md#setvalueforkey) | Insert an item into an kv store
 [*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**createLogAzure**](docs/Api/LoggingAzureblobApi.md#createlogazure) | Create an Azure Blob Storage log endpoint
 [*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**deleteLogAzure**](docs/Api/LoggingAzureblobApi.md#deletelogazure) | Delete the Azure Blob Storage log endpoint
 [*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**getLogAzure**](docs/Api/LoggingAzureblobApi.md#getlogazure) | Get an Azure Blob Storage log endpoint
@@ -342,14 +351,6 @@ Class | Method | Description
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**getMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#getmutualauthentication) | Get a Mutual Authentication
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**listMutualAuthentications**](docs/Api/MutualAuthenticationApi.md#listmutualauthentications) | List Mutual Authentications
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**patchMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#patchmutualauthentication) | Update a Mutual Authentication
-[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**createStore**](docs/Api/ObjectStoreApi.md#createstore) | Create an object store.
-[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**deleteStore**](docs/Api/ObjectStoreApi.md#deletestore) | Delete an object store.
-[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getStore**](docs/Api/ObjectStoreApi.md#getstore) | Describe an object store.
-[*ObjectStoreApi*](docs/Api/ObjectStoreApi.md) | [**getStores**](docs/Api/ObjectStoreApi.md#getstores) | List object stores.
-[*ObjectStoreItemApi*](docs/Api/ObjectStoreItemApi.md) | [**deleteKeyFromStore**](docs/Api/ObjectStoreItemApi.md#deletekeyfromstore) | Delete object store item.
-[*ObjectStoreItemApi*](docs/Api/ObjectStoreItemApi.md) | [**getKeys**](docs/Api/ObjectStoreItemApi.md#getkeys) | List object store keys.
-[*ObjectStoreItemApi*](docs/Api/ObjectStoreItemApi.md) | [**getValueForKey**](docs/Api/ObjectStoreItemApi.md#getvalueforkey) | Get the value of an object store item
-[*ObjectStoreItemApi*](docs/Api/ObjectStoreItemApi.md) | [**setValueForKey**](docs/Api/ObjectStoreItemApi.md#setvalueforkey) | Insert an item into an object store
 [*PackageApi*](docs/Api/PackageApi.md) | [**getPackage**](docs/Api/PackageApi.md#getpackage) | Get details of the service&#39;s Compute@Edge package.
 [*PackageApi*](docs/Api/PackageApi.md) | [**putPackage**](docs/Api/PackageApi.md#putpackage) | Upload a Compute@Edge package.
 [*PoolApi*](docs/Api/PoolApi.md) | [**createServerPool**](docs/Api/PoolApi.md#createserverpool) | Create a server pool
@@ -526,7 +527,7 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/resources/stores/secret/client-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (POST)
 - [`/resources/stores/secret/signing-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET)
 - [`/resources/stores/secret/{store_id}/secrets/{secret_name}`](https://developer.fastly.com/reference/api/services/resources/secret) (DELETE, GET)
-- [`/resources/stores/secret/{store_id}/secrets`](https://developer.fastly.com/reference/api/services/resources/secret) (GET, POST)
+- [`/resources/stores/secret/{store_id}/secrets`](https://developer.fastly.com/reference/api/services/resources/secret) (GET, PATCH, POST, PUT)
 - [`/resources/stores/secret/{store_id}`](https://developer.fastly.com/reference/api/services/resources/secret-store) (DELETE, GET)
 - [`/resources/stores/secret`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET, POST)
 - [`/roles/{role_id}/permissions`](https://developer.fastly.com/reference/api/account/roles) (DELETE, POST)
@@ -536,7 +537,6 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/service-groups/{service_group_id}/services`](https://developer.fastly.com/reference/api/account/service-groups) (DELETE, POST)
 - [`/service-groups/{service_group_id}`](https://developer.fastly.com/reference/api/account/service-groups) (PATCH)
 - [`/service-groups`](https://developer.fastly.com/reference/api/account/service-groups) (POST)
-- [`/service/{service_id}/dictionary/{dictionary_id}/items`](https://developer.fastly.com/reference/api/dictionaries/dictionary-item) (PATCH)
 - [`/service/{service_id}/version/{version_id}/apex-redirects`](https://developer.fastly.com/reference/api/vcl-services/apex-redirect) (POST)
 - [`/service/{service_id}/version/{version_id}/director/{director_name}`](https://developer.fastly.com/reference/api/load-balancing/directors/director) (PUT)
 - [`/service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name}`](https://developer.fastly.com/reference/api/logging/kafka) (PUT)
