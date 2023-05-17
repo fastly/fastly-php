@@ -1,10 +1,10 @@
-# # BulkUpdateDictionaryItemAllOf
+# # BulkUpdateConfigStoreListRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**op** | **string** |  | [optional]  [one of: 'create', 'update', 'delete', 'upsert']
+**items** | [**\Fastly\Model\BulkUpdateConfigStoreItem[]**](BulkUpdateConfigStoreItem.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

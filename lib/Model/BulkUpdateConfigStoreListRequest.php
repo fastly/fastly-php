@@ -1,6 +1,6 @@
 <?php
 /**
- * BulkUpdateDictionaryItemAllOf
+ * BulkUpdateConfigStoreListRequest
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * BulkUpdateDictionaryItemAllOf Class Doc Comment
+ * BulkUpdateConfigStoreListRequest Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class BulkUpdateConfigStoreListRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $fastlyModelName = 'bulk_update_dictionary_item_allOf';
+    protected static $fastlyModelName = 'bulk_update_config_store_list_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,7 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'op' => 'string'
+        'items' => '\Fastly\Model\BulkUpdateConfigStoreItem[]'
     ];
 
     /**
@@ -64,7 +64,7 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'op' => null
+        'items' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'op' => 'op'
+        'items' => 'items'
     ];
 
     /**
@@ -103,7 +103,7 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'op' => 'setOp'
+        'items' => 'setItems'
     ];
 
     /**
@@ -112,7 +112,7 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'op' => 'getOp'
+        'items' => 'getItems'
     ];
 
     /**
@@ -156,25 +156,6 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
         return self::$fastlyModelName;
     }
 
-    const OP_CREATE = 'create';
-    const OP_UPDATE = 'update';
-    const OP_DELETE = 'delete';
-    const OP_UPSERT = 'upsert';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOpAllowableValues()
-    {
-        return [
-            self::OP_CREATE,
-            self::OP_UPDATE,
-            self::OP_DELETE,
-            self::OP_UPSERT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -191,7 +172,7 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['op'] = $data['op'] ?? null;
+        $this->container['items'] = $data['items'] ?? null;
     }
 
     /**
@@ -202,15 +183,6 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getOpAllowableValues();
-        if (!is_null($this->container['op']) && !in_array($this->container['op'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'op', must be one of '%s'",
-                $this->container['op'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -228,35 +200,25 @@ class BulkUpdateDictionaryItemAllOf implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets op
+     * Gets items
      *
-     * @return string|null
+     * @return \Fastly\Model\BulkUpdateConfigStoreItem[]|null
      */
-    public function getOp()
+    public function getItems()
     {
-        return $this->container['op'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets op
+     * Sets items
      *
-     * @param string|null $op op
+     * @param \Fastly\Model\BulkUpdateConfigStoreItem[]|null $items items
      *
      * @return self
      */
-    public function setOp($op)
+    public function setItems($items)
     {
-        $allowedValues = $this->getOpAllowableValues();
-        if (!is_null($op) && !in_array($op, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'op', must be one of '%s'",
-                    $op,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['op'] = $op;
+        $this->container['items'] = $items;
 
         return $this;
     }

@@ -123,6 +123,20 @@ Class | Method | Description
 [*ConditionApi*](docs/Api/ConditionApi.md) | [**getCondition**](docs/Api/ConditionApi.md#getcondition) | Describe a condition
 [*ConditionApi*](docs/Api/ConditionApi.md) | [**listConditions**](docs/Api/ConditionApi.md#listconditions) | List conditions
 [*ConditionApi*](docs/Api/ConditionApi.md) | [**updateCondition**](docs/Api/ConditionApi.md#updatecondition) | Update a condition
+[*ConfigStoreApi*](docs/Api/ConfigStoreApi.md) | [**createConfigStore**](docs/Api/ConfigStoreApi.md#createconfigstore) | Create a config store
+[*ConfigStoreApi*](docs/Api/ConfigStoreApi.md) | [**deleteConfigStore**](docs/Api/ConfigStoreApi.md#deleteconfigstore) | Delete a config store
+[*ConfigStoreApi*](docs/Api/ConfigStoreApi.md) | [**getConfigStore**](docs/Api/ConfigStoreApi.md#getconfigstore) | Describe a config store
+[*ConfigStoreApi*](docs/Api/ConfigStoreApi.md) | [**getConfigStoreInfo**](docs/Api/ConfigStoreApi.md#getconfigstoreinfo) | Get config store metadata
+[*ConfigStoreApi*](docs/Api/ConfigStoreApi.md) | [**listConfigStoreServices**](docs/Api/ConfigStoreApi.md#listconfigstoreservices) | List linked services
+[*ConfigStoreApi*](docs/Api/ConfigStoreApi.md) | [**listConfigStores**](docs/Api/ConfigStoreApi.md#listconfigstores) | List config stores
+[*ConfigStoreApi*](docs/Api/ConfigStoreApi.md) | [**updateConfigStore**](docs/Api/ConfigStoreApi.md#updateconfigstore) | Update a config store
+[*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**bulkUpdateConfigStoreItem**](docs/Api/ConfigStoreItemApi.md#bulkupdateconfigstoreitem) | Update multiple entries in a config store
+[*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**createConfigStoreItem**](docs/Api/ConfigStoreItemApi.md#createconfigstoreitem) | Create an entry in a config store
+[*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**deleteConfigStoreItem**](docs/Api/ConfigStoreItemApi.md#deleteconfigstoreitem) | Delete an item from a config store
+[*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**getConfigStoreItem**](docs/Api/ConfigStoreItemApi.md#getconfigstoreitem) | Get an item from a config store
+[*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**listConfigStoreItems**](docs/Api/ConfigStoreItemApi.md#listconfigstoreitems) | List items in a config store
+[*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**updateConfigStoreItem**](docs/Api/ConfigStoreItemApi.md#updateconfigstoreitem) | Update an entry in a config store
+[*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**upsertConfigStoreItem**](docs/Api/ConfigStoreItemApi.md#upsertconfigstoreitem) | Insert or update an entry in a config store
 [*ContactApi*](docs/Api/ContactApi.md) | [**deleteContact**](docs/Api/ContactApi.md#deletecontact) | Delete a contact
 [*ContactApi*](docs/Api/ContactApi.md) | [**listContacts**](docs/Api/ContactApi.md#listcontacts) | List contacts
 [*ContentApi*](docs/Api/ContentApi.md) | [**contentCheck**](docs/Api/ContentApi.md#contentcheck) | Check status of content in each POP&#39;s cache
@@ -517,13 +531,6 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/metrics/domains/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/historical) (GET)
 - [`/metrics/origins/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/historical) (GET)
 - [`/rate-limiters/{rate_limiter_id}`](https://developer.fastly.com/reference/api/vcl-services/rate-limiter) (PUT)
-- [`/resources/stores/config/{config_store_id}/info`](https://developer.fastly.com/reference/api/services/resources/config-store) (GET)
-- [`/resources/stores/config/{config_store_id}/item/{config_store_item_key}`](https://developer.fastly.com/reference/api/services/resources/config-store-item) (DELETE, GET, PATCH, PUT)
-- [`/resources/stores/config/{config_store_id}/item`](https://developer.fastly.com/reference/api/services/resources/config-store-item) (POST)
-- [`/resources/stores/config/{config_store_id}/items`](https://developer.fastly.com/reference/api/services/resources/config-store-item) (GET, PATCH)
-- [`/resources/stores/config/{config_store_id}/services`](https://developer.fastly.com/reference/api/services/resources/config-store) (GET)
-- [`/resources/stores/config/{config_store_id}`](https://developer.fastly.com/reference/api/services/resources/config-store) (DELETE, GET, PUT)
-- [`/resources/stores/config`](https://developer.fastly.com/reference/api/services/resources/config-store) (GET, POST)
 - [`/resources/stores/secret/client-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (POST)
 - [`/resources/stores/secret/signing-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET)
 - [`/resources/stores/secret/{store_id}/secrets/{secret_name}`](https://developer.fastly.com/reference/api/services/resources/secret) (DELETE, GET)
