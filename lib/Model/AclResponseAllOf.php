@@ -53,6 +53,8 @@ class AclResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'service_id' => 'string',
+        'version' => 'string',
         'id' => 'string'
     ];
 
@@ -64,6 +66,8 @@ class AclResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'service_id' => null,
+        'version' => null,
         'id' => null
     ];
 
@@ -94,6 +98,8 @@ class AclResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'service_id' => 'service_id',
+        'version' => 'version',
         'id' => 'id'
     ];
 
@@ -103,6 +109,8 @@ class AclResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'service_id' => 'setServiceId',
+        'version' => 'setVersion',
         'id' => 'setId'
     ];
 
@@ -112,6 +120,8 @@ class AclResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'service_id' => 'getServiceId',
+        'version' => 'getVersion',
         'id' => 'getId'
     ];
 
@@ -172,6 +182,8 @@ class AclResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
     }
 
@@ -198,6 +210,54 @@ class AclResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id service_id
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string|null $version String representing the number identifying a version of the service.
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
+
+        return $this;
+    }
 
     /**
      * Gets id

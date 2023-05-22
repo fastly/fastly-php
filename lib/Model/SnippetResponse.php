@@ -57,12 +57,12 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'dynamic' => 'int',
         'type' => 'string',
         'content' => 'string',
-        'priority' => 'int',
-        'service_id' => 'string',
-        'version' => 'int',
+        'priority' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
+        'service_id' => 'string',
+        'version' => 'string',
         'id' => 'string'
     ];
 
@@ -79,11 +79,11 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'content' => null,
         'priority' => null,
-        'service_id' => null,
-        'version' => null,
         'created_at' => 'date-time',
         'deleted_at' => 'date-time',
         'updated_at' => 'date-time',
+        'service_id' => null,
+        'version' => null,
         'id' => null
     ];
 
@@ -119,11 +119,11 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'content' => 'content',
         'priority' => 'priority',
-        'service_id' => 'service_id',
-        'version' => 'version',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
+        'service_id' => 'service_id',
+        'version' => 'version',
         'id' => 'id'
     ];
 
@@ -138,11 +138,11 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'content' => 'setContent',
         'priority' => 'setPriority',
-        'service_id' => 'setServiceId',
-        'version' => 'setVersion',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
+        'service_id' => 'setServiceId',
+        'version' => 'setVersion',
         'id' => 'setId'
     ];
 
@@ -157,11 +157,11 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'content' => 'getContent',
         'priority' => 'getPriority',
-        'service_id' => 'getServiceId',
-        'version' => 'getVersion',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
+        'service_id' => 'getServiceId',
+        'version' => 'getVersion',
         'id' => 'getId'
     ];
 
@@ -274,12 +274,12 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['content'] = $data['content'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? 100;
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
+        $this->container['priority'] = $data['priority'] ?? '100';
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
     }
 
@@ -444,7 +444,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets priority
      *
-     * @return int|null
+     * @return string|null
      */
     public function getPriority()
     {
@@ -454,61 +454,13 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets priority
      *
-     * @param int|null $priority Priority determines execution order. Lower numbers execute first.
+     * @param string|null $priority Priority determines execution order. Lower numbers execute first.
      *
      * @return self
      */
     public function setPriority($priority)
     {
         $this->container['priority'] = $priority;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_id
-     *
-     * @return string|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string|null $service_id service_id
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return int|null
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param int|null $version version
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
 
         return $this;
     }
@@ -581,6 +533,54 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id service_id
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string|null $version String representing the number identifying a version of the service.
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }

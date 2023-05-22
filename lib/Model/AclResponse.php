@@ -58,7 +58,7 @@ class AclResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'service_id' => 'string',
-        'version' => 'int',
+        'version' => 'string',
         'id' => 'string'
     ];
 
@@ -358,7 +358,7 @@ class AclResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets version
      *
-     * @return int|null
+     * @return string|null
      */
     public function getVersion()
     {
@@ -368,7 +368,7 @@ class AclResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param string|null $version String representing the number identifying a version of the service.
      *
      * @return self
      */

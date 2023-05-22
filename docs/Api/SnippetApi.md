@@ -38,7 +38,7 @@ $options['name'] = 'name_example'; // string | The name for the snippet.
 $options['dynamic'] = 56; // int | Sets the snippet version.
 $options['type'] = 'type_example'; // string | The location in generated VCL where the snippet should be placed.
 $options['content'] = 'content_example'; // string | The VCL code that specifies exactly what the snippet does.
-$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
+$options['priority'] = '100'; // string | Priority determines execution order. Lower numbers execute first.
 
 try {
     $result = $apiInstance->createSnippet($options);
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 **dynamic** | **int** | Sets the snippet version. | [optional] [one of: 0, 1]
 **type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] [one of: 'init', 'recv', 'hash', 'hit', 'miss', 'pass', 'fetch', 'error', 'deliver', 'log', 'none']
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
+**priority** | **string** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
 
 ### Return type
 
@@ -232,7 +232,7 @@ $options['name'] = 'name_example'; // string | The name for the snippet.
 $options['dynamic'] = 56; // int | Sets the snippet version.
 $options['type'] = 'type_example'; // string | The location in generated VCL where the snippet should be placed.
 $options['content'] = 'content_example'; // string | The VCL code that specifies exactly what the snippet does.
-$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
+$options['priority'] = '100'; // string | Priority determines execution order. Lower numbers execute first.
 
 try {
     $result = $apiInstance->updateSnippetDynamic($options);
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 **dynamic** | **int** | Sets the snippet version. | [optional] [one of: 0, 1]
 **type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] [one of: 'init', 'recv', 'hash', 'hit', 'miss', 'pass', 'fetch', 'error', 'deliver', 'log', 'none']
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
+**priority** | **string** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
 
 ### Return type
 

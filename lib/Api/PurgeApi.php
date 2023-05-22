@@ -1317,7 +1317,7 @@ class PurgeApi
         if ($surrogate_key !== null) {
             $resourcePath = str_replace(
                 '{' . 'surrogate_key' . '}',
-                ObjectSerializer::toPathValue($surrogate_key),
+                ObjectSerializer::toPathValue($surrogate_key, true),
                 $resourcePath
             );
         }

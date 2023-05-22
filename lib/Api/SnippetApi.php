@@ -122,7 +122,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -147,7 +147,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -260,7 +260,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -288,7 +288,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -342,7 +342,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -356,7 +356,7 @@ class SnippetApi
         $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
         $content = array_key_exists('content', $options) ? $options['content'] : null;
-        $priority = array_key_exists('priority', $options) ? $options['priority'] : 100;
+        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1817,7 +1817,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1842,7 +1842,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1955,7 +1955,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1983,7 +1983,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2037,7 +2037,7 @@ class SnippetApi
      * @param  int $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2051,7 +2051,7 @@ class SnippetApi
         $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
         $content = array_key_exists('content', $options) ? $options['content'] : null;
-        $priority = array_key_exists('priority', $options) ? $options['priority'] : 100;
+        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {

@@ -57,7 +57,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
         'dynamic' => 'int',
         'type' => 'string',
         'content' => 'string',
-        'priority' => 'int'
+        'priority' => 'string'
     ];
 
     /**
@@ -244,7 +244,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['content'] = $data['content'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? 100;
+        $this->container['priority'] = $data['priority'] ?? '100';
     }
 
     /**
@@ -408,7 +408,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets priority
      *
-     * @return int|null
+     * @return string|null
      */
     public function getPriority()
     {
@@ -418,7 +418,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets priority
      *
-     * @param int|null $priority Priority determines execution order. Lower numbers execute first.
+     * @param string|null $priority Priority determines execution order. Lower numbers execute first.
      *
      * @return self
      */
