@@ -116,6 +116,9 @@ class WafRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_tags&#x60; and &#x60;waf_rule_revisions&#x60;. (optional)
      *
@@ -136,6 +139,9 @@ class WafRulesApi
      * Get a rule
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_tags&#x60; and &#x60;waf_rule_revisions&#x60;. (optional)
@@ -246,6 +252,9 @@ class WafRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_tags&#x60; and &#x60;waf_rule_revisions&#x60;. (optional)
      *
@@ -269,6 +278,9 @@ class WafRulesApi
      * Get a rule
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_tags&#x60; and &#x60;waf_rule_revisions&#x60;. (optional)
@@ -319,6 +331,9 @@ class WafRulesApi
      * Create request for operation 'getWafRule'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $waf_rule_id Alphanumeric string identifying a WAF rule. (required)
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_tags&#x60; and &#x60;waf_rule_revisions&#x60;. (optional)
@@ -423,10 +438,16 @@ class WafRulesApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -438,6 +459,9 @@ class WafRulesApi
      * List available WAF rules
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_modsec_rule_id Limit the returned rules to a specific ModSecurity rule ID. (optional)
      * @param  string $filter_waf_tags_name Limit the returned rules to a set linked to a tag by name. (optional)
@@ -464,6 +488,9 @@ class WafRulesApi
      * List available WAF rules
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_modsec_rule_id Limit the returned rules to a specific ModSecurity rule ID. (optional)
      * @param  string $filter_waf_tags_name Limit the returned rules to a set linked to a tag by name. (optional)
@@ -579,6 +606,9 @@ class WafRulesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $filter_modsec_rule_id Limit the returned rules to a specific ModSecurity rule ID. (optional)
      * @param  string $filter_waf_tags_name Limit the returned rules to a set linked to a tag by name. (optional)
      * @param  string $filter_waf_rule_revisions_source Limit the returned rules to a set linked to a source. (optional)
@@ -607,6 +637,9 @@ class WafRulesApi
      * List available WAF rules
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_modsec_rule_id Limit the returned rules to a specific ModSecurity rule ID. (optional)
      * @param  string $filter_waf_tags_name Limit the returned rules to a set linked to a tag by name. (optional)
@@ -662,6 +695,9 @@ class WafRulesApi
      * Create request for operation 'listWafRules'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_modsec_rule_id Limit the returned rules to a specific ModSecurity rule ID. (optional)
      * @param  string $filter_waf_tags_name Limit the returned rules to a set linked to a tag by name. (optional)
@@ -835,10 +871,16 @@ class WafRulesApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

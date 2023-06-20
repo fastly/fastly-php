@@ -116,6 +116,9 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization service_authorization (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -134,6 +137,9 @@ class ServiceAuthorizationsApi
      * Create service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
@@ -242,6 +248,9 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
      * @throws \InvalidArgumentException
@@ -263,6 +272,9 @@ class ServiceAuthorizationsApi
      * Create service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
@@ -311,6 +323,9 @@ class ServiceAuthorizationsApi
      * Create request for operation 'createServiceAuthorization'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
@@ -393,10 +408,16 @@ class ServiceAuthorizationsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -408,6 +429,9 @@ class ServiceAuthorizationsApi
      * Delete service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
@@ -426,6 +450,9 @@ class ServiceAuthorizationsApi
      * Delete service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
@@ -500,6 +527,9 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
@@ -521,6 +551,9 @@ class ServiceAuthorizationsApi
      * Delete service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
@@ -559,6 +592,9 @@ class ServiceAuthorizationsApi
      * Create request for operation 'deleteServiceAuthorization'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
@@ -649,10 +685,16 @@ class ServiceAuthorizationsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -664,6 +706,9 @@ class ServiceAuthorizationsApi
      * List service authorizations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
@@ -684,6 +729,9 @@ class ServiceAuthorizationsApi
      * List service authorizations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
@@ -793,6 +841,9 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      *
@@ -815,6 +866,9 @@ class ServiceAuthorizationsApi
      * List service authorizations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
@@ -864,6 +918,9 @@ class ServiceAuthorizationsApi
      * Create request for operation 'listServiceAuthorization'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
@@ -971,10 +1028,16 @@ class ServiceAuthorizationsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -986,6 +1049,9 @@ class ServiceAuthorizationsApi
      * Show service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
@@ -1005,6 +1071,9 @@ class ServiceAuthorizationsApi
      * Show service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
@@ -1113,6 +1182,9 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
      * @throws \InvalidArgumentException
@@ -1134,6 +1206,9 @@ class ServiceAuthorizationsApi
      * Show service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
@@ -1182,6 +1257,9 @@ class ServiceAuthorizationsApi
      * Create request for operation 'showServiceAuthorization'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      *
@@ -1272,10 +1350,16 @@ class ServiceAuthorizationsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1287,6 +1371,9 @@ class ServiceAuthorizationsApi
      * Update service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization service_authorization (optional)
@@ -1307,6 +1394,9 @@ class ServiceAuthorizationsApi
      * Update service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
@@ -1416,6 +1506,9 @@ class ServiceAuthorizationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
      *
@@ -1438,6 +1531,9 @@ class ServiceAuthorizationsApi
      * Update service authorization
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
@@ -1487,6 +1583,9 @@ class ServiceAuthorizationsApi
      * Create request for operation 'updateServiceAuthorization'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_authorization_id Alphanumeric string identifying a service authorization. (required)
      * @param  \Fastly\Model\ServiceAuthorization $service_authorization (optional)
@@ -1585,10 +1684,16 @@ class ServiceAuthorizationsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

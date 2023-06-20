@@ -116,6 +116,9 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -133,6 +136,9 @@ class TlsBulkCertificatesApi
      * Delete a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
@@ -207,6 +213,9 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \InvalidArgumentException
@@ -228,6 +237,9 @@ class TlsBulkCertificatesApi
      * Delete a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
@@ -266,6 +278,9 @@ class TlsBulkCertificatesApi
      * Create request for operation 'deleteBulkTlsCert'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
@@ -356,10 +371,16 @@ class TlsBulkCertificatesApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -371,6 +392,9 @@ class TlsBulkCertificatesApi
      * Get a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
@@ -390,6 +414,9 @@ class TlsBulkCertificatesApi
      * Get a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
@@ -498,6 +525,9 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
      * @throws \InvalidArgumentException
@@ -519,6 +549,9 @@ class TlsBulkCertificatesApi
      * Get a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
@@ -567,6 +600,9 @@ class TlsBulkCertificatesApi
      * Create request for operation 'getTlsBulkCert'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      *
@@ -657,10 +693,16 @@ class TlsBulkCertificatesApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -672,6 +714,9 @@ class TlsBulkCertificatesApi
      * List certificates
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
@@ -694,6 +739,9 @@ class TlsBulkCertificatesApi
      * List certificates
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
@@ -805,6 +853,9 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
@@ -829,6 +880,9 @@ class TlsBulkCertificatesApi
      * List certificates
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
@@ -880,6 +934,9 @@ class TlsBulkCertificatesApi
      * Create request for operation 'listTlsBulkCerts'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
      * @param  int $page_number Current page. (optional)
@@ -1013,10 +1070,16 @@ class TlsBulkCertificatesApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1028,6 +1091,9 @@ class TlsBulkCertificatesApi
      * Update a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate tls_bulk_certificate (optional)
@@ -1048,6 +1114,9 @@ class TlsBulkCertificatesApi
      * Update a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
@@ -1157,6 +1226,9 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
      *
@@ -1179,6 +1251,9 @@ class TlsBulkCertificatesApi
      * Update a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
@@ -1228,6 +1303,9 @@ class TlsBulkCertificatesApi
      * Create request for operation 'updateBulkTlsCert'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $certificate_id Alphanumeric string identifying a TLS bulk certificate. (required)
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
@@ -1326,10 +1404,16 @@ class TlsBulkCertificatesApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1341,6 +1425,9 @@ class TlsBulkCertificatesApi
      * Upload a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate tls_bulk_certificate (optional)
      *
@@ -1360,6 +1447,9 @@ class TlsBulkCertificatesApi
      * Upload a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
      *
@@ -1468,6 +1558,9 @@ class TlsBulkCertificatesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
      *
      * @throws \InvalidArgumentException
@@ -1489,6 +1582,9 @@ class TlsBulkCertificatesApi
      * Upload a certificate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
      *
@@ -1537,6 +1633,9 @@ class TlsBulkCertificatesApi
      * Create request for operation 'uploadTlsBulkCert'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\TlsBulkCertificate $tls_bulk_certificate (optional)
      *
@@ -1619,10 +1718,16 @@ class TlsBulkCertificatesApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

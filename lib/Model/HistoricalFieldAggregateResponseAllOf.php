@@ -53,7 +53,7 @@ class HistoricalFieldAggregateResponseAllOf implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'array<string,string>[]'
+        'data' => '\Fastly\Model\HistoricalFieldResultsAttributes[]'
     ];
 
     /**
@@ -202,7 +202,7 @@ class HistoricalFieldAggregateResponseAllOf implements ModelInterface, ArrayAcce
     /**
      * Gets data
      *
-     * @return array<string,string>[]|null
+     * @return \Fastly\Model\HistoricalFieldResultsAttributes[]|null
      */
     public function getData()
     {
@@ -212,7 +212,7 @@ class HistoricalFieldAggregateResponseAllOf implements ModelInterface, ArrayAcce
     /**
      * Sets data
      *
-     * @param array<string,string>[]|null $data data
+     * @param \Fastly\Model\HistoricalFieldResultsAttributes[]|null $data data
      *
      * @return self
      */

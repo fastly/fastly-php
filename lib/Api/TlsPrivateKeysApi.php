@@ -116,6 +116,9 @@ class TlsPrivateKeysApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  \Fastly\Model\TlsPrivateKey $tls_private_key tls_private_key (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -134,6 +137,9 @@ class TlsPrivateKeysApi
      * Create a TLS private key
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\TlsPrivateKey $tls_private_key (optional)
      *
@@ -242,6 +248,9 @@ class TlsPrivateKeysApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  \Fastly\Model\TlsPrivateKey $tls_private_key (optional)
      *
      * @throws \InvalidArgumentException
@@ -263,6 +272,9 @@ class TlsPrivateKeysApi
      * Create a TLS private key
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\TlsPrivateKey $tls_private_key (optional)
      *
@@ -311,6 +323,9 @@ class TlsPrivateKeysApi
      * Create request for operation 'createTlsKey'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  \Fastly\Model\TlsPrivateKey $tls_private_key (optional)
      *
@@ -393,10 +408,16 @@ class TlsPrivateKeysApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -408,6 +429,9 @@ class TlsPrivateKeysApi
      * Delete a TLS private key
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
@@ -426,6 +450,9 @@ class TlsPrivateKeysApi
      * Delete a TLS private key
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
@@ -500,6 +527,9 @@ class TlsPrivateKeysApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
      * @throws \InvalidArgumentException
@@ -521,6 +551,9 @@ class TlsPrivateKeysApi
      * Delete a TLS private key
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
@@ -559,6 +592,9 @@ class TlsPrivateKeysApi
      * Create request for operation 'deleteTlsKey'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
@@ -649,10 +685,16 @@ class TlsPrivateKeysApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -664,6 +706,9 @@ class TlsPrivateKeysApi
      * Get a TLS private key
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
@@ -683,6 +728,9 @@ class TlsPrivateKeysApi
      * Get a TLS private key
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
@@ -791,6 +839,9 @@ class TlsPrivateKeysApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
      * @throws \InvalidArgumentException
@@ -812,6 +863,9 @@ class TlsPrivateKeysApi
      * Get a TLS private key
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
@@ -860,6 +914,9 @@ class TlsPrivateKeysApi
      * Create request for operation 'getTlsKey'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_private_key_id Alphanumeric string identifying a private Key. (required)
      *
@@ -950,10 +1007,16 @@ class TlsPrivateKeysApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -965,6 +1028,9 @@ class TlsPrivateKeysApi
      * List TLS private keys
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_in_use Limit the returned keys to those without any matching TLS certificates. The only valid value is false. (optional)
      * @param  int $page_number Current page. (optional)
@@ -986,6 +1052,9 @@ class TlsPrivateKeysApi
      * List TLS private keys
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_in_use Limit the returned keys to those without any matching TLS certificates. The only valid value is false. (optional)
      * @param  int $page_number Current page. (optional)
@@ -1096,6 +1165,9 @@ class TlsPrivateKeysApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $filter_in_use Limit the returned keys to those without any matching TLS certificates. The only valid value is false. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
@@ -1119,6 +1191,9 @@ class TlsPrivateKeysApi
      * List TLS private keys
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_in_use Limit the returned keys to those without any matching TLS certificates. The only valid value is false. (optional)
      * @param  int $page_number Current page. (optional)
@@ -1169,6 +1244,9 @@ class TlsPrivateKeysApi
      * Create request for operation 'listTlsKeys'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_in_use Limit the returned keys to those without any matching TLS certificates. The only valid value is false. (optional)
      * @param  int $page_number Current page. (optional)
@@ -1289,10 +1367,16 @@ class TlsPrivateKeysApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

@@ -116,6 +116,9 @@ class EnabledProductsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $product_id product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
@@ -134,6 +137,9 @@ class EnabledProductsApi
      * Disable a product
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -209,6 +215,9 @@ class EnabledProductsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
@@ -231,6 +240,9 @@ class EnabledProductsApi
      * Disable a product
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -270,6 +282,9 @@ class EnabledProductsApi
      * Create request for operation 'disableProduct'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -376,10 +391,16 @@ class EnabledProductsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -391,6 +412,9 @@ class EnabledProductsApi
      * Enable a product
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -411,6 +435,9 @@ class EnabledProductsApi
      * Enable a product
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -520,6 +547,9 @@ class EnabledProductsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
@@ -542,6 +572,9 @@ class EnabledProductsApi
      * Enable a product
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -591,6 +624,9 @@ class EnabledProductsApi
      * Create request for operation 'enableProduct'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -697,10 +733,16 @@ class EnabledProductsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -712,6 +754,9 @@ class EnabledProductsApi
      * Get enabled product
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -732,6 +777,9 @@ class EnabledProductsApi
      * Get enabled product
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -841,6 +889,9 @@ class EnabledProductsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
@@ -863,6 +914,9 @@ class EnabledProductsApi
      * Get enabled product
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -912,6 +966,9 @@ class EnabledProductsApi
      * Create request for operation 'getEnabledProduct'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $product_id (required)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
@@ -1018,10 +1075,16 @@ class EnabledProductsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

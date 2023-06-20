@@ -116,6 +116,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
@@ -136,6 +139,9 @@ class WafFirewallVersionsApi
      * Clone a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -246,6 +252,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
@@ -269,6 +278,9 @@ class WafFirewallVersionsApi
      * Clone a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -319,6 +331,9 @@ class WafFirewallVersionsApi
      * Create request for operation 'cloneWafFirewallVersion'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -426,10 +441,16 @@ class WafFirewallVersionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -441,6 +462,9 @@ class WafFirewallVersionsApi
      * Create a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version waf_firewall_version (optional)
@@ -462,6 +486,9 @@ class WafFirewallVersionsApi
      * Create a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
@@ -572,6 +599,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
      *
@@ -595,6 +625,9 @@ class WafFirewallVersionsApi
      * Create a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
@@ -645,6 +678,9 @@ class WafFirewallVersionsApi
      * Create request for operation 'createWafFirewallVersion'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
@@ -744,10 +780,16 @@ class WafFirewallVersionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -759,6 +801,9 @@ class WafFirewallVersionsApi
      * Deploy or activate a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -780,6 +825,9 @@ class WafFirewallVersionsApi
      * Deploy or activate a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -890,6 +938,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      *
@@ -913,6 +964,9 @@ class WafFirewallVersionsApi
      * Deploy or activate a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -963,6 +1017,9 @@ class WafFirewallVersionsApi
      * Create request for operation 'deployActivateWafFirewallVersion'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -1070,10 +1127,16 @@ class WafFirewallVersionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1085,6 +1148,9 @@ class WafFirewallVersionsApi
      * Get a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
@@ -1107,6 +1173,9 @@ class WafFirewallVersionsApi
      * Get a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
@@ -1218,6 +1287,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -1242,6 +1314,9 @@ class WafFirewallVersionsApi
      * Get a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
@@ -1293,6 +1368,9 @@ class WafFirewallVersionsApi
      * Create request for operation 'getWafFirewallVersion'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_firewall&#x60; and &#x60;waf_active_rules&#x60;. (optional)
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
@@ -1413,10 +1491,16 @@ class WafFirewallVersionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1428,6 +1512,9 @@ class WafFirewallVersionsApi
      * List firewall versions
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
@@ -1451,6 +1538,9 @@ class WafFirewallVersionsApi
      * List firewall versions
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
@@ -1563,6 +1653,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
@@ -1588,6 +1681,9 @@ class WafFirewallVersionsApi
      * List firewall versions
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
@@ -1640,6 +1736,9 @@ class WafFirewallVersionsApi
      * Create request for operation 'listWafFirewallVersions'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include relationships. Optional. (optional)
      * @param  int $page_number Current page. (optional)
@@ -1777,10 +1876,16 @@ class WafFirewallVersionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1792,6 +1897,9 @@ class WafFirewallVersionsApi
      * Update a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -1814,6 +1922,9 @@ class WafFirewallVersionsApi
      * Update a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -1925,6 +2036,9 @@ class WafFirewallVersionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  \Fastly\Model\WafFirewallVersion $waf_firewall_version (optional)
@@ -1949,6 +2063,9 @@ class WafFirewallVersionsApi
      * Update a firewall version
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -2000,6 +2117,9 @@ class WafFirewallVersionsApi
      * Create request for operation 'updateWafFirewallVersion'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -2115,10 +2235,16 @@ class WafFirewallVersionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

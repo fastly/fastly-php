@@ -116,9 +116,11 @@ class KvStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $store_id store_id (required)
      * @param  string $key_name key_name (required)
-     * @param  bool $force force (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -136,9 +138,11 @@ class KvStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
-     * @param  bool $force (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -211,9 +215,11 @@ class KvStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
-     * @param  bool $force (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -235,9 +241,11 @@ class KvStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
-     * @param  bool $force (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -275,9 +283,11 @@ class KvStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
-     * @param  bool $force (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -287,7 +297,6 @@ class KvStoreItemApi
         // unbox the parameters from the associative array
         $store_id = array_key_exists('store_id', $options) ? $options['store_id'] : null;
         $key_name = array_key_exists('key_name', $options) ? $options['key_name'] : null;
-        $force = array_key_exists('force', $options) ? $options['force'] : null;
 
         // verify the required parameter 'store_id' is set
         if ($store_id === null || (is_array($store_id) && count($store_id) === 0)) {
@@ -309,17 +318,6 @@ class KvStoreItemApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($force !== null) {
-            if('form' === 'form' && is_array($force)) {
-                foreach($force as $key => $value) {
-                    $queryParams[$key] = ObjectSerializer::toString($value);
-                }
-            }
-            else {
-                $queryParams['force'] = ObjectSerializer::toString($force);
-            }
-        }
 
 
         // path params
@@ -393,10 +391,16 @@ class KvStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -408,6 +412,9 @@ class KvStoreItemApi
      * List kv store keys.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id store_id (required)
      * @param  string $cursor cursor (optional)
@@ -430,6 +437,9 @@ class KvStoreItemApi
      * List kv store keys.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
      * @param  string $cursor (optional)
@@ -541,6 +551,9 @@ class KvStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $store_id (required)
      * @param  string $cursor (optional)
      * @param  int $limit (optional, default to 100)
@@ -565,6 +578,9 @@ class KvStoreItemApi
      * List kv store keys.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
      * @param  string $cursor (optional)
@@ -616,6 +632,9 @@ class KvStoreItemApi
      * Create request for operation 'getKeys'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
      * @param  string $cursor (optional)
@@ -745,10 +764,16 @@ class KvStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -760,6 +785,9 @@ class KvStoreItemApi
      * Get the value of an kv store item
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id store_id (required)
      * @param  string $key_name key_name (required)
@@ -780,6 +808,9 @@ class KvStoreItemApi
      * Get the value of an kv store item
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
@@ -889,6 +920,9 @@ class KvStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
      *
@@ -911,6 +945,9 @@ class KvStoreItemApi
      * Get the value of an kv store item
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
@@ -960,6 +997,9 @@ class KvStoreItemApi
      * Create request for operation 'getValueForKey'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
@@ -1066,10 +1106,16 @@ class KvStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1081,6 +1127,9 @@ class KvStoreItemApi
      * Insert an item into an kv store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id store_id (required)
      * @param  string $key_name key_name (required)
@@ -1109,6 +1158,9 @@ class KvStoreItemApi
      * Insert an item into an kv store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
@@ -1226,6 +1278,9 @@ class KvStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
      * @param  int $if_generation_match (optional)
@@ -1256,6 +1311,9 @@ class KvStoreItemApi
      * Insert an item into an kv store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
@@ -1313,6 +1371,9 @@ class KvStoreItemApi
      * Create request for operation 'setValueForKey'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
      * @param  string $key_name (required)
@@ -1497,10 +1558,16 @@ class KvStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

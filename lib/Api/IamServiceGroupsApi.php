@@ -116,6 +116,9 @@ class IamServiceGroupsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -133,6 +136,9 @@ class IamServiceGroupsApi
      * Delete a service group
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
@@ -207,6 +213,9 @@ class IamServiceGroupsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
      * @throws \InvalidArgumentException
@@ -228,6 +237,9 @@ class IamServiceGroupsApi
      * Delete a service group
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
@@ -266,6 +278,9 @@ class IamServiceGroupsApi
      * Create request for operation 'deleteAServiceGroup'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
@@ -356,10 +371,16 @@ class IamServiceGroupsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -371,6 +392,9 @@ class IamServiceGroupsApi
      * Get a service group
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
@@ -390,6 +414,9 @@ class IamServiceGroupsApi
      * Get a service group
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
@@ -498,6 +525,9 @@ class IamServiceGroupsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
      * @throws \InvalidArgumentException
@@ -519,6 +549,9 @@ class IamServiceGroupsApi
      * Get a service group
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
@@ -567,6 +600,9 @@ class IamServiceGroupsApi
      * Create request for operation 'getAServiceGroup'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      *
@@ -657,10 +693,16 @@ class IamServiceGroupsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -672,6 +714,9 @@ class IamServiceGroupsApi
      * List services to a service group
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      * @param  int $per_page Number of records per page. (optional, default to 20)
@@ -693,6 +738,9 @@ class IamServiceGroupsApi
      * List services to a service group
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      * @param  int $per_page Number of records per page. (optional, default to 20)
@@ -803,6 +851,9 @@ class IamServiceGroupsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  int $page Current page. (optional)
@@ -826,6 +877,9 @@ class IamServiceGroupsApi
      * List services to a service group
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      * @param  int $per_page Number of records per page. (optional, default to 20)
@@ -876,6 +930,9 @@ class IamServiceGroupsApi
      * Create request for operation 'listServiceGroupServices'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $service_group_id Alphanumeric string identifying the service group. (required)
      * @param  int $per_page Number of records per page. (optional, default to 20)
@@ -999,10 +1056,16 @@ class IamServiceGroupsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1014,6 +1077,9 @@ class IamServiceGroupsApi
      * List service groups
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  int $page Current page. (optional)
@@ -1034,6 +1100,9 @@ class IamServiceGroupsApi
      * List service groups
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  int $page Current page. (optional)
@@ -1143,6 +1212,9 @@ class IamServiceGroupsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  int $page Current page. (optional)
      *
@@ -1165,6 +1237,9 @@ class IamServiceGroupsApi
      * List service groups
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  int $page Current page. (optional)
@@ -1214,6 +1289,9 @@ class IamServiceGroupsApi
      * Create request for operation 'listServiceGroups'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  int $per_page Number of records per page. (optional, default to 20)
      * @param  int $page Current page. (optional)
@@ -1321,10 +1399,16 @@ class IamServiceGroupsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

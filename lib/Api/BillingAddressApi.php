@@ -116,6 +116,9 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
      *
@@ -135,6 +138,9 @@ class BillingAddressApi
      * Add a billing address to a customer
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
@@ -264,6 +270,9 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
      *
@@ -286,6 +295,9 @@ class BillingAddressApi
      * Add a billing address to a customer
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
@@ -335,6 +347,9 @@ class BillingAddressApi
      * Create request for operation 'addBillingAddr'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\BillingAddressRequest $billing_address_request Billing address (optional)
@@ -433,10 +448,16 @@ class BillingAddressApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -448,6 +469,9 @@ class BillingAddressApi
      * Delete a billing address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
@@ -466,6 +490,9 @@ class BillingAddressApi
      * Delete a billing address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
@@ -540,6 +567,9 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
@@ -561,6 +591,9 @@ class BillingAddressApi
      * Delete a billing address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
@@ -599,6 +632,9 @@ class BillingAddressApi
      * Create request for operation 'deleteBillingAddr'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
@@ -689,10 +725,16 @@ class BillingAddressApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -704,6 +746,9 @@ class BillingAddressApi
      * Get a billing address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
@@ -723,6 +768,9 @@ class BillingAddressApi
      * Get a billing address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
@@ -831,6 +879,9 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
      * @throws \InvalidArgumentException
@@ -852,6 +903,9 @@ class BillingAddressApi
      * Get a billing address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
@@ -900,6 +954,9 @@ class BillingAddressApi
      * Create request for operation 'getBillingAddr'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      *
@@ -990,10 +1047,16 @@ class BillingAddressApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1005,6 +1068,9 @@ class BillingAddressApi
      * Update a billing address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
@@ -1025,6 +1091,9 @@ class BillingAddressApi
      * Update a billing address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
@@ -1154,6 +1223,9 @@ class BillingAddressApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
      *
@@ -1176,6 +1248,9 @@ class BillingAddressApi
      * Update a billing address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
@@ -1225,6 +1300,9 @@ class BillingAddressApi
      * Create request for operation 'updateBillingAddr'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  \Fastly\Model\UpdateBillingAddressRequest $update_billing_address_request One or more billing address attributes (optional)
@@ -1323,10 +1401,16 @@ class BillingAddressApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

@@ -116,6 +116,9 @@ class TlsDomainsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $filter_in_use Optional. Limit the returned domains to those currently using Fastly to terminate TLS with SNI (that is, domains considered \&quot;in use\&quot;) Permitted values: true, false. (optional)
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
      * @param  string $filter_tls_subscriptions_id Optional. Limit the returned domains to those for a given TLS subscription. (optional)
@@ -140,6 +143,9 @@ class TlsDomainsApi
      * List TLS domains
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_in_use Optional. Limit the returned domains to those currently using Fastly to terminate TLS with SNI (that is, domains considered \&quot;in use\&quot;) Permitted values: true, false. (optional)
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
@@ -254,6 +260,9 @@ class TlsDomainsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $filter_in_use Optional. Limit the returned domains to those currently using Fastly to terminate TLS with SNI (that is, domains considered \&quot;in use\&quot;) Permitted values: true, false. (optional)
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
      * @param  string $filter_tls_subscriptions_id Optional. Limit the returned domains to those for a given TLS subscription. (optional)
@@ -281,6 +290,9 @@ class TlsDomainsApi
      * List TLS domains
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_in_use Optional. Limit the returned domains to those currently using Fastly to terminate TLS with SNI (that is, domains considered \&quot;in use\&quot;) Permitted values: true, false. (optional)
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
@@ -335,6 +347,9 @@ class TlsDomainsApi
      * Create request for operation 'listTlsDomains'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_in_use Optional. Limit the returned domains to those currently using Fastly to terminate TLS with SNI (that is, domains considered \&quot;in use\&quot;) Permitted values: true, false. (optional)
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
@@ -507,10 +522,16 @@ class TlsDomainsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

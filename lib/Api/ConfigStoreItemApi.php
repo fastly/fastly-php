@@ -116,6 +116,9 @@ class ConfigStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  \Fastly\Model\BulkUpdateConfigStoreListRequest $bulk_update_config_store_list_request bulk_update_config_store_list_request (optional)
      *
@@ -135,6 +138,9 @@ class ConfigStoreItemApi
      * Update multiple entries in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  \Fastly\Model\BulkUpdateConfigStoreListRequest $bulk_update_config_store_list_request (optional)
@@ -244,6 +250,9 @@ class ConfigStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  \Fastly\Model\BulkUpdateConfigStoreListRequest $bulk_update_config_store_list_request (optional)
      *
@@ -266,6 +275,9 @@ class ConfigStoreItemApi
      * Update multiple entries in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  \Fastly\Model\BulkUpdateConfigStoreListRequest $bulk_update_config_store_list_request (optional)
@@ -315,6 +327,9 @@ class ConfigStoreItemApi
      * Create request for operation 'bulkUpdateConfigStoreItem'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  \Fastly\Model\BulkUpdateConfigStoreListRequest $bulk_update_config_store_list_request (optional)
@@ -413,10 +428,16 @@ class ConfigStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -428,6 +449,9 @@ class ConfigStoreItemApi
      * Create an entry in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
@@ -449,6 +473,9 @@ class ConfigStoreItemApi
      * Create an entry in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
@@ -559,6 +586,9 @@ class ConfigStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
      * @param  string $item_value Item value, maximum 8000 characters. (optional)
@@ -582,6 +612,9 @@ class ConfigStoreItemApi
      * Create an entry in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
@@ -632,6 +665,9 @@ class ConfigStoreItemApi
      * Create request for operation 'createConfigStoreItem'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
@@ -734,10 +770,16 @@ class ConfigStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -749,6 +791,9 @@ class ConfigStoreItemApi
      * Delete an item from a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -769,6 +814,9 @@ class ConfigStoreItemApi
      * Delete an item from a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -878,6 +926,9 @@ class ConfigStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
      *
@@ -900,6 +951,9 @@ class ConfigStoreItemApi
      * Delete an item from a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -949,6 +1003,9 @@ class ConfigStoreItemApi
      * Create request for operation 'deleteConfigStoreItem'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -1055,10 +1112,16 @@ class ConfigStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1070,6 +1133,9 @@ class ConfigStoreItemApi
      * Get an item from a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -1090,6 +1156,9 @@ class ConfigStoreItemApi
      * Get an item from a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -1199,6 +1268,9 @@ class ConfigStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
      *
@@ -1221,6 +1293,9 @@ class ConfigStoreItemApi
      * Get an item from a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -1270,6 +1345,9 @@ class ConfigStoreItemApi
      * Create request for operation 'getConfigStoreItem'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -1376,10 +1454,16 @@ class ConfigStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1391,6 +1475,9 @@ class ConfigStoreItemApi
      * List items in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      *
@@ -1410,6 +1497,9 @@ class ConfigStoreItemApi
      * List items in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      *
@@ -1518,6 +1608,9 @@ class ConfigStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      *
      * @throws \InvalidArgumentException
@@ -1539,6 +1632,9 @@ class ConfigStoreItemApi
      * List items in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      *
@@ -1587,6 +1683,9 @@ class ConfigStoreItemApi
      * Create request for operation 'listConfigStoreItems'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      *
@@ -1677,10 +1776,16 @@ class ConfigStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1692,6 +1797,9 @@ class ConfigStoreItemApi
      * Update an entry in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -1714,6 +1822,9 @@ class ConfigStoreItemApi
      * Update an entry in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -1825,6 +1936,9 @@ class ConfigStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
@@ -1849,6 +1963,9 @@ class ConfigStoreItemApi
      * Update an entry in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -1900,6 +2017,9 @@ class ConfigStoreItemApi
      * Create request for operation 'updateConfigStoreItem'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -2018,10 +2138,16 @@ class ConfigStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -2033,6 +2159,9 @@ class ConfigStoreItemApi
      * Insert or update an entry in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -2055,6 +2184,9 @@ class ConfigStoreItemApi
      * Insert or update an entry in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -2166,6 +2298,9 @@ class ConfigStoreItemApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
      * @param  string $item_key Item key, maximum 256 characters. (optional)
@@ -2190,6 +2325,9 @@ class ConfigStoreItemApi
      * Insert or update an entry in a config store
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -2241,6 +2379,9 @@ class ConfigStoreItemApi
      * Create request for operation 'upsertConfigStoreItem'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $config_store_id An alphanumeric string identifying the config store. (required)
      * @param  string $config_store_item_key Item key, maximum 256 characters. (required)
@@ -2359,10 +2500,16 @@ class ConfigStoreItemApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

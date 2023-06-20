@@ -116,6 +116,9 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
+     *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -134,6 +137,9 @@ class RealtimeApi
      * Get real-time data for the last 120 seconds
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
@@ -242,6 +248,9 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
+     *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
      * @throws \InvalidArgumentException
@@ -263,6 +272,9 @@ class RealtimeApi
      * Get real-time data for the last 120 seconds
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
@@ -311,6 +323,9 @@ class RealtimeApi
      * Create request for operation 'getStatsLast120Seconds'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      *
@@ -401,10 +416,16 @@ class RealtimeApi
             $headers
         );
 
+        $operationHosts = ["https://rt.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -416,6 +437,9 @@ class RealtimeApi
      * Get a limited number of real-time data entries
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
@@ -436,6 +460,9 @@ class RealtimeApi
      * Get a limited number of real-time data entries
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
@@ -545,6 +572,9 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
+     *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
      *
@@ -567,6 +597,9 @@ class RealtimeApi
      * Get a limited number of real-time data entries
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
@@ -616,6 +649,9 @@ class RealtimeApi
      * Create request for operation 'getStatsLast120SecondsLimitEntries'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $max_entries Maximum number of results to show. (required)
@@ -722,10 +758,16 @@ class RealtimeApi
             $headers
         );
 
+        $operationHosts = ["https://rt.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -737,6 +779,9 @@ class RealtimeApi
      * Get real-time data from specified time
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
@@ -757,6 +802,9 @@ class RealtimeApi
      * Get real-time data from specified time
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
@@ -866,6 +914,9 @@ class RealtimeApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
+     *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
      *
@@ -888,6 +939,9 @@ class RealtimeApi
      * Get real-time data from specified time
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
@@ -937,6 +991,9 @@ class RealtimeApi
      * Create request for operation 'getStatsLastSecond'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://rt.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $timestamp_in_seconds Timestamp in seconds (Unix epoch time). (required)
@@ -1043,10 +1100,16 @@ class RealtimeApi
             $headers
         );
 
+        $operationHosts = ["https://rt.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

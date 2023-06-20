@@ -67,7 +67,6 @@ An kv store must be empty before it can be deleted.  Deleting an kv store that s
 ### Example
 ```php
     $options['store_id'] = 'store_id_example'; // string
-$options['force'] = True; // bool
 
 try {
     $apiInstance->deleteStore($options);
@@ -83,7 +82,6 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **store_id** | **string** |  |
-**force** | **bool** |  | [optional]
 
 ### Return type
 

@@ -1,4 +1,4 @@
-# # Results
+# # HistoricalFieldResultsAttributes
 
 ## Properties
 
@@ -220,6 +220,8 @@ Name | Type | Description | Notes
 **ddos_action_tarpit** | **int** | The number of times the tarpit action was taken. The tarpit action delays writing the response to the client. | [optional] 
 **ddos_action_close** | **int** | The number of times the close action was taken. The close action aborts the connection as soon as possible. The close action takes effect either right after accept, right after the client hello, or right after the response was sent. | [optional] 
 **ddos_action_blackhole** | **int** | The number of times the blackhole action was taken. The blackhole action quietly closes a TCP connection without sending a reset. The blackhole action quietly closes a TCP connection without notifying its peer (all TCP state is dropped). | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**start_time** | **int** |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

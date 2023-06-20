@@ -116,6 +116,9 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      *
@@ -135,6 +138,9 @@ class TlsConfigurationsApi
      * Get a TLS configuration
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
@@ -244,6 +250,9 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      *
@@ -266,6 +275,9 @@ class TlsConfigurationsApi
      * Get a TLS configuration
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
@@ -315,6 +327,9 @@ class TlsConfigurationsApi
      * Create request for operation 'getTlsConfig'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
@@ -418,10 +433,16 @@ class TlsConfigurationsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -433,6 +454,9 @@ class TlsConfigurationsApi
      * List TLS configurations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_bulk Optionally filters by the bulk attribute. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
@@ -455,6 +479,9 @@ class TlsConfigurationsApi
      * List TLS configurations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_bulk Optionally filters by the bulk attribute. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
@@ -566,6 +593,9 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $filter_bulk Optionally filters by the bulk attribute. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
@@ -590,6 +620,9 @@ class TlsConfigurationsApi
      * List TLS configurations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_bulk Optionally filters by the bulk attribute. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
@@ -641,6 +674,9 @@ class TlsConfigurationsApi
      * Create request for operation 'listTlsConfigs'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_bulk Optionally filters by the bulk attribute. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;dns_records&#x60;. (optional)
@@ -774,10 +810,16 @@ class TlsConfigurationsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -789,6 +831,9 @@ class TlsConfigurationsApi
      * Update a TLS configuration
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration tls_configuration (optional)
@@ -809,6 +854,9 @@ class TlsConfigurationsApi
      * Update a TLS configuration
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration (optional)
@@ -918,6 +966,9 @@ class TlsConfigurationsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration (optional)
      *
@@ -940,6 +991,9 @@ class TlsConfigurationsApi
      * Update a TLS configuration
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration (optional)
@@ -989,6 +1043,9 @@ class TlsConfigurationsApi
      * Create request for operation 'updateTlsConfig'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $tls_configuration_id Alphanumeric string identifying a TLS configuration. (required)
      * @param  \Fastly\Model\TlsConfiguration $tls_configuration (optional)
@@ -1087,10 +1144,16 @@ class TlsConfigurationsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

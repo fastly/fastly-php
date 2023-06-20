@@ -32,7 +32,6 @@ Delete an item from an kv store
 ```php
     $options['store_id'] = 'store_id_example'; // string
 $options['key_name'] = 'key_name_example'; // string
-$options['force'] = True; // bool
 
 try {
     $apiInstance->deleteKeyFromStore($options);
@@ -49,7 +48,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **store_id** | **string** |  |
 **key_name** | **string** |  |
-**force** | **bool** |  | [optional]
 
 ### Return type
 

@@ -73,6 +73,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'compute_execution_time_ms' => 'float',
         'compute_ram_used' => 'int',
         'compute_request_time_ms' => 'float',
+        'compute_request_time_billed_ms' => 'float',
         'shield' => 'int',
         'ipv6' => 'int',
         'imgopto' => 'int',
@@ -252,10 +253,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => 'int',
         'fanout_recv_publishes' => 'int',
         'fanout_send_publishes' => 'int',
+        'kv_store_class_a_operations' => 'int',
+        'kv_store_class_b_operations' => 'int',
         'object_store_class_a_operations' => 'int',
         'object_store_class_b_operations' => 'int',
-        'object_store_read_requests' => 'int',
-        'object_store_write_requests' => 'int',
         'fanout_req_header_bytes' => 'int',
         'fanout_req_body_bytes' => 'int',
         'fanout_resp_header_bytes' => 'int',
@@ -300,6 +301,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'compute_execution_time_ms' => null,
         'compute_ram_used' => null,
         'compute_request_time_ms' => null,
+        'compute_request_time_billed_ms' => null,
         'shield' => null,
         'ipv6' => null,
         'imgopto' => null,
@@ -479,10 +481,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => null,
         'fanout_recv_publishes' => null,
         'fanout_send_publishes' => null,
+        'kv_store_class_a_operations' => null,
+        'kv_store_class_b_operations' => null,
         'object_store_class_a_operations' => null,
         'object_store_class_b_operations' => null,
-        'object_store_read_requests' => null,
-        'object_store_write_requests' => null,
         'fanout_req_header_bytes' => null,
         'fanout_req_body_bytes' => null,
         'fanout_resp_header_bytes' => null,
@@ -546,6 +548,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'compute_execution_time_ms' => 'compute_execution_time_ms',
         'compute_ram_used' => 'compute_ram_used',
         'compute_request_time_ms' => 'compute_request_time_ms',
+        'compute_request_time_billed_ms' => 'compute_request_time_billed_ms',
         'shield' => 'shield',
         'ipv6' => 'ipv6',
         'imgopto' => 'imgopto',
@@ -725,10 +728,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => 'websocket_resp_body_bytes',
         'fanout_recv_publishes' => 'fanout_recv_publishes',
         'fanout_send_publishes' => 'fanout_send_publishes',
+        'kv_store_class_a_operations' => 'kv_store_class_a_operations',
+        'kv_store_class_b_operations' => 'kv_store_class_b_operations',
         'object_store_class_a_operations' => 'object_store_class_a_operations',
         'object_store_class_b_operations' => 'object_store_class_b_operations',
-        'object_store_read_requests' => 'object_store_read_requests',
-        'object_store_write_requests' => 'object_store_write_requests',
         'fanout_req_header_bytes' => 'fanout_req_header_bytes',
         'fanout_req_body_bytes' => 'fanout_req_body_bytes',
         'fanout_resp_header_bytes' => 'fanout_resp_header_bytes',
@@ -771,6 +774,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'compute_execution_time_ms' => 'setComputeExecutionTimeMs',
         'compute_ram_used' => 'setComputeRamUsed',
         'compute_request_time_ms' => 'setComputeRequestTimeMs',
+        'compute_request_time_billed_ms' => 'setComputeRequestTimeBilledMs',
         'shield' => 'setShield',
         'ipv6' => 'setIpv6',
         'imgopto' => 'setImgopto',
@@ -950,10 +954,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => 'setWebsocketRespBodyBytes',
         'fanout_recv_publishes' => 'setFanoutRecvPublishes',
         'fanout_send_publishes' => 'setFanoutSendPublishes',
+        'kv_store_class_a_operations' => 'setKvStoreClassAOperations',
+        'kv_store_class_b_operations' => 'setKvStoreClassBOperations',
         'object_store_class_a_operations' => 'setObjectStoreClassAOperations',
         'object_store_class_b_operations' => 'setObjectStoreClassBOperations',
-        'object_store_read_requests' => 'setObjectStoreReadRequests',
-        'object_store_write_requests' => 'setObjectStoreWriteRequests',
         'fanout_req_header_bytes' => 'setFanoutReqHeaderBytes',
         'fanout_req_body_bytes' => 'setFanoutReqBodyBytes',
         'fanout_resp_header_bytes' => 'setFanoutRespHeaderBytes',
@@ -996,6 +1000,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'compute_execution_time_ms' => 'getComputeExecutionTimeMs',
         'compute_ram_used' => 'getComputeRamUsed',
         'compute_request_time_ms' => 'getComputeRequestTimeMs',
+        'compute_request_time_billed_ms' => 'getComputeRequestTimeBilledMs',
         'shield' => 'getShield',
         'ipv6' => 'getIpv6',
         'imgopto' => 'getImgopto',
@@ -1175,10 +1180,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'websocket_resp_body_bytes' => 'getWebsocketRespBodyBytes',
         'fanout_recv_publishes' => 'getFanoutRecvPublishes',
         'fanout_send_publishes' => 'getFanoutSendPublishes',
+        'kv_store_class_a_operations' => 'getKvStoreClassAOperations',
+        'kv_store_class_b_operations' => 'getKvStoreClassBOperations',
         'object_store_class_a_operations' => 'getObjectStoreClassAOperations',
         'object_store_class_b_operations' => 'getObjectStoreClassBOperations',
-        'object_store_read_requests' => 'getObjectStoreReadRequests',
-        'object_store_write_requests' => 'getObjectStoreWriteRequests',
         'fanout_req_header_bytes' => 'getFanoutReqHeaderBytes',
         'fanout_req_body_bytes' => 'getFanoutReqBodyBytes',
         'fanout_resp_header_bytes' => 'getFanoutRespHeaderBytes',
@@ -1272,6 +1277,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['compute_execution_time_ms'] = $data['compute_execution_time_ms'] ?? null;
         $this->container['compute_ram_used'] = $data['compute_ram_used'] ?? null;
         $this->container['compute_request_time_ms'] = $data['compute_request_time_ms'] ?? null;
+        $this->container['compute_request_time_billed_ms'] = $data['compute_request_time_billed_ms'] ?? null;
         $this->container['shield'] = $data['shield'] ?? null;
         $this->container['ipv6'] = $data['ipv6'] ?? null;
         $this->container['imgopto'] = $data['imgopto'] ?? null;
@@ -1451,10 +1457,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['websocket_resp_body_bytes'] = $data['websocket_resp_body_bytes'] ?? null;
         $this->container['fanout_recv_publishes'] = $data['fanout_recv_publishes'] ?? null;
         $this->container['fanout_send_publishes'] = $data['fanout_send_publishes'] ?? null;
+        $this->container['kv_store_class_a_operations'] = $data['kv_store_class_a_operations'] ?? null;
+        $this->container['kv_store_class_b_operations'] = $data['kv_store_class_b_operations'] ?? null;
         $this->container['object_store_class_a_operations'] = $data['object_store_class_a_operations'] ?? null;
         $this->container['object_store_class_b_operations'] = $data['object_store_class_b_operations'] ?? null;
-        $this->container['object_store_read_requests'] = $data['object_store_read_requests'] ?? null;
-        $this->container['object_store_write_requests'] = $data['object_store_write_requests'] ?? null;
         $this->container['fanout_req_header_bytes'] = $data['fanout_req_header_bytes'] ?? null;
         $this->container['fanout_req_body_bytes'] = $data['fanout_req_body_bytes'] ?? null;
         $this->container['fanout_resp_header_bytes'] = $data['fanout_resp_header_bytes'] ?? null;
@@ -1948,6 +1954,30 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setComputeRequestTimeMs($compute_request_time_ms)
     {
         $this->container['compute_request_time_ms'] = $compute_request_time_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_request_time_billed_ms
+     *
+     * @return float|null
+     */
+    public function getComputeRequestTimeBilledMs()
+    {
+        return $this->container['compute_request_time_billed_ms'];
+    }
+
+    /**
+     * Sets compute_request_time_billed_ms
+     *
+     * @param float|null $compute_request_time_billed_ms The total amount of request processing time you will be billed for, measured in 50 millisecond increments.
+     *
+     * @return self
+     */
+    public function setComputeRequestTimeBilledMs($compute_request_time_billed_ms)
+    {
+        $this->container['compute_request_time_billed_ms'] = $compute_request_time_billed_ms;
 
         return $this;
     }
@@ -6249,9 +6279,58 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets kv_store_class_a_operations
+     *
+     * @return int|null
+     */
+    public function getKvStoreClassAOperations()
+    {
+        return $this->container['kv_store_class_a_operations'];
+    }
+
+    /**
+     * Sets kv_store_class_a_operations
+     *
+     * @param int|null $kv_store_class_a_operations The total number of class a operations for the KV store.
+     *
+     * @return self
+     */
+    public function setKvStoreClassAOperations($kv_store_class_a_operations)
+    {
+        $this->container['kv_store_class_a_operations'] = $kv_store_class_a_operations;
+
+        return $this;
+    }
+
+    /**
+     * Gets kv_store_class_b_operations
+     *
+     * @return int|null
+     */
+    public function getKvStoreClassBOperations()
+    {
+        return $this->container['kv_store_class_b_operations'];
+    }
+
+    /**
+     * Sets kv_store_class_b_operations
+     *
+     * @param int|null $kv_store_class_b_operations The total number of class b operations for the KV store.
+     *
+     * @return self
+     */
+    public function setKvStoreClassBOperations($kv_store_class_b_operations)
+    {
+        $this->container['kv_store_class_b_operations'] = $kv_store_class_b_operations;
+
+        return $this;
+    }
+
+    /**
      * Gets object_store_class_a_operations
      *
      * @return int|null
+     * @deprecated
      */
     public function getObjectStoreClassAOperations()
     {
@@ -6261,9 +6340,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets object_store_class_a_operations
      *
-     * @param int|null $object_store_class_a_operations The total number of class a operations for the object store.
+     * @param int|null $object_store_class_a_operations Use kv_store_class_a_operations.
      *
      * @return self
+     * @deprecated
      */
     public function setObjectStoreClassAOperations($object_store_class_a_operations)
     {
@@ -6276,6 +6356,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * Gets object_store_class_b_operations
      *
      * @return int|null
+     * @deprecated
      */
     public function getObjectStoreClassBOperations()
     {
@@ -6285,65 +6366,14 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets object_store_class_b_operations
      *
-     * @param int|null $object_store_class_b_operations The total number of class b operations for the object store.
+     * @param int|null $object_store_class_b_operations Use kv_store_class_b_operations.
      *
      * @return self
+     * @deprecated
      */
     public function setObjectStoreClassBOperations($object_store_class_b_operations)
     {
         $this->container['object_store_class_b_operations'] = $object_store_class_b_operations;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_store_read_requests
-     *
-     * @return int|null
-     * @deprecated
-     */
-    public function getObjectStoreReadRequests()
-    {
-        return $this->container['object_store_read_requests'];
-    }
-
-    /**
-     * Sets object_store_read_requests
-     *
-     * @param int|null $object_store_read_requests Use object_store_class_b_operations.
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setObjectStoreReadRequests($object_store_read_requests)
-    {
-        $this->container['object_store_read_requests'] = $object_store_read_requests;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_store_write_requests
-     *
-     * @return int|null
-     * @deprecated
-     */
-    public function getObjectStoreWriteRequests()
-    {
-        return $this->container['object_store_write_requests'];
-    }
-
-    /**
-     * Sets object_store_write_requests
-     *
-     * @param int|null $object_store_write_requests Use object_store_class_a_operations.
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setObjectStoreWriteRequests($object_store_write_requests)
-    {
-        $this->container['object_store_write_requests'] = $object_store_write_requests;
 
         return $this;
     }

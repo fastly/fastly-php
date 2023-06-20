@@ -116,6 +116,9 @@ class WafExclusionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  \Fastly\Model\WafExclusion $waf_exclusion waf_exclusion (optional)
@@ -137,6 +140,9 @@ class WafExclusionsApi
      * Create a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -248,6 +254,9 @@ class WafExclusionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  \Fastly\Model\WafExclusion $waf_exclusion (optional)
@@ -272,6 +281,9 @@ class WafExclusionsApi
      * Create a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -323,6 +335,9 @@ class WafExclusionsApi
      * Create request for operation 'createWafRuleExclusion'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -438,10 +453,16 @@ class WafExclusionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -453,6 +474,9 @@ class WafExclusionsApi
      * Delete a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -474,6 +498,9 @@ class WafExclusionsApi
      * Delete a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -551,6 +578,9 @@ class WafExclusionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  int $exclusion_number A numeric ID identifying a WAF exclusion. (required)
@@ -575,6 +605,9 @@ class WafExclusionsApi
      * Delete a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -616,6 +649,9 @@ class WafExclusionsApi
      * Create request for operation 'deleteWafRuleExclusion'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -739,10 +775,16 @@ class WafExclusionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -754,6 +796,9 @@ class WafExclusionsApi
      * Get a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -776,6 +821,9 @@ class WafExclusionsApi
      * Get a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -887,6 +935,9 @@ class WafExclusionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  int $exclusion_number A numeric ID identifying a WAF exclusion. (required)
@@ -911,6 +962,9 @@ class WafExclusionsApi
      * Get a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -962,6 +1016,9 @@ class WafExclusionsApi
      * Create request for operation 'getWafRuleExclusion'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -1085,10 +1142,16 @@ class WafExclusionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1100,6 +1163,9 @@ class WafExclusionsApi
      * List WAF rule exclusions
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_exclusion_type Filters the results based on this exclusion type. (optional)
      * @param  string $filter_name Filters the results based on name. (optional)
@@ -1127,6 +1193,9 @@ class WafExclusionsApi
      * List WAF rule exclusions
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_exclusion_type Filters the results based on this exclusion type. (optional)
      * @param  string $filter_name Filters the results based on name. (optional)
@@ -1243,6 +1312,9 @@ class WafExclusionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $filter_exclusion_type Filters the results based on this exclusion type. (optional)
      * @param  string $filter_name Filters the results based on name. (optional)
      * @param  int $filter_waf_rules_modsec_rule_id Filters the results based on this ModSecurity rule ID. (optional)
@@ -1272,6 +1344,9 @@ class WafExclusionsApi
      * List WAF rule exclusions
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_exclusion_type Filters the results based on this exclusion type. (optional)
      * @param  string $filter_name Filters the results based on name. (optional)
@@ -1328,6 +1403,9 @@ class WafExclusionsApi
      * Create request for operation 'listWafRuleExclusions'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $filter_exclusion_type Filters the results based on this exclusion type. (optional)
      * @param  string $filter_name Filters the results based on name. (optional)
@@ -1520,10 +1598,16 @@ class WafExclusionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -1535,6 +1619,9 @@ class WafExclusionsApi
      * Update a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -1558,6 +1645,9 @@ class WafExclusionsApi
      * Update a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -1670,6 +1760,9 @@ class WafExclusionsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
      * @param  int $exclusion_number A numeric ID identifying a WAF exclusion. (required)
@@ -1695,6 +1788,9 @@ class WafExclusionsApi
      * Update a WAF rule exclusion
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -1747,6 +1843,9 @@ class WafExclusionsApi
      * Create request for operation 'updateWafRuleExclusion'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
      * @param  int $firewall_version_number Integer identifying a WAF firewall version. (required)
@@ -1878,10 +1977,16 @@ class WafExclusionsApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );

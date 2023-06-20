@@ -1,10 +1,11 @@
-# # HistoricalFieldAggregateResponseAllOf
+# # HistoricalFieldResultsAttributesAllOf
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\HistoricalFieldResultsAttributes[]**](HistoricalFieldResultsAttributes.md) |  | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**start_time** | **int** |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

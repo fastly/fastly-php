@@ -2,6 +2,7 @@
 
 A PHP client library for interacting with most facets of the [Fastly API](https://developer.fastly.com/reference/api).
 
+
 ## Installation
 
 Requires PHP 7.3 or later.
@@ -453,6 +454,7 @@ Class | Method | Description
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**getTlsSub**](docs/Api/TlsSubscriptionsApi.md#gettlssub) | Get a TLS subscription
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**listTlsSubs**](docs/Api/TlsSubscriptionsApi.md#listtlssubs) | List TLS subscriptions
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**patchTlsSub**](docs/Api/TlsSubscriptionsApi.md#patchtlssub) | Update a TLS subscription
+[*TokensApi*](docs/Api/TokensApi.md) | [**getToken**](docs/Api/TokensApi.md#gettoken) | Get a token
 [*TokensApi*](docs/Api/TokensApi.md) | [**getTokenCurrent**](docs/Api/TokensApi.md#gettokencurrent) | Get the current token
 [*TokensApi*](docs/Api/TokensApi.md) | [**listTokensCustomer**](docs/Api/TokensApi.md#listtokenscustomer) | List tokens for a customer
 [*TokensApi*](docs/Api/TokensApi.md) | [**listTokensUser**](docs/Api/TokensApi.md#listtokensuser) | List tokens for the authenticated user

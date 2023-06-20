@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalFieldAggregateResponse
+ * HistoricalFieldResultsAttributesAllOf
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalFieldAggregateResponse Class Doc Comment
+ * HistoricalFieldResultsAttributesAllOf Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalFieldAggregateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalFieldAggregateResponse implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_field_aggregate_response';
+    protected static $fastlyModelName = 'historical_field_results_attributes_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,10 +53,8 @@ class HistoricalFieldAggregateResponse implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'status' => 'string',
-        'meta' => '\Fastly\Model\HistoricalMeta',
-        'msg' => 'string',
-        'data' => '\Fastly\Model\HistoricalFieldResultsAttributes[]'
+        'service_id' => 'string',
+        'start_time' => 'int'
     ];
 
     /**
@@ -67,10 +65,8 @@ class HistoricalFieldAggregateResponse implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'status' => null,
-        'meta' => null,
-        'msg' => null,
-        'data' => null
+        'service_id' => null,
+        'start_time' => null
     ];
 
     /**
@@ -100,10 +96,8 @@ class HistoricalFieldAggregateResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'meta' => 'meta',
-        'msg' => 'msg',
-        'data' => 'data'
+        'service_id' => 'service_id',
+        'start_time' => 'start_time'
     ];
 
     /**
@@ -112,10 +106,8 @@ class HistoricalFieldAggregateResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'meta' => 'setMeta',
-        'msg' => 'setMsg',
-        'data' => 'setData'
+        'service_id' => 'setServiceId',
+        'start_time' => 'setStartTime'
     ];
 
     /**
@@ -124,10 +116,8 @@ class HistoricalFieldAggregateResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'meta' => 'getMeta',
-        'msg' => 'getMsg',
-        'data' => 'getData'
+        'service_id' => 'getServiceId',
+        'start_time' => 'getStartTime'
     ];
 
     /**
@@ -187,10 +177,8 @@ class HistoricalFieldAggregateResponse implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['meta'] = $data['meta'] ?? null;
-        $this->container['msg'] = $data['msg'] ?? null;
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['start_time'] = $data['start_time'] ?? null;
     }
 
     /**
@@ -218,97 +206,49 @@ class HistoricalFieldAggregateResponse implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets status
+     * Gets service_id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getServiceId()
     {
-        return $this->container['status'];
+        return $this->container['service_id'];
     }
 
     /**
-     * Sets status
+     * Sets service_id
      *
-     * @param string|null $status Whether or not we were able to successfully execute the query.
+     * @param string|null $service_id service_id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setServiceId($service_id)
     {
-        $this->container['status'] = $status;
+        $this->container['service_id'] = $service_id;
 
         return $this;
     }
 
     /**
-     * Gets meta
+     * Gets start_time
      *
-     * @return \Fastly\Model\HistoricalMeta|null
+     * @return int|null
      */
-    public function getMeta()
+    public function getStartTime()
     {
-        return $this->container['meta'];
+        return $this->container['start_time'];
     }
 
     /**
-     * Sets meta
+     * Sets start_time
      *
-     * @param \Fastly\Model\HistoricalMeta|null $meta meta
+     * @param int|null $start_time start_time
      *
      * @return self
      */
-    public function setMeta($meta)
+    public function setStartTime($start_time)
     {
-        $this->container['meta'] = $meta;
-
-        return $this;
-    }
-
-    /**
-     * Gets msg
-     *
-     * @return string|null
-     */
-    public function getMsg()
-    {
-        return $this->container['msg'];
-    }
-
-    /**
-     * Sets msg
-     *
-     * @param string|null $msg If the query was not successful, this will provide a string that explains why.
-     *
-     * @return self
-     */
-    public function setMsg($msg)
-    {
-        $this->container['msg'] = $msg;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \Fastly\Model\HistoricalFieldResultsAttributes[]|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Fastly\Model\HistoricalFieldResultsAttributes[]|null $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
+        $this->container['start_time'] = $start_time;
 
         return $this;
     }

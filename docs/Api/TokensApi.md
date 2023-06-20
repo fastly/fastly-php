@@ -14,12 +14,47 @@ $apiInstance = new Fastly\Api\TokensApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
+[**getToken()**](TokensApi.md#getToken) | **GET** /tokens/{token_id} | Get a token
 [**getTokenCurrent()**](TokensApi.md#getTokenCurrent) | **GET** /tokens/self | Get the current token
 [**listTokensCustomer()**](TokensApi.md#listTokensCustomer) | **GET** /customer/{customer_id}/tokens | List tokens for a customer
 [**listTokensUser()**](TokensApi.md#listTokensUser) | **GET** /tokens | List tokens for the authenticated user
 [**revokeToken()**](TokensApi.md#revokeToken) | **DELETE** /tokens/{token_id} | Revoke a token
 [**revokeTokenCurrent()**](TokensApi.md#revokeTokenCurrent) | **DELETE** /tokens/self | Revoke the current token
 
+
+## `getToken()`
+
+```php
+getToken($options): \Fastly\Model\TokenResponse // Get a token
+```
+
+Get a single token by its id.
+
+### Example
+```php
+    $options['token_id'] = 'token_id_example'; // string | Alphanumeric string identifying a token.
+
+try {
+    $result = $apiInstance->getToken($options);
+} catch (Exception $e) {
+    echo 'Exception when calling TokensApi->getToken: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**token_id** | **string** | Alphanumeric string identifying a token. |
+
+### Return type
+
+[**\Fastly\Model\TokenResponse**](../Model/TokenResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 
 ## `getTokenCurrent()`
 

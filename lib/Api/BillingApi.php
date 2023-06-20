@@ -116,6 +116,9 @@ class BillingApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $month 2-digit month. (required)
      * @param  string $year 4-digit year. (required)
      *
@@ -135,6 +138,9 @@ class BillingApi
      * Get an invoice
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $month 2-digit month. (required)
      * @param  string $year 4-digit year. (required)
@@ -244,6 +250,9 @@ class BillingApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $month 2-digit month. (required)
      * @param  string $year 4-digit year. (required)
      *
@@ -266,6 +275,9 @@ class BillingApi
      * Get an invoice
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $month 2-digit month. (required)
      * @param  string $year 4-digit year. (required)
@@ -315,6 +327,9 @@ class BillingApi
      * Create request for operation 'getInvoice'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $month 2-digit month. (required)
      * @param  string $year 4-digit year. (required)
@@ -421,10 +436,16 @@ class BillingApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -436,6 +457,9 @@ class BillingApi
      * Get an invoice
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
@@ -456,6 +480,9 @@ class BillingApi
      * Get an invoice
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
@@ -565,6 +592,9 @@ class BillingApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
      *
@@ -587,6 +617,9 @@ class BillingApi
      * Get an invoice
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
@@ -636,6 +669,9 @@ class BillingApi
      * Create request for operation 'getInvoiceById'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
@@ -742,10 +778,16 @@ class BillingApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -757,6 +799,9 @@ class BillingApi
      * Get month-to-date billing estimate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
@@ -778,6 +823,9 @@ class BillingApi
      * Get month-to-date billing estimate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
@@ -888,6 +936,9 @@ class BillingApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
      * @param  string $year 4-digit year. (optional)
@@ -911,6 +962,9 @@ class BillingApi
      * Get month-to-date billing estimate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
@@ -961,6 +1015,9 @@ class BillingApi
      * Create request for operation 'getInvoiceMtd'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $month 2-digit month. (optional)
@@ -1077,10 +1134,16 @@ class BillingApi
             $headers
         );
 
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
