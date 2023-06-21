@@ -53,9 +53,10 @@ class RelationshipsForTlsSubscription implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'tls_configuration' => '\Fastly\Model\RelationshipTlsConfigurationTlsConfiguration',
+        'common_name' => '\Fastly\Model\RelationshipMemberTlsDomain',
         'tls_domains' => '\Fastly\Model\RelationshipTlsDomainsTlsDomains',
-        'tls_certificates' => '\Fastly\Model\RelationshipTlsCertificatesTlsCertificates',
-        'tls_configuration' => '\Fastly\Model\RelationshipTlsConfigurationTlsConfiguration'
+        'tls_certificates' => '\Fastly\Model\RelationshipTlsCertificatesTlsCertificates'
     ];
 
     /**
@@ -66,9 +67,10 @@ class RelationshipsForTlsSubscription implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'tls_configuration' => null,
+        'common_name' => null,
         'tls_domains' => null,
-        'tls_certificates' => null,
-        'tls_configuration' => null
+        'tls_certificates' => null
     ];
 
     /**
@@ -98,9 +100,10 @@ class RelationshipsForTlsSubscription implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
+        'tls_configuration' => 'tls_configuration',
+        'common_name' => 'common_name',
         'tls_domains' => 'tls_domains',
-        'tls_certificates' => 'tls_certificates',
-        'tls_configuration' => 'tls_configuration'
+        'tls_certificates' => 'tls_certificates'
     ];
 
     /**
@@ -109,9 +112,10 @@ class RelationshipsForTlsSubscription implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
+        'tls_configuration' => 'setTlsConfiguration',
+        'common_name' => 'setCommonName',
         'tls_domains' => 'setTlsDomains',
-        'tls_certificates' => 'setTlsCertificates',
-        'tls_configuration' => 'setTlsConfiguration'
+        'tls_certificates' => 'setTlsCertificates'
     ];
 
     /**
@@ -120,9 +124,10 @@ class RelationshipsForTlsSubscription implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
+        'tls_configuration' => 'getTlsConfiguration',
+        'common_name' => 'getCommonName',
         'tls_domains' => 'getTlsDomains',
-        'tls_certificates' => 'getTlsCertificates',
-        'tls_configuration' => 'getTlsConfiguration'
+        'tls_certificates' => 'getTlsCertificates'
     ];
 
     /**
@@ -182,9 +187,10 @@ class RelationshipsForTlsSubscription implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
+        $this->container['tls_configuration'] = $data['tls_configuration'] ?? null;
+        $this->container['common_name'] = $data['common_name'] ?? null;
         $this->container['tls_domains'] = $data['tls_domains'] ?? null;
         $this->container['tls_certificates'] = $data['tls_certificates'] ?? null;
-        $this->container['tls_configuration'] = $data['tls_configuration'] ?? null;
     }
 
     /**
@@ -210,6 +216,54 @@ class RelationshipsForTlsSubscription implements ModelInterface, ArrayAccess, \J
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets tls_configuration
+     *
+     * @return \Fastly\Model\RelationshipTlsConfigurationTlsConfiguration|null
+     */
+    public function getTlsConfiguration()
+    {
+        return $this->container['tls_configuration'];
+    }
+
+    /**
+     * Sets tls_configuration
+     *
+     * @param \Fastly\Model\RelationshipTlsConfigurationTlsConfiguration|null $tls_configuration tls_configuration
+     *
+     * @return self
+     */
+    public function setTlsConfiguration($tls_configuration)
+    {
+        $this->container['tls_configuration'] = $tls_configuration;
+
+        return $this;
+    }
+
+    /**
+     * Gets common_name
+     *
+     * @return \Fastly\Model\RelationshipMemberTlsDomain|null
+     */
+    public function getCommonName()
+    {
+        return $this->container['common_name'];
+    }
+
+    /**
+     * Sets common_name
+     *
+     * @param \Fastly\Model\RelationshipMemberTlsDomain|null $common_name common_name
+     *
+     * @return self
+     */
+    public function setCommonName($common_name)
+    {
+        $this->container['common_name'] = $common_name;
+
+        return $this;
+    }
 
     /**
      * Gets tls_domains
@@ -255,30 +309,6 @@ class RelationshipsForTlsSubscription implements ModelInterface, ArrayAccess, \J
     public function setTlsCertificates($tls_certificates)
     {
         $this->container['tls_certificates'] = $tls_certificates;
-
-        return $this;
-    }
-
-    /**
-     * Gets tls_configuration
-     *
-     * @return \Fastly\Model\RelationshipTlsConfigurationTlsConfiguration|null
-     */
-    public function getTlsConfiguration()
-    {
-        return $this->container['tls_configuration'];
-    }
-
-    /**
-     * Sets tls_configuration
-     *
-     * @param \Fastly\Model\RelationshipTlsConfigurationTlsConfiguration|null $tls_configuration tls_configuration
-     *
-     * @return self
-     */
-    public function setTlsConfiguration($tls_configuration)
-    {
-        $this->container['tls_configuration'] = $tls_configuration;
 
         return $this;
     }

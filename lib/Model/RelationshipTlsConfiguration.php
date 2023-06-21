@@ -30,6 +30,7 @@ use \Fastly\ObjectSerializer;
  * RelationshipTlsConfiguration Class Doc Comment
  *
  * @category Class
+ * @description The [TLS configuration](/reference/api/tls/custom-certs/configuration/) being used to terminate TLS traffic. Optional.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>

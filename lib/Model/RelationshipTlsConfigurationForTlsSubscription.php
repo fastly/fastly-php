@@ -1,6 +1,6 @@
 <?php
 /**
- * RelationshipTlsDomain
+ * RelationshipTlsConfigurationForTlsSubscription
  *
  * PHP version 7.3
  *
@@ -27,17 +27,17 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * RelationshipTlsDomain Class Doc Comment
+ * RelationshipTlsConfigurationForTlsSubscription Class Doc Comment
  *
  * @category Class
- * @description The [TLS domain](/reference/api/tls/custom-certs/domains/) being enabled for TLS traffic. Required.
+ * @description The unique identifier for the set of TLS configuration options that apply to the enabled domains on this subscription. Write-only on create.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSerializable
+class RelationshipTlsConfigurationForTlsSubscription implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $fastlyModelName = 'relationship_tls_domain';
+    protected static $fastlyModelName = 'relationship_tls_configuration_for_tls_subscription';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +54,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'tls_domain' => '\Fastly\Model\RelationshipTlsDomainTlsDomain'
+        'tls_configuration' => '\Fastly\Model\RelationshipTlsConfigurationTlsConfiguration'
     ];
 
     /**
@@ -65,7 +65,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'tls_domain' => null
+        'tls_configuration' => null
     ];
 
     /**
@@ -95,7 +95,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'tls_domain' => 'tls_domain'
+        'tls_configuration' => 'tls_configuration'
     ];
 
     /**
@@ -104,7 +104,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'tls_domain' => 'setTlsDomain'
+        'tls_configuration' => 'setTlsConfiguration'
     ];
 
     /**
@@ -113,7 +113,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'tls_domain' => 'getTlsDomain'
+        'tls_configuration' => 'getTlsConfiguration'
     ];
 
     /**
@@ -173,7 +173,7 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['tls_domain'] = $data['tls_domain'] ?? null;
+        $this->container['tls_configuration'] = $data['tls_configuration'] ?? null;
     }
 
     /**
@@ -201,25 +201,25 @@ class RelationshipTlsDomain implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets tls_domain
+     * Gets tls_configuration
      *
-     * @return \Fastly\Model\RelationshipTlsDomainTlsDomain|null
+     * @return \Fastly\Model\RelationshipTlsConfigurationTlsConfiguration|null
      */
-    public function getTlsDomain()
+    public function getTlsConfiguration()
     {
-        return $this->container['tls_domain'];
+        return $this->container['tls_configuration'];
     }
 
     /**
-     * Sets tls_domain
+     * Sets tls_configuration
      *
-     * @param \Fastly\Model\RelationshipTlsDomainTlsDomain|null $tls_domain tls_domain
+     * @param \Fastly\Model\RelationshipTlsConfigurationTlsConfiguration|null $tls_configuration tls_configuration
      *
      * @return self
      */
-    public function setTlsDomain($tls_domain)
+    public function setTlsConfiguration($tls_configuration)
     {
-        $this->container['tls_domain'] = $tls_domain;
+        $this->container['tls_configuration'] = $tls_configuration;
 
         return $this;
     }

@@ -30,6 +30,7 @@ use \Fastly\ObjectSerializer;
  * RelationshipMutualAuthentication Class Doc Comment
  *
  * @category Class
+ * @description The [Mutual Authentication](/reference/api/tls/mutual-tls/authentication/) for client-to-server authentication. Optional.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
