@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalFieldResponseAllOf
+ * HistoricalService
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalFieldResponseAllOf Class Doc Comment
+ * HistoricalService Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalFieldResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalService implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalFieldResponseAllOf implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_field_response_allOf';
+    protected static $fastlyModelName = 'historical_service';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,7 @@ class HistoricalFieldResponseAllOf implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'array<string,array>'
+        'name' => 'string'
     ];
 
     /**
@@ -64,7 +64,7 @@ class HistoricalFieldResponseAllOf implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null
+        'name' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class HistoricalFieldResponseAllOf implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'name' => 'name'
     ];
 
     /**
@@ -103,7 +103,7 @@ class HistoricalFieldResponseAllOf implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'name' => 'setName'
     ];
 
     /**
@@ -112,7 +112,7 @@ class HistoricalFieldResponseAllOf implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'name' => 'getName'
     ];
 
     /**
@@ -172,7 +172,7 @@ class HistoricalFieldResponseAllOf implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -200,25 +200,25 @@ class HistoricalFieldResponseAllOf implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets data
+     * Gets name
      *
-     * @return array<string,array>|null
+     * @return string|null
      */
-    public function getData()
+    public function getName()
     {
-        return $this->container['data'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets data
+     * Sets name
      *
-     * @param array<string,array>|null $data data
+     * @param string|null $name The name of the service.
      *
      * @return self
      */
-    public function setData($data)
+    public function setName($name)
     {
-        $this->container['data'] = $data;
+        $this->container['name'] = $name;
 
         return $this;
     }

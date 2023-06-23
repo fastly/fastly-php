@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalResponseAllOf
+ * HistoricalResponseDataField
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalResponseAllOf Class Doc Comment
+ * HistoricalResponseDataField Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_response_allOf';
+    protected static $fastlyModelName = 'historical_response_data_field';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

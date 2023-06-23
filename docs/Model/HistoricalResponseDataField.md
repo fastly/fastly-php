@@ -1,4 +1,4 @@
-# # HistoricalResponseAllOf
+# # HistoricalResponseDataField
 
 ## Properties
 

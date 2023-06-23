@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalUsageMonthResponse
+ * HistoricalUsageMonthResponseData
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalUsageMonthResponse Class Doc Comment
+ * HistoricalUsageMonthResponseData Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalUsageMonthResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalUsageMonthResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalUsageMonthResponse implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_usage_month_response';
+    protected static $fastlyModelName = 'historical_usage_month_response_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,10 +53,9 @@ class HistoricalUsageMonthResponse implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'status' => 'string',
-        'meta' => '\Fastly\Model\HistoricalMeta',
-        'msg' => 'string',
-        'data' => '\Fastly\Model\HistoricalUsageMonthResponseData'
+        'customer_id' => 'string',
+        'services' => 'array<string,\Fastly\Model\HistoricalService>',
+        'total' => '\Fastly\Model\HistoricalUsageResults'
     ];
 
     /**
@@ -67,10 +66,9 @@ class HistoricalUsageMonthResponse implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'status' => null,
-        'meta' => null,
-        'msg' => null,
-        'data' => null
+        'customer_id' => null,
+        'services' => null,
+        'total' => null
     ];
 
     /**
@@ -100,10 +98,9 @@ class HistoricalUsageMonthResponse implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'meta' => 'meta',
-        'msg' => 'msg',
-        'data' => 'data'
+        'customer_id' => 'customer_id',
+        'services' => 'services',
+        'total' => 'total'
     ];
 
     /**
@@ -112,10 +109,9 @@ class HistoricalUsageMonthResponse implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'meta' => 'setMeta',
-        'msg' => 'setMsg',
-        'data' => 'setData'
+        'customer_id' => 'setCustomerId',
+        'services' => 'setServices',
+        'total' => 'setTotal'
     ];
 
     /**
@@ -124,10 +120,9 @@ class HistoricalUsageMonthResponse implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'meta' => 'getMeta',
-        'msg' => 'getMsg',
-        'data' => 'getData'
+        'customer_id' => 'getCustomerId',
+        'services' => 'getServices',
+        'total' => 'getTotal'
     ];
 
     /**
@@ -187,10 +182,9 @@ class HistoricalUsageMonthResponse implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['meta'] = $data['meta'] ?? null;
-        $this->container['msg'] = $data['msg'] ?? null;
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['customer_id'] = $data['customer_id'] ?? null;
+        $this->container['services'] = $data['services'] ?? null;
+        $this->container['total'] = $data['total'] ?? null;
     }
 
     /**
@@ -218,97 +212,73 @@ class HistoricalUsageMonthResponse implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets status
+     * Gets customer_id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getCustomerId()
     {
-        return $this->container['status'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets status
+     * Sets customer_id
      *
-     * @param string|null $status Whether or not we were able to successfully execute the query.
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setCustomerId($customer_id)
     {
-        $this->container['status'] = $status;
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }
 
     /**
-     * Gets meta
+     * Gets services
      *
-     * @return \Fastly\Model\HistoricalMeta|null
+     * @return array<string,\Fastly\Model\HistoricalService>|null
      */
-    public function getMeta()
+    public function getServices()
     {
-        return $this->container['meta'];
+        return $this->container['services'];
     }
 
     /**
-     * Sets meta
+     * Sets services
      *
-     * @param \Fastly\Model\HistoricalMeta|null $meta meta
+     * @param array<string,\Fastly\Model\HistoricalService>|null $services services
      *
      * @return self
      */
-    public function setMeta($meta)
+    public function setServices($services)
     {
-        $this->container['meta'] = $meta;
+        $this->container['services'] = $services;
 
         return $this;
     }
 
     /**
-     * Gets msg
+     * Gets total
      *
-     * @return string|null
+     * @return \Fastly\Model\HistoricalUsageResults|null
      */
-    public function getMsg()
+    public function getTotal()
     {
-        return $this->container['msg'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets msg
+     * Sets total
      *
-     * @param string|null $msg If the query was not successful, this will provide a string that explains why.
+     * @param \Fastly\Model\HistoricalUsageResults|null $total total
      *
      * @return self
      */
-    public function setMsg($msg)
+    public function setTotal($total)
     {
-        $this->container['msg'] = $msg;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \Fastly\Model\HistoricalUsageMonthResponseData|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Fastly\Model\HistoricalUsageMonthResponseData|null $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
+        $this->container['total'] = $total;
 
         return $this;
     }

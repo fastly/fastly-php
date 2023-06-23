@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalUsageMonthResponseAllOfData
+ * HistoricalFieldResponseDataField
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalUsageMonthResponseAllOfData Class Doc Comment
+ * HistoricalFieldResponseDataField Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_usage_month_response_allOf_data';
+    protected static $fastlyModelName = 'historical_field_response_data_field';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,9 +53,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'customer_id' => 'string',
-        'services' => 'array<string,array<string,\Fastly\Model\HistoricalUsageResults>>',
-        'total' => '\Fastly\Model\HistoricalUsageResults'
+        'data' => 'array<string,array>'
     ];
 
     /**
@@ -66,9 +64,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'customer_id' => null,
-        'services' => null,
-        'total' => null
+        'data' => null
     ];
 
     /**
@@ -98,9 +94,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'customer_id' => 'customer_id',
-        'services' => 'services',
-        'total' => 'total'
+        'data' => 'data'
     ];
 
     /**
@@ -109,9 +103,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'customer_id' => 'setCustomerId',
-        'services' => 'setServices',
-        'total' => 'setTotal'
+        'data' => 'setData'
     ];
 
     /**
@@ -120,9 +112,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'customer_id' => 'getCustomerId',
-        'services' => 'getServices',
-        'total' => 'getTotal'
+        'data' => 'getData'
     ];
 
     /**
@@ -182,9 +172,7 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->container['customer_id'] = $data['customer_id'] ?? null;
-        $this->container['services'] = $data['services'] ?? null;
-        $this->container['total'] = $data['total'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -212,73 +200,25 @@ class HistoricalUsageMonthResponseAllOfData implements ModelInterface, ArrayAcce
 
 
     /**
-     * Gets customer_id
+     * Gets data
      *
-     * @return string|null
+     * @return array<string,array>|null
      */
-    public function getCustomerId()
+    public function getData()
     {
-        return $this->container['customer_id'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets customer_id
+     * Sets data
      *
-     * @param string|null $customer_id customer_id
+     * @param array<string,array>|null $data data
      *
      * @return self
      */
-    public function setCustomerId($customer_id)
+    public function setData($data)
     {
-        $this->container['customer_id'] = $customer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets services
-     *
-     * @return array<string,array<string,\Fastly\Model\HistoricalUsageResults>>|null
-     */
-    public function getServices()
-    {
-        return $this->container['services'];
-    }
-
-    /**
-     * Sets services
-     *
-     * @param array<string,array<string,\Fastly\Model\HistoricalUsageResults>>|null $services services
-     *
-     * @return self
-     */
-    public function setServices($services)
-    {
-        $this->container['services'] = $services;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \Fastly\Model\HistoricalUsageResults|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \Fastly\Model\HistoricalUsageResults|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        $this->container['total'] = $total;
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -1,5 +1,11 @@
 # Changelog
 
+## [v2.2.2](https://github.com/fastly/fastly-php/releases/tag/release/v2.2.2) (2023-06-23)
+
+**Bug fixes:**
+
+- fix(historical_stats): generate missing models.
+
 ## [v2.2.1](https://github.com/fastly/fastly-php/releases/tag/release/v2.2.1) (2023-06-21)
 
 **Bug fixes:**
