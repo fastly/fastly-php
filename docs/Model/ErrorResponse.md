@@ -1,11 +1,13 @@
-# # HistoricalFieldResultsAttributesAllOf
+# # ErrorResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_id** | [**\Fastly\Model\ReadOnlyIdService**](ReadOnlyIdService.md) |  | [optional] 
-**start_time** | **int** |  | [optional] 
+**detail** | **string** |  | [optional] 
+**errors** | **mixed[]** |  | [optional] 
+**status** | **int** |  | [optional] 
+**title** | **string** |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

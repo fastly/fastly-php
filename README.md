@@ -375,9 +375,11 @@ Class | Method | Description
 [*PurgeApi*](docs/Api/PurgeApi.md) | [**purgeAll**](docs/Api/PurgeApi.md#purgeall) | Purge everything from a service
 [*PurgeApi*](docs/Api/PurgeApi.md) | [**purgeSingleUrl**](docs/Api/PurgeApi.md#purgesingleurl) | Purge a URL
 [*PurgeApi*](docs/Api/PurgeApi.md) | [**purgeTag**](docs/Api/PurgeApi.md#purgetag) | Purge by surrogate key tag
+[*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**createRateLimiter**](docs/Api/RateLimiterApi.md#createratelimiter) | Create a rate limiter
 [*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**deleteRateLimiter**](docs/Api/RateLimiterApi.md#deleteratelimiter) | Delete a rate limiter
 [*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**getRateLimiter**](docs/Api/RateLimiterApi.md#getratelimiter) | Get a rate limiter
 [*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**listRateLimiters**](docs/Api/RateLimiterApi.md#listratelimiters) | List rate limiters
+[*RateLimiterApi*](docs/Api/RateLimiterApi.md) | [**updateRateLimiter**](docs/Api/RateLimiterApi.md#updateratelimiter) | Update a rate limiter
 [*RealtimeApi*](docs/Api/RealtimeApi.md) | [**getStatsLast120Seconds**](docs/Api/RealtimeApi.md#getstatslast120seconds) | Get real-time data for the last 120 seconds
 [*RealtimeApi*](docs/Api/RealtimeApi.md) | [**getStatsLast120SecondsLimitEntries**](docs/Api/RealtimeApi.md#getstatslast120secondslimitentries) | Get a limited number of real-time data entries
 [*RealtimeApi*](docs/Api/RealtimeApi.md) | [**getStatsLastSecond**](docs/Api/RealtimeApi.md#getstatslastsecond) | Get real-time data from specified time
@@ -527,7 +529,6 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/customer/{customer_id}/contacts`](https://developer.fastly.com/reference/api/account/contact) (POST)
 - [`/metrics/domains/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/historical) (GET)
 - [`/metrics/origins/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/historical) (GET)
-- [`/rate-limiters/{rate_limiter_id}`](https://developer.fastly.com/reference/api/vcl-services/rate-limiter) (PUT)
 - [`/resources/stores/secret/client-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (POST)
 - [`/resources/stores/secret/signing-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET)
 - [`/resources/stores/secret/{store_id}/secrets/{secret_name}`](https://developer.fastly.com/reference/api/services/resources/secret) (DELETE, GET)
@@ -545,7 +546,6 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/service/{service_id}/version/{version_id}/director/{director_name}`](https://developer.fastly.com/reference/api/load-balancing/directors/director) (PUT)
 - [`/service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name}`](https://developer.fastly.com/reference/api/logging/kafka) (PUT)
 - [`/service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name}`](https://developer.fastly.com/reference/api/logging/kinesis) (PUT)
-- [`/service/{service_id}/version/{version_id}/rate-limiters`](https://developer.fastly.com/reference/api/vcl-services/rate-limiter) (POST)
 - [`/service/{service_id}/version/{version_id}/request_settings`](https://developer.fastly.com/reference/api/vcl-services/request-settings) (POST)
 - [`/service/{service_id}/version/{version_id}/response_object/{response_object_name}`](https://developer.fastly.com/reference/api/vcl-services/response-object) (PUT)
 - [`/service/{service_id}/version/{version_id}/response_object`](https://developer.fastly.com/reference/api/vcl-services/response-object) (POST)

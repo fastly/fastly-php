@@ -53,8 +53,8 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string',
-        'customer_id' => 'string',
+        'id' => '\Fastly\Model\ReadOnlyId',
+        'customer_id' => '\Fastly\Model\ReadOnlyCustomerId',
         'role' => 'string',
         'ip' => 'string',
         'user_agent' => 'string',
@@ -250,7 +250,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets id
      *
-     * @return string|null
+     * @return \Fastly\Model\ReadOnlyId|null
      */
     public function getId()
     {
@@ -260,7 +260,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param \Fastly\Model\ReadOnlyId|null $id id
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets customer_id
      *
-     * @return string|null
+     * @return \Fastly\Model\ReadOnlyCustomerId|null
      */
     public function getCustomerId()
     {
@@ -284,7 +284,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id customer_id
+     * @param \Fastly\Model\ReadOnlyCustomerId|null $customer_id customer_id
      *
      * @return self
      */

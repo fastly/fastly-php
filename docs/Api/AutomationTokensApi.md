@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 ## `revokeAutomationTokenId()`
 
 ```php
-revokeAutomationTokenId($options) // Revoke an Automation Token by ID
+revokeAutomationTokenId($options): \Fastly\Model\ErrorResponse // Revoke an Automation Token by ID
 ```
 
 Revoke an automation token by ID.
@@ -176,7 +176,7 @@ Revoke an automation token by ID.
     $options['id'] = 'id_example'; // string
 
 try {
-    $apiInstance->revokeAutomationTokenId($options);
+    $result = $apiInstance->revokeAutomationTokenId($options);
 } catch (Exception $e) {
     echo 'Exception when calling AutomationTokensApi->revokeAutomationTokenId: ', $e->getMessage(), PHP_EOL;
 }
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Fastly\Model\ErrorResponse**](../Model/ErrorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

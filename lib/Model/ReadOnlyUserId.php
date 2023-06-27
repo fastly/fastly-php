@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalFieldResultsAttributesAllOf
+ * ReadOnlyUserId
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalFieldResultsAttributesAllOf Class Doc Comment
+ * ReadOnlyUserId Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class ReadOnlyUserId implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_field_results_attributes_allOf';
+    protected static $fastlyModelName = 'read_only_user_id';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,7 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'service_id' => '\Fastly\Model\ReadOnlyIdService',
-        'start_time' => 'int'
+        
     ];
 
     /**
@@ -65,8 +64,7 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'service_id' => null,
-        'start_time' => null
+        
     ];
 
     /**
@@ -96,8 +94,7 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id',
-        'start_time' => 'start_time'
+        
     ];
 
     /**
@@ -106,8 +103,7 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId',
-        'start_time' => 'setStartTime'
+        
     ];
 
     /**
@@ -116,8 +112,7 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId',
-        'start_time' => 'getStartTime'
+        
     ];
 
     /**
@@ -177,8 +172,6 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['start_time'] = $data['start_time'] ?? null;
     }
 
     /**
@@ -204,54 +197,6 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets service_id
-     *
-     * @return \Fastly\Model\ReadOnlyIdService|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param \Fastly\Model\ReadOnlyIdService|null $service_id service_id
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_time
-     *
-     * @return int|null
-     */
-    public function getStartTime()
-    {
-        return $this->container['start_time'];
-    }
-
-    /**
-     * Sets start_time
-     *
-     * @param int|null $start_time start_time
-     *
-     * @return self
-     */
-    public function setStartTime($start_time)
-    {
-        $this->container['start_time'] = $start_time;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *

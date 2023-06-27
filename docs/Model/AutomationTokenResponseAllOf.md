@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [readonly] 
-**customer_id** | **string** |  | [optional] [readonly] 
+**id** | [**\Fastly\Model\ReadOnlyId**](ReadOnlyId.md) |  | [optional] 
+**customer_id** | [**\Fastly\Model\ReadOnlyCustomerId**](ReadOnlyCustomerId.md) |  | [optional] 
 **role** | **string** |  | [optional] 
 **ip** | **string** | The IP address of the client that last used the token. | [optional] 
 **user_agent** | **string** | The User-Agent header of the client that last used the token. | [optional] 

@@ -1,6 +1,6 @@
 <?php
 /**
- * AutomationTokenCreateResponseAllOf
+ * ErrorResponse
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * AutomationTokenCreateResponseAllOf Class Doc Comment
+ * ErrorResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $fastlyModelName = 'automation_token_create_response_allOf';
+    protected static $fastlyModelName = 'error_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,14 +53,10 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => '\Fastly\Model\ReadOnlyId',
-        'user_id' => '\Fastly\Model\ReadOnlyUserId',
-        'customer_id' => '\Fastly\Model\ReadOnlyCustomerId',
-        'sudo_expires_at' => '\DateTime',
-        'created_at' => '\DateTime',
-        'access_token' => 'string',
-        'last_used_at' => '\DateTime',
-        'user_agent' => 'string'
+        'detail' => 'string',
+        'errors' => 'mixed[]',
+        'status' => 'int',
+        'title' => 'string'
     ];
 
     /**
@@ -71,14 +67,10 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null,
-        'user_id' => null,
-        'customer_id' => null,
-        'sudo_expires_at' => 'date-time',
-        'created_at' => 'date-time',
-        'access_token' => null,
-        'last_used_at' => 'date-time',
-        'user_agent' => null
+        'detail' => null,
+        'errors' => null,
+        'status' => null,
+        'title' => null
     ];
 
     /**
@@ -108,14 +100,10 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'user_id' => 'user_id',
-        'customer_id' => 'customer_id',
-        'sudo_expires_at' => 'sudo_expires_at',
-        'created_at' => 'created_at',
-        'access_token' => 'access_token',
-        'last_used_at' => 'last_used_at',
-        'user_agent' => 'user_agent'
+        'detail' => 'detail',
+        'errors' => 'errors',
+        'status' => 'status',
+        'title' => 'title'
     ];
 
     /**
@@ -124,14 +112,10 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'user_id' => 'setUserId',
-        'customer_id' => 'setCustomerId',
-        'sudo_expires_at' => 'setSudoExpiresAt',
-        'created_at' => 'setCreatedAt',
-        'access_token' => 'setAccessToken',
-        'last_used_at' => 'setLastUsedAt',
-        'user_agent' => 'setUserAgent'
+        'detail' => 'setDetail',
+        'errors' => 'setErrors',
+        'status' => 'setStatus',
+        'title' => 'setTitle'
     ];
 
     /**
@@ -140,14 +124,10 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'user_id' => 'getUserId',
-        'customer_id' => 'getCustomerId',
-        'sudo_expires_at' => 'getSudoExpiresAt',
-        'created_at' => 'getCreatedAt',
-        'access_token' => 'getAccessToken',
-        'last_used_at' => 'getLastUsedAt',
-        'user_agent' => 'getUserAgent'
+        'detail' => 'getDetail',
+        'errors' => 'getErrors',
+        'status' => 'getStatus',
+        'title' => 'getTitle'
     ];
 
     /**
@@ -207,14 +187,10 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['customer_id'] = $data['customer_id'] ?? null;
-        $this->container['sudo_expires_at'] = $data['sudo_expires_at'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['access_token'] = $data['access_token'] ?? null;
-        $this->container['last_used_at'] = $data['last_used_at'] ?? null;
-        $this->container['user_agent'] = $data['user_agent'] ?? null;
+        $this->container['detail'] = $data['detail'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
     }
 
     /**
@@ -242,193 +218,97 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets id
-     *
-     * @return \Fastly\Model\ReadOnlyId|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param \Fastly\Model\ReadOnlyId|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return \Fastly\Model\ReadOnlyUserId|null
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param \Fastly\Model\ReadOnlyUserId|null $user_id user_id
-     *
-     * @return self
-     */
-    public function setUserId($user_id)
-    {
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets customer_id
-     *
-     * @return \Fastly\Model\ReadOnlyCustomerId|null
-     */
-    public function getCustomerId()
-    {
-        return $this->container['customer_id'];
-    }
-
-    /**
-     * Sets customer_id
-     *
-     * @param \Fastly\Model\ReadOnlyCustomerId|null $customer_id customer_id
-     *
-     * @return self
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->container['customer_id'] = $customer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets sudo_expires_at
-     *
-     * @return \DateTime|null
-     */
-    public function getSudoExpiresAt()
-    {
-        return $this->container['sudo_expires_at'];
-    }
-
-    /**
-     * Sets sudo_expires_at
-     *
-     * @param \DateTime|null $sudo_expires_at sudo_expires_at
-     *
-     * @return self
-     */
-    public function setSudoExpiresAt($sudo_expires_at)
-    {
-        $this->container['sudo_expires_at'] = $sudo_expires_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at A UTC time-stamp of when the token was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets access_token
+     * Gets detail
      *
      * @return string|null
      */
-    public function getAccessToken()
+    public function getDetail()
     {
-        return $this->container['access_token'];
+        return $this->container['detail'];
     }
 
     /**
-     * Sets access_token
+     * Sets detail
      *
-     * @param string|null $access_token access_token
+     * @param string|null $detail detail
      *
      * @return self
      */
-    public function setAccessToken($access_token)
+    public function setDetail($detail)
     {
-        $this->container['access_token'] = $access_token;
+        $this->container['detail'] = $detail;
 
         return $this;
     }
 
     /**
-     * Gets last_used_at
+     * Gets errors
      *
-     * @return \DateTime|null
+     * @return mixed[]|null
      */
-    public function getLastUsedAt()
+    public function getErrors()
     {
-        return $this->container['last_used_at'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets last_used_at
+     * Sets errors
      *
-     * @param \DateTime|null $last_used_at A UTC time-stamp of when the token was last used.
+     * @param mixed[]|null $errors errors
      *
      * @return self
      */
-    public function setLastUsedAt($last_used_at)
+    public function setErrors($errors)
     {
-        $this->container['last_used_at'] = $last_used_at;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets user_agent
+     * Gets status
+     *
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
      *
      * @return string|null
      */
-    public function getUserAgent()
+    public function getTitle()
     {
-        return $this->container['user_agent'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets user_agent
+     * Sets title
      *
-     * @param string|null $user_agent The User-Agent header of the client that last used the token.
+     * @param string|null $title title
      *
      * @return self
      */
-    public function setUserAgent($user_agent)
+    public function setTitle($title)
     {
-        $this->container['user_agent'] = $user_agent;
+        $this->container['title'] = $title;
 
         return $this;
     }

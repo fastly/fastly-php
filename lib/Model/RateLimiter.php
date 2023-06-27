@@ -61,7 +61,7 @@ class RateLimiter implements ModelInterface, ArrayAccess, \JsonSerializable
         'client_key' => 'string[]',
         'penalty_box_duration' => 'int',
         'action' => 'string',
-        'response' => '\Fastly\Model\RateLimiterResponse1',
+        'response' => 'array<string,string>',
         'response_object_name' => 'string',
         'logger_type' => 'string',
         'feature_revision' => 'int'
@@ -743,7 +743,7 @@ class RateLimiter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets response
      *
-     * @return \Fastly\Model\RateLimiterResponse1|null
+     * @return array<string,string>|null
      */
     public function getResponse()
     {
@@ -753,7 +753,7 @@ class RateLimiter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \Fastly\Model\RateLimiterResponse1|null $response response
+     * @param array<string,string>|null $response Custom response to be sent when the rate limit is exceeded. Required if `action` is `response`.
      *
      * @return self
      */

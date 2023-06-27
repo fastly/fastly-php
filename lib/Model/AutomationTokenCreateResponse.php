@@ -61,9 +61,9 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'id' => 'string',
-        'user_id' => 'string',
-        'customer_id' => 'string',
+        'id' => '\Fastly\Model\ReadOnlyId',
+        'user_id' => '\Fastly\Model\ReadOnlyUserId',
+        'customer_id' => '\Fastly\Model\ReadOnlyCustomerId',
         'sudo_expires_at' => '\DateTime',
         'access_token' => 'string',
         'last_used_at' => '\DateTime',
@@ -552,7 +552,7 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets id
      *
-     * @return string|null
+     * @return \Fastly\Model\ReadOnlyId|null
      */
     public function getId()
     {
@@ -562,7 +562,7 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param \Fastly\Model\ReadOnlyId|null $id id
      *
      * @return self
      */
@@ -576,7 +576,7 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets user_id
      *
-     * @return string|null
+     * @return \Fastly\Model\ReadOnlyUserId|null
      */
     public function getUserId()
     {
@@ -586,7 +586,7 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets user_id
      *
-     * @param string|null $user_id user_id
+     * @param \Fastly\Model\ReadOnlyUserId|null $user_id user_id
      *
      * @return self
      */
@@ -600,7 +600,7 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets customer_id
      *
-     * @return string|null
+     * @return \Fastly\Model\ReadOnlyCustomerId|null
      */
     public function getCustomerId()
     {
@@ -610,7 +610,7 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id customer_id
+     * @param \Fastly\Model\ReadOnlyCustomerId|null $customer_id customer_id
      *
      * @return self
      */

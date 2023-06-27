@@ -269,7 +269,7 @@ class HistoricalFieldResultsAttributes implements ModelInterface, ArrayAccess, \
         'ddos_action_tarpit' => 'int',
         'ddos_action_close' => 'int',
         'ddos_action_blackhole' => 'int',
-        'service_id' => 'string',
+        'service_id' => '\Fastly\Model\ReadOnlyIdService',
         'start_time' => 'int'
     ];
 
@@ -6692,7 +6692,7 @@ class HistoricalFieldResultsAttributes implements ModelInterface, ArrayAccess, \
     /**
      * Gets service_id
      *
-     * @return string|null
+     * @return \Fastly\Model\ReadOnlyIdService|null
      */
     public function getServiceId()
     {
@@ -6702,7 +6702,7 @@ class HistoricalFieldResultsAttributes implements ModelInterface, ArrayAccess, \
     /**
      * Sets service_id
      *
-     * @param string|null $service_id service_id
+     * @param \Fastly\Model\ReadOnlyIdService|null $service_id service_id
      *
      * @return self
      */

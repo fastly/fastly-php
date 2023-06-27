@@ -61,8 +61,8 @@ class AutomationTokenResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'created_at' => 'string',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'id' => 'string',
-        'customer_id' => 'string',
+        'id' => '\Fastly\Model\ReadOnlyId',
+        'customer_id' => '\Fastly\Model\ReadOnlyCustomerId',
         'ip' => 'string',
         'user_agent' => 'string',
         'sudo_expires_at' => 'string',
@@ -510,7 +510,7 @@ class AutomationTokenResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets id
      *
-     * @return string|null
+     * @return \Fastly\Model\ReadOnlyId|null
      */
     public function getId()
     {
@@ -520,7 +520,7 @@ class AutomationTokenResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param \Fastly\Model\ReadOnlyId|null $id id
      *
      * @return self
      */
@@ -534,7 +534,7 @@ class AutomationTokenResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets customer_id
      *
-     * @return string|null
+     * @return \Fastly\Model\ReadOnlyCustomerId|null
      */
     public function getCustomerId()
     {
@@ -544,7 +544,7 @@ class AutomationTokenResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id customer_id
+     * @param \Fastly\Model\ReadOnlyCustomerId|null $customer_id customer_id
      *
      * @return self
      */
