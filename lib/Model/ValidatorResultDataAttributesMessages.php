@@ -1,6 +1,6 @@
 <?php
 /**
- * Snippet
+ * ValidatorResultDataAttributesMessages
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * Snippet Class Doc Comment
+ * ValidatorResultDataAttributesMessages Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValidatorResultDataAttributesMessages implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'snippet';
+    protected static $fastlyModelName = 'validator_result_data_attributes_messages';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,11 +53,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => 'string',
-        'dynamic' => 'string',
         'type' => 'string',
-        'content' => 'string',
-        'priority' => 'string'
+        'warning' => 'bool',
+        'message' => 'string',
+        'tokens' => 'array<string,\Fastly\Model\TokensAdditionalProps>[]'
     ];
 
     /**
@@ -68,11 +67,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'name' => null,
-        'dynamic' => null,
         'type' => null,
-        'content' => null,
-        'priority' => null
+        'warning' => null,
+        'message' => null,
+        'tokens' => null
     ];
 
     /**
@@ -102,11 +100,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'dynamic' => 'dynamic',
         'type' => 'type',
-        'content' => 'content',
-        'priority' => 'priority'
+        'warning' => 'warning',
+        'message' => 'message',
+        'tokens' => 'tokens'
     ];
 
     /**
@@ -115,11 +112,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'dynamic' => 'setDynamic',
         'type' => 'setType',
-        'content' => 'setContent',
-        'priority' => 'setPriority'
+        'warning' => 'setWarning',
+        'message' => 'setMessage',
+        'tokens' => 'setTokens'
     ];
 
     /**
@@ -128,11 +124,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'dynamic' => 'getDynamic',
         'type' => 'getType',
-        'content' => 'getContent',
-        'priority' => 'getPriority'
+        'warning' => 'getWarning',
+        'message' => 'getMessage',
+        'tokens' => 'getTokens'
     ];
 
     /**
@@ -176,54 +171,6 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    const DYNAMIC_regular = '0';
-    const DYNAMIC_dynamic = '1';
-    const TYPE_INIT = 'init';
-    const TYPE_RECV = 'recv';
-    const TYPE_HASH = 'hash';
-    const TYPE_HIT = 'hit';
-    const TYPE_MISS = 'miss';
-    const TYPE_PASS = 'pass';
-    const TYPE_FETCH = 'fetch';
-    const TYPE_ERROR = 'error';
-    const TYPE_DELIVER = 'deliver';
-    const TYPE_LOG = 'log';
-    const TYPE_NONE = 'none';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDynamicAllowableValues()
-    {
-        return [
-            self::DYNAMIC_regular,
-            self::DYNAMIC_dynamic,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_INIT,
-            self::TYPE_RECV,
-            self::TYPE_HASH,
-            self::TYPE_HIT,
-            self::TYPE_MISS,
-            self::TYPE_PASS,
-            self::TYPE_FETCH,
-            self::TYPE_ERROR,
-            self::TYPE_DELIVER,
-            self::TYPE_LOG,
-            self::TYPE_NONE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -240,11 +187,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['content'] = $data['content'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? '100';
+        $this->container['warning'] = $data['warning'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
+        $this->container['tokens'] = $data['tokens'] ?? null;
     }
 
     /**
@@ -256,24 +202,18 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getDynamicAllowableValues();
-        if (!is_null($this->container['dynamic']) && !in_array($this->container['dynamic'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'dynamic', must be one of '%s'",
-                $this->container['dynamic'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['warning'] === null) {
+            $invalidProperties[] = "'warning' can't be null";
         }
-
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['tokens'] === null) {
+            $invalidProperties[] = "'tokens' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -290,67 +230,9 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name for the snippet.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets dynamic
-     *
-     * @return string|null
-     */
-    public function getDynamic()
-    {
-        return $this->container['dynamic'];
-    }
-
-    /**
-     * Sets dynamic
-     *
-     * @param string|null $dynamic Sets the snippet version.
-     *
-     * @return self
-     */
-    public function setDynamic($dynamic)
-    {
-        $allowedValues = $this->getDynamicAllowableValues();
-        if (!is_null($dynamic) && !in_array($dynamic, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'dynamic', must be one of '%s'",
-                    $dynamic,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['dynamic'] = $dynamic;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -360,71 +242,85 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type The location in generated VCL where the snippet should be placed.
+     * @param string $type type
      *
      * @return self
      */
     public function setType($type)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets content
+     * Gets warning
      *
-     * @return string|null
+     * @return bool
      */
-    public function getContent()
+    public function getWarning()
     {
-        return $this->container['content'];
+        return $this->container['warning'];
     }
 
     /**
-     * Sets content
+     * Sets warning
      *
-     * @param string|null $content The VCL code that specifies exactly what the snippet does.
+     * @param bool $warning warning
      *
      * @return self
      */
-    public function setContent($content)
+    public function setWarning($warning)
     {
-        $this->container['content'] = $content;
+        $this->container['warning'] = $warning;
 
         return $this;
     }
 
     /**
-     * Gets priority
+     * Gets message
      *
-     * @return string|null
+     * @return string
      */
-    public function getPriority()
+    public function getMessage()
     {
-        return $this->container['priority'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets priority
+     * Sets message
      *
-     * @param string|null $priority Priority determines execution order. Lower numbers execute first.
+     * @param string $message message
      *
      * @return self
      */
-    public function setPriority($priority)
+    public function setMessage($message)
     {
-        $this->container['priority'] = $priority;
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets tokens
+     *
+     * @return array<string,\Fastly\Model\TokensAdditionalProps>[]
+     */
+    public function getTokens()
+    {
+        return $this->container['tokens'];
+    }
+
+    /**
+     * Sets tokens
+     *
+     * @param array<string,\Fastly\Model\TokensAdditionalProps>[] $tokens tokens
+     *
+     * @return self
+     */
+    public function setTokens($tokens)
+    {
+        $this->container['tokens'] = $tokens;
 
         return $this;
     }

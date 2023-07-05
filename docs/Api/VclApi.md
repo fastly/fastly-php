@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 ## `getCustomVclGeneratedHighlighted()`
 
 ```php
-getCustomVclGeneratedHighlighted($options) // Get the generated VCL with syntax highlighting
+getCustomVclGeneratedHighlighted($options): \Fastly\Model\VclSyntaxHighlightingResponse // Get the generated VCL with syntax highlighting
 ```
 
 Display the content of generated VCL with HTML syntax highlighting. Include line numbers by sending `lineno=true` as a request parameter.
@@ -235,7 +235,7 @@ Display the content of generated VCL with HTML syntax highlighting. Include line
 $options['version_id'] = 56; // int | Integer identifying a service version.
 
 try {
-    $apiInstance->getCustomVclGeneratedHighlighted($options);
+    $result = $apiInstance->getCustomVclGeneratedHighlighted($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->getCustomVclGeneratedHighlighted: ', $e->getMessage(), PHP_EOL;
 }
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Fastly\Model\VclSyntaxHighlightingResponse**](../Model/VclSyntaxHighlightingResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -260,7 +260,7 @@ void (empty response body)
 ## `getCustomVclHighlighted()`
 
 ```php
-getCustomVclHighlighted($options) // Get a custom VCL file with syntax highlighting
+getCustomVclHighlighted($options): \Fastly\Model\VclSyntaxHighlightingResponse // Get a custom VCL file with syntax highlighting
 ```
 
 Get the uploaded VCL for a particular service and version with HTML syntax highlighting. Include line numbers by sending `lineno=true` as a request parameter.
@@ -272,7 +272,7 @@ $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['vcl_name'] = 'vcl_name_example'; // string | The name of this VCL.
 
 try {
-    $apiInstance->getCustomVclHighlighted($options);
+    $result = $apiInstance->getCustomVclHighlighted($options);
 } catch (Exception $e) {
     echo 'Exception when calling VclApi->getCustomVclHighlighted: ', $e->getMessage(), PHP_EOL;
 }
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Fastly\Model\VclSyntaxHighlightingResponse**](../Model/VclSyntaxHighlightingResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

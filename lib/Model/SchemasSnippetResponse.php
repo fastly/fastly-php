@@ -54,7 +54,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $fastlyTypes = [
         'name' => 'string',
-        'dynamic' => 'int',
+        'dynamic' => 'string',
         'type' => 'string',
         'content' => 'string',
         'priority' => 'string',
@@ -206,8 +206,8 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$fastlyModelName;
     }
 
-    const DYNAMIC_0 = 0;
-    const DYNAMIC_1 = 1;
+    const DYNAMIC_regular = '0';
+    const DYNAMIC_dynamic = '1';
     const TYPE_INIT = 'init';
     const TYPE_RECV = 'recv';
     const TYPE_HASH = 'hash';
@@ -228,8 +228,8 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function getDynamicAllowableValues()
     {
         return [
-            self::DYNAMIC_0,
-            self::DYNAMIC_1,
+            self::DYNAMIC_regular,
+            self::DYNAMIC_dynamic,
         ];
     }
 
@@ -352,7 +352,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets dynamic
      *
-     * @return int|null
+     * @return string|null
      */
     public function getDynamic()
     {
@@ -362,7 +362,7 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets dynamic
      *
-     * @param int|null $dynamic Sets the snippet version.
+     * @param string|null $dynamic Sets the snippet version.
      *
      * @return self
      */

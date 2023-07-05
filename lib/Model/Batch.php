@@ -1,6 +1,6 @@
 <?php
 /**
- * ValidatorResultMessages
+ * Batch
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * ValidatorResultMessages Class Doc Comment
+ * Batch Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSerializable
+class Batch implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $fastlyModelName = 'validator_result_messages';
+    protected static $fastlyModelName = 'batch';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,10 +53,9 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'title' => 'string',
         'type' => 'string',
-        'warning' => 'bool',
-        'message' => 'string',
-        'tokens' => 'array<string,AnyOfStringNumber>[]'
+        'errors' => '\Fastly\Model\BatchErrors[]'
     ];
 
     /**
@@ -67,10 +66,9 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'title' => null,
         'type' => null,
-        'warning' => null,
-        'message' => null,
-        'tokens' => null
+        'errors' => null
     ];
 
     /**
@@ -100,10 +98,9 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'title' => 'title',
         'type' => 'type',
-        'warning' => 'warning',
-        'message' => 'message',
-        'tokens' => 'tokens'
+        'errors' => 'errors'
     ];
 
     /**
@@ -112,10 +109,9 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'title' => 'setTitle',
         'type' => 'setType',
-        'warning' => 'setWarning',
-        'message' => 'setMessage',
-        'tokens' => 'setTokens'
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -124,10 +120,9 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'title' => 'getTitle',
         'type' => 'getType',
-        'warning' => 'getWarning',
-        'message' => 'getMessage',
-        'tokens' => 'getTokens'
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -187,10 +182,9 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['warning'] = $data['warning'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['tokens'] = $data['tokens'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
     }
 
     /**
@@ -202,18 +196,6 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['warning'] === null) {
-            $invalidProperties[] = "'warning' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['tokens'] === null) {
-            $invalidProperties[] = "'tokens' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -230,9 +212,33 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title A descriptor for the response of the entire batch
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
      * Gets type
      *
-     * @return string
+     * @return string|null
      */
     public function getType()
     {
@@ -242,7 +248,7 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string|null $type If an error is present in any of the requests, this field will describe that error
      *
      * @return self
      */
@@ -254,73 +260,25 @@ class ValidatorResultMessages implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets warning
+     * Gets errors
      *
-     * @return bool
+     * @return \Fastly\Model\BatchErrors[]|null
      */
-    public function getWarning()
+    public function getErrors()
     {
-        return $this->container['warning'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets warning
+     * Sets errors
      *
-     * @param bool $warning warning
+     * @param \Fastly\Model\BatchErrors[]|null $errors Per-key errors which failed to parse, validate, or otherwise transmit
      *
      * @return self
      */
-    public function setWarning($warning)
+    public function setErrors($errors)
     {
-        $this->container['warning'] = $warning;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets tokens
-     *
-     * @return array<string,AnyOfStringNumber>[]
-     */
-    public function getTokens()
-    {
-        return $this->container['tokens'];
-    }
-
-    /**
-     * Sets tokens
-     *
-     * @param array<string,AnyOfStringNumber>[] $tokens tokens
-     *
-     * @return self
-     */
-    public function setTokens($tokens)
-    {
-        $this->container['tokens'] = $tokens;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

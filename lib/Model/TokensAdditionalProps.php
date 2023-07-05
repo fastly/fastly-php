@@ -1,6 +1,6 @@
 <?php
 /**
- * ValidatorResult
+ * TokensAdditionalProps
  *
  * PHP version 7.3
  *
@@ -27,17 +27,16 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * ValidatorResult Class Doc Comment
+ * TokensAdditionalProps Class Doc Comment
  *
  * @category Class
- * @description Results from VCL linting
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ValidatorResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class TokensAdditionalProps implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -46,7 +45,7 @@ class ValidatorResult implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'validator_result';
+    protected static $fastlyModelName = 'tokens_additional_props';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +53,7 @@ class ValidatorResult implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\ValidatorResultData'
+        
     ];
 
     /**
@@ -65,7 +64,7 @@ class ValidatorResult implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null
+        
     ];
 
     /**
@@ -95,7 +94,7 @@ class ValidatorResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        
     ];
 
     /**
@@ -104,7 +103,7 @@ class ValidatorResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        
     ];
 
     /**
@@ -113,7 +112,7 @@ class ValidatorResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        
     ];
 
     /**
@@ -173,7 +172,6 @@ class ValidatorResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -199,30 +197,6 @@ class ValidatorResult implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets data
-     *
-     * @return \Fastly\Model\ValidatorResultData|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Fastly\Model\ValidatorResultData|null $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *

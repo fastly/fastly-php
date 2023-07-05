@@ -1921,11 +1921,12 @@ class VclApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Fastly\Model\VclSyntaxHighlightingResponse
      */
     public function getCustomVclGeneratedHighlighted($options)
     {
-        $this->getCustomVclGeneratedHighlightedWithHttpInfo($options);
+        list($response) = $this->getCustomVclGeneratedHighlightedWithHttpInfo($options);
+        return $response;
     }
 
     /**
@@ -1943,7 +1944,7 @@ class VclApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\VclSyntaxHighlightingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCustomVclGeneratedHighlightedWithHttpInfo($options)
     {
@@ -1996,10 +1997,44 @@ class VclApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\Fastly\Model\VclSyntaxHighlightingResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\VclSyntaxHighlightingResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\VclSyntaxHighlightingResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\VclSyntaxHighlightingResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2049,14 +2084,24 @@ class VclApi
      */
     public function getCustomVclGeneratedHighlightedAsyncWithHttpInfo($options)
     {
-        $returnType = '';
+        $returnType = '\Fastly\Model\VclSyntaxHighlightingResponse';
         $request = $this->getCustomVclGeneratedHighlightedRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2219,11 +2264,12 @@ class VclApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Fastly\Model\VclSyntaxHighlightingResponse
      */
     public function getCustomVclHighlighted($options)
     {
-        $this->getCustomVclHighlightedWithHttpInfo($options);
+        list($response) = $this->getCustomVclHighlightedWithHttpInfo($options);
+        return $response;
     }
 
     /**
@@ -2242,7 +2288,7 @@ class VclApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\VclSyntaxHighlightingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCustomVclHighlightedWithHttpInfo($options)
     {
@@ -2295,10 +2341,44 @@ class VclApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\Fastly\Model\VclSyntaxHighlightingResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\VclSyntaxHighlightingResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\VclSyntaxHighlightingResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\VclSyntaxHighlightingResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2350,14 +2430,24 @@ class VclApi
      */
     public function getCustomVclHighlightedAsyncWithHttpInfo($options)
     {
-        $returnType = '';
+        $returnType = '\Fastly\Model\VclSyntaxHighlightingResponse';
         $request = $this->getCustomVclHighlightedRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

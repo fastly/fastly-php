@@ -1,6 +1,6 @@
 <?php
 /**
- * Snippet
+ * ValidatorResultDataAttributes
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * Snippet Class Doc Comment
+ * ValidatorResultDataAttributes Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValidatorResultDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'snippet';
+    protected static $fastlyModelName = 'validator_result_data_attributes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,11 +53,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => 'string',
-        'dynamic' => 'string',
-        'type' => 'string',
-        'content' => 'string',
-        'priority' => 'string'
+        'msg' => 'string',
+        'status' => 'string',
+        'errors' => 'string[]',
+        'warnings' => 'string[]',
+        'messages' => '\Fastly\Model\ValidatorResultDataAttributesMessages[]'
     ];
 
     /**
@@ -68,11 +68,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'name' => null,
-        'dynamic' => null,
-        'type' => null,
-        'content' => null,
-        'priority' => null
+        'msg' => null,
+        'status' => null,
+        'errors' => null,
+        'warnings' => null,
+        'messages' => null
     ];
 
     /**
@@ -102,11 +102,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'dynamic' => 'dynamic',
-        'type' => 'type',
-        'content' => 'content',
-        'priority' => 'priority'
+        'msg' => 'msg',
+        'status' => 'status',
+        'errors' => 'errors',
+        'warnings' => 'warnings',
+        'messages' => 'messages'
     ];
 
     /**
@@ -115,11 +115,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'dynamic' => 'setDynamic',
-        'type' => 'setType',
-        'content' => 'setContent',
-        'priority' => 'setPriority'
+        'msg' => 'setMsg',
+        'status' => 'setStatus',
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings',
+        'messages' => 'setMessages'
     ];
 
     /**
@@ -128,11 +128,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'dynamic' => 'getDynamic',
-        'type' => 'getType',
-        'content' => 'getContent',
-        'priority' => 'getPriority'
+        'msg' => 'getMsg',
+        'status' => 'getStatus',
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings',
+        'messages' => 'getMessages'
     ];
 
     /**
@@ -176,52 +176,19 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    const DYNAMIC_regular = '0';
-    const DYNAMIC_dynamic = '1';
-    const TYPE_INIT = 'init';
-    const TYPE_RECV = 'recv';
-    const TYPE_HASH = 'hash';
-    const TYPE_HIT = 'hit';
-    const TYPE_MISS = 'miss';
-    const TYPE_PASS = 'pass';
-    const TYPE_FETCH = 'fetch';
-    const TYPE_ERROR = 'error';
-    const TYPE_DELIVER = 'deliver';
-    const TYPE_LOG = 'log';
-    const TYPE_NONE = 'none';
+    const STATUS_ERROR = 'error';
+    const STATUS_OK = 'ok';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getDynamicAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::DYNAMIC_regular,
-            self::DYNAMIC_dynamic,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_INIT,
-            self::TYPE_RECV,
-            self::TYPE_HASH,
-            self::TYPE_HIT,
-            self::TYPE_MISS,
-            self::TYPE_PASS,
-            self::TYPE_FETCH,
-            self::TYPE_ERROR,
-            self::TYPE_DELIVER,
-            self::TYPE_LOG,
-            self::TYPE_NONE,
+            self::STATUS_ERROR,
+            self::STATUS_OK,
         ];
     }
 
@@ -240,11 +207,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['dynamic'] = $data['dynamic'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['content'] = $data['content'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? '100';
+        $this->container['msg'] = $data['msg'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['warnings'] = $data['warnings'] ?? null;
+        $this->container['messages'] = $data['messages'] ?? null;
     }
 
     /**
@@ -256,20 +223,11 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getDynamicAllowableValues();
-        if (!is_null($this->container['dynamic']) && !in_array($this->container['dynamic'], $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'dynamic', must be one of '%s'",
-                $this->container['dynamic'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -290,141 +248,131 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets msg
      *
      * @return string|null
      */
-    public function getName()
+    public function getMsg()
     {
-        return $this->container['name'];
+        return $this->container['msg'];
     }
 
     /**
-     * Sets name
+     * Sets msg
      *
-     * @param string|null $name The name for the snippet.
+     * @param string|null $msg msg
      *
      * @return self
      */
-    public function setName($name)
+    public function setMsg($msg)
     {
-        $this->container['name'] = $name;
+        $this->container['msg'] = $msg;
 
         return $this;
     }
 
     /**
-     * Gets dynamic
+     * Gets status
      *
      * @return string|null
      */
-    public function getDynamic()
+    public function getStatus()
     {
-        return $this->container['dynamic'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets dynamic
+     * Sets status
      *
-     * @param string|null $dynamic Sets the snippet version.
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setDynamic($dynamic)
+    public function setStatus($status)
     {
-        $allowedValues = $this->getDynamicAllowableValues();
-        if (!is_null($dynamic) && !in_array($dynamic, $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'dynamic', must be one of '%s'",
-                    $dynamic,
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['dynamic'] = $dynamic;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets errors
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getType()
+    public function getErrors()
     {
-        return $this->container['type'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets type
+     * Sets errors
      *
-     * @param string|null $type The location in generated VCL where the snippet should be placed.
+     * @param string[]|null $errors errors
      *
      * @return self
      */
-    public function setType($type)
+    public function setErrors($errors)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets content
+     * Gets warnings
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getContent()
+    public function getWarnings()
     {
-        return $this->container['content'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets content
+     * Sets warnings
      *
-     * @param string|null $content The VCL code that specifies exactly what the snippet does.
+     * @param string[]|null $warnings warnings
      *
      * @return self
      */
-    public function setContent($content)
+    public function setWarnings($warnings)
     {
-        $this->container['content'] = $content;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }
 
     /**
-     * Gets priority
+     * Gets messages
      *
-     * @return string|null
+     * @return \Fastly\Model\ValidatorResultDataAttributesMessages[]|null
      */
-    public function getPriority()
+    public function getMessages()
     {
-        return $this->container['priority'];
+        return $this->container['messages'];
     }
 
     /**
-     * Sets priority
+     * Sets messages
      *
-     * @param string|null $priority Priority determines execution order. Lower numbers execute first.
+     * @param \Fastly\Model\ValidatorResultDataAttributesMessages[]|null $messages messages
      *
      * @return self
      */
-    public function setPriority($priority)
+    public function setMessages($messages)
     {
-        $this->container['priority'] = $priority;
+        $this->container['messages'] = $messages;
 
         return $this;
     }
