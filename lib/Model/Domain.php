@@ -30,6 +30,7 @@ use \Fastly\ObjectSerializer;
  * Domain Class Doc Comment
  *
  * @category Class
+ * @description Domain details
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>

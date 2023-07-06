@@ -18,6 +18,7 @@ Method | Fastly API endpoint | Description
 [**deleteLogKinesis()**](LoggingKinesisApi.md#deleteLogKinesis) | **DELETE** /service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name} | Delete the Amazon Kinesis log endpoint
 [**getLogKinesis()**](LoggingKinesisApi.md#getLogKinesis) | **GET** /service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name} | Get an Amazon Kinesis log endpoint
 [**listLogKinesis()**](LoggingKinesisApi.md#listLogKinesis) | **GET** /service/{service_id}/version/{version_id}/logging/kinesis | List Amazon Kinesis log endpoints
+[**updateLogKinesis()**](LoggingKinesisApi.md#updateLogKinesis) | **PUT** /service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name} | Update the Amazon Kinesis log endpoint
 
 
 ## `createLogKinesis()`
@@ -182,6 +183,44 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\LoggingKinesisResponse[]**](../Model/LoggingKinesisResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateLogKinesis()`
+
+```php
+updateLogKinesis($options): \Fastly\Model\LoggingKinesisResponse // Update the Amazon Kinesis log endpoint
+```
+
+Update an Amazon Kinesis Data Streams logging object for a particular service and version.
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_kinesis_name'] = 'logging_kinesis_name_example'; // string | The name for the real-time logging configuration.
+
+try {
+    $result = $apiInstance->updateLogKinesis($options);
+} catch (Exception $e) {
+    echo 'Exception when calling LoggingKinesisApi->updateLogKinesis: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**logging_kinesis_name** | **string** | The name for the real-time logging configuration. |
+
+### Return type
+
+[**\Fastly\Model\LoggingKinesisResponse**](../Model/LoggingKinesisResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -54,8 +54,8 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'hash' => 'string',
-        'request' => 'object',
-        'response' => 'object',
+        'request' => 'array<string,object>',
+        'response' => 'array<string,object>',
         'response_time' => 'float',
         'server' => 'string',
         'pop' => 'string'
@@ -256,7 +256,7 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets request
      *
-     * @return object|null
+     * @return array<string,object>|null
      */
     public function getRequest()
     {
@@ -266,7 +266,7 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets request
      *
-     * @param object|null $request request
+     * @param array<string,object>|null $request request
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets response
      *
-     * @return object|null
+     * @return array<string,object>|null
      */
     public function getResponse()
     {
@@ -290,7 +290,7 @@ class Content implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param object|null $response response
+     * @param array<string,object>|null $response response
      *
      * @return self
      */

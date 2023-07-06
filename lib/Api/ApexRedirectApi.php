@@ -110,6 +110,436 @@ class ApexRedirectApi
     }
 
     /**
+     * Operation createApexRedirect
+     *
+     * Create an apex redirect
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $service_id service_id (optional)
+     * @param  int $version version (optional)
+     * @param  \DateTime $created_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $deleted_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $updated_at Date and time in ISO 8601 format. (optional)
+     * @param  int $status_code HTTP status code used to redirect the client. (optional)
+     * @param  string[] $domains Array of apex domains that should redirect to their WWW subdomain. (optional)
+     * @param  int $feature_revision Revision number of the apex redirect feature implementation. Defaults to the most recent revision. (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Fastly\Model\ApexRedirect
+     */
+    public function createApexRedirect($options)
+    {
+        list($response) = $this->createApexRedirectWithHttpInfo($options);
+        return $response;
+    }
+
+    /**
+     * Operation createApexRedirectWithHttpInfo
+     *
+     * Create an apex redirect
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $service_id (optional)
+     * @param  int $version (optional)
+     * @param  \DateTime $created_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $deleted_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $updated_at Date and time in ISO 8601 format. (optional)
+     * @param  int $status_code HTTP status code used to redirect the client. (optional)
+     * @param  string[] $domains Array of apex domains that should redirect to their WWW subdomain. (optional)
+     * @param  int $feature_revision Revision number of the apex redirect feature implementation. Defaults to the most recent revision. (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Fastly\Model\ApexRedirect, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createApexRedirectWithHttpInfo($options)
+    {
+        $request = $this->createApexRedirectRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            if ('POST' != 'GET' && 'POST' != 'HEAD') {
+                $header = $response->getHeader('Fastly-RateLimit-Remaining');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitRemaining($header[0]);
+                }
+
+                $header = $response->getHeader('Fastly-RateLimit-Reset');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitReset($header[0]);
+                }
+            } 
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Fastly\Model\ApexRedirect' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\ApexRedirect', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\ApexRedirect';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\ApexRedirect',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createApexRedirectAsync
+     *
+     * Create an apex redirect
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $service_id (optional)
+     * @param  int $version (optional)
+     * @param  \DateTime $created_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $deleted_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $updated_at Date and time in ISO 8601 format. (optional)
+     * @param  int $status_code HTTP status code used to redirect the client. (optional)
+     * @param  string[] $domains Array of apex domains that should redirect to their WWW subdomain. (optional)
+     * @param  int $feature_revision Revision number of the apex redirect feature implementation. Defaults to the most recent revision. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createApexRedirectAsync($options)
+    {
+        return $this->createApexRedirectAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createApexRedirectAsyncWithHttpInfo
+     *
+     * Create an apex redirect
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $service_id (optional)
+     * @param  int $version (optional)
+     * @param  \DateTime $created_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $deleted_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $updated_at Date and time in ISO 8601 format. (optional)
+     * @param  int $status_code HTTP status code used to redirect the client. (optional)
+     * @param  string[] $domains Array of apex domains that should redirect to their WWW subdomain. (optional)
+     * @param  int $feature_revision Revision number of the apex redirect feature implementation. Defaults to the most recent revision. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createApexRedirectAsyncWithHttpInfo($options)
+    {
+        $returnType = '\Fastly\Model\ApexRedirect';
+        $request = $this->createApexRedirectRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createApexRedirect'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  string $service_id (optional)
+     * @param  int $version (optional)
+     * @param  \DateTime $created_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $deleted_at Date and time in ISO 8601 format. (optional)
+     * @param  \DateTime $updated_at Date and time in ISO 8601 format. (optional)
+     * @param  int $status_code HTTP status code used to redirect the client. (optional)
+     * @param  string[] $domains Array of apex domains that should redirect to their WWW subdomain. (optional)
+     * @param  int $feature_revision Revision number of the apex redirect feature implementation. Defaults to the most recent revision. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createApexRedirectRequest($options)
+    {
+        // unbox the parameters from the associative array
+        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $version = array_key_exists('version', $options) ? $options['version'] : null;
+        $created_at = array_key_exists('created_at', $options) ? $options['created_at'] : null;
+        $deleted_at = array_key_exists('deleted_at', $options) ? $options['deleted_at'] : null;
+        $updated_at = array_key_exists('updated_at', $options) ? $options['updated_at'] : null;
+        $status_code = array_key_exists('status_code', $options) ? $options['status_code'] : null;
+        $domains = array_key_exists('domains', $options) ? $options['domains'] : null;
+        $feature_revision = array_key_exists('feature_revision', $options) ? $options['feature_revision'] : null;
+
+        // verify the required parameter 'service_id' is set
+        if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $service_id when calling createApexRedirect'
+            );
+        }
+        // verify the required parameter 'version_id' is set
+        if ($version_id === null || (is_array($version_id) && count($version_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version_id when calling createApexRedirect'
+            );
+        }
+        if ($domains !== null && count($domains) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$domains" when calling ApexRedirectApi.createApexRedirect, number of items must be greater than or equal to 1.');
+        }
+
+        if ($feature_revision !== null && $feature_revision < 1) {
+            throw new \InvalidArgumentException('invalid value for "$feature_revision" when calling ApexRedirectApi.createApexRedirect, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/service/{service_id}/version/{version_id}/apex-redirects';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($service_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'service_id' . '}',
+                ObjectSerializer::toPathValue($service_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'version_id' . '}',
+                ObjectSerializer::toPathValue($version_id),
+                $resourcePath
+            );
+        }
+
+        // form params
+        if ($service_id !== null) {
+            $formParams['service_id'] = ObjectSerializer::toFormValue($service_id);
+        }
+        // form params
+        if ($version !== null) {
+            $formParams['version'] = ObjectSerializer::toFormValue($version);
+        }
+        // form params
+        if ($created_at !== null) {
+            $formParams['created_at'] = ObjectSerializer::toFormValue($created_at);
+        }
+        // form params
+        if ($deleted_at !== null) {
+            $formParams['deleted_at'] = ObjectSerializer::toFormValue($deleted_at);
+        }
+        // form params
+        if ($updated_at !== null) {
+            $formParams['updated_at'] = ObjectSerializer::toFormValue($updated_at);
+        }
+        // form params
+        if ($status_code !== null) {
+            $formParams['status_code'] = ObjectSerializer::toFormValue($status_code);
+        }
+        // form params
+        if ($domains !== null) {
+            $formParams['domains'] = ObjectSerializer::toFormValue($domains);
+        }
+        // form params
+        if ($feature_revision !== null) {
+            $formParams['feature_revision'] = ObjectSerializer::toFormValue($feature_revision);
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteApexRedirect
      *
      * Delete an apex redirect

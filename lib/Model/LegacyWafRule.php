@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalFieldResultsAttributesAllOf
+ * LegacyWafRule
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalFieldResultsAttributesAllOf Class Doc Comment
+ * LegacyWafRule Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class LegacyWafRule implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_field_results_attributes_allOf';
+    protected static $fastlyModelName = 'legacy_waf_rule';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,11 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'service_id' => '\Fastly\Model\ReadOnlyIdService',
-        'start_time' => 'int'
+        'message' => 'string',
+        'rule_id' => 'string',
+        'severity' => 'int',
+        'source' => 'string',
+        'vcl' => 'string'
     ];
 
     /**
@@ -65,8 +68,11 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'service_id' => null,
-        'start_time' => null
+        'message' => null,
+        'rule_id' => null,
+        'severity' => null,
+        'source' => null,
+        'vcl' => null
     ];
 
     /**
@@ -96,8 +102,11 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id',
-        'start_time' => 'start_time'
+        'message' => 'message',
+        'rule_id' => 'rule_id',
+        'severity' => 'severity',
+        'source' => 'source',
+        'vcl' => 'vcl'
     ];
 
     /**
@@ -106,8 +115,11 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId',
-        'start_time' => 'setStartTime'
+        'message' => 'setMessage',
+        'rule_id' => 'setRuleId',
+        'severity' => 'setSeverity',
+        'source' => 'setSource',
+        'vcl' => 'setVcl'
     ];
 
     /**
@@ -116,8 +128,11 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId',
-        'start_time' => 'getStartTime'
+        'message' => 'getMessage',
+        'rule_id' => 'getRuleId',
+        'severity' => 'getSeverity',
+        'source' => 'getSource',
+        'vcl' => 'getVcl'
     ];
 
     /**
@@ -177,8 +192,11 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['start_time'] = $data['start_time'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
+        $this->container['rule_id'] = $data['rule_id'] ?? null;
+        $this->container['severity'] = $data['severity'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
+        $this->container['vcl'] = $data['vcl'] ?? null;
     }
 
     /**
@@ -206,49 +224,121 @@ class HistoricalFieldResultsAttributesAllOf implements ModelInterface, ArrayAcce
 
 
     /**
-     * Gets service_id
+     * Gets message
      *
-     * @return \Fastly\Model\ReadOnlyIdService|null
+     * @return string|null
      */
-    public function getServiceId()
+    public function getMessage()
     {
-        return $this->container['service_id'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets service_id
+     * Sets message
      *
-     * @param \Fastly\Model\ReadOnlyIdService|null $service_id service_id
+     * @param string|null $message Message metadata for the rule.
      *
      * @return self
      */
-    public function setServiceId($service_id)
+    public function setMessage($message)
     {
-        $this->container['service_id'] = $service_id;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets start_time
+     * Gets rule_id
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getStartTime()
+    public function getRuleId()
     {
-        return $this->container['start_time'];
+        return $this->container['rule_id'];
     }
 
     /**
-     * Sets start_time
+     * Sets rule_id
      *
-     * @param int|null $start_time start_time
+     * @param string|null $rule_id Corresponding ModSecurity rule ID.
      *
      * @return self
      */
-    public function setStartTime($start_time)
+    public function setRuleId($rule_id)
     {
-        $this->container['start_time'] = $start_time;
+        $this->container['rule_id'] = $rule_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets severity
+     *
+     * @return int|null
+     */
+    public function getSeverity()
+    {
+        return $this->container['severity'];
+    }
+
+    /**
+     * Sets severity
+     *
+     * @param int|null $severity Severity metadata for the rule.
+     *
+     * @return self
+     */
+    public function setSeverity($severity)
+    {
+        $this->container['severity'] = $severity;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source The ModSecurity rule logic.
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets vcl
+     *
+     * @return string|null
+     */
+    public function getVcl()
+    {
+        return $this->container['vcl'];
+    }
+
+    /**
+     * Sets vcl
+     *
+     * @param string|null $vcl The VCL representation of the rule logic.
+     *
+     * @return self
+     */
+    public function setVcl($vcl)
+    {
+        $this->container['vcl'] = $vcl;
 
         return $this;
     }

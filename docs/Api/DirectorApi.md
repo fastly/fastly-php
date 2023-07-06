@@ -18,6 +18,7 @@ Method | Fastly API endpoint | Description
 [**deleteDirector()**](DirectorApi.md#deleteDirector) | **DELETE** /service/{service_id}/version/{version_id}/director/{director_name} | Delete a director
 [**getDirector()**](DirectorApi.md#getDirector) | **GET** /service/{service_id}/version/{version_id}/director/{director_name} | Get a director
 [**listDirectors()**](DirectorApi.md#listDirectors) | **GET** /service/{service_id}/version/{version_id}/director | List directors
+[**updateDirector()**](DirectorApi.md#updateDirector) | **PUT** /service/{service_id}/version/{version_id}/director/{director_name} | Update a director
 
 
 ## `createDirector()`
@@ -180,6 +181,44 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\DirectorResponse[]**](../Model/DirectorResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateDirector()`
+
+```php
+updateDirector($options): \Fastly\Model\DirectorResponse // Update a director
+```
+
+Update the director for a particular service and version.
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['director_name'] = 'director_name_example'; // string | Name for the Director.
+
+try {
+    $result = $apiInstance->updateDirector($options);
+} catch (Exception $e) {
+    echo 'Exception when calling DirectorApi->updateDirector: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**director_name** | **string** | Name for the Director. |
+
+### Return type
+
+[**\Fastly\Model\DirectorResponse**](../Model/DirectorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

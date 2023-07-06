@@ -14,10 +14,48 @@ $apiInstance = new Fastly\Api\ResponseObjectApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
+[**createResponseObject()**](ResponseObjectApi.md#createResponseObject) | **POST** /service/{service_id}/version/{version_id}/response_object | Create a Response object
 [**deleteResponseObject()**](ResponseObjectApi.md#deleteResponseObject) | **DELETE** /service/{service_id}/version/{version_id}/response_object/{response_object_name} | Delete a Response Object
 [**getResponseObject()**](ResponseObjectApi.md#getResponseObject) | **GET** /service/{service_id}/version/{version_id}/response_object/{response_object_name} | Get a Response object
 [**listResponseObjects()**](ResponseObjectApi.md#listResponseObjects) | **GET** /service/{service_id}/version/{version_id}/response_object | List Response objects
+[**updateResponseObject()**](ResponseObjectApi.md#updateResponseObject) | **PUT** /service/{service_id}/version/{version_id}/response_object/{response_object_name} | Update a Response object
 
+
+## `createResponseObject()`
+
+```php
+createResponseObject($options): \Fastly\Model\ResponseObjectResponse // Create a Response object
+```
+
+Creates a new Response Object.
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
+try {
+    $result = $apiInstance->createResponseObject($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ResponseObjectApi->createResponseObject: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+
+### Return type
+
+[**\Fastly\Model\ResponseObjectResponse**](../Model/ResponseObjectResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 
 ## `deleteResponseObject()`
 
@@ -127,6 +165,44 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\ResponseObjectResponse[]**](../Model/ResponseObjectResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateResponseObject()`
+
+```php
+updateResponseObject($options): \Fastly\Model\ResponseObjectResponse // Update a Response object
+```
+
+Updates the specified Response Object.
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['response_object_name'] = 'response_object_name_example'; // string | Name for the request settings.
+
+try {
+    $result = $apiInstance->updateResponseObject($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ResponseObjectApi->updateResponseObject: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**response_object_name** | **string** | Name for the request settings. |
+
+### Return type
+
+[**\Fastly\Model\ResponseObjectResponse**](../Model/ResponseObjectResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

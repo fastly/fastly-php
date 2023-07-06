@@ -18,6 +18,7 @@ Method | Fastly API endpoint | Description
 [**deleteLogKafka()**](LoggingKafkaApi.md#deleteLogKafka) | **DELETE** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Delete the Kafka log endpoint
 [**getLogKafka()**](LoggingKafkaApi.md#getLogKafka) | **GET** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Get a Kafka log endpoint
 [**listLogKafka()**](LoggingKafkaApi.md#listLogKafka) | **GET** /service/{service_id}/version/{version_id}/logging/kafka | List Kafka log endpoints
+[**updateLogKafka()**](LoggingKafkaApi.md#updateLogKafka) | **PUT** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Update the Kafka log endpoint
 
 
 ## `createLogKafka()`
@@ -202,6 +203,44 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\LoggingKafkaResponse[]**](../Model/LoggingKafkaResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateLogKafka()`
+
+```php
+updateLogKafka($options): \Fastly\Model\LoggingKafkaResponse // Update the Kafka log endpoint
+```
+
+Update the Kafka logging endpoint for a particular service and version.
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['logging_kafka_name'] = 'logging_kafka_name_example'; // string | The name for the real-time logging configuration.
+
+try {
+    $result = $apiInstance->updateLogKafka($options);
+} catch (Exception $e) {
+    echo 'Exception when calling LoggingKafkaApi->updateLogKafka: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**logging_kafka_name** | **string** | The name for the real-time logging configuration. |
+
+### Return type
+
+[**\Fastly\Model\LoggingKafkaResponse**](../Model/LoggingKafkaResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

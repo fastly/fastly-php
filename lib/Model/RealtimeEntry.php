@@ -54,8 +54,8 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'recorded' => 'int',
-        'aggregated' => 'RealtimeMeasurements',
+        'recorded' => '\Fastly\Model\RealtimeEntryRecorded',
+        'aggregated' => '\Fastly\Model\RealtimeEntryAggregated',
         'datacenter' => 'array<string,\Fastly\Model\RealtimeMeasurements>'
     ];
 
@@ -215,7 +215,7 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recorded
      *
-     * @return int|null
+     * @return \Fastly\Model\RealtimeEntryRecorded|null
      */
     public function getRecorded()
     {
@@ -225,7 +225,7 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recorded
      *
-     * @param int|null $recorded The Unix timestamp at which this record's data was generated.
+     * @param \Fastly\Model\RealtimeEntryRecorded|null $recorded recorded
      *
      * @return self
      */
@@ -239,7 +239,7 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets aggregated
      *
-     * @return RealtimeMeasurements|null
+     * @return \Fastly\Model\RealtimeEntryAggregated|null
      */
     public function getAggregated()
     {
@@ -249,7 +249,7 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets aggregated
      *
-     * @param RealtimeMeasurements|null $aggregated Aggregates [measurements](#measurements-data-model) across all Fastly POPs.
+     * @param \Fastly\Model\RealtimeEntryAggregated|null $aggregated aggregated
      *
      * @return self
      */

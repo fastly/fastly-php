@@ -16,9 +16,11 @@ Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
 [**createServiceAuthorization()**](ServiceAuthorizationsApi.md#createServiceAuthorization) | **POST** /service-authorizations | Create service authorization
 [**deleteServiceAuthorization()**](ServiceAuthorizationsApi.md#deleteServiceAuthorization) | **DELETE** /service-authorizations/{service_authorization_id} | Delete service authorization
+[**deleteServiceAuthorization2()**](ServiceAuthorizationsApi.md#deleteServiceAuthorization2) | **DELETE** /service-authorizations | Delete service authorizations
 [**listServiceAuthorization()**](ServiceAuthorizationsApi.md#listServiceAuthorization) | **GET** /service-authorizations | List service authorizations
 [**showServiceAuthorization()**](ServiceAuthorizationsApi.md#showServiceAuthorization) | **GET** /service-authorizations/{service_authorization_id} | Show service authorization
 [**updateServiceAuthorization()**](ServiceAuthorizationsApi.md#updateServiceAuthorization) | **PATCH** /service-authorizations/{service_authorization_id} | Update service authorization
+[**updateServiceAuthorization2()**](ServiceAuthorizationsApi.md#updateServiceAuthorization2) | **PATCH** /service-authorizations | Update service authorizations
 
 
 ## `createServiceAuthorization()`
@@ -85,6 +87,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `deleteServiceAuthorization2()`
+
+```php
+deleteServiceAuthorization2($options): \Fastly\Model\InlineResponse2007 // Delete service authorizations
+```
+
+Delete service authorizations.
+
+### Example
+```php
+    $options['request_body'] = {"data":[{"id":"3krg2uUGZzb2W9Euo4moOY","type":"service_authorization"},{"id":"71ZA6hv2FO6tGEQIE203Xj","type":"service_authorization"}]}; // array<string,object>
+
+try {
+    $result = $apiInstance->deleteServiceAuthorization2($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ServiceAuthorizationsApi->deleteServiceAuthorization2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**request_body** | [**array<string,object>**](../Model/object.md) |  | [optional]
+
+### Return type
+
+[**\Fastly\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -191,6 +227,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\ServiceAuthorizationResponse**](../Model/ServiceAuthorizationResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateServiceAuthorization2()`
+
+```php
+updateServiceAuthorization2($options): \Fastly\Model\ServiceAuthorizationsResponse // Update service authorizations
+```
+
+Update service authorizations.
+
+### Example
+```php
+    $options['request_body'] = {"data":[{"id":"3krg2uUGZzb2W9Euo4moOY","type":"service_authorization","attributes":{"permission":"read_only"}},{"id":"71ZA6hv2FO6tGEQIE203Xj","type":"service_authorization","attributes":{"permission":"purge_all"}}]}; // array<string,object>
+
+try {
+    $result = $apiInstance->updateServiceAuthorization2($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ServiceAuthorizationsApi->updateServiceAuthorization2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**request_body** | [**array<string,object>**](../Model/object.md) |  | [optional]
+
+### Return type
+
+[**\Fastly\Model\ServiceAuthorizationsResponse**](../Model/ServiceAuthorizationsResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

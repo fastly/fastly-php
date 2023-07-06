@@ -14,11 +14,48 @@ $apiInstance = new Fastly\Api\RequestSettingsApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
+[**createRequestSettings()**](RequestSettingsApi.md#createRequestSettings) | **POST** /service/{service_id}/version/{version_id}/request_settings | Create a Request Settings object
 [**deleteRequestSettings()**](RequestSettingsApi.md#deleteRequestSettings) | **DELETE** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Delete a Request Settings object
 [**getRequestSettings()**](RequestSettingsApi.md#getRequestSettings) | **GET** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Get a Request Settings object
 [**listRequestSettings()**](RequestSettingsApi.md#listRequestSettings) | **GET** /service/{service_id}/version/{version_id}/request_settings | List Request Settings objects
 [**updateRequestSettings()**](RequestSettingsApi.md#updateRequestSettings) | **PUT** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Update a Request Settings object
 
+
+## `createRequestSettings()`
+
+```php
+createRequestSettings($options): \Fastly\Model\RequestSettingsResponse // Create a Request Settings object
+```
+
+Creates a new Request Settings object.
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+
+try {
+    $result = $apiInstance->createRequestSettings($options);
+} catch (Exception $e) {
+    echo 'Exception when calling RequestSettingsApi->createRequestSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+
+### Return type
+
+[**\Fastly\Model\RequestSettingsResponse**](../Model/RequestSettingsResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 
 ## `deleteRequestSettings()`
 

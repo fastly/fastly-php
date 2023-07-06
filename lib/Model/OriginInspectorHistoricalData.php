@@ -1,6 +1,6 @@
 <?php
 /**
- * EventsResponseAllOf
+ * OriginInspectorHistoricalData
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * EventsResponseAllOf Class Doc Comment
+ * OriginInspectorHistoricalData Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class OriginInspectorHistoricalData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $fastlyModelName = 'events_response_allOf';
+    protected static $fastlyModelName = 'origin_inspector_historical_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,8 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Event[]'
+        'dimensions' => '\Fastly\Model\OriginInspectorDimensions',
+        'values' => '\Fastly\Model\Values'
     ];
 
     /**
@@ -64,7 +65,8 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null
+        'dimensions' => null,
+        'values' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'dimensions' => 'dimensions',
+        'values' => 'values'
     ];
 
     /**
@@ -103,7 +106,8 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'dimensions' => 'setDimensions',
+        'values' => 'setValues'
     ];
 
     /**
@@ -112,7 +116,8 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'dimensions' => 'getDimensions',
+        'values' => 'getValues'
     ];
 
     /**
@@ -172,7 +177,8 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['dimensions'] = $data['dimensions'] ?? null;
+        $this->container['values'] = $data['values'] ?? null;
     }
 
     /**
@@ -200,25 +206,49 @@ class EventsResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets data
+     * Gets dimensions
      *
-     * @return \Fastly\Model\Event[]|null
+     * @return \Fastly\Model\OriginInspectorDimensions|null
      */
-    public function getData()
+    public function getDimensions()
     {
-        return $this->container['data'];
+        return $this->container['dimensions'];
     }
 
     /**
-     * Sets data
+     * Sets dimensions
      *
-     * @param \Fastly\Model\Event[]|null $data data
+     * @param \Fastly\Model\OriginInspectorDimensions|null $dimensions dimensions
      *
      * @return self
      */
-    public function setData($data)
+    public function setDimensions($dimensions)
     {
-        $this->container['data'] = $data;
+        $this->container['dimensions'] = $dimensions;
+
+        return $this;
+    }
+
+    /**
+     * Gets values
+     *
+     * @return \Fastly\Model\Values|null
+     */
+    public function getValues()
+    {
+        return $this->container['values'];
+    }
+
+    /**
+     * Sets values
+     *
+     * @param \Fastly\Model\Values|null $values values
+     *
+     * @return self
+     */
+    public function setValues($values)
+    {
+        $this->container['values'] = $values;
 
         return $this;
     }

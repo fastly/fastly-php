@@ -68,7 +68,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'errors' => 'int',
         'hits_time' => 'float',
         'miss_time' => 'float',
-        'miss_histogram' => 'object',
+        'miss_histogram' => 'array<string,object>',
         'compute_requests' => 'int',
         'compute_execution_time_ms' => 'float',
         'compute_ram_used' => 'int',
@@ -1841,7 +1841,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets miss_histogram
      *
-     * @return object|null
+     * @return array<string,object>|null
      */
     public function getMissHistogram()
     {
@@ -1851,7 +1851,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets miss_histogram
      *
-     * @param object|null $miss_histogram A histogram. Each key represents the upper bound of a span of 10 milliseconds and the values represent the number of requests to origin during that 10ms period. Any origin request that takes more than 60 seconds to return will be in the 60000 bucket.
+     * @param array<string,object>|null $miss_histogram A histogram. Each key represents the upper bound of a span of 10 milliseconds and the values represent the number of requests to origin during that 10ms period. Any origin request that takes more than 60 seconds to return will be in the 60000 bucket.
      *
      * @return self
      */

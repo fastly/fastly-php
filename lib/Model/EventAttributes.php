@@ -59,7 +59,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'string',
         'event_type' => 'string',
         'ip' => 'string',
-        'metadata' => 'object',
+        'metadata' => 'array<string,object>',
         'service_id' => 'string',
         'user_id' => 'string',
         'token_id' => 'string'
@@ -684,7 +684,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets metadata
      *
-     * @return object|null
+     * @return array<string,object>|null
      */
     public function getMetadata()
     {
@@ -694,7 +694,7 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param object|null $metadata Hash of key value pairs of additional information.
+     * @param array<string,object>|null $metadata Hash of key value pairs of additional information.
      *
      * @return self
      */

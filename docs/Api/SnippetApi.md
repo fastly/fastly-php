@@ -19,6 +19,7 @@ Method | Fastly API endpoint | Description
 [**getSnippet()**](SnippetApi.md#getSnippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Get a versioned snippet
 [**getSnippetDynamic()**](SnippetApi.md#getSnippetDynamic) | **GET** /service/{service_id}/snippet/{snippet_id} | Get a dynamic snippet
 [**listSnippets()**](SnippetApi.md#listSnippets) | **GET** /service/{service_id}/version/{version_id}/snippet | List snippets
+[**updateSnippet()**](SnippetApi.md#updateSnippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Update a versioned snippet
 [**updateSnippetDynamic()**](SnippetApi.md#updateSnippetDynamic) | **PUT** /service/{service_id}/snippet/{snippet_id} | Update a dynamic snippet
 
 
@@ -212,6 +213,44 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\SnippetResponse[]**](../Model/SnippetResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateSnippet()`
+
+```php
+updateSnippet($options): \Fastly\Model\SnippetResponse // Update a versioned snippet
+```
+
+Update a specific snippet for a particular service and version.
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['snippet_name'] = 'snippet_name_example'; // string | The name for the snippet.
+
+try {
+    $result = $apiInstance->updateSnippet($options);
+} catch (Exception $e) {
+    echo 'Exception when calling SnippetApi->updateSnippet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**snippet_name** | **string** | The name for the snippet. |
+
+### Return type
+
+[**\Fastly\Model\SnippetResponse**](../Model/SnippetResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

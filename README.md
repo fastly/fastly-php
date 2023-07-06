@@ -88,6 +88,7 @@ Class | Method | Description
 [*AclEntryApi*](docs/Api/AclEntryApi.md) | [**getAclEntry**](docs/Api/AclEntryApi.md#getaclentry) | Describe an ACL entry
 [*AclEntryApi*](docs/Api/AclEntryApi.md) | [**listAclEntries**](docs/Api/AclEntryApi.md#listaclentries) | List ACL entries
 [*AclEntryApi*](docs/Api/AclEntryApi.md) | [**updateAclEntry**](docs/Api/AclEntryApi.md#updateaclentry) | Update an ACL entry
+[*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**createApexRedirect**](docs/Api/ApexRedirectApi.md#createapexredirect) | Create an apex redirect
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**deleteApexRedirect**](docs/Api/ApexRedirectApi.md#deleteapexredirect) | Delete an apex redirect
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**getApexRedirect**](docs/Api/ApexRedirectApi.md#getapexredirect) | Get an apex redirect
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**listApexRedirects**](docs/Api/ApexRedirectApi.md#listapexredirects) | List apex redirects
@@ -133,6 +134,7 @@ Class | Method | Description
 [*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**listConfigStoreItems**](docs/Api/ConfigStoreItemApi.md#listconfigstoreitems) | List items in a config store
 [*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**updateConfigStoreItem**](docs/Api/ConfigStoreItemApi.md#updateconfigstoreitem) | Update an entry in a config store
 [*ConfigStoreItemApi*](docs/Api/ConfigStoreItemApi.md) | [**upsertConfigStoreItem**](docs/Api/ConfigStoreItemApi.md#upsertconfigstoreitem) | Insert or update an entry in a config store
+[*ContactApi*](docs/Api/ContactApi.md) | [**createContacts**](docs/Api/ContactApi.md#createcontacts) | Add a new customer contact
 [*ContactApi*](docs/Api/ContactApi.md) | [**deleteContact**](docs/Api/ContactApi.md#deletecontact) | Delete a contact
 [*ContactApi*](docs/Api/ContactApi.md) | [**listContacts**](docs/Api/ContactApi.md#listcontacts) | List contacts
 [*ContentApi*](docs/Api/ContentApi.md) | [**contentCheck**](docs/Api/ContentApi.md#contentcheck) | Check status of content in each POP&#39;s cache
@@ -159,6 +161,7 @@ Class | Method | Description
 [*DirectorApi*](docs/Api/DirectorApi.md) | [**deleteDirector**](docs/Api/DirectorApi.md#deletedirector) | Delete a director
 [*DirectorApi*](docs/Api/DirectorApi.md) | [**getDirector**](docs/Api/DirectorApi.md#getdirector) | Get a director
 [*DirectorApi*](docs/Api/DirectorApi.md) | [**listDirectors**](docs/Api/DirectorApi.md#listdirectors) | List directors
+[*DirectorApi*](docs/Api/DirectorApi.md) | [**updateDirector**](docs/Api/DirectorApi.md#updatedirector) | Update a director
 [*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**createDirectorBackend**](docs/Api/DirectorBackendApi.md#createdirectorbackend) | Create a director-backend relationship
 [*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**deleteDirectorBackend**](docs/Api/DirectorBackendApi.md#deletedirectorbackend) | Delete a director-backend relationship
 [*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**getDirectorBackend**](docs/Api/DirectorBackendApi.md#getdirectorbackend) | Get a director-backend relationship
@@ -169,6 +172,10 @@ Class | Method | Description
 [*DomainApi*](docs/Api/DomainApi.md) | [**getDomain**](docs/Api/DomainApi.md#getdomain) | Describe a domain
 [*DomainApi*](docs/Api/DomainApi.md) | [**listDomains**](docs/Api/DomainApi.md#listdomains) | List domains
 [*DomainApi*](docs/Api/DomainApi.md) | [**updateDomain**](docs/Api/DomainApi.md#updatedomain) | Update a domain
+[*DomainInspectorHistoricalApi*](docs/Api/DomainInspectorHistoricalApi.md) | [**getDomainInspectorHistorical**](docs/Api/DomainInspectorHistoricalApi.md#getdomaininspectorhistorical) | Get historical domain data for a service
+[*DomainInspectorRealtimeApi*](docs/Api/DomainInspectorRealtimeApi.md) | [**getDomainInspectorLast120Seconds**](docs/Api/DomainInspectorRealtimeApi.md#getdomaininspectorlast120seconds) | Get real-time domain data for the last 120 seconds
+[*DomainInspectorRealtimeApi*](docs/Api/DomainInspectorRealtimeApi.md) | [**getDomainInspectorLastMaxEntries**](docs/Api/DomainInspectorRealtimeApi.md#getdomaininspectorlastmaxentries) | Get a limited number of real-time domain data entries
+[*DomainInspectorRealtimeApi*](docs/Api/DomainInspectorRealtimeApi.md) | [**getDomainInspectorLastSecond**](docs/Api/DomainInspectorRealtimeApi.md#getdomaininspectorlastsecond) | Get real-time domain data from a specified time
 [*DomainOwnershipsApi*](docs/Api/DomainOwnershipsApi.md) | [**listDomainOwnerships**](docs/Api/DomainOwnershipsApi.md#listdomainownerships) | List domain-ownerships
 [*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**disableProduct**](docs/Api/EnabledProductsApi.md#disableproduct) | Disable a product
 [*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**enableProduct**](docs/Api/EnabledProductsApi.md#enableproduct) | Enable a product
@@ -203,20 +210,36 @@ Class | Method | Description
 [*Http3Api*](docs/Api/Http3Api.md) | [**deleteHttp3**](docs/Api/Http3Api.md#deletehttp3) | Disable support for HTTP/3
 [*Http3Api*](docs/Api/Http3Api.md) | [**getHttp3**](docs/Api/Http3Api.md#gethttp3) | Get HTTP/3 status
 [*IamPermissionsApi*](docs/Api/IamPermissionsApi.md) | [**listPermissions**](docs/Api/IamPermissionsApi.md#listpermissions) | List permissions
+[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**addRolePermissions**](docs/Api/IamRolesApi.md#addrolepermissions) | Add permissions to a role
+[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**createARole**](docs/Api/IamRolesApi.md#createarole) | Create a role
 [*IamRolesApi*](docs/Api/IamRolesApi.md) | [**deleteARole**](docs/Api/IamRolesApi.md#deletearole) | Delete a role
 [*IamRolesApi*](docs/Api/IamRolesApi.md) | [**getARole**](docs/Api/IamRolesApi.md#getarole) | Get a role
 [*IamRolesApi*](docs/Api/IamRolesApi.md) | [**listRolePermissions**](docs/Api/IamRolesApi.md#listrolepermissions) | List permissions in a role
 [*IamRolesApi*](docs/Api/IamRolesApi.md) | [**listRoles**](docs/Api/IamRolesApi.md#listroles) | List roles
+[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**removeRolePermissions**](docs/Api/IamRolesApi.md#removerolepermissions) | Remove permissions from a role
+[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**updateARole**](docs/Api/IamRolesApi.md#updatearole) | Update a role
+[*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**addServiceGroupServices**](docs/Api/IamServiceGroupsApi.md#addservicegroupservices) | Add services in a service group
+[*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**createAServiceGroup**](docs/Api/IamServiceGroupsApi.md#createaservicegroup) | Create a service group
 [*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**deleteAServiceGroup**](docs/Api/IamServiceGroupsApi.md#deleteaservicegroup) | Delete a service group
 [*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**getAServiceGroup**](docs/Api/IamServiceGroupsApi.md#getaservicegroup) | Get a service group
 [*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**listServiceGroupServices**](docs/Api/IamServiceGroupsApi.md#listservicegroupservices) | List services to a service group
 [*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**listServiceGroups**](docs/Api/IamServiceGroupsApi.md#listservicegroups) | List service groups
+[*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**removeServiceGroupServices**](docs/Api/IamServiceGroupsApi.md#removeservicegroupservices) | Remove services from a service group
+[*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**updateAServiceGroup**](docs/Api/IamServiceGroupsApi.md#updateaservicegroup) | Update a service group
+[*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**addUserGroupMembers**](docs/Api/IamUserGroupsApi.md#addusergroupmembers) | Add members to a user group
+[*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**addUserGroupRoles**](docs/Api/IamUserGroupsApi.md#addusergrouproles) | Add roles to a user group
+[*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**addUserGroupServiceGroups**](docs/Api/IamUserGroupsApi.md#addusergroupservicegroups) | Add service groups to a user group
+[*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**createAUserGroup**](docs/Api/IamUserGroupsApi.md#createausergroup) | Create a user group
 [*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**deleteAUserGroup**](docs/Api/IamUserGroupsApi.md#deleteausergroup) | Delete a user group
 [*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**getAUserGroup**](docs/Api/IamUserGroupsApi.md#getausergroup) | Get a user group
 [*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**listUserGroupMembers**](docs/Api/IamUserGroupsApi.md#listusergroupmembers) | List members of a user group
 [*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**listUserGroupRoles**](docs/Api/IamUserGroupsApi.md#listusergrouproles) | List roles in a user group
 [*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**listUserGroupServiceGroups**](docs/Api/IamUserGroupsApi.md#listusergroupservicegroups) | List service groups in a user group
 [*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**listUserGroups**](docs/Api/IamUserGroupsApi.md#listusergroups) | List user groups
+[*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**removeUserGroupMembers**](docs/Api/IamUserGroupsApi.md#removeusergroupmembers) | Remove members of a user group
+[*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**removeUserGroupRoles**](docs/Api/IamUserGroupsApi.md#removeusergrouproles) | Remove roles from a user group
+[*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**removeUserGroupServiceGroups**](docs/Api/IamUserGroupsApi.md#removeusergroupservicegroups) | Remove service groups from a user group
+[*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**updateAUserGroup**](docs/Api/IamUserGroupsApi.md#updateausergroup) | Update a user group
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**createInvitation**](docs/Api/InvitationsApi.md#createinvitation) | Create an invitation
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**deleteInvitation**](docs/Api/InvitationsApi.md#deleteinvitation) | Delete an invitation
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**listInvitations**](docs/Api/InvitationsApi.md#listinvitations) | List invitations
@@ -228,6 +251,34 @@ Class | Method | Description
 [*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**getKeys**](docs/Api/KvStoreItemApi.md#getkeys) | List kv store keys.
 [*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**getValueForKey**](docs/Api/KvStoreItemApi.md#getvalueforkey) | Get the value of an kv store item
 [*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**setValueForKey**](docs/Api/KvStoreItemApi.md#setvalueforkey) | Insert an item into an kv store
+[*LegacyWafConfigurationSetsApi*](docs/Api/LegacyWafConfigurationSetsApi.md) | [**listWafConfigSets**](docs/Api/LegacyWafConfigurationSetsApi.md#listwafconfigsets) | List configuration sets
+[*LegacyWafConfigurationSetsApi*](docs/Api/LegacyWafConfigurationSetsApi.md) | [**listWafsConfigSet**](docs/Api/LegacyWafConfigurationSetsApi.md#listwafsconfigset) | List WAFs currently using a configuration set
+[*LegacyWafConfigurationSetsApi*](docs/Api/LegacyWafConfigurationSetsApi.md) | [**useWafConfigSet**](docs/Api/LegacyWafConfigurationSetsApi.md#usewafconfigset) | Apply a configuration set to a WAF
+[*LegacyWafFirewallApi*](docs/Api/LegacyWafFirewallApi.md) | [**createLegacyWafFirewallService**](docs/Api/LegacyWafFirewallApi.md#createlegacywaffirewallservice) | Create a firewall
+[*LegacyWafFirewallApi*](docs/Api/LegacyWafFirewallApi.md) | [**disableLegacyWafFirewall**](docs/Api/LegacyWafFirewallApi.md#disablelegacywaffirewall) | Disable a firewall
+[*LegacyWafFirewallApi*](docs/Api/LegacyWafFirewallApi.md) | [**enableLegacyWafFirewall**](docs/Api/LegacyWafFirewallApi.md#enablelegacywaffirewall) | Enable a firewall
+[*LegacyWafFirewallApi*](docs/Api/LegacyWafFirewallApi.md) | [**getLegacyWafFirewall**](docs/Api/LegacyWafFirewallApi.md#getlegacywaffirewall) | Get a firewall object
+[*LegacyWafFirewallApi*](docs/Api/LegacyWafFirewallApi.md) | [**getLegacyWafFirewallService**](docs/Api/LegacyWafFirewallApi.md#getlegacywaffirewallservice) | Get a firewall
+[*LegacyWafFirewallApi*](docs/Api/LegacyWafFirewallApi.md) | [**listLegacyWafFirewalls**](docs/Api/LegacyWafFirewallApi.md#listlegacywaffirewalls) | List active firewalls
+[*LegacyWafFirewallApi*](docs/Api/LegacyWafFirewallApi.md) | [**listLegacyWafFirewallsService**](docs/Api/LegacyWafFirewallApi.md#listlegacywaffirewallsservice) | List firewalls
+[*LegacyWafFirewallApi*](docs/Api/LegacyWafFirewallApi.md) | [**updateLegacyWafFirewallService**](docs/Api/LegacyWafFirewallApi.md#updatelegacywaffirewallservice) | Update a firewall
+[*LegacyWafOwaspApi*](docs/Api/LegacyWafOwaspApi.md) | [**createOwaspSettings**](docs/Api/LegacyWafOwaspApi.md#createowaspsettings) | Create an OWASP settings object
+[*LegacyWafOwaspApi*](docs/Api/LegacyWafOwaspApi.md) | [**getOwaspSettings**](docs/Api/LegacyWafOwaspApi.md#getowaspsettings) | Get the OWASP settings object
+[*LegacyWafOwaspApi*](docs/Api/LegacyWafOwaspApi.md) | [**updateOwaspSettings**](docs/Api/LegacyWafOwaspApi.md#updateowaspsettings) | Update the OWASP settings object
+[*LegacyWafRuleApi*](docs/Api/LegacyWafRuleApi.md) | [**getLegacyWafFirewallRuleVcl**](docs/Api/LegacyWafRuleApi.md#getlegacywaffirewallrulevcl) | Get VCL for a rule associated with a firewall
+[*LegacyWafRuleApi*](docs/Api/LegacyWafRuleApi.md) | [**getLegacyWafRule**](docs/Api/LegacyWafRuleApi.md#getlegacywafrule) | Get a rule
+[*LegacyWafRuleApi*](docs/Api/LegacyWafRuleApi.md) | [**getLegacyWafRuleVcl**](docs/Api/LegacyWafRuleApi.md#getlegacywafrulevcl) | Get VCL for a rule
+[*LegacyWafRuleApi*](docs/Api/LegacyWafRuleApi.md) | [**listLegacyWafRules**](docs/Api/LegacyWafRuleApi.md#listlegacywafrules) | List rules in the latest configuration set
+[*LegacyWafRuleStatusApi*](docs/Api/LegacyWafRuleStatusApi.md) | [**getWafFirewallRuleStatus**](docs/Api/LegacyWafRuleStatusApi.md#getwaffirewallrulestatus) | Get the status of a rule on a firewall
+[*LegacyWafRuleStatusApi*](docs/Api/LegacyWafRuleStatusApi.md) | [**listWafFirewallRuleStatuses**](docs/Api/LegacyWafRuleStatusApi.md#listwaffirewallrulestatuses) | List rule statuses
+[*LegacyWafRuleStatusApi*](docs/Api/LegacyWafRuleStatusApi.md) | [**updateWafFirewallRuleStatus**](docs/Api/LegacyWafRuleStatusApi.md#updatewaffirewallrulestatus) | Update the status of a rule
+[*LegacyWafRuleStatusApi*](docs/Api/LegacyWafRuleStatusApi.md) | [**updateWafFirewallRuleStatusesTag**](docs/Api/LegacyWafRuleStatusApi.md#updatewaffirewallrulestatusestag) | Create or update status of a tagged group of rules
+[*LegacyWafRulesetApi*](docs/Api/LegacyWafRulesetApi.md) | [**getWafRuleset**](docs/Api/LegacyWafRulesetApi.md#getwafruleset) | Get a WAF ruleset
+[*LegacyWafRulesetApi*](docs/Api/LegacyWafRulesetApi.md) | [**getWafRulesetVcl**](docs/Api/LegacyWafRulesetApi.md#getwafrulesetvcl) | Generate WAF ruleset VCL
+[*LegacyWafRulesetApi*](docs/Api/LegacyWafRulesetApi.md) | [**updateWafRuleset**](docs/Api/LegacyWafRulesetApi.md#updatewafruleset) | Update a WAF ruleset
+[*LegacyWafTagApi*](docs/Api/LegacyWafTagApi.md) | [**listLegacyWafTags**](docs/Api/LegacyWafTagApi.md#listlegacywaftags) | List WAF tags
+[*LegacyWafUpdateStatusApi*](docs/Api/LegacyWafUpdateStatusApi.md) | [**getWafUpdateStatus**](docs/Api/LegacyWafUpdateStatusApi.md#getwafupdatestatus) | Get the status of a WAF update
+[*LegacyWafUpdateStatusApi*](docs/Api/LegacyWafUpdateStatusApi.md) | [**listWafUpdateStatuses**](docs/Api/LegacyWafUpdateStatusApi.md#listwafupdatestatuses) | List update statuses
 [*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**createLogAzure**](docs/Api/LoggingAzureblobApi.md#createlogazure) | Create an Azure Blob Storage log endpoint
 [*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**deleteLogAzure**](docs/Api/LoggingAzureblobApi.md#deletelogazure) | Delete the Azure Blob Storage log endpoint
 [*LoggingAzureblobApi*](docs/Api/LoggingAzureblobApi.md) | [**getLogAzure**](docs/Api/LoggingAzureblobApi.md#getlogazure) | Get an Azure Blob Storage log endpoint
@@ -287,10 +338,12 @@ Class | Method | Description
 [*LoggingKafkaApi*](docs/Api/LoggingKafkaApi.md) | [**deleteLogKafka**](docs/Api/LoggingKafkaApi.md#deletelogkafka) | Delete the Kafka log endpoint
 [*LoggingKafkaApi*](docs/Api/LoggingKafkaApi.md) | [**getLogKafka**](docs/Api/LoggingKafkaApi.md#getlogkafka) | Get a Kafka log endpoint
 [*LoggingKafkaApi*](docs/Api/LoggingKafkaApi.md) | [**listLogKafka**](docs/Api/LoggingKafkaApi.md#listlogkafka) | List Kafka log endpoints
+[*LoggingKafkaApi*](docs/Api/LoggingKafkaApi.md) | [**updateLogKafka**](docs/Api/LoggingKafkaApi.md#updatelogkafka) | Update the Kafka log endpoint
 [*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**createLogKinesis**](docs/Api/LoggingKinesisApi.md#createlogkinesis) | Create  an Amazon Kinesis log endpoint
 [*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**deleteLogKinesis**](docs/Api/LoggingKinesisApi.md#deletelogkinesis) | Delete the Amazon Kinesis log endpoint
 [*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**getLogKinesis**](docs/Api/LoggingKinesisApi.md#getlogkinesis) | Get an Amazon Kinesis log endpoint
 [*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**listLogKinesis**](docs/Api/LoggingKinesisApi.md#listlogkinesis) | List Amazon Kinesis log endpoints
+[*LoggingKinesisApi*](docs/Api/LoggingKinesisApi.md) | [**updateLogKinesis**](docs/Api/LoggingKinesisApi.md#updatelogkinesis) | Update the Amazon Kinesis log endpoint
 [*LoggingLogentriesApi*](docs/Api/LoggingLogentriesApi.md) | [**createLogLogentries**](docs/Api/LoggingLogentriesApi.md#createloglogentries) | Create a Logentries log endpoint
 [*LoggingLogentriesApi*](docs/Api/LoggingLogentriesApi.md) | [**deleteLogLogentries**](docs/Api/LoggingLogentriesApi.md#deleteloglogentries) | Delete a Logentries log endpoint
 [*LoggingLogentriesApi*](docs/Api/LoggingLogentriesApi.md) | [**getLogLogentries**](docs/Api/LoggingLogentriesApi.md#getloglogentries) | Get a Logentries log endpoint
@@ -361,6 +414,10 @@ Class | Method | Description
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**getMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#getmutualauthentication) | Get a Mutual Authentication
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**listMutualAuthentications**](docs/Api/MutualAuthenticationApi.md#listmutualauthentications) | List Mutual Authentications
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**patchMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#patchmutualauthentication) | Update a Mutual Authentication
+[*OriginInspectorHistoricalApi*](docs/Api/OriginInspectorHistoricalApi.md) | [**getOriginInspectorHistorical**](docs/Api/OriginInspectorHistoricalApi.md#getorigininspectorhistorical) | Get historical origin data for a service
+[*OriginInspectorRealtimeApi*](docs/Api/OriginInspectorRealtimeApi.md) | [**getOriginInspectorLast120Seconds**](docs/Api/OriginInspectorRealtimeApi.md#getorigininspectorlast120seconds) | Get real-time origin data for the last 120 seconds
+[*OriginInspectorRealtimeApi*](docs/Api/OriginInspectorRealtimeApi.md) | [**getOriginInspectorLastMaxEntries**](docs/Api/OriginInspectorRealtimeApi.md#getorigininspectorlastmaxentries) | Get a limited number of real-time origin data entries
+[*OriginInspectorRealtimeApi*](docs/Api/OriginInspectorRealtimeApi.md) | [**getOriginInspectorLastSecond**](docs/Api/OriginInspectorRealtimeApi.md#getorigininspectorlastsecond) | Get real-time origin data from specific time.
 [*PackageApi*](docs/Api/PackageApi.md) | [**getPackage**](docs/Api/PackageApi.md#getpackage) | Get details of the service&#39;s Compute@Edge package.
 [*PackageApi*](docs/Api/PackageApi.md) | [**putPackage**](docs/Api/PackageApi.md#putpackage) | Upload a Compute@Edge package.
 [*PoolApi*](docs/Api/PoolApi.md) | [**createServerPool**](docs/Api/PoolApi.md#createserverpool) | Create a server pool
@@ -383,6 +440,7 @@ Class | Method | Description
 [*RealtimeApi*](docs/Api/RealtimeApi.md) | [**getStatsLast120Seconds**](docs/Api/RealtimeApi.md#getstatslast120seconds) | Get real-time data for the last 120 seconds
 [*RealtimeApi*](docs/Api/RealtimeApi.md) | [**getStatsLast120SecondsLimitEntries**](docs/Api/RealtimeApi.md#getstatslast120secondslimitentries) | Get a limited number of real-time data entries
 [*RealtimeApi*](docs/Api/RealtimeApi.md) | [**getStatsLastSecond**](docs/Api/RealtimeApi.md#getstatslastsecond) | Get real-time data from specified time
+[*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**createRequestSettings**](docs/Api/RequestSettingsApi.md#createrequestsettings) | Create a Request Settings object
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**deleteRequestSettings**](docs/Api/RequestSettingsApi.md#deleterequestsettings) | Delete a Request Settings object
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**getRequestSettings**](docs/Api/RequestSettingsApi.md#getrequestsettings) | Get a Request Settings object
 [*RequestSettingsApi*](docs/Api/RequestSettingsApi.md) | [**listRequestSettings**](docs/Api/RequestSettingsApi.md#listrequestsettings) | List Request Settings objects
@@ -392,9 +450,23 @@ Class | Method | Description
 [*ResourceApi*](docs/Api/ResourceApi.md) | [**getResource**](docs/Api/ResourceApi.md#getresource) | Display a resource link
 [*ResourceApi*](docs/Api/ResourceApi.md) | [**listResources**](docs/Api/ResourceApi.md#listresources) | List resource links
 [*ResourceApi*](docs/Api/ResourceApi.md) | [**updateResource**](docs/Api/ResourceApi.md#updateresource) | Update a resource link
+[*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**createResponseObject**](docs/Api/ResponseObjectApi.md#createresponseobject) | Create a Response object
 [*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**deleteResponseObject**](docs/Api/ResponseObjectApi.md#deleteresponseobject) | Delete a Response Object
 [*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**getResponseObject**](docs/Api/ResponseObjectApi.md#getresponseobject) | Get a Response object
 [*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**listResponseObjects**](docs/Api/ResponseObjectApi.md#listresponseobjects) | List Response objects
+[*ResponseObjectApi*](docs/Api/ResponseObjectApi.md) | [**updateResponseObject**](docs/Api/ResponseObjectApi.md#updateresponseobject) | Update a Response object
+[*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**clientKey**](docs/Api/SecretStoreApi.md#clientkey) | Create new client key
+[*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**createSecretStore**](docs/Api/SecretStoreApi.md#createsecretstore) | Create new secret store
+[*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**deleteSecretStore**](docs/Api/SecretStoreApi.md#deletesecretstore) | Delete secret store
+[*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**getSecretStore**](docs/Api/SecretStoreApi.md#getsecretstore) | Create secret store by ID
+[*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**getSecretStores**](docs/Api/SecretStoreApi.md#getsecretstores) | Get all secret stores
+[*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**signingKey**](docs/Api/SecretStoreApi.md#signingkey) | Get public key
+[*SecretStoreItemApi*](docs/Api/SecretStoreItemApi.md) | [**createSecret**](docs/Api/SecretStoreItemApi.md#createsecret) | Create a new secret in a store.
+[*SecretStoreItemApi*](docs/Api/SecretStoreItemApi.md) | [**deleteSecret**](docs/Api/SecretStoreItemApi.md#deletesecret) | Delete a secret from a store.
+[*SecretStoreItemApi*](docs/Api/SecretStoreItemApi.md) | [**getSecret**](docs/Api/SecretStoreItemApi.md#getsecret) | Get secret metadata.
+[*SecretStoreItemApi*](docs/Api/SecretStoreItemApi.md) | [**getSecrets**](docs/Api/SecretStoreItemApi.md#getsecrets) | List secrets within a store.
+[*SecretStoreItemApi*](docs/Api/SecretStoreItemApi.md) | [**mustRecreateSecret**](docs/Api/SecretStoreItemApi.md#mustrecreatesecret) | Recreate a secret in a store.
+[*SecretStoreItemApi*](docs/Api/SecretStoreItemApi.md) | [**recreateSecret**](docs/Api/SecretStoreItemApi.md#recreatesecret) | Create or recreate a secret in a store.
 [*ServerApi*](docs/Api/ServerApi.md) | [**createPoolServer**](docs/Api/ServerApi.md#createpoolserver) | Add a server to a pool
 [*ServerApi*](docs/Api/ServerApi.md) | [**deletePoolServer**](docs/Api/ServerApi.md#deletepoolserver) | Delete a server from a pool
 [*ServerApi*](docs/Api/ServerApi.md) | [**getPoolServer**](docs/Api/ServerApi.md#getpoolserver) | Get a pool server
@@ -410,9 +482,11 @@ Class | Method | Description
 [*ServiceApi*](docs/Api/ServiceApi.md) | [**updateService**](docs/Api/ServiceApi.md#updateservice) | Update a service
 [*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**createServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#createserviceauthorization) | Create service authorization
 [*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**deleteServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#deleteserviceauthorization) | Delete service authorization
+[*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**deleteServiceAuthorization2**](docs/Api/ServiceAuthorizationsApi.md#deleteserviceauthorization2) | Delete service authorizations
 [*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**listServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#listserviceauthorization) | List service authorizations
 [*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**showServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#showserviceauthorization) | Show service authorization
 [*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**updateServiceAuthorization**](docs/Api/ServiceAuthorizationsApi.md#updateserviceauthorization) | Update service authorization
+[*ServiceAuthorizationsApi*](docs/Api/ServiceAuthorizationsApi.md) | [**updateServiceAuthorization2**](docs/Api/ServiceAuthorizationsApi.md#updateserviceauthorization2) | Update service authorizations
 [*SettingsApi*](docs/Api/SettingsApi.md) | [**getServiceSettings**](docs/Api/SettingsApi.md#getservicesettings) | Get service settings
 [*SettingsApi*](docs/Api/SettingsApi.md) | [**updateServiceSettings**](docs/Api/SettingsApi.md#updateservicesettings) | Update service settings
 [*SnippetApi*](docs/Api/SnippetApi.md) | [**createSnippet**](docs/Api/SnippetApi.md#createsnippet) | Create a snippet
@@ -420,12 +494,14 @@ Class | Method | Description
 [*SnippetApi*](docs/Api/SnippetApi.md) | [**getSnippet**](docs/Api/SnippetApi.md#getsnippet) | Get a versioned snippet
 [*SnippetApi*](docs/Api/SnippetApi.md) | [**getSnippetDynamic**](docs/Api/SnippetApi.md#getsnippetdynamic) | Get a dynamic snippet
 [*SnippetApi*](docs/Api/SnippetApi.md) | [**listSnippets**](docs/Api/SnippetApi.md#listsnippets) | List snippets
+[*SnippetApi*](docs/Api/SnippetApi.md) | [**updateSnippet**](docs/Api/SnippetApi.md#updatesnippet) | Update a versioned snippet
 [*SnippetApi*](docs/Api/SnippetApi.md) | [**updateSnippetDynamic**](docs/Api/SnippetApi.md#updatesnippetdynamic) | Update a dynamic snippet
 [*StarApi*](docs/Api/StarApi.md) | [**createServiceStar**](docs/Api/StarApi.md#createservicestar) | Create a star
 [*StarApi*](docs/Api/StarApi.md) | [**deleteServiceStar**](docs/Api/StarApi.md#deleteservicestar) | Delete a star
 [*StarApi*](docs/Api/StarApi.md) | [**getServiceStar**](docs/Api/StarApi.md#getservicestar) | Get a star
 [*StarApi*](docs/Api/StarApi.md) | [**listServiceStars**](docs/Api/StarApi.md#listservicestars) | List stars
 [*StatsApi*](docs/Api/StatsApi.md) | [**getServiceStats**](docs/Api/StatsApi.md#getservicestats) | Get stats for a service
+[*SudoApi*](docs/Api/SudoApi.md) | [**requestSudoAccess**](docs/Api/SudoApi.md#requestsudoaccess) | Request Sudo access
 [*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**createTlsActivation**](docs/Api/TlsActivationsApi.md#createtlsactivation) | Enable TLS for a domain using a custom certificate
 [*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**deleteTlsActivation**](docs/Api/TlsActivationsApi.md#deletetlsactivation) | Disable TLS on a domain
 [*TlsActivationsApi*](docs/Api/TlsActivationsApi.md) | [**getTlsActivation**](docs/Api/TlsActivationsApi.md#gettlsactivation) | Get a TLS activation
@@ -456,6 +532,8 @@ Class | Method | Description
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**getTlsSub**](docs/Api/TlsSubscriptionsApi.md#gettlssub) | Get a TLS subscription
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**listTlsSubs**](docs/Api/TlsSubscriptionsApi.md#listtlssubs) | List TLS subscriptions
 [*TlsSubscriptionsApi*](docs/Api/TlsSubscriptionsApi.md) | [**patchTlsSub**](docs/Api/TlsSubscriptionsApi.md#patchtlssub) | Update a TLS subscription
+[*TokensApi*](docs/Api/TokensApi.md) | [**bulkRevokeTokens**](docs/Api/TokensApi.md#bulkrevoketokens) | Revoke multiple tokens
+[*TokensApi*](docs/Api/TokensApi.md) | [**createToken**](docs/Api/TokensApi.md#createtoken) | Create a token
 [*TokensApi*](docs/Api/TokensApi.md) | [**getToken**](docs/Api/TokensApi.md#gettoken) | Get a token
 [*TokensApi*](docs/Api/TokensApi.md) | [**getTokenCurrent**](docs/Api/TokensApi.md#gettokencurrent) | Get the current token
 [*TokensApi*](docs/Api/TokensApi.md) | [**listTokensCustomer**](docs/Api/TokensApi.md#listtokenscustomer) | List tokens for a customer
@@ -492,6 +570,7 @@ Class | Method | Description
 [*VersionApi*](docs/Api/VersionApi.md) | [**lockServiceVersion**](docs/Api/VersionApi.md#lockserviceversion) | Lock a service version
 [*VersionApi*](docs/Api/VersionApi.md) | [**updateServiceVersion**](docs/Api/VersionApi.md#updateserviceversion) | Update a service version
 [*VersionApi*](docs/Api/VersionApi.md) | [**validateServiceVersion**](docs/Api/VersionApi.md#validateserviceversion) | Validate a service version
+[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**bulkDeleteWafActiveRules**](docs/Api/WafActiveRulesApi.md#bulkdeletewafactiverules) | Delete multiple active rules from a WAF
 [*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**bulkUpdateWafActiveRules**](docs/Api/WafActiveRulesApi.md#bulkupdatewafactiverules) | Update multiple active rules
 [*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**createWafActiveRule**](docs/Api/WafActiveRulesApi.md#createwafactiverule) | Add a rule to a WAF as an active rule
 [*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**createWafActiveRulesTag**](docs/Api/WafActiveRulesApi.md#createwafactiverulestag) | Create active rules by tag
@@ -526,70 +605,12 @@ Class | Method | Description
 
 The fastly-php API client currently does not support the following endpoints:
 
-- [`/customer/{customer_id}/contacts`](https://developer.fastly.com/reference/api/account/contact) (POST)
-- [`/metrics/domains/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/historical) (GET)
-- [`/metrics/origins/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/historical) (GET)
 - [`/resources/stores/kv/{store_id}/batch`](https://developer.fastly.com/reference/api/services/resources/kv-store-item) (PUT)
-- [`/resources/stores/secret/client-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (POST)
-- [`/resources/stores/secret/signing-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET)
-- [`/resources/stores/secret/{store_id}/secrets/{secret_name}`](https://developer.fastly.com/reference/api/services/resources/secret) (DELETE, GET)
-- [`/resources/stores/secret/{store_id}/secrets`](https://developer.fastly.com/reference/api/services/resources/secret) (GET, PATCH, POST, PUT)
-- [`/resources/stores/secret/{store_id}`](https://developer.fastly.com/reference/api/services/resources/secret-store) (DELETE, GET)
-- [`/resources/stores/secret`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET, POST)
-- [`/roles/{role_id}/permissions`](https://developer.fastly.com/reference/api/account/roles) (DELETE, POST)
-- [`/roles/{role_id}`](https://developer.fastly.com/reference/api/account/roles) (PATCH)
-- [`/roles`](https://developer.fastly.com/reference/api/account/roles) (POST)
-- [`/service-authorizations`](https://developer.fastly.com/reference/api/account/service-authorization) (DELETE, PATCH)
-- [`/service-groups/{service_group_id}/services`](https://developer.fastly.com/reference/api/account/service-groups) (DELETE, POST)
-- [`/service-groups/{service_group_id}`](https://developer.fastly.com/reference/api/account/service-groups) (PATCH)
-- [`/service-groups`](https://developer.fastly.com/reference/api/account/service-groups) (POST)
-- [`/service/{service_id}/version/{version_id}/apex-redirects`](https://developer.fastly.com/reference/api/vcl-services/apex-redirect) (POST)
-- [`/service/{service_id}/version/{version_id}/director/{director_name}`](https://developer.fastly.com/reference/api/load-balancing/directors/director) (PUT)
-- [`/service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name}`](https://developer.fastly.com/reference/api/logging/kafka) (PUT)
-- [`/service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name}`](https://developer.fastly.com/reference/api/logging/kinesis) (PUT)
-- [`/service/{service_id}/version/{version_id}/request_settings`](https://developer.fastly.com/reference/api/vcl-services/request-settings) (POST)
-- [`/service/{service_id}/version/{version_id}/response_object/{response_object_name}`](https://developer.fastly.com/reference/api/vcl-services/response-object) (PUT)
-- [`/service/{service_id}/version/{version_id}/response_object`](https://developer.fastly.com/reference/api/vcl-services/response-object) (POST)
-- [`/service/{service_id}/version/{version_id}/snippet/{snippet_name}`](https://developer.fastly.com/reference/api/vcl-services/snippet) (PUT)
-- [`/service/{service_id}/version/{version_id}/wafs/{firewall_id}`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (GET, PATCH)
-- [`/service/{service_id}/version/{version_id}/wafs`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (GET, POST)
-- [`/service/{service_id}/wafs/{firewall_id}/owasp`](https://developer.fastly.com/reference/api/legacy-waf/owasp) (GET, PATCH, POST)
-- [`/service/{service_id}/wafs/{firewall_id}/rule_statuses`](https://developer.fastly.com/reference/api/legacy-waf/rule-status) (GET, POST)
-- [`/service/{service_id}/wafs/{firewall_id}/rules/{waf_rule_id}/rule_status`](https://developer.fastly.com/reference/api/legacy-waf/rule-status) (GET, PATCH)
-- [`/service/{service_id}/wafs/{firewall_id}/ruleset/preview`](https://developer.fastly.com/reference/api/legacy-waf/ruleset) (GET)
-- [`/service/{service_id}/wafs/{firewall_id}/ruleset`](https://developer.fastly.com/reference/api/legacy-waf/ruleset) (GET, PATCH)
-- [`/service/{service_id}/wafs/{firewall_id}/update_statuses/{update_status_id}`](https://developer.fastly.com/reference/api/legacy-waf/update-status) (GET)
-- [`/service/{service_id}/wafs/{firewall_id}/update_statuses`](https://developer.fastly.com/reference/api/legacy-waf/update-status) (GET)
-- [`/sudo`](https://developer.fastly.com/reference/api/utils/sudo) (POST)
 - [`/tls/activations/{tls_activation_id}`](https://developer.fastly.com/reference/api/tls/mutual-tls/activations) (GET, PATCH)
 - [`/tls/activations`](https://developer.fastly.com/reference/api/tls/mutual-tls/activations) (GET)
-- [`/tokens`](https://developer.fastly.com/reference/api/auth-tokens/user) (DELETE, POST)
-- [`/user-groups/{user_group_id}/members`](https://developer.fastly.com/reference/api/account/user-groups) (DELETE, POST)
-- [`/user-groups/{user_group_id}/roles`](https://developer.fastly.com/reference/api/account/user-groups) (DELETE, POST)
-- [`/user-groups/{user_group_id}/service-groups`](https://developer.fastly.com/reference/api/account/user-groups) (DELETE, POST)
-- [`/user-groups/{user_group_id}`](https://developer.fastly.com/reference/api/account/user-groups) (PATCH)
-- [`/user-groups`](https://developer.fastly.com/reference/api/account/user-groups) (POST)
 - [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
 - [`/v1/channel/{service_id}/ts/h`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
 - [`/v1/channel/{service_id}/ts/{start_timestamp}`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
-- [`/v1/domains/{service_id}/ts/h/limit/{max_entries}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/real-time) (GET)
-- [`/v1/domains/{service_id}/ts/h`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/real-time) (GET)
-- [`/v1/domains/{service_id}/ts/{start_timestamp}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/real-time) (GET)
-- [`/v1/origins/{service_id}/ts/h/limit/{max_entries}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/real-time) (GET)
-- [`/v1/origins/{service_id}/ts/h`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/real-time) (GET)
-- [`/v1/origins/{service_id}/ts/{start_timestamp}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/real-time) (GET)
-- [`/waf/firewalls/{firewall_id}/versions/{version_id}/active-rules`](https://developer.fastly.com/reference/api/waf/rules/active) (DELETE)
-- [`/wafs/configuration_sets/{configuration_set_id}/relationships/wafs`](https://developer.fastly.com/reference/api/legacy-waf/configuration-set) (GET, PATCH)
-- [`/wafs/configuration_sets`](https://developer.fastly.com/reference/api/legacy-waf/configuration-set) (GET)
-- [`/wafs/rules/{waf_rule_id}/vcl`](https://developer.fastly.com/reference/api/legacy-waf/rule) (GET)
-- [`/wafs/rules/{waf_rule_id}`](https://developer.fastly.com/reference/api/legacy-waf/rule) (GET)
-- [`/wafs/rules`](https://developer.fastly.com/reference/api/legacy-waf/rule) (GET)
-- [`/wafs/tags`](https://developer.fastly.com/reference/api/legacy-waf/tag) (GET)
-- [`/wafs/{firewall_id}/disable`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (PATCH)
-- [`/wafs/{firewall_id}/enable`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (PATCH)
-- [`/wafs/{firewall_id}/rules/{waf_rule_id}/vcl`](https://developer.fastly.com/reference/api/legacy-waf/rule) (GET)
-- [`/wafs/{firewall_id}`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (GET)
-- [`/wafs`](https://developer.fastly.com/reference/api/legacy-waf/firewall) (GET)
 
 
 If you encounter any non-security-related bug or unexpected behavior, please [file an issue][bug]
