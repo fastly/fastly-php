@@ -1,5 +1,11 @@
 # Changelog
 
+## [v3.0.1](https://github.com/fastly/fastly-php/releases/tag/release/v3.0.1) (2023-07-07)
+
+**Bug fixes:**
+
+- fix: update return types for multiple model methods to avoid deprecation notices.
+
 ## [v3.0.0](https://github.com/fastly/fastly-php/releases/tag/release/v3.0.0) (2023-07-06)
 
 Substantial changes were made to the underlying OpenAPI specification that produces this API client. These changes have resulted in multiple new endpoints being supported as well as multiple breaking type changes and so we're publishing these changes as a new major release.
