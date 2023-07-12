@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.2](https://github.com/fastly/fastly-php/releases/tag/release/v3.0.2) (2023-07-12)
+
+**Bug fixes:**
+
+- fix(billing): rename response field 'lines' to 'line_items'.
+- fix(billing): restructure response models like 'aria_invoice_id'.
+- fix(billing): make 'sent_at', 'locked', 'require_new_password', 'two_factor_auth_enabled' nullable.
+
 ## [v3.0.1](https://github.com/fastly/fastly-php/releases/tag/release/v3.0.1) (2023-07-07)
 
 **Bug fixes:**

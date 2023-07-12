@@ -1,6 +1,6 @@
 <?php
 /**
- * BillingEstimateResponseAllOf
+ * SchemasUserResponseReadOnly
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * BillingEstimateResponseAllOf Class Doc Comment
+ * SchemasUserResponseReadOnly Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BillingEstimateResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class SchemasUserResponseReadOnly implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class BillingEstimateResponseAllOf implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $fastlyModelName = 'billing_estimate_response_allOf';
+    protected static $fastlyModelName = 'schemas-user_response_read_only';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,9 @@ class BillingEstimateResponseAllOf implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'lines' => '\Fastly\Model\BillingEstimateResponseAllOfLines[]'
+        'id' => 'string',
+        'email_hash' => 'string',
+        'customer_id' => 'string'
     ];
 
     /**
@@ -64,7 +66,9 @@ class BillingEstimateResponseAllOf implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'lines' => null
+        'id' => null,
+        'email_hash' => null,
+        'customer_id' => null
     ];
 
     /**
@@ -94,7 +98,9 @@ class BillingEstimateResponseAllOf implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'lines' => 'lines'
+        'id' => 'id',
+        'email_hash' => 'email_hash',
+        'customer_id' => 'customer_id'
     ];
 
     /**
@@ -103,7 +109,9 @@ class BillingEstimateResponseAllOf implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'lines' => 'setLines'
+        'id' => 'setId',
+        'email_hash' => 'setEmailHash',
+        'customer_id' => 'setCustomerId'
     ];
 
     /**
@@ -112,7 +120,9 @@ class BillingEstimateResponseAllOf implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'lines' => 'getLines'
+        'id' => 'getId',
+        'email_hash' => 'getEmailHash',
+        'customer_id' => 'getCustomerId'
     ];
 
     /**
@@ -172,7 +182,9 @@ class BillingEstimateResponseAllOf implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['lines'] = $data['lines'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['email_hash'] = $data['email_hash'] ?? null;
+        $this->container['customer_id'] = $data['customer_id'] ?? null;
     }
 
     /**
@@ -200,25 +212,73 @@ class BillingEstimateResponseAllOf implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets lines
+     * Gets id
      *
-     * @return \Fastly\Model\BillingEstimateResponseAllOfLines[]|null
+     * @return string|null
      */
-    public function getLines()
+    public function getId()
     {
-        return $this->container['lines'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets lines
+     * Sets id
      *
-     * @param \Fastly\Model\BillingEstimateResponseAllOfLines[]|null $lines lines
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setLines($lines)
+    public function setId($id)
     {
-        $this->container['lines'] = $lines;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_hash
+     *
+     * @return string|null
+     */
+    public function getEmailHash()
+    {
+        return $this->container['email_hash'];
+    }
+
+    /**
+     * Sets email_hash
+     *
+     * @param string|null $email_hash The alphanumeric string identifying a email login.
+     *
+     * @return self
+     */
+    public function setEmailHash($email_hash)
+    {
+        $this->container['email_hash'] = $email_hash;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_id
+     *
+     * @return string|null
+     */
+    public function getCustomerId()
+    {
+        return $this->container['customer_id'];
+    }
+
+    /**
+     * Sets customer_id
+     *
+     * @param string|null $customer_id customer_id
+     *
+     * @return self
+     */
+    public function setCustomerId($customer_id)
+    {
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }

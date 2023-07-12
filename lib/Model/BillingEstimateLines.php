@@ -1,6 +1,6 @@
 <?php
 /**
- * BillingEstimateResponseAllOfLines
+ * BillingEstimateLines
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * BillingEstimateResponseAllOfLines Class Doc Comment
+ * BillingEstimateLines Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BillingEstimateResponseAllOfLines implements ModelInterface, ArrayAccess, \JsonSerializable
+class BillingEstimateLines implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class BillingEstimateResponseAllOfLines implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $fastlyModelName = 'billing_estimate_response_allOf_lines';
+    protected static $fastlyModelName = 'billing_estimate_lines';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,7 @@ class BillingEstimateResponseAllOfLines implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'line' => '\Fastly\Model\BillingEstimateResponseAllOfLine'
+        'line_items' => '\Fastly\Model\BillingEstimateLinesLineItems[]'
     ];
 
     /**
@@ -64,7 +64,7 @@ class BillingEstimateResponseAllOfLines implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'line' => null
+        'line_items' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class BillingEstimateResponseAllOfLines implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'line' => 'line'
+        'line_items' => 'line_items'
     ];
 
     /**
@@ -103,7 +103,7 @@ class BillingEstimateResponseAllOfLines implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'line' => 'setLine'
+        'line_items' => 'setLineItems'
     ];
 
     /**
@@ -112,7 +112,7 @@ class BillingEstimateResponseAllOfLines implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'line' => 'getLine'
+        'line_items' => 'getLineItems'
     ];
 
     /**
@@ -172,7 +172,7 @@ class BillingEstimateResponseAllOfLines implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['line'] = $data['line'] ?? null;
+        $this->container['line_items'] = $data['line_items'] ?? null;
     }
 
     /**
@@ -200,25 +200,25 @@ class BillingEstimateResponseAllOfLines implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets line
+     * Gets line_items
      *
-     * @return \Fastly\Model\BillingEstimateResponseAllOfLine|null
+     * @return \Fastly\Model\BillingEstimateLinesLineItems[]|null
      */
-    public function getLine()
+    public function getLineItems()
     {
-        return $this->container['line'];
+        return $this->container['line_items'];
     }
 
     /**
-     * Sets line
+     * Sets line_items
      *
-     * @param \Fastly\Model\BillingEstimateResponseAllOfLine|null $line line
+     * @param \Fastly\Model\BillingEstimateLinesLineItems[]|null $line_items line_items
      *
      * @return self
      */
-    public function setLine($line)
+    public function setLineItems($line_items)
     {
-        $this->container['line'] = $line;
+        $this->container['line_items'] = $line_items;
 
         return $this;
     }

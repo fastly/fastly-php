@@ -1,6 +1,6 @@
 <?php
 /**
- * UserResponseAllOf
+ * LineItemDataReadOnlyInvoiceId
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * UserResponseAllOf Class Doc Comment
+ * LineItemDataReadOnlyInvoiceId Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $fastlyModelName = 'user_response_allOf';
+    protected static $fastlyModelName = 'line_item_data_read_only_invoice_id';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,9 +53,7 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string',
-        'email_hash' => 'string',
-        'customer_id' => 'string'
+        
     ];
 
     /**
@@ -66,9 +64,7 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null,
-        'email_hash' => null,
-        'customer_id' => null
+        
     ];
 
     /**
@@ -98,9 +94,7 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'email_hash' => 'email_hash',
-        'customer_id' => 'customer_id'
+        
     ];
 
     /**
@@ -109,9 +103,7 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'email_hash' => 'setEmailHash',
-        'customer_id' => 'setCustomerId'
+        
     ];
 
     /**
@@ -120,9 +112,7 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'email_hash' => 'getEmailHash',
-        'customer_id' => 'getCustomerId'
+        
     ];
 
     /**
@@ -182,9 +172,6 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['email_hash'] = $data['email_hash'] ?? null;
-        $this->container['customer_id'] = $data['customer_id'] ?? null;
     }
 
     /**
@@ -210,78 +197,6 @@ class UserResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets email_hash
-     *
-     * @return string|null
-     */
-    public function getEmailHash()
-    {
-        return $this->container['email_hash'];
-    }
-
-    /**
-     * Sets email_hash
-     *
-     * @param string|null $email_hash The alphanumeric string identifying a email login.
-     *
-     * @return self
-     */
-    public function setEmailHash($email_hash)
-    {
-        $this->container['email_hash'] = $email_hash;
-
-        return $this;
-    }
-
-    /**
-     * Gets customer_id
-     *
-     * @return string|null
-     */
-    public function getCustomerId()
-    {
-        return $this->container['customer_id'];
-    }
-
-    /**
-     * Sets customer_id
-     *
-     * @param string|null $customer_id customer_id
-     *
-     * @return self
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->container['customer_id'] = $customer_id;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *

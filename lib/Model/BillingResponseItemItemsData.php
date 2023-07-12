@@ -1,6 +1,6 @@
 <?php
 /**
- * BillingResponseAllOf
+ * BillingResponseItemItemsData
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * BillingResponseAllOf Class Doc Comment
+ * BillingResponseItemItemsData Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BillingResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class BillingResponseItemItemsData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class BillingResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $fastlyModelName = 'billing_response_allOf';
+    protected static $fastlyModelName = 'billing_response_item_items_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

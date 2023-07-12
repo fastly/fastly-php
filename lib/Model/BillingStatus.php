@@ -66,7 +66,7 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'status' => null,
-        'sent_at' => null
+        'sent_at' => 'date-time'
     ];
 
     /**
@@ -281,7 +281,7 @@ class BillingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sent_at
      *
-     * @param \DateTime|null $sent_at sent_at
+     * @param \DateTime|null $sent_at Date and time in ISO 8601 format.
      *
      * @return self
      * @deprecated

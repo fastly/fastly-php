@@ -1,4 +1,4 @@
-# # UserResponseAllOf
+# # UserResponseReadOnly
 
 ## Properties
 

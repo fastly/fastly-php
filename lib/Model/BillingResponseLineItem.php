@@ -57,7 +57,7 @@ class BillingResponseLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'amount' => 'float',
-        'aria_invoice_id' => 'string',
+        'aria_invoice_id' => '\Fastly\Model\LineItemDataReadOnlyInvoiceId',
         'client_service_id' => 'string',
         'credit_coupon_code' => 'string',
         'description' => 'string',
@@ -412,7 +412,7 @@ class BillingResponseLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets aria_invoice_id
      *
-     * @return string|null
+     * @return \Fastly\Model\LineItemDataReadOnlyInvoiceId|null
      */
     public function getAriaInvoiceId()
     {
@@ -422,7 +422,7 @@ class BillingResponseLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets aria_invoice_id
      *
-     * @param string|null $aria_invoice_id aria_invoice_id
+     * @param \Fastly\Model\LineItemDataReadOnlyInvoiceId|null $aria_invoice_id aria_invoice_id
      *
      * @return self
      */

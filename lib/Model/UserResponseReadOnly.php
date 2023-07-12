@@ -1,6 +1,6 @@
 <?php
 /**
- * BillingEstimateResponse
+ * UserResponseReadOnly
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * BillingEstimateResponse Class Doc Comment
+ * UserResponseReadOnly Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class UserResponseReadOnly implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $fastlyModelName = 'billing_estimate_response';
+    protected static $fastlyModelName = 'user_response_read_only';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,15 +53,9 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'end_time' => '\DateTime',
-        'start_time' => '\DateTime',
-        'invoice_id' => 'string',
-        'customer_id' => 'string',
-        'vendor_state' => 'string',
-        'status' => '\Fastly\Model\BillingStatus',
-        'total' => '\Fastly\Model\BillingTotal',
-        'regions' => 'array<string,array<string,object>>',
-        'line_items' => '\Fastly\Model\BillingEstimateLinesLineItems[]'
+        'id' => 'string',
+        'email_hash' => 'string',
+        'customer_id' => 'string'
     ];
 
     /**
@@ -72,15 +66,9 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'end_time' => 'date-time',
-        'start_time' => 'date-time',
-        'invoice_id' => null,
-        'customer_id' => null,
-        'vendor_state' => null,
-        'status' => null,
-        'total' => null,
-        'regions' => null,
-        'line_items' => null
+        'id' => null,
+        'email_hash' => null,
+        'customer_id' => null
     ];
 
     /**
@@ -110,15 +98,9 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_time' => 'end_time',
-        'start_time' => 'start_time',
-        'invoice_id' => 'invoice_id',
-        'customer_id' => 'customer_id',
-        'vendor_state' => 'vendor_state',
-        'status' => 'status',
-        'total' => 'total',
-        'regions' => 'regions',
-        'line_items' => 'line_items'
+        'id' => 'id',
+        'email_hash' => 'email_hash',
+        'customer_id' => 'customer_id'
     ];
 
     /**
@@ -127,15 +109,9 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'end_time' => 'setEndTime',
-        'start_time' => 'setStartTime',
-        'invoice_id' => 'setInvoiceId',
-        'customer_id' => 'setCustomerId',
-        'vendor_state' => 'setVendorState',
-        'status' => 'setStatus',
-        'total' => 'setTotal',
-        'regions' => 'setRegions',
-        'line_items' => 'setLineItems'
+        'id' => 'setId',
+        'email_hash' => 'setEmailHash',
+        'customer_id' => 'setCustomerId'
     ];
 
     /**
@@ -144,15 +120,9 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'end_time' => 'getEndTime',
-        'start_time' => 'getStartTime',
-        'invoice_id' => 'getInvoiceId',
-        'customer_id' => 'getCustomerId',
-        'vendor_state' => 'getVendorState',
-        'status' => 'getStatus',
-        'total' => 'getTotal',
-        'regions' => 'getRegions',
-        'line_items' => 'getLineItems'
+        'id' => 'getId',
+        'email_hash' => 'getEmailHash',
+        'customer_id' => 'getCustomerId'
     ];
 
     /**
@@ -212,15 +182,9 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['end_time'] = $data['end_time'] ?? null;
-        $this->container['start_time'] = $data['start_time'] ?? null;
-        $this->container['invoice_id'] = $data['invoice_id'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['email_hash'] = $data['email_hash'] ?? null;
         $this->container['customer_id'] = $data['customer_id'] ?? null;
-        $this->container['vendor_state'] = $data['vendor_state'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['total'] = $data['total'] ?? null;
-        $this->container['regions'] = $data['regions'] ?? null;
-        $this->container['line_items'] = $data['line_items'] ?? null;
     }
 
     /**
@@ -248,73 +212,49 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets end_time
-     *
-     * @return \DateTime|null
-     */
-    public function getEndTime()
-    {
-        return $this->container['end_time'];
-    }
-
-    /**
-     * Sets end_time
-     *
-     * @param \DateTime|null $end_time Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setEndTime($end_time)
-    {
-        $this->container['end_time'] = $end_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_time
-     *
-     * @return \DateTime|null
-     */
-    public function getStartTime()
-    {
-        return $this->container['start_time'];
-    }
-
-    /**
-     * Sets start_time
-     *
-     * @param \DateTime|null $start_time Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setStartTime($start_time)
-    {
-        $this->container['start_time'] = $start_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoice_id
+     * Gets id
      *
      * @return string|null
      */
-    public function getInvoiceId()
+    public function getId()
     {
-        return $this->container['invoice_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets invoice_id
+     * Sets id
      *
-     * @param string|null $invoice_id invoice_id
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setInvoiceId($invoice_id)
+    public function setId($id)
     {
-        $this->container['invoice_id'] = $invoice_id;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_hash
+     *
+     * @return string|null
+     */
+    public function getEmailHash()
+    {
+        return $this->container['email_hash'];
+    }
+
+    /**
+     * Sets email_hash
+     *
+     * @param string|null $email_hash The alphanumeric string identifying a email login.
+     *
+     * @return self
+     */
+    public function setEmailHash($email_hash)
+    {
+        $this->container['email_hash'] = $email_hash;
 
         return $this;
     }
@@ -339,126 +279,6 @@ class BillingEstimateResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setCustomerId($customer_id)
     {
         $this->container['customer_id'] = $customer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets vendor_state
-     *
-     * @return string|null
-     */
-    public function getVendorState()
-    {
-        return $this->container['vendor_state'];
-    }
-
-    /**
-     * Sets vendor_state
-     *
-     * @param string|null $vendor_state The current state of our third-party billing vendor. One of `up` or `down`.
-     *
-     * @return self
-     */
-    public function setVendorState($vendor_state)
-    {
-        $this->container['vendor_state'] = $vendor_state;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return \Fastly\Model\BillingStatus|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param \Fastly\Model\BillingStatus|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \Fastly\Model\BillingTotal|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \Fastly\Model\BillingTotal|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        $this->container['total'] = $total;
-
-        return $this;
-    }
-
-    /**
-     * Gets regions
-     *
-     * @return array<string,array<string,object>>|null
-     */
-    public function getRegions()
-    {
-        return $this->container['regions'];
-    }
-
-    /**
-     * Sets regions
-     *
-     * @param array<string,array<string,object>>|null $regions Breakdown of regional data for products that are region based.
-     *
-     * @return self
-     */
-    public function setRegions($regions)
-    {
-        $this->container['regions'] = $regions;
-
-        return $this;
-    }
-
-    /**
-     * Gets line_items
-     *
-     * @return \Fastly\Model\BillingEstimateLinesLineItems[]|null
-     */
-    public function getLineItems()
-    {
-        return $this->container['line_items'];
-    }
-
-    /**
-     * Sets line_items
-     *
-     * @param \Fastly\Model\BillingEstimateLinesLineItems[]|null $line_items line_items
-     *
-     * @return self
-     */
-    public function setLineItems($line_items)
-    {
-        $this->container['line_items'] = $line_items;
 
         return $this;
     }

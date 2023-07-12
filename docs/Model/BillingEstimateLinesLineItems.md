@@ -1,4 +1,4 @@
-# # BillingEstimateResponseAllOfLine
+# # BillingEstimateLinesLineItems
 
 ## Properties
 

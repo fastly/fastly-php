@@ -1,11 +1,11 @@
-# # BillingResponseLineItemAllOf
+# # LineItemData
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **float** |  | [optional] 
-**aria_invoice_id** | **string** |  | [optional] [readonly] 
+**aria_invoice_id** | [**\Fastly\Model\LineItemDataReadOnlyInvoiceId**](LineItemDataReadOnlyInvoiceId.md) |  | [optional] 
 **client_service_id** | **string** |  | [optional] 
 **credit_coupon_code** | **string** |  | [optional] 
 **description** | **string** |  | [optional] 
