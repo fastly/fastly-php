@@ -801,8 +801,8 @@ class TlsSubscriptionsApi
      * URL: https://api.fastly.com
      *
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -824,8 +824,8 @@ class TlsSubscriptionsApi
      * URL: https://api.fastly.com
      *
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -902,8 +902,8 @@ class TlsSubscriptionsApi
      * URL: https://api.fastly.com
      *
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -929,8 +929,8 @@ class TlsSubscriptionsApi
      * URL: https://api.fastly.com
      *
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -972,8 +972,8 @@ class TlsSubscriptionsApi
      * URL: https://api.fastly.com
      *
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      * @param  string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
+     * @param  string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -982,8 +982,8 @@ class TlsSubscriptionsApi
     {
         // unbox the parameters from the associative array
         $tls_subscription_id = array_key_exists('tls_subscription_id', $options) ? $options['tls_subscription_id'] : null;
-        $globalsign_email_challenge_id = array_key_exists('globalsign_email_challenge_id', $options) ? $options['globalsign_email_challenge_id'] : null;
         $tls_authorization_id = array_key_exists('tls_authorization_id', $options) ? $options['tls_authorization_id'] : null;
+        $globalsign_email_challenge_id = array_key_exists('globalsign_email_challenge_id', $options) ? $options['globalsign_email_challenge_id'] : null;
 
         // verify the required parameter 'tls_subscription_id' is set
         if ($tls_subscription_id === null || (is_array($tls_subscription_id) && count($tls_subscription_id) === 0)) {
@@ -991,16 +991,16 @@ class TlsSubscriptionsApi
                 'Missing the required parameter $tls_subscription_id when calling deleteGlobalsignEmailChallenge'
             );
         }
-        // verify the required parameter 'globalsign_email_challenge_id' is set
-        if ($globalsign_email_challenge_id === null || (is_array($globalsign_email_challenge_id) && count($globalsign_email_challenge_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $globalsign_email_challenge_id when calling deleteGlobalsignEmailChallenge'
-            );
-        }
         // verify the required parameter 'tls_authorization_id' is set
         if ($tls_authorization_id === null || (is_array($tls_authorization_id) && count($tls_authorization_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $tls_authorization_id when calling deleteGlobalsignEmailChallenge'
+            );
+        }
+        // verify the required parameter 'globalsign_email_challenge_id' is set
+        if ($globalsign_email_challenge_id === null || (is_array($globalsign_email_challenge_id) && count($globalsign_email_challenge_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $globalsign_email_challenge_id when calling deleteGlobalsignEmailChallenge'
             );
         }
 
@@ -1022,18 +1022,18 @@ class TlsSubscriptionsApi
             );
         }
         // path params
-        if ($globalsign_email_challenge_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'globalsign_email_challenge_id' . '}',
-                ObjectSerializer::toPathValue($globalsign_email_challenge_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($tls_authorization_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'tls_authorization_id' . '}',
                 ObjectSerializer::toPathValue($tls_authorization_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($globalsign_email_challenge_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'globalsign_email_challenge_id' . '}',
+                ObjectSerializer::toPathValue($globalsign_email_challenge_id),
                 $resourcePath
             );
         }

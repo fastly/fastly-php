@@ -188,7 +188,7 @@ class LoggingGcsAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['bucket_name'] = $data['bucket_name'] ?? null;
-        $this->container['path'] = $data['path'] ?? null;
+        $this->container['path'] = $data['path'] ?? '/';
         $this->container['public_key'] = $data['public_key'] ?? 'null';
         $this->container['project_id'] = $data['project_id'] ?? null;
     }
@@ -254,7 +254,7 @@ class LoggingGcsAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets path
      *
-     * @param string|null $path The path to upload logs to.
+     * @param string|null $path path
      *
      * @return self
      */

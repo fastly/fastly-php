@@ -359,7 +359,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['secret_key'] = $data['secret_key'] ?? null;
         $this->container['account_name'] = $data['account_name'] ?? null;
         $this->container['bucket_name'] = $data['bucket_name'] ?? null;
-        $this->container['path'] = $data['path'] ?? null;
+        $this->container['path'] = $data['path'] ?? '/';
         $this->container['public_key'] = $data['public_key'] ?? 'null';
         $this->container['project_id'] = $data['project_id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -818,7 +818,7 @@ class LoggingGcsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets path
      *
-     * @param string|null $path The path to upload logs to.
+     * @param string|null $path path
      *
      * @return self
      */

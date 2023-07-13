@@ -108,8 +108,8 @@ Deletes a GlobalSign email challenge. After a GlobalSign email challenge is dele
 ### Example
 ```php
     $options['tls_subscription_id'] = 'tls_subscription_id_example'; // string | Alphanumeric string identifying a TLS subscription.
-$options['globalsign_email_challenge_id'] = gU3guUGZzb2W9Euo4Mo0r; // string | Alphanumeric string identifying a GlobalSign email challenge.
 $options['tls_authorization_id'] = 'tls_authorization_id_example'; // string | Alphanumeric string identifying a TLS subscription.
+$options['globalsign_email_challenge_id'] = gU3guUGZzb2W9Euo4Mo0r; // string | Alphanumeric string identifying a GlobalSign email challenge.
 
 try {
     $apiInstance->deleteGlobalsignEmailChallenge($options);
@@ -125,8 +125,8 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **tls_subscription_id** | **string** | Alphanumeric string identifying a TLS subscription. |
-**globalsign_email_challenge_id** | **string** | Alphanumeric string identifying a GlobalSign email challenge. |
 **tls_authorization_id** | **string** | Alphanumeric string identifying a TLS subscription. |
+**globalsign_email_challenge_id** | **string** | Alphanumeric string identifying a GlobalSign email challenge. |
 
 ### Return type
 

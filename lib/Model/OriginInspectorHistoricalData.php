@@ -54,7 +54,7 @@ class OriginInspectorHistoricalData implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $fastlyTypes = [
         'dimensions' => '\Fastly\Model\OriginInspectorDimensions',
-        'values' => '\Fastly\Model\Values'
+        'values' => '\Fastly\Model\OriginInspectorValues[]'
     ];
 
     /**
@@ -232,7 +232,7 @@ class OriginInspectorHistoricalData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets values
      *
-     * @return \Fastly\Model\Values|null
+     * @return \Fastly\Model\OriginInspectorValues[]|null
      */
     public function getValues()
     {
@@ -242,7 +242,7 @@ class OriginInspectorHistoricalData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets values
      *
-     * @param \Fastly\Model\Values|null $values values
+     * @param \Fastly\Model\OriginInspectorValues[]|null $values An array of values representing the metric values at each point in time. Note that this dataset is sparse: only the keys with non-zero values will be included in the record.
      *
      * @return self
      */

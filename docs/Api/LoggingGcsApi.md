@@ -47,7 +47,7 @@ $options['user'] = 'user_example'; // string | Your Google Cloud Platform servic
 $options['secret_key'] = 'secret_key_example'; // string | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Not required if `account_name` is specified.
 $options['account_name'] = 'account_name_example'; // string | The name of the Google Cloud Platform service account associated with the target log collection service. Not required if `user` and `secret_key` are provided.
 $options['bucket_name'] = 'bucket_name_example'; // string | The name of the GCS bucket.
-$options['path'] = 'path_example'; // string | The path to upload logs to.
+$options['path'] = '/'; // string
 $options['public_key'] = 'null'; // string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 $options['project_id'] = 'project_id_example'; // string | Your Google Cloud Platform project ID. Required
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 **secret_key** | **string** | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Not required if `account_name` is specified. | [optional]
 **account_name** | **string** | The name of the Google Cloud Platform service account associated with the target log collection service. Not required if `user` and `secret_key` are provided. | [optional]
 **bucket_name** | **string** | The name of the GCS bucket. | [optional]
-**path** | **string** | The path to upload logs to. | [optional]
+**path** | **string** |  | [optional] [defaults to '/']
 **public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [defaults to 'null']
 **project_id** | **string** | Your Google Cloud Platform project ID. Required | [optional]
 
@@ -230,7 +230,7 @@ $options['user'] = 'user_example'; // string | Your Google Cloud Platform servic
 $options['secret_key'] = 'secret_key_example'; // string | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Not required if `account_name` is specified.
 $options['account_name'] = 'account_name_example'; // string | The name of the Google Cloud Platform service account associated with the target log collection service. Not required if `user` and `secret_key` are provided.
 $options['bucket_name'] = 'bucket_name_example'; // string | The name of the GCS bucket.
-$options['path'] = 'path_example'; // string | The path to upload logs to.
+$options['path'] = '/'; // string
 $options['public_key'] = 'null'; // string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 $options['project_id'] = 'project_id_example'; // string | Your Google Cloud Platform project ID. Required
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 **secret_key** | **string** | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Not required if `account_name` is specified. | [optional]
 **account_name** | **string** | The name of the Google Cloud Platform service account associated with the target log collection service. Not required if `user` and `secret_key` are provided. | [optional]
 **bucket_name** | **string** | The name of the GCS bucket. | [optional]
-**path** | **string** | The path to upload logs to. | [optional]
+**path** | **string** |  | [optional] [defaults to '/']
 **public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [defaults to 'null']
 **project_id** | **string** | Your Google Cloud Platform project ID. Required | [optional]
 
