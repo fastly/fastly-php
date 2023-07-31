@@ -56,10 +56,10 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'action' => 'string',
         'cache_condition' => 'string',
         'name' => 'string',
-        'stale_ttl' => 'int',
-        'ttl' => 'int',
+        'stale_ttl' => 'string',
+        'ttl' => 'string',
         'service_id' => 'string',
-        'version' => 'int',
+        'version' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime'
@@ -364,7 +364,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets stale_ttl
      *
-     * @return int|null
+     * @return string|null
      */
     public function getStaleTtl()
     {
@@ -374,7 +374,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets stale_ttl
      *
-     * @param int|null $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
+     * @param string|null $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets ttl
      *
-     * @return int|null
+     * @return string|null
      */
     public function getTtl()
     {
@@ -398,7 +398,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets ttl
      *
-     * @param int|null $ttl Maximum time to consider the object fresh in the cache (the cache 'time to live').
+     * @param string|null $ttl Maximum time to consider the object fresh in the cache (the cache 'time to live').
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets version
      *
-     * @return int|null
+     * @return string|null
      */
     public function getVersion()
     {
@@ -446,7 +446,7 @@ class CacheSettingResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param string|null $version version
      *
      * @return self
      */

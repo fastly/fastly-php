@@ -123,14 +123,14 @@ class LoggingS3Api
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -167,14 +167,14 @@ class LoggingS3Api
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -299,14 +299,14 @@ class LoggingS3Api
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -346,14 +346,14 @@ class LoggingS3Api
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -419,14 +419,14 @@ class LoggingS3Api
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -449,14 +449,14 @@ class LoggingS3Api
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
         $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : 'classic';
         $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
+        $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
         $period = array_key_exists('period', $options) ? $options['period'] : 3600;
         $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
-        $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
         $access_key = array_key_exists('access_key', $options) ? $options['access_key'] : null;
         $acl = array_key_exists('acl', $options) ? $options['acl'] : null;
         $bucket_name = array_key_exists('bucket_name', $options) ? $options['bucket_name'] : null;
@@ -517,16 +517,16 @@ class LoggingS3Api
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
         if ($format !== null) {
             $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
         }
         // form params
         if ($message_type !== null) {
@@ -537,16 +537,16 @@ class LoggingS3Api
             $formParams['timestamp_format'] = ObjectSerializer::toFormValue($timestamp_format);
         }
         // form params
+        if ($compression_codec !== null) {
+            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
+        }
+        // form params
         if ($period !== null) {
             $formParams['period'] = ObjectSerializer::toFormValue($period);
         }
         // form params
         if ($gzip_level !== null) {
             $formParams['gzip_level'] = ObjectSerializer::toFormValue($gzip_level);
-        }
-        // form params
-        if ($compression_codec !== null) {
-            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
         }
         // form params
         if ($access_key !== null) {
@@ -1742,14 +1742,14 @@ class LoggingS3Api
      * @param  string $logging_s3_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -1787,14 +1787,14 @@ class LoggingS3Api
      * @param  string $logging_s3_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -1920,14 +1920,14 @@ class LoggingS3Api
      * @param  string $logging_s3_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -1968,14 +1968,14 @@ class LoggingS3Api
      * @param  string $logging_s3_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -2042,14 +2042,14 @@ class LoggingS3Api
      * @param  string $logging_s3_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
      * @param  string $timestamp_format A timestamp format (optional)
+     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
      * @param  int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-     * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  string $access_key The access key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $acl The access control list (ACL) specific request header. See the AWS documentation for [Access Control List (ACL) Specific Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadInitiate.html#initiate-mpu-acl-specific-request-headers) for more information. (optional)
      * @param  string $bucket_name The bucket name for S3 account. (optional)
@@ -2073,14 +2073,14 @@ class LoggingS3Api
         $logging_s3_name = array_key_exists('logging_s3_name', $options) ? $options['logging_s3_name'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
         $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : 'classic';
         $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
+        $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
         $period = array_key_exists('period', $options) ? $options['period'] : 3600;
         $gzip_level = array_key_exists('gzip_level', $options) ? $options['gzip_level'] : 0;
-        $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
         $access_key = array_key_exists('access_key', $options) ? $options['access_key'] : null;
         $acl = array_key_exists('acl', $options) ? $options['acl'] : null;
         $bucket_name = array_key_exists('bucket_name', $options) ? $options['bucket_name'] : null;
@@ -2155,16 +2155,16 @@ class LoggingS3Api
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
         if ($format !== null) {
             $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
         }
         // form params
         if ($message_type !== null) {
@@ -2175,16 +2175,16 @@ class LoggingS3Api
             $formParams['timestamp_format'] = ObjectSerializer::toFormValue($timestamp_format);
         }
         // form params
+        if ($compression_codec !== null) {
+            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
+        }
+        // form params
         if ($period !== null) {
             $formParams['period'] = ObjectSerializer::toFormValue($period);
         }
         // form params
         if ($gzip_level !== null) {
             $formParams['gzip_level'] = ObjectSerializer::toFormValue($gzip_level);
-        }
-        // form params
-        if ($compression_codec !== null) {
-            $formParams['compression_codec'] = ObjectSerializer::toFormValue($compression_codec);
         }
         // form params
         if ($access_key !== null) {

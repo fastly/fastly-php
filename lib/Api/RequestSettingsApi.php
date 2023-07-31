@@ -1531,17 +1531,17 @@ class RequestSettingsApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $request_settings_name Name for the request settings. (required)
      * @param  string $action Allows you to terminate request handling and immediately perform an action. (optional)
-     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  string $default_host Sets the host header. (optional)
+     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
+     * @param  string $name Name for the request settings. (optional)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $xff Short for X-Forwarded-For. (optional)
+     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  int $force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable. (optional)
      * @param  int $force_ssl Forces the request use SSL (redirects a non-SSL to SSL). (optional)
      * @param  int $geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers. (optional)
-     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
      * @param  int $max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate. (optional)
-     * @param  string $name Name for the request settings. (optional)
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
      * @param  int $timer_support Injects the X-Timer info into the request for viewing origin fetch durations. (optional)
-     * @param  string $xff Short for X-Forwarded-For. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1567,17 +1567,17 @@ class RequestSettingsApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $request_settings_name Name for the request settings. (required)
      * @param  string $action Allows you to terminate request handling and immediately perform an action. (optional)
-     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  string $default_host Sets the host header. (optional)
+     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
+     * @param  string $name Name for the request settings. (optional)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $xff Short for X-Forwarded-For. (optional)
+     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  int $force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable. (optional)
      * @param  int $force_ssl Forces the request use SSL (redirects a non-SSL to SSL). (optional)
      * @param  int $geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers. (optional)
-     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
      * @param  int $max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate. (optional)
-     * @param  string $name Name for the request settings. (optional)
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
      * @param  int $timer_support Injects the X-Timer info into the request for viewing origin fetch durations. (optional)
-     * @param  string $xff Short for X-Forwarded-For. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1691,17 +1691,17 @@ class RequestSettingsApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $request_settings_name Name for the request settings. (required)
      * @param  string $action Allows you to terminate request handling and immediately perform an action. (optional)
-     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  string $default_host Sets the host header. (optional)
+     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
+     * @param  string $name Name for the request settings. (optional)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $xff Short for X-Forwarded-For. (optional)
+     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  int $force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable. (optional)
      * @param  int $force_ssl Forces the request use SSL (redirects a non-SSL to SSL). (optional)
      * @param  int $geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers. (optional)
-     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
      * @param  int $max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate. (optional)
-     * @param  string $name Name for the request settings. (optional)
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
      * @param  int $timer_support Injects the X-Timer info into the request for viewing origin fetch durations. (optional)
-     * @param  string $xff Short for X-Forwarded-For. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1730,17 +1730,17 @@ class RequestSettingsApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $request_settings_name Name for the request settings. (required)
      * @param  string $action Allows you to terminate request handling and immediately perform an action. (optional)
-     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  string $default_host Sets the host header. (optional)
+     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
+     * @param  string $name Name for the request settings. (optional)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $xff Short for X-Forwarded-For. (optional)
+     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  int $force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable. (optional)
      * @param  int $force_ssl Forces the request use SSL (redirects a non-SSL to SSL). (optional)
      * @param  int $geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers. (optional)
-     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
      * @param  int $max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate. (optional)
-     * @param  string $name Name for the request settings. (optional)
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
      * @param  int $timer_support Injects the X-Timer info into the request for viewing origin fetch durations. (optional)
-     * @param  string $xff Short for X-Forwarded-For. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1795,17 +1795,17 @@ class RequestSettingsApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $request_settings_name Name for the request settings. (required)
      * @param  string $action Allows you to terminate request handling and immediately perform an action. (optional)
-     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  string $default_host Sets the host header. (optional)
+     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
+     * @param  string $name Name for the request settings. (optional)
+     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
+     * @param  string $xff Short for X-Forwarded-For. (optional)
+     * @param  int $bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. (optional)
      * @param  int $force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable. (optional)
      * @param  int $force_ssl Forces the request use SSL (redirects a non-SSL to SSL). (optional)
      * @param  int $geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers. (optional)
-     * @param  string $hash_keys Comma separated list of varnish request object fields that should be in the hash key. (optional)
      * @param  int $max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate. (optional)
-     * @param  string $name Name for the request settings. (optional)
-     * @param  string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
      * @param  int $timer_support Injects the X-Timer info into the request for viewing origin fetch durations. (optional)
-     * @param  string $xff Short for X-Forwarded-For. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1817,17 +1817,17 @@ class RequestSettingsApi
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $request_settings_name = array_key_exists('request_settings_name', $options) ? $options['request_settings_name'] : null;
         $action = array_key_exists('action', $options) ? $options['action'] : null;
-        $bypass_busy_wait = array_key_exists('bypass_busy_wait', $options) ? $options['bypass_busy_wait'] : null;
         $default_host = array_key_exists('default_host', $options) ? $options['default_host'] : null;
+        $hash_keys = array_key_exists('hash_keys', $options) ? $options['hash_keys'] : null;
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
+        $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
+        $xff = array_key_exists('xff', $options) ? $options['xff'] : null;
+        $bypass_busy_wait = array_key_exists('bypass_busy_wait', $options) ? $options['bypass_busy_wait'] : null;
         $force_miss = array_key_exists('force_miss', $options) ? $options['force_miss'] : null;
         $force_ssl = array_key_exists('force_ssl', $options) ? $options['force_ssl'] : null;
         $geo_headers = array_key_exists('geo_headers', $options) ? $options['geo_headers'] : null;
-        $hash_keys = array_key_exists('hash_keys', $options) ? $options['hash_keys'] : null;
         $max_stale_age = array_key_exists('max_stale_age', $options) ? $options['max_stale_age'] : null;
-        $name = array_key_exists('name', $options) ? $options['name'] : null;
-        $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
         $timer_support = array_key_exists('timer_support', $options) ? $options['timer_support'] : null;
-        $xff = array_key_exists('xff', $options) ? $options['xff'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1887,12 +1887,28 @@ class RequestSettingsApi
             $formParams['action'] = ObjectSerializer::toFormValue($action);
         }
         // form params
-        if ($bypass_busy_wait !== null) {
-            $formParams['bypass_busy_wait'] = ObjectSerializer::toFormValue($bypass_busy_wait);
-        }
-        // form params
         if ($default_host !== null) {
             $formParams['default_host'] = ObjectSerializer::toFormValue($default_host);
+        }
+        // form params
+        if ($hash_keys !== null) {
+            $formParams['hash_keys'] = ObjectSerializer::toFormValue($hash_keys);
+        }
+        // form params
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
+        }
+        // form params
+        if ($request_condition !== null) {
+            $formParams['request_condition'] = ObjectSerializer::toFormValue($request_condition);
+        }
+        // form params
+        if ($xff !== null) {
+            $formParams['xff'] = ObjectSerializer::toFormValue($xff);
+        }
+        // form params
+        if ($bypass_busy_wait !== null) {
+            $formParams['bypass_busy_wait'] = ObjectSerializer::toFormValue($bypass_busy_wait);
         }
         // form params
         if ($force_miss !== null) {
@@ -1907,28 +1923,12 @@ class RequestSettingsApi
             $formParams['geo_headers'] = ObjectSerializer::toFormValue($geo_headers);
         }
         // form params
-        if ($hash_keys !== null) {
-            $formParams['hash_keys'] = ObjectSerializer::toFormValue($hash_keys);
-        }
-        // form params
         if ($max_stale_age !== null) {
             $formParams['max_stale_age'] = ObjectSerializer::toFormValue($max_stale_age);
         }
         // form params
-        if ($name !== null) {
-            $formParams['name'] = ObjectSerializer::toFormValue($name);
-        }
-        // form params
-        if ($request_condition !== null) {
-            $formParams['request_condition'] = ObjectSerializer::toFormValue($request_condition);
-        }
-        // form params
         if ($timer_support !== null) {
             $formParams['timer_support'] = ObjectSerializer::toFormValue($timer_support);
-        }
-        // form params
-        if ($xff !== null) {
-            $formParams['xff'] = ObjectSerializer::toFormValue($xff);
         }
 
         if ($multipart) {

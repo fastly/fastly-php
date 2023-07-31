@@ -53,7 +53,7 @@ class PoolResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string'
+        'quorum' => 'string'
     ];
 
     /**
@@ -64,7 +64,7 @@ class PoolResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null
+        'quorum' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class PoolResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'quorum' => 'quorum'
     ];
 
     /**
@@ -103,7 +103,7 @@ class PoolResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'quorum' => 'setQuorum'
     ];
 
     /**
@@ -112,7 +112,7 @@ class PoolResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'quorum' => 'getQuorum'
     ];
 
     /**
@@ -172,7 +172,7 @@ class PoolResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['quorum'] = $data['quorum'] ?? '75';
     }
 
     /**
@@ -200,25 +200,25 @@ class PoolResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets id
+     * Gets quorum
      *
      * @return string|null
      */
-    public function getId()
+    public function getQuorum()
     {
-        return $this->container['id'];
+        return $this->container['quorum'];
     }
 
     /**
-     * Sets id
+     * Sets quorum
      *
-     * @param string|null $id id
+     * @param string|null $quorum Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
      *
      * @return self
      */
-    public function setId($id)
+    public function setQuorum($quorum)
     {
-        $this->container['id'] = $id;
+        $this->container['quorum'] = $quorum;
 
         return $this;
     }

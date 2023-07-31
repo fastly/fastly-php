@@ -57,29 +57,30 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
         'tls_cert_hostname' => 'string',
-        'use_tls' => 'int',
+        'use_tls' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'service_id' => 'string',
+        'version' => 'string',
         'name' => 'string',
         'shield' => 'string',
         'request_condition' => 'string',
-        'max_conn_default' => 'int',
-        'connect_timeout' => 'int',
-        'first_byte_timeout' => 'int',
-        'quorum' => 'int',
         'tls_ciphers' => 'string',
         'tls_sni_hostname' => 'string',
-        'tls_check_cert' => 'int',
         'min_tls_version' => 'int',
         'max_tls_version' => 'int',
         'healthcheck' => 'string',
         'comment' => 'string',
         'type' => 'string',
         'override_host' => 'string',
-        'created_at' => '\DateTime',
-        'deleted_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'service_id' => 'string',
-        'version' => 'int',
-        'id' => 'string'
+        'between_bytes_timeout' => 'string',
+        'connect_timeout' => 'string',
+        'first_byte_timeout' => 'string',
+        'max_conn_default' => 'string',
+        'tls_check_cert' => 'string',
+        'id' => 'string',
+        'quorum' => 'string'
     ];
 
     /**
@@ -95,28 +96,29 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'tls_client_key' => null,
         'tls_cert_hostname' => null,
         'use_tls' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'service_id' => null,
+        'version' => null,
         'name' => null,
         'shield' => null,
         'request_condition' => null,
-        'max_conn_default' => null,
-        'connect_timeout' => null,
-        'first_byte_timeout' => null,
-        'quorum' => null,
         'tls_ciphers' => null,
         'tls_sni_hostname' => null,
-        'tls_check_cert' => null,
         'min_tls_version' => null,
         'max_tls_version' => null,
         'healthcheck' => null,
         'comment' => null,
         'type' => null,
         'override_host' => null,
-        'created_at' => 'date-time',
-        'deleted_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'service_id' => null,
-        'version' => null,
-        'id' => null
+        'between_bytes_timeout' => null,
+        'connect_timeout' => null,
+        'first_byte_timeout' => null,
+        'max_conn_default' => null,
+        'tls_check_cert' => null,
+        'id' => null,
+        'quorum' => null
     ];
 
     /**
@@ -151,28 +153,29 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'tls_client_key' => 'tls_client_key',
         'tls_cert_hostname' => 'tls_cert_hostname',
         'use_tls' => 'use_tls',
+        'created_at' => 'created_at',
+        'deleted_at' => 'deleted_at',
+        'updated_at' => 'updated_at',
+        'service_id' => 'service_id',
+        'version' => 'version',
         'name' => 'name',
         'shield' => 'shield',
         'request_condition' => 'request_condition',
-        'max_conn_default' => 'max_conn_default',
-        'connect_timeout' => 'connect_timeout',
-        'first_byte_timeout' => 'first_byte_timeout',
-        'quorum' => 'quorum',
         'tls_ciphers' => 'tls_ciphers',
         'tls_sni_hostname' => 'tls_sni_hostname',
-        'tls_check_cert' => 'tls_check_cert',
         'min_tls_version' => 'min_tls_version',
         'max_tls_version' => 'max_tls_version',
         'healthcheck' => 'healthcheck',
         'comment' => 'comment',
         'type' => 'type',
         'override_host' => 'override_host',
-        'created_at' => 'created_at',
-        'deleted_at' => 'deleted_at',
-        'updated_at' => 'updated_at',
-        'service_id' => 'service_id',
-        'version' => 'version',
-        'id' => 'id'
+        'between_bytes_timeout' => 'between_bytes_timeout',
+        'connect_timeout' => 'connect_timeout',
+        'first_byte_timeout' => 'first_byte_timeout',
+        'max_conn_default' => 'max_conn_default',
+        'tls_check_cert' => 'tls_check_cert',
+        'id' => 'id',
+        'quorum' => 'quorum'
     ];
 
     /**
@@ -186,28 +189,29 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'tls_client_key' => 'setTlsClientKey',
         'tls_cert_hostname' => 'setTlsCertHostname',
         'use_tls' => 'setUseTls',
+        'created_at' => 'setCreatedAt',
+        'deleted_at' => 'setDeletedAt',
+        'updated_at' => 'setUpdatedAt',
+        'service_id' => 'setServiceId',
+        'version' => 'setVersion',
         'name' => 'setName',
         'shield' => 'setShield',
         'request_condition' => 'setRequestCondition',
-        'max_conn_default' => 'setMaxConnDefault',
-        'connect_timeout' => 'setConnectTimeout',
-        'first_byte_timeout' => 'setFirstByteTimeout',
-        'quorum' => 'setQuorum',
         'tls_ciphers' => 'setTlsCiphers',
         'tls_sni_hostname' => 'setTlsSniHostname',
-        'tls_check_cert' => 'setTlsCheckCert',
         'min_tls_version' => 'setMinTlsVersion',
         'max_tls_version' => 'setMaxTlsVersion',
         'healthcheck' => 'setHealthcheck',
         'comment' => 'setComment',
         'type' => 'setType',
         'override_host' => 'setOverrideHost',
-        'created_at' => 'setCreatedAt',
-        'deleted_at' => 'setDeletedAt',
-        'updated_at' => 'setUpdatedAt',
-        'service_id' => 'setServiceId',
-        'version' => 'setVersion',
-        'id' => 'setId'
+        'between_bytes_timeout' => 'setBetweenBytesTimeout',
+        'connect_timeout' => 'setConnectTimeout',
+        'first_byte_timeout' => 'setFirstByteTimeout',
+        'max_conn_default' => 'setMaxConnDefault',
+        'tls_check_cert' => 'setTlsCheckCert',
+        'id' => 'setId',
+        'quorum' => 'setQuorum'
     ];
 
     /**
@@ -221,28 +225,29 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'tls_client_key' => 'getTlsClientKey',
         'tls_cert_hostname' => 'getTlsCertHostname',
         'use_tls' => 'getUseTls',
+        'created_at' => 'getCreatedAt',
+        'deleted_at' => 'getDeletedAt',
+        'updated_at' => 'getUpdatedAt',
+        'service_id' => 'getServiceId',
+        'version' => 'getVersion',
         'name' => 'getName',
         'shield' => 'getShield',
         'request_condition' => 'getRequestCondition',
-        'max_conn_default' => 'getMaxConnDefault',
-        'connect_timeout' => 'getConnectTimeout',
-        'first_byte_timeout' => 'getFirstByteTimeout',
-        'quorum' => 'getQuorum',
         'tls_ciphers' => 'getTlsCiphers',
         'tls_sni_hostname' => 'getTlsSniHostname',
-        'tls_check_cert' => 'getTlsCheckCert',
         'min_tls_version' => 'getMinTlsVersion',
         'max_tls_version' => 'getMaxTlsVersion',
         'healthcheck' => 'getHealthcheck',
         'comment' => 'getComment',
         'type' => 'getType',
         'override_host' => 'getOverrideHost',
-        'created_at' => 'getCreatedAt',
-        'deleted_at' => 'getDeletedAt',
-        'updated_at' => 'getUpdatedAt',
-        'service_id' => 'getServiceId',
-        'version' => 'getVersion',
-        'id' => 'getId'
+        'between_bytes_timeout' => 'getBetweenBytesTimeout',
+        'connect_timeout' => 'getConnectTimeout',
+        'first_byte_timeout' => 'getFirstByteTimeout',
+        'max_conn_default' => 'getMaxConnDefault',
+        'tls_check_cert' => 'getTlsCheckCert',
+        'id' => 'getId',
+        'quorum' => 'getQuorum'
     ];
 
     /**
@@ -286,8 +291,8 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    const USE_TLS_no_tls = 0;
-    const USE_TLS_use_tls = 1;
+    const USE_TLS_no_tls = '0';
+    const USE_TLS_use_tls = '1';
     const TYPE_RANDOM = 'random';
     const TYPE_HASH = 'hash';
     const TYPE_CLIENT = 'client';
@@ -338,29 +343,30 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
         $this->container['tls_cert_hostname'] = $data['tls_cert_hostname'] ?? 'null';
-        $this->container['use_tls'] = $data['use_tls'] ?? self::USE_TLS_no_tls;
+        $this->container['use_tls'] = $data['use_tls'] ?? '0';
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['shield'] = $data['shield'] ?? 'null';
         $this->container['request_condition'] = $data['request_condition'] ?? null;
-        $this->container['max_conn_default'] = $data['max_conn_default'] ?? 200;
-        $this->container['connect_timeout'] = $data['connect_timeout'] ?? null;
-        $this->container['first_byte_timeout'] = $data['first_byte_timeout'] ?? null;
-        $this->container['quorum'] = $data['quorum'] ?? 75;
         $this->container['tls_ciphers'] = $data['tls_ciphers'] ?? null;
         $this->container['tls_sni_hostname'] = $data['tls_sni_hostname'] ?? null;
-        $this->container['tls_check_cert'] = $data['tls_check_cert'] ?? null;
         $this->container['min_tls_version'] = $data['min_tls_version'] ?? null;
         $this->container['max_tls_version'] = $data['max_tls_version'] ?? null;
         $this->container['healthcheck'] = $data['healthcheck'] ?? null;
         $this->container['comment'] = $data['comment'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['override_host'] = $data['override_host'] ?? 'null';
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
+        $this->container['between_bytes_timeout'] = $data['between_bytes_timeout'] ?? null;
+        $this->container['connect_timeout'] = $data['connect_timeout'] ?? null;
+        $this->container['first_byte_timeout'] = $data['first_byte_timeout'] ?? null;
+        $this->container['max_conn_default'] = $data['max_conn_default'] ?? '200';
+        $this->container['tls_check_cert'] = $data['tls_check_cert'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['quorum'] = $data['quorum'] ?? '75';
     }
 
     /**
@@ -379,14 +385,6 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['use_tls'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if (!is_null($this->container['quorum']) && ($this->container['quorum'] > 100)) {
-            $invalidProperties[] = "invalid value for 'quorum', must be smaller than or equal to 100.";
-        }
-
-        if (!is_null($this->container['quorum']) && ($this->container['quorum'] < 0)) {
-            $invalidProperties[] = "invalid value for 'quorum', must be bigger than or equal to 0.";
         }
 
         $allowedValues = $this->getTypeAllowableValues();
@@ -512,7 +510,7 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets use_tls
      *
-     * @return int|null
+     * @return string|null
      */
     public function getUseTls()
     {
@@ -522,7 +520,7 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets use_tls
      *
-     * @param int|null $use_tls Whether to use TLS.
+     * @param string|null $use_tls Whether to use TLS.
      *
      * @return self
      */
@@ -539,6 +537,126 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['use_tls'] = $use_tls;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_at
+     *
+     * @return \DateTime|null
+     */
+    public function getDeletedAt()
+    {
+        return $this->container['deleted_at'];
+    }
+
+    /**
+     * Sets deleted_at
+     *
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setDeletedAt($deleted_at)
+    {
+        $this->container['deleted_at'] = $deleted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id service_id
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string|null $version version
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }
@@ -616,110 +734,6 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets max_conn_default
-     *
-     * @return int|null
-     */
-    public function getMaxConnDefault()
-    {
-        return $this->container['max_conn_default'];
-    }
-
-    /**
-     * Sets max_conn_default
-     *
-     * @param int|null $max_conn_default Maximum number of connections. Optional.
-     *
-     * @return self
-     */
-    public function setMaxConnDefault($max_conn_default)
-    {
-        $this->container['max_conn_default'] = $max_conn_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets connect_timeout
-     *
-     * @return int|null
-     */
-    public function getConnectTimeout()
-    {
-        return $this->container['connect_timeout'];
-    }
-
-    /**
-     * Sets connect_timeout
-     *
-     * @param int|null $connect_timeout How long to wait for a timeout in milliseconds. Optional.
-     *
-     * @return self
-     */
-    public function setConnectTimeout($connect_timeout)
-    {
-        $this->container['connect_timeout'] = $connect_timeout;
-
-        return $this;
-    }
-
-    /**
-     * Gets first_byte_timeout
-     *
-     * @return int|null
-     */
-    public function getFirstByteTimeout()
-    {
-        return $this->container['first_byte_timeout'];
-    }
-
-    /**
-     * Sets first_byte_timeout
-     *
-     * @param int|null $first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
-     *
-     * @return self
-     */
-    public function setFirstByteTimeout($first_byte_timeout)
-    {
-        $this->container['first_byte_timeout'] = $first_byte_timeout;
-
-        return $this;
-    }
-
-    /**
-     * Gets quorum
-     *
-     * @return int|null
-     */
-    public function getQuorum()
-    {
-        return $this->container['quorum'];
-    }
-
-    /**
-     * Sets quorum
-     *
-     * @param int|null $quorum Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
-     *
-     * @return self
-     */
-    public function setQuorum($quorum)
-    {
-
-        if (!is_null($quorum) && ($quorum > 100)) {
-            throw new \InvalidArgumentException('invalid value for $quorum when calling PoolResponse., must be smaller than or equal to 100.');
-        }
-        if (!is_null($quorum) && ($quorum < 0)) {
-            throw new \InvalidArgumentException('invalid value for $quorum when calling PoolResponse., must be bigger than or equal to 0.');
-        }
-
-        $this->container['quorum'] = $quorum;
-
-        return $this;
-    }
-
-    /**
      * Gets tls_ciphers
      *
      * @return string|null
@@ -763,30 +777,6 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTlsSniHostname($tls_sni_hostname)
     {
         $this->container['tls_sni_hostname'] = $tls_sni_hostname;
-
-        return $this;
-    }
-
-    /**
-     * Gets tls_check_cert
-     *
-     * @return int|null
-     */
-    public function getTlsCheckCert()
-    {
-        return $this->container['tls_check_cert'];
-    }
-
-    /**
-     * Sets tls_check_cert
-     *
-     * @param int|null $tls_check_cert Be strict on checking TLS certs. Optional.
-     *
-     * @return self
-     */
-    public function setTlsCheckCert($tls_check_cert)
-    {
-        $this->container['tls_check_cert'] = $tls_check_cert;
 
         return $this;
     }
@@ -946,121 +936,121 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime|null
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        $this->container['deleted_at'] = $deleted_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_id
+     * Gets between_bytes_timeout
      *
      * @return string|null
      */
-    public function getServiceId()
+    public function getBetweenBytesTimeout()
     {
-        return $this->container['service_id'];
+        return $this->container['between_bytes_timeout'];
     }
 
     /**
-     * Sets service_id
+     * Sets between_bytes_timeout
      *
-     * @param string|null $service_id service_id
+     * @param string|null $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
      *
      * @return self
      */
-    public function setServiceId($service_id)
+    public function setBetweenBytesTimeout($between_bytes_timeout)
     {
-        $this->container['service_id'] = $service_id;
+        $this->container['between_bytes_timeout'] = $between_bytes_timeout;
 
         return $this;
     }
 
     /**
-     * Gets version
+     * Gets connect_timeout
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getVersion()
+    public function getConnectTimeout()
     {
-        return $this->container['version'];
+        return $this->container['connect_timeout'];
     }
 
     /**
-     * Sets version
+     * Sets connect_timeout
      *
-     * @param int|null $version version
+     * @param string|null $connect_timeout How long to wait for a timeout in milliseconds.
      *
      * @return self
      */
-    public function setVersion($version)
+    public function setConnectTimeout($connect_timeout)
     {
-        $this->container['version'] = $version;
+        $this->container['connect_timeout'] = $connect_timeout;
+
+        return $this;
+    }
+
+    /**
+     * Gets first_byte_timeout
+     *
+     * @return string|null
+     */
+    public function getFirstByteTimeout()
+    {
+        return $this->container['first_byte_timeout'];
+    }
+
+    /**
+     * Sets first_byte_timeout
+     *
+     * @param string|null $first_byte_timeout How long to wait for the first byte in milliseconds.
+     *
+     * @return self
+     */
+    public function setFirstByteTimeout($first_byte_timeout)
+    {
+        $this->container['first_byte_timeout'] = $first_byte_timeout;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_conn_default
+     *
+     * @return string|null
+     */
+    public function getMaxConnDefault()
+    {
+        return $this->container['max_conn_default'];
+    }
+
+    /**
+     * Sets max_conn_default
+     *
+     * @param string|null $max_conn_default Maximum number of connections.
+     *
+     * @return self
+     */
+    public function setMaxConnDefault($max_conn_default)
+    {
+        $this->container['max_conn_default'] = $max_conn_default;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_check_cert
+     *
+     * @return string|null
+     */
+    public function getTlsCheckCert()
+    {
+        return $this->container['tls_check_cert'];
+    }
+
+    /**
+     * Sets tls_check_cert
+     *
+     * @param string|null $tls_check_cert Be strict on checking TLS certs.
+     *
+     * @return self
+     */
+    public function setTlsCheckCert($tls_check_cert)
+    {
+        $this->container['tls_check_cert'] = $tls_check_cert;
 
         return $this;
     }
@@ -1085,6 +1075,30 @@ class PoolResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets quorum
+     *
+     * @return string|null
+     */
+    public function getQuorum()
+    {
+        return $this->container['quorum'];
+    }
+
+    /**
+     * Sets quorum
+     *
+     * @param string|null $quorum Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
+     *
+     * @return self
+     */
+    public function setQuorum($quorum)
+    {
+        $this->container['quorum'] = $quorum;
 
         return $this;
     }

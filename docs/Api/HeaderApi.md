@@ -36,15 +36,15 @@ $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['action'] = 'action_example'; // string | Accepts a string value.
 $options['cache_condition'] = 'cache_condition_example'; // string | Name of the cache condition controlling when this configuration applies.
 $options['dst'] = 'dst_example'; // string | Header to set.
-$options['ignore_if_set'] = 56; // int | Don't add the header if it is added already. Only applies to 'set' action.
 $options['name'] = 'name_example'; // string | A handle to refer to this Header object.
-$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
 $options['regex'] = 'regex_example'; // string | Regular expression to use. Only applies to `regex` and `regex_repeat` actions.
 $options['request_condition'] = 'request_condition_example'; // string | Condition which, if met, will select this configuration during a request. Optional.
 $options['response_condition'] = 'response_condition_example'; // string | Optional name of a response condition to apply.
 $options['src'] = 'src_example'; // string | Variable to be used as a source for the header content. Does not apply to `delete` action.
 $options['substitution'] = 'substitution_example'; // string | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
 $options['type'] = 'type_example'; // string | Accepts a string value.
+$options['ignore_if_set'] = 56; // int | Don't add the header if it is added already. Only applies to 'set' action.
+$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
 
 try {
     $result = $apiInstance->createHeaderObject($options);
@@ -64,15 +64,15 @@ Name | Type | Description  | Notes
 **action** | **string** | Accepts a string value. | [optional] [one of: 'set', 'append', 'delete', 'regex', 'regex_repeat']
 **cache_condition** | **string** | Name of the cache condition controlling when this configuration applies. | [optional]
 **dst** | **string** | Header to set. | [optional]
-**ignore_if_set** | **int** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional]
 **name** | **string** | A handle to refer to this Header object. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
 **regex** | **string** | Regular expression to use. Only applies to `regex` and `regex_repeat` actions. | [optional]
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional]
 **response_condition** | **string** | Optional name of a response condition to apply. | [optional]
 **src** | **string** | Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional]
 **substitution** | **string** | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional]
 **type** | **string** | Accepts a string value. | [optional] [one of: 'request', 'cache', 'response']
+**ignore_if_set** | **int** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional]
+**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
 
 ### Return type
 
@@ -209,15 +209,15 @@ $options['header_name'] = 'header_name_example'; // string | A handle to refer t
 $options['action'] = 'action_example'; // string | Accepts a string value.
 $options['cache_condition'] = 'cache_condition_example'; // string | Name of the cache condition controlling when this configuration applies.
 $options['dst'] = 'dst_example'; // string | Header to set.
-$options['ignore_if_set'] = 56; // int | Don't add the header if it is added already. Only applies to 'set' action.
 $options['name'] = 'name_example'; // string | A handle to refer to this Header object.
-$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
 $options['regex'] = 'regex_example'; // string | Regular expression to use. Only applies to `regex` and `regex_repeat` actions.
 $options['request_condition'] = 'request_condition_example'; // string | Condition which, if met, will select this configuration during a request. Optional.
 $options['response_condition'] = 'response_condition_example'; // string | Optional name of a response condition to apply.
 $options['src'] = 'src_example'; // string | Variable to be used as a source for the header content. Does not apply to `delete` action.
 $options['substitution'] = 'substitution_example'; // string | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
 $options['type'] = 'type_example'; // string | Accepts a string value.
+$options['ignore_if_set'] = 56; // int | Don't add the header if it is added already. Only applies to 'set' action.
+$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
 
 try {
     $result = $apiInstance->updateHeaderObject($options);
@@ -238,15 +238,15 @@ Name | Type | Description  | Notes
 **action** | **string** | Accepts a string value. | [optional] [one of: 'set', 'append', 'delete', 'regex', 'regex_repeat']
 **cache_condition** | **string** | Name of the cache condition controlling when this configuration applies. | [optional]
 **dst** | **string** | Header to set. | [optional]
-**ignore_if_set** | **int** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional]
 **name** | **string** | A handle to refer to this Header object. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
 **regex** | **string** | Regular expression to use. Only applies to `regex` and `regex_repeat` actions. | [optional]
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional]
 **response_condition** | **string** | Optional name of a response condition to apply. | [optional]
 **src** | **string** | Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional]
 **substitution** | **string** | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional]
 **type** | **string** | Accepts a string value. | [optional] [one of: 'request', 'cache', 'response']
+**ignore_if_set** | **int** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional]
+**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
 
 ### Return type
 

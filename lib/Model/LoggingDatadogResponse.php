@@ -55,16 +55,16 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $fastlyTypes = [
         'name' => 'string',
         'placement' => 'string',
-        'format_version' => 'int',
         'response_condition' => 'string',
         'format' => 'string',
+        'format_version' => 'string',
         'region' => 'string',
         'token' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'service_id' => 'string',
-        'version' => 'int'
+        'version' => 'string'
     ];
 
     /**
@@ -77,9 +77,9 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $fastlyFormats = [
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
         'format' => null,
+        'format_version' => null,
         'region' => null,
         'token' => null,
         'created_at' => 'date-time',
@@ -118,9 +118,9 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $attributeMap = [
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
         'format' => 'format',
+        'format_version' => 'format_version',
         'region' => 'region',
         'token' => 'token',
         'created_at' => 'created_at',
@@ -138,9 +138,9 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $setters = [
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
         'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'region' => 'setRegion',
         'token' => 'setToken',
         'created_at' => 'setCreatedAt',
@@ -158,9 +158,9 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $getters = [
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
         'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'region' => 'getRegion',
         'token' => 'getToken',
         'created_at' => 'getCreatedAt',
@@ -214,8 +214,8 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     const PLACEMENT_NONE = 'none';
     const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
-    const FORMAT_VERSION_v1 = 1;
-    const FORMAT_VERSION_v2 = 2;
+    const FORMAT_VERSION_v1 = '1';
+    const FORMAT_VERSION_v2 = '2';
     const REGION_US = 'US';
     const REGION_EU = 'EU';
 
@@ -276,9 +276,9 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
         $this->container['format'] = $data['format'] ?? '{"ddsource":"fastly","service":"%{req.service_id}V","date":"%{begin:%Y-%m-%dT%H:%M:%S%Z}t","time_start":"%{begin:%Y-%m-%dT%H:%M:%S%Z}t","time_end":"%{end:%Y-%m-%dT%H:%M:%S%Z}t","http":{"request_time_ms":"%D","method":"%m","url":"%{json.escape(req.url)}V","useragent":"%{User-Agent}i","referer":"%{Referer}i","protocol":"%H","request_x_forwarded_for":"%{X-Forwarded-For}i","status_code":"%s"},"network":{"client":{"ip":"%h","name":"%{client.as.name}V","number":"%{client.as.number}V","connection_speed":"%{client.geo.conn_speed}V"},"destination":{"ip":"%A"},"geoip":{"geo_city":"%{client.geo.city.utf8}V","geo_country_code":"%{client.geo.country_code}V","geo_continent_code":"%{client.geo.continent_code}V","geo_region":"%{client.geo.region}V"},"bytes_written":"%B","bytes_read":"%{req.body_bytes_read}V"},"host":"%{Fastly-Orig-Host}i","origin_host":"%v","is_ipv6":"%{if(req.is_ipv6, \"true\", \"false\")}V","is_tls":"%{if(req.is_ssl, \"true\", \"false\")}V","tls_client_protocol":"%{json.escape(tls.client.protocol)}V","tls_client_servername":"%{json.escape(tls.client.servername)}V","tls_client_cipher":"%{json.escape(tls.client.cipher)}V","tls_client_cipher_sha":"%{json.escape(tls.client.ciphers_sha)}V","tls_client_tlsexts_sha":"%{json.escape(tls.client.tlsexts_sha)}V","is_h2":"%{if(fastly_info.is_h2, \"true\", \"false\")}V","is_h2_push":"%{if(fastly_info.h2.is_push, \"true\", \"false\")}V","h2_stream_id":"%{fastly_info.h2.stream_id}V","request_accept_content":"%{Accept}i","request_accept_language":"%{Accept-Language}i","request_accept_encoding":"%{Accept-Encoding}i","request_accept_charset":"%{Accept-Charset}i","request_connection":"%{Connection}i","request_dnt":"%{DNT}i","request_forwarded":"%{Forwarded}i","request_via":"%{Via}i","request_cache_control":"%{Cache-Control}i","request_x_requested_with":"%{X-Requested-With}i","request_x_att_device_id":"%{X-ATT-Device-Id}i","content_type":"%{Content-Type}o","is_cacheable":"%{if(fastly_info.state~\"^(HIT|MISS)$\", \"true\", \"false\")}V","response_age":"%{Age}o","response_cache_control":"%{Cache-Control}o","response_expires":"%{Expires}o","response_last_modified":"%{Last-Modified}o","response_tsv":"%{TSV}o","server_datacenter":"%{server.datacenter}V","req_header_size":"%{req.header_bytes_read}V","resp_header_size":"%{resp.header_bytes_written}V","socket_cwnd":"%{client.socket.cwnd}V","socket_nexthop":"%{client.socket.nexthop}V","socket_tcpi_rcv_mss":"%{client.socket.tcpi_rcv_mss}V","socket_tcpi_snd_mss":"%{client.socket.tcpi_snd_mss}V","socket_tcpi_rtt":"%{client.socket.tcpi_rtt}V","socket_tcpi_rttvar":"%{client.socket.tcpi_rttvar}V","socket_tcpi_rcv_rtt":"%{client.socket.tcpi_rcv_rtt}V","socket_tcpi_rcv_space":"%{client.socket.tcpi_rcv_space}V","socket_tcpi_last_data_sent":"%{client.socket.tcpi_last_data_sent}V","socket_tcpi_total_retrans":"%{client.socket.tcpi_total_retrans}V","socket_tcpi_delta_retrans":"%{client.socket.tcpi_delta_retrans}V","socket_ploss":"%{client.socket.ploss}V"}';
+        $this->container['format_version'] = $data['format_version'] ?? '2';
         $this->container['region'] = $data['region'] ?? 'US';
         $this->container['token'] = $data['token'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -398,40 +398,6 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets format_version
-     *
-     * @return int|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $allowedValues = $this->getFormatVersionAllowableValues();
-        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format_version', must be one of '%s'",
-                    $format_version,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -475,6 +441,40 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return string|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param string|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -636,7 +636,7 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets version
      *
-     * @return int|null
+     * @return string|null
      */
     public function getVersion()
     {
@@ -646,7 +646,7 @@ class LoggingDatadogResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param string|null $version version
      *
      * @return self
      */

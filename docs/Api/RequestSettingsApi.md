@@ -183,17 +183,17 @@ Updates the specified Request Settings object.
 $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['request_settings_name'] = 'request_settings_name_example'; // string | Name for the request settings.
 $options['action'] = 'action_example'; // string | Allows you to terminate request handling and immediately perform an action.
-$options['bypass_busy_wait'] = 56; // int | Disable collapsed forwarding, so you don't wait for other objects to origin.
 $options['default_host'] = 'default_host_example'; // string | Sets the host header.
+$options['hash_keys'] = 'hash_keys_example'; // string | Comma separated list of varnish request object fields that should be in the hash key.
+$options['name'] = 'name_example'; // string | Name for the request settings.
+$options['request_condition'] = 'request_condition_example'; // string | Condition which, if met, will select this configuration during a request. Optional.
+$options['xff'] = 'xff_example'; // string | Short for X-Forwarded-For.
+$options['bypass_busy_wait'] = 56; // int | Disable collapsed forwarding, so you don't wait for other objects to origin.
 $options['force_miss'] = 56; // int | Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
 $options['force_ssl'] = 56; // int | Forces the request use SSL (redirects a non-SSL to SSL).
 $options['geo_headers'] = 56; // int | Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
-$options['hash_keys'] = 'hash_keys_example'; // string | Comma separated list of varnish request object fields that should be in the hash key.
 $options['max_stale_age'] = 56; // int | How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
-$options['name'] = 'name_example'; // string | Name for the request settings.
-$options['request_condition'] = 'request_condition_example'; // string | Condition which, if met, will select this configuration during a request. Optional.
 $options['timer_support'] = 56; // int | Injects the X-Timer info into the request for viewing origin fetch durations.
-$options['xff'] = 'xff_example'; // string | Short for X-Forwarded-For.
 
 try {
     $result = $apiInstance->updateRequestSettings($options);
@@ -212,17 +212,17 @@ Name | Type | Description  | Notes
 **version_id** | **int** | Integer identifying a service version. |
 **request_settings_name** | **string** | Name for the request settings. |
 **action** | **string** | Allows you to terminate request handling and immediately perform an action. | [optional] [one of: 'lookup', 'pass']
-**bypass_busy_wait** | **int** | Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. | [optional]
 **default_host** | **string** | Sets the host header. | [optional]
+**hash_keys** | **string** | Comma separated list of varnish request object fields that should be in the hash key. | [optional]
+**name** | **string** | Name for the request settings. | [optional]
+**request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional]
+**xff** | **string** | Short for X-Forwarded-For. | [optional] [one of: 'clear', 'leave', 'append', 'append_all', 'overwrite']
+**bypass_busy_wait** | **int** | Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. | [optional]
 **force_miss** | **int** | Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable. | [optional]
 **force_ssl** | **int** | Forces the request use SSL (redirects a non-SSL to SSL). | [optional]
 **geo_headers** | **int** | Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers. | [optional]
-**hash_keys** | **string** | Comma separated list of varnish request object fields that should be in the hash key. | [optional]
 **max_stale_age** | **int** | How old an object is allowed to be to serve stale-if-error or stale-while-revalidate. | [optional]
-**name** | **string** | Name for the request settings. | [optional]
-**request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional]
 **timer_support** | **int** | Injects the X-Timer info into the request for viewing origin fetch durations. | [optional]
-**xff** | **string** | Short for X-Forwarded-For. | [optional] [one of: 'clear', 'leave', 'append', 'append_all', 'overwrite']
 
 ### Return type
 

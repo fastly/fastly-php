@@ -35,9 +35,9 @@ Create a Logentry for a particular service and version.
 $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
 $options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
-$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
 $options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 $options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
 $options['port'] = 20000; // int | The port number.
 $options['token'] = 'token_example'; // string | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).
 $options['use_tls'] = new \Fastly\Model\LoggingUseTls(); // \Fastly\Model\LoggingUseTls
@@ -60,9 +60,9 @@ Name | Type | Description  | Notes
 **version_id** | **int** | Integer identifying a service version. |
 **name** | **string** | The name for the real-time logging configuration. | [optional]
 **placement** | **string** | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. | [optional] [one of: 'none', 'waf_debug', 'null']
-**format_version** | **int** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional] [one of: 1, 2]
 **response_condition** | **string** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
 **format** | **string** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional] [defaults to '%h %l %u %t "%r" %&gt;s %b']
+**format_version** | **int** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional] [one of: 1, 2]
 **port** | **int** | The port number. | [optional] [defaults to 20000]
 **token** | **string** | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). | [optional]
 **use_tls** | [**\Fastly\Model\LoggingUseTls**](../Model/LoggingUseTls.md) |  | [optional]
@@ -202,9 +202,9 @@ $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['logging_logentries_name'] = 'logging_logentries_name_example'; // string | The name for the real-time logging configuration.
 $options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
 $options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
-$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
 $options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 $options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
 $options['port'] = 20000; // int | The port number.
 $options['token'] = 'token_example'; // string | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).
 $options['use_tls'] = new \Fastly\Model\LoggingUseTls(); // \Fastly\Model\LoggingUseTls
@@ -228,9 +228,9 @@ Name | Type | Description  | Notes
 **logging_logentries_name** | **string** | The name for the real-time logging configuration. |
 **name** | **string** | The name for the real-time logging configuration. | [optional]
 **placement** | **string** | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. | [optional] [one of: 'none', 'waf_debug', 'null']
-**format_version** | **int** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional] [one of: 1, 2]
 **response_condition** | **string** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
 **format** | **string** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional] [defaults to '%h %l %u %t "%r" %&gt;s %b']
+**format_version** | **int** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional] [one of: 1, 2]
 **port** | **int** | The port number. | [optional] [defaults to 20000]
 **token** | **string** | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). | [optional]
 **use_tls** | [**\Fastly\Model\LoggingUseTls**](../Model/LoggingUseTls.md) |  | [optional]

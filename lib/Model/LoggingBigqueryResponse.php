@@ -55,9 +55,9 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $fastlyTypes = [
         'name' => 'string',
         'placement' => 'string',
-        'format_version' => 'int',
         'response_condition' => 'string',
         'format' => 'string',
+        'format_version' => 'string',
         'user' => 'string',
         'secret_key' => 'string',
         'account_name' => 'string',
@@ -69,7 +69,7 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'service_id' => 'string',
-        'version' => 'int'
+        'version' => 'string'
     ];
 
     /**
@@ -82,9 +82,9 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $fastlyFormats = [
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
         'format' => null,
+        'format_version' => null,
         'user' => null,
         'secret_key' => null,
         'account_name' => null,
@@ -128,9 +128,9 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
         'format' => 'format',
+        'format_version' => 'format_version',
         'user' => 'user',
         'secret_key' => 'secret_key',
         'account_name' => 'account_name',
@@ -153,9 +153,9 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
         'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'user' => 'setUser',
         'secret_key' => 'setSecretKey',
         'account_name' => 'setAccountName',
@@ -178,9 +178,9 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
         'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'user' => 'getUser',
         'secret_key' => 'getSecretKey',
         'account_name' => 'getAccountName',
@@ -239,8 +239,8 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     const PLACEMENT_NONE = 'none';
     const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
-    const FORMAT_VERSION_v1 = 1;
-    const FORMAT_VERSION_v2 = 2;
+    const FORMAT_VERSION_v1 = '1';
+    const FORMAT_VERSION_v2 = '2';
 
     /**
      * Gets allowable values of the enum
@@ -286,9 +286,9 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
         $this->container['format'] = $data['format'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? '2';
         $this->container['user'] = $data['user'] ?? null;
         $this->container['secret_key'] = $data['secret_key'] ?? null;
         $this->container['account_name'] = $data['account_name'] ?? null;
@@ -404,40 +404,6 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets format_version
-     *
-     * @return int|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $allowedValues = $this->getFormatVersionAllowableValues();
-        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format_version', must be one of '%s'",
-                    $format_version,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -481,6 +447,40 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return string|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param string|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -752,7 +752,7 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets version
      *
-     * @return int|null
+     * @return string|null
      */
     public function getVersion()
     {
@@ -762,7 +762,7 @@ class LoggingBigqueryResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param string|null $version version
      *
      * @return self
      */

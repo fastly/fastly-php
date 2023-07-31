@@ -124,8 +124,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -152,8 +152,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -268,8 +268,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -299,8 +299,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -356,8 +356,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1583,8 +1583,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1612,8 +1612,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1729,8 +1729,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1761,8 +1761,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1819,8 +1819,8 @@ class CacheSettingsApi
      * @param  string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. (optional)
      * @param  string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
      * @param  string $name Name for the cache settings object. (optional)
-     * @param  int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-     * @param  int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+     * @param  string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+     * @param  string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -53,23 +53,23 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'action' => 'string',
-        'bypass_busy_wait' => 'int',
-        'default_host' => 'string',
-        'force_miss' => 'int',
-        'force_ssl' => 'int',
-        'geo_headers' => 'int',
-        'hash_keys' => 'string',
-        'max_stale_age' => 'int',
-        'name' => 'string',
-        'request_condition' => 'string',
-        'timer_support' => 'int',
-        'xff' => 'string',
-        'service_id' => 'string',
-        'version' => 'int',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'service_id' => 'string',
+        'version' => 'string',
+        'action' => 'string',
+        'default_host' => 'string',
+        'hash_keys' => 'string',
+        'name' => 'string',
+        'request_condition' => 'string',
+        'xff' => 'string',
+        'bypass_busy_wait' => 'string',
+        'force_miss' => 'string',
+        'force_ssl' => 'string',
+        'geo_headers' => 'string',
+        'max_stale_age' => 'string',
+        'timer_support' => 'string'
     ];
 
     /**
@@ -80,23 +80,23 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'service_id' => null,
+        'version' => null,
         'action' => null,
-        'bypass_busy_wait' => null,
         'default_host' => null,
+        'hash_keys' => null,
+        'name' => null,
+        'request_condition' => null,
+        'xff' => null,
+        'bypass_busy_wait' => null,
         'force_miss' => null,
         'force_ssl' => null,
         'geo_headers' => null,
-        'hash_keys' => null,
         'max_stale_age' => null,
-        'name' => null,
-        'request_condition' => null,
-        'timer_support' => null,
-        'xff' => null,
-        'service_id' => null,
-        'version' => null,
-        'created_at' => 'date-time',
-        'deleted_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'timer_support' => null
     ];
 
     /**
@@ -126,23 +126,23 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'created_at' => 'created_at',
+        'deleted_at' => 'deleted_at',
+        'updated_at' => 'updated_at',
+        'service_id' => 'service_id',
+        'version' => 'version',
         'action' => 'action',
-        'bypass_busy_wait' => 'bypass_busy_wait',
         'default_host' => 'default_host',
+        'hash_keys' => 'hash_keys',
+        'name' => 'name',
+        'request_condition' => 'request_condition',
+        'xff' => 'xff',
+        'bypass_busy_wait' => 'bypass_busy_wait',
         'force_miss' => 'force_miss',
         'force_ssl' => 'force_ssl',
         'geo_headers' => 'geo_headers',
-        'hash_keys' => 'hash_keys',
         'max_stale_age' => 'max_stale_age',
-        'name' => 'name',
-        'request_condition' => 'request_condition',
-        'timer_support' => 'timer_support',
-        'xff' => 'xff',
-        'service_id' => 'service_id',
-        'version' => 'version',
-        'created_at' => 'created_at',
-        'deleted_at' => 'deleted_at',
-        'updated_at' => 'updated_at'
+        'timer_support' => 'timer_support'
     ];
 
     /**
@@ -151,23 +151,23 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'created_at' => 'setCreatedAt',
+        'deleted_at' => 'setDeletedAt',
+        'updated_at' => 'setUpdatedAt',
+        'service_id' => 'setServiceId',
+        'version' => 'setVersion',
         'action' => 'setAction',
-        'bypass_busy_wait' => 'setBypassBusyWait',
         'default_host' => 'setDefaultHost',
+        'hash_keys' => 'setHashKeys',
+        'name' => 'setName',
+        'request_condition' => 'setRequestCondition',
+        'xff' => 'setXff',
+        'bypass_busy_wait' => 'setBypassBusyWait',
         'force_miss' => 'setForceMiss',
         'force_ssl' => 'setForceSsl',
         'geo_headers' => 'setGeoHeaders',
-        'hash_keys' => 'setHashKeys',
         'max_stale_age' => 'setMaxStaleAge',
-        'name' => 'setName',
-        'request_condition' => 'setRequestCondition',
-        'timer_support' => 'setTimerSupport',
-        'xff' => 'setXff',
-        'service_id' => 'setServiceId',
-        'version' => 'setVersion',
-        'created_at' => 'setCreatedAt',
-        'deleted_at' => 'setDeletedAt',
-        'updated_at' => 'setUpdatedAt'
+        'timer_support' => 'setTimerSupport'
     ];
 
     /**
@@ -176,23 +176,23 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'created_at' => 'getCreatedAt',
+        'deleted_at' => 'getDeletedAt',
+        'updated_at' => 'getUpdatedAt',
+        'service_id' => 'getServiceId',
+        'version' => 'getVersion',
         'action' => 'getAction',
-        'bypass_busy_wait' => 'getBypassBusyWait',
         'default_host' => 'getDefaultHost',
+        'hash_keys' => 'getHashKeys',
+        'name' => 'getName',
+        'request_condition' => 'getRequestCondition',
+        'xff' => 'getXff',
+        'bypass_busy_wait' => 'getBypassBusyWait',
         'force_miss' => 'getForceMiss',
         'force_ssl' => 'getForceSsl',
         'geo_headers' => 'getGeoHeaders',
-        'hash_keys' => 'getHashKeys',
         'max_stale_age' => 'getMaxStaleAge',
-        'name' => 'getName',
-        'request_condition' => 'getRequestCondition',
-        'timer_support' => 'getTimerSupport',
-        'xff' => 'getXff',
-        'service_id' => 'getServiceId',
-        'version' => 'getVersion',
-        'created_at' => 'getCreatedAt',
-        'deleted_at' => 'getDeletedAt',
-        'updated_at' => 'getUpdatedAt'
+        'timer_support' => 'getTimerSupport'
     ];
 
     /**
@@ -288,23 +288,23 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['action'] = $data['action'] ?? null;
-        $this->container['bypass_busy_wait'] = $data['bypass_busy_wait'] ?? null;
-        $this->container['default_host'] = $data['default_host'] ?? null;
-        $this->container['force_miss'] = $data['force_miss'] ?? null;
-        $this->container['force_ssl'] = $data['force_ssl'] ?? null;
-        $this->container['geo_headers'] = $data['geo_headers'] ?? null;
-        $this->container['hash_keys'] = $data['hash_keys'] ?? null;
-        $this->container['max_stale_age'] = $data['max_stale_age'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['request_condition'] = $data['request_condition'] ?? null;
-        $this->container['timer_support'] = $data['timer_support'] ?? null;
-        $this->container['xff'] = $data['xff'] ?? null;
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
+        $this->container['action'] = $data['action'] ?? null;
+        $this->container['default_host'] = $data['default_host'] ?? null;
+        $this->container['hash_keys'] = $data['hash_keys'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['request_condition'] = $data['request_condition'] ?? null;
+        $this->container['xff'] = $data['xff'] ?? null;
+        $this->container['bypass_busy_wait'] = $data['bypass_busy_wait'] ?? null;
+        $this->container['force_miss'] = $data['force_miss'] ?? null;
+        $this->container['force_ssl'] = $data['force_ssl'] ?? null;
+        $this->container['geo_headers'] = $data['geo_headers'] ?? null;
+        $this->container['max_stale_age'] = $data['max_stale_age'] ?? null;
+        $this->container['timer_support'] = $data['timer_support'] ?? null;
     }
 
     /**
@@ -348,362 +348,6 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets action
-     *
-     * @return string|null
-     */
-    public function getAction()
-    {
-        return $this->container['action'];
-    }
-
-    /**
-     * Sets action
-     *
-     * @param string|null $action Allows you to terminate request handling and immediately perform an action.
-     *
-     * @return self
-     */
-    public function setAction($action)
-    {
-        $allowedValues = $this->getActionAllowableValues();
-        if (!is_null($action) && !in_array($action, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'action', must be one of '%s'",
-                    $action,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['action'] = $action;
-
-        return $this;
-    }
-
-    /**
-     * Gets bypass_busy_wait
-     *
-     * @return int|null
-     */
-    public function getBypassBusyWait()
-    {
-        return $this->container['bypass_busy_wait'];
-    }
-
-    /**
-     * Sets bypass_busy_wait
-     *
-     * @param int|null $bypass_busy_wait Disable collapsed forwarding, so you don't wait for other objects to origin.
-     *
-     * @return self
-     */
-    public function setBypassBusyWait($bypass_busy_wait)
-    {
-        $this->container['bypass_busy_wait'] = $bypass_busy_wait;
-
-        return $this;
-    }
-
-    /**
-     * Gets default_host
-     *
-     * @return string|null
-     */
-    public function getDefaultHost()
-    {
-        return $this->container['default_host'];
-    }
-
-    /**
-     * Sets default_host
-     *
-     * @param string|null $default_host Sets the host header.
-     *
-     * @return self
-     */
-    public function setDefaultHost($default_host)
-    {
-        $this->container['default_host'] = $default_host;
-
-        return $this;
-    }
-
-    /**
-     * Gets force_miss
-     *
-     * @return int|null
-     */
-    public function getForceMiss()
-    {
-        return $this->container['force_miss'];
-    }
-
-    /**
-     * Sets force_miss
-     *
-     * @param int|null $force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
-     *
-     * @return self
-     */
-    public function setForceMiss($force_miss)
-    {
-        $this->container['force_miss'] = $force_miss;
-
-        return $this;
-    }
-
-    /**
-     * Gets force_ssl
-     *
-     * @return int|null
-     */
-    public function getForceSsl()
-    {
-        return $this->container['force_ssl'];
-    }
-
-    /**
-     * Sets force_ssl
-     *
-     * @param int|null $force_ssl Forces the request use SSL (redirects a non-SSL to SSL).
-     *
-     * @return self
-     */
-    public function setForceSsl($force_ssl)
-    {
-        $this->container['force_ssl'] = $force_ssl;
-
-        return $this;
-    }
-
-    /**
-     * Gets geo_headers
-     *
-     * @return int|null
-     */
-    public function getGeoHeaders()
-    {
-        return $this->container['geo_headers'];
-    }
-
-    /**
-     * Sets geo_headers
-     *
-     * @param int|null $geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
-     *
-     * @return self
-     */
-    public function setGeoHeaders($geo_headers)
-    {
-        $this->container['geo_headers'] = $geo_headers;
-
-        return $this;
-    }
-
-    /**
-     * Gets hash_keys
-     *
-     * @return string|null
-     */
-    public function getHashKeys()
-    {
-        return $this->container['hash_keys'];
-    }
-
-    /**
-     * Sets hash_keys
-     *
-     * @param string|null $hash_keys Comma separated list of varnish request object fields that should be in the hash key.
-     *
-     * @return self
-     */
-    public function setHashKeys($hash_keys)
-    {
-        $this->container['hash_keys'] = $hash_keys;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_stale_age
-     *
-     * @return int|null
-     */
-    public function getMaxStaleAge()
-    {
-        return $this->container['max_stale_age'];
-    }
-
-    /**
-     * Sets max_stale_age
-     *
-     * @param int|null $max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
-     *
-     * @return self
-     */
-    public function setMaxStaleAge($max_stale_age)
-    {
-        $this->container['max_stale_age'] = $max_stale_age;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Name for the request settings.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_condition
-     *
-     * @return string|null
-     */
-    public function getRequestCondition()
-    {
-        return $this->container['request_condition'];
-    }
-
-    /**
-     * Sets request_condition
-     *
-     * @param string|null $request_condition Condition which, if met, will select this configuration during a request. Optional.
-     *
-     * @return self
-     */
-    public function setRequestCondition($request_condition)
-    {
-        $this->container['request_condition'] = $request_condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets timer_support
-     *
-     * @return int|null
-     */
-    public function getTimerSupport()
-    {
-        return $this->container['timer_support'];
-    }
-
-    /**
-     * Sets timer_support
-     *
-     * @param int|null $timer_support Injects the X-Timer info into the request for viewing origin fetch durations.
-     *
-     * @return self
-     */
-    public function setTimerSupport($timer_support)
-    {
-        $this->container['timer_support'] = $timer_support;
-
-        return $this;
-    }
-
-    /**
-     * Gets xff
-     *
-     * @return string|null
-     */
-    public function getXff()
-    {
-        return $this->container['xff'];
-    }
-
-    /**
-     * Sets xff
-     *
-     * @param string|null $xff Short for X-Forwarded-For.
-     *
-     * @return self
-     */
-    public function setXff($xff)
-    {
-        $allowedValues = $this->getXffAllowableValues();
-        if (!is_null($xff) && !in_array($xff, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'xff', must be one of '%s'",
-                    $xff,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['xff'] = $xff;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_id
-     *
-     * @return string|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string|null $service_id service_id
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return int|null
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param int|null $version version
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
-
-        return $this;
-    }
 
     /**
      * Gets created_at
@@ -773,6 +417,362 @@ class RequestSettingsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id service_id
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string|null $version version
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return string|null
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string|null $action Allows you to terminate request handling and immediately perform an action.
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        $allowedValues = $this->getActionAllowableValues();
+        if (!is_null($action) && !in_array($action, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'action', must be one of '%s'",
+                    $action,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_host
+     *
+     * @return string|null
+     */
+    public function getDefaultHost()
+    {
+        return $this->container['default_host'];
+    }
+
+    /**
+     * Sets default_host
+     *
+     * @param string|null $default_host Sets the host header.
+     *
+     * @return self
+     */
+    public function setDefaultHost($default_host)
+    {
+        $this->container['default_host'] = $default_host;
+
+        return $this;
+    }
+
+    /**
+     * Gets hash_keys
+     *
+     * @return string|null
+     */
+    public function getHashKeys()
+    {
+        return $this->container['hash_keys'];
+    }
+
+    /**
+     * Sets hash_keys
+     *
+     * @param string|null $hash_keys Comma separated list of varnish request object fields that should be in the hash key.
+     *
+     * @return self
+     */
+    public function setHashKeys($hash_keys)
+    {
+        $this->container['hash_keys'] = $hash_keys;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name for the request settings.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_condition
+     *
+     * @return string|null
+     */
+    public function getRequestCondition()
+    {
+        return $this->container['request_condition'];
+    }
+
+    /**
+     * Sets request_condition
+     *
+     * @param string|null $request_condition Condition which, if met, will select this configuration during a request. Optional.
+     *
+     * @return self
+     */
+    public function setRequestCondition($request_condition)
+    {
+        $this->container['request_condition'] = $request_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets xff
+     *
+     * @return string|null
+     */
+    public function getXff()
+    {
+        return $this->container['xff'];
+    }
+
+    /**
+     * Sets xff
+     *
+     * @param string|null $xff Short for X-Forwarded-For.
+     *
+     * @return self
+     */
+    public function setXff($xff)
+    {
+        $allowedValues = $this->getXffAllowableValues();
+        if (!is_null($xff) && !in_array($xff, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'xff', must be one of '%s'",
+                    $xff,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['xff'] = $xff;
+
+        return $this;
+    }
+
+    /**
+     * Gets bypass_busy_wait
+     *
+     * @return string|null
+     */
+    public function getBypassBusyWait()
+    {
+        return $this->container['bypass_busy_wait'];
+    }
+
+    /**
+     * Sets bypass_busy_wait
+     *
+     * @param string|null $bypass_busy_wait Disable collapsed forwarding, so you don't wait for other objects to origin.
+     *
+     * @return self
+     */
+    public function setBypassBusyWait($bypass_busy_wait)
+    {
+        $this->container['bypass_busy_wait'] = $bypass_busy_wait;
+
+        return $this;
+    }
+
+    /**
+     * Gets force_miss
+     *
+     * @return string|null
+     */
+    public function getForceMiss()
+    {
+        return $this->container['force_miss'];
+    }
+
+    /**
+     * Sets force_miss
+     *
+     * @param string|null $force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
+     *
+     * @return self
+     */
+    public function setForceMiss($force_miss)
+    {
+        $this->container['force_miss'] = $force_miss;
+
+        return $this;
+    }
+
+    /**
+     * Gets force_ssl
+     *
+     * @return string|null
+     */
+    public function getForceSsl()
+    {
+        return $this->container['force_ssl'];
+    }
+
+    /**
+     * Sets force_ssl
+     *
+     * @param string|null $force_ssl Forces the request use SSL (redirects a non-SSL to SSL).
+     *
+     * @return self
+     */
+    public function setForceSsl($force_ssl)
+    {
+        $this->container['force_ssl'] = $force_ssl;
+
+        return $this;
+    }
+
+    /**
+     * Gets geo_headers
+     *
+     * @return string|null
+     */
+    public function getGeoHeaders()
+    {
+        return $this->container['geo_headers'];
+    }
+
+    /**
+     * Sets geo_headers
+     *
+     * @param string|null $geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
+     *
+     * @return self
+     */
+    public function setGeoHeaders($geo_headers)
+    {
+        $this->container['geo_headers'] = $geo_headers;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_stale_age
+     *
+     * @return string|null
+     */
+    public function getMaxStaleAge()
+    {
+        return $this->container['max_stale_age'];
+    }
+
+    /**
+     * Sets max_stale_age
+     *
+     * @param string|null $max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
+     *
+     * @return self
+     */
+    public function setMaxStaleAge($max_stale_age)
+    {
+        $this->container['max_stale_age'] = $max_stale_age;
+
+        return $this;
+    }
+
+    /**
+     * Gets timer_support
+     *
+     * @return string|null
+     */
+    public function getTimerSupport()
+    {
+        return $this->container['timer_support'];
+    }
+
+    /**
+     * Sets timer_support
+     *
+     * @param string|null $timer_support Injects the X-Timer info into the request for viewing origin fetch durations.
+     *
+     * @return self
+     */
+    public function setTimerSupport($timer_support)
+    {
+        $this->container['timer_support'] = $timer_support;
 
         return $this;
     }

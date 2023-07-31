@@ -35,14 +35,14 @@ Create an Azure Blob Storage logging endpoint for a particular service and versi
 $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
 $options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
-$options['format_version'] = 2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
 $options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 $options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['format_version'] = 2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
 $options['message_type'] = 'classic'; // string | How the message should be formatted.
 $options['timestamp_format'] = 'timestamp_format_example'; // string | A timestamp format
+$options['compression_codec'] = 'compression_codec_example'; // string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 $options['period'] = 3600; // int | How frequently log files are finalized so they can be available for reading (in seconds).
 $options['gzip_level'] = 0; // int | The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-$options['compression_codec'] = 'compression_codec_example'; // string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 $options['path'] = 'null'; // string | The path to upload logs to.
 $options['account_name'] = 'account_name_example'; // string | The unique Azure Blob Storage namespace in which your data objects are stored. Required.
 $options['container'] = 'container_example'; // string | The name of the Azure Blob Storage container in which to store logs. Required.
@@ -67,14 +67,14 @@ Name | Type | Description  | Notes
 **version_id** | **int** | Integer identifying a service version. |
 **name** | **string** | The name for the real-time logging configuration. | [optional]
 **placement** | **string** | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. | [optional] [one of: 'none', 'waf_debug', 'null']
-**format_version** | **int** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional] [one of: 1, 2]
 **response_condition** | **string** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
 **format** | **string** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional] [defaults to '%h %l %u %t "%r" %&gt;s %b']
+**format_version** | **int** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional] [one of: 1, 2]
 **message_type** | **string** | How the message should be formatted. | [optional] [one of: 'classic', 'loggly', 'logplex', 'blank'] [defaults to 'classic']
 **timestamp_format** | **string** | A timestamp format | [optional]
+**compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] [one of: 'zstd', 'snappy', 'gzip']
 **period** | **int** | How frequently log files are finalized so they can be available for reading (in seconds). | [optional] [defaults to 3600]
 **gzip_level** | **int** | The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] [defaults to 0]
-**compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] [one of: 'zstd', 'snappy', 'gzip']
 **path** | **string** | The path to upload logs to. | [optional] [defaults to 'null']
 **account_name** | **string** | The unique Azure Blob Storage namespace in which your data objects are stored. Required. | [optional]
 **container** | **string** | The name of the Azure Blob Storage container in which to store logs. Required. | [optional]
@@ -216,14 +216,14 @@ $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['logging_azureblob_name'] = 'logging_azureblob_name_example'; // string | The name for the real-time logging configuration.
 $options['name'] = 'name_example'; // string | The name for the real-time logging configuration.
 $options['placement'] = 'placement_example'; // string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.
-$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
 $options['response_condition'] = 'response_condition_example'; // string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 $options['format'] = '%h %l %u %t \"%r\" %&gt;s %b'; // string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+$options['format_version'] = self::FORMAT_VERSION_v2; // int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
 $options['message_type'] = 'classic'; // string | How the message should be formatted.
 $options['timestamp_format'] = 'timestamp_format_example'; // string | A timestamp format
+$options['compression_codec'] = 'compression_codec_example'; // string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 $options['period'] = 3600; // int | How frequently log files are finalized so they can be available for reading (in seconds).
 $options['gzip_level'] = 0; // int | The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-$options['compression_codec'] = 'compression_codec_example'; // string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 $options['path'] = 'null'; // string | The path to upload logs to.
 $options['account_name'] = 'account_name_example'; // string | The unique Azure Blob Storage namespace in which your data objects are stored. Required.
 $options['container'] = 'container_example'; // string | The name of the Azure Blob Storage container in which to store logs. Required.
@@ -249,14 +249,14 @@ Name | Type | Description  | Notes
 **logging_azureblob_name** | **string** | The name for the real-time logging configuration. |
 **name** | **string** | The name for the real-time logging configuration. | [optional]
 **placement** | **string** | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. | [optional] [one of: 'none', 'waf_debug', 'null']
-**format_version** | **int** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional] [one of: 1, 2]
 **response_condition** | **string** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional]
 **format** | **string** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional] [defaults to '%h %l %u %t "%r" %&gt;s %b']
+**format_version** | **int** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional] [one of: 1, 2]
 **message_type** | **string** | How the message should be formatted. | [optional] [one of: 'classic', 'loggly', 'logplex', 'blank'] [defaults to 'classic']
 **timestamp_format** | **string** | A timestamp format | [optional]
+**compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] [one of: 'zstd', 'snappy', 'gzip']
 **period** | **int** | How frequently log files are finalized so they can be available for reading (in seconds). | [optional] [defaults to 3600]
 **gzip_level** | **int** | The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] [defaults to 0]
-**compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] [one of: 'zstd', 'snappy', 'gzip']
 **path** | **string** | The path to upload logs to. | [optional] [defaults to 'null']
 **account_name** | **string** | The unique Azure Blob Storage namespace in which your data objects are stored. Required. | [optional]
 **container** | **string** | The name of the Azure Blob Storage container in which to store logs. Required. | [optional]

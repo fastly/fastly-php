@@ -56,8 +56,8 @@ class CacheSetting implements ModelInterface, ArrayAccess, \JsonSerializable
         'action' => 'string',
         'cache_condition' => 'string',
         'name' => 'string',
-        'stale_ttl' => 'int',
-        'ttl' => 'int'
+        'stale_ttl' => 'string',
+        'ttl' => 'string'
     ];
 
     /**
@@ -334,7 +334,7 @@ class CacheSetting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets stale_ttl
      *
-     * @return int|null
+     * @return string|null
      */
     public function getStaleTtl()
     {
@@ -344,7 +344,7 @@ class CacheSetting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets stale_ttl
      *
-     * @param int|null $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
+     * @param string|null $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class CacheSetting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ttl
      *
-     * @return int|null
+     * @return string|null
      */
     public function getTtl()
     {
@@ -368,7 +368,7 @@ class CacheSetting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ttl
      *
-     * @param int|null $ttl Maximum time to consider the object fresh in the cache (the cache 'time to live').
+     * @param string|null $ttl Maximum time to consider the object fresh in the cache (the cache 'time to live').
      *
      * @return self
      */

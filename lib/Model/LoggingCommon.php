@@ -55,7 +55,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'name' => 'string',
         'placement' => 'string',
-        'format_version' => 'int',
         'response_condition' => 'string',
         'format' => 'string'
     ];
@@ -70,7 +69,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyFormats = [
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
         'format' => null
     ];
@@ -104,7 +102,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
         'format' => 'format'
     ];
@@ -117,7 +114,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
         'format' => 'setFormat'
     ];
@@ -130,7 +126,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
         'format' => 'getFormat'
     ];
@@ -179,8 +174,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     const PLACEMENT_NONE = 'none';
     const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
-    const FORMAT_VERSION_v1 = 1;
-    const FORMAT_VERSION_v2 = 2;
 
     /**
      * Gets allowable values of the enum
@@ -193,19 +186,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLACEMENT_NONE,
             self::PLACEMENT_WAF_DEBUG,
             self::PLACEMENT_NULL,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFormatVersionAllowableValues()
-    {
-        return [
-            self::FORMAT_VERSION_v1,
-            self::FORMAT_VERSION_v2,
         ];
     }
 
@@ -226,7 +206,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
         $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
     }
@@ -245,15 +224,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'placement', must be one of '%s'",
                 $this->container['placement'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getFormatVersionAllowableValues();
-        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'format_version', must be one of '%s'",
-                $this->container['format_version'],
                 implode("', '", $allowedValues)
             );
         }
@@ -327,40 +297,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['placement'] = $placement;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return int|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $allowedValues = $this->getFormatVersionAllowableValues();
-        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format_version', must be one of '%s'",
-                    $format_version,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format_version'] = $format_version;
 
         return $this;
     }

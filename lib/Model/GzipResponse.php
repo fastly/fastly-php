@@ -58,7 +58,7 @@ class GzipResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'extensions' => 'string',
         'name' => 'string',
         'service_id' => 'string',
-        'version' => 'int',
+        'version' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime'
@@ -370,7 +370,7 @@ class GzipResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets version
      *
-     * @return int|null
+     * @return string|null
      */
     public function getVersion()
     {
@@ -380,7 +380,7 @@ class GzipResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param string|null $version version
      *
      * @return self
      */

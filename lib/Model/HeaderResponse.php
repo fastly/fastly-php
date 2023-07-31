@@ -56,17 +56,17 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'action' => 'string',
         'cache_condition' => 'string',
         'dst' => 'string',
-        'ignore_if_set' => 'int',
         'name' => 'string',
-        'priority' => 'int',
         'regex' => 'string',
         'request_condition' => 'string',
         'response_condition' => 'string',
         'src' => 'string',
         'substitution' => 'string',
         'type' => 'string',
+        'ignore_if_set' => 'string',
+        'priority' => 'string',
         'service_id' => 'string',
-        'version' => 'int',
+        'version' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime'
@@ -83,15 +83,15 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'action' => null,
         'cache_condition' => null,
         'dst' => null,
-        'ignore_if_set' => null,
         'name' => null,
-        'priority' => null,
         'regex' => null,
         'request_condition' => null,
         'response_condition' => null,
         'src' => null,
         'substitution' => null,
         'type' => null,
+        'ignore_if_set' => null,
+        'priority' => null,
         'service_id' => null,
         'version' => null,
         'created_at' => 'date-time',
@@ -129,15 +129,15 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'action' => 'action',
         'cache_condition' => 'cache_condition',
         'dst' => 'dst',
-        'ignore_if_set' => 'ignore_if_set',
         'name' => 'name',
-        'priority' => 'priority',
         'regex' => 'regex',
         'request_condition' => 'request_condition',
         'response_condition' => 'response_condition',
         'src' => 'src',
         'substitution' => 'substitution',
         'type' => 'type',
+        'ignore_if_set' => 'ignore_if_set',
+        'priority' => 'priority',
         'service_id' => 'service_id',
         'version' => 'version',
         'created_at' => 'created_at',
@@ -154,15 +154,15 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'action' => 'setAction',
         'cache_condition' => 'setCacheCondition',
         'dst' => 'setDst',
-        'ignore_if_set' => 'setIgnoreIfSet',
         'name' => 'setName',
-        'priority' => 'setPriority',
         'regex' => 'setRegex',
         'request_condition' => 'setRequestCondition',
         'response_condition' => 'setResponseCondition',
         'src' => 'setSrc',
         'substitution' => 'setSubstitution',
         'type' => 'setType',
+        'ignore_if_set' => 'setIgnoreIfSet',
+        'priority' => 'setPriority',
         'service_id' => 'setServiceId',
         'version' => 'setVersion',
         'created_at' => 'setCreatedAt',
@@ -179,15 +179,15 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'action' => 'getAction',
         'cache_condition' => 'getCacheCondition',
         'dst' => 'getDst',
-        'ignore_if_set' => 'getIgnoreIfSet',
         'name' => 'getName',
-        'priority' => 'getPriority',
         'regex' => 'getRegex',
         'request_condition' => 'getRequestCondition',
         'response_condition' => 'getResponseCondition',
         'src' => 'getSrc',
         'substitution' => 'getSubstitution',
         'type' => 'getType',
+        'ignore_if_set' => 'getIgnoreIfSet',
+        'priority' => 'getPriority',
         'service_id' => 'getServiceId',
         'version' => 'getVersion',
         'created_at' => 'getCreatedAt',
@@ -293,15 +293,15 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['action'] = $data['action'] ?? null;
         $this->container['cache_condition'] = $data['cache_condition'] ?? null;
         $this->container['dst'] = $data['dst'] ?? null;
-        $this->container['ignore_if_set'] = $data['ignore_if_set'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? 100;
         $this->container['regex'] = $data['regex'] ?? null;
         $this->container['request_condition'] = $data['request_condition'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
         $this->container['src'] = $data['src'] ?? null;
         $this->container['substitution'] = $data['substitution'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['ignore_if_set'] = $data['ignore_if_set'] ?? null;
+        $this->container['priority'] = $data['priority'] ?? '100';
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -434,30 +434,6 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets ignore_if_set
-     *
-     * @return int|null
-     */
-    public function getIgnoreIfSet()
-    {
-        return $this->container['ignore_if_set'];
-    }
-
-    /**
-     * Sets ignore_if_set
-     *
-     * @param int|null $ignore_if_set Don't add the header if it is added already. Only applies to 'set' action.
-     *
-     * @return self
-     */
-    public function setIgnoreIfSet($ignore_if_set)
-    {
-        $this->container['ignore_if_set'] = $ignore_if_set;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -477,30 +453,6 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets priority
-     *
-     * @return int|null
-     */
-    public function getPriority()
-    {
-        return $this->container['priority'];
-    }
-
-    /**
-     * Sets priority
-     *
-     * @param int|null $priority Priority determines execution order. Lower numbers execute first.
-     *
-     * @return self
-     */
-    public function setPriority($priority)
-    {
-        $this->container['priority'] = $priority;
 
         return $this;
     }
@@ -660,6 +612,54 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets ignore_if_set
+     *
+     * @return string|null
+     */
+    public function getIgnoreIfSet()
+    {
+        return $this->container['ignore_if_set'];
+    }
+
+    /**
+     * Sets ignore_if_set
+     *
+     * @param string|null $ignore_if_set Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\"0\" = false, \"1\" = true)
+     *
+     * @return self
+     */
+    public function setIgnoreIfSet($ignore_if_set)
+    {
+        $this->container['ignore_if_set'] = $ignore_if_set;
+
+        return $this;
+    }
+
+    /**
+     * Gets priority
+     *
+     * @return string|null
+     */
+    public function getPriority()
+    {
+        return $this->container['priority'];
+    }
+
+    /**
+     * Sets priority
+     *
+     * @param string|null $priority Priority determines execution order. Lower numbers execute first.
+     *
+     * @return self
+     */
+    public function setPriority($priority)
+    {
+        $this->container['priority'] = $priority;
+
+        return $this;
+    }
+
+    /**
      * Gets service_id
      *
      * @return string|null
@@ -686,7 +686,7 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets version
      *
-     * @return int|null
+     * @return string|null
      */
     public function getVersion()
     {
@@ -696,7 +696,7 @@ class HeaderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param string|null $version version
      *
      * @return self
      */

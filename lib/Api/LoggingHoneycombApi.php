@@ -123,15 +123,15 @@ class LoggingHoneycombApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\LoggingHoneycomb
+     * @return \Fastly\Model\LoggingHoneycombResponse
      */
     public function createLogHoneycomb($options)
     {
@@ -153,15 +153,15 @@ class LoggingHoneycombApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\LoggingHoneycomb, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\LoggingHoneycombResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createLogHoneycombWithHttpInfo($options)
     {
@@ -216,20 +216,20 @@ class LoggingHoneycombApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\LoggingHoneycomb' === '\SplFileObject') {
+                    if ('\Fastly\Model\LoggingHoneycombResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\LoggingHoneycomb', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\LoggingHoneycombResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\LoggingHoneycomb';
+            $returnType = '\Fastly\Model\LoggingHoneycombResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -247,7 +247,7 @@ class LoggingHoneycombApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\LoggingHoneycomb',
+                        '\Fastly\Model\LoggingHoneycombResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -271,9 +271,9 @@ class LoggingHoneycombApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
@@ -304,9 +304,9 @@ class LoggingHoneycombApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
@@ -315,7 +315,7 @@ class LoggingHoneycombApi
      */
     public function createLogHoneycombAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\LoggingHoneycomb';
+        $returnType = '\Fastly\Model\LoggingHoneycombResponse';
         $request = $this->createLogHoneycombRequest($options);
 
         return $this->client
@@ -363,9 +363,9 @@ class LoggingHoneycombApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
@@ -379,9 +379,9 @@ class LoggingHoneycombApi
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
         $format = array_key_exists('format', $options) ? $options['format'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $dataset = array_key_exists('dataset', $options) ? $options['dataset'] : null;
         $token = array_key_exists('token', $options) ? $options['token'] : null;
 
@@ -433,16 +433,16 @@ class LoggingHoneycombApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
         if ($format !== null) {
             $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
         }
         // form params
         if ($dataset !== null) {
@@ -899,7 +899,7 @@ class LoggingHoneycombApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\LoggingHoneycomb
+     * @return \Fastly\Model\LoggingHoneycombResponse
      */
     public function getLogHoneycomb($options)
     {
@@ -923,7 +923,7 @@ class LoggingHoneycombApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\LoggingHoneycomb, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\LoggingHoneycombResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLogHoneycombWithHttpInfo($options)
     {
@@ -978,20 +978,20 @@ class LoggingHoneycombApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\LoggingHoneycomb' === '\SplFileObject') {
+                    if ('\Fastly\Model\LoggingHoneycombResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\LoggingHoneycomb', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\LoggingHoneycombResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\LoggingHoneycomb';
+            $returnType = '\Fastly\Model\LoggingHoneycombResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1009,7 +1009,7 @@ class LoggingHoneycombApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\LoggingHoneycomb',
+                        '\Fastly\Model\LoggingHoneycombResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1065,7 +1065,7 @@ class LoggingHoneycombApi
      */
     public function getLogHoneycombAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\LoggingHoneycomb';
+        $returnType = '\Fastly\Model\LoggingHoneycombResponse';
         $request = $this->getLogHoneycombRequest($options);
 
         return $this->client
@@ -1602,9 +1602,9 @@ class LoggingHoneycombApi
      * @param  string $logging_honeycomb_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
@@ -1633,9 +1633,9 @@ class LoggingHoneycombApi
      * @param  string $logging_honeycomb_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
@@ -1752,9 +1752,9 @@ class LoggingHoneycombApi
      * @param  string $logging_honeycomb_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
@@ -1786,9 +1786,9 @@ class LoggingHoneycombApi
      * @param  string $logging_honeycomb_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
@@ -1846,9 +1846,9 @@ class LoggingHoneycombApi
      * @param  string $logging_honeycomb_name The name for the real-time logging configuration. (required)
      * @param  string $name The name for the real-time logging configuration. (optional)
      * @param  string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. (optional)
-     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
      * @param  string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. (optional)
+     * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
      * @param  string $dataset The Honeycomb Dataset you want to log to. (optional)
      * @param  string $token The Write Key from the Account page of your Honeycomb account. (optional)
      *
@@ -1863,9 +1863,9 @@ class LoggingHoneycombApi
         $logging_honeycomb_name = array_key_exists('logging_honeycomb_name', $options) ? $options['logging_honeycomb_name'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $placement = array_key_exists('placement', $options) ? $options['placement'] : null;
-        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $response_condition = array_key_exists('response_condition', $options) ? $options['response_condition'] : null;
         $format = array_key_exists('format', $options) ? $options['format'] : null;
+        $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
         $dataset = array_key_exists('dataset', $options) ? $options['dataset'] : null;
         $token = array_key_exists('token', $options) ? $options['token'] : null;
 
@@ -1931,16 +1931,16 @@ class LoggingHoneycombApi
             $formParams['placement'] = ObjectSerializer::toFormValue($placement);
         }
         // form params
-        if ($format_version !== null) {
-            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
-        }
-        // form params
         if ($response_condition !== null) {
             $formParams['response_condition'] = ObjectSerializer::toFormValue($response_condition);
         }
         // form params
         if ($format !== null) {
             $formParams['format'] = ObjectSerializer::toFormValue($format);
+        }
+        // form params
+        if ($format_version !== null) {
+            $formParams['format_version'] = ObjectSerializer::toFormValue($format_version);
         }
         // form params
         if ($dataset !== null) {

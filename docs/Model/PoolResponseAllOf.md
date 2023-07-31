@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [readonly] 
+**quorum** | **string** | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up. | [optional]  [defaults to '75']
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -55,13 +55,18 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $fastlyTypes = [
         'name' => 'string',
         'placement' => 'string',
-        'format_version' => 'int',
         'response_condition' => 'string',
         'format' => 'string',
+        'format_version' => 'string',
         'tls_ca_cert' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
         'tls_hostname' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'service_id' => 'string',
+        'version' => 'string',
         'topic' => 'string',
         'brokers' => 'string',
         'compression_codec' => 'string',
@@ -71,12 +76,7 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'auth_method' => 'string',
         'user' => 'string',
         'password' => 'string',
-        'use_tls' => '\Fastly\Model\LoggingUseTls',
-        'created_at' => '\DateTime',
-        'deleted_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'service_id' => 'string',
-        'version' => 'int'
+        'use_tls' => '\Fastly\Model\LoggingUseTls'
     ];
 
     /**
@@ -89,13 +89,18 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $fastlyFormats = [
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
         'format' => null,
+        'format_version' => null,
         'tls_ca_cert' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
         'tls_hostname' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'service_id' => null,
+        'version' => null,
         'topic' => null,
         'brokers' => null,
         'compression_codec' => null,
@@ -105,12 +110,7 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'auth_method' => null,
         'user' => null,
         'password' => null,
-        'use_tls' => null,
-        'created_at' => 'date-time',
-        'deleted_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'service_id' => null,
-        'version' => null
+        'use_tls' => null
     ];
 
     /**
@@ -142,13 +142,18 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $attributeMap = [
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
         'format' => 'format',
+        'format_version' => 'format_version',
         'tls_ca_cert' => 'tls_ca_cert',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
         'tls_hostname' => 'tls_hostname',
+        'created_at' => 'created_at',
+        'deleted_at' => 'deleted_at',
+        'updated_at' => 'updated_at',
+        'service_id' => 'service_id',
+        'version' => 'version',
         'topic' => 'topic',
         'brokers' => 'brokers',
         'compression_codec' => 'compression_codec',
@@ -158,12 +163,7 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'auth_method' => 'auth_method',
         'user' => 'user',
         'password' => 'password',
-        'use_tls' => 'use_tls',
-        'created_at' => 'created_at',
-        'deleted_at' => 'deleted_at',
-        'updated_at' => 'updated_at',
-        'service_id' => 'service_id',
-        'version' => 'version'
+        'use_tls' => 'use_tls'
     ];
 
     /**
@@ -174,13 +174,18 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $setters = [
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
         'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'tls_ca_cert' => 'setTlsCaCert',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
         'tls_hostname' => 'setTlsHostname',
+        'created_at' => 'setCreatedAt',
+        'deleted_at' => 'setDeletedAt',
+        'updated_at' => 'setUpdatedAt',
+        'service_id' => 'setServiceId',
+        'version' => 'setVersion',
         'topic' => 'setTopic',
         'brokers' => 'setBrokers',
         'compression_codec' => 'setCompressionCodec',
@@ -190,12 +195,7 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'auth_method' => 'setAuthMethod',
         'user' => 'setUser',
         'password' => 'setPassword',
-        'use_tls' => 'setUseTls',
-        'created_at' => 'setCreatedAt',
-        'deleted_at' => 'setDeletedAt',
-        'updated_at' => 'setUpdatedAt',
-        'service_id' => 'setServiceId',
-        'version' => 'setVersion'
+        'use_tls' => 'setUseTls'
     ];
 
     /**
@@ -206,13 +206,18 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $getters = [
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
         'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'tls_ca_cert' => 'getTlsCaCert',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
         'tls_hostname' => 'getTlsHostname',
+        'created_at' => 'getCreatedAt',
+        'deleted_at' => 'getDeletedAt',
+        'updated_at' => 'getUpdatedAt',
+        'service_id' => 'getServiceId',
+        'version' => 'getVersion',
         'topic' => 'getTopic',
         'brokers' => 'getBrokers',
         'compression_codec' => 'getCompressionCodec',
@@ -222,12 +227,7 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'auth_method' => 'getAuthMethod',
         'user' => 'getUser',
         'password' => 'getPassword',
-        'use_tls' => 'getUseTls',
-        'created_at' => 'getCreatedAt',
-        'deleted_at' => 'getDeletedAt',
-        'updated_at' => 'getUpdatedAt',
-        'service_id' => 'getServiceId',
-        'version' => 'getVersion'
+        'use_tls' => 'getUseTls'
     ];
 
     /**
@@ -274,8 +274,8 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     const PLACEMENT_NONE = 'none';
     const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
-    const FORMAT_VERSION_v1 = 1;
-    const FORMAT_VERSION_v2 = 2;
+    const FORMAT_VERSION_v1 = '1';
+    const FORMAT_VERSION_v2 = '2';
     const COMPRESSION_CODEC_GZIP = 'gzip';
     const COMPRESSION_CODEC_SNAPPY = 'snappy';
     const COMPRESSION_CODEC_LZ4 = 'lz4';
@@ -374,13 +374,18 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
         $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? '2';
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
         $this->container['tls_hostname'] = $data['tls_hostname'] ?? 'null';
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
         $this->container['topic'] = $data['topic'] ?? null;
         $this->container['brokers'] = $data['brokers'] ?? null;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
@@ -391,11 +396,6 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['user'] = $data['user'] ?? null;
         $this->container['password'] = $data['password'] ?? null;
         $this->container['use_tls'] = $data['use_tls'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
     }
 
     /**
@@ -526,40 +526,6 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets format_version
-     *
-     * @return int|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $allowedValues = $this->getFormatVersionAllowableValues();
-        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format_version', must be one of '%s'",
-                    $format_version,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -603,6 +569,40 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return string|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param string|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -699,6 +699,126 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTlsHostname($tls_hostname)
     {
         $this->container['tls_hostname'] = $tls_hostname;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_at
+     *
+     * @return \DateTime|null
+     */
+    public function getDeletedAt()
+    {
+        return $this->container['deleted_at'];
+    }
+
+    /**
+     * Sets deleted_at
+     *
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setDeletedAt($deleted_at)
+    {
+        $this->container['deleted_at'] = $deleted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id service_id
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string|null $version version
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }
@@ -969,126 +1089,6 @@ class LoggingKafkaResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setUseTls($use_tls)
     {
         $this->container['use_tls'] = $use_tls;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime|null
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        $this->container['deleted_at'] = $deleted_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_id
-     *
-     * @return string|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string|null $service_id service_id
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return int|null
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param int|null $version version
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
 
         return $this;
     }

@@ -55,18 +55,18 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $fastlyTypes = [
         'name' => 'string',
         'placement' => '\Fastly\Model\LoggingPlacement',
-        'format_version' => '\Fastly\Model\LoggingFormatVersion',
         'format' => 'string',
         'topic' => 'string',
         'region' => '\Fastly\Model\AwsRegion',
         'secret_key' => 'string',
         'access_key' => 'string',
         'iam_role' => 'string',
+        'format_version' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'service_id' => 'string',
-        'version' => 'int'
+        'version' => 'string'
     ];
 
     /**
@@ -79,13 +79,13 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $fastlyFormats = [
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'format' => null,
         'topic' => null,
         'region' => null,
         'secret_key' => null,
         'access_key' => null,
         'iam_role' => null,
+        'format_version' => null,
         'created_at' => 'date-time',
         'deleted_at' => 'date-time',
         'updated_at' => 'date-time',
@@ -122,13 +122,13 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $attributeMap = [
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'format' => 'format',
         'topic' => 'topic',
         'region' => 'region',
         'secret_key' => 'secret_key',
         'access_key' => 'access_key',
         'iam_role' => 'iam_role',
+        'format_version' => 'format_version',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -144,13 +144,13 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $setters = [
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'format' => 'setFormat',
         'topic' => 'setTopic',
         'region' => 'setRegion',
         'secret_key' => 'setSecretKey',
         'access_key' => 'setAccessKey',
         'iam_role' => 'setIamRole',
+        'format_version' => 'setFormatVersion',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -166,13 +166,13 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $getters = [
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'format' => 'getFormat',
         'topic' => 'getTopic',
         'region' => 'getRegion',
         'secret_key' => 'getSecretKey',
         'access_key' => 'getAccessKey',
         'iam_role' => 'getIamRole',
+        'format_version' => 'getFormatVersion',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -221,6 +221,21 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$fastlyModelName;
     }
 
+    const FORMAT_VERSION_v1 = '1';
+    const FORMAT_VERSION_v2 = '2';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatVersionAllowableValues()
+    {
+        return [
+            self::FORMAT_VERSION_v1,
+            self::FORMAT_VERSION_v2,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -239,13 +254,13 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? null;
         $this->container['format'] = $data['format'] ?? '{"timestamp":"%{begin:%Y-%m-%dT%H:%M:%S}t","time_elapsed":"%{time.elapsed.usec}V","is_tls":"%{if(req.is_ssl, \"true\", \"false\")}V","client_ip":"%{req.http.Fastly-Client-IP}V","geo_city":"%{client.geo.city}V","geo_country_code":"%{client.geo.country_code}V","request":"%{req.request}V","host":"%{req.http.Fastly-Orig-Host}V","url":"%{json.escape(req.url)}V","request_referer":"%{json.escape(req.http.Referer)}V","request_user_agent":"%{json.escape(req.http.User-Agent)}V","request_accept_language":"%{json.escape(req.http.Accept-Language)}V","request_accept_charset":"%{json.escape(req.http.Accept-Charset)}V","cache_status":"%{regsub(fastly_info.state, \"^(HIT-(SYNTH)|(HITPASS|HIT|MISS|PASS|ERROR|PIPE)).*\", \"\\2\\3\") }V"}';
         $this->container['topic'] = $data['topic'] ?? null;
         $this->container['region'] = $data['region'] ?? null;
         $this->container['secret_key'] = $data['secret_key'] ?? null;
         $this->container['access_key'] = $data['access_key'] ?? null;
         $this->container['iam_role'] = $data['iam_role'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? '2';
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -261,6 +276,15 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($this->container['format_version']) && !in_array($this->container['format_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format_version', must be one of '%s'",
+                $this->container['format_version'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -321,30 +345,6 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPlacement($placement)
     {
         $this->container['placement'] = $placement;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_version
-     *
-     * @return \Fastly\Model\LoggingFormatVersion|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param \Fastly\Model\LoggingFormatVersion|null $format_version format_version
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -494,6 +494,40 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets format_version
+     *
+     * @return string|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param string|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
+
+        return $this;
+    }
+
+    /**
      * Gets created_at
      *
      * @return \DateTime|null
@@ -592,7 +626,7 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets version
      *
-     * @return int|null
+     * @return string|null
      */
     public function getVersion()
     {
@@ -602,7 +636,7 @@ class LoggingKinesisResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param string|null $version version
      *
      * @return self
      */

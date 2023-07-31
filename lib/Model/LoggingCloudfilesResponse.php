@@ -55,25 +55,25 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $fastlyTypes = [
         'name' => 'string',
         'placement' => 'string',
-        'format_version' => 'int',
         'response_condition' => 'string',
         'format' => 'string',
+        'format_version' => 'string',
         'message_type' => 'string',
         'timestamp_format' => 'string',
-        'period' => 'int',
-        'gzip_level' => 'int',
         'compression_codec' => 'string',
+        'period' => 'string',
+        'gzip_level' => 'string',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'service_id' => 'string',
+        'version' => 'string',
         'access_key' => 'string',
         'bucket_name' => 'string',
         'path' => 'string',
         'region' => 'string',
         'public_key' => 'string',
-        'user' => 'string',
-        'created_at' => '\DateTime',
-        'deleted_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'service_id' => 'string',
-        'version' => 'int'
+        'user' => 'string'
     ];
 
     /**
@@ -86,25 +86,25 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $fastlyFormats = [
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
         'format' => null,
+        'format_version' => null,
         'message_type' => null,
         'timestamp_format' => null,
+        'compression_codec' => null,
         'period' => null,
         'gzip_level' => null,
-        'compression_codec' => null,
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'service_id' => null,
+        'version' => null,
         'access_key' => null,
         'bucket_name' => null,
         'path' => null,
         'region' => null,
         'public_key' => null,
-        'user' => null,
-        'created_at' => 'date-time',
-        'deleted_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'service_id' => null,
-        'version' => null
+        'user' => null
     ];
 
     /**
@@ -136,25 +136,25 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
         'format' => 'format',
+        'format_version' => 'format_version',
         'message_type' => 'message_type',
         'timestamp_format' => 'timestamp_format',
+        'compression_codec' => 'compression_codec',
         'period' => 'period',
         'gzip_level' => 'gzip_level',
-        'compression_codec' => 'compression_codec',
+        'created_at' => 'created_at',
+        'deleted_at' => 'deleted_at',
+        'updated_at' => 'updated_at',
+        'service_id' => 'service_id',
+        'version' => 'version',
         'access_key' => 'access_key',
         'bucket_name' => 'bucket_name',
         'path' => 'path',
         'region' => 'region',
         'public_key' => 'public_key',
-        'user' => 'user',
-        'created_at' => 'created_at',
-        'deleted_at' => 'deleted_at',
-        'updated_at' => 'updated_at',
-        'service_id' => 'service_id',
-        'version' => 'version'
+        'user' => 'user'
     ];
 
     /**
@@ -165,25 +165,25 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
         'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'message_type' => 'setMessageType',
         'timestamp_format' => 'setTimestampFormat',
+        'compression_codec' => 'setCompressionCodec',
         'period' => 'setPeriod',
         'gzip_level' => 'setGzipLevel',
-        'compression_codec' => 'setCompressionCodec',
+        'created_at' => 'setCreatedAt',
+        'deleted_at' => 'setDeletedAt',
+        'updated_at' => 'setUpdatedAt',
+        'service_id' => 'setServiceId',
+        'version' => 'setVersion',
         'access_key' => 'setAccessKey',
         'bucket_name' => 'setBucketName',
         'path' => 'setPath',
         'region' => 'setRegion',
         'public_key' => 'setPublicKey',
-        'user' => 'setUser',
-        'created_at' => 'setCreatedAt',
-        'deleted_at' => 'setDeletedAt',
-        'updated_at' => 'setUpdatedAt',
-        'service_id' => 'setServiceId',
-        'version' => 'setVersion'
+        'user' => 'setUser'
     ];
 
     /**
@@ -194,25 +194,25 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
         'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'message_type' => 'getMessageType',
         'timestamp_format' => 'getTimestampFormat',
+        'compression_codec' => 'getCompressionCodec',
         'period' => 'getPeriod',
         'gzip_level' => 'getGzipLevel',
-        'compression_codec' => 'getCompressionCodec',
+        'created_at' => 'getCreatedAt',
+        'deleted_at' => 'getDeletedAt',
+        'updated_at' => 'getUpdatedAt',
+        'service_id' => 'getServiceId',
+        'version' => 'getVersion',
         'access_key' => 'getAccessKey',
         'bucket_name' => 'getBucketName',
         'path' => 'getPath',
         'region' => 'getRegion',
         'public_key' => 'getPublicKey',
-        'user' => 'getUser',
-        'created_at' => 'getCreatedAt',
-        'deleted_at' => 'getDeletedAt',
-        'updated_at' => 'getUpdatedAt',
-        'service_id' => 'getServiceId',
-        'version' => 'getVersion'
+        'user' => 'getUser'
     ];
 
     /**
@@ -259,8 +259,8 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     const PLACEMENT_NONE = 'none';
     const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
-    const FORMAT_VERSION_v1 = 1;
-    const FORMAT_VERSION_v2 = 2;
+    const FORMAT_VERSION_v1 = '1';
+    const FORMAT_VERSION_v2 = '2';
     const MESSAGE_TYPE_CLASSIC = 'classic';
     const MESSAGE_TYPE_LOGGLY = 'loggly';
     const MESSAGE_TYPE_LOGPLEX = 'logplex';
@@ -367,25 +367,25 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
         $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? '2';
         $this->container['message_type'] = $data['message_type'] ?? 'classic';
         $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
-        $this->container['period'] = $data['period'] ?? 3600;
-        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
+        $this->container['period'] = $data['period'] ?? '3600';
+        $this->container['gzip_level'] = $data['gzip_level'] ?? '0';
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
         $this->container['access_key'] = $data['access_key'] ?? null;
         $this->container['bucket_name'] = $data['bucket_name'] ?? null;
         $this->container['path'] = $data['path'] ?? 'null';
         $this->container['region'] = $data['region'] ?? null;
         $this->container['public_key'] = $data['public_key'] ?? 'null';
         $this->container['user'] = $data['user'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
     }
 
     /**
@@ -516,40 +516,6 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets format_version
-     *
-     * @return int|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $allowedValues = $this->getFormatVersionAllowableValues();
-        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format_version', must be one of '%s'",
-                    $format_version,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -593,6 +559,40 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return string|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param string|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -656,54 +656,6 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets period
-     *
-     * @return int|null
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period
-     *
-     * @param int|null $period How frequently log files are finalized so they can be available for reading (in seconds).
-     *
-     * @return self
-     */
-    public function setPeriod($period)
-    {
-        $this->container['period'] = $period;
-
-        return $this;
-    }
-
-    /**
-     * Gets gzip_level
-     *
-     * @return int|null
-     */
-    public function getGzipLevel()
-    {
-        return $this->container['gzip_level'];
-    }
-
-    /**
-     * Sets gzip_level
-     *
-     * @param int|null $gzip_level The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-     *
-     * @return self
-     */
-    public function setGzipLevel($gzip_level)
-    {
-        $this->container['gzip_level'] = $gzip_level;
-
-        return $this;
-    }
-
-    /**
      * Gets compression_codec
      *
      * @return string|null
@@ -733,6 +685,174 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['compression_codec'] = $compression_codec;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return string|null
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param string|null $period How frequently log files are finalized so they can be available for reading (in seconds).
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets gzip_level
+     *
+     * @return string|null
+     */
+    public function getGzipLevel()
+    {
+        return $this->container['gzip_level'];
+    }
+
+    /**
+     * Sets gzip_level
+     *
+     * @param string|null $gzip_level The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+     *
+     * @return self
+     */
+    public function setGzipLevel($gzip_level)
+    {
+        $this->container['gzip_level'] = $gzip_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_at
+     *
+     * @return \DateTime|null
+     */
+    public function getDeletedAt()
+    {
+        return $this->container['deleted_at'];
+    }
+
+    /**
+     * Sets deleted_at
+     *
+     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setDeletedAt($deleted_at)
+    {
+        $this->container['deleted_at'] = $deleted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id service_id
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string|null $version version
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }
@@ -887,126 +1007,6 @@ class LoggingCloudfilesResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setUser($user)
     {
         $this->container['user'] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime|null
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        $this->container['deleted_at'] = $deleted_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_id
-     *
-     * @return string|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string|null $service_id service_id
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return int|null
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param int|null $version version
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
 
         return $this;
     }

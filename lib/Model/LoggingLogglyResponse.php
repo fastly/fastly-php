@@ -55,15 +55,15 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $fastlyTypes = [
         'name' => 'string',
         'placement' => 'string',
-        'format_version' => 'int',
         'response_condition' => 'string',
         'format' => 'string',
+        'format_version' => 'string',
         'token' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'service_id' => 'string',
-        'version' => 'int'
+        'version' => 'string'
     ];
 
     /**
@@ -76,9 +76,9 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $fastlyFormats = [
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
         'format' => null,
+        'format_version' => null,
         'token' => null,
         'created_at' => 'date-time',
         'deleted_at' => 'date-time',
@@ -116,9 +116,9 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $attributeMap = [
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
         'format' => 'format',
+        'format_version' => 'format_version',
         'token' => 'token',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
@@ -135,9 +135,9 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $setters = [
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
         'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'token' => 'setToken',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
@@ -154,9 +154,9 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $getters = [
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
         'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'token' => 'getToken',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
@@ -209,8 +209,8 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     const PLACEMENT_NONE = 'none';
     const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
-    const FORMAT_VERSION_v1 = 1;
-    const FORMAT_VERSION_v2 = 2;
+    const FORMAT_VERSION_v1 = '1';
+    const FORMAT_VERSION_v2 = '2';
 
     /**
      * Gets allowable values of the enum
@@ -256,9 +256,9 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
         $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['format_version'] = $data['format_version'] ?? '2';
         $this->container['token'] = $data['token'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
@@ -368,40 +368,6 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets format_version
-     *
-     * @return int|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $allowedValues = $this->getFormatVersionAllowableValues();
-        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format_version', must be one of '%s'",
-                    $format_version,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -445,6 +411,40 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return string|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param string|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -572,7 +572,7 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets version
      *
-     * @return int|null
+     * @return string|null
      */
     public function getVersion()
     {
@@ -582,7 +582,7 @@ class LoggingLogglyResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param string|null $version version
      *
      * @return self
      */

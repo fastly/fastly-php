@@ -55,9 +55,9 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     protected static $fastlyTypes = [
         'name' => 'string',
         'placement' => 'string',
-        'format_version' => 'int',
         'response_condition' => 'string',
         'format' => 'string',
+        'format_version' => 'string',
         'tls_ca_cert' => 'string',
         'tls_client_cert' => 'string',
         'tls_client_key' => 'string',
@@ -73,7 +73,7 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'service_id' => 'string',
-        'version' => 'int'
+        'version' => 'string'
     ];
 
     /**
@@ -86,9 +86,9 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     protected static $fastlyFormats = [
         'name' => null,
         'placement' => null,
-        'format_version' => null,
         'response_condition' => null,
         'format' => null,
+        'format_version' => null,
         'tls_ca_cert' => null,
         'tls_client_cert' => null,
         'tls_client_key' => null,
@@ -136,9 +136,9 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     protected static $attributeMap = [
         'name' => 'name',
         'placement' => 'placement',
-        'format_version' => 'format_version',
         'response_condition' => 'response_condition',
         'format' => 'format',
+        'format_version' => 'format_version',
         'tls_ca_cert' => 'tls_ca_cert',
         'tls_client_cert' => 'tls_client_cert',
         'tls_client_key' => 'tls_client_key',
@@ -165,9 +165,9 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     protected static $setters = [
         'name' => 'setName',
         'placement' => 'setPlacement',
-        'format_version' => 'setFormatVersion',
         'response_condition' => 'setResponseCondition',
         'format' => 'setFormat',
+        'format_version' => 'setFormatVersion',
         'tls_ca_cert' => 'setTlsCaCert',
         'tls_client_cert' => 'setTlsClientCert',
         'tls_client_key' => 'setTlsClientKey',
@@ -194,9 +194,9 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     protected static $getters = [
         'name' => 'getName',
         'placement' => 'getPlacement',
-        'format_version' => 'getFormatVersion',
         'response_condition' => 'getResponseCondition',
         'format' => 'getFormat',
+        'format_version' => 'getFormatVersion',
         'tls_ca_cert' => 'getTlsCaCert',
         'tls_client_cert' => 'getTlsClientCert',
         'tls_client_key' => 'getTlsClientKey',
@@ -259,8 +259,8 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     const PLACEMENT_NONE = 'none';
     const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
-    const FORMAT_VERSION_v1 = 1;
-    const FORMAT_VERSION_v2 = 2;
+    const FORMAT_VERSION_v1 = '1';
+    const FORMAT_VERSION_v2 = '2';
 
     /**
      * Gets allowable values of the enum
@@ -306,9 +306,9 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['placement'] = $data['placement'] ?? null;
-        $this->container['format_version'] = $data['format_version'] ?? self::FORMAT_VERSION_v2;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
         $this->container['format'] = $data['format'] ?? null;
+        $this->container['format_version'] = $data['format_version'] ?? '2';
         $this->container['tls_ca_cert'] = $data['tls_ca_cert'] ?? 'null';
         $this->container['tls_client_cert'] = $data['tls_client_cert'] ?? 'null';
         $this->container['tls_client_key'] = $data['tls_client_key'] ?? 'null';
@@ -428,40 +428,6 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets format_version
-     *
-     * @return int|null
-     */
-    public function getFormatVersion()
-    {
-        return $this->container['format_version'];
-    }
-
-    /**
-     * Sets format_version
-     *
-     * @param int|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
-     *
-     * @return self
-     */
-    public function setFormatVersion($format_version)
-    {
-        $allowedValues = $this->getFormatVersionAllowableValues();
-        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format_version', must be one of '%s'",
-                    $format_version,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format_version'] = $format_version;
-
-        return $this;
-    }
-
-    /**
      * Gets response_condition
      *
      * @return string|null
@@ -505,6 +471,40 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets format_version
+     *
+     * @return string|null
+     */
+    public function getFormatVersion()
+    {
+        return $this->container['format_version'];
+    }
+
+    /**
+     * Sets format_version
+     *
+     * @param string|null $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.
+     *
+     * @return self
+     */
+    public function setFormatVersion($format_version)
+    {
+        $allowedValues = $this->getFormatVersionAllowableValues();
+        if (!is_null($format_version) && !in_array($format_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format_version', must be one of '%s'",
+                    $format_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format_version'] = $format_version;
 
         return $this;
     }
@@ -872,7 +872,7 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets version
      *
-     * @return int|null
+     * @return string|null
      */
     public function getVersion()
     {
@@ -882,7 +882,7 @@ class LoggingElasticsearchResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets version
      *
-     * @param int|null $version version
+     * @param string|null $version version
      *
      * @return self
      */

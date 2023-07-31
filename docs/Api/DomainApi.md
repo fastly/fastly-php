@@ -26,7 +26,7 @@ Method | Fastly API endpoint | Description
 ## `checkDomain()`
 
 ```php
-checkDomain($options): \Fastly\Model\DomainCheckItem[] // Validate DNS configuration for a single domain on a service
+checkDomain($options): mixed[] // Validate DNS configuration for a single domain on a service
 ```
 
 Checks the status of a specific domain's DNS record for a Service Version. Returns an array in the same format as domain/check_all.
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\DomainCheckItem[]**](../Model/DomainCheckItem.md)
+**mixed[]**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

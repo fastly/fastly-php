@@ -55,8 +55,6 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $fastlyTypes = [
         'message_type' => 'string',
         'timestamp_format' => 'string',
-        'period' => 'int',
-        'gzip_level' => 'int',
         'compression_codec' => 'string'
     ];
 
@@ -70,8 +68,6 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $fastlyFormats = [
         'message_type' => null,
         'timestamp_format' => null,
-        'period' => null,
-        'gzip_level' => null,
         'compression_codec' => null
     ];
 
@@ -104,8 +100,6 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $attributeMap = [
         'message_type' => 'message_type',
         'timestamp_format' => 'timestamp_format',
-        'period' => 'period',
-        'gzip_level' => 'gzip_level',
         'compression_codec' => 'compression_codec'
     ];
 
@@ -117,8 +111,6 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $setters = [
         'message_type' => 'setMessageType',
         'timestamp_format' => 'setTimestampFormat',
-        'period' => 'setPeriod',
-        'gzip_level' => 'setGzipLevel',
         'compression_codec' => 'setCompressionCodec'
     ];
 
@@ -130,8 +122,6 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $getters = [
         'message_type' => 'getMessageType',
         'timestamp_format' => 'getTimestampFormat',
-        'period' => 'getPeriod',
-        'gzip_level' => 'getGzipLevel',
         'compression_codec' => 'getCompressionCodec'
     ];
 
@@ -230,8 +220,6 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $this->container['message_type'] = $data['message_type'] ?? 'classic';
         $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
-        $this->container['period'] = $data['period'] ?? 3600;
-        $this->container['gzip_level'] = $data['gzip_level'] ?? 0;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
     }
 
@@ -331,54 +319,6 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTimestampFormat($timestamp_format)
     {
         $this->container['timestamp_format'] = $timestamp_format;
-
-        return $this;
-    }
-
-    /**
-     * Gets period
-     *
-     * @return int|null
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period
-     *
-     * @param int|null $period How frequently log files are finalized so they can be available for reading (in seconds).
-     *
-     * @return self
-     */
-    public function setPeriod($period)
-    {
-        $this->container['period'] = $period;
-
-        return $this;
-    }
-
-    /**
-     * Gets gzip_level
-     *
-     * @return int|null
-     */
-    public function getGzipLevel()
-    {
-        return $this->container['gzip_level'];
-    }
-
-    /**
-     * Sets gzip_level
-     *
-     * @param int|null $gzip_level The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-     *
-     * @return self
-     */
-    public function setGzipLevel($gzip_level)
-    {
-        $this->container['gzip_level'] = $gzip_level;
 
         return $this;
     }

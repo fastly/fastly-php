@@ -125,7 +125,7 @@ class DomainApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\DomainCheckItem[]
+     * @return mixed[]
      */
     public function checkDomain($options)
     {
@@ -149,7 +149,7 @@ class DomainApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\DomainCheckItem[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of mixed[], HTTP status code, HTTP response headers (array of strings)
      */
     public function checkDomainWithHttpInfo($options)
     {
@@ -204,20 +204,20 @@ class DomainApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\DomainCheckItem[]' === '\SplFileObject') {
+                    if ('mixed[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\DomainCheckItem[]', []),
+                        ObjectSerializer::deserialize($content, 'mixed[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\DomainCheckItem[]';
+            $returnType = 'mixed[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -235,7 +235,7 @@ class DomainApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\DomainCheckItem[]',
+                        'mixed[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -291,7 +291,7 @@ class DomainApi
      */
     public function checkDomainAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\DomainCheckItem[]';
+        $returnType = 'mixed[]';
         $request = $this->checkDomainRequest($options);
 
         return $this->client

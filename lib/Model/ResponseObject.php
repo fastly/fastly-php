@@ -57,7 +57,7 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
         'content' => 'string',
         'content_type' => 'string',
         'name' => 'string',
-        'status' => 'int',
+        'status' => 'string',
         'response' => 'string',
         'request_condition' => 'string'
     ];
@@ -206,7 +206,7 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['content'] = $data['content'] ?? null;
         $this->container['content_type'] = $data['content_type'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['status'] = $data['status'] ?? 200;
+        $this->container['status'] = $data['status'] ?? '200';
         $this->container['response'] = $data['response'] ?? 'Ok';
         $this->container['request_condition'] = $data['request_condition'] ?? null;
     }
@@ -334,7 +334,7 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return int|null
+     * @return string|null
      */
     public function getStatus()
     {
@@ -344,7 +344,7 @@ class ResponseObject implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param int|null $status The HTTP status code.
+     * @param string|null $status The HTTP status code.
      *
      * @return self
      */
