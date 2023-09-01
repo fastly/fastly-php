@@ -179,7 +179,7 @@ Show a TLS subscription.
 
 ### Example
 ```php
-    $options['include'] = tls_authorizations; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`.
+    $options['include'] = tls_authorizations; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.
 $options['tls_subscription_id'] = 'tls_subscription_id_example'; // string | Alphanumeric string identifying a TLS subscription.
 
 try {
@@ -195,7 +195,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. | [optional]
 **tls_subscription_id** | **string** | Alphanumeric string identifying a TLS subscription. |
 
 ### Return type
@@ -218,7 +218,7 @@ List all TLS subscriptions.
     $options['filter_state'] = 'filter_state_example'; // string | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`).
 $options['filter_tls_domains_id'] = 'filter_tls_domains_id_example'; // string | Limit the returned subscriptions to those that include the specific domain.
 $options['filter_has_active_order'] = True; // bool | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`.
-$options['include'] = tls_authorizations; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`.
+$options['include'] = tls_authorizations; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.
 $options['page_number'] = 1; // int | Current page.
 $options['page_size'] = 20; // int | Number of records per page.
 $options['sort'] = created_at; // string | The order in which to list the results by creation date.
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 **filter_state** | **string** | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`). | [optional]
 **filter_tls_domains_id** | **string** | Limit the returned subscriptions to those that include the specific domain. | [optional]
 **filter_has_active_order** | **bool** | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`. | [optional]
-**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`. | [optional]
+**include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. | [optional]
 **page_number** | **int** | Current page. | [optional]
 **page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 **sort** | **string** | The order in which to list the results by creation date. | [optional] [one of: 'created_at', '-created_at'] [defaults to 'created_at']

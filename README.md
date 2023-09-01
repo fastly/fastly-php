@@ -364,6 +364,11 @@ Class | Method | Description
 [*LoggingNewrelicApi*](docs/Api/LoggingNewrelicApi.md) | [**getLogNewrelic**](docs/Api/LoggingNewrelicApi.md#getlognewrelic) | Get a New Relic log endpoint
 [*LoggingNewrelicApi*](docs/Api/LoggingNewrelicApi.md) | [**listLogNewrelic**](docs/Api/LoggingNewrelicApi.md#listlognewrelic) | List New Relic log endpoints
 [*LoggingNewrelicApi*](docs/Api/LoggingNewrelicApi.md) | [**updateLogNewrelic**](docs/Api/LoggingNewrelicApi.md#updatelognewrelic) | Update a New Relic log endpoint
+[*LoggingNewrelicotlpApi*](docs/Api/LoggingNewrelicotlpApi.md) | [**createLogNewrelicotlp**](docs/Api/LoggingNewrelicotlpApi.md#createlognewrelicotlp) | Create a New Relic OTLP endpoint
+[*LoggingNewrelicotlpApi*](docs/Api/LoggingNewrelicotlpApi.md) | [**deleteLogNewrelicotlp**](docs/Api/LoggingNewrelicotlpApi.md#deletelognewrelicotlp) | Delete a New Relic OTLP endpoint
+[*LoggingNewrelicotlpApi*](docs/Api/LoggingNewrelicotlpApi.md) | [**getLogNewrelicotlp**](docs/Api/LoggingNewrelicotlpApi.md#getlognewrelicotlp) | Get a New Relic OTLP endpoint
+[*LoggingNewrelicotlpApi*](docs/Api/LoggingNewrelicotlpApi.md) | [**listLogNewrelicotlp**](docs/Api/LoggingNewrelicotlpApi.md#listlognewrelicotlp) | List New Relic OTLP endpoints
+[*LoggingNewrelicotlpApi*](docs/Api/LoggingNewrelicotlpApi.md) | [**updateLogNewrelicotlp**](docs/Api/LoggingNewrelicotlpApi.md#updatelognewrelicotlp) | Update a New Relic log endpoint
 [*LoggingOpenstackApi*](docs/Api/LoggingOpenstackApi.md) | [**createLogOpenstack**](docs/Api/LoggingOpenstackApi.md#createlogopenstack) | Create an OpenStack log endpoint
 [*LoggingOpenstackApi*](docs/Api/LoggingOpenstackApi.md) | [**deleteLogOpenstack**](docs/Api/LoggingOpenstackApi.md#deletelogopenstack) | Delete an OpenStack log endpoint
 [*LoggingOpenstackApi*](docs/Api/LoggingOpenstackApi.md) | [**getLogOpenstack**](docs/Api/LoggingOpenstackApi.md#getlogopenstack) | Get an OpenStack log endpoint
@@ -458,7 +463,7 @@ Class | Method | Description
 [*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**clientKey**](docs/Api/SecretStoreApi.md#clientkey) | Create new client key
 [*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**createSecretStore**](docs/Api/SecretStoreApi.md#createsecretstore) | Create new secret store
 [*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**deleteSecretStore**](docs/Api/SecretStoreApi.md#deletesecretstore) | Delete secret store
-[*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**getSecretStore**](docs/Api/SecretStoreApi.md#getsecretstore) | Create secret store by ID
+[*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**getSecretStore**](docs/Api/SecretStoreApi.md#getsecretstore) | Get secret store by ID
 [*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**getSecretStores**](docs/Api/SecretStoreApi.md#getsecretstores) | Get all secret stores
 [*SecretStoreApi*](docs/Api/SecretStoreApi.md) | [**signingKey**](docs/Api/SecretStoreApi.md#signingkey) | Get public key
 [*SecretStoreItemApi*](docs/Api/SecretStoreItemApi.md) | [**createSecret**](docs/Api/SecretStoreItemApi.md#createsecret) | Create a new secret in a store.

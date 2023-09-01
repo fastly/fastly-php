@@ -244,6 +244,7 @@ class RateLimiter implements ModelInterface, ArrayAccess, \JsonSerializable
     const LOGGER_TYPE_LOGGLY = 'loggly';
     const LOGGER_TYPE_LOGSHUTTLE = 'logshuttle';
     const LOGGER_TYPE_NEWRELIC = 'newrelic';
+    const LOGGER_TYPE_NEWRELICOTLP = 'newrelicotlp';
     const LOGGER_TYPE_OPENSTACK = 'openstack';
     const LOGGER_TYPE_PAPERTRAIL = 'papertrail';
     const LOGGER_TYPE_PUBSUB = 'pubsub';
@@ -329,6 +330,7 @@ class RateLimiter implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LOGGER_TYPE_LOGGLY,
             self::LOGGER_TYPE_LOGSHUTTLE,
             self::LOGGER_TYPE_NEWRELIC,
+            self::LOGGER_TYPE_NEWRELICOTLP,
             self::LOGGER_TYPE_OPENSTACK,
             self::LOGGER_TYPE_PAPERTRAIL,
             self::LOGGER_TYPE_PUBSUB,

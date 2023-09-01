@@ -1005,7 +1005,7 @@ class SecretStoreApi
     /**
      * Operation getSecretStore
      *
-     * Create secret store by ID
+     * Get secret store by ID
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1027,7 +1027,7 @@ class SecretStoreApi
     /**
      * Operation getSecretStoreWithHttpInfo
      *
-     * Create secret store by ID
+     * Get secret store by ID
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1137,7 +1137,7 @@ class SecretStoreApi
     /**
      * Operation getSecretStoreAsync
      *
-     * Create secret store by ID
+     * Get secret store by ID
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1162,7 +1162,7 @@ class SecretStoreApi
     /**
      * Operation getSecretStoreAsyncWithHttpInfo
      *
-     * Create secret store by ID
+     * Get secret store by ID
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *

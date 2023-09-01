@@ -17,7 +17,7 @@ Method | Fastly API endpoint | Description
 [**clientKey()**](SecretStoreApi.md#clientKey) | **POST** /resources/stores/secret/client-key | Create new client key
 [**createSecretStore()**](SecretStoreApi.md#createSecretStore) | **POST** /resources/stores/secret | Create new secret store
 [**deleteSecretStore()**](SecretStoreApi.md#deleteSecretStore) | **DELETE** /resources/stores/secret/{store_id} | Delete secret store
-[**getSecretStore()**](SecretStoreApi.md#getSecretStore) | **GET** /resources/stores/secret/{store_id} | Create secret store by ID
+[**getSecretStore()**](SecretStoreApi.md#getSecretStore) | **GET** /resources/stores/secret/{store_id} | Get secret store by ID
 [**getSecretStores()**](SecretStoreApi.md#getSecretStores) | **GET** /resources/stores/secret | Get all secret stores
 [**signingKey()**](SecretStoreApi.md#signingKey) | **GET** /resources/stores/secret/signing-key | Get public key
 
@@ -124,7 +124,7 @@ void (empty response body)
 ## `getSecretStore()`
 
 ```php
-getSecretStore($options): \Fastly\Model\SecretStoreResponse // Create secret store by ID
+getSecretStore($options): \Fastly\Model\SecretStoreResponse // Get secret store by ID
 ```
 
 Get a secret store by ID.

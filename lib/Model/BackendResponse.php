@@ -72,6 +72,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'override_host' => 'string',
         'port' => 'int',
         'request_condition' => 'string',
+        'share_key' => 'string',
         'shield' => 'string',
         'ssl_ca_cert' => 'string',
         'ssl_cert_hostname' => 'string',
@@ -118,6 +119,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'override_host' => null,
         'port' => null,
         'request_condition' => null,
+        'share_key' => null,
         'shield' => null,
         'ssl_ca_cert' => null,
         'ssl_cert_hostname' => null,
@@ -183,6 +185,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'override_host' => 'override_host',
         'port' => 'port',
         'request_condition' => 'request_condition',
+        'share_key' => 'share_key',
         'shield' => 'shield',
         'ssl_ca_cert' => 'ssl_ca_cert',
         'ssl_cert_hostname' => 'ssl_cert_hostname',
@@ -227,6 +230,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'override_host' => 'setOverrideHost',
         'port' => 'setPort',
         'request_condition' => 'setRequestCondition',
+        'share_key' => 'setShareKey',
         'shield' => 'setShield',
         'ssl_ca_cert' => 'setSslCaCert',
         'ssl_cert_hostname' => 'setSslCertHostname',
@@ -271,6 +275,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'override_host' => 'getOverrideHost',
         'port' => 'getPort',
         'request_condition' => 'getRequestCondition',
+        'share_key' => 'getShareKey',
         'shield' => 'getShield',
         'ssl_ca_cert' => 'getSslCaCert',
         'ssl_cert_hostname' => 'getSslCertHostname',
@@ -366,6 +371,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['override_host'] = $data['override_host'] ?? null;
         $this->container['port'] = $data['port'] ?? null;
         $this->container['request_condition'] = $data['request_condition'] ?? null;
+        $this->container['share_key'] = $data['share_key'] ?? null;
         $this->container['shield'] = $data['shield'] ?? null;
         $this->container['ssl_ca_cert'] = $data['ssl_ca_cert'] ?? null;
         $this->container['ssl_cert_hostname'] = $data['ssl_cert_hostname'] ?? null;
@@ -393,6 +399,10 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['share_key']) && !preg_match("/^[A-Za-z0-9]+$/", $this->container['share_key'])) {
+            $invalidProperties[] = "invalid value for 'share_key', must be conform to the pattern /^[A-Za-z0-9]+$/.";
+        }
 
         return $invalidProperties;
     }
@@ -861,6 +871,35 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRequestCondition($request_condition)
     {
         $this->container['request_condition'] = $request_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets share_key
+     *
+     * @return string|null
+     */
+    public function getShareKey()
+    {
+        return $this->container['share_key'];
+    }
+
+    /**
+     * Sets share_key
+     *
+     * @param string|null $share_key Value that when shared across backends will enable those backends to share the same health check.
+     *
+     * @return self
+     */
+    public function setShareKey($share_key)
+    {
+
+        if (!is_null($share_key) && (!preg_match("/^[A-Za-z0-9]+$/", $share_key))) {
+            throw new \InvalidArgumentException("invalid value for $share_key when calling BackendResponse., must conform to the pattern /^[A-Za-z0-9]+$/.");
+        }
+
+        $this->container['share_key'] = $share_key;
 
         return $this;
     }

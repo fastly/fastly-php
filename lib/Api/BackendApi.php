@@ -140,6 +140,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -193,6 +194,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -334,6 +336,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -390,6 +393,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -472,6 +476,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -511,6 +516,7 @@ class BackendApi
         $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : null;
         $port = array_key_exists('port', $options) ? $options['port'] : null;
         $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
+        $share_key = array_key_exists('share_key', $options) ? $options['share_key'] : null;
         $shield = array_key_exists('shield', $options) ? $options['shield'] : null;
         $ssl_ca_cert = array_key_exists('ssl_ca_cert', $options) ? $options['ssl_ca_cert'] : null;
         $ssl_cert_hostname = array_key_exists('ssl_cert_hostname', $options) ? $options['ssl_cert_hostname'] : null;
@@ -535,6 +541,10 @@ class BackendApi
                 'Missing the required parameter $version_id when calling createBackend'
             );
         }
+        if ($share_key !== null && !preg_match("/^[A-Za-z0-9]+$/", $share_key)) {
+            throw new \InvalidArgumentException("invalid value for \"share_key\" when calling BackendApi.createBackend, must conform to the pattern /^[A-Za-z0-9]+$/.");
+        }
+
 
         $resourcePath = '/service/{service_id}/version/{version_id}/backend';
         $formParams = [];
@@ -637,6 +647,10 @@ class BackendApi
         // form params
         if ($request_condition !== null) {
             $formParams['request_condition'] = ObjectSerializer::toFormValue($request_condition);
+        }
+        // form params
+        if ($share_key !== null) {
+            $formParams['share_key'] = ObjectSerializer::toFormValue($share_key);
         }
         // form params
         if ($shield !== null) {
@@ -1849,6 +1863,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -1903,6 +1918,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -2045,6 +2061,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -2102,6 +2119,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -2185,6 +2203,7 @@ class BackendApi
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+     * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
      * @param  string $ssl_ca_cert CA certificate attached to origin. (optional)
      * @param  string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -2225,6 +2244,7 @@ class BackendApi
         $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : null;
         $port = array_key_exists('port', $options) ? $options['port'] : null;
         $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
+        $share_key = array_key_exists('share_key', $options) ? $options['share_key'] : null;
         $shield = array_key_exists('shield', $options) ? $options['shield'] : null;
         $ssl_ca_cert = array_key_exists('ssl_ca_cert', $options) ? $options['ssl_ca_cert'] : null;
         $ssl_cert_hostname = array_key_exists('ssl_cert_hostname', $options) ? $options['ssl_cert_hostname'] : null;
@@ -2255,6 +2275,10 @@ class BackendApi
                 'Missing the required parameter $backend_name when calling updateBackend'
             );
         }
+        if ($share_key !== null && !preg_match("/^[A-Za-z0-9]+$/", $share_key)) {
+            throw new \InvalidArgumentException("invalid value for \"share_key\" when calling BackendApi.updateBackend, must conform to the pattern /^[A-Za-z0-9]+$/.");
+        }
+
 
         $resourcePath = '/service/{service_id}/version/{version_id}/backend/{backend_name}';
         $formParams = [];
@@ -2365,6 +2389,10 @@ class BackendApi
         // form params
         if ($request_condition !== null) {
             $formParams['request_condition'] = ObjectSerializer::toFormValue($request_condition);
+        }
+        // form params
+        if ($share_key !== null) {
+            $formParams['share_key'] = ObjectSerializer::toFormValue($share_key);
         }
         // form params
         if ($shield !== null) {

@@ -1394,7 +1394,7 @@ class TlsSubscriptionsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1417,7 +1417,7 @@ class TlsSubscriptionsApi
      * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1528,7 +1528,7 @@ class TlsSubscriptionsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \InvalidArgumentException
@@ -1554,7 +1554,7 @@ class TlsSubscriptionsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \InvalidArgumentException
@@ -1606,7 +1606,7 @@ class TlsSubscriptionsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
      *
      * @throws \InvalidArgumentException
@@ -1736,7 +1736,7 @@ class TlsSubscriptionsApi
      * @param  string $filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). (optional)
      * @param  string $filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain. (optional)
      * @param  bool $filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. (optional)
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -1764,7 +1764,7 @@ class TlsSubscriptionsApi
      * @param  string $filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). (optional)
      * @param  string $filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain. (optional)
      * @param  bool $filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. (optional)
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -1880,7 +1880,7 @@ class TlsSubscriptionsApi
      * @param  string $filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). (optional)
      * @param  string $filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain. (optional)
      * @param  bool $filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. (optional)
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -1911,7 +1911,7 @@ class TlsSubscriptionsApi
      * @param  string $filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). (optional)
      * @param  string $filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain. (optional)
      * @param  bool $filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. (optional)
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -1968,7 +1968,7 @@ class TlsSubscriptionsApi
      * @param  string $filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). (optional)
      * @param  string $filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain. (optional)
      * @param  bool $filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. (optional)
-     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. (optional)
+     * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
