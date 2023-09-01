@@ -447,6 +447,10 @@ class EventsApi
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
      * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
+     * @param  string $filter_created_at_lte Return events on and before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_lt Return events before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gte Return events on and after a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gt Return events after a date and time in ISO 8601 format. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -477,6 +481,10 @@ class EventsApi
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
      * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
+     * @param  string $filter_created_at_lte Return events on and before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_lt Return events before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gte Return events on and after a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gt Return events after a date and time in ISO 8601 format. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -595,6 +603,10 @@ class EventsApi
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
      * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
+     * @param  string $filter_created_at_lte Return events on and before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_lt Return events before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gte Return events on and after a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gt Return events after a date and time in ISO 8601 format. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -628,6 +640,10 @@ class EventsApi
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
      * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
+     * @param  string $filter_created_at_lte Return events on and before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_lt Return events before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gte Return events on and after a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gt Return events after a date and time in ISO 8601 format. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -687,6 +703,10 @@ class EventsApi
      * @param  string $filter_user_id Limit the results returned to a specific user. (optional)
      * @param  string $filter_token_id Limit the returned events to a specific token. (optional)
      * @param  string $filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). (optional)
+     * @param  string $filter_created_at_lte Return events on and before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_lt Return events before a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gte Return events on and after a date and time in ISO 8601 format. (optional)
+     * @param  string $filter_created_at_gt Return events after a date and time in ISO 8601 format. (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -703,6 +723,10 @@ class EventsApi
         $filter_user_id = array_key_exists('filter_user_id', $options) ? $options['filter_user_id'] : null;
         $filter_token_id = array_key_exists('filter_token_id', $options) ? $options['filter_token_id'] : null;
         $filter_created_at = array_key_exists('filter_created_at', $options) ? $options['filter_created_at'] : null;
+        $filter_created_at_lte = array_key_exists('filter_created_at_lte', $options) ? $options['filter_created_at_lte'] : null;
+        $filter_created_at_lt = array_key_exists('filter_created_at_lt', $options) ? $options['filter_created_at_lt'] : null;
+        $filter_created_at_gte = array_key_exists('filter_created_at_gte', $options) ? $options['filter_created_at_gte'] : null;
+        $filter_created_at_gt = array_key_exists('filter_created_at_gt', $options) ? $options['filter_created_at_gt'] : null;
         $page_number = array_key_exists('page_number', $options) ? $options['page_number'] : null;
         $page_size = array_key_exists('page_size', $options) ? $options['page_size'] : 20;
         $sort = array_key_exists('sort', $options) ? $options['sort'] : 'created_at';
@@ -786,6 +810,50 @@ class EventsApi
             }
             else {
                 $queryParams['filter[created_at]'] = ObjectSerializer::toString($filter_created_at);
+            }
+        }
+        // query params
+        if ($filter_created_at_lte !== null) {
+            if('form' === 'form' && is_array($filter_created_at_lte)) {
+                foreach($filter_created_at_lte as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['filter[created_at][lte]'] = ObjectSerializer::toString($filter_created_at_lte);
+            }
+        }
+        // query params
+        if ($filter_created_at_lt !== null) {
+            if('form' === 'form' && is_array($filter_created_at_lt)) {
+                foreach($filter_created_at_lt as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['filter[created_at][lt]'] = ObjectSerializer::toString($filter_created_at_lt);
+            }
+        }
+        // query params
+        if ($filter_created_at_gte !== null) {
+            if('form' === 'form' && is_array($filter_created_at_gte)) {
+                foreach($filter_created_at_gte as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['filter[created_at][gte]'] = ObjectSerializer::toString($filter_created_at_gte);
+            }
+        }
+        // query params
+        if ($filter_created_at_gt !== null) {
+            if('form' === 'form' && is_array($filter_created_at_gt)) {
+                foreach($filter_created_at_gt as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['filter[created_at][gt]'] = ObjectSerializer::toString($filter_created_at_gt);
             }
         }
         // query params
