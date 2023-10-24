@@ -1,6 +1,6 @@
 <?php
 /**
- * Snippet
+ * HistoricalDdosMeta
  *
  * PHP version 7.3
  *
@@ -27,16 +27,17 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * Snippet Class Doc Comment
+ * HistoricalDdosMeta Class Doc Comment
  *
  * @category Class
+ * @description Meta information about the scope of the query in a human readable format.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalDdosMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +46,7 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'snippet';
+    protected static $fastlyModelName = 'historical_ddos_meta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,11 +54,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => 'string',
-        'type' => 'string',
-        'content' => 'string',
-        'priority' => 'string',
-        'dynamic' => 'string'
+        'start' => 'string',
+        'end' => 'string',
+        'downsample' => 'string',
+        'metric' => 'string'
     ];
 
     /**
@@ -68,11 +68,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'name' => null,
-        'type' => null,
-        'content' => null,
-        'priority' => null,
-        'dynamic' => null
+        'start' => null,
+        'end' => null,
+        'downsample' => null,
+        'metric' => null
     ];
 
     /**
@@ -102,11 +101,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'type' => 'type',
-        'content' => 'content',
-        'priority' => 'priority',
-        'dynamic' => 'dynamic'
+        'start' => 'start',
+        'end' => 'end',
+        'downsample' => 'downsample',
+        'metric' => 'metric'
     ];
 
     /**
@@ -115,11 +113,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'type' => 'setType',
-        'content' => 'setContent',
-        'priority' => 'setPriority',
-        'dynamic' => 'setDynamic'
+        'start' => 'setStart',
+        'end' => 'setEnd',
+        'downsample' => 'setDownsample',
+        'metric' => 'setMetric'
     ];
 
     /**
@@ -128,11 +125,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'type' => 'getType',
-        'content' => 'getContent',
-        'priority' => 'getPriority',
-        'dynamic' => 'getDynamic'
+        'start' => 'getStart',
+        'end' => 'getEnd',
+        'downsample' => 'getDownsample',
+        'metric' => 'getMetric'
     ];
 
     /**
@@ -176,54 +172,6 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
-    const TYPE_INIT = 'init';
-    const TYPE_RECV = 'recv';
-    const TYPE_HASH = 'hash';
-    const TYPE_HIT = 'hit';
-    const TYPE_MISS = 'miss';
-    const TYPE_PASS = 'pass';
-    const TYPE_FETCH = 'fetch';
-    const TYPE_ERROR = 'error';
-    const TYPE_DELIVER = 'deliver';
-    const TYPE_LOG = 'log';
-    const TYPE_NONE = 'none';
-    const DYNAMIC_regular = '0';
-    const DYNAMIC_dynamic = '1';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_INIT,
-            self::TYPE_RECV,
-            self::TYPE_HASH,
-            self::TYPE_HIT,
-            self::TYPE_MISS,
-            self::TYPE_PASS,
-            self::TYPE_FETCH,
-            self::TYPE_ERROR,
-            self::TYPE_DELIVER,
-            self::TYPE_LOG,
-            self::TYPE_NONE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDynamicAllowableValues()
-    {
-        return [
-            self::DYNAMIC_regular,
-            self::DYNAMIC_dynamic,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -240,11 +188,10 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['content'] = $data['content'] ?? null;
-        $this->container['priority'] = $data['priority'] ?? '100';
-        $this->container['dynamic'] = $data['dynamic'] ?? null;
+        $this->container['start'] = $data['start'] ?? null;
+        $this->container['end'] = $data['end'] ?? null;
+        $this->container['downsample'] = $data['downsample'] ?? null;
+        $this->container['metric'] = $data['metric'] ?? null;
     }
 
     /**
@@ -255,24 +202,6 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getDynamicAllowableValues();
-        if (!is_null($this->container['dynamic']) && !in_array($this->container['dynamic'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'dynamic', must be one of '%s'",
-                $this->container['dynamic'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -290,141 +219,97 @@ class Snippet implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets start
      *
      * @return string|null
      */
-    public function getName()
+    public function getStart()
     {
-        return $this->container['name'];
+        return $this->container['start'];
     }
 
     /**
-     * Sets name
+     * Sets start
      *
-     * @param string|null $name The name for the snippet.
+     * @param string|null $start Start time that was used to perform the query as an ISO-8601-formatted date and time.
      *
      * @return self
      */
-    public function setName($name)
+    public function setStart($start)
     {
-        $this->container['name'] = $name;
+        $this->container['start'] = $start;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets end
      *
      * @return string|null
      */
-    public function getType()
+    public function getEnd()
     {
-        return $this->container['type'];
+        return $this->container['end'];
     }
 
     /**
-     * Sets type
+     * Sets end
      *
-     * @param string|null $type The location in generated VCL where the snippet should be placed.
+     * @param string|null $end End time that was used to perform the query as an ISO-8601-formatted date and time.
      *
      * @return self
      */
-    public function setType($type)
+    public function setEnd($end)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['end'] = $end;
 
         return $this;
     }
 
     /**
-     * Gets content
+     * Gets downsample
      *
      * @return string|null
      */
-    public function getContent()
+    public function getDownsample()
     {
-        return $this->container['content'];
+        return $this->container['downsample'];
     }
 
     /**
-     * Sets content
+     * Sets downsample
      *
-     * @param string|null $content The VCL code that specifies exactly what the snippet does.
+     * @param string|null $downsample Downsample that was used to perform the query. One of `hour` or `day`.
      *
      * @return self
      */
-    public function setContent($content)
+    public function setDownsample($downsample)
     {
-        $this->container['content'] = $content;
+        $this->container['downsample'] = $downsample;
 
         return $this;
     }
 
     /**
-     * Gets priority
+     * Gets metric
      *
      * @return string|null
      */
-    public function getPriority()
+    public function getMetric()
     {
-        return $this->container['priority'];
+        return $this->container['metric'];
     }
 
     /**
-     * Sets priority
+     * Sets metric
      *
-     * @param string|null $priority Priority determines execution order. Lower numbers execute first.
+     * @param string|null $metric A comma-separated list of the metrics that were requested.
      *
      * @return self
      */
-    public function setPriority($priority)
+    public function setMetric($metric)
     {
-        $this->container['priority'] = $priority;
-
-        return $this;
-    }
-
-    /**
-     * Gets dynamic
-     *
-     * @return string|null
-     */
-    public function getDynamic()
-    {
-        return $this->container['dynamic'];
-    }
-
-    /**
-     * Sets dynamic
-     *
-     * @param string|null $dynamic Sets the snippet version.
-     *
-     * @return self
-     */
-    public function setDynamic($dynamic)
-    {
-        $allowedValues = $this->getDynamicAllowableValues();
-        if (!is_null($dynamic) && !in_array($dynamic, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'dynamic', must be one of '%s'",
-                    $dynamic,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['dynamic'] = $dynamic;
+        $this->container['metric'] = $metric;
 
         return $this;
     }

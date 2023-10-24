@@ -1,6 +1,6 @@
 <?php
 /**
- * SnippetResponseAllOf
+ * SnippetCommon
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * SnippetResponseAllOf Class Doc Comment
+ * SnippetCommon Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class SnippetCommon implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $fastlyModelName = 'snippet_response_allOf';
+    protected static $fastlyModelName = 'snippet_common';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,9 +53,10 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'service_id' => 'string',
-        'version' => 'string',
-        'id' => 'string'
+        'name' => 'string',
+        'type' => 'string',
+        'content' => 'string',
+        'priority' => 'string'
     ];
 
     /**
@@ -66,9 +67,10 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'service_id' => null,
-        'version' => null,
-        'id' => null
+        'name' => null,
+        'type' => null,
+        'content' => null,
+        'priority' => null
     ];
 
     /**
@@ -98,9 +100,10 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id',
-        'version' => 'version',
-        'id' => 'id'
+        'name' => 'name',
+        'type' => 'type',
+        'content' => 'content',
+        'priority' => 'priority'
     ];
 
     /**
@@ -109,9 +112,10 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId',
-        'version' => 'setVersion',
-        'id' => 'setId'
+        'name' => 'setName',
+        'type' => 'setType',
+        'content' => 'setContent',
+        'priority' => 'setPriority'
     ];
 
     /**
@@ -120,9 +124,10 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId',
-        'version' => 'getVersion',
-        'id' => 'getId'
+        'name' => 'getName',
+        'type' => 'getType',
+        'content' => 'getContent',
+        'priority' => 'getPriority'
     ];
 
     /**
@@ -166,6 +171,39 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$fastlyModelName;
     }
 
+    const TYPE_INIT = 'init';
+    const TYPE_RECV = 'recv';
+    const TYPE_HASH = 'hash';
+    const TYPE_HIT = 'hit';
+    const TYPE_MISS = 'miss';
+    const TYPE_PASS = 'pass';
+    const TYPE_FETCH = 'fetch';
+    const TYPE_ERROR = 'error';
+    const TYPE_DELIVER = 'deliver';
+    const TYPE_LOG = 'log';
+    const TYPE_NONE = 'none';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_INIT,
+            self::TYPE_RECV,
+            self::TYPE_HASH,
+            self::TYPE_HIT,
+            self::TYPE_MISS,
+            self::TYPE_PASS,
+            self::TYPE_FETCH,
+            self::TYPE_ERROR,
+            self::TYPE_DELIVER,
+            self::TYPE_LOG,
+            self::TYPE_NONE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -182,9 +220,10 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['content'] = $data['content'] ?? null;
+        $this->container['priority'] = $data['priority'] ?? '100';
     }
 
     /**
@@ -195,6 +234,15 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -212,73 +260,107 @@ class SnippetResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets service_id
+     * Gets name
      *
      * @return string|null
      */
-    public function getServiceId()
+    public function getName()
     {
-        return $this->container['service_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets service_id
+     * Sets name
      *
-     * @param string|null $service_id service_id
+     * @param string|null $name The name for the snippet.
      *
      * @return self
      */
-    public function setServiceId($service_id)
+    public function setName($name)
     {
-        $this->container['service_id'] = $service_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets version
+     * Gets type
      *
      * @return string|null
      */
-    public function getVersion()
+    public function getType()
     {
-        return $this->container['version'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets version
+     * Sets type
      *
-     * @param string|null $version String representing the number identifying a version of the service.
+     * @param string|null $type The location in generated VCL where the snippet should be placed.
      *
      * @return self
      */
-    public function setVersion($version)
+    public function setType($type)
     {
-        $this->container['version'] = $version;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets content
      *
      * @return string|null
      */
-    public function getId()
+    public function getContent()
     {
-        return $this->container['id'];
+        return $this->container['content'];
     }
 
     /**
-     * Sets id
+     * Sets content
      *
-     * @param string|null $id id
+     * @param string|null $content The VCL code that specifies exactly what the snippet does.
      *
      * @return self
      */
-    public function setId($id)
+    public function setContent($content)
     {
-        $this->container['id'] = $id;
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets priority
+     *
+     * @return string|null
+     */
+    public function getPriority()
+    {
+        return $this->container['priority'];
+    }
+
+    /**
+     * Sets priority
+     *
+     * @param string|null $priority Priority determines execution order. Lower numbers execute first.
+     *
+     * @return self
+     */
+    public function setPriority($priority)
+    {
+        $this->container['priority'] = $priority;
 
         return $this;
     }

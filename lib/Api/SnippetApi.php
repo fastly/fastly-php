@@ -122,14 +122,14 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\SnippetResponse
+     * @return \Fastly\Model\SnippetResponsePost
      */
     public function createSnippet($options)
     {
@@ -150,14 +150,14 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\SnippetResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\SnippetResponsePost, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSnippetWithHttpInfo($options)
     {
@@ -212,20 +212,20 @@ class SnippetApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\SnippetResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\SnippetResponsePost' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\SnippetResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\SnippetResponsePost', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\SnippetResponse';
+            $returnType = '\Fastly\Model\SnippetResponsePost';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -243,7 +243,7 @@ class SnippetApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\SnippetResponse',
+                        '\Fastly\Model\SnippetResponsePost',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -266,10 +266,10 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -297,17 +297,17 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createSnippetAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\SnippetResponse';
+        $returnType = '\Fastly\Model\SnippetResponsePost';
         $request = $this->createSnippetRequest($options);
 
         return $this->client
@@ -354,10 +354,10 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -368,10 +368,10 @@ class SnippetApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
-        $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
         $content = array_key_exists('content', $options) ? $options['content'] : null;
         $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
+        $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -417,10 +417,6 @@ class SnippetApi
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
         // form params
-        if ($dynamic !== null) {
-            $formParams['dynamic'] = ObjectSerializer::toFormValue($dynamic);
-        }
-        // form params
         if ($type !== null) {
             $formParams['type'] = ObjectSerializer::toFormValue($type);
         }
@@ -431,6 +427,10 @@ class SnippetApi
         // form params
         if ($priority !== null) {
             $formParams['priority'] = ObjectSerializer::toFormValue($priority);
+        }
+        // form params
+        if ($dynamic !== null) {
+            $formParams['dynamic'] = ObjectSerializer::toFormValue($dynamic);
         }
 
         if ($multipart) {
@@ -2284,10 +2284,10 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2312,10 +2312,10 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2428,10 +2428,10 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2459,10 +2459,10 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2516,10 +2516,10 @@ class SnippetApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
-     * @param  string $dynamic Sets the snippet version. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
      * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+     * @param  string $dynamic Sets the snippet version. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2530,10 +2530,10 @@ class SnippetApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $snippet_id = array_key_exists('snippet_id', $options) ? $options['snippet_id'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
-        $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
         $content = array_key_exists('content', $options) ? $options['content'] : null;
         $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
+        $dynamic = array_key_exists('dynamic', $options) ? $options['dynamic'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -2579,10 +2579,6 @@ class SnippetApi
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
         // form params
-        if ($dynamic !== null) {
-            $formParams['dynamic'] = ObjectSerializer::toFormValue($dynamic);
-        }
-        // form params
         if ($type !== null) {
             $formParams['type'] = ObjectSerializer::toFormValue($type);
         }
@@ -2593,6 +2589,10 @@ class SnippetApi
         // form params
         if ($priority !== null) {
             $formParams['priority'] = ObjectSerializer::toFormValue($priority);
+        }
+        // form params
+        if ($dynamic !== null) {
+            $formParams['dynamic'] = ObjectSerializer::toFormValue($dynamic);
         }
 
         if ($multipart) {

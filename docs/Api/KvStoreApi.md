@@ -14,19 +14,19 @@ $apiInstance = new Fastly\Api\KvStoreApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
-[**createStore()**](KvStoreApi.md#createStore) | **POST** /resources/stores/kv | Create an kv store.
-[**deleteStore()**](KvStoreApi.md#deleteStore) | **DELETE** /resources/stores/kv/{store_id} | Delete an kv store.
-[**getStore()**](KvStoreApi.md#getStore) | **GET** /resources/stores/kv/{store_id} | Describe an kv store.
-[**getStores()**](KvStoreApi.md#getStores) | **GET** /resources/stores/kv | List kv stores.
+[**createStore()**](KvStoreApi.md#createStore) | **POST** /resources/stores/kv | Create a KV store.
+[**deleteStore()**](KvStoreApi.md#deleteStore) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
+[**getStore()**](KvStoreApi.md#getStore) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.
+[**getStores()**](KvStoreApi.md#getStores) | **GET** /resources/stores/kv | List KV stores.
 
 
 ## `createStore()`
 
 ```php
-createStore($options): \Fastly\Model\StoreResponse // Create an kv store.
+createStore($options): \Fastly\Model\StoreResponse // Create a KV store.
 ```
 
-Create a new kv store.
+Create a new KV store.
 
 ### Example
 ```php
@@ -59,10 +59,10 @@ Name | Type | Description  | Notes
 ## `deleteStore()`
 
 ```php
-deleteStore($options) // Delete an kv store.
+deleteStore($options) // Delete a KV store.
 ```
 
-An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a `409` (Conflict).
+A KV store must be empty before it can be deleted.  Deleting a KV store that still contains keys will result in a `409` (Conflict).
 
 ### Example
 ```php
@@ -93,10 +93,10 @@ void (empty response body)
 ## `getStore()`
 
 ```php
-getStore($options): \Fastly\Model\StoreResponse // Describe an kv store.
+getStore($options): \Fastly\Model\StoreResponse // Describe a KV store.
 ```
 
-Get an kv store by ID.
+Get a KV store by ID.
 
 ### Example
 ```php
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 ## `getStores()`
 
 ```php
-getStores($options): \Fastly\Model\InlineResponse2003 // List kv stores.
+getStores($options): \Fastly\Model\InlineResponse2003 // List KV stores.
 ```
 
 Get all stores for a given customer.

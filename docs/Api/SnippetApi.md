@@ -26,7 +26,7 @@ Method | Fastly API endpoint | Description
 ## `createSnippet()`
 
 ```php
-createSnippet($options): \Fastly\Model\SnippetResponse // Create a snippet
+createSnippet($options): \Fastly\Model\SnippetResponsePost // Create a snippet
 ```
 
 Create a snippet for a particular service and version.
@@ -36,10 +36,10 @@ Create a snippet for a particular service and version.
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['name'] = 'name_example'; // string | The name for the snippet.
-$options['dynamic'] = 'dynamic_example'; // string | Sets the snippet version.
 $options['type'] = 'type_example'; // string | The location in generated VCL where the snippet should be placed.
 $options['content'] = 'content_example'; // string | The VCL code that specifies exactly what the snippet does.
 $options['priority'] = '100'; // string | Priority determines execution order. Lower numbers execute first.
+$options['dynamic'] = 'dynamic_example'; // string | Sets the snippet version.
 
 try {
     $result = $apiInstance->createSnippet($options);
@@ -57,14 +57,14 @@ Name | Type | Description  | Notes
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
 **name** | **string** | The name for the snippet. | [optional]
-**dynamic** | **string** | Sets the snippet version. | [optional] [one of: '0', '1']
 **type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] [one of: 'init', 'recv', 'hash', 'hit', 'miss', 'pass', 'fetch', 'error', 'deliver', 'log', 'none']
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
 **priority** | **string** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
+**dynamic** | **string** | Sets the snippet version. | [optional] [one of: '0', '1']
 
 ### Return type
 
-[**\Fastly\Model\SnippetResponse**](../Model/SnippetResponse.md)
+[**\Fastly\Model\SnippetResponsePost**](../Model/SnippetResponsePost.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -268,10 +268,10 @@ Update a dynamic snippet for a particular service.
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['snippet_id'] = 'snippet_id_example'; // string | Alphanumeric string identifying a VCL Snippet.
 $options['name'] = 'name_example'; // string | The name for the snippet.
-$options['dynamic'] = 'dynamic_example'; // string | Sets the snippet version.
 $options['type'] = 'type_example'; // string | The location in generated VCL where the snippet should be placed.
 $options['content'] = 'content_example'; // string | The VCL code that specifies exactly what the snippet does.
 $options['priority'] = '100'; // string | Priority determines execution order. Lower numbers execute first.
+$options['dynamic'] = 'dynamic_example'; // string | Sets the snippet version.
 
 try {
     $result = $apiInstance->updateSnippetDynamic($options);
@@ -289,10 +289,10 @@ Name | Type | Description  | Notes
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **snippet_id** | **string** | Alphanumeric string identifying a VCL Snippet. |
 **name** | **string** | The name for the snippet. | [optional]
-**dynamic** | **string** | Sets the snippet version. | [optional] [one of: '0', '1']
 **type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] [one of: 'init', 'recv', 'hash', 'hit', 'miss', 'pass', 'fetch', 'error', 'deliver', 'log', 'none']
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]
 **priority** | **string** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
+**dynamic** | **string** | Sets the snippet version. | [optional] [one of: '0', '1']
 
 ### Return type
 

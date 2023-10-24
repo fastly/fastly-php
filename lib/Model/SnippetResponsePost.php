@@ -1,6 +1,6 @@
 <?php
 /**
- * SnippetResponse
+ * SnippetResponsePost
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * SnippetResponse Class Doc Comment
+ * SnippetResponsePost Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SnippetResponsePost implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'snippet_response';
+    protected static $fastlyModelName = 'snippet_response_post';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'string',
         'content' => 'string',
         'priority' => 'string',
-        'dynamic' => 'string',
+        'dynamic' => 'float',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
@@ -217,8 +217,8 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     const TYPE_DELIVER = 'deliver';
     const TYPE_LOG = 'log';
     const TYPE_NONE = 'none';
-    const DYNAMIC_regular = '0';
-    const DYNAMIC_dynamic = '1';
+    const DYNAMIC_regular = 0;
+    const DYNAMIC_dynamic = 1;
 
     /**
      * Gets allowable values of the enum
@@ -434,7 +434,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dynamic
      *
-     * @return string|null
+     * @return float|null
      */
     public function getDynamic()
     {
@@ -444,7 +444,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dynamic
      *
-     * @param string|null $dynamic Sets the snippet version.
+     * @param float|null $dynamic Sets the snippet version.
      *
      * @return self
      */

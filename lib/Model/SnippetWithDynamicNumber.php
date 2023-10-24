@@ -1,6 +1,6 @@
 <?php
 /**
- * SnippetResponse
+ * SnippetWithDynamicNumber
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * SnippetResponse Class Doc Comment
+ * SnippetWithDynamicNumber Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SnippetWithDynamicNumber implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'snippet_response';
+    protected static $fastlyModelName = 'snippet_with_dynamic_number';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'string',
         'content' => 'string',
         'priority' => 'string',
-        'dynamic' => 'string',
-        'created_at' => '\DateTime',
-        'deleted_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'service_id' => 'string',
-        'version' => 'string',
-        'id' => 'string'
+        'dynamic' => 'float'
     ];
 
     /**
@@ -78,13 +72,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'content' => null,
         'priority' => null,
-        'dynamic' => null,
-        'created_at' => 'date-time',
-        'deleted_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'service_id' => null,
-        'version' => null,
-        'id' => null
+        'dynamic' => null
     ];
 
     /**
@@ -118,13 +106,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'content' => 'content',
         'priority' => 'priority',
-        'dynamic' => 'dynamic',
-        'created_at' => 'created_at',
-        'deleted_at' => 'deleted_at',
-        'updated_at' => 'updated_at',
-        'service_id' => 'service_id',
-        'version' => 'version',
-        'id' => 'id'
+        'dynamic' => 'dynamic'
     ];
 
     /**
@@ -137,13 +119,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'content' => 'setContent',
         'priority' => 'setPriority',
-        'dynamic' => 'setDynamic',
-        'created_at' => 'setCreatedAt',
-        'deleted_at' => 'setDeletedAt',
-        'updated_at' => 'setUpdatedAt',
-        'service_id' => 'setServiceId',
-        'version' => 'setVersion',
-        'id' => 'setId'
+        'dynamic' => 'setDynamic'
     ];
 
     /**
@@ -156,13 +132,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'content' => 'getContent',
         'priority' => 'getPriority',
-        'dynamic' => 'getDynamic',
-        'created_at' => 'getCreatedAt',
-        'deleted_at' => 'getDeletedAt',
-        'updated_at' => 'getUpdatedAt',
-        'service_id' => 'getServiceId',
-        'version' => 'getVersion',
-        'id' => 'getId'
+        'dynamic' => 'getDynamic'
     ];
 
     /**
@@ -217,8 +187,8 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     const TYPE_DELIVER = 'deliver';
     const TYPE_LOG = 'log';
     const TYPE_NONE = 'none';
-    const DYNAMIC_regular = '0';
-    const DYNAMIC_dynamic = '1';
+    const DYNAMIC_regular = 0;
+    const DYNAMIC_dynamic = 1;
 
     /**
      * Gets allowable values of the enum
@@ -275,12 +245,6 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['content'] = $data['content'] ?? null;
         $this->container['priority'] = $data['priority'] ?? '100';
         $this->container['dynamic'] = $data['dynamic'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -434,7 +398,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dynamic
      *
-     * @return string|null
+     * @return float|null
      */
     public function getDynamic()
     {
@@ -444,7 +408,7 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dynamic
      *
-     * @param string|null $dynamic Sets the snippet version.
+     * @param float|null $dynamic Sets the snippet version.
      *
      * @return self
      */
@@ -461,150 +425,6 @@ class SnippetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['dynamic'] = $dynamic;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime|null
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        $this->container['deleted_at'] = $deleted_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_id
-     *
-     * @return string|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string|null $service_id service_id
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return string|null
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param string|null $version String representing the number identifying a version of the service.
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
 
         return $this;
     }

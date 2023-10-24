@@ -538,7 +538,7 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets token
      *
-     * @param string|null $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).
+     * @param string|null $token Use token based authentication.
      *
      * @return self
      */

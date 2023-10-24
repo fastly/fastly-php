@@ -54,10 +54,10 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $fastlyTypes = [
         'name' => 'string',
-        'dynamic' => 'string',
         'type' => 'string',
         'content' => 'string',
         'priority' => 'string',
+        'dynamic' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
@@ -75,10 +75,10 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $fastlyFormats = [
         'name' => null,
-        'dynamic' => null,
         'type' => null,
         'content' => null,
         'priority' => null,
+        'dynamic' => null,
         'created_at' => 'date-time',
         'deleted_at' => 'date-time',
         'updated_at' => 'date-time',
@@ -115,10 +115,10 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'dynamic' => 'dynamic',
         'type' => 'type',
         'content' => 'content',
         'priority' => 'priority',
+        'dynamic' => 'dynamic',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -134,10 +134,10 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'name' => 'setName',
-        'dynamic' => 'setDynamic',
         'type' => 'setType',
         'content' => 'setContent',
         'priority' => 'setPriority',
+        'dynamic' => 'setDynamic',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -153,10 +153,10 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'name' => 'getName',
-        'dynamic' => 'getDynamic',
         'type' => 'getType',
         'content' => 'getContent',
         'priority' => 'getPriority',
+        'dynamic' => 'getDynamic',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -206,8 +206,6 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$fastlyModelName;
     }
 
-    const DYNAMIC_regular = '0';
-    const DYNAMIC_dynamic = '1';
     const TYPE_INIT = 'init';
     const TYPE_RECV = 'recv';
     const TYPE_HASH = 'hash';
@@ -219,19 +217,8 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     const TYPE_DELIVER = 'deliver';
     const TYPE_LOG = 'log';
     const TYPE_NONE = 'none';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDynamicAllowableValues()
-    {
-        return [
-            self::DYNAMIC_regular,
-            self::DYNAMIC_dynamic,
-        ];
-    }
+    const DYNAMIC_regular = '0';
+    const DYNAMIC_dynamic = '1';
 
     /**
      * Gets allowable values of the enum
@@ -256,6 +243,19 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDynamicAllowableValues()
+    {
+        return [
+            self::DYNAMIC_regular,
+            self::DYNAMIC_dynamic,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -271,10 +271,10 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['content'] = $data['content'] ?? null;
         $this->container['priority'] = $data['priority'] ?? '100';
+        $this->container['dynamic'] = $data['dynamic'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -292,20 +292,20 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getDynamicAllowableValues();
-        if (!is_null($this->container['dynamic']) && !in_array($this->container['dynamic'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'dynamic', must be one of '%s'",
-                $this->container['dynamic'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'type', must be one of '%s'",
                 $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getDynamicAllowableValues();
+        if (!is_null($this->container['dynamic']) && !in_array($this->container['dynamic'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'dynamic', must be one of '%s'",
+                $this->container['dynamic'],
                 implode("', '", $allowedValues)
             );
         }
@@ -345,40 +345,6 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setName($name)
     {
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets dynamic
-     *
-     * @return string|null
-     */
-    public function getDynamic()
-    {
-        return $this->container['dynamic'];
-    }
-
-    /**
-     * Sets dynamic
-     *
-     * @param string|null $dynamic Sets the snippet version.
-     *
-     * @return self
-     */
-    public function setDynamic($dynamic)
-    {
-        $allowedValues = $this->getDynamicAllowableValues();
-        if (!is_null($dynamic) && !in_array($dynamic, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'dynamic', must be one of '%s'",
-                    $dynamic,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['dynamic'] = $dynamic;
 
         return $this;
     }
@@ -461,6 +427,40 @@ class SchemasSnippetResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPriority($priority)
     {
         $this->container['priority'] = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Gets dynamic
+     *
+     * @return string|null
+     */
+    public function getDynamic()
+    {
+        return $this->container['dynamic'];
+    }
+
+    /**
+     * Sets dynamic
+     *
+     * @param string|null $dynamic Sets the snippet version.
+     *
+     * @return self
+     */
+    public function setDynamic($dynamic)
+    {
+        $allowedValues = $this->getDynamicAllowableValues();
+        if (!is_null($dynamic) && !in_array($dynamic, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'dynamic', must be one of '%s'",
+                    $dynamic,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['dynamic'] = $dynamic;
 
         return $this;
     }

@@ -271,7 +271,16 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'ddos_action_tarpit_accept' => 'int',
         'ddos_action_tarpit' => 'int',
         'ddos_action_close' => 'int',
-        'ddos_action_blackhole' => 'int'
+        'ddos_action_blackhole' => 'int',
+        'bot_challenge_starts' => 'int',
+        'bot_challenge_complete_tokens_passed' => 'int',
+        'bot_challenge_complete_tokens_failed' => 'int',
+        'bot_challenge_complete_tokens_checked' => 'int',
+        'bot_challenge_complete_tokens_disabled' => 'int',
+        'bot_challenges_issued' => 'int',
+        'bot_challenges_succeeded' => 'int',
+        'bot_challenges_failed' => 'int',
+        'bot_challenge_complete_tokens_issued' => 'int'
     ];
 
     /**
@@ -499,7 +508,16 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'ddos_action_tarpit_accept' => null,
         'ddos_action_tarpit' => null,
         'ddos_action_close' => null,
-        'ddos_action_blackhole' => null
+        'ddos_action_blackhole' => null,
+        'bot_challenge_starts' => null,
+        'bot_challenge_complete_tokens_passed' => null,
+        'bot_challenge_complete_tokens_failed' => null,
+        'bot_challenge_complete_tokens_checked' => null,
+        'bot_challenge_complete_tokens_disabled' => null,
+        'bot_challenges_issued' => null,
+        'bot_challenges_succeeded' => null,
+        'bot_challenges_failed' => null,
+        'bot_challenge_complete_tokens_issued' => null
     ];
 
     /**
@@ -746,7 +764,16 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'ddos_action_tarpit_accept' => 'ddos_action_tarpit_accept',
         'ddos_action_tarpit' => 'ddos_action_tarpit',
         'ddos_action_close' => 'ddos_action_close',
-        'ddos_action_blackhole' => 'ddos_action_blackhole'
+        'ddos_action_blackhole' => 'ddos_action_blackhole',
+        'bot_challenge_starts' => 'bot_challenge_starts',
+        'bot_challenge_complete_tokens_passed' => 'bot_challenge_complete_tokens_passed',
+        'bot_challenge_complete_tokens_failed' => 'bot_challenge_complete_tokens_failed',
+        'bot_challenge_complete_tokens_checked' => 'bot_challenge_complete_tokens_checked',
+        'bot_challenge_complete_tokens_disabled' => 'bot_challenge_complete_tokens_disabled',
+        'bot_challenges_issued' => 'bot_challenges_issued',
+        'bot_challenges_succeeded' => 'bot_challenges_succeeded',
+        'bot_challenges_failed' => 'bot_challenges_failed',
+        'bot_challenge_complete_tokens_issued' => 'bot_challenge_complete_tokens_issued'
     ];
 
     /**
@@ -972,7 +999,16 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'ddos_action_tarpit_accept' => 'setDdosActionTarpitAccept',
         'ddos_action_tarpit' => 'setDdosActionTarpit',
         'ddos_action_close' => 'setDdosActionClose',
-        'ddos_action_blackhole' => 'setDdosActionBlackhole'
+        'ddos_action_blackhole' => 'setDdosActionBlackhole',
+        'bot_challenge_starts' => 'setBotChallengeStarts',
+        'bot_challenge_complete_tokens_passed' => 'setBotChallengeCompleteTokensPassed',
+        'bot_challenge_complete_tokens_failed' => 'setBotChallengeCompleteTokensFailed',
+        'bot_challenge_complete_tokens_checked' => 'setBotChallengeCompleteTokensChecked',
+        'bot_challenge_complete_tokens_disabled' => 'setBotChallengeCompleteTokensDisabled',
+        'bot_challenges_issued' => 'setBotChallengesIssued',
+        'bot_challenges_succeeded' => 'setBotChallengesSucceeded',
+        'bot_challenges_failed' => 'setBotChallengesFailed',
+        'bot_challenge_complete_tokens_issued' => 'setBotChallengeCompleteTokensIssued'
     ];
 
     /**
@@ -1198,7 +1234,16 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'ddos_action_tarpit_accept' => 'getDdosActionTarpitAccept',
         'ddos_action_tarpit' => 'getDdosActionTarpit',
         'ddos_action_close' => 'getDdosActionClose',
-        'ddos_action_blackhole' => 'getDdosActionBlackhole'
+        'ddos_action_blackhole' => 'getDdosActionBlackhole',
+        'bot_challenge_starts' => 'getBotChallengeStarts',
+        'bot_challenge_complete_tokens_passed' => 'getBotChallengeCompleteTokensPassed',
+        'bot_challenge_complete_tokens_failed' => 'getBotChallengeCompleteTokensFailed',
+        'bot_challenge_complete_tokens_checked' => 'getBotChallengeCompleteTokensChecked',
+        'bot_challenge_complete_tokens_disabled' => 'getBotChallengeCompleteTokensDisabled',
+        'bot_challenges_issued' => 'getBotChallengesIssued',
+        'bot_challenges_succeeded' => 'getBotChallengesSucceeded',
+        'bot_challenges_failed' => 'getBotChallengesFailed',
+        'bot_challenge_complete_tokens_issued' => 'getBotChallengeCompleteTokensIssued'
     ];
 
     /**
@@ -1476,6 +1521,15 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['ddos_action_tarpit'] = $data['ddos_action_tarpit'] ?? null;
         $this->container['ddos_action_close'] = $data['ddos_action_close'] ?? null;
         $this->container['ddos_action_blackhole'] = $data['ddos_action_blackhole'] ?? null;
+        $this->container['bot_challenge_starts'] = $data['bot_challenge_starts'] ?? null;
+        $this->container['bot_challenge_complete_tokens_passed'] = $data['bot_challenge_complete_tokens_passed'] ?? null;
+        $this->container['bot_challenge_complete_tokens_failed'] = $data['bot_challenge_complete_tokens_failed'] ?? null;
+        $this->container['bot_challenge_complete_tokens_checked'] = $data['bot_challenge_complete_tokens_checked'] ?? null;
+        $this->container['bot_challenge_complete_tokens_disabled'] = $data['bot_challenge_complete_tokens_disabled'] ?? null;
+        $this->container['bot_challenges_issued'] = $data['bot_challenges_issued'] ?? null;
+        $this->container['bot_challenges_succeeded'] = $data['bot_challenges_succeeded'] ?? null;
+        $this->container['bot_challenges_failed'] = $data['bot_challenges_failed'] ?? null;
+        $this->container['bot_challenge_complete_tokens_issued'] = $data['bot_challenge_complete_tokens_issued'] ?? null;
     }
 
     /**
@@ -6734,6 +6788,222 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setDdosActionBlackhole($ddos_action_blackhole)
     {
         $this->container['ddos_action_blackhole'] = $ddos_action_blackhole;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_starts
+     *
+     * @return int|null
+     */
+    public function getBotChallengeStarts()
+    {
+        return $this->container['bot_challenge_starts'];
+    }
+
+    /**
+     * Sets bot_challenge_starts
+     *
+     * @param int|null $bot_challenge_starts The number of challenge-start tokens created.
+     *
+     * @return self
+     */
+    public function setBotChallengeStarts($bot_challenge_starts)
+    {
+        $this->container['bot_challenge_starts'] = $bot_challenge_starts;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_passed
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensPassed()
+    {
+        return $this->container['bot_challenge_complete_tokens_passed'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_passed
+     *
+     * @param int|null $bot_challenge_complete_tokens_passed The number of challenge-complete tokens that passed validation.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensPassed($bot_challenge_complete_tokens_passed)
+    {
+        $this->container['bot_challenge_complete_tokens_passed'] = $bot_challenge_complete_tokens_passed;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_failed
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensFailed()
+    {
+        return $this->container['bot_challenge_complete_tokens_failed'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_failed
+     *
+     * @param int|null $bot_challenge_complete_tokens_failed The number of challenge-complete tokens that failed validation.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensFailed($bot_challenge_complete_tokens_failed)
+    {
+        $this->container['bot_challenge_complete_tokens_failed'] = $bot_challenge_complete_tokens_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_checked
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensChecked()
+    {
+        return $this->container['bot_challenge_complete_tokens_checked'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_checked
+     *
+     * @param int|null $bot_challenge_complete_tokens_checked The number of challenge-complete tokens checked.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensChecked($bot_challenge_complete_tokens_checked)
+    {
+        $this->container['bot_challenge_complete_tokens_checked'] = $bot_challenge_complete_tokens_checked;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_disabled
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensDisabled()
+    {
+        return $this->container['bot_challenge_complete_tokens_disabled'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_disabled
+     *
+     * @param int|null $bot_challenge_complete_tokens_disabled The number of challenge-complete tokens not checked because the feature was disabled.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensDisabled($bot_challenge_complete_tokens_disabled)
+    {
+        $this->container['bot_challenge_complete_tokens_disabled'] = $bot_challenge_complete_tokens_disabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_issued
+     *
+     * @return int|null
+     */
+    public function getBotChallengesIssued()
+    {
+        return $this->container['bot_challenges_issued'];
+    }
+
+    /**
+     * Sets bot_challenges_issued
+     *
+     * @param int|null $bot_challenges_issued The number of challenges issued. For example, the issuance of a CAPTCHA challenge.
+     *
+     * @return self
+     */
+    public function setBotChallengesIssued($bot_challenges_issued)
+    {
+        $this->container['bot_challenges_issued'] = $bot_challenges_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_succeeded
+     *
+     * @return int|null
+     */
+    public function getBotChallengesSucceeded()
+    {
+        return $this->container['bot_challenges_succeeded'];
+    }
+
+    /**
+     * Sets bot_challenges_succeeded
+     *
+     * @param int|null $bot_challenges_succeeded The number of successful challenge solutions processed. For example, a correct CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setBotChallengesSucceeded($bot_challenges_succeeded)
+    {
+        $this->container['bot_challenges_succeeded'] = $bot_challenges_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_failed
+     *
+     * @return int|null
+     */
+    public function getBotChallengesFailed()
+    {
+        return $this->container['bot_challenges_failed'];
+    }
+
+    /**
+     * Sets bot_challenges_failed
+     *
+     * @param int|null $bot_challenges_failed The number of failed challenge solutions processed. For example, an incorrect CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setBotChallengesFailed($bot_challenges_failed)
+    {
+        $this->container['bot_challenges_failed'] = $bot_challenges_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_issued
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensIssued()
+    {
+        return $this->container['bot_challenge_complete_tokens_issued'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_issued
+     *
+     * @param int|null $bot_challenge_complete_tokens_issued The number of challenge-complete tokens issued. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensIssued($bot_challenge_complete_tokens_issued)
+    {
+        $this->container['bot_challenge_complete_tokens_issued'] = $bot_challenge_complete_tokens_issued;
 
         return $this;
     }

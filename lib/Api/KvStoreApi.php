@@ -112,7 +112,7 @@ class KvStoreApi
     /**
      * Operation createStore
      *
-     * Create an kv store.
+     * Create a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -135,7 +135,7 @@ class KvStoreApi
     /**
      * Operation createStoreWithHttpInfo
      *
-     * Create an kv store.
+     * Create a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -246,7 +246,7 @@ class KvStoreApi
     /**
      * Operation createStoreAsync
      *
-     * Create an kv store.
+     * Create a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -272,7 +272,7 @@ class KvStoreApi
     /**
      * Operation createStoreAsyncWithHttpInfo
      *
-     * Create an kv store.
+     * Create a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -443,7 +443,7 @@ class KvStoreApi
     /**
      * Operation deleteStore
      *
-     * Delete an kv store.
+     * Delete a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -464,7 +464,7 @@ class KvStoreApi
     /**
      * Operation deleteStoreWithHttpInfo
      *
-     * Delete an kv store.
+     * Delete a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -540,7 +540,7 @@ class KvStoreApi
     /**
      * Operation deleteStoreAsync
      *
-     * Delete an kv store.
+     * Delete a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -565,7 +565,7 @@ class KvStoreApi
     /**
      * Operation deleteStoreAsyncWithHttpInfo
      *
-     * Delete an kv store.
+     * Delete a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -720,7 +720,7 @@ class KvStoreApi
     /**
      * Operation getStore
      *
-     * Describe an kv store.
+     * Describe a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -742,7 +742,7 @@ class KvStoreApi
     /**
      * Operation getStoreWithHttpInfo
      *
-     * Describe an kv store.
+     * Describe a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -852,7 +852,7 @@ class KvStoreApi
     /**
      * Operation getStoreAsync
      *
-     * Describe an kv store.
+     * Describe a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -877,7 +877,7 @@ class KvStoreApi
     /**
      * Operation getStoreAsyncWithHttpInfo
      *
-     * Describe an kv store.
+     * Describe a KV store.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1042,7 +1042,7 @@ class KvStoreApi
     /**
      * Operation getStores
      *
-     * List kv stores.
+     * List KV stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1065,7 +1065,7 @@ class KvStoreApi
     /**
      * Operation getStoresWithHttpInfo
      *
-     * List kv stores.
+     * List KV stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1176,7 +1176,7 @@ class KvStoreApi
     /**
      * Operation getStoresAsync
      *
-     * List kv stores.
+     * List KV stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1202,7 +1202,7 @@ class KvStoreApi
     /**
      * Operation getStoresAsyncWithHttpInfo
      *
-     * List kv stores.
+     * List KV stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
