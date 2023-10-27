@@ -4569,7 +4569,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_req_header_bytes
      *
-     * @param int|null $compute_req_header_bytes Total header bytes received by Compute@Edge.
+     * @param int|null $compute_req_header_bytes Total header bytes received by the Compute platform.
      *
      * @return self
      */
@@ -4593,7 +4593,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_req_body_bytes
      *
-     * @param int|null $compute_req_body_bytes Total body bytes received by Compute@Edge.
+     * @param int|null $compute_req_body_bytes Total body bytes received by the Compute platform.
      *
      * @return self
      */
@@ -4617,7 +4617,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_resp_header_bytes
      *
-     * @param int|null $compute_resp_header_bytes Total header bytes sent from Compute@Edge to end user.
+     * @param int|null $compute_resp_header_bytes Total header bytes sent from Compute to end user.
      *
      * @return self
      */
@@ -4641,7 +4641,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_resp_body_bytes
      *
-     * @param int|null $compute_resp_body_bytes Total body bytes sent from Compute@Edge to end user.
+     * @param int|null $compute_resp_body_bytes Total body bytes sent from Compute to end user.
      *
      * @return self
      */
@@ -5289,7 +5289,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_resp_status_1xx
      *
-     * @param int|null $compute_resp_status_1xx Number of \"Informational\" category status codes delivered by Compute@Edge.
+     * @param int|null $compute_resp_status_1xx Number of \"Informational\" category status codes delivered by the Compute platform.
      *
      * @return self
      */
@@ -5313,7 +5313,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_resp_status_2xx
      *
-     * @param int|null $compute_resp_status_2xx Number of \"Success\" category status codes delivered by Compute@Edge.
+     * @param int|null $compute_resp_status_2xx Number of \"Success\" category status codes delivered by the Compute platform.
      *
      * @return self
      */
@@ -5337,7 +5337,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_resp_status_3xx
      *
-     * @param int|null $compute_resp_status_3xx Number of \"Redirection\" category status codes delivered by Compute@Edge.
+     * @param int|null $compute_resp_status_3xx Number of \"Redirection\" category status codes delivered by the Compute platform.
      *
      * @return self
      */
@@ -5361,7 +5361,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_resp_status_4xx
      *
-     * @param int|null $compute_resp_status_4xx Number of \"Client Error\" category status codes delivered by Compute@Edge.
+     * @param int|null $compute_resp_status_4xx Number of \"Client Error\" category status codes delivered by the Compute platform.
      *
      * @return self
      */
@@ -5385,7 +5385,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_resp_status_5xx
      *
-     * @param int|null $compute_resp_status_5xx Number of \"Server Error\" category status codes delivered by Compute@Edge.
+     * @param int|null $compute_resp_status_5xx Number of \"Server Error\" category status codes delivered by the Compute platform.
      *
      * @return self
      */
@@ -5457,7 +5457,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_bereq_header_bytes
      *
-     * @param int|null $compute_bereq_header_bytes Total header bytes sent to backends (origins) by Compute@Edge.
+     * @param int|null $compute_bereq_header_bytes Total header bytes sent to backends (origins) by the Compute platform.
      *
      * @return self
      */
@@ -5481,7 +5481,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_bereq_body_bytes
      *
-     * @param int|null $compute_bereq_body_bytes Total body bytes sent to backends (origins) by Compute@Edge.
+     * @param int|null $compute_bereq_body_bytes Total body bytes sent to backends (origins) by the Compute platform.
      *
      * @return self
      */
@@ -5505,7 +5505,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_beresp_header_bytes
      *
-     * @param int|null $compute_beresp_header_bytes Total header bytes received from backends (origins) by Compute@Edge.
+     * @param int|null $compute_beresp_header_bytes Total header bytes received from backends (origins) by the Compute platform.
      *
      * @return self
      */
@@ -5529,7 +5529,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets compute_beresp_body_bytes
      *
-     * @param int|null $compute_beresp_body_bytes Total body bytes received from backends (origins) by Compute@Edge.
+     * @param int|null $compute_beresp_body_bytes Total body bytes received from backends (origins) by the Compute platform.
      *
      * @return self
      */

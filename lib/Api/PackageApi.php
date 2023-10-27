@@ -112,7 +112,7 @@ class PackageApi
     /**
      * Operation getPackage
      *
-     * Get details of the service&#39;s Compute@Edge package.
+     * Get details of the service&#39;s Compute package.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -135,7 +135,7 @@ class PackageApi
     /**
      * Operation getPackageWithHttpInfo
      *
-     * Get details of the service&#39;s Compute@Edge package.
+     * Get details of the service&#39;s Compute package.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -246,7 +246,7 @@ class PackageApi
     /**
      * Operation getPackageAsync
      *
-     * Get details of the service&#39;s Compute@Edge package.
+     * Get details of the service&#39;s Compute package.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -272,7 +272,7 @@ class PackageApi
     /**
      * Operation getPackageAsyncWithHttpInfo
      *
-     * Get details of the service&#39;s Compute@Edge package.
+     * Get details of the service&#39;s Compute package.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -454,7 +454,7 @@ class PackageApi
     /**
      * Operation putPackage
      *
-     * Upload a Compute@Edge package.
+     * Upload a Compute package.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -479,7 +479,7 @@ class PackageApi
     /**
      * Operation putPackageWithHttpInfo
      *
-     * Upload a Compute@Edge package.
+     * Upload a Compute package.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -592,7 +592,7 @@ class PackageApi
     /**
      * Operation putPackageAsync
      *
-     * Upload a Compute@Edge package.
+     * Upload a Compute package.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -620,7 +620,7 @@ class PackageApi
     /**
      * Operation putPackageAsyncWithHttpInfo
      *
-     * Upload a Compute@Edge package.
+     * Upload a Compute package.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *

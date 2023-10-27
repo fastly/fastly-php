@@ -249,7 +249,7 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Name of the Compute@Edge package.
+     * @param string|null $name Name of the Compute package.
      *
      * @return self
      */
@@ -273,7 +273,7 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description Description of the Compute@Edge package.
+     * @param string|null $description Description of the Compute package.
      *
      * @return self
      */
@@ -321,7 +321,7 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets language
      *
-     * @param string|null $language The language of the Compute@Edge package.
+     * @param string|null $language The language of the Compute package.
      *
      * @return self
      */
@@ -345,7 +345,7 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets size
      *
-     * @param int|null $size Size of the Compute@Edge package in bytes.
+     * @param int|null $size Size of the Compute package in bytes.
      *
      * @return self
      */
@@ -369,7 +369,7 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hashsum
      *
-     * @param string|null $hashsum Hash of the Compute@Edge package.
+     * @param string|null $hashsum Hash of the Compute package.
      *
      * @return self
      */
@@ -393,7 +393,7 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files_hash
      *
-     * @param string|null $files_hash Hash of the files within the Compute@Edge package.
+     * @param string|null $files_hash Hash of the files within the Compute package.
      *
      * @return self
      */

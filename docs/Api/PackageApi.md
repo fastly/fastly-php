@@ -14,17 +14,17 @@ $apiInstance = new Fastly\Api\PackageApi(
 
 Method | Fastly API endpoint | Description
 ------------- | ------------- | -------------
-[**getPackage()**](PackageApi.md#getPackage) | **GET** /service/{service_id}/version/{version_id}/package | Get details of the service&#39;s Compute@Edge package.
-[**putPackage()**](PackageApi.md#putPackage) | **PUT** /service/{service_id}/version/{version_id}/package | Upload a Compute@Edge package.
+[**getPackage()**](PackageApi.md#getPackage) | **GET** /service/{service_id}/version/{version_id}/package | Get details of the service&#39;s Compute package.
+[**putPackage()**](PackageApi.md#putPackage) | **PUT** /service/{service_id}/version/{version_id}/package | Upload a Compute package.
 
 
 ## `getPackage()`
 
 ```php
-getPackage($options): \Fastly\Model\PackageResponse // Get details of the service's Compute@Edge package.
+getPackage($options): \Fastly\Model\PackageResponse // Get details of the service's Compute package.
 ```
 
-List detailed information about the Compute@Edge package for the specified service.
+List detailed information about the Compute package for the specified service.
 
 ### Example
 ```php
@@ -57,10 +57,10 @@ Name | Type | Description  | Notes
 ## `putPackage()`
 
 ```php
-putPackage($options): \Fastly\Model\PackageResponse // Upload a Compute@Edge package.
+putPackage($options): \Fastly\Model\PackageResponse // Upload a Compute package.
 ```
 
-Upload a Compute@Edge package associated with the specified service version.
+Upload a Compute package associated with the specified service version.
 
 ### Example
 ```php
