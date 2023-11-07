@@ -203,7 +203,8 @@ List config stores.
 
 ### Example
 ```php
-    
+    $options['name'] = 'name_example'; // string | Returns a one-element array containing the details for the named config store.
+
 try {
     $result = $apiInstance->listConfigStores($options);
 } catch (Exception $e) {
@@ -215,7 +216,9 @@ try {
 
 Note: the input parameter is an associative array with the keys listed below.
 
-This endpoint does not need any parameters.
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**name** | **string** | Returns a one-element array containing the details for the named config store. | [optional]
 
 ### Return type
 

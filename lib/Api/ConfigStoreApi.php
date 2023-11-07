@@ -1719,6 +1719,7 @@ class ConfigStoreApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
+     * @param  string $name Returns a one-element array containing the details for the named config store. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1740,6 +1741,7 @@ class ConfigStoreApi
      * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
+     * @param  string $name Returns a one-element array containing the details for the named config store. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1849,6 +1851,7 @@ class ConfigStoreApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
+     * @param  string $name Returns a one-element array containing the details for the named config store. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1873,6 +1876,7 @@ class ConfigStoreApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
+     * @param  string $name Returns a one-element array containing the details for the named config store. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1923,6 +1927,7 @@ class ConfigStoreApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
+     * @param  string $name Returns a one-element array containing the details for the named config store. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1930,6 +1935,7 @@ class ConfigStoreApi
     public function listConfigStoresRequest($options)
     {
         // unbox the parameters from the associative array
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
 
 
         $resourcePath = '/resources/stores/config';
@@ -1939,6 +1945,17 @@ class ConfigStoreApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($name !== null) {
+            if('form' === 'form' && is_array($name)) {
+                foreach($name as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['name'] = ObjectSerializer::toString($name);
+            }
+        }
 
 
 
