@@ -1,4 +1,4 @@
-# # HistoricalResponseDataField
+# # HistoricalStatsByServiceResponseAllOf
 
 ## Properties
 

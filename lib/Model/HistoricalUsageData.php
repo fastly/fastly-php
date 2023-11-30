@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalFieldResponseDataField
+ * HistoricalUsageData
  *
  * PHP version 7.3
  *
@@ -27,16 +27,17 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalFieldResponseDataField Class Doc Comment
+ * HistoricalUsageData Class Doc Comment
  *
  * @category Class
+ * @description The results of usage related queries, grouped by service and/or region depending on endpoint, and aggregated over the appropriate time span.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalUsageData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +46,7 @@ class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_field_response_data_field';
+    protected static $fastlyModelName = 'historical_usage_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +54,9 @@ class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'array<string,array>'
+        'bandwidth' => 'float',
+        'requests' => 'float',
+        'compute_requests' => 'float'
     ];
 
     /**
@@ -64,7 +67,9 @@ class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null
+        'bandwidth' => null,
+        'requests' => null,
+        'compute_requests' => null
     ];
 
     /**
@@ -94,7 +99,9 @@ class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'bandwidth' => 'bandwidth',
+        'requests' => 'requests',
+        'compute_requests' => 'compute_requests'
     ];
 
     /**
@@ -103,7 +110,9 @@ class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'bandwidth' => 'setBandwidth',
+        'requests' => 'setRequests',
+        'compute_requests' => 'setComputeRequests'
     ];
 
     /**
@@ -112,7 +121,9 @@ class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'bandwidth' => 'getBandwidth',
+        'requests' => 'getRequests',
+        'compute_requests' => 'getComputeRequests'
     ];
 
     /**
@@ -172,7 +183,9 @@ class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['bandwidth'] = $data['bandwidth'] ?? null;
+        $this->container['requests'] = $data['requests'] ?? null;
+        $this->container['compute_requests'] = $data['compute_requests'] ?? null;
     }
 
     /**
@@ -200,25 +213,73 @@ class HistoricalFieldResponseDataField implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets data
+     * Gets bandwidth
      *
-     * @return array<string,array>|null
+     * @return float|null
      */
-    public function getData()
+    public function getBandwidth()
     {
-        return $this->container['data'];
+        return $this->container['bandwidth'];
     }
 
     /**
-     * Sets data
+     * Sets bandwidth
      *
-     * @param array<string,array>|null $data data
+     * @param float|null $bandwidth bandwidth
      *
      * @return self
      */
-    public function setData($data)
+    public function setBandwidth($bandwidth)
     {
-        $this->container['data'] = $data;
+        $this->container['bandwidth'] = $bandwidth;
+
+        return $this;
+    }
+
+    /**
+     * Gets requests
+     *
+     * @return float|null
+     */
+    public function getRequests()
+    {
+        return $this->container['requests'];
+    }
+
+    /**
+     * Sets requests
+     *
+     * @param float|null $requests requests
+     *
+     * @return self
+     */
+    public function setRequests($requests)
+    {
+        $this->container['requests'] = $requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_requests
+     *
+     * @return float|null
+     */
+    public function getComputeRequests()
+    {
+        return $this->container['compute_requests'];
+    }
+
+    /**
+     * Sets compute_requests
+     *
+     * @param float|null $compute_requests compute_requests
+     *
+     * @return self
+     */
+    public function setComputeRequests($compute_requests)
+    {
+        $this->container['compute_requests'] = $compute_requests;
 
         return $this;
     }

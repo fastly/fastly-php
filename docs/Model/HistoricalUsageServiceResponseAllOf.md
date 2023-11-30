@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\HistoricalUsageResults**](HistoricalUsageResults.md) |  | [optional] 
+**data** | **array&lt;string,array&lt;string,\Fastly\Model\HistoricalUsageData&gt;&gt;** | Organized by *region*. | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

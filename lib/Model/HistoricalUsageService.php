@@ -1,6 +1,6 @@
 <?php
 /**
- * ReadOnlyIdService
+ * HistoricalUsageService
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * ReadOnlyIdService Class Doc Comment
+ * HistoricalUsageService Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ReadOnlyIdService implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalUsageService implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class ReadOnlyIdService implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $fastlyModelName = 'read_only_id_service';
+    protected static $fastlyModelName = 'historical_usage_service';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,7 @@ class ReadOnlyIdService implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        
+        'name' => 'string'
     ];
 
     /**
@@ -64,7 +64,7 @@ class ReadOnlyIdService implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        
+        'name' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class ReadOnlyIdService implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'name' => 'name'
     ];
 
     /**
@@ -103,7 +103,7 @@ class ReadOnlyIdService implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        
+        'name' => 'setName'
     ];
 
     /**
@@ -112,7 +112,7 @@ class ReadOnlyIdService implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        
+        'name' => 'getName'
     ];
 
     /**
@@ -172,6 +172,7 @@ class ReadOnlyIdService implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -197,6 +198,30 @@ class ReadOnlyIdService implements ModelInterface, ArrayAccess, \JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name The name of the service.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *

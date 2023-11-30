@@ -54,8 +54,8 @@ class HistoricalUsageMonthResponseData implements ModelInterface, ArrayAccess, \
       */
     protected static $fastlyTypes = [
         'customer_id' => 'string',
-        'services' => 'array<string,\Fastly\Model\HistoricalService>',
-        'total' => '\Fastly\Model\HistoricalUsageResults'
+        'services' => 'array<string,\Fastly\Model\HistoricalUsageService>',
+        'total' => 'array<string,\Fastly\Model\HistoricalUsageData>'
     ];
 
     /**
@@ -238,7 +238,7 @@ class HistoricalUsageMonthResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets services
      *
-     * @return array<string,\Fastly\Model\HistoricalService>|null
+     * @return array<string,\Fastly\Model\HistoricalUsageService>|null
      */
     public function getServices()
     {
@@ -248,7 +248,7 @@ class HistoricalUsageMonthResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets services
      *
-     * @param array<string,\Fastly\Model\HistoricalService>|null $services services
+     * @param array<string,\Fastly\Model\HistoricalUsageService>|null $services Organized by *service id*.
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class HistoricalUsageMonthResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets total
      *
-     * @return \Fastly\Model\HistoricalUsageResults|null
+     * @return array<string,\Fastly\Model\HistoricalUsageData>|null
      */
     public function getTotal()
     {
@@ -272,7 +272,7 @@ class HistoricalUsageMonthResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets total
      *
-     * @param \Fastly\Model\HistoricalUsageResults|null $total total
+     * @param array<string,\Fastly\Model\HistoricalUsageData>|null $total Organized by *region*.
      *
      * @return self
      */

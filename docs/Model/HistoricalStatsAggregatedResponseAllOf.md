@@ -1,10 +1,10 @@
-# # HistoricalService
+# # HistoricalStatsAggregatedResponseAllOf
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | The name of the service. | [optional] 
+**data** | [**\Fastly\Model\Results[]**](Results.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

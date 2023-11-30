@@ -126,7 +126,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\HistoricalResponse
+     * @return \Fastly\Model\HistoricalStatsByServiceResponse
      */
     public function getHistStats($options)
     {
@@ -151,7 +151,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\HistoricalResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\HistoricalStatsByServiceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getHistStatsWithHttpInfo($options)
     {
@@ -206,20 +206,20 @@ class HistoricalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\HistoricalResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\HistoricalStatsByServiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalStatsByServiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\HistoricalResponse';
+            $returnType = '\Fastly\Model\HistoricalStatsByServiceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -237,7 +237,7 @@ class HistoricalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\HistoricalResponse',
+                        '\Fastly\Model\HistoricalStatsByServiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -295,7 +295,7 @@ class HistoricalApi
      */
     public function getHistStatsAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\HistoricalResponse';
+        $returnType = '\Fastly\Model\HistoricalStatsByServiceResponse';
         $request = $this->getHistStatsRequest($options);
 
         return $this->client
@@ -496,7 +496,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\HistoricalAggregateResponse
+     * @return \Fastly\Model\HistoricalStatsAggregatedResponse
      */
     public function getHistStatsAggregated($options)
     {
@@ -521,7 +521,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\HistoricalAggregateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\HistoricalStatsAggregatedResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getHistStatsAggregatedWithHttpInfo($options)
     {
@@ -576,20 +576,20 @@ class HistoricalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\HistoricalAggregateResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\HistoricalStatsAggregatedResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalAggregateResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalStatsAggregatedResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\HistoricalAggregateResponse';
+            $returnType = '\Fastly\Model\HistoricalStatsAggregatedResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -607,7 +607,7 @@ class HistoricalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\HistoricalAggregateResponse',
+                        '\Fastly\Model\HistoricalStatsAggregatedResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -665,7 +665,7 @@ class HistoricalApi
      */
     public function getHistStatsAggregatedAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\HistoricalAggregateResponse';
+        $returnType = '\Fastly\Model\HistoricalStatsAggregatedResponse';
         $request = $this->getHistStatsAggregatedRequest($options);
 
         return $this->client
@@ -867,7 +867,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\HistoricalFieldResponse
+     * @return \Fastly\Model\HistoricalStatsByServiceResponse
      */
     public function getHistStatsField($options)
     {
@@ -893,7 +893,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\HistoricalFieldResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\HistoricalStatsByServiceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getHistStatsFieldWithHttpInfo($options)
     {
@@ -948,20 +948,20 @@ class HistoricalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\HistoricalFieldResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\HistoricalStatsByServiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalFieldResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalStatsByServiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\HistoricalFieldResponse';
+            $returnType = '\Fastly\Model\HistoricalStatsByServiceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -979,7 +979,7 @@ class HistoricalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\HistoricalFieldResponse',
+                        '\Fastly\Model\HistoricalStatsByServiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1039,7 +1039,7 @@ class HistoricalApi
      */
     public function getHistStatsFieldAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\HistoricalFieldResponse';
+        $returnType = '\Fastly\Model\HistoricalStatsByServiceResponse';
         $request = $this->getHistStatsFieldRequest($options);
 
         return $this->client
@@ -1257,7 +1257,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\HistoricalAggregateResponse
+     * @return \Fastly\Model\HistoricalStatsAggregatedResponse
      */
     public function getHistStatsService($options)
     {
@@ -1283,7 +1283,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\HistoricalAggregateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\HistoricalStatsAggregatedResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getHistStatsServiceWithHttpInfo($options)
     {
@@ -1338,20 +1338,20 @@ class HistoricalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\HistoricalAggregateResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\HistoricalStatsAggregatedResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalAggregateResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalStatsAggregatedResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\HistoricalAggregateResponse';
+            $returnType = '\Fastly\Model\HistoricalStatsAggregatedResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1369,7 +1369,7 @@ class HistoricalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\HistoricalAggregateResponse',
+                        '\Fastly\Model\HistoricalStatsAggregatedResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1429,7 +1429,7 @@ class HistoricalApi
      */
     public function getHistStatsServiceAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\HistoricalAggregateResponse';
+        $returnType = '\Fastly\Model\HistoricalStatsAggregatedResponse';
         $request = $this->getHistStatsServiceRequest($options);
 
         return $this->client
@@ -1648,7 +1648,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\HistoricalFieldAggregateResponse
+     * @return \Fastly\Model\HistoricalStatsAggregatedResponse
      */
     public function getHistStatsServiceField($options)
     {
@@ -1675,7 +1675,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\HistoricalFieldAggregateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\HistoricalStatsAggregatedResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getHistStatsServiceFieldWithHttpInfo($options)
     {
@@ -1730,20 +1730,20 @@ class HistoricalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\HistoricalFieldAggregateResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\HistoricalStatsAggregatedResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalFieldAggregateResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalStatsAggregatedResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\HistoricalFieldAggregateResponse';
+            $returnType = '\Fastly\Model\HistoricalStatsAggregatedResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1761,7 +1761,7 @@ class HistoricalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\HistoricalFieldAggregateResponse',
+                        '\Fastly\Model\HistoricalStatsAggregatedResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1823,7 +1823,7 @@ class HistoricalApi
      */
     public function getHistStatsServiceFieldAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\HistoricalFieldAggregateResponse';
+        $returnType = '\Fastly\Model\HistoricalStatsAggregatedResponse';
         $request = $this->getHistStatsServiceFieldRequest($options);
 
         return $this->client
@@ -2356,7 +2356,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\HistoricalUsageAggregateResponse
+     * @return \Fastly\Model\HistoricalUsageAggregatedResponse
      */
     public function getUsage($options)
     {
@@ -2379,7 +2379,7 @@ class HistoricalApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\HistoricalUsageAggregateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\HistoricalUsageAggregatedResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsageWithHttpInfo($options)
     {
@@ -2434,20 +2434,20 @@ class HistoricalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\HistoricalUsageAggregateResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\HistoricalUsageAggregatedResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalUsageAggregateResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\HistoricalUsageAggregatedResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\HistoricalUsageAggregateResponse';
+            $returnType = '\Fastly\Model\HistoricalUsageAggregatedResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2465,7 +2465,7 @@ class HistoricalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\HistoricalUsageAggregateResponse',
+                        '\Fastly\Model\HistoricalUsageAggregatedResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2519,7 +2519,7 @@ class HistoricalApi
      */
     public function getUsageAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\HistoricalUsageAggregateResponse';
+        $returnType = '\Fastly\Model\HistoricalUsageAggregatedResponse';
         $request = $this->getUsageRequest($options);
 
         return $this->client

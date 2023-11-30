@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalUsageResults
+ * HistoricalStatsAggregatedResponse
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalUsageResults Class Doc Comment
+ * HistoricalStatsAggregatedResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalUsageResults implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalStatsAggregatedResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalUsageResults implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_usage_results';
+    protected static $fastlyModelName = 'historical_stats_aggregated_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,9 +53,10 @@ class HistoricalUsageResults implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'bandwidth' => 'float',
-        'requests' => 'float',
-        'compute_requests' => 'float'
+        'status' => 'string',
+        'meta' => '\Fastly\Model\HistoricalMeta',
+        'msg' => 'string',
+        'data' => '\Fastly\Model\Results[]'
     ];
 
     /**
@@ -66,9 +67,10 @@ class HistoricalUsageResults implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'bandwidth' => null,
-        'requests' => null,
-        'compute_requests' => null
+        'status' => null,
+        'meta' => null,
+        'msg' => null,
+        'data' => null
     ];
 
     /**
@@ -98,9 +100,10 @@ class HistoricalUsageResults implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'bandwidth' => 'bandwidth',
-        'requests' => 'requests',
-        'compute_requests' => 'compute_requests'
+        'status' => 'status',
+        'meta' => 'meta',
+        'msg' => 'msg',
+        'data' => 'data'
     ];
 
     /**
@@ -109,9 +112,10 @@ class HistoricalUsageResults implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'bandwidth' => 'setBandwidth',
-        'requests' => 'setRequests',
-        'compute_requests' => 'setComputeRequests'
+        'status' => 'setStatus',
+        'meta' => 'setMeta',
+        'msg' => 'setMsg',
+        'data' => 'setData'
     ];
 
     /**
@@ -120,9 +124,10 @@ class HistoricalUsageResults implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'bandwidth' => 'getBandwidth',
-        'requests' => 'getRequests',
-        'compute_requests' => 'getComputeRequests'
+        'status' => 'getStatus',
+        'meta' => 'getMeta',
+        'msg' => 'getMsg',
+        'data' => 'getData'
     ];
 
     /**
@@ -182,9 +187,10 @@ class HistoricalUsageResults implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['bandwidth'] = $data['bandwidth'] ?? null;
-        $this->container['requests'] = $data['requests'] ?? null;
-        $this->container['compute_requests'] = $data['compute_requests'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
+        $this->container['msg'] = $data['msg'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -212,73 +218,97 @@ class HistoricalUsageResults implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets bandwidth
+     * Gets status
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getBandwidth()
+    public function getStatus()
     {
-        return $this->container['bandwidth'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets bandwidth
+     * Sets status
      *
-     * @param float|null $bandwidth bandwidth
+     * @param string|null $status Whether or not we were able to successfully execute the query.
      *
      * @return self
      */
-    public function setBandwidth($bandwidth)
+    public function setStatus($status)
     {
-        $this->container['bandwidth'] = $bandwidth;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets requests
+     * Gets meta
      *
-     * @return float|null
+     * @return \Fastly\Model\HistoricalMeta|null
      */
-    public function getRequests()
+    public function getMeta()
     {
-        return $this->container['requests'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets requests
+     * Sets meta
      *
-     * @param float|null $requests requests
+     * @param \Fastly\Model\HistoricalMeta|null $meta meta
      *
      * @return self
      */
-    public function setRequests($requests)
+    public function setMeta($meta)
     {
-        $this->container['requests'] = $requests;
+        $this->container['meta'] = $meta;
 
         return $this;
     }
 
     /**
-     * Gets compute_requests
+     * Gets msg
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getComputeRequests()
+    public function getMsg()
     {
-        return $this->container['compute_requests'];
+        return $this->container['msg'];
     }
 
     /**
-     * Sets compute_requests
+     * Sets msg
      *
-     * @param float|null $compute_requests compute_requests
+     * @param string|null $msg If the query was not successful, this will provide a string that explains why.
      *
      * @return self
      */
-    public function setComputeRequests($compute_requests)
+    public function setMsg($msg)
     {
-        $this->container['compute_requests'] = $compute_requests;
+        $this->container['msg'] = $msg;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \Fastly\Model\Results[]|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \Fastly\Model\Results[]|null $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

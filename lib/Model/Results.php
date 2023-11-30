@@ -30,7 +30,7 @@ use \Fastly\ObjectSerializer;
  * Results Class Doc Comment
  *
  * @category Class
- * @description The [results](#results-data-model) of the query, grouped by service (and optionally, region), and aggregated over the appropriate time span.
+ * @description The results of stats queries, may be grouped by service depending on endpoint, and aggregated over the appropriate time span.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
@@ -278,7 +278,9 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'bot_challenge_complete_tokens_issued' => 'int',
         'bot_challenges_issued' => 'int',
         'bot_challenges_succeeded' => 'int',
-        'bot_challenges_failed' => 'int'
+        'bot_challenges_failed' => 'int',
+        'service_id' => 'string',
+        'start_time' => 'int'
     ];
 
     /**
@@ -513,7 +515,9 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'bot_challenge_complete_tokens_issued' => null,
         'bot_challenges_issued' => null,
         'bot_challenges_succeeded' => null,
-        'bot_challenges_failed' => null
+        'bot_challenges_failed' => null,
+        'service_id' => null,
+        'start_time' => null
     ];
 
     /**
@@ -767,7 +771,9 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'bot_challenge_complete_tokens_issued' => 'bot_challenge_complete_tokens_issued',
         'bot_challenges_issued' => 'bot_challenges_issued',
         'bot_challenges_succeeded' => 'bot_challenges_succeeded',
-        'bot_challenges_failed' => 'bot_challenges_failed'
+        'bot_challenges_failed' => 'bot_challenges_failed',
+        'service_id' => 'service_id',
+        'start_time' => 'start_time'
     ];
 
     /**
@@ -1000,7 +1006,9 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'bot_challenge_complete_tokens_issued' => 'setBotChallengeCompleteTokensIssued',
         'bot_challenges_issued' => 'setBotChallengesIssued',
         'bot_challenges_succeeded' => 'setBotChallengesSucceeded',
-        'bot_challenges_failed' => 'setBotChallengesFailed'
+        'bot_challenges_failed' => 'setBotChallengesFailed',
+        'service_id' => 'setServiceId',
+        'start_time' => 'setStartTime'
     ];
 
     /**
@@ -1233,7 +1241,9 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'bot_challenge_complete_tokens_issued' => 'getBotChallengeCompleteTokensIssued',
         'bot_challenges_issued' => 'getBotChallengesIssued',
         'bot_challenges_succeeded' => 'getBotChallengesSucceeded',
-        'bot_challenges_failed' => 'getBotChallengesFailed'
+        'bot_challenges_failed' => 'getBotChallengesFailed',
+        'service_id' => 'getServiceId',
+        'start_time' => 'getStartTime'
     ];
 
     /**
@@ -1518,6 +1528,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['bot_challenges_issued'] = $data['bot_challenges_issued'] ?? null;
         $this->container['bot_challenges_succeeded'] = $data['bot_challenges_succeeded'] ?? null;
         $this->container['bot_challenges_failed'] = $data['bot_challenges_failed'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['start_time'] = $data['start_time'] ?? null;
     }
 
     /**
@@ -6944,6 +6956,54 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBotChallengesFailed($bot_challenges_failed)
     {
         $this->container['bot_challenges_failed'] = $bot_challenges_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id service_id
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_time
+     *
+     * @return int|null
+     */
+    public function getStartTime()
+    {
+        return $this->container['start_time'];
+    }
+
+    /**
+     * Sets start_time
+     *
+     * @param int|null $start_time Timestamp for the start of the time period being reported
+     *
+     * @return self
+     */
+    public function setStartTime($start_time)
+    {
+        $this->container['start_time'] = $start_time;
 
         return $this;
     }

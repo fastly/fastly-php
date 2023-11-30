@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalResponseDataField
+ * HistoricalStatsByServiceResponse
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalResponseDataField Class Doc Comment
+ * HistoricalStatsByServiceResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalStatsByServiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_response_data_field';
+    protected static $fastlyModelName = 'historical_stats_by_service_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,6 +53,9 @@ class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $fastlyTypes = [
+        'status' => 'string',
+        'meta' => '\Fastly\Model\HistoricalMeta',
+        'msg' => 'string',
         'data' => 'array<string,array>'
     ];
 
@@ -64,6 +67,9 @@ class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'status' => null,
+        'meta' => null,
+        'msg' => null,
         'data' => null
     ];
 
@@ -94,6 +100,9 @@ class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
+        'status' => 'status',
+        'meta' => 'meta',
+        'msg' => 'msg',
         'data' => 'data'
     ];
 
@@ -103,6 +112,9 @@ class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
+        'status' => 'setStatus',
+        'meta' => 'setMeta',
+        'msg' => 'setMsg',
         'data' => 'setData'
     ];
 
@@ -112,6 +124,9 @@ class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
+        'status' => 'getStatus',
+        'meta' => 'getMeta',
+        'msg' => 'getMsg',
         'data' => 'getData'
     ];
 
@@ -172,6 +187,9 @@ class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
+        $this->container['msg'] = $data['msg'] ?? null;
         $this->container['data'] = $data['data'] ?? null;
     }
 
@@ -198,6 +216,78 @@ class HistoricalResponseDataField implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Whether or not we were able to successfully execute the query.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \Fastly\Model\HistoricalMeta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \Fastly\Model\HistoricalMeta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets msg
+     *
+     * @return string|null
+     */
+    public function getMsg()
+    {
+        return $this->container['msg'];
+    }
+
+    /**
+     * Sets msg
+     *
+     * @param string|null $msg If the query was not successful, this will provide a string that explains why.
+     *
+     * @return self
+     */
+    public function setMsg($msg)
+    {
+        $this->container['msg'] = $msg;
+
+        return $this;
+    }
 
     /**
      * Gets data

@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalFieldAggregateResponseAllOf
+ * HistoricalUsageAggregatedResponseAllOf
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalFieldAggregateResponseAllOf Class Doc Comment
+ * HistoricalUsageAggregatedResponseAllOf Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalFieldAggregateResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalUsageAggregatedResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalFieldAggregateResponseAllOf implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_field_aggregate_response_allOf';
+    protected static $fastlyModelName = 'historical_usage_aggregated_response_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,7 @@ class HistoricalFieldAggregateResponseAllOf implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\HistoricalFieldResultsAttributes[]'
+        'data' => 'array<string,\Fastly\Model\HistoricalUsageData>'
     ];
 
     /**
@@ -202,7 +202,7 @@ class HistoricalFieldAggregateResponseAllOf implements ModelInterface, ArrayAcce
     /**
      * Gets data
      *
-     * @return \Fastly\Model\HistoricalFieldResultsAttributes[]|null
+     * @return array<string,\Fastly\Model\HistoricalUsageData>|null
      */
     public function getData()
     {
@@ -212,7 +212,7 @@ class HistoricalFieldAggregateResponseAllOf implements ModelInterface, ArrayAcce
     /**
      * Sets data
      *
-     * @param \Fastly\Model\HistoricalFieldResultsAttributes[]|null $data data
+     * @param array<string,\Fastly\Model\HistoricalUsageData>|null $data Organized by *region*.
      *
      * @return self
      */

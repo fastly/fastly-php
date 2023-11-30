@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalFieldResultsAttributesAdditional
+ * HistoricalStatsAggregatedResponseAllOf
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalFieldResultsAttributesAdditional Class Doc Comment
+ * HistoricalStatsAggregatedResponseAllOf Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalFieldResultsAttributesAdditional implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalStatsAggregatedResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalFieldResultsAttributesAdditional implements ModelInterface, Arra
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_field_results_attributes_additional';
+    protected static $fastlyModelName = 'historical_stats_aggregated_response_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,7 @@ class HistoricalFieldResultsAttributesAdditional implements ModelInterface, Arra
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'service_id' => '\Fastly\Model\ReadOnlyIdService',
-        'start_time' => 'int'
+        'data' => '\Fastly\Model\Results[]'
     ];
 
     /**
@@ -65,8 +64,7 @@ class HistoricalFieldResultsAttributesAdditional implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'service_id' => null,
-        'start_time' => null
+        'data' => null
     ];
 
     /**
@@ -96,8 +94,7 @@ class HistoricalFieldResultsAttributesAdditional implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id',
-        'start_time' => 'start_time'
+        'data' => 'data'
     ];
 
     /**
@@ -106,8 +103,7 @@ class HistoricalFieldResultsAttributesAdditional implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId',
-        'start_time' => 'setStartTime'
+        'data' => 'setData'
     ];
 
     /**
@@ -116,8 +112,7 @@ class HistoricalFieldResultsAttributesAdditional implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId',
-        'start_time' => 'getStartTime'
+        'data' => 'getData'
     ];
 
     /**
@@ -177,8 +172,7 @@ class HistoricalFieldResultsAttributesAdditional implements ModelInterface, Arra
      */
     public function __construct(array $data = null)
     {
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['start_time'] = $data['start_time'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -206,49 +200,25 @@ class HistoricalFieldResultsAttributesAdditional implements ModelInterface, Arra
 
 
     /**
-     * Gets service_id
+     * Gets data
      *
-     * @return \Fastly\Model\ReadOnlyIdService|null
+     * @return \Fastly\Model\Results[]|null
      */
-    public function getServiceId()
+    public function getData()
     {
-        return $this->container['service_id'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets service_id
+     * Sets data
      *
-     * @param \Fastly\Model\ReadOnlyIdService|null $service_id service_id
+     * @param \Fastly\Model\Results[]|null $data data
      *
      * @return self
      */
-    public function setServiceId($service_id)
+    public function setData($data)
     {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_time
-     *
-     * @return int|null
-     */
-    public function getStartTime()
-    {
-        return $this->container['start_time'];
-    }
-
-    /**
-     * Sets start_time
-     *
-     * @param int|null $start_time start_time
-     *
-     * @return self
-     */
-    public function setStartTime($start_time)
-    {
-        $this->container['start_time'] = $start_time;
+        $this->container['data'] = $data;
 
         return $this;
     }

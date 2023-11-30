@@ -1,6 +1,6 @@
 <?php
 /**
- * HistoricalFieldResponse
+ * HistoricalUsageAggregatedResponse
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * HistoricalFieldResponse Class Doc Comment
+ * HistoricalUsageAggregatedResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalUsageAggregatedResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $fastlyModelName = 'historical_field_response';
+    protected static $fastlyModelName = 'historical_usage_aggregated_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,7 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => 'string',
         'meta' => '\Fastly\Model\HistoricalMeta',
         'msg' => 'string',
-        'data' => 'array<string,array>'
+        'data' => 'array<string,\Fastly\Model\HistoricalUsageData>'
     ];
 
     /**
@@ -292,7 +292,7 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets data
      *
-     * @return array<string,array>|null
+     * @return array<string,\Fastly\Model\HistoricalUsageData>|null
      */
     public function getData()
     {
@@ -302,7 +302,7 @@ class HistoricalFieldResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets data
      *
-     * @param array<string,array>|null $data data
+     * @param array<string,\Fastly\Model\HistoricalUsageData>|null $data Organized by *region*.
      *
      * @return self
      */

@@ -30,7 +30,7 @@ use \Fastly\ObjectSerializer;
  * RelationshipTlsDomain Class Doc Comment
  *
  * @category Class
- * @description The [TLS domain](/reference/api/tls/custom-certs/domains/) being enabled for TLS traffic. Required.
+ * @description The TLS domain being enabled for TLS traffic. Required.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>

@@ -1,10 +1,12 @@
-# # HistoricalFieldResponseDataField
+# # HistoricalUsageData
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **array&lt;string,array&gt;** |  | [optional] 
+**bandwidth** | **float** |  | [optional] 
+**requests** | **float** |  | [optional] 
+**compute_requests** | **float** |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -28,7 +28,7 @@ Method | Fastly API endpoint | Description
 ## `getHistStats()`
 
 ```php
-getHistStats($options): \Fastly\Model\HistoricalResponse // Get historical stats
+getHistStats($options): \Fastly\Model\HistoricalStatsByServiceResponse // Get historical stats
 ```
 
 Fetches historical stats for each of your Fastly services and groups the results by service ID.
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\HistoricalResponse**](../Model/HistoricalResponse.md)
+[**\Fastly\Model\HistoricalStatsByServiceResponse**](../Model/HistoricalStatsByServiceResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 ## `getHistStatsAggregated()`
 
 ```php
-getHistStatsAggregated($options): \Fastly\Model\HistoricalAggregateResponse // Get aggregated historical stats
+getHistStatsAggregated($options): \Fastly\Model\HistoricalStatsAggregatedResponse // Get aggregated historical stats
 ```
 
 Fetches historical stats information aggregated across all of your Fastly services.
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\HistoricalAggregateResponse**](../Model/HistoricalAggregateResponse.md)
+[**\Fastly\Model\HistoricalStatsAggregatedResponse**](../Model/HistoricalStatsAggregatedResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 ## `getHistStatsField()`
 
 ```php
-getHistStatsField($options): \Fastly\Model\HistoricalFieldResponse // Get historical stats for a single field
+getHistStatsField($options): \Fastly\Model\HistoricalStatsByServiceResponse // Get historical stats for a single field
 ```
 
 Fetches the specified field from the historical stats for each of your services and groups the results by service ID.
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\HistoricalFieldResponse**](../Model/HistoricalFieldResponse.md)
+[**\Fastly\Model\HistoricalStatsByServiceResponse**](../Model/HistoricalStatsByServiceResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 ## `getHistStatsService()`
 
 ```php
-getHistStatsService($options): \Fastly\Model\HistoricalAggregateResponse // Get historical stats for a single service
+getHistStatsService($options): \Fastly\Model\HistoricalStatsAggregatedResponse // Get historical stats for a single service
 ```
 
 Fetches historical stats for a given service.
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\HistoricalAggregateResponse**](../Model/HistoricalAggregateResponse.md)
+[**\Fastly\Model\HistoricalStatsAggregatedResponse**](../Model/HistoricalStatsAggregatedResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 ## `getHistStatsServiceField()`
 
 ```php
-getHistStatsServiceField($options): \Fastly\Model\HistoricalFieldAggregateResponse // Get historical stats for a single service/field combination
+getHistStatsServiceField($options): \Fastly\Model\HistoricalStatsAggregatedResponse // Get historical stats for a single service/field combination
 ```
 
 Fetches the specified field from the historical stats for a given service.
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\HistoricalFieldAggregateResponse**](../Model/HistoricalFieldAggregateResponse.md)
+[**\Fastly\Model\HistoricalStatsAggregatedResponse**](../Model/HistoricalStatsAggregatedResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -267,7 +267,7 @@ This endpoint does not need any parameters.
 ## `getUsage()`
 
 ```php
-getUsage($options): \Fastly\Model\HistoricalUsageAggregateResponse // Get usage statistics
+getUsage($options): \Fastly\Model\HistoricalUsageAggregatedResponse // Get usage statistics
 ```
 
 Returns usage information aggregated across all Fastly services and grouped by region. To aggregate across all Fastly services by time period, see [`/stats/aggregate`](#get-hist-stats-aggregated).
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\HistoricalUsageAggregateResponse**](../Model/HistoricalUsageAggregateResponse.md)
+[**\Fastly\Model\HistoricalUsageAggregatedResponse**](../Model/HistoricalUsageAggregatedResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
