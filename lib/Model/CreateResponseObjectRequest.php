@@ -1,6 +1,6 @@
 <?php
 /**
- * TlsConfigurationResponseAttributesAllOf
+ * CreateResponseObjectRequest
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * TlsConfigurationResponseAttributesAllOf Class Doc Comment
+ * CreateResponseObjectRequest Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TlsConfigurationResponseAttributesAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateResponseObjectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class TlsConfigurationResponseAttributesAllOf implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $fastlyModelName = 'tls_configuration_response_attributes_allOf';
+    protected static $fastlyModelName = 'create_response_object_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,10 +53,13 @@ class TlsConfigurationResponseAttributesAllOf implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'default' => 'bool',
-        'http_protocols' => 'string[]',
-        'tls_protocols' => 'string[]',
-        'bulk' => 'bool'
+        'name' => 'string',
+        'status' => 'string',
+        'response' => 'string',
+        'content' => 'string',
+        'content_type' => 'string',
+        'request_condition' => 'string',
+        'cache_condition' => 'string'
     ];
 
     /**
@@ -67,10 +70,13 @@ class TlsConfigurationResponseAttributesAllOf implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'default' => null,
-        'http_protocols' => null,
-        'tls_protocols' => null,
-        'bulk' => null
+        'name' => null,
+        'status' => null,
+        'response' => null,
+        'content' => null,
+        'content_type' => null,
+        'request_condition' => null,
+        'cache_condition' => null
     ];
 
     /**
@@ -100,10 +106,13 @@ class TlsConfigurationResponseAttributesAllOf implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'default' => 'default',
-        'http_protocols' => 'http_protocols',
-        'tls_protocols' => 'tls_protocols',
-        'bulk' => 'bulk'
+        'name' => 'name',
+        'status' => 'status',
+        'response' => 'response',
+        'content' => 'content',
+        'content_type' => 'content_type',
+        'request_condition' => 'request_condition',
+        'cache_condition' => 'cache_condition'
     ];
 
     /**
@@ -112,10 +121,13 @@ class TlsConfigurationResponseAttributesAllOf implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'default' => 'setDefault',
-        'http_protocols' => 'setHttpProtocols',
-        'tls_protocols' => 'setTlsProtocols',
-        'bulk' => 'setBulk'
+        'name' => 'setName',
+        'status' => 'setStatus',
+        'response' => 'setResponse',
+        'content' => 'setContent',
+        'content_type' => 'setContentType',
+        'request_condition' => 'setRequestCondition',
+        'cache_condition' => 'setCacheCondition'
     ];
 
     /**
@@ -124,10 +136,13 @@ class TlsConfigurationResponseAttributesAllOf implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'default' => 'getDefault',
-        'http_protocols' => 'getHttpProtocols',
-        'tls_protocols' => 'getTlsProtocols',
-        'bulk' => 'getBulk'
+        'name' => 'getName',
+        'status' => 'getStatus',
+        'response' => 'getResponse',
+        'content' => 'getContent',
+        'content_type' => 'getContentType',
+        'request_condition' => 'getRequestCondition',
+        'cache_condition' => 'getCacheCondition'
     ];
 
     /**
@@ -187,10 +202,13 @@ class TlsConfigurationResponseAttributesAllOf implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->container['default'] = $data['default'] ?? null;
-        $this->container['http_protocols'] = $data['http_protocols'] ?? null;
-        $this->container['tls_protocols'] = $data['tls_protocols'] ?? null;
-        $this->container['bulk'] = $data['bulk'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['response'] = $data['response'] ?? null;
+        $this->container['content'] = $data['content'] ?? null;
+        $this->container['content_type'] = $data['content_type'] ?? null;
+        $this->container['request_condition'] = $data['request_condition'] ?? null;
+        $this->container['cache_condition'] = $data['cache_condition'] ?? null;
     }
 
     /**
@@ -218,97 +236,169 @@ class TlsConfigurationResponseAttributesAllOf implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets default
+     * Gets name
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getDefault()
+    public function getName()
     {
-        return $this->container['default'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets default
+     * Sets name
      *
-     * @param bool|null $default Signifies whether or not Fastly will use this configuration as a default when creating a new [TLS Activation](/reference/api/tls/custom-certs/activations/).
+     * @param string|null $name The name of the response object to create.
      *
      * @return self
      */
-    public function setDefault($default)
+    public function setName($name)
     {
-        $this->container['default'] = $default;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets http_protocols
+     * Gets status
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getHttpProtocols()
+    public function getStatus()
     {
-        return $this->container['http_protocols'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets http_protocols
+     * Sets status
      *
-     * @param string[]|null $http_protocols HTTP protocols available on your configuration.
+     * @param string|null $status The status code the response will have. Defaults to 200.
      *
      * @return self
      */
-    public function setHttpProtocols($http_protocols)
+    public function setStatus($status)
     {
-        $this->container['http_protocols'] = $http_protocols;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets tls_protocols
+     * Gets response
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getTlsProtocols()
+    public function getResponse()
     {
-        return $this->container['tls_protocols'];
+        return $this->container['response'];
     }
 
     /**
-     * Sets tls_protocols
+     * Sets response
      *
-     * @param string[]|null $tls_protocols TLS protocols available on your configuration.
+     * @param string|null $response The status text the response will have. Defaults to 'OK'.
      *
      * @return self
      */
-    public function setTlsProtocols($tls_protocols)
+    public function setResponse($response)
     {
-        $this->container['tls_protocols'] = $tls_protocols;
+        $this->container['response'] = $response;
 
         return $this;
     }
 
     /**
-     * Gets bulk
+     * Gets content
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getBulk()
+    public function getContent()
     {
-        return $this->container['bulk'];
+        return $this->container['content'];
     }
 
     /**
-     * Sets bulk
+     * Sets content
      *
-     * @param bool|null $bulk Signifies whether the configuration is used for Platform TLS or not.
+     * @param string|null $content The content the response will deliver.
      *
      * @return self
      */
-    public function setBulk($bulk)
+    public function setContent($content)
     {
-        $this->container['bulk'] = $bulk;
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets content_type
+     *
+     * @return string|null
+     */
+    public function getContentType()
+    {
+        return $this->container['content_type'];
+    }
+
+    /**
+     * Sets content_type
+     *
+     * @param string|null $content_type The MIME type of your response content.
+     *
+     * @return self
+     */
+    public function setContentType($content_type)
+    {
+        $this->container['content_type'] = $content_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_condition
+     *
+     * @return string|null
+     */
+    public function getRequestCondition()
+    {
+        return $this->container['request_condition'];
+    }
+
+    /**
+     * Sets request_condition
+     *
+     * @param string|null $request_condition Condition which, if met, will select this configuration during a request. Optional.
+     *
+     * @return self
+     */
+    public function setRequestCondition($request_condition)
+    {
+        $this->container['request_condition'] = $request_condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets cache_condition
+     *
+     * @return string|null
+     */
+    public function getCacheCondition()
+    {
+        return $this->container['cache_condition'];
+    }
+
+    /**
+     * Sets cache_condition
+     *
+     * @param string|null $cache_condition Name of the cache condition controlling when this configuration applies.
+     *
+     * @return self
+     */
+    public function setCacheCondition($cache_condition)
+    {
+        $this->container['cache_condition'] = $cache_condition;
 
         return $this;
     }

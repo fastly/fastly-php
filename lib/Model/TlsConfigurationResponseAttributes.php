@@ -58,7 +58,7 @@ class TlsConfigurationResponseAttributes implements ModelInterface, ArrayAccess,
         'updated_at' => '\DateTime',
         'default' => 'bool',
         'http_protocols' => 'string[]',
-        'tls_protocols' => 'float[]',
+        'tls_protocols' => 'string[]',
         'bulk' => 'bool'
     ];
 
@@ -358,7 +358,7 @@ class TlsConfigurationResponseAttributes implements ModelInterface, ArrayAccess,
     /**
      * Gets tls_protocols
      *
-     * @return float[]|null
+     * @return string[]|null
      */
     public function getTlsProtocols()
     {
@@ -368,7 +368,7 @@ class TlsConfigurationResponseAttributes implements ModelInterface, ArrayAccess,
     /**
      * Sets tls_protocols
      *
-     * @param float[]|null $tls_protocols TLS protocols available on your configuration.
+     * @param string[]|null $tls_protocols TLS protocols available on your configuration.
      *
      * @return self
      */

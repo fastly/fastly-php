@@ -121,6 +121,7 @@ class ResponseObjectApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request create_response_object_request (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -144,6 +145,7 @@ class ResponseObjectApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -255,6 +257,7 @@ class ResponseObjectApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -281,6 +284,7 @@ class ResponseObjectApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -333,6 +337,7 @@ class ResponseObjectApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -342,6 +347,7 @@ class ResponseObjectApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $create_response_object_request = array_key_exists('create_response_object_request', $options) ? $options['create_response_object_request'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -390,12 +396,18 @@ class ResponseObjectApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['application/x-www-form-urlencoded']
+                ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($create_response_object_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_response_object_request));
+            } else {
+                $httpBody = $create_response_object_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -1530,6 +1542,7 @@ class ResponseObjectApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $response_object_name Name for the request settings. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request create_response_object_request (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1554,6 +1567,7 @@ class ResponseObjectApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $response_object_name Name for the request settings. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1666,6 +1680,7 @@ class ResponseObjectApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $response_object_name Name for the request settings. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1693,6 +1708,7 @@ class ResponseObjectApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $response_object_name Name for the request settings. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1746,6 +1762,7 @@ class ResponseObjectApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $response_object_name Name for the request settings. (required)
+     * @param  \Fastly\Model\CreateResponseObjectRequest $create_response_object_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1756,6 +1773,7 @@ class ResponseObjectApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
         $response_object_name = array_key_exists('response_object_name', $options) ? $options['response_object_name'] : null;
+        $create_response_object_request = array_key_exists('create_response_object_request', $options) ? $options['create_response_object_request'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1818,12 +1836,18 @@ class ResponseObjectApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['application/x-www-form-urlencoded']
+                ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($create_response_object_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_response_object_request));
+            } else {
+                $httpBody = $create_response_object_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

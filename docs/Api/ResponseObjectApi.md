@@ -33,6 +33,7 @@ Creates a new Response Object.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
+$options['create_response_object_request'] = new \Fastly\Model\CreateResponseObjectRequest(); // \Fastly\Model\CreateResponseObjectRequest
 
 try {
     $result = $apiInstance->createResponseObject($options);
@@ -49,6 +50,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
+**create_response_object_request** | [**\Fastly\Model\CreateResponseObjectRequest**](../Model/CreateResponseObjectRequest.md) |  | [optional]
 
 ### Return type
 
@@ -182,6 +184,7 @@ Updates the specified Response Object.
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['response_object_name'] = 'response_object_name_example'; // string | Name for the request settings.
+$options['create_response_object_request'] = new \Fastly\Model\CreateResponseObjectRequest(); // \Fastly\Model\CreateResponseObjectRequest
 
 try {
     $result = $apiInstance->updateResponseObject($options);
@@ -199,6 +202,7 @@ Name | Type | Description  | Notes
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
 **response_object_name** | **string** | Name for the request settings. |
+**create_response_object_request** | [**\Fastly\Model\CreateResponseObjectRequest**](../Model/CreateResponseObjectRequest.md) |  | [optional]
 
 ### Return type
 
