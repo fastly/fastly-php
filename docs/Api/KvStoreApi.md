@@ -135,7 +135,7 @@ Get all stores for a given customer.
 ### Example
 ```php
     $options['cursor'] = 'cursor_example'; // string
-$options['limit'] = 100; // int
+$options['limit'] = 1000; // int
 
 try {
     $result = $apiInstance->getStores($options);
@@ -151,7 +151,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **cursor** | **string** |  | [optional]
-**limit** | **int** |  | [optional] [defaults to 100]
+**limit** | **int** |  | [optional] [defaults to 1000]
 
 ### Return type
 

@@ -1,5 +1,23 @@
 # Changelog
 
+## [v5.1.0](https://github.com/fastly/fastly-php/releases/tag/release/v5.1.0) (2024-02-28)
+
+**Enhancements:**
+
+- feat(billing): add 'get invoice by invoice ID' endpoint.
+- feat(billing): add 'list invoices' endpoint.
+- feat(image_opto): add 'shield' and 'transform' methods and fields.
+- feat(secret_store): add 'name' filter.
+- feat(tls): add 'create CSR' endpoint.
+- feat(tls_subscription): add 'active order' methods and fields.
+
+**Documentation:**
+
+- doc(backend) fix openssl link.
+- doc(director,domain_inspector,pool,realtime) fix POPs link.
+- doc(service) fix service version link.
+- doc(tls) fix activation link.
+
 ## [v5.0.1](https://github.com/fastly/fastly-php/releases/tag/release/v5.0.1) (2024-02-19)
 
 **Bug fixes:**
@@ -284,7 +302,7 @@ Substantial changes were made to the underlying OpenAPI specification that produ
 
 **Enhancements:**
 
-* New interface from code-generated API client [#43](https://github.com/fastly/fastly-php/pull/43) 
-  * [Blog post: Better Fastly API clients with OpenAPI Generator](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno)
-  * [Documentation](https://github.com/fastly/fastly-php#documentation-for-api-endpoints)
-  * [Unsupported API endpoints](https://github.com/fastly/fastly-php#issues)
+- New interface from code-generated API client [#43](https://github.com/fastly/fastly-php/pull/43)
+  - [Blog post: Better Fastly API clients with OpenAPI Generator](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno)
+  - [Documentation](https://github.com/fastly/fastly-php#documentation-for-api-endpoints)
+  - [Unsupported API endpoints](https://github.com/fastly/fastly-php#issues)

@@ -437,7 +437,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\AutomationTokenResponse|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse
+     * @return \Fastly\Model\AutomationTokenResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse
      */
     public function getAutomationTokenId($options)
     {
@@ -459,7 +459,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\AutomationTokenResponse|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\AutomationTokenResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAutomationTokenIdWithHttpInfo($options)
     {
@@ -526,26 +526,26 @@ class AutomationTokensApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -577,7 +577,7 @@ class AutomationTokensApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -585,7 +585,7 @@ class AutomationTokensApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -801,7 +801,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2001|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse
+     * @return \Fastly\Model\InlineResponse2001|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse
      */
     public function getAutomationTokensIdServices($options)
     {
@@ -825,7 +825,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2001|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2001|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAutomationTokensIdServicesWithHttpInfo($options)
     {
@@ -892,26 +892,26 @@ class AutomationTokensApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -943,7 +943,7 @@ class AutomationTokensApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -951,7 +951,7 @@ class AutomationTokensApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1196,7 +1196,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\AutomationTokenResponse[]|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse
+     * @return \Fastly\Model\AutomationTokenResponse[]|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse
      */
     public function listAutomationTokens($options)
     {
@@ -1219,7 +1219,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\AutomationTokenResponse[]|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\AutomationTokenResponse[]|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAutomationTokensWithHttpInfo($options)
     {
@@ -1286,26 +1286,26 @@ class AutomationTokensApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1337,7 +1337,7 @@ class AutomationTokensApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1345,7 +1345,7 @@ class AutomationTokensApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1571,7 +1571,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse
+     * @return \Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse
      */
     public function revokeAutomationTokenId($options)
     {
@@ -1593,7 +1593,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse|\Fastly\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function revokeAutomationTokenIdWithHttpInfo($options)
     {
@@ -1648,68 +1648,68 @@ class AutomationTokensApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\Fastly\Model\ErrorResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\ErrorResponse';
+            $returnType = '\Fastly\Model\AutomationTokenErrorResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1727,7 +1727,7 @@ class AutomationTokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1735,7 +1735,7 @@ class AutomationTokensApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1743,7 +1743,7 @@ class AutomationTokensApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1751,7 +1751,7 @@ class AutomationTokensApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1759,7 +1759,7 @@ class AutomationTokensApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ErrorResponse',
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1811,7 +1811,7 @@ class AutomationTokensApi
      */
     public function revokeAutomationTokenIdAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\ErrorResponse';
+        $returnType = '\Fastly\Model\AutomationTokenErrorResponse';
         $request = $this->revokeAutomationTokenIdRequest($options);
 
         return $this->client

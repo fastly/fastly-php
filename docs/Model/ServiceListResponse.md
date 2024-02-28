@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **customer_id** | **string** | Alphanumeric string identifying the customer. | [optional] 
 **type** | **string** | The type of this service. | [optional]  [one of: 'vcl', 'wasm']
 **id** | **string** |  | [optional] [readonly] 
-**version** | **int** | Current [version](/reference/api/services/version/) of the service. | [optional] 
-**versions** | [**\Fastly\Model\SchemasVersionResponse[]**](SchemasVersionResponse.md) | A list of [versions](/reference/api/services/version/) associated with the service. | [optional] 
+**version** | **int** | Current [version](https://www.fastly.com/documentation/reference/api/services/version/) of the service. | [optional] 
+**versions** | [**\Fastly\Model\SchemasVersionResponse[]**](SchemasVersionResponse.md) | A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service. | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1013,7 +1013,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ssl_ciphers
      *
-     * @param string|null $ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
+     * @param string|null $ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
      *
      * @return self
      */

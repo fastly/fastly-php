@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * TlsCsrResponseAttributes
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * TlsCsrResponseAttributes Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class TlsCsrResponseAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'error_response';
+    protected static $fastlyModelName = 'tls_csr_response_attributes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,10 +53,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'detail' => 'string',
-        'errors' => 'mixed[]',
-        'status' => 'int',
-        'title' => 'string'
+        'content' => 'string'
     ];
 
     /**
@@ -67,10 +64,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'detail' => null,
-        'errors' => null,
-        'status' => null,
-        'title' => null
+        'content' => null
     ];
 
     /**
@@ -100,10 +94,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'detail' => 'detail',
-        'errors' => 'errors',
-        'status' => 'status',
-        'title' => 'title'
+        'content' => 'content'
     ];
 
     /**
@@ -112,10 +103,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'detail' => 'setDetail',
-        'errors' => 'setErrors',
-        'status' => 'setStatus',
-        'title' => 'setTitle'
+        'content' => 'setContent'
     ];
 
     /**
@@ -124,10 +112,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'detail' => 'getDetail',
-        'errors' => 'getErrors',
-        'status' => 'getStatus',
-        'title' => 'getTitle'
+        'content' => 'getContent'
     ];
 
     /**
@@ -187,10 +172,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['detail'] = $data['detail'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
+        $this->container['content'] = $data['content'] ?? null;
     }
 
     /**
@@ -218,97 +200,25 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets detail
+     * Gets content
      *
      * @return string|null
      */
-    public function getDetail()
+    public function getContent()
     {
-        return $this->container['detail'];
+        return $this->container['content'];
     }
 
     /**
-     * Sets detail
+     * Sets content
      *
-     * @param string|null $detail detail
+     * @param string|null $content The PEM encoded CSR.
      *
      * @return self
      */
-    public function setDetail($detail)
+    public function setContent($content)
     {
-        $this->container['detail'] = $detail;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return mixed[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param mixed[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return int|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param int|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
+        $this->container['content'] = $content;
 
         return $this;
     }

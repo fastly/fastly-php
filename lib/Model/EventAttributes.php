@@ -208,6 +208,10 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     const EVENT_TYPE_ADDRESS_CREATE = 'address.create';
     const EVENT_TYPE_ADDRESS_DELETE = 'address.delete';
     const EVENT_TYPE_ADDRESS_UPDATE = 'address.update';
+    const EVENT_TYPE_ALERTS_DEFINITION_CREATE = 'alerts.definition.create';
+    const EVENT_TYPE_ALERTS_DEFINITION_DELETE = 'alerts.definition.delete';
+    const EVENT_TYPE_ALERTS_DEFINITION_TEST = 'alerts.definition.test';
+    const EVENT_TYPE_ALERTS_DEFINITION_UPDATE = 'alerts.definition.update';
     const EVENT_TYPE_BACKEND_CREATE = 'backend.create';
     const EVENT_TYPE_BACKEND_DELETE = 'backend.delete';
     const EVENT_TYPE_BACKEND_UPDATE = 'backend.update';
@@ -344,6 +348,10 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENT_TYPE_ADDRESS_CREATE,
             self::EVENT_TYPE_ADDRESS_DELETE,
             self::EVENT_TYPE_ADDRESS_UPDATE,
+            self::EVENT_TYPE_ALERTS_DEFINITION_CREATE,
+            self::EVENT_TYPE_ALERTS_DEFINITION_DELETE,
+            self::EVENT_TYPE_ALERTS_DEFINITION_TEST,
+            self::EVENT_TYPE_ALERTS_DEFINITION_UPDATE,
             self::EVENT_TYPE_BACKEND_CREATE,
             self::EVENT_TYPE_BACKEND_DELETE,
             self::EVENT_TYPE_BACKEND_UPDATE,

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **format** | **string** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional]  [defaults to '%h %l %u %t "%r" %&gt;s %b']
 **format_version** | **string** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional]  [one of: '1', '2'] [defaults to '2']
 **region** | **string** | The region that log data will be sent to. | [optional]  [one of: 'US', 'EU'] [defaults to 'US']
-**token** | **string** | The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). | [optional] 
+**token** | **string** | The token to use for authentication. | [optional] 
 **project_id** | **string** | The name of the logfile within Scalyr. | [optional]  [defaults to 'logplex']
 **created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

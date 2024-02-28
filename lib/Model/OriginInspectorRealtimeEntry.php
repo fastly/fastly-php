@@ -273,7 +273,7 @@ class OriginInspectorRealtimeEntry implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets datacenter
      *
-     * @param array<string,array<string,\Fastly\Model\OriginInspectorMeasurements>>|null $datacenter Groups [measurements](#measurements-data-model) by POP, then backend name. See the [POPs API](/reference/api/utils/pops/) for details about POP identifiers.
+     * @param array<string,array<string,\Fastly\Model\OriginInspectorMeasurements>>|null $datacenter Groups [measurements](#measurements-data-model) by POP, then backend name. See the [POPs API](https://www.fastly.com/documentation/reference/api/utils/pops/) for details about POP identifiers.
      *
      * @return self
      */

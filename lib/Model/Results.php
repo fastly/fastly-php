@@ -133,8 +133,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'imgopto' => 'int',
         'imgopto_resp_body_bytes' => 'int',
         'imgopto_resp_header_bytes' => 'int',
+        'imgopto_shield' => 'int',
         'imgopto_shield_resp_body_bytes' => 'int',
         'imgopto_shield_resp_header_bytes' => 'int',
+        'imgopto_transforms' => 'int',
         'imgvideo' => 'int',
         'imgvideo_frames' => 'int',
         'imgvideo_resp_header_bytes' => 'int',
@@ -370,8 +372,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'imgopto' => null,
         'imgopto_resp_body_bytes' => null,
         'imgopto_resp_header_bytes' => null,
+        'imgopto_shield' => null,
         'imgopto_shield_resp_body_bytes' => null,
         'imgopto_shield_resp_header_bytes' => null,
+        'imgopto_transforms' => null,
         'imgvideo' => null,
         'imgvideo_frames' => null,
         'imgvideo_resp_header_bytes' => null,
@@ -626,8 +630,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'imgopto' => 'imgopto',
         'imgopto_resp_body_bytes' => 'imgopto_resp_body_bytes',
         'imgopto_resp_header_bytes' => 'imgopto_resp_header_bytes',
+        'imgopto_shield' => 'imgopto_shield',
         'imgopto_shield_resp_body_bytes' => 'imgopto_shield_resp_body_bytes',
         'imgopto_shield_resp_header_bytes' => 'imgopto_shield_resp_header_bytes',
+        'imgopto_transforms' => 'imgopto_transforms',
         'imgvideo' => 'imgvideo',
         'imgvideo_frames' => 'imgvideo_frames',
         'imgvideo_resp_header_bytes' => 'imgvideo_resp_header_bytes',
@@ -861,8 +867,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'imgopto' => 'setImgopto',
         'imgopto_resp_body_bytes' => 'setImgoptoRespBodyBytes',
         'imgopto_resp_header_bytes' => 'setImgoptoRespHeaderBytes',
+        'imgopto_shield' => 'setImgoptoShield',
         'imgopto_shield_resp_body_bytes' => 'setImgoptoShieldRespBodyBytes',
         'imgopto_shield_resp_header_bytes' => 'setImgoptoShieldRespHeaderBytes',
+        'imgopto_transforms' => 'setImgoptoTransforms',
         'imgvideo' => 'setImgvideo',
         'imgvideo_frames' => 'setImgvideoFrames',
         'imgvideo_resp_header_bytes' => 'setImgvideoRespHeaderBytes',
@@ -1096,8 +1104,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'imgopto' => 'getImgopto',
         'imgopto_resp_body_bytes' => 'getImgoptoRespBodyBytes',
         'imgopto_resp_header_bytes' => 'getImgoptoRespHeaderBytes',
+        'imgopto_shield' => 'getImgoptoShield',
         'imgopto_shield_resp_body_bytes' => 'getImgoptoShieldRespBodyBytes',
         'imgopto_shield_resp_header_bytes' => 'getImgoptoShieldRespHeaderBytes',
+        'imgopto_transforms' => 'getImgoptoTransforms',
         'imgvideo' => 'getImgvideo',
         'imgvideo_frames' => 'getImgvideoFrames',
         'imgvideo_resp_header_bytes' => 'getImgvideoRespHeaderBytes',
@@ -1382,8 +1392,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['imgopto'] = $data['imgopto'] ?? null;
         $this->container['imgopto_resp_body_bytes'] = $data['imgopto_resp_body_bytes'] ?? null;
         $this->container['imgopto_resp_header_bytes'] = $data['imgopto_resp_header_bytes'] ?? null;
+        $this->container['imgopto_shield'] = $data['imgopto_shield'] ?? null;
         $this->container['imgopto_shield_resp_body_bytes'] = $data['imgopto_shield_resp_body_bytes'] ?? null;
         $this->container['imgopto_shield_resp_header_bytes'] = $data['imgopto_shield_resp_header_bytes'] ?? null;
+        $this->container['imgopto_transforms'] = $data['imgopto_transforms'] ?? null;
         $this->container['imgvideo'] = $data['imgvideo'] ?? null;
         $this->container['imgvideo_frames'] = $data['imgvideo_frames'] ?? null;
         $this->container['imgvideo_resp_header_bytes'] = $data['imgvideo_resp_header_bytes'] ?? null;
@@ -3453,6 +3465,30 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets imgopto_shield
+     *
+     * @return int|null
+     */
+    public function getImgoptoShield()
+    {
+        return $this->container['imgopto_shield'];
+    }
+
+    /**
+     * Sets imgopto_shield
+     *
+     * @param int|null $imgopto_shield Number of responses that came from the Fastly Image Optimizer service via a shield.
+     *
+     * @return self
+     */
+    public function setImgoptoShield($imgopto_shield)
+    {
+        $this->container['imgopto_shield'] = $imgopto_shield;
+
+        return $this;
+    }
+
+    /**
      * Gets imgopto_shield_resp_body_bytes
      *
      * @return int|null
@@ -3496,6 +3532,30 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setImgoptoShieldRespHeaderBytes($imgopto_shield_resp_header_bytes)
     {
         $this->container['imgopto_shield_resp_header_bytes'] = $imgopto_shield_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_transforms
+     *
+     * @return int|null
+     */
+    public function getImgoptoTransforms()
+    {
+        return $this->container['imgopto_transforms'];
+    }
+
+    /**
+     * Sets imgopto_transforms
+     *
+     * @param int|null $imgopto_transforms Number of transforms performed by the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgoptoTransforms($imgopto_transforms)
+    {
+        $this->container['imgopto_transforms'] = $imgopto_transforms;
 
         return $this;
     }

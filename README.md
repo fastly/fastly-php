@@ -110,6 +110,8 @@ Class | Method | Description
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**deleteBillingAddr**](docs/Api/BillingAddressApi.md#deletebillingaddr) | Delete a billing address
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**getBillingAddr**](docs/Api/BillingAddressApi.md#getbillingaddr) | Get a billing address
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**updateBillingAddr**](docs/Api/BillingAddressApi.md#updatebillingaddr) | Update a billing address
+[*BillingInvoicesApi*](docs/Api/BillingInvoicesApi.md) | [**getInvoiceByInvoiceId**](docs/Api/BillingInvoicesApi.md#getinvoicebyinvoiceid) | Get invoice by ID.
+[*BillingInvoicesApi*](docs/Api/BillingInvoicesApi.md) | [**listInvoices**](docs/Api/BillingInvoicesApi.md#listinvoices) | List of invoices.
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**createCacheSettings**](docs/Api/CacheSettingsApi.md#createcachesettings) | Create a cache settings object
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**deleteCacheSettings**](docs/Api/CacheSettingsApi.md#deletecachesettings) | Delete a cache settings object
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**getCacheSettings**](docs/Api/CacheSettingsApi.md#getcachesettings) | Get a cache settings object
@@ -525,6 +527,7 @@ Class | Method | Description
 [*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**getTlsConfig**](docs/Api/TlsConfigurationsApi.md#gettlsconfig) | Get a TLS configuration
 [*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**listTlsConfigs**](docs/Api/TlsConfigurationsApi.md#listtlsconfigs) | List TLS configurations
 [*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**updateTlsConfig**](docs/Api/TlsConfigurationsApi.md#updatetlsconfig) | Update a TLS configuration
+[*TlsCsrsApi*](docs/Api/TlsCsrsApi.md) | [**createCsr**](docs/Api/TlsCsrsApi.md#createcsr) | Create CSR
 [*TlsDomainsApi*](docs/Api/TlsDomainsApi.md) | [**listTlsDomains**](docs/Api/TlsDomainsApi.md#listtlsdomains) | List TLS domains
 [*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**createTlsKey**](docs/Api/TlsPrivateKeysApi.md#createtlskey) | Create a TLS private key
 [*TlsPrivateKeysApi*](docs/Api/TlsPrivateKeysApi.md) | [**deleteTlsKey**](docs/Api/TlsPrivateKeysApi.md#deletetlskey) | Delete a TLS private key
@@ -611,12 +614,15 @@ Class | Method | Description
 
 The fastly-php API client currently does not support the following endpoints:
 
-- [`/resources/stores/kv/{store_id}/batch`](https://developer.fastly.com/reference/api/services/resources/kv-store-item) (PUT)
-- [`/tls/activations/{tls_activation_id}`](https://developer.fastly.com/reference/api/tls/mutual-tls/activations) (GET, PATCH)
-- [`/tls/activations`](https://developer.fastly.com/reference/api/tls/mutual-tls/activations) (GET)
-- [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
-- [`/v1/channel/{service_id}/ts/h`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
-- [`/v1/channel/{service_id}/ts/{start_timestamp}`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
+- [`/alerts/definitions/{definition_id}`](https://www.fastly.com/documentation/reference/api/observability/alerts/definitions) (DELETE, GET, PUT)
+- [`/alerts/definitions`](https://www.fastly.com/documentation/reference/api/observability/alerts/definitions) (GET, POST)
+- [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
+- [`/resources/stores/kv/{store_id}/batch`](https://www.fastly.com/documentation/reference/api/services/resources/kv-store-item) (PUT)
+- [`/tls/activations/{tls_activation_id}`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET, PATCH)
+- [`/tls/activations`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET)
+- [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
+- [`/v1/channel/{service_id}/ts/h`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
+- [`/v1/channel/{service_id}/ts/{start_timestamp}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
 
 
 If you encounter any non-security-related bug or unexpected behavior, please [file an issue][bug]

@@ -446,7 +446,7 @@ class DirectorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shield
      *
-     * @param string|null $shield Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
+     * @param string|null $shield Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding.
      *
      * @return self
      */

@@ -53,7 +53,8 @@ class TlsSubscriptionResponseAttributesAllOf implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'state' => 'string'
+        'state' => 'string',
+        'has_active_order' => 'bool'
     ];
 
     /**
@@ -64,7 +65,8 @@ class TlsSubscriptionResponseAttributesAllOf implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'state' => null
+        'state' => null,
+        'has_active_order' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class TlsSubscriptionResponseAttributesAllOf implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'state' => 'state'
+        'state' => 'state',
+        'has_active_order' => 'has_active_order'
     ];
 
     /**
@@ -103,7 +106,8 @@ class TlsSubscriptionResponseAttributesAllOf implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'state' => 'setState'
+        'state' => 'setState',
+        'has_active_order' => 'setHasActiveOrder'
     ];
 
     /**
@@ -112,7 +116,8 @@ class TlsSubscriptionResponseAttributesAllOf implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'state' => 'getState'
+        'state' => 'getState',
+        'has_active_order' => 'getHasActiveOrder'
     ];
 
     /**
@@ -194,6 +199,7 @@ class TlsSubscriptionResponseAttributesAllOf implements ModelInterface, ArrayAcc
     public function __construct(array $data = null)
     {
         $this->container['state'] = $data['state'] ?? null;
+        $this->container['has_active_order'] = $data['has_active_order'] ?? null;
     }
 
     /**
@@ -259,6 +265,30 @@ class TlsSubscriptionResponseAttributesAllOf implements ModelInterface, ArrayAcc
             );
         }
         $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_active_order
+     *
+     * @return bool|null
+     */
+    public function getHasActiveOrder()
+    {
+        return $this->container['has_active_order'];
+    }
+
+    /**
+     * Sets has_active_order
+     *
+     * @param bool|null $has_active_order Subscription has an active order
+     *
+     * @return self
+     */
+    public function setHasActiveOrder($has_active_order)
+    {
+        $this->container['has_active_order'] = $has_active_order;
 
         return $this;
     }

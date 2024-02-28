@@ -400,7 +400,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string $code the three-letter code for the [POP](https://developer.fastly.com/learning/concepts/pop/)
+     * @param string $code the three-letter code for the [POP](https://www.fastly.com/documentation/learning/concepts/pop/)
      *
      * @return self
      */
@@ -598,7 +598,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shield
      *
-     * @param string|null $shield the name of the [shield code](https://developer.fastly.com/learning/concepts/shielding/#choosing-a-shield-location) if this POP is suitable for shielding
+     * @param string|null $shield the name of the [shield code](https://www.fastly.com/documentation/learning/concepts/shielding/#choosing-a-shield-location) if this POP is suitable for shielding
      *
      * @return self
      */

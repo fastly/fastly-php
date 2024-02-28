@@ -165,8 +165,9 @@ Get all secret stores.
 
 ### Example
 ```php
-    $options['cursor'] = 'cursor_example'; // string | Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+    $options['cursor'] = 'cursor_example'; // string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 $options['limit'] = '100'; // string | Number of results per page. The maximum is 200.
+$options['name'] = 'name_example'; // string | Returns a one-element array containing the details for the named secret store.
 
 try {
     $result = $apiInstance->getSecretStores($options);
@@ -181,8 +182,9 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**cursor** | **string** | Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. | [optional]
+**cursor** | **string** | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional]
 **limit** | **string** | Number of results per page. The maximum is 200. | [optional] [defaults to '100']
+**name** | **string** | Returns a one-element array containing the details for the named secret store. | [optional]
 
 ### Return type
 

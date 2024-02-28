@@ -492,7 +492,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets version
      *
-     * @param int|null $version Current [version](/reference/api/services/version/) of the service.
+     * @param int|null $version Current [version](https://www.fastly.com/documentation/reference/api/services/version/) of the service.
      *
      * @return self
      */
@@ -516,7 +516,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets versions
      *
-     * @param \Fastly\Model\SchemasVersionResponse[]|null $versions A list of [versions](/reference/api/services/version/) associated with the service.
+     * @param \Fastly\Model\SchemasVersionResponse[]|null $versions A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service.
      *
      * @return self
      */

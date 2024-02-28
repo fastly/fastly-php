@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 ## `revokeAutomationTokenId()`
 
 ```php
-revokeAutomationTokenId($options): \Fastly\Model\ErrorResponse // Revoke an Automation Token by ID
+revokeAutomationTokenId($options): \Fastly\Model\AutomationTokenErrorResponse // Revoke an Automation Token by ID
 ```
 
 Revoke an automation token by ID.
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\ErrorResponse**](../Model/ErrorResponse.md)
+[**\Fastly\Model\AutomationTokenErrorResponse**](../Model/AutomationTokenErrorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

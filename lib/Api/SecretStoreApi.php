@@ -1334,8 +1334,9 @@ class SecretStoreApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
+     * @param  string $name Returns a one-element array containing the details for the named secret store. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1357,8 +1358,9 @@ class SecretStoreApi
      * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
+     * @param  string $name Returns a one-element array containing the details for the named secret store. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1468,8 +1470,9 @@ class SecretStoreApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
+     * @param  string $name Returns a one-element array containing the details for the named secret store. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1494,8 +1497,9 @@ class SecretStoreApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
+     * @param  string $name Returns a one-element array containing the details for the named secret store. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1546,8 +1550,9 @@ class SecretStoreApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
+     * @param  string $name Returns a one-element array containing the details for the named secret store. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1557,6 +1562,7 @@ class SecretStoreApi
         // unbox the parameters from the associative array
         $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
         $limit = array_key_exists('limit', $options) ? $options['limit'] : '100';
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
 
 
         $resourcePath = '/resources/stores/secret';
@@ -1586,6 +1592,17 @@ class SecretStoreApi
             }
             else {
                 $queryParams['limit'] = ObjectSerializer::toString($limit);
+            }
+        }
+        // query params
+        if ($name !== null) {
+            if('form' === 'form' && is_array($name)) {
+                foreach($name as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['name'] = ObjectSerializer::toString($name);
             }
         }
 

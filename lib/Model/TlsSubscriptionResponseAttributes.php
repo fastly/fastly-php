@@ -56,7 +56,8 @@ class TlsSubscriptionResponseAttributes implements ModelInterface, ArrayAccess, 
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'state' => 'string'
+        'state' => 'string',
+        'has_active_order' => 'bool'
     ];
 
     /**
@@ -70,7 +71,8 @@ class TlsSubscriptionResponseAttributes implements ModelInterface, ArrayAccess, 
         'created_at' => 'date-time',
         'deleted_at' => 'date-time',
         'updated_at' => 'date-time',
-        'state' => null
+        'state' => null,
+        'has_active_order' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class TlsSubscriptionResponseAttributes implements ModelInterface, ArrayAccess, 
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
-        'state' => 'state'
+        'state' => 'state',
+        'has_active_order' => 'has_active_order'
     ];
 
     /**
@@ -115,7 +118,8 @@ class TlsSubscriptionResponseAttributes implements ModelInterface, ArrayAccess, 
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
-        'state' => 'setState'
+        'state' => 'setState',
+        'has_active_order' => 'setHasActiveOrder'
     ];
 
     /**
@@ -127,7 +131,8 @@ class TlsSubscriptionResponseAttributes implements ModelInterface, ArrayAccess, 
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
-        'state' => 'getState'
+        'state' => 'getState',
+        'has_active_order' => 'getHasActiveOrder'
     ];
 
     /**
@@ -212,6 +217,7 @@ class TlsSubscriptionResponseAttributes implements ModelInterface, ArrayAccess, 
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['state'] = $data['state'] ?? null;
+        $this->container['has_active_order'] = $data['has_active_order'] ?? null;
     }
 
     /**
@@ -349,6 +355,30 @@ class TlsSubscriptionResponseAttributes implements ModelInterface, ArrayAccess, 
             );
         }
         $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_active_order
+     *
+     * @return bool|null
+     */
+    public function getHasActiveOrder()
+    {
+        return $this->container['has_active_order'];
+    }
+
+    /**
+     * Sets has_active_order
+     *
+     * @param bool|null $has_active_order Subscription has an active order
+     *
+     * @return self
+     */
+    public function setHasActiveOrder($has_active_order)
+    {
+        $this->container['has_active_order'] = $has_active_order;
 
         return $this;
     }

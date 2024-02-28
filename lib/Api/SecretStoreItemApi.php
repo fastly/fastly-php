@@ -1093,7 +1093,7 @@ class SecretStoreItemApi
      * URL: https://api.fastly.com
      *
      * @param  string $store_id store_id (required)
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1117,7 +1117,7 @@ class SecretStoreItemApi
      * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -1229,7 +1229,7 @@ class SecretStoreItemApi
      * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
@@ -1256,7 +1256,7 @@ class SecretStoreItemApi
      * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
@@ -1309,7 +1309,7 @@ class SecretStoreItemApi
      * URL: https://api.fastly.com
      *
      * @param  string $store_id (required)
-     * @param  string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+     * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  string $limit Number of results per page. The maximum is 200. (optional, default to '100')
      *
      * @throws \InvalidArgumentException

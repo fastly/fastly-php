@@ -320,7 +320,7 @@ class TlsConfigurationResponseAttributes implements ModelInterface, ArrayAccess,
     /**
      * Sets default
      *
-     * @param bool|null $default Signifies whether or not Fastly will use this configuration as a default when creating a new [TLS Activation](/reference/api/tls/custom-certs/activations/).
+     * @param bool|null $default Signifies whether or not Fastly will use this configuration as a default when creating a new [TLS Activation](https://www.fastly.com/documentation/reference/api/tls/custom-certs/activations/).
      *
      * @return self
      */

@@ -532,7 +532,7 @@ class LoggingScalyrResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets token
      *
-     * @param string|null $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).
+     * @param string|null $token The token to use for authentication.
      *
      * @return self
      */

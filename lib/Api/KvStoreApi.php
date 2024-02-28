@@ -1050,7 +1050,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $cursor cursor (optional)
-     * @param  int $limit limit (optional, default to 100)
+     * @param  int $limit limit (optional, default to 1000)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1073,7 +1073,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $cursor (optional)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $limit (optional, default to 1000)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1184,7 +1184,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $cursor (optional)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $limit (optional, default to 1000)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1210,7 +1210,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $cursor (optional)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $limit (optional, default to 1000)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1262,7 +1262,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $cursor (optional)
-     * @param  int $limit (optional, default to 100)
+     * @param  int $limit (optional, default to 1000)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1271,7 +1271,7 @@ class KvStoreApi
     {
         // unbox the parameters from the associative array
         $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
-        $limit = array_key_exists('limit', $options) ? $options['limit'] : 100;
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : 1000;
 
 
         $resourcePath = '/resources/stores/kv';
