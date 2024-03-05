@@ -128,6 +128,13 @@ class Configuration
     protected $rate_limit_reset = NULL;
 
     /**
+     * Associate array to store API key(s)
+     *
+     * @var string[]
+     */
+    protected array $apiKeys = [];
+
+    /**
      * Constructor
      */
     public function __construct()
