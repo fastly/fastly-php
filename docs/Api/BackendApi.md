@@ -62,6 +62,10 @@ $options['ssl_client_cert'] = 'ssl_client_cert_example'; // string | Client cert
 $options['ssl_client_key'] = 'ssl_client_key_example'; // string | Client key attached to origin.
 $options['ssl_hostname'] = 'ssl_hostname_example'; // string | Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation.
 $options['ssl_sni_hostname'] = 'ssl_sni_hostname_example'; // string | Overrides `ssl_hostname`, but only for SNI in the handshake. Does not affect cert validation at all.
+$options['tcp_keepalive_enable'] = True; // bool | Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
+$options['tcp_keepalive_interval'] = 56; // int | Interval in seconds between subsequent keepalive probes.
+$options['tcp_keepalive_probes'] = 56; // int | Number of unacknowledged probes to send before considering the connection dead.
+$options['tcp_keepalive_time'] = 56; // int | Interval in seconds between the last data packet sent and the first keepalive probe.
 $options['use_ssl'] = True; // bool | Whether or not to require TLS for connections to this backend.
 $options['weight'] = 56; // int | Weight used to load balance this backend against others. May be any positive integer. If `auto_loadbalance` is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have `auto_loadbalance` set to true.
 
@@ -109,6 +113,10 @@ Name | Type | Description  | Notes
 **ssl_client_key** | **string** | Client key attached to origin. | [optional]
 **ssl_hostname** | **string** | Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation. | [optional]
 **ssl_sni_hostname** | **string** | Overrides `ssl_hostname`, but only for SNI in the handshake. Does not affect cert validation at all. | [optional]
+**tcp_keepalive_enable** | **bool** | Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. | [optional]
+**tcp_keepalive_interval** | **int** | Interval in seconds between subsequent keepalive probes. | [optional]
+**tcp_keepalive_probes** | **int** | Number of unacknowledged probes to send before considering the connection dead. | [optional]
+**tcp_keepalive_time** | **int** | Interval in seconds between the last data packet sent and the first keepalive probe. | [optional]
 **use_ssl** | **bool** | Whether or not to require TLS for connections to this backend. | [optional]
 **weight** | **int** | Weight used to load balance this backend against others. May be any positive integer. If `auto_loadbalance` is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have `auto_loadbalance` set to true. | [optional]
 
@@ -273,6 +281,10 @@ $options['ssl_client_cert'] = 'ssl_client_cert_example'; // string | Client cert
 $options['ssl_client_key'] = 'ssl_client_key_example'; // string | Client key attached to origin.
 $options['ssl_hostname'] = 'ssl_hostname_example'; // string | Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation.
 $options['ssl_sni_hostname'] = 'ssl_sni_hostname_example'; // string | Overrides `ssl_hostname`, but only for SNI in the handshake. Does not affect cert validation at all.
+$options['tcp_keepalive_enable'] = True; // bool | Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
+$options['tcp_keepalive_interval'] = 56; // int | Interval in seconds between subsequent keepalive probes.
+$options['tcp_keepalive_probes'] = 56; // int | Number of unacknowledged probes to send before considering the connection dead.
+$options['tcp_keepalive_time'] = 56; // int | Interval in seconds between the last data packet sent and the first keepalive probe.
 $options['use_ssl'] = True; // bool | Whether or not to require TLS for connections to this backend.
 $options['weight'] = 56; // int | Weight used to load balance this backend against others. May be any positive integer. If `auto_loadbalance` is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have `auto_loadbalance` set to true.
 
@@ -321,6 +333,10 @@ Name | Type | Description  | Notes
 **ssl_client_key** | **string** | Client key attached to origin. | [optional]
 **ssl_hostname** | **string** | Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation. | [optional]
 **ssl_sni_hostname** | **string** | Overrides `ssl_hostname`, but only for SNI in the handshake. Does not affect cert validation at all. | [optional]
+**tcp_keepalive_enable** | **bool** | Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. | [optional]
+**tcp_keepalive_interval** | **int** | Interval in seconds between subsequent keepalive probes. | [optional]
+**tcp_keepalive_probes** | **int** | Number of unacknowledged probes to send before considering the connection dead. | [optional]
+**tcp_keepalive_time** | **int** | Interval in seconds between the last data packet sent and the first keepalive probe. | [optional]
 **use_ssl** | **bool** | Whether or not to require TLS for connections to this backend. | [optional]
 **weight** | **int** | Weight used to load balance this backend against others. May be any positive integer. If `auto_loadbalance` is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have `auto_loadbalance` set to true. | [optional]
 

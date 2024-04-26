@@ -150,6 +150,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -204,6 +208,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -346,6 +354,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -403,6 +415,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -486,6 +502,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -526,6 +546,10 @@ class BackendApi
         $ssl_client_key = array_key_exists('ssl_client_key', $options) ? $options['ssl_client_key'] : null;
         $ssl_hostname = array_key_exists('ssl_hostname', $options) ? $options['ssl_hostname'] : null;
         $ssl_sni_hostname = array_key_exists('ssl_sni_hostname', $options) ? $options['ssl_sni_hostname'] : null;
+        $tcp_keepalive_enable = array_key_exists('tcp_keepalive_enable', $options) ? $options['tcp_keepalive_enable'] : null;
+        $tcp_keepalive_interval = array_key_exists('tcp_keepalive_interval', $options) ? $options['tcp_keepalive_interval'] : null;
+        $tcp_keepalive_probes = array_key_exists('tcp_keepalive_probes', $options) ? $options['tcp_keepalive_probes'] : null;
+        $tcp_keepalive_time = array_key_exists('tcp_keepalive_time', $options) ? $options['tcp_keepalive_time'] : null;
         $use_ssl = array_key_exists('use_ssl', $options) ? $options['use_ssl'] : null;
         $weight = array_key_exists('weight', $options) ? $options['weight'] : null;
 
@@ -687,6 +711,22 @@ class BackendApi
         // form params
         if ($ssl_sni_hostname !== null) {
             $formParams['ssl_sni_hostname'] = ObjectSerializer::toFormValue($ssl_sni_hostname);
+        }
+        // form params
+        if ($tcp_keepalive_enable !== null) {
+            $formParams['tcp_keepalive_enable'] = ObjectSerializer::toFormValue($tcp_keepalive_enable);
+        }
+        // form params
+        if ($tcp_keepalive_interval !== null) {
+            $formParams['tcp_keepalive_interval'] = ObjectSerializer::toFormValue($tcp_keepalive_interval);
+        }
+        // form params
+        if ($tcp_keepalive_probes !== null) {
+            $formParams['tcp_keepalive_probes'] = ObjectSerializer::toFormValue($tcp_keepalive_probes);
+        }
+        // form params
+        if ($tcp_keepalive_time !== null) {
+            $formParams['tcp_keepalive_time'] = ObjectSerializer::toFormValue($tcp_keepalive_time);
         }
         // form params
         if ($use_ssl !== null) {
@@ -1873,6 +1913,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -1928,6 +1972,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -2071,6 +2119,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -2129,6 +2181,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -2213,6 +2269,10 @@ class BackendApi
      * @param  string $ssl_client_key Client key attached to origin. (optional)
      * @param  string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
      * @param  string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+     * @param  bool $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+     * @param  int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+     * @param  int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+     * @param  int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
      * @param  bool $use_ssl Whether or not to require TLS for connections to this backend. (optional)
      * @param  int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
      *
@@ -2254,6 +2314,10 @@ class BackendApi
         $ssl_client_key = array_key_exists('ssl_client_key', $options) ? $options['ssl_client_key'] : null;
         $ssl_hostname = array_key_exists('ssl_hostname', $options) ? $options['ssl_hostname'] : null;
         $ssl_sni_hostname = array_key_exists('ssl_sni_hostname', $options) ? $options['ssl_sni_hostname'] : null;
+        $tcp_keepalive_enable = array_key_exists('tcp_keepalive_enable', $options) ? $options['tcp_keepalive_enable'] : null;
+        $tcp_keepalive_interval = array_key_exists('tcp_keepalive_interval', $options) ? $options['tcp_keepalive_interval'] : null;
+        $tcp_keepalive_probes = array_key_exists('tcp_keepalive_probes', $options) ? $options['tcp_keepalive_probes'] : null;
+        $tcp_keepalive_time = array_key_exists('tcp_keepalive_time', $options) ? $options['tcp_keepalive_time'] : null;
         $use_ssl = array_key_exists('use_ssl', $options) ? $options['use_ssl'] : null;
         $weight = array_key_exists('weight', $options) ? $options['weight'] : null;
 
@@ -2429,6 +2493,22 @@ class BackendApi
         // form params
         if ($ssl_sni_hostname !== null) {
             $formParams['ssl_sni_hostname'] = ObjectSerializer::toFormValue($ssl_sni_hostname);
+        }
+        // form params
+        if ($tcp_keepalive_enable !== null) {
+            $formParams['tcp_keepalive_enable'] = ObjectSerializer::toFormValue($tcp_keepalive_enable);
+        }
+        // form params
+        if ($tcp_keepalive_interval !== null) {
+            $formParams['tcp_keepalive_interval'] = ObjectSerializer::toFormValue($tcp_keepalive_interval);
+        }
+        // form params
+        if ($tcp_keepalive_probes !== null) {
+            $formParams['tcp_keepalive_probes'] = ObjectSerializer::toFormValue($tcp_keepalive_probes);
+        }
+        // form params
+        if ($tcp_keepalive_time !== null) {
+            $formParams['tcp_keepalive_time'] = ObjectSerializer::toFormValue($tcp_keepalive_time);
         }
         // form params
         if ($use_ssl !== null) {

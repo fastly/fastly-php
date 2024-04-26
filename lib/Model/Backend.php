@@ -82,6 +82,10 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'ssl_client_key' => 'string',
         'ssl_hostname' => 'string',
         'ssl_sni_hostname' => 'string',
+        'tcp_keepalive_enable' => 'bool',
+        'tcp_keepalive_interval' => 'int',
+        'tcp_keepalive_probes' => 'int',
+        'tcp_keepalive_time' => 'int',
         'use_ssl' => 'bool',
         'weight' => 'int'
     ];
@@ -123,6 +127,10 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'ssl_client_key' => null,
         'ssl_hostname' => null,
         'ssl_sni_hostname' => null,
+        'tcp_keepalive_enable' => null,
+        'tcp_keepalive_interval' => null,
+        'tcp_keepalive_probes' => null,
+        'tcp_keepalive_time' => null,
         'use_ssl' => null,
         'weight' => null
     ];
@@ -183,6 +191,10 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'ssl_client_key' => 'ssl_client_key',
         'ssl_hostname' => 'ssl_hostname',
         'ssl_sni_hostname' => 'ssl_sni_hostname',
+        'tcp_keepalive_enable' => 'tcp_keepalive_enable',
+        'tcp_keepalive_interval' => 'tcp_keepalive_interval',
+        'tcp_keepalive_probes' => 'tcp_keepalive_probes',
+        'tcp_keepalive_time' => 'tcp_keepalive_time',
         'use_ssl' => 'use_ssl',
         'weight' => 'weight'
     ];
@@ -222,6 +234,10 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'ssl_client_key' => 'setSslClientKey',
         'ssl_hostname' => 'setSslHostname',
         'ssl_sni_hostname' => 'setSslSniHostname',
+        'tcp_keepalive_enable' => 'setTcpKeepaliveEnable',
+        'tcp_keepalive_interval' => 'setTcpKeepaliveInterval',
+        'tcp_keepalive_probes' => 'setTcpKeepaliveProbes',
+        'tcp_keepalive_time' => 'setTcpKeepaliveTime',
         'use_ssl' => 'setUseSsl',
         'weight' => 'setWeight'
     ];
@@ -261,6 +277,10 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'ssl_client_key' => 'getSslClientKey',
         'ssl_hostname' => 'getSslHostname',
         'ssl_sni_hostname' => 'getSslSniHostname',
+        'tcp_keepalive_enable' => 'getTcpKeepaliveEnable',
+        'tcp_keepalive_interval' => 'getTcpKeepaliveInterval',
+        'tcp_keepalive_probes' => 'getTcpKeepaliveProbes',
+        'tcp_keepalive_time' => 'getTcpKeepaliveTime',
         'use_ssl' => 'getUseSsl',
         'weight' => 'getWeight'
     ];
@@ -351,6 +371,10 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['ssl_client_key'] = $data['ssl_client_key'] ?? null;
         $this->container['ssl_hostname'] = $data['ssl_hostname'] ?? null;
         $this->container['ssl_sni_hostname'] = $data['ssl_sni_hostname'] ?? null;
+        $this->container['tcp_keepalive_enable'] = $data['tcp_keepalive_enable'] ?? null;
+        $this->container['tcp_keepalive_interval'] = $data['tcp_keepalive_interval'] ?? null;
+        $this->container['tcp_keepalive_probes'] = $data['tcp_keepalive_probes'] ?? null;
+        $this->container['tcp_keepalive_time'] = $data['tcp_keepalive_time'] ?? null;
         $this->container['use_ssl'] = $data['use_ssl'] ?? null;
         $this->container['weight'] = $data['weight'] ?? null;
     }
@@ -1082,6 +1106,102 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSslSniHostname($ssl_sni_hostname)
     {
         $this->container['ssl_sni_hostname'] = $ssl_sni_hostname;
+
+        return $this;
+    }
+
+    /**
+     * Gets tcp_keepalive_enable
+     *
+     * @return bool|null
+     */
+    public function getTcpKeepaliveEnable()
+    {
+        return $this->container['tcp_keepalive_enable'];
+    }
+
+    /**
+     * Sets tcp_keepalive_enable
+     *
+     * @param bool|null $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
+     *
+     * @return self
+     */
+    public function setTcpKeepaliveEnable($tcp_keepalive_enable)
+    {
+        $this->container['tcp_keepalive_enable'] = $tcp_keepalive_enable;
+
+        return $this;
+    }
+
+    /**
+     * Gets tcp_keepalive_interval
+     *
+     * @return int|null
+     */
+    public function getTcpKeepaliveInterval()
+    {
+        return $this->container['tcp_keepalive_interval'];
+    }
+
+    /**
+     * Sets tcp_keepalive_interval
+     *
+     * @param int|null $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes.
+     *
+     * @return self
+     */
+    public function setTcpKeepaliveInterval($tcp_keepalive_interval)
+    {
+        $this->container['tcp_keepalive_interval'] = $tcp_keepalive_interval;
+
+        return $this;
+    }
+
+    /**
+     * Gets tcp_keepalive_probes
+     *
+     * @return int|null
+     */
+    public function getTcpKeepaliveProbes()
+    {
+        return $this->container['tcp_keepalive_probes'];
+    }
+
+    /**
+     * Sets tcp_keepalive_probes
+     *
+     * @param int|null $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead.
+     *
+     * @return self
+     */
+    public function setTcpKeepaliveProbes($tcp_keepalive_probes)
+    {
+        $this->container['tcp_keepalive_probes'] = $tcp_keepalive_probes;
+
+        return $this;
+    }
+
+    /**
+     * Gets tcp_keepalive_time
+     *
+     * @return int|null
+     */
+    public function getTcpKeepaliveTime()
+    {
+        return $this->container['tcp_keepalive_time'];
+    }
+
+    /**
+     * Sets tcp_keepalive_time
+     *
+     * @param int|null $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe.
+     *
+     * @return self
+     */
+    public function setTcpKeepaliveTime($tcp_keepalive_time)
+    {
+        $this->container['tcp_keepalive_time'] = $tcp_keepalive_time;
 
         return $this;
     }

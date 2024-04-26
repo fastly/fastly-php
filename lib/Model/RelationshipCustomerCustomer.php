@@ -53,7 +53,7 @@ class RelationshipCustomerCustomer implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\RelationshipMemberCustomer[]'
+        'data' => '\Fastly\Model\RelationshipMemberCustomer'
     ];
 
     /**
@@ -202,7 +202,7 @@ class RelationshipCustomerCustomer implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets data
      *
-     * @return \Fastly\Model\RelationshipMemberCustomer[]|null
+     * @return \Fastly\Model\RelationshipMemberCustomer|null
      */
     public function getData()
     {
@@ -212,7 +212,7 @@ class RelationshipCustomerCustomer implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets data
      *
-     * @param \Fastly\Model\RelationshipMemberCustomer[]|null $data data
+     * @param \Fastly\Model\RelationshipMemberCustomer|null $data data
      *
      * @return self
      */

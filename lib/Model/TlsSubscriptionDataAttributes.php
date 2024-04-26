@@ -156,8 +156,8 @@ class TlsSubscriptionDataAttributes implements ModelInterface, ArrayAccess, \Jso
         return self::$fastlyModelName;
     }
 
-    const CERTIFICATE_AUTHORITY_LETS_ENCRYPT = 'lets-encrypt';
     const CERTIFICATE_AUTHORITY_CERTAINLY = 'certainly';
+    const CERTIFICATE_AUTHORITY_LETS_ENCRYPT = 'lets-encrypt';
     const CERTIFICATE_AUTHORITY_GLOBALSIGN = 'globalsign';
 
     /**
@@ -168,8 +168,8 @@ class TlsSubscriptionDataAttributes implements ModelInterface, ArrayAccess, \Jso
     public function getCertificateAuthorityAllowableValues()
     {
         return [
-            self::CERTIFICATE_AUTHORITY_LETS_ENCRYPT,
             self::CERTIFICATE_AUTHORITY_CERTAINLY,
+            self::CERTIFICATE_AUTHORITY_LETS_ENCRYPT,
             self::CERTIFICATE_AUTHORITY_GLOBALSIGN,
         ];
     }

@@ -280,7 +280,28 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenges_issued' => 'int',
         'bot_challenges_succeeded' => 'int',
         'bot_challenges_failed' => 'int',
-        'bot_challenge_complete_tokens_issued' => 'int'
+        'bot_challenge_complete_tokens_issued' => 'int',
+        'ddos_action_downgrade' => 'int',
+        'ddos_action_downgraded_connections' => 'int',
+        'vcl_on_compute_hit_requests' => 'int',
+        'vcl_on_compute_miss_requests' => 'int',
+        'vcl_on_compute_pass_requests' => 'int',
+        'vcl_on_compute_error_requests' => 'int',
+        'vcl_on_compute_synth_requests' => 'int',
+        'vcl_on_compute_edge_hit_requests' => 'int',
+        'vcl_on_compute_edge_miss_requests' => 'int',
+        'all_hit_requests' => 'int',
+        'all_miss_requests' => 'int',
+        'all_pass_requests' => 'int',
+        'all_error_requests' => 'int',
+        'all_synth_requests' => 'int',
+        'all_edge_hit_requests' => 'int',
+        'all_edge_miss_requests' => 'int',
+        'all_status_1xx' => 'int',
+        'all_status_2xx' => 'int',
+        'all_status_3xx' => 'int',
+        'all_status_4xx' => 'int',
+        'all_status_5xx' => 'int'
     ];
 
     /**
@@ -517,7 +538,28 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenges_issued' => null,
         'bot_challenges_succeeded' => null,
         'bot_challenges_failed' => null,
-        'bot_challenge_complete_tokens_issued' => null
+        'bot_challenge_complete_tokens_issued' => null,
+        'ddos_action_downgrade' => null,
+        'ddos_action_downgraded_connections' => null,
+        'vcl_on_compute_hit_requests' => null,
+        'vcl_on_compute_miss_requests' => null,
+        'vcl_on_compute_pass_requests' => null,
+        'vcl_on_compute_error_requests' => null,
+        'vcl_on_compute_synth_requests' => null,
+        'vcl_on_compute_edge_hit_requests' => null,
+        'vcl_on_compute_edge_miss_requests' => null,
+        'all_hit_requests' => null,
+        'all_miss_requests' => null,
+        'all_pass_requests' => null,
+        'all_error_requests' => null,
+        'all_synth_requests' => null,
+        'all_edge_hit_requests' => null,
+        'all_edge_miss_requests' => null,
+        'all_status_1xx' => null,
+        'all_status_2xx' => null,
+        'all_status_3xx' => null,
+        'all_status_4xx' => null,
+        'all_status_5xx' => null
     ];
 
     /**
@@ -773,7 +815,28 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenges_issued' => 'bot_challenges_issued',
         'bot_challenges_succeeded' => 'bot_challenges_succeeded',
         'bot_challenges_failed' => 'bot_challenges_failed',
-        'bot_challenge_complete_tokens_issued' => 'bot_challenge_complete_tokens_issued'
+        'bot_challenge_complete_tokens_issued' => 'bot_challenge_complete_tokens_issued',
+        'ddos_action_downgrade' => 'ddos_action_downgrade',
+        'ddos_action_downgraded_connections' => 'ddos_action_downgraded_connections',
+        'vcl_on_compute_hit_requests' => 'vcl_on_compute_hit_requests',
+        'vcl_on_compute_miss_requests' => 'vcl_on_compute_miss_requests',
+        'vcl_on_compute_pass_requests' => 'vcl_on_compute_pass_requests',
+        'vcl_on_compute_error_requests' => 'vcl_on_compute_error_requests',
+        'vcl_on_compute_synth_requests' => 'vcl_on_compute_synth_requests',
+        'vcl_on_compute_edge_hit_requests' => 'vcl_on_compute_edge_hit_requests',
+        'vcl_on_compute_edge_miss_requests' => 'vcl_on_compute_edge_miss_requests',
+        'all_hit_requests' => 'all_hit_requests',
+        'all_miss_requests' => 'all_miss_requests',
+        'all_pass_requests' => 'all_pass_requests',
+        'all_error_requests' => 'all_error_requests',
+        'all_synth_requests' => 'all_synth_requests',
+        'all_edge_hit_requests' => 'all_edge_hit_requests',
+        'all_edge_miss_requests' => 'all_edge_miss_requests',
+        'all_status_1xx' => 'all_status_1xx',
+        'all_status_2xx' => 'all_status_2xx',
+        'all_status_3xx' => 'all_status_3xx',
+        'all_status_4xx' => 'all_status_4xx',
+        'all_status_5xx' => 'all_status_5xx'
     ];
 
     /**
@@ -1008,7 +1071,28 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenges_issued' => 'setBotChallengesIssued',
         'bot_challenges_succeeded' => 'setBotChallengesSucceeded',
         'bot_challenges_failed' => 'setBotChallengesFailed',
-        'bot_challenge_complete_tokens_issued' => 'setBotChallengeCompleteTokensIssued'
+        'bot_challenge_complete_tokens_issued' => 'setBotChallengeCompleteTokensIssued',
+        'ddos_action_downgrade' => 'setDdosActionDowngrade',
+        'ddos_action_downgraded_connections' => 'setDdosActionDowngradedConnections',
+        'vcl_on_compute_hit_requests' => 'setVclOnComputeHitRequests',
+        'vcl_on_compute_miss_requests' => 'setVclOnComputeMissRequests',
+        'vcl_on_compute_pass_requests' => 'setVclOnComputePassRequests',
+        'vcl_on_compute_error_requests' => 'setVclOnComputeErrorRequests',
+        'vcl_on_compute_synth_requests' => 'setVclOnComputeSynthRequests',
+        'vcl_on_compute_edge_hit_requests' => 'setVclOnComputeEdgeHitRequests',
+        'vcl_on_compute_edge_miss_requests' => 'setVclOnComputeEdgeMissRequests',
+        'all_hit_requests' => 'setAllHitRequests',
+        'all_miss_requests' => 'setAllMissRequests',
+        'all_pass_requests' => 'setAllPassRequests',
+        'all_error_requests' => 'setAllErrorRequests',
+        'all_synth_requests' => 'setAllSynthRequests',
+        'all_edge_hit_requests' => 'setAllEdgeHitRequests',
+        'all_edge_miss_requests' => 'setAllEdgeMissRequests',
+        'all_status_1xx' => 'setAllStatus1xx',
+        'all_status_2xx' => 'setAllStatus2xx',
+        'all_status_3xx' => 'setAllStatus3xx',
+        'all_status_4xx' => 'setAllStatus4xx',
+        'all_status_5xx' => 'setAllStatus5xx'
     ];
 
     /**
@@ -1243,7 +1327,28 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenges_issued' => 'getBotChallengesIssued',
         'bot_challenges_succeeded' => 'getBotChallengesSucceeded',
         'bot_challenges_failed' => 'getBotChallengesFailed',
-        'bot_challenge_complete_tokens_issued' => 'getBotChallengeCompleteTokensIssued'
+        'bot_challenge_complete_tokens_issued' => 'getBotChallengeCompleteTokensIssued',
+        'ddos_action_downgrade' => 'getDdosActionDowngrade',
+        'ddos_action_downgraded_connections' => 'getDdosActionDowngradedConnections',
+        'vcl_on_compute_hit_requests' => 'getVclOnComputeHitRequests',
+        'vcl_on_compute_miss_requests' => 'getVclOnComputeMissRequests',
+        'vcl_on_compute_pass_requests' => 'getVclOnComputePassRequests',
+        'vcl_on_compute_error_requests' => 'getVclOnComputeErrorRequests',
+        'vcl_on_compute_synth_requests' => 'getVclOnComputeSynthRequests',
+        'vcl_on_compute_edge_hit_requests' => 'getVclOnComputeEdgeHitRequests',
+        'vcl_on_compute_edge_miss_requests' => 'getVclOnComputeEdgeMissRequests',
+        'all_hit_requests' => 'getAllHitRequests',
+        'all_miss_requests' => 'getAllMissRequests',
+        'all_pass_requests' => 'getAllPassRequests',
+        'all_error_requests' => 'getAllErrorRequests',
+        'all_synth_requests' => 'getAllSynthRequests',
+        'all_edge_hit_requests' => 'getAllEdgeHitRequests',
+        'all_edge_miss_requests' => 'getAllEdgeMissRequests',
+        'all_status_1xx' => 'getAllStatus1xx',
+        'all_status_2xx' => 'getAllStatus2xx',
+        'all_status_3xx' => 'getAllStatus3xx',
+        'all_status_4xx' => 'getAllStatus4xx',
+        'all_status_5xx' => 'getAllStatus5xx'
     ];
 
     /**
@@ -1530,6 +1635,27 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['bot_challenges_succeeded'] = $data['bot_challenges_succeeded'] ?? null;
         $this->container['bot_challenges_failed'] = $data['bot_challenges_failed'] ?? null;
         $this->container['bot_challenge_complete_tokens_issued'] = $data['bot_challenge_complete_tokens_issued'] ?? null;
+        $this->container['ddos_action_downgrade'] = $data['ddos_action_downgrade'] ?? null;
+        $this->container['ddos_action_downgraded_connections'] = $data['ddos_action_downgraded_connections'] ?? null;
+        $this->container['vcl_on_compute_hit_requests'] = $data['vcl_on_compute_hit_requests'] ?? null;
+        $this->container['vcl_on_compute_miss_requests'] = $data['vcl_on_compute_miss_requests'] ?? null;
+        $this->container['vcl_on_compute_pass_requests'] = $data['vcl_on_compute_pass_requests'] ?? null;
+        $this->container['vcl_on_compute_error_requests'] = $data['vcl_on_compute_error_requests'] ?? null;
+        $this->container['vcl_on_compute_synth_requests'] = $data['vcl_on_compute_synth_requests'] ?? null;
+        $this->container['vcl_on_compute_edge_hit_requests'] = $data['vcl_on_compute_edge_hit_requests'] ?? null;
+        $this->container['vcl_on_compute_edge_miss_requests'] = $data['vcl_on_compute_edge_miss_requests'] ?? null;
+        $this->container['all_hit_requests'] = $data['all_hit_requests'] ?? null;
+        $this->container['all_miss_requests'] = $data['all_miss_requests'] ?? null;
+        $this->container['all_pass_requests'] = $data['all_pass_requests'] ?? null;
+        $this->container['all_error_requests'] = $data['all_error_requests'] ?? null;
+        $this->container['all_synth_requests'] = $data['all_synth_requests'] ?? null;
+        $this->container['all_edge_hit_requests'] = $data['all_edge_hit_requests'] ?? null;
+        $this->container['all_edge_miss_requests'] = $data['all_edge_miss_requests'] ?? null;
+        $this->container['all_status_1xx'] = $data['all_status_1xx'] ?? null;
+        $this->container['all_status_2xx'] = $data['all_status_2xx'] ?? null;
+        $this->container['all_status_3xx'] = $data['all_status_3xx'] ?? null;
+        $this->container['all_status_4xx'] = $data['all_status_4xx'] ?? null;
+        $this->container['all_status_5xx'] = $data['all_status_5xx'] ?? null;
     }
 
     /**
@@ -1905,7 +2031,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets miss_histogram
      *
-     * @param array<string,object>|null $miss_histogram A histogram. Each key represents the upper bound of a span of 10 milliseconds and the values represent the number of requests to origin during that 10ms period. Any origin request that takes more than 60 seconds to return will be in the 60000 bucket.
+     * @param array<string,object>|null $miss_histogram A histogram. The value in each bucket is the number of requests to the origin whose responses arrived during the time period represented by the bucket. The key of each bucket represents the upper bound (in response time) of that bucket. The buckets vary in width and cover the time periods 0-10ms (in 1ms increments), 10-250ms (in 10ms increments), 250-1,000ms (in 50ms increments), 1,000-3,000ms (in 100ms increments), 3,000-10,000ms (in 500 ms increments), 10,000-20,000ms (in 1,000ms increments), 20,000-60,000ms (in 5,000ms increments), and 60,000ms through infinity (in a single bucket).
      *
      * @return self
      */
@@ -7004,6 +7130,510 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setBotChallengeCompleteTokensIssued($bot_challenge_complete_tokens_issued)
     {
         $this->container['bot_challenge_complete_tokens_issued'] = $bot_challenge_complete_tokens_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_downgrade
+     *
+     * @return int|null
+     */
+    public function getDdosActionDowngrade()
+    {
+        return $this->container['ddos_action_downgrade'];
+    }
+
+    /**
+     * Sets ddos_action_downgrade
+     *
+     * @param int|null $ddos_action_downgrade The number of times the downgrade action was taken. The downgrade action restricts the client to http1.
+     *
+     * @return self
+     */
+    public function setDdosActionDowngrade($ddos_action_downgrade)
+    {
+        $this->container['ddos_action_downgrade'] = $ddos_action_downgrade;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_downgraded_connections
+     *
+     * @return int|null
+     */
+    public function getDdosActionDowngradedConnections()
+    {
+        return $this->container['ddos_action_downgraded_connections'];
+    }
+
+    /**
+     * Sets ddos_action_downgraded_connections
+     *
+     * @param int|null $ddos_action_downgraded_connections The number of connections the downgrade action was applied to. The downgrade action restricts the connection to http1.
+     *
+     * @return self
+     */
+    public function setDdosActionDowngradedConnections($ddos_action_downgraded_connections)
+    {
+        $this->container['ddos_action_downgraded_connections'] = $ddos_action_downgraded_connections;
+
+        return $this;
+    }
+
+    /**
+     * Gets vcl_on_compute_hit_requests
+     *
+     * @return int|null
+     */
+    public function getVclOnComputeHitRequests()
+    {
+        return $this->container['vcl_on_compute_hit_requests'];
+    }
+
+    /**
+     * Sets vcl_on_compute_hit_requests
+     *
+     * @param int|null $vcl_on_compute_hit_requests Number of cache hits for a VCL service running on Compute.
+     *
+     * @return self
+     */
+    public function setVclOnComputeHitRequests($vcl_on_compute_hit_requests)
+    {
+        $this->container['vcl_on_compute_hit_requests'] = $vcl_on_compute_hit_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets vcl_on_compute_miss_requests
+     *
+     * @return int|null
+     */
+    public function getVclOnComputeMissRequests()
+    {
+        return $this->container['vcl_on_compute_miss_requests'];
+    }
+
+    /**
+     * Sets vcl_on_compute_miss_requests
+     *
+     * @param int|null $vcl_on_compute_miss_requests Number of cache misses for a VCL service running on Compute.
+     *
+     * @return self
+     */
+    public function setVclOnComputeMissRequests($vcl_on_compute_miss_requests)
+    {
+        $this->container['vcl_on_compute_miss_requests'] = $vcl_on_compute_miss_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets vcl_on_compute_pass_requests
+     *
+     * @return int|null
+     */
+    public function getVclOnComputePassRequests()
+    {
+        return $this->container['vcl_on_compute_pass_requests'];
+    }
+
+    /**
+     * Sets vcl_on_compute_pass_requests
+     *
+     * @param int|null $vcl_on_compute_pass_requests Number of requests that passed through the CDN without being cached for a VCL service running on Compute.
+     *
+     * @return self
+     */
+    public function setVclOnComputePassRequests($vcl_on_compute_pass_requests)
+    {
+        $this->container['vcl_on_compute_pass_requests'] = $vcl_on_compute_pass_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets vcl_on_compute_error_requests
+     *
+     * @return int|null
+     */
+    public function getVclOnComputeErrorRequests()
+    {
+        return $this->container['vcl_on_compute_error_requests'];
+    }
+
+    /**
+     * Sets vcl_on_compute_error_requests
+     *
+     * @param int|null $vcl_on_compute_error_requests Number of cache errors for a VCL service running on Compute.
+     *
+     * @return self
+     */
+    public function setVclOnComputeErrorRequests($vcl_on_compute_error_requests)
+    {
+        $this->container['vcl_on_compute_error_requests'] = $vcl_on_compute_error_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets vcl_on_compute_synth_requests
+     *
+     * @return int|null
+     */
+    public function getVclOnComputeSynthRequests()
+    {
+        return $this->container['vcl_on_compute_synth_requests'];
+    }
+
+    /**
+     * Sets vcl_on_compute_synth_requests
+     *
+     * @param int|null $vcl_on_compute_synth_requests Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement) for a VCL service running on Compute.
+     *
+     * @return self
+     */
+    public function setVclOnComputeSynthRequests($vcl_on_compute_synth_requests)
+    {
+        $this->container['vcl_on_compute_synth_requests'] = $vcl_on_compute_synth_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets vcl_on_compute_edge_hit_requests
+     *
+     * @return int|null
+     */
+    public function getVclOnComputeEdgeHitRequests()
+    {
+        return $this->container['vcl_on_compute_edge_hit_requests'];
+    }
+
+    /**
+     * Sets vcl_on_compute_edge_hit_requests
+     *
+     * @param int|null $vcl_on_compute_edge_hit_requests Number of requests sent by end users to Fastly that resulted in a hit at the edge for a VCL service running on Compute.
+     *
+     * @return self
+     */
+    public function setVclOnComputeEdgeHitRequests($vcl_on_compute_edge_hit_requests)
+    {
+        $this->container['vcl_on_compute_edge_hit_requests'] = $vcl_on_compute_edge_hit_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets vcl_on_compute_edge_miss_requests
+     *
+     * @return int|null
+     */
+    public function getVclOnComputeEdgeMissRequests()
+    {
+        return $this->container['vcl_on_compute_edge_miss_requests'];
+    }
+
+    /**
+     * Sets vcl_on_compute_edge_miss_requests
+     *
+     * @param int|null $vcl_on_compute_edge_miss_requests Number of requests sent by end users to Fastly that resulted in a miss at the edge for a VCL service running on Compute.
+     *
+     * @return self
+     */
+    public function setVclOnComputeEdgeMissRequests($vcl_on_compute_edge_miss_requests)
+    {
+        $this->container['vcl_on_compute_edge_miss_requests'] = $vcl_on_compute_edge_miss_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_hit_requests
+     *
+     * @return int|null
+     */
+    public function getAllHitRequests()
+    {
+        return $this->container['all_hit_requests'];
+    }
+
+    /**
+     * Sets all_hit_requests
+     *
+     * @param int|null $all_hit_requests Number of cache hits for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllHitRequests($all_hit_requests)
+    {
+        $this->container['all_hit_requests'] = $all_hit_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_miss_requests
+     *
+     * @return int|null
+     */
+    public function getAllMissRequests()
+    {
+        return $this->container['all_miss_requests'];
+    }
+
+    /**
+     * Sets all_miss_requests
+     *
+     * @param int|null $all_miss_requests Number of cache misses for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllMissRequests($all_miss_requests)
+    {
+        $this->container['all_miss_requests'] = $all_miss_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_pass_requests
+     *
+     * @return int|null
+     */
+    public function getAllPassRequests()
+    {
+        return $this->container['all_pass_requests'];
+    }
+
+    /**
+     * Sets all_pass_requests
+     *
+     * @param int|null $all_pass_requests Number of requests that passed through the CDN without being cached for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllPassRequests($all_pass_requests)
+    {
+        $this->container['all_pass_requests'] = $all_pass_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_error_requests
+     *
+     * @return int|null
+     */
+    public function getAllErrorRequests()
+    {
+        return $this->container['all_error_requests'];
+    }
+
+    /**
+     * Sets all_error_requests
+     *
+     * @param int|null $all_error_requests Number of cache errors for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllErrorRequests($all_error_requests)
+    {
+        $this->container['all_error_requests'] = $all_error_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_synth_requests
+     *
+     * @return int|null
+     */
+    public function getAllSynthRequests()
+    {
+        return $this->container['all_synth_requests'];
+    }
+
+    /**
+     * Sets all_synth_requests
+     *
+     * @param int|null $all_synth_requests Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement) for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllSynthRequests($all_synth_requests)
+    {
+        $this->container['all_synth_requests'] = $all_synth_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_edge_hit_requests
+     *
+     * @return int|null
+     */
+    public function getAllEdgeHitRequests()
+    {
+        return $this->container['all_edge_hit_requests'];
+    }
+
+    /**
+     * Sets all_edge_hit_requests
+     *
+     * @param int|null $all_edge_hit_requests Number of requests sent by end users to Fastly that resulted in a hit at the edge for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllEdgeHitRequests($all_edge_hit_requests)
+    {
+        $this->container['all_edge_hit_requests'] = $all_edge_hit_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_edge_miss_requests
+     *
+     * @return int|null
+     */
+    public function getAllEdgeMissRequests()
+    {
+        return $this->container['all_edge_miss_requests'];
+    }
+
+    /**
+     * Sets all_edge_miss_requests
+     *
+     * @param int|null $all_edge_miss_requests Number of requests sent by end users to Fastly that resulted in a miss at the edge for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllEdgeMissRequests($all_edge_miss_requests)
+    {
+        $this->container['all_edge_miss_requests'] = $all_edge_miss_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_1xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus1xx()
+    {
+        return $this->container['all_status_1xx'];
+    }
+
+    /**
+     * Sets all_status_1xx
+     *
+     * @param int|null $all_status_1xx Number of \"Informational\" category status codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus1xx($all_status_1xx)
+    {
+        $this->container['all_status_1xx'] = $all_status_1xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_2xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus2xx()
+    {
+        return $this->container['all_status_2xx'];
+    }
+
+    /**
+     * Sets all_status_2xx
+     *
+     * @param int|null $all_status_2xx Number of \"Success\" status codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus2xx($all_status_2xx)
+    {
+        $this->container['all_status_2xx'] = $all_status_2xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_3xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus3xx()
+    {
+        return $this->container['all_status_3xx'];
+    }
+
+    /**
+     * Sets all_status_3xx
+     *
+     * @param int|null $all_status_3xx Number of \"Redirection\" codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus3xx($all_status_3xx)
+    {
+        $this->container['all_status_3xx'] = $all_status_3xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_4xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus4xx()
+    {
+        return $this->container['all_status_4xx'];
+    }
+
+    /**
+     * Sets all_status_4xx
+     *
+     * @param int|null $all_status_4xx Number of \"Client Error\" codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus4xx($all_status_4xx)
+    {
+        $this->container['all_status_4xx'] = $all_status_4xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_5xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus5xx()
+    {
+        return $this->container['all_status_5xx'];
+    }
+
+    /**
+     * Sets all_status_5xx
+     *
+     * @param int|null $all_status_5xx Number of \"Server Error\" codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus5xx($all_status_5xx)
+    {
+        $this->container['all_status_5xx'] = $all_status_5xx;
 
         return $this;
     }
