@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\IamUserGroupsApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**addUserGroupMembers()**](IamUserGroupsApi.md#addUserGroupMembers) | **POST** /user-groups/{user_group_id}/members | Add members to a user group
 [**addUserGroupRoles()**](IamUserGroupsApi.md#addUserGroupRoles) | **POST** /user-groups/{user_group_id}/roles | Add roles to a user group
 [**addUserGroupServiceGroups()**](IamUserGroupsApi.md#addUserGroupServiceGroups) | **POST** /user-groups/{user_group_id}/service-groups | Add service groups to a user group

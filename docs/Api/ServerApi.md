@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\ServerApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**createPoolServer()**](ServerApi.md#createPoolServer) | **POST** /service/{service_id}/pool/{pool_id}/server | Add a server to a pool
 [**deletePoolServer()**](ServerApi.md#deletePoolServer) | **DELETE** /service/{service_id}/pool/{pool_id}/server/{server_id} | Delete a server from a pool
 [**getPoolServer()**](ServerApi.md#getPoolServer) | **GET** /service/{service_id}/pool/{pool_id}/server/{server_id} | Get a pool server

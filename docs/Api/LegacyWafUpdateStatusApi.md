@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\LegacyWafUpdateStatusApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**getWafUpdateStatus()**](LegacyWafUpdateStatusApi.md#getWafUpdateStatus) | **GET** /service/{service_id}/wafs/{firewall_id}/update_statuses/{update_status_id} | Get the status of a WAF update
 [**listWafUpdateStatuses()**](LegacyWafUpdateStatusApi.md#listWafUpdateStatuses) | **GET** /service/{service_id}/wafs/{firewall_id}/update_statuses | List update statuses
 

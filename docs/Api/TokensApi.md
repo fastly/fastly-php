@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\TokensApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**bulkRevokeTokens()**](TokensApi.md#bulkRevokeTokens) | **DELETE** /tokens | Revoke multiple tokens
 [**createToken()**](TokensApi.md#createToken) | **POST** /tokens | Create a token
 [**getToken()**](TokensApi.md#getToken) | **GET** /tokens/{token_id} | Get a token

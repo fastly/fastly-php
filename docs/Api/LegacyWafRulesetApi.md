@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\LegacyWafRulesetApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**getWafRuleset()**](LegacyWafRulesetApi.md#getWafRuleset) | **GET** /service/{service_id}/wafs/{firewall_id}/ruleset | Get a WAF ruleset
 [**getWafRulesetVcl()**](LegacyWafRulesetApi.md#getWafRulesetVcl) | **GET** /service/{service_id}/wafs/{firewall_id}/ruleset/preview | Generate WAF ruleset VCL
 [**updateWafRuleset()**](LegacyWafRulesetApi.md#updateWafRuleset) | **PATCH** /service/{service_id}/wafs/{firewall_id}/ruleset | Update a WAF ruleset

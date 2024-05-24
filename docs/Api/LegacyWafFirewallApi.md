@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\LegacyWafFirewallApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**createLegacyWafFirewallService()**](LegacyWafFirewallApi.md#createLegacyWafFirewallService) | **POST** /service/{service_id}/version/{version_id}/wafs | Create a firewall
 [**disableLegacyWafFirewall()**](LegacyWafFirewallApi.md#disableLegacyWafFirewall) | **PATCH** /wafs/{firewall_id}/disable | Disable a firewall
 [**enableLegacyWafFirewall()**](LegacyWafFirewallApi.md#enableLegacyWafFirewall) | **PATCH** /wafs/{firewall_id}/enable | Enable a firewall

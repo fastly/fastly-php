@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\KvStoreItemApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**deleteKeyFromStore()**](KvStoreItemApi.md#deleteKeyFromStore) | **DELETE** /resources/stores/kv/{store_id}/keys/{key_name} | Delete kv store item.
 [**getKeys()**](KvStoreItemApi.md#getKeys) | **GET** /resources/stores/kv/{store_id}/keys | List kv store keys.
 [**getValueForKey()**](KvStoreItemApi.md#getValueForKey) | **GET** /resources/stores/kv/{store_id}/keys/{key_name} | Get the value of an kv store item

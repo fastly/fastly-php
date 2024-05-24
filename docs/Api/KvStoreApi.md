@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\KvStoreApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**createStore()**](KvStoreApi.md#createStore) | **POST** /resources/stores/kv | Create a KV store.
 [**deleteStore()**](KvStoreApi.md#deleteStore) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
 [**getStore()**](KvStoreApi.md#getStore) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.

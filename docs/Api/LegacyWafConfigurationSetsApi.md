@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\LegacyWafConfigurationSetsApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**listWafConfigSets()**](LegacyWafConfigurationSetsApi.md#listWafConfigSets) | **GET** /wafs/configuration_sets | List configuration sets
 [**listWafsConfigSet()**](LegacyWafConfigurationSetsApi.md#listWafsConfigSet) | **GET** /wafs/configuration_sets/{configuration_set_id}/relationships/wafs | List WAFs currently using a configuration set
 [**useWafConfigSet()**](LegacyWafConfigurationSetsApi.md#useWafConfigSet) | **PATCH** /wafs/configuration_sets/{configuration_set_id}/relationships/wafs | Apply a configuration set to a WAF

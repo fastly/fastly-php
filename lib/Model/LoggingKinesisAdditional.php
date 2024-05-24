@@ -302,7 +302,7 @@ class LoggingKinesisAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets format
      *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Kinesis can ingest.
+     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
      *
      * @return self
      */

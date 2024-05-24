@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\AutomationTokensApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**createAutomationToken()**](AutomationTokensApi.md#createAutomationToken) | **POST** /automation-tokens | Create Automation Token
 [**getAutomationTokenId()**](AutomationTokensApi.md#getAutomationTokenId) | **GET** /automation-tokens/{id} | Retrieve an Automation Token by ID
 [**getAutomationTokensIdServices()**](AutomationTokensApi.md#getAutomationTokensIdServices) | **GET** /automation-tokens/{id}/services | List Automation Token Services

@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\BillingInvoicesApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**getInvoiceByInvoiceId()**](BillingInvoicesApi.md#getInvoiceByInvoiceId) | **GET** /billing/v3/invoices/{invoice_id} | Get invoice by ID.
 [**listInvoices()**](BillingInvoicesApi.md#listInvoices) | **GET** /billing/v3/invoices | List of invoices.
 

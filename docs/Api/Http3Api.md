@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\Http3Api(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**createHttp3()**](Http3Api.md#createHttp3) | **POST** /service/{service_id}/version/{version_id}/http3 | Enable support for HTTP/3
 [**deleteHttp3()**](Http3Api.md#deleteHttp3) | **DELETE** /service/{service_id}/version/{version_id}/http3 | Disable support for HTTP/3
 [**getHttp3()**](Http3Api.md#getHttp3) | **GET** /service/{service_id}/version/{version_id}/http3 | Get HTTP/3 status

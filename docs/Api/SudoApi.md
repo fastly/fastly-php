@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\SudoApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**requestSudoAccess()**](SudoApi.md#requestSudoAccess) | **POST** /sudo | Request Sudo access
 
 

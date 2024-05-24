@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\IamRolesApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**addRolePermissions()**](IamRolesApi.md#addRolePermissions) | **POST** /roles/{role_id}/permissions | Add permissions to a role
 [**createARole()**](IamRolesApi.md#createARole) | **POST** /roles | Create a role
 [**deleteARole()**](IamRolesApi.md#deleteARole) | **DELETE** /roles/{role_id} | Delete a role

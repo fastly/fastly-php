@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\CustomerApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**deleteCustomer()**](CustomerApi.md#deleteCustomer) | **DELETE** /customer/{customer_id} | Delete a customer
 [**getCustomer()**](CustomerApi.md#getCustomer) | **GET** /customer/{customer_id} | Get a customer
 [**getLoggedInCustomer()**](CustomerApi.md#getLoggedInCustomer) | **GET** /current_customer | Get the logged in customer

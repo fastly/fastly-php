@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\BillingApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**getInvoice()**](BillingApi.md#getInvoice) | **GET** /billing/v2/year/{year}/month/{month} | Get an invoice
 [**getInvoiceById()**](BillingApi.md#getInvoiceById) | **GET** /billing/v2/account_customers/{customer_id}/invoices/{invoice_id} | Get an invoice
 [**getInvoiceMtd()**](BillingApi.md#getInvoiceMtd) | **GET** /billing/v2/account_customers/{customer_id}/mtd_invoice | Get month-to-date billing estimate

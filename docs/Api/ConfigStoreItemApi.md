@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\ConfigStoreItemApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**bulkUpdateConfigStoreItem()**](ConfigStoreItemApi.md#bulkUpdateConfigStoreItem) | **PATCH** /resources/stores/config/{config_store_id}/items | Update multiple entries in a config store
 [**createConfigStoreItem()**](ConfigStoreItemApi.md#createConfigStoreItem) | **POST** /resources/stores/config/{config_store_id}/item | Create an entry in a config store
 [**deleteConfigStoreItem()**](ConfigStoreItemApi.md#deleteConfigStoreItem) | **DELETE** /resources/stores/config/{config_store_id}/item/{config_store_item_key} | Delete an item from a config store

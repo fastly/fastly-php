@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\DomainInspectorHistoricalApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**getDomainInspectorHistorical()**](DomainInspectorHistoricalApi.md#getDomainInspectorHistorical) | **GET** /metrics/domains/services/{service_id} | Get historical domain data for a service
 
 

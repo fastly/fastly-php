@@ -37,11 +37,11 @@ class TypeResource
     /**
      * Possible values of this enum
      */
-    const OBJECT_STORE = 'object-store';
+    const KV_STORE = 'kv-store';
 
     const SECRET_STORE = 'secret-store';
 
-    const CONFIG_STORE = 'config-store';
+    const CONFIG = 'config';
 
     /**
      * Gets allowable values of the enum
@@ -50,9 +50,9 @@ class TypeResource
     public static function getAllowableEnumValues()
     {
         return [
-            self::OBJECT_STORE,
+            self::KV_STORE,
             self::SECRET_STORE,
-            self::CONFIG_STORE
+            self::CONFIG
         ];
     }
 }

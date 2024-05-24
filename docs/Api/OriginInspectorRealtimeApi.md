@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\OriginInspectorRealtimeApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**getOriginInspectorLast120Seconds()**](OriginInspectorRealtimeApi.md#getOriginInspectorLast120Seconds) | **GET** /v1/origins/{service_id}/ts/h | Get real-time origin data for the last 120 seconds
 [**getOriginInspectorLastMaxEntries()**](OriginInspectorRealtimeApi.md#getOriginInspectorLastMaxEntries) | **GET** /v1/origins/{service_id}/ts/h/limit/{max_entries} | Get a limited number of real-time origin data entries
 [**getOriginInspectorLastSecond()**](OriginInspectorRealtimeApi.md#getOriginInspectorLastSecond) | **GET** /v1/origins/{service_id}/ts/{start_timestamp} | Get real-time origin data from specific time.

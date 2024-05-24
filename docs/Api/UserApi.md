@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\UserApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**createUser()**](UserApi.md#createUser) | **POST** /user | Create a user
 [**deleteUser()**](UserApi.md#deleteUser) | **DELETE** /user/{user_id} | Delete a user
 [**getCurrentUser()**](UserApi.md#getCurrentUser) | **GET** /current_user | Get the current user

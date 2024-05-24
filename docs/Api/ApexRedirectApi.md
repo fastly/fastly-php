@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\ApexRedirectApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**createApexRedirect()**](ApexRedirectApi.md#createApexRedirect) | **POST** /service/{service_id}/version/{version_id}/apex-redirects | Create an apex redirect
 [**deleteApexRedirect()**](ApexRedirectApi.md#deleteApexRedirect) | **DELETE** /apex-redirects/{apex_redirect_id} | Delete an apex redirect
 [**getApexRedirect()**](ApexRedirectApi.md#getApexRedirect) | **GET** /apex-redirects/{apex_redirect_id} | Get an apex redirect

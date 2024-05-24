@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\ResourceApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**createResource()**](ResourceApi.md#createResource) | **POST** /service/{service_id}/version/{version_id}/resource | Create a resource link
 [**deleteResource()**](ResourceApi.md#deleteResource) | **DELETE** /service/{service_id}/version/{version_id}/resource/{id} | Delete a resource link
 [**getResource()**](ResourceApi.md#getResource) | **GET** /service/{service_id}/version/{version_id}/resource/{id} | Display a resource link

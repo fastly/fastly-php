@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\ContentApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**contentCheck()**](ContentApi.md#contentCheck) | **GET** /content/edge_check | Check status of content in each POP&#39;s cache
 
 

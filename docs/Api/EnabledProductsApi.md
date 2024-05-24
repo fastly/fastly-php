@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\EnabledProductsApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**disableProduct()**](EnabledProductsApi.md#disableProduct) | **DELETE** /enabled-products/{product_id}/services/{service_id} | Disable a product
 [**enableProduct()**](EnabledProductsApi.md#enableProduct) | **PUT** /enabled-products/{product_id}/services/{service_id} | Enable a product
 [**getEnabledProduct()**](EnabledProductsApi.md#getEnabledProduct) | **GET** /enabled-products/{product_id}/services/{service_id} | Get enabled product

@@ -23,7 +23,7 @@
 namespace Fastly;
 
 /**
- * https://developer.fastly.com/reference/api/#rate-limiting
+ * https://www.fastly.com/documentation/reference/api/#rate-limiting
  */
 define("DEFAULT_RATELIMIT", 1000);
 
@@ -89,7 +89,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'fastly-php/5.2.0';
+    protected $userAgent = 'fastly-php/5.3.0';
 
     /**
      * Debug switch (default set to false)
@@ -114,7 +114,7 @@ class Configuration
 
     /**
      * The last observed value of http header Fastly-RateLimit-Remaining
-     * https://developer.fastly.com/reference/api/#rate-limiting
+     * https://www.fastly.com/documentation/reference/api/#rate-limiting
      *
      * @var int
      */
@@ -453,7 +453,7 @@ class Configuration
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the schema document: 1.0.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 5.2.0' . PHP_EOL;
+        $report .= '    SDK Package Version: 5.3.0' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;

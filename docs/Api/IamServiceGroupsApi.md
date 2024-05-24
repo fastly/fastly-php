@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\IamServiceGroupsApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**addServiceGroupServices()**](IamServiceGroupsApi.md#addServiceGroupServices) | **POST** /service-groups/{service_group_id}/services | Add services in a service group
 [**createAServiceGroup()**](IamServiceGroupsApi.md#createAServiceGroup) | **POST** /service-groups | Create a service group
 [**deleteAServiceGroup()**](IamServiceGroupsApi.md#deleteAServiceGroup) | **DELETE** /service-groups/{service_group_id} | Delete a service group

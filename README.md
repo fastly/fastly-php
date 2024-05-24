@@ -1,6 +1,6 @@
 # Fastly PHP
 
-A PHP client library for interacting with most facets of the [Fastly API](https://developer.fastly.com/reference/api).
+A PHP client library for interacting with most facets of the [Fastly API](https://www.fastly.com/documentation/reference/api/).
 
 
 ## Installation
@@ -59,7 +59,10 @@ try {
 
 ## Authorization
 
-The Fastly API requires an [API token](https://developer.fastly.com/reference/api/#authentication) for most operations.  Set it in the PHP client by using the `setApiToken` method of a configuration as shown:
+> [!NOTE]
+> The Fastly API requires an [API token](https://www.fastly.com/documentation/reference/api/#authentication) for most operations.
+
+Set up the API token in the PHP client by using the `setApiToken` method of a configuration as shown:
 
 ```php
 Fastly\Configuration::getDefaultConfiguration()->setApiToken('YOUR_API_TOKEN');
@@ -71,12 +74,16 @@ Alternatively, set the `FASTLY_API_TOKEN` environment variable instead of using 
 Fastly\Configuration::getDefaultConfiguration();
 ```
 
-## Documentation for API Endpoints
+## API Endpoints
 
-The main documentation for the Fastly API can be found on our [Developer Hub](https://developer.fastly.com/reference/api).
+The main documentation for the Fastly API can be found on our [Developer Hub](https://www.fastly.com/documentation/reference/api/).
+
+<details>
+
+<summary>Table of API endpoints</summary>
 
 Class | Method | Description
------------- | ------------- | -------------
+----- | ------ | -----------
 [*AclApi*](docs/Api/AclApi.md) | [**createAcl**](docs/Api/AclApi.md#createacl) | Create a new ACL
 [*AclApi*](docs/Api/AclApi.md) | [**deleteAcl**](docs/Api/AclApi.md#deleteacl) | Delete an ACL
 [*AclApi*](docs/Api/AclApi.md) | [**getAcl**](docs/Api/AclApi.md#getacl) | Describe an ACL
@@ -242,6 +249,8 @@ Class | Method | Description
 [*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**removeUserGroupRoles**](docs/Api/IamUserGroupsApi.md#removeusergrouproles) | Remove roles from a user group
 [*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**removeUserGroupServiceGroups**](docs/Api/IamUserGroupsApi.md#removeusergroupservicegroups) | Remove service groups from a user group
 [*IamUserGroupsApi*](docs/Api/IamUserGroupsApi.md) | [**updateAUserGroup**](docs/Api/IamUserGroupsApi.md#updateausergroup) | Update a user group
+[*ImageOptimizerDefaultSettingsApi*](docs/Api/ImageOptimizerDefaultSettingsApi.md) | [**getDefaultSettings**](docs/Api/ImageOptimizerDefaultSettingsApi.md#getdefaultsettings) | Get current Image Optimizer Default Settings
+[*ImageOptimizerDefaultSettingsApi*](docs/Api/ImageOptimizerDefaultSettingsApi.md) | [**updateDefaultSettings**](docs/Api/ImageOptimizerDefaultSettingsApi.md#updatedefaultsettings) | Update Image Optimizer Default Settings
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**createInvitation**](docs/Api/InvitationsApi.md#createinvitation) | Create an invitation
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**deleteInvitation**](docs/Api/InvitationsApi.md#deleteinvitation) | Delete an invitation
 [*InvitationsApi*](docs/Api/InvitationsApi.md) | [**listInvitations**](docs/Api/InvitationsApi.md#listinvitations) | List invitations
@@ -609,6 +618,8 @@ Class | Method | Description
 [*WafTagsApi*](docs/Api/WafTagsApi.md) | [**listWafTags**](docs/Api/WafTagsApi.md#listwaftags) | List tags
 [*WholePlatformDdosHistoricalApi*](docs/Api/WholePlatformDdosHistoricalApi.md) | [**getPlatformDdosHistorical**](docs/Api/WholePlatformDdosHistoricalApi.md#getplatformddoshistorical) | Get historical DDoS metrics for the entire Fastly platform
 
+
+</details>
 
 ## Issues
 

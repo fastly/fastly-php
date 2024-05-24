@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\LoggingNewrelicotlpApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**createLogNewrelicotlp()**](LoggingNewrelicotlpApi.md#createLogNewrelicotlp) | **POST** /service/{service_id}/version/{version_id}/logging/newrelicotlp | Create a New Relic OTLP endpoint
 [**deleteLogNewrelicotlp()**](LoggingNewrelicotlpApi.md#deleteLogNewrelicotlp) | **DELETE** /service/{service_id}/version/{version_id}/logging/newrelicotlp/{logging_newrelicotlp_name} | Delete a New Relic OTLP endpoint
 [**getLogNewrelicotlp()**](LoggingNewrelicotlpApi.md#getLogNewrelicotlp) | **GET** /service/{service_id}/version/{version_id}/logging/newrelicotlp/{logging_newrelicotlp_name} | Get a New Relic OTLP endpoint

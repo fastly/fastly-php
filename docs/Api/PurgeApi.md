@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\PurgeApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**bulkPurgeTag()**](PurgeApi.md#bulkPurgeTag) | **POST** /service/{service_id}/purge | Purge multiple surrogate key tags
 [**purgeAll()**](PurgeApi.md#purgeAll) | **POST** /service/{service_id}/purge_all | Purge everything from a service
 [**purgeSingleUrl()**](PurgeApi.md#purgeSingleUrl) | **POST** /purge/{cached_url} | Purge a URL

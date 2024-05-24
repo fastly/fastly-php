@@ -12,8 +12,11 @@ $apiInstance = new Fastly\Api\OriginInspectorHistoricalApi(
 
 ## Methods
 
-Method | Fastly API endpoint | Description
-------------- | ------------- | -------------
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
 [**getOriginInspectorHistorical()**](OriginInspectorHistoricalApi.md#getOriginInspectorHistorical) | **GET** /metrics/origins/services/{service_id} | Get historical origin data for a service
 
 
