@@ -60,6 +60,7 @@ class Invoicelineitems implements ModelInterface, ArrayAccess, \JsonSerializable
         'units' => 'float',
         'product_name' => 'string',
         'product_group' => 'string',
+        'product_line' => 'string',
         'region' => 'string',
         'usage_type' => 'string'
     ];
@@ -79,6 +80,7 @@ class Invoicelineitems implements ModelInterface, ArrayAccess, \JsonSerializable
         'units' => null,
         'product_name' => null,
         'product_group' => null,
+        'product_line' => null,
         'region' => null,
         'usage_type' => null
     ];
@@ -117,6 +119,7 @@ class Invoicelineitems implements ModelInterface, ArrayAccess, \JsonSerializable
         'units' => 'units',
         'product_name' => 'ProductName',
         'product_group' => 'ProductGroup',
+        'product_line' => 'ProductLine',
         'region' => 'Region',
         'usage_type' => 'UsageType'
     ];
@@ -134,6 +137,7 @@ class Invoicelineitems implements ModelInterface, ArrayAccess, \JsonSerializable
         'units' => 'setUnits',
         'product_name' => 'setProductName',
         'product_group' => 'setProductGroup',
+        'product_line' => 'setProductLine',
         'region' => 'setRegion',
         'usage_type' => 'setUsageType'
     ];
@@ -151,6 +155,7 @@ class Invoicelineitems implements ModelInterface, ArrayAccess, \JsonSerializable
         'units' => 'getUnits',
         'product_name' => 'getProductName',
         'product_group' => 'getProductGroup',
+        'product_line' => 'getProductLine',
         'region' => 'getRegion',
         'usage_type' => 'getUsageType'
     ];
@@ -219,6 +224,7 @@ class Invoicelineitems implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['units'] = $data['units'] ?? null;
         $this->container['product_name'] = $data['product_name'] ?? null;
         $this->container['product_group'] = $data['product_group'] ?? null;
+        $this->container['product_line'] = $data['product_line'] ?? null;
         $this->container['region'] = $data['region'] ?? null;
         $this->container['usage_type'] = $data['usage_type'] ?? null;
     }
@@ -411,6 +417,30 @@ class Invoicelineitems implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProductGroup($product_group)
     {
         $this->container['product_group'] = $product_group;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_line
+     *
+     * @return string|null
+     */
+    public function getProductLine()
+    {
+        return $this->container['product_line'];
+    }
+
+    /**
+     * Sets product_line
+     *
+     * @param string|null $product_line The broader classification of the product (e.g., `Network Services` or `Security`).
+     *
+     * @return self
+     */
+    public function setProductLine($product_line)
+    {
+        $this->container['product_line'] = $product_line;
 
         return $this;
     }

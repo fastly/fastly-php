@@ -78,7 +78,8 @@ class LoggingS3Response implements ModelInterface, ArrayAccess, \JsonSerializabl
         'redundancy' => 'string',
         'secret_key' => 'string',
         'server_side_encryption_kms_key_id' => 'string',
-        'server_side_encryption' => 'string'
+        'server_side_encryption' => 'string',
+        'file_max_bytes' => 'int'
     ];
 
     /**
@@ -114,7 +115,8 @@ class LoggingS3Response implements ModelInterface, ArrayAccess, \JsonSerializabl
         'redundancy' => null,
         'secret_key' => null,
         'server_side_encryption_kms_key_id' => null,
-        'server_side_encryption' => null
+        'server_side_encryption' => null,
+        'file_max_bytes' => null
     ];
 
     /**
@@ -169,7 +171,8 @@ class LoggingS3Response implements ModelInterface, ArrayAccess, \JsonSerializabl
         'redundancy' => 'redundancy',
         'secret_key' => 'secret_key',
         'server_side_encryption_kms_key_id' => 'server_side_encryption_kms_key_id',
-        'server_side_encryption' => 'server_side_encryption'
+        'server_side_encryption' => 'server_side_encryption',
+        'file_max_bytes' => 'file_max_bytes'
     ];
 
     /**
@@ -203,7 +206,8 @@ class LoggingS3Response implements ModelInterface, ArrayAccess, \JsonSerializabl
         'redundancy' => 'setRedundancy',
         'secret_key' => 'setSecretKey',
         'server_side_encryption_kms_key_id' => 'setServerSideEncryptionKmsKeyId',
-        'server_side_encryption' => 'setServerSideEncryption'
+        'server_side_encryption' => 'setServerSideEncryption',
+        'file_max_bytes' => 'setFileMaxBytes'
     ];
 
     /**
@@ -237,7 +241,8 @@ class LoggingS3Response implements ModelInterface, ArrayAccess, \JsonSerializabl
         'redundancy' => 'getRedundancy',
         'secret_key' => 'getSecretKey',
         'server_side_encryption_kms_key_id' => 'getServerSideEncryptionKmsKeyId',
-        'server_side_encryption' => 'getServerSideEncryption'
+        'server_side_encryption' => 'getServerSideEncryption',
+        'file_max_bytes' => 'getFileMaxBytes'
     ];
 
     /**
@@ -391,6 +396,7 @@ class LoggingS3Response implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['secret_key'] = $data['secret_key'] ?? null;
         $this->container['server_side_encryption_kms_key_id'] = $data['server_side_encryption_kms_key_id'] ?? 'null';
         $this->container['server_side_encryption'] = $data['server_side_encryption'] ?? 'null';
+        $this->container['file_max_bytes'] = $data['file_max_bytes'] ?? null;
     }
 
     /**
@@ -436,6 +442,10 @@ class LoggingS3Response implements ModelInterface, ArrayAccess, \JsonSerializabl
                 $this->container['compression_codec'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['file_max_bytes']) && ($this->container['file_max_bytes'] < 1048576)) {
+            $invalidProperties[] = "invalid value for 'file_max_bytes', must be bigger than or equal to 1048576.";
         }
 
         return $invalidProperties;
@@ -1113,6 +1123,35 @@ class LoggingS3Response implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setServerSideEncryption($server_side_encryption)
     {
         $this->container['server_side_encryption'] = $server_side_encryption;
+
+        return $this;
+    }
+
+    /**
+     * Gets file_max_bytes
+     *
+     * @return int|null
+     */
+    public function getFileMaxBytes()
+    {
+        return $this->container['file_max_bytes'];
+    }
+
+    /**
+     * Sets file_max_bytes
+     *
+     * @param int|null $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+     *
+     * @return self
+     */
+    public function setFileMaxBytes($file_max_bytes)
+    {
+
+        if (!is_null($file_max_bytes) && ($file_max_bytes < 1048576)) {
+            throw new \InvalidArgumentException('invalid value for $file_max_bytes when calling LoggingS3Response., must be bigger than or equal to 1048576.');
+        }
+
+        $this->container['file_max_bytes'] = $file_max_bytes;
 
         return $this;
     }

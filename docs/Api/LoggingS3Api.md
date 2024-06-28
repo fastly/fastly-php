@@ -57,6 +57,7 @@ $options['redundancy'] = 'null'; // string | The S3 redundancy level.
 $options['secret_key'] = 'secret_key_example'; // string | The secret key for your S3 account. Not required if `iam_role` is provided.
 $options['server_side_encryption_kms_key_id'] = 'null'; // string | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
 $options['server_side_encryption'] = 'null'; // string | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
+$options['file_max_bytes'] = 56; // int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
 
 try {
     $result = $apiInstance->createLogAwsS3($options);
@@ -94,6 +95,7 @@ Name | Type | Description  | Notes
 **secret_key** | **string** | The secret key for your S3 account. Not required if `iam_role` is provided. | [optional]
 **server_side_encryption_kms_key_id** | **string** | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`. | [optional] [defaults to 'null']
 **server_side_encryption** | **string** | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption. | [optional] [defaults to 'null']
+**file_max_bytes** | **int** | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional]
 
 ### Return type
 
@@ -248,6 +250,7 @@ $options['redundancy'] = 'null'; // string | The S3 redundancy level.
 $options['secret_key'] = 'secret_key_example'; // string | The secret key for your S3 account. Not required if `iam_role` is provided.
 $options['server_side_encryption_kms_key_id'] = 'null'; // string | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
 $options['server_side_encryption'] = 'null'; // string | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
+$options['file_max_bytes'] = 56; // int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
 
 try {
     $result = $apiInstance->updateLogAwsS3($options);
@@ -286,6 +289,7 @@ Name | Type | Description  | Notes
 **secret_key** | **string** | The secret key for your S3 account. Not required if `iam_role` is provided. | [optional]
 **server_side_encryption_kms_key_id** | **string** | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`. | [optional] [defaults to 'null']
 **server_side_encryption** | **string** | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption. | [optional] [defaults to 'null']
+**file_max_bytes** | **int** | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional]
 
 ### Return type
 

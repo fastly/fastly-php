@@ -142,6 +142,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -186,6 +187,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -318,6 +320,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -365,6 +368,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -438,6 +442,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -468,6 +473,7 @@ class LoggingS3Api
         $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
         $server_side_encryption_kms_key_id = array_key_exists('server_side_encryption_kms_key_id', $options) ? $options['server_side_encryption_kms_key_id'] : 'null';
         $server_side_encryption = array_key_exists('server_side_encryption', $options) ? $options['server_side_encryption'] : 'null';
+        $file_max_bytes = array_key_exists('file_max_bytes', $options) ? $options['file_max_bytes'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -481,6 +487,10 @@ class LoggingS3Api
                 'Missing the required parameter $version_id when calling createLogAwsS3'
             );
         }
+        if ($file_max_bytes !== null && $file_max_bytes < 1048576) {
+            throw new \InvalidArgumentException('invalid value for "$file_max_bytes" when calling LoggingS3Api.createLogAwsS3, must be bigger than or equal to 1048576.');
+        }
+
 
         $resourcePath = '/service/{service_id}/version/{version_id}/logging/s3';
         $formParams = [];
@@ -591,6 +601,10 @@ class LoggingS3Api
         // form params
         if ($server_side_encryption !== null) {
             $formParams['server_side_encryption'] = ObjectSerializer::toFormValue($server_side_encryption);
+        }
+        // form params
+        if ($file_max_bytes !== null) {
+            $formParams['file_max_bytes'] = ObjectSerializer::toFormValue($file_max_bytes);
         }
 
         if ($multipart) {
@@ -1761,6 +1775,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1806,6 +1821,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1939,6 +1955,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1987,6 +2004,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2061,6 +2079,7 @@ class LoggingS3Api
      * @param  string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
      * @param  string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
      * @param  string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+     * @param  int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2092,6 +2111,7 @@ class LoggingS3Api
         $secret_key = array_key_exists('secret_key', $options) ? $options['secret_key'] : null;
         $server_side_encryption_kms_key_id = array_key_exists('server_side_encryption_kms_key_id', $options) ? $options['server_side_encryption_kms_key_id'] : 'null';
         $server_side_encryption = array_key_exists('server_side_encryption', $options) ? $options['server_side_encryption'] : 'null';
+        $file_max_bytes = array_key_exists('file_max_bytes', $options) ? $options['file_max_bytes'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -2111,6 +2131,10 @@ class LoggingS3Api
                 'Missing the required parameter $logging_s3_name when calling updateLogAwsS3'
             );
         }
+        if ($file_max_bytes !== null && $file_max_bytes < 1048576) {
+            throw new \InvalidArgumentException('invalid value for "$file_max_bytes" when calling LoggingS3Api.updateLogAwsS3, must be bigger than or equal to 1048576.');
+        }
+
 
         $resourcePath = '/service/{service_id}/version/{version_id}/logging/s3/{logging_s3_name}';
         $formParams = [];
@@ -2229,6 +2253,10 @@ class LoggingS3Api
         // form params
         if ($server_side_encryption !== null) {
             $formParams['server_side_encryption'] = ObjectSerializer::toFormValue($server_side_encryption);
+        }
+        // form params
+        if ($file_max_bytes !== null) {
+            $formParams['file_max_bytes'] = ObjectSerializer::toFormValue($file_max_bytes);
         }
 
         if ($multipart) {

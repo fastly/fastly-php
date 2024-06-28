@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **units** | **float** | Total number of units of usage. | [optional] 
 **product_name** | **string** | The name of the product. | [optional] 
 **product_group** | **string** | The broader classification of the product (e.g., `Compute` or `Full-Site Delivery`). | [optional] 
+**product_line** | **string** | The broader classification of the product (e.g., `Network Services` or `Security`). | [optional] 
 **region** | **string** | The geographical area applicable for regionally based products. | [optional] 
 **usage_type** | **string** | The unit of measure (e.g., `requests` or `bandwidth`). | [optional] 
 

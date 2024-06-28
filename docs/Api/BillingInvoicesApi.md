@@ -65,8 +65,8 @@ Returns the list of invoices, sorted by billing start date (newest to oldest).
 
 ### Example
 ```php
-    $options['billing_start_date'] = 2023-01-01T00:00:00Z; // string
-$options['billing_end_date'] = 2023-01-31T00:00:00Z; // string
+    $options['billing_start_date'] = 2023-01-01; // string
+$options['billing_end_date'] = 2023-01-31; // string
 $options['limit'] = '100'; // string | Number of results per page. The maximum is 200.
 $options['cursor'] = 'cursor_example'; // string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 
