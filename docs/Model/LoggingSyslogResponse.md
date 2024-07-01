@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **hostname** | **string** | The hostname used for the syslog endpoint. | [optional] 
 **ipv4** | **string** | The IPv4 address used for the syslog endpoint. | [optional] 
 **token** | **string** | Whether to prepend each message with a specific token. | [optional]  [defaults to 'null']
-**use_tls** | [**\Fastly\Model\LoggingUseTls**](LoggingUseTls.md) |  | [optional] 
+**use_tls** | [**\Fastly\Model\LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional] 
 **created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

@@ -62,7 +62,7 @@ class LoggingKafkaAdditional implements ModelInterface, ArrayAccess, \JsonSerial
         'auth_method' => 'string',
         'user' => 'string',
         'password' => 'string',
-        'use_tls' => '\Fastly\Model\LoggingUseTls'
+        'use_tls' => '\Fastly\Model\LoggingUseTlsString'
     ];
 
     /**
@@ -582,7 +582,7 @@ class LoggingKafkaAdditional implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets use_tls
      *
-     * @return \Fastly\Model\LoggingUseTls|null
+     * @return \Fastly\Model\LoggingUseTlsString|null
      */
     public function getUseTls()
     {
@@ -592,7 +592,7 @@ class LoggingKafkaAdditional implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets use_tls
      *
-     * @param \Fastly\Model\LoggingUseTls|null $use_tls use_tls
+     * @param \Fastly\Model\LoggingUseTlsString|null $use_tls use_tls
      *
      * @return self
      */

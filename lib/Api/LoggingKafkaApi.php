@@ -139,7 +139,7 @@ class LoggingKafkaApi
      * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -181,7 +181,7 @@ class LoggingKafkaApi
      * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -311,7 +311,7 @@ class LoggingKafkaApi
      * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -356,7 +356,7 @@ class LoggingKafkaApi
      * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -427,7 +427,7 @@ class LoggingKafkaApi
      * @param  string $auth_method SASL authentication method. (optional)
      * @param  string $user SASL user. (optional)
      * @param  string $password SASL password. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -55,7 +55,7 @@ class LoggingLogentriesAdditional implements ModelInterface, ArrayAccess, \JsonS
     protected static $fastlyTypes = [
         'port' => 'int',
         'token' => 'string',
-        'use_tls' => '\Fastly\Model\LoggingUseTls',
+        'use_tls' => '\Fastly\Model\LoggingUseTlsString',
         'region' => 'string'
     ];
 
@@ -302,7 +302,7 @@ class LoggingLogentriesAdditional implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets use_tls
      *
-     * @return \Fastly\Model\LoggingUseTls|null
+     * @return \Fastly\Model\LoggingUseTlsString|null
      */
     public function getUseTls()
     {
@@ -312,7 +312,7 @@ class LoggingLogentriesAdditional implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets use_tls
      *
-     * @param \Fastly\Model\LoggingUseTls|null $use_tls use_tls
+     * @param \Fastly\Model\LoggingUseTlsString|null $use_tls use_tls
      *
      * @return self
      */

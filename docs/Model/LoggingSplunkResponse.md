@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **request_max_bytes** | **int** | The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional]  [defaults to 0]
 **url** | **string** | The URL to post logs to. | [optional] 
 **token** | **string** | A Splunk token for use in posting logs over HTTP to your collector. | [optional] 
-**use_tls** | [**\Fastly\Model\LoggingUseTls**](LoggingUseTls.md) |  | [optional] 
+**use_tls** | [**\Fastly\Model\LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional] 
 **created_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

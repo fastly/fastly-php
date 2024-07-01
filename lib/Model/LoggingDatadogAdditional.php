@@ -167,7 +167,11 @@ class LoggingDatadogAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     const REGION_US = 'US';
-    const REGION_EU = 'EU';
+    const REGION_US3 = 'US3';
+    const REGION_US5 = 'US5';
+    const REGION_EU__LEGACY_SAME_AS_EU1 = 'EU (legacy, same as EU1)';
+    const REGION_EU1 = 'EU1';
+    const REGION_AP1 = 'AP1';
 
     /**
      * Gets allowable values of the enum
@@ -178,7 +182,11 @@ class LoggingDatadogAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     {
         return [
             self::REGION_US,
-            self::REGION_EU,
+            self::REGION_US3,
+            self::REGION_US5,
+            self::REGION_EU__LEGACY_SAME_AS_EU1,
+            self::REGION_EU1,
+            self::REGION_AP1,
         ];
     }
 

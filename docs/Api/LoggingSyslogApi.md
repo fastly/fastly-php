@@ -51,7 +51,7 @@ $options['message_type'] = new \Fastly\Model\LoggingMessageType(); // \Fastly\Mo
 $options['hostname'] = 'hostname_example'; // string | The hostname used for the syslog endpoint.
 $options['ipv4'] = 'ipv4_example'; // string | The IPv4 address used for the syslog endpoint.
 $options['token'] = 'null'; // string | Whether to prepend each message with a specific token.
-$options['use_tls'] = new \Fastly\Model\LoggingUseTls(); // \Fastly\Model\LoggingUseTls
+$options['use_tls'] = new \Fastly\Model\LoggingUseTlsString(); // \Fastly\Model\LoggingUseTlsString
 
 try {
     $result = $apiInstance->createLogSyslog($options);
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 **hostname** | **string** | The hostname used for the syslog endpoint. | [optional]
 **ipv4** | **string** | The IPv4 address used for the syslog endpoint. | [optional]
 **token** | **string** | Whether to prepend each message with a specific token. | [optional] [defaults to 'null']
-**use_tls** | [**\Fastly\Model\LoggingUseTls**](../Model/LoggingUseTls.md) |  | [optional]
+**use_tls** | [**\Fastly\Model\LoggingUseTlsString**](../Model/LoggingUseTlsString.md) |  | [optional]
 
 ### Return type
 
@@ -232,7 +232,7 @@ $options['message_type'] = new \Fastly\Model\LoggingMessageType(); // \Fastly\Mo
 $options['hostname'] = 'hostname_example'; // string | The hostname used for the syslog endpoint.
 $options['ipv4'] = 'ipv4_example'; // string | The IPv4 address used for the syslog endpoint.
 $options['token'] = 'null'; // string | Whether to prepend each message with a specific token.
-$options['use_tls'] = new \Fastly\Model\LoggingUseTls(); // \Fastly\Model\LoggingUseTls
+$options['use_tls'] = new \Fastly\Model\LoggingUseTlsString(); // \Fastly\Model\LoggingUseTlsString
 
 try {
     $result = $apiInstance->updateLogSyslog($options);
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 **hostname** | **string** | The hostname used for the syslog endpoint. | [optional]
 **ipv4** | **string** | The IPv4 address used for the syslog endpoint. | [optional]
 **token** | **string** | Whether to prepend each message with a specific token. | [optional] [defaults to 'null']
-**use_tls** | [**\Fastly\Model\LoggingUseTls**](../Model/LoggingUseTls.md) |  | [optional]
+**use_tls** | [**\Fastly\Model\LoggingUseTlsString**](../Model/LoggingUseTlsString.md) |  | [optional]
 
 ### Return type
 

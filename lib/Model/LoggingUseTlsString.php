@@ -1,6 +1,6 @@
 <?php
 /**
- * LoggingUseTls
+ * LoggingUseTlsString
  *
  * PHP version 7.3
  *
@@ -25,21 +25,21 @@ namespace Fastly\Model;
 use \Fastly\ObjectSerializer;
 
 /**
- * LoggingUseTls Class Doc Comment
+ * LoggingUseTlsString Class Doc Comment
  *
  * @category Class
  * @description Whether to use TLS.
  * @package  Fastly
  * @author   oss@fastly.com
  */
-class LoggingUseTls
+class LoggingUseTlsString
 {
     /**
      * Possible values of this enum
      */
-    const NUMBER_no_tls = 0;
+    const no_tls = '0';
 
-    const NUMBER_use_tls = 1;
+    const use_tls = '1';
 
     /**
      * Gets allowable values of the enum
@@ -48,8 +48,8 @@ class LoggingUseTls
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_no_tls,
-            self::NUMBER_use_tls
+            self::no_tls,
+            self::use_tls
         ];
     }
 }

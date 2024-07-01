@@ -68,7 +68,7 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'hostname' => 'string',
         'ipv4' => 'string',
         'token' => 'string',
-        'use_tls' => '\Fastly\Model\LoggingUseTls',
+        'use_tls' => '\Fastly\Model\LoggingUseTlsString',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
@@ -752,7 +752,7 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets use_tls
      *
-     * @return \Fastly\Model\LoggingUseTls|null
+     * @return \Fastly\Model\LoggingUseTlsString|null
      */
     public function getUseTls()
     {
@@ -762,7 +762,7 @@ class LoggingSyslogResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets use_tls
      *
-     * @param \Fastly\Model\LoggingUseTls|null $use_tls use_tls
+     * @param \Fastly\Model\LoggingUseTlsString|null $use_tls use_tls
      *
      * @return self
      */

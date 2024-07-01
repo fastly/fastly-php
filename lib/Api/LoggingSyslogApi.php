@@ -136,7 +136,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -175,7 +175,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -302,7 +302,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -344,7 +344,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -412,7 +412,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1705,7 +1705,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1745,7 +1745,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1873,7 +1873,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1916,7 +1916,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1985,7 +1985,7 @@ class LoggingSyslogApi
      * @param  string $hostname The hostname used for the syslog endpoint. (optional)
      * @param  string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
      * @param  string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

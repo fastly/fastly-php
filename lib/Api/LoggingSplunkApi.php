@@ -134,7 +134,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -171,7 +171,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -296,7 +296,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -336,7 +336,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -402,7 +402,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1683,7 +1683,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1721,7 +1721,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1847,7 +1847,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1888,7 +1888,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1955,7 +1955,7 @@ class LoggingSplunkApi
      * @param  int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
      * @param  string $url The URL to post logs to. (optional)
      * @param  string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-     * @param  \Fastly\Model\LoggingUseTls $use_tls (optional)
+     * @param  \Fastly\Model\LoggingUseTlsString $use_tls (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

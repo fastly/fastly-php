@@ -49,7 +49,7 @@ $options['request_max_entries'] = 0; // int | The maximum number of logs sent in
 $options['request_max_bytes'] = 0; // int | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
 $options['url'] = 'url_example'; // string | The URL to post logs to.
 $options['token'] = 'token_example'; // string | A Splunk token for use in posting logs over HTTP to your collector.
-$options['use_tls'] = new \Fastly\Model\LoggingUseTls(); // \Fastly\Model\LoggingUseTls
+$options['use_tls'] = new \Fastly\Model\LoggingUseTlsString(); // \Fastly\Model\LoggingUseTlsString
 
 try {
     $result = $apiInstance->createLogSplunk($options);
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 **request_max_bytes** | **int** | The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional] [defaults to 0]
 **url** | **string** | The URL to post logs to. | [optional]
 **token** | **string** | A Splunk token for use in posting logs over HTTP to your collector. | [optional]
-**use_tls** | [**\Fastly\Model\LoggingUseTls**](../Model/LoggingUseTls.md) |  | [optional]
+**use_tls** | [**\Fastly\Model\LoggingUseTlsString**](../Model/LoggingUseTlsString.md) |  | [optional]
 
 ### Return type
 
@@ -226,7 +226,7 @@ $options['request_max_entries'] = 0; // int | The maximum number of logs sent in
 $options['request_max_bytes'] = 0; // int | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
 $options['url'] = 'url_example'; // string | The URL to post logs to.
 $options['token'] = 'token_example'; // string | A Splunk token for use in posting logs over HTTP to your collector.
-$options['use_tls'] = new \Fastly\Model\LoggingUseTls(); // \Fastly\Model\LoggingUseTls
+$options['use_tls'] = new \Fastly\Model\LoggingUseTlsString(); // \Fastly\Model\LoggingUseTlsString
 
 try {
     $result = $apiInstance->updateLogSplunk($options);
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 **request_max_bytes** | **int** | The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional] [defaults to 0]
 **url** | **string** | The URL to post logs to. | [optional]
 **token** | **string** | A Splunk token for use in posting logs over HTTP to your collector. | [optional]
-**use_tls** | [**\Fastly\Model\LoggingUseTls**](../Model/LoggingUseTls.md) |  | [optional]
+**use_tls** | [**\Fastly\Model\LoggingUseTlsString**](../Model/LoggingUseTlsString.md) |  | [optional]
 
 ### Return type
 

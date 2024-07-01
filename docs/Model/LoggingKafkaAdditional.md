@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **auth_method** | **string** | SASL authentication method. | [optional]  [one of: 'plain', 'scram-sha-256', 'scram-sha-512']
 **user** | **string** | SASL user. | [optional] 
 **password** | **string** | SASL password. | [optional] 
-**use_tls** | [**\Fastly\Model\LoggingUseTls**](LoggingUseTls.md) |  | [optional] 
+**use_tls** | [**\Fastly\Model\LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -60,7 +60,7 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
         'format_version' => 'string',
         'port' => 'int',
         'token' => 'string',
-        'use_tls' => '\Fastly\Model\LoggingUseTls',
+        'use_tls' => '\Fastly\Model\LoggingUseTlsString',
         'region' => 'string',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
@@ -552,7 +552,7 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets use_tls
      *
-     * @return \Fastly\Model\LoggingUseTls|null
+     * @return \Fastly\Model\LoggingUseTlsString|null
      */
     public function getUseTls()
     {
@@ -562,7 +562,7 @@ class LoggingLogentriesResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets use_tls
      *
-     * @param \Fastly\Model\LoggingUseTls|null $use_tls use_tls
+     * @param \Fastly\Model\LoggingUseTlsString|null $use_tls use_tls
      *
      * @return self
      */

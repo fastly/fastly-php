@@ -54,7 +54,7 @@ $options['parse_log_keyvals'] = True; // bool | Enables parsing of key=value tup
 $options['auth_method'] = 'auth_method_example'; // string | SASL authentication method.
 $options['user'] = 'user_example'; // string | SASL user.
 $options['password'] = 'password_example'; // string | SASL password.
-$options['use_tls'] = new \Fastly\Model\LoggingUseTls(); // \Fastly\Model\LoggingUseTls
+$options['use_tls'] = new \Fastly\Model\LoggingUseTlsString(); // \Fastly\Model\LoggingUseTlsString
 
 try {
     $result = $apiInstance->createLogKafka($options);
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 **auth_method** | **string** | SASL authentication method. | [optional] [one of: 'plain', 'scram-sha-256', 'scram-sha-512']
 **user** | **string** | SASL user. | [optional]
 **password** | **string** | SASL password. | [optional]
-**use_tls** | [**\Fastly\Model\LoggingUseTls**](../Model/LoggingUseTls.md) |  | [optional]
+**use_tls** | [**\Fastly\Model\LoggingUseTlsString**](../Model/LoggingUseTlsString.md) |  | [optional]
 
 ### Return type
 
