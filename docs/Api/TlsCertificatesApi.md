@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**createTlsCert()**](TlsCertificatesApi.md#createTlsCert) | **POST** /tls/certificates | Create a TLS certificate
 [**deleteTlsCert()**](TlsCertificatesApi.md#deleteTlsCert) | **DELETE** /tls/certificates/{tls_certificate_id} | Delete a TLS certificate
 [**getTlsCert()**](TlsCertificatesApi.md#getTlsCert) | **GET** /tls/certificates/{tls_certificate_id} | Get a TLS certificate
+[**getTlsCertBlob()**](TlsCertificatesApi.md#getTlsCertBlob) | **GET** /tls/certificates/{tls_certificate_id}/blob | Get a TLS certificate blob (Limited Availability)
 [**listTlsCerts()**](TlsCertificatesApi.md#listTlsCerts) | **GET** /tls/certificates | List TLS certificates
 [**updateTlsCert()**](TlsCertificatesApi.md#updateTlsCert) | **PATCH** /tls/certificates/{tls_certificate_id} | Update a TLS certificate
 
@@ -122,6 +123,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\TlsCertificateResponse**](../Model/TlsCertificateResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getTlsCertBlob()`
+
+```php
+getTlsCertBlob($options): \Fastly\Model\TlsCertificateBlobResponse // Get a TLS certificate blob (Limited Availability)
+```
+
+Retrieve a TLS certificate blob. This feature is part of a [limited availability](https://docs.fastly.com/products/fastly-product-lifecycle#limited-availability) release.
+
+### Example
+```php
+    $options['tls_certificate_id'] = 'tls_certificate_id_example'; // string | Alphanumeric string identifying a TLS certificate.
+
+try {
+    $result = $apiInstance->getTlsCertBlob($options);
+} catch (Exception $e) {
+    echo 'Exception when calling TlsCertificatesApi->getTlsCertBlob: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**tls_certificate_id** | **string** | Alphanumeric string identifying a TLS certificate. |
+
+### Return type
+
+[**\Fastly\Model\TlsCertificateBlobResponse**](../Model/TlsCertificateBlobResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -1,4 +1,4 @@
-# # InvoiceResponse
+# # EomInvoiceResponse
 
 ## Properties
 

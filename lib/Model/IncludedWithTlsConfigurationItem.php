@@ -1,6 +1,6 @@
 <?php
 /**
- * RelationshipTlsDnsRecord
+ * IncludedWithTlsConfigurationItem
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * RelationshipTlsDnsRecord Class Doc Comment
+ * IncludedWithTlsConfigurationItem Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RelationshipTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
+class IncludedWithTlsConfigurationItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class RelationshipTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $fastlyModelName = 'relationship_tls_dns_record';
+    protected static $fastlyModelName = 'included_with_tls_configuration_item';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,9 @@ class RelationshipTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'dns_record' => '\Fastly\Model\RelationshipTlsDnsRecordDnsRecord'
+        'id' => 'string',
+        'type' => '\Fastly\Model\TypeTlsDnsRecord',
+        'attributes' => '\Fastly\Model\TlsDnsRecord'
     ];
 
     /**
@@ -64,7 +66,9 @@ class RelationshipTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'dns_record' => null
+        'id' => null,
+        'type' => null,
+        'attributes' => null
     ];
 
     /**
@@ -94,7 +98,9 @@ class RelationshipTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'dns_record' => 'dns_record'
+        'id' => 'id',
+        'type' => 'type',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -103,7 +109,9 @@ class RelationshipTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'dns_record' => 'setDnsRecord'
+        'id' => 'setId',
+        'type' => 'setType',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -112,7 +120,9 @@ class RelationshipTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'dns_record' => 'getDnsRecord'
+        'id' => 'getId',
+        'type' => 'getType',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -172,7 +182,9 @@ class RelationshipTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['dns_record'] = $data['dns_record'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['attributes'] = $data['attributes'] ?? null;
     }
 
     /**
@@ -200,25 +212,73 @@ class RelationshipTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets dns_record
+     * Gets id
      *
-     * @return \Fastly\Model\RelationshipTlsDnsRecordDnsRecord|null
+     * @return string|null
      */
-    public function getDnsRecord()
+    public function getId()
     {
-        return $this->container['dns_record'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets dns_record
+     * Sets id
      *
-     * @param \Fastly\Model\RelationshipTlsDnsRecordDnsRecord|null $dns_record dns_record
+     * @param string|null $id The IP address or hostname of the DNS record.
      *
      * @return self
      */
-    public function setDnsRecord($dns_record)
+    public function setId($id)
     {
-        $this->container['dns_record'] = $dns_record;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \Fastly\Model\TypeTlsDnsRecord|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \Fastly\Model\TypeTlsDnsRecord|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return \Fastly\Model\TlsDnsRecord|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \Fastly\Model\TlsDnsRecord|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

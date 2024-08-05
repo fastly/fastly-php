@@ -1,11 +1,10 @@
-# # RelationshipMemberTlsDnsRecord
+# # RelationshipTlsDnsRecordsResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**\Fastly\Model\TypeTlsDnsRecord**](TypeTlsDnsRecord.md) |  | [optional] 
-**id** | **string** |  | [optional] [readonly] 
+**dns_records** | [**\Fastly\Model\RelationshipTlsDnsRecordsResponseDnsRecords**](RelationshipTlsDnsRecordsResponseDnsRecords.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

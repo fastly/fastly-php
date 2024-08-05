@@ -1,6 +1,6 @@
 <?php
 /**
- * RelationshipMemberTlsDnsRecord
+ * RelationshipTlsDnsRecordsResponse
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * RelationshipMemberTlsDnsRecord Class Doc Comment
+ * RelationshipTlsDnsRecordsResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
+class RelationshipTlsDnsRecordsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $fastlyModelName = 'relationship_member_tls_dns_record';
+    protected static $fastlyModelName = 'relationship_tls_dns_records_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,7 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'type' => '\Fastly\Model\TypeTlsDnsRecord',
-        'id' => 'string'
+        'dns_records' => '\Fastly\Model\RelationshipTlsDnsRecordsResponseDnsRecords'
     ];
 
     /**
@@ -65,8 +64,7 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'type' => null,
-        'id' => null
+        'dns_records' => null
     ];
 
     /**
@@ -96,8 +94,7 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'id' => 'id'
+        'dns_records' => 'dns_records'
     ];
 
     /**
@@ -106,8 +103,7 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'id' => 'setId'
+        'dns_records' => 'setDnsRecords'
     ];
 
     /**
@@ -116,8 +112,7 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'id' => 'getId'
+        'dns_records' => 'getDnsRecords'
     ];
 
     /**
@@ -177,8 +172,7 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['dns_records'] = $data['dns_records'] ?? null;
     }
 
     /**
@@ -206,49 +200,25 @@ class RelationshipMemberTlsDnsRecord implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets type
+     * Gets dns_records
      *
-     * @return \Fastly\Model\TypeTlsDnsRecord|null
+     * @return \Fastly\Model\RelationshipTlsDnsRecordsResponseDnsRecords|null
      */
-    public function getType()
+    public function getDnsRecords()
     {
-        return $this->container['type'];
+        return $this->container['dns_records'];
     }
 
     /**
-     * Sets type
+     * Sets dns_records
      *
-     * @param \Fastly\Model\TypeTlsDnsRecord|null $type type
+     * @param \Fastly\Model\RelationshipTlsDnsRecordsResponseDnsRecords|null $dns_records dns_records
      *
      * @return self
      */
-    public function setType($type)
+    public function setDnsRecords($dns_records)
     {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
+        $this->container['dns_records'] = $dns_records;
 
         return $this;
     }

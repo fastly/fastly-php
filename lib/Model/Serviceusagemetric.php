@@ -1,6 +1,6 @@
 <?php
 /**
- * RelationshipTlsDnsRecords
+ * Serviceusagemetric
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * RelationshipTlsDnsRecords Class Doc Comment
+ * Serviceusagemetric Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RelationshipTlsDnsRecords implements ModelInterface, ArrayAccess, \JsonSerializable
+class Serviceusagemetric implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class RelationshipTlsDnsRecords implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $fastlyModelName = 'relationship_tls_dns_records';
+    protected static $fastlyModelName = 'serviceusagemetric';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,10 @@ class RelationshipTlsDnsRecords implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'dns_records' => '\Fastly\Model\RelationshipTlsDnsRecordDnsRecord'
+        'customer_id' => 'string',
+        'service_id' => 'string',
+        'service_name' => 'string',
+        'usage_units' => 'float'
     ];
 
     /**
@@ -64,7 +67,10 @@ class RelationshipTlsDnsRecords implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'dns_records' => null
+        'customer_id' => null,
+        'service_id' => null,
+        'service_name' => null,
+        'usage_units' => null
     ];
 
     /**
@@ -94,7 +100,10 @@ class RelationshipTlsDnsRecords implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'dns_records' => 'dns_records'
+        'customer_id' => 'customer_id',
+        'service_id' => 'service_id',
+        'service_name' => 'service_name',
+        'usage_units' => 'usage_units'
     ];
 
     /**
@@ -103,7 +112,10 @@ class RelationshipTlsDnsRecords implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'dns_records' => 'setDnsRecords'
+        'customer_id' => 'setCustomerId',
+        'service_id' => 'setServiceId',
+        'service_name' => 'setServiceName',
+        'usage_units' => 'setUsageUnits'
     ];
 
     /**
@@ -112,7 +124,10 @@ class RelationshipTlsDnsRecords implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'dns_records' => 'getDnsRecords'
+        'customer_id' => 'getCustomerId',
+        'service_id' => 'getServiceId',
+        'service_name' => 'getServiceName',
+        'usage_units' => 'getUsageUnits'
     ];
 
     /**
@@ -172,7 +187,10 @@ class RelationshipTlsDnsRecords implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['dns_records'] = $data['dns_records'] ?? null;
+        $this->container['customer_id'] = $data['customer_id'] ?? null;
+        $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['service_name'] = $data['service_name'] ?? null;
+        $this->container['usage_units'] = $data['usage_units'] ?? null;
     }
 
     /**
@@ -200,25 +218,97 @@ class RelationshipTlsDnsRecords implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets dns_records
+     * Gets customer_id
      *
-     * @return \Fastly\Model\RelationshipTlsDnsRecordDnsRecord|null
+     * @return string|null
      */
-    public function getDnsRecords()
+    public function getCustomerId()
     {
-        return $this->container['dns_records'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets dns_records
+     * Sets customer_id
      *
-     * @param \Fastly\Model\RelationshipTlsDnsRecordDnsRecord|null $dns_records dns_records
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */
-    public function setDnsRecords($dns_records)
+    public function setCustomerId($customer_id)
     {
-        $this->container['dns_records'] = $dns_records;
+        $this->container['customer_id'] = $customer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_id
+     *
+     * @return string|null
+     */
+    public function getServiceId()
+    {
+        return $this->container['service_id'];
+    }
+
+    /**
+     * Sets service_id
+     *
+     * @param string|null $service_id Service ID associated with the usage.
+     *
+     * @return self
+     */
+    public function setServiceId($service_id)
+    {
+        $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_name
+     *
+     * @return string|null
+     */
+    public function getServiceName()
+    {
+        return $this->container['service_name'];
+    }
+
+    /**
+     * Sets service_name
+     *
+     * @param string|null $service_name Name of the service associated with the usage.
+     *
+     * @return self
+     */
+    public function setServiceName($service_name)
+    {
+        $this->container['service_name'] = $service_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets usage_units
+     *
+     * @return float|null
+     */
+    public function getUsageUnits()
+    {
+        return $this->container['usage_units'];
+    }
+
+    /**
+     * Sets usage_units
+     *
+     * @param float|null $usage_units The quantity of the usage for the billing period. Amount will be in the units provided in the parent object (e.g., a quantity of `1.3` with a unit of `gb` would have a usage amount of 1.3 gigabytes).
+     *
+     * @return self
+     */
+    public function setUsageUnits($usage_units)
+    {
+        $this->container['usage_units'] = $usage_units;
 
         return $this;
     }

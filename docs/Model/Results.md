@@ -252,6 +252,7 @@ Name | Type | Description | Notes
 **all_status_3xx** | **int** | Number of \&quot;Redirection\&quot; codes delivered for all sources. | [optional] 
 **all_status_4xx** | **int** | Number of \&quot;Client Error\&quot; codes delivered for all sources. | [optional] 
 **all_status_5xx** | **int** | Number of \&quot;Server Error\&quot; codes delivered for all sources. | [optional] 
+**origin_offload** | **float** | Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((`edge_resp_body_bytes` + `edge_resp_header_bytes`) - (`origin_fetch_resp_body_bytes` + `origin_fetch_resp_header_bytes`)) / (`edge_resp_body_bytes` + `edge_resp_header_bytes`). | [optional] 
 **service_id** | **string** |  | [optional] [readonly] 
 **start_time** | **int** | Timestamp for the start of the time period being reported | [optional] 
 

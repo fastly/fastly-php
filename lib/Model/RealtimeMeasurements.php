@@ -301,7 +301,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_2xx' => 'int',
         'all_status_3xx' => 'int',
         'all_status_4xx' => 'int',
-        'all_status_5xx' => 'int'
+        'all_status_5xx' => 'int',
+        'origin_offload' => 'float'
     ];
 
     /**
@@ -559,7 +560,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_2xx' => null,
         'all_status_3xx' => null,
         'all_status_4xx' => null,
-        'all_status_5xx' => null
+        'all_status_5xx' => null,
+        'origin_offload' => null
     ];
 
     /**
@@ -836,7 +838,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_2xx' => 'all_status_2xx',
         'all_status_3xx' => 'all_status_3xx',
         'all_status_4xx' => 'all_status_4xx',
-        'all_status_5xx' => 'all_status_5xx'
+        'all_status_5xx' => 'all_status_5xx',
+        'origin_offload' => 'origin_offload'
     ];
 
     /**
@@ -1092,7 +1095,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_2xx' => 'setAllStatus2xx',
         'all_status_3xx' => 'setAllStatus3xx',
         'all_status_4xx' => 'setAllStatus4xx',
-        'all_status_5xx' => 'setAllStatus5xx'
+        'all_status_5xx' => 'setAllStatus5xx',
+        'origin_offload' => 'setOriginOffload'
     ];
 
     /**
@@ -1348,7 +1352,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_2xx' => 'getAllStatus2xx',
         'all_status_3xx' => 'getAllStatus3xx',
         'all_status_4xx' => 'getAllStatus4xx',
-        'all_status_5xx' => 'getAllStatus5xx'
+        'all_status_5xx' => 'getAllStatus5xx',
+        'origin_offload' => 'getOriginOffload'
     ];
 
     /**
@@ -1656,6 +1661,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['all_status_3xx'] = $data['all_status_3xx'] ?? null;
         $this->container['all_status_4xx'] = $data['all_status_4xx'] ?? null;
         $this->container['all_status_5xx'] = $data['all_status_5xx'] ?? null;
+        $this->container['origin_offload'] = $data['origin_offload'] ?? null;
     }
 
     /**
@@ -7634,6 +7640,30 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setAllStatus5xx($all_status_5xx)
     {
         $this->container['all_status_5xx'] = $all_status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_offload
+     *
+     * @return float|null
+     */
+    public function getOriginOffload()
+    {
+        return $this->container['origin_offload'];
+    }
+
+    /**
+     * Sets origin_offload
+     *
+     * @param float|null $origin_offload Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((`edge_resp_body_bytes` + `edge_resp_header_bytes`) - (`origin_fetch_resp_body_bytes` + `origin_fetch_resp_header_bytes`)) / (`edge_resp_body_bytes` + `edge_resp_header_bytes`).
+     *
+     * @return self
+     */
+    public function setOriginOffload($origin_offload)
+    {
+        $this->container['origin_offload'] = $origin_offload;
 
         return $this;
     }

@@ -123,7 +123,7 @@ class BillingInvoicesApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InvoiceResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error
+     * @return \Fastly\Model\EomInvoiceResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error
      */
     public function getInvoiceByInvoiceId($options)
     {
@@ -145,7 +145,7 @@ class BillingInvoicesApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InvoiceResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\EomInvoiceResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoiceByInvoiceIdWithHttpInfo($options)
     {
@@ -200,14 +200,14 @@ class BillingInvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InvoiceResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\EomInvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\EomInvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -249,7 +249,7 @@ class BillingInvoicesApi
                     ];
             }
 
-            $returnType = '\Fastly\Model\InvoiceResponse';
+            $returnType = '\Fastly\Model\EomInvoiceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -267,7 +267,7 @@ class BillingInvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InvoiceResponse',
+                        '\Fastly\Model\EomInvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -343,7 +343,7 @@ class BillingInvoicesApi
      */
     public function getInvoiceByInvoiceIdAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InvoiceResponse';
+        $returnType = '\Fastly\Model\EomInvoiceResponse';
         $request = $this->getInvoiceByInvoiceIdRequest($options);
 
         return $this->client
@@ -492,6 +492,408 @@ class BillingInvoicesApi
     }
 
     /**
+     * Operation getMonthToDateInvoice
+     *
+     * Get month-to-date invoice.
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Fastly\Model\MtdInvoiceResponse|\Fastly\Model\AsyncResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error
+     */
+    public function getMonthToDateInvoice($options)
+    {
+        list($response) = $this->getMonthToDateInvoiceWithHttpInfo($options);
+        return $response;
+    }
+
+    /**
+     * Operation getMonthToDateInvoiceWithHttpInfo
+     *
+     * Get month-to-date invoice.
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Fastly\Model\MtdInvoiceResponse|\Fastly\Model\AsyncResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getMonthToDateInvoiceWithHttpInfo($options)
+    {
+        $request = $this->getMonthToDateInvoiceRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            if ('GET' != 'GET' && 'GET' != 'HEAD') {
+                $header = $response->getHeader('Fastly-RateLimit-Remaining');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitRemaining($header[0]);
+                }
+
+                $header = $response->getHeader('Fastly-RateLimit-Reset');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitReset($header[0]);
+                }
+            } 
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Fastly\Model\MtdInvoiceResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\MtdInvoiceResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 202:
+                    if ('\Fastly\Model\AsyncResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AsyncResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Fastly\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Fastly\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Fastly\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Fastly\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\MtdInvoiceResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\MtdInvoiceResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 202:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\AsyncResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getMonthToDateInvoiceAsync
+     *
+     * Get month-to-date invoice.
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMonthToDateInvoiceAsync($options)
+    {
+        return $this->getMonthToDateInvoiceAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getMonthToDateInvoiceAsyncWithHttpInfo
+     *
+     * Get month-to-date invoice.
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMonthToDateInvoiceAsyncWithHttpInfo($options)
+    {
+        $returnType = '\Fastly\Model\MtdInvoiceResponse';
+        $request = $this->getMonthToDateInvoiceRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getMonthToDateInvoice'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getMonthToDateInvoiceRequest($options)
+    {
+        // unbox the parameters from the associative array
+
+
+        $resourcePath = '/billing/v3/invoices/month-to-date';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listInvoices
      *
      * List of invoices.
@@ -508,7 +910,7 @@ class BillingInvoicesApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\ListInvoicesResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error
+     * @return \Fastly\Model\ListEomInvoicesResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error
      */
     public function listInvoices($options)
     {
@@ -533,7 +935,7 @@ class BillingInvoicesApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\ListInvoicesResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\ListEomInvoicesResponse|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInvoicesWithHttpInfo($options)
     {
@@ -588,14 +990,14 @@ class BillingInvoicesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\ListInvoicesResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\ListEomInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ListInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\ListEomInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -637,7 +1039,7 @@ class BillingInvoicesApi
                     ];
             }
 
-            $returnType = '\Fastly\Model\ListInvoicesResponse';
+            $returnType = '\Fastly\Model\ListEomInvoicesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -655,7 +1057,7 @@ class BillingInvoicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ListInvoicesResponse',
+                        '\Fastly\Model\ListEomInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -737,7 +1139,7 @@ class BillingInvoicesApi
      */
     public function listInvoicesAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\ListInvoicesResponse';
+        $returnType = '\Fastly\Model\ListEomInvoicesResponse';
         $request = $this->listInvoicesRequest($options);
 
         return $this->client

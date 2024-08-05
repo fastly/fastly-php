@@ -302,6 +302,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_3xx' => 'int',
         'all_status_4xx' => 'int',
         'all_status_5xx' => 'int',
+        'origin_offload' => 'float',
         'service_id' => 'string',
         'start_time' => 'int'
     ];
@@ -562,6 +563,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_3xx' => null,
         'all_status_4xx' => null,
         'all_status_5xx' => null,
+        'origin_offload' => null,
         'service_id' => null,
         'start_time' => null
     ];
@@ -841,6 +843,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_3xx' => 'all_status_3xx',
         'all_status_4xx' => 'all_status_4xx',
         'all_status_5xx' => 'all_status_5xx',
+        'origin_offload' => 'origin_offload',
         'service_id' => 'service_id',
         'start_time' => 'start_time'
     ];
@@ -1099,6 +1102,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_3xx' => 'setAllStatus3xx',
         'all_status_4xx' => 'setAllStatus4xx',
         'all_status_5xx' => 'setAllStatus5xx',
+        'origin_offload' => 'setOriginOffload',
         'service_id' => 'setServiceId',
         'start_time' => 'setStartTime'
     ];
@@ -1357,6 +1361,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_3xx' => 'getAllStatus3xx',
         'all_status_4xx' => 'getAllStatus4xx',
         'all_status_5xx' => 'getAllStatus5xx',
+        'origin_offload' => 'getOriginOffload',
         'service_id' => 'getServiceId',
         'start_time' => 'getStartTime'
     ];
@@ -1666,6 +1671,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['all_status_3xx'] = $data['all_status_3xx'] ?? null;
         $this->container['all_status_4xx'] = $data['all_status_4xx'] ?? null;
         $this->container['all_status_5xx'] = $data['all_status_5xx'] ?? null;
+        $this->container['origin_offload'] = $data['origin_offload'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
     }
@@ -7646,6 +7652,30 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAllStatus5xx($all_status_5xx)
     {
         $this->container['all_status_5xx'] = $all_status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_offload
+     *
+     * @return float|null
+     */
+    public function getOriginOffload()
+    {
+        return $this->container['origin_offload'];
+    }
+
+    /**
+     * Sets origin_offload
+     *
+     * @param float|null $origin_offload Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((`edge_resp_body_bytes` + `edge_resp_header_bytes`) - (`origin_fetch_resp_body_bytes` + `origin_fetch_resp_header_bytes`)) / (`edge_resp_body_bytes` + `edge_resp_header_bytes`).
+     *
+     * @return self
+     */
+    public function setOriginOffload($origin_offload)
+    {
+        $this->container['origin_offload'] = $origin_offload;
 
         return $this;
     }

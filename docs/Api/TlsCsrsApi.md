@@ -30,7 +30,7 @@ Creates a certificate signing request (CSR).
 
 ### Example
 ```php
-    $options['tls_csr'] = {"data":{"type":"csr","attributes":{"sans":["DOMAIN_NAME"],"common_name":"DOMAIN_NAME","key_type":"RSA2048","country":"US","state":"California","city":"San Francisco","organization":"Fastly, Inc.","organizational_unit":"Engineering"},"relationships":{"tls_private_key":{"data":{"type":"tls_private_key","id":"KeYguUGZzb2W9Euo4moOR"}}}}}; // \Fastly\Model\TlsCsr
+    $options['tls_csr'] = {"value":{"data":{"type":"csr","attributes":{"sans":["DOMAIN_NAME"],"common_name":"DOMAIN_NAME","key_type":"RSA2048","country":"US","state":"California","city":"San Francisco","organization":"Fastly, Inc.","organizational_unit":"Engineering"},"relationships":{"tls_private_key":{"data":{"type":"tls_private_key","id":"KeYguUGZzb2W9Euo4moOR"}}}}}}; // \Fastly\Model\TlsCsr
 
 try {
     $result = $apiInstance->createCsr($options);

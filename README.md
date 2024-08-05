@@ -118,7 +118,10 @@ Class | Method | Description
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**getBillingAddr**](docs/Api/BillingAddressApi.md#getbillingaddr) | Get a billing address
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**updateBillingAddr**](docs/Api/BillingAddressApi.md#updatebillingaddr) | Update a billing address
 [*BillingInvoicesApi*](docs/Api/BillingInvoicesApi.md) | [**getInvoiceByInvoiceId**](docs/Api/BillingInvoicesApi.md#getinvoicebyinvoiceid) | Get invoice by ID.
+[*BillingInvoicesApi*](docs/Api/BillingInvoicesApi.md) | [**getMonthToDateInvoice**](docs/Api/BillingInvoicesApi.md#getmonthtodateinvoice) | Get month-to-date invoice.
 [*BillingInvoicesApi*](docs/Api/BillingInvoicesApi.md) | [**listInvoices**](docs/Api/BillingInvoicesApi.md#listinvoices) | List of invoices.
+[*BillingUsageMetricsApi*](docs/Api/BillingUsageMetricsApi.md) | [**getServiceLevelUsage**](docs/Api/BillingUsageMetricsApi.md#getservicelevelusage) | Retrieve service-level usage metrics for a product.
+[*BillingUsageMetricsApi*](docs/Api/BillingUsageMetricsApi.md) | [**getServiceLevelUsageTypes**](docs/Api/BillingUsageMetricsApi.md#getservicelevelusagetypes) | Retrieve product usage types for a customer.
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**createCacheSettings**](docs/Api/CacheSettingsApi.md#createcachesettings) | Create a cache settings object
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**deleteCacheSettings**](docs/Api/CacheSettingsApi.md#deletecachesettings) | Delete a cache settings object
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**getCacheSettings**](docs/Api/CacheSettingsApi.md#getcachesettings) | Get a cache settings object
@@ -430,6 +433,11 @@ Class | Method | Description
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**getMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#getmutualauthentication) | Get a Mutual Authentication
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**listMutualAuthentications**](docs/Api/MutualAuthenticationApi.md#listmutualauthentications) | List Mutual Authentications
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**patchMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#patchmutualauthentication) | Update a Mutual Authentication
+[*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**createDashboard**](docs/Api/ObservabilityCustomDashboardsApi.md#createdashboard) | Create a new dashboard
+[*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**deleteDashboard**](docs/Api/ObservabilityCustomDashboardsApi.md#deletedashboard) | Delete an existing dashboard
+[*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**getDashboard**](docs/Api/ObservabilityCustomDashboardsApi.md#getdashboard) | Retrieve a dashboard by ID
+[*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**listDashboards**](docs/Api/ObservabilityCustomDashboardsApi.md#listdashboards) | List all custom dashboards
+[*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**updateDashboard**](docs/Api/ObservabilityCustomDashboardsApi.md#updatedashboard) | Update an existing dashboard
 [*OriginInspectorHistoricalApi*](docs/Api/OriginInspectorHistoricalApi.md) | [**getOriginInspectorHistorical**](docs/Api/OriginInspectorHistoricalApi.md#getorigininspectorhistorical) | Get historical origin data for a service
 [*OriginInspectorRealtimeApi*](docs/Api/OriginInspectorRealtimeApi.md) | [**getOriginInspectorLast120Seconds**](docs/Api/OriginInspectorRealtimeApi.md#getorigininspectorlast120seconds) | Get real-time origin data for the last 120 seconds
 [*OriginInspectorRealtimeApi*](docs/Api/OriginInspectorRealtimeApi.md) | [**getOriginInspectorLastMaxEntries**](docs/Api/OriginInspectorRealtimeApi.md#getorigininspectorlastmaxentries) | Get a limited number of real-time origin data entries
@@ -531,6 +539,7 @@ Class | Method | Description
 [*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**createTlsCert**](docs/Api/TlsCertificatesApi.md#createtlscert) | Create a TLS certificate
 [*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**deleteTlsCert**](docs/Api/TlsCertificatesApi.md#deletetlscert) | Delete a TLS certificate
 [*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**getTlsCert**](docs/Api/TlsCertificatesApi.md#gettlscert) | Get a TLS certificate
+[*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**getTlsCertBlob**](docs/Api/TlsCertificatesApi.md#gettlscertblob) | Get a TLS certificate blob (Limited Availability)
 [*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**listTlsCerts**](docs/Api/TlsCertificatesApi.md#listtlscerts) | List TLS certificates
 [*TlsCertificatesApi*](docs/Api/TlsCertificatesApi.md) | [**updateTlsCert**](docs/Api/TlsCertificatesApi.md#updatetlscert) | Update a TLS certificate
 [*TlsConfigurationsApi*](docs/Api/TlsConfigurationsApi.md) | [**getTlsConfig**](docs/Api/TlsConfigurationsApi.md#gettlsconfig) | Get a TLS configuration
@@ -628,6 +637,8 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/alerts/definitions/{definition_id}`](https://www.fastly.com/documentation/reference/api/observability/alerts/definitions) (DELETE, GET, PUT)
 - [`/alerts/definitions`](https://www.fastly.com/documentation/reference/api/observability/alerts/definitions) (GET, POST)
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
+- [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/notifications/integration-types`](https://developer.fastly.com/reference/api/observability/notification) (GET)
 - [`/notifications/integrations/{integration_id}/rotateSigningKey`](https://developer.fastly.com/reference/api/observability/notification) (POST)
 - [`/notifications/integrations/{integration_id}/signingKey`](https://developer.fastly.com/reference/api/observability/notification) (GET)
@@ -637,7 +648,9 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/resources/stores/kv/{store_id}/batch`](https://www.fastly.com/documentation/reference/api/services/resources/kv-store-item) (PUT)
 - [`/tls/activations/{tls_activation_id}`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET, PATCH)
 - [`/tls/activations`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET)
-- [`/tls/preview/domains/{tls_preview_domain_id}`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
+- [`/tls/configurations/{tls_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/tls/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/tls/preview/domains/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
 - [`/tls/preview/domains`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
 - [`/v1/channel/{service_id}/ts/h`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)

@@ -1,6 +1,6 @@
 <?php
 /**
- * ListInvoicesResponse
+ * GetServiceLevelUsageResponse
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * ListInvoicesResponse Class Doc Comment
+ * GetServiceLevelUsageResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetServiceLevelUsageResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $fastlyModelName = 'list_invoices_response';
+    protected static $fastlyModelName = 'get_service_level_usage_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,7 @@ class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\Invoice[]',
-        'meta' => '\Fastly\Model\Metadata'
+        'data' => '\Fastly\Model\ServiceusagemetricsData'
     ];
 
     /**
@@ -65,8 +64,7 @@ class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null,
-        'meta' => null
+        'data' => null
     ];
 
     /**
@@ -96,8 +94,7 @@ class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'meta' => 'meta'
+        'data' => 'data'
     ];
 
     /**
@@ -106,8 +103,7 @@ class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'meta' => 'setMeta'
+        'data' => 'setData'
     ];
 
     /**
@@ -116,8 +112,7 @@ class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'meta' => 'getMeta'
+        'data' => 'getData'
     ];
 
     /**
@@ -178,7 +173,6 @@ class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['data'] = $data['data'] ?? null;
-        $this->container['meta'] = $data['meta'] ?? null;
     }
 
     /**
@@ -208,7 +202,7 @@ class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets data
      *
-     * @return \Fastly\Model\Invoice[]|null
+     * @return \Fastly\Model\ServiceusagemetricsData|null
      */
     public function getData()
     {
@@ -218,37 +212,13 @@ class ListInvoicesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets data
      *
-     * @param \Fastly\Model\Invoice[]|null $data data
+     * @param \Fastly\Model\ServiceusagemetricsData|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets meta
-     *
-     * @return \Fastly\Model\Metadata|null
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param \Fastly\Model\Metadata|null $meta meta
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        $this->container['meta'] = $meta;
 
         return $this;
     }

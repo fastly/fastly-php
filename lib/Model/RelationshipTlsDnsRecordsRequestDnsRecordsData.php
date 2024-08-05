@@ -1,6 +1,6 @@
 <?php
 /**
- * RelationshipTlsDnsRecordDnsRecord
+ * RelationshipTlsDnsRecordsRequestDnsRecordsData
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * RelationshipTlsDnsRecordDnsRecord Class Doc Comment
+ * RelationshipTlsDnsRecordsRequestDnsRecordsData Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RelationshipTlsDnsRecordDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
+class RelationshipTlsDnsRecordsRequestDnsRecordsData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class RelationshipTlsDnsRecordDnsRecord implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $fastlyModelName = 'relationship_tls_dns_record_dns_record';
+    protected static $fastlyModelName = 'relationship_tls_dns_records_request_dns_records_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,8 @@ class RelationshipTlsDnsRecordDnsRecord implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\RelationshipMemberTlsDnsRecord[]'
+        'type' => '\Fastly\Model\TypeTlsDnsRecord',
+        'id' => 'string'
     ];
 
     /**
@@ -64,7 +65,8 @@ class RelationshipTlsDnsRecordDnsRecord implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null
+        'type' => null,
+        'id' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class RelationshipTlsDnsRecordDnsRecord implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'type' => 'type',
+        'id' => 'id'
     ];
 
     /**
@@ -103,7 +106,8 @@ class RelationshipTlsDnsRecordDnsRecord implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'type' => 'setType',
+        'id' => 'setId'
     ];
 
     /**
@@ -112,7 +116,8 @@ class RelationshipTlsDnsRecordDnsRecord implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'type' => 'getType',
+        'id' => 'getId'
     ];
 
     /**
@@ -172,7 +177,8 @@ class RelationshipTlsDnsRecordDnsRecord implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -200,25 +206,49 @@ class RelationshipTlsDnsRecordDnsRecord implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets data
+     * Gets type
      *
-     * @return \Fastly\Model\RelationshipMemberTlsDnsRecord[]|null
+     * @return \Fastly\Model\TypeTlsDnsRecord|null
      */
-    public function getData()
+    public function getType()
     {
-        return $this->container['data'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets data
+     * Sets type
      *
-     * @param \Fastly\Model\RelationshipMemberTlsDnsRecord[]|null $data data
+     * @param \Fastly\Model\TypeTlsDnsRecord|null $type type
      *
      * @return self
      */
-    public function setData($data)
+    public function setType($type)
     {
-        $this->container['data'] = $data;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

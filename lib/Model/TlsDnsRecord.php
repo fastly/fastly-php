@@ -53,7 +53,6 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string',
         'region' => 'string',
         'record_type' => 'string'
     ];
@@ -66,7 +65,6 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null,
         'region' => null,
         'record_type' => null
     ];
@@ -98,7 +96,6 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'region' => 'region',
         'record_type' => 'record_type'
     ];
@@ -109,7 +106,6 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'region' => 'setRegion',
         'record_type' => 'setRecordType'
     ];
@@ -120,7 +116,6 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'region' => 'getRegion',
         'record_type' => 'getRecordType'
     ];
@@ -166,6 +161,40 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
+    const REGION_CUSTOM = 'custom';
+    const REGION__GLOBAL = 'global';
+    const REGION_NA_EU = 'na/eu';
+    const RECORD_TYPE_CNAME = 'CNAME';
+    const RECORD_TYPE_A = 'A';
+    const RECORD_TYPE_AAAA = 'AAAA';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRegionAllowableValues()
+    {
+        return [
+            self::REGION_CUSTOM,
+            self::REGION__GLOBAL,
+            self::REGION_NA_EU,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRecordTypeAllowableValues()
+    {
+        return [
+            self::RECORD_TYPE_CNAME,
+            self::RECORD_TYPE_A,
+            self::RECORD_TYPE_AAAA,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -182,7 +211,6 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['region'] = $data['region'] ?? null;
         $this->container['record_type'] = $data['record_type'] ?? null;
     }
@@ -195,6 +223,24 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getRegionAllowableValues();
+        if (!is_null($this->container['region']) && !in_array($this->container['region'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'region', must be one of '%s'",
+                $this->container['region'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getRecordTypeAllowableValues();
+        if (!is_null($this->container['record_type']) && !in_array($this->container['record_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'record_type', must be one of '%s'",
+                $this->container['record_type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -212,30 +258,6 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id The IP address or hostname of the DNS record.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets region
      *
      * @return string|null
@@ -248,12 +270,22 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets region
      *
-     * @param string|null $region Specifies the regions that will be used to route traffic. Select DNS Records with a `global` region to route traffic to the most performant point of presence (POP) worldwide (global pricing will apply). Select DNS records with a `us-eu` region to exclusively land traffic on North American and European POPs.
+     * @param string|null $region Specifies the regions that will be used to route traffic. Select DNS records with a `global` region to route traffic to the most performant point of presence (POP) worldwide (global pricing will apply). Select DNS records with a `na/eu` region to exclusively land traffic on North American and European POPs.
      *
      * @return self
      */
     public function setRegion($region)
     {
+        $allowedValues = $this->getRegionAllowableValues();
+        if (!is_null($region) && !in_array($region, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'region', must be one of '%s'",
+                    $region,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['region'] = $region;
 
         return $this;
@@ -278,6 +310,16 @@ class TlsDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setRecordType($record_type)
     {
+        $allowedValues = $this->getRecordTypeAllowableValues();
+        if (!is_null($record_type) && !in_array($record_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'record_type', must be one of '%s'",
+                    $record_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['record_type'] = $record_type;
 
         return $this;

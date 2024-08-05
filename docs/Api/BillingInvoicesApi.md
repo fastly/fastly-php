@@ -18,13 +18,14 @@ $apiInstance = new Fastly\Api\BillingInvoicesApi(
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**getInvoiceByInvoiceId()**](BillingInvoicesApi.md#getInvoiceByInvoiceId) | **GET** /billing/v3/invoices/{invoice_id} | Get invoice by ID.
+[**getMonthToDateInvoice()**](BillingInvoicesApi.md#getMonthToDateInvoice) | **GET** /billing/v3/invoices/month-to-date | Get month-to-date invoice.
 [**listInvoices()**](BillingInvoicesApi.md#listInvoices) | **GET** /billing/v3/invoices | List of invoices.
 
 
 ## `getInvoiceByInvoiceId()`
 
 ```php
-getInvoiceByInvoiceId($options): \Fastly\Model\InvoiceResponse // Get invoice by ID.
+getInvoiceByInvoiceId($options): \Fastly\Model\EomInvoiceResponse // Get invoice by ID.
 ```
 
 Returns invoice associated with the invoice id.
@@ -50,7 +51,38 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InvoiceResponse**](../Model/InvoiceResponse.md)
+[**\Fastly\Model\EomInvoiceResponse**](../Model/EomInvoiceResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getMonthToDateInvoice()`
+
+```php
+getMonthToDateInvoice($options): \Fastly\Model\MtdInvoiceResponse // Get month-to-date invoice.
+```
+
+Returns month-to-date invoice for the current month.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getMonthToDateInvoice($options);
+} catch (Exception $e) {
+    echo 'Exception when calling BillingInvoicesApi->getMonthToDateInvoice: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\MtdInvoiceResponse**](../Model/MtdInvoiceResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -58,7 +90,7 @@ Name | Type | Description  | Notes
 ## `listInvoices()`
 
 ```php
-listInvoices($options): \Fastly\Model\ListInvoicesResponse // List of invoices.
+listInvoices($options): \Fastly\Model\ListEomInvoicesResponse // List of invoices.
 ```
 
 Returns the list of invoices, sorted by billing start date (newest to oldest).
@@ -90,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\ListInvoicesResponse**](../Model/ListInvoicesResponse.md)
+[**\Fastly\Model\ListEomInvoicesResponse**](../Model/ListEomInvoicesResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
