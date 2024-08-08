@@ -55,12 +55,11 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'end_time' => '\DateTime',
         'start_time' => '\DateTime',
-        'invoice_id' => 'string',
         'customer_id' => 'string',
         'vendor_state' => 'string',
         'status' => '\Fastly\Model\BillingStatus',
         'total' => '\Fastly\Model\BillingTotal',
-        'regions' => 'array<string,array<string,object>>'
+        'regions' => 'array<string,\Fastly\Model\BillingRegions>'
     ];
 
     /**
@@ -73,7 +72,6 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyFormats = [
         'end_time' => 'date-time',
         'start_time' => 'date-time',
-        'invoice_id' => null,
         'customer_id' => null,
         'vendor_state' => null,
         'status' => null,
@@ -110,7 +108,6 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'end_time' => 'end_time',
         'start_time' => 'start_time',
-        'invoice_id' => 'invoice_id',
         'customer_id' => 'customer_id',
         'vendor_state' => 'vendor_state',
         'status' => 'status',
@@ -126,7 +123,6 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'end_time' => 'setEndTime',
         'start_time' => 'setStartTime',
-        'invoice_id' => 'setInvoiceId',
         'customer_id' => 'setCustomerId',
         'vendor_state' => 'setVendorState',
         'status' => 'setStatus',
@@ -142,7 +138,6 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'end_time' => 'getEndTime',
         'start_time' => 'getStartTime',
-        'invoice_id' => 'getInvoiceId',
         'customer_id' => 'getCustomerId',
         'vendor_state' => 'getVendorState',
         'status' => 'getStatus',
@@ -209,7 +204,6 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['end_time'] = $data['end_time'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
-        $this->container['invoice_id'] = $data['invoice_id'] ?? null;
         $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['vendor_state'] = $data['vendor_state'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
@@ -285,30 +279,6 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStartTime($start_time)
     {
         $this->container['start_time'] = $start_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoice_id
-     *
-     * @return string|null
-     */
-    public function getInvoiceId()
-    {
-        return $this->container['invoice_id'];
-    }
-
-    /**
-     * Sets invoice_id
-     *
-     * @param string|null $invoice_id invoice_id
-     *
-     * @return self
-     */
-    public function setInvoiceId($invoice_id)
-    {
-        $this->container['invoice_id'] = $invoice_id;
 
         return $this;
     }
@@ -412,7 +382,7 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets regions
      *
-     * @return array<string,array<string,object>>|null
+     * @return array<string,\Fastly\Model\BillingRegions>|null
      */
     public function getRegions()
     {
@@ -422,7 +392,7 @@ class Billing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets regions
      *
-     * @param array<string,array<string,object>>|null $regions Breakdown of regional data for products that are region based.
+     * @param array<string,\Fastly\Model\BillingRegions>|null $regions Breakdown of regional data for products that are region based.
      *
      * @return self
      */

@@ -32,7 +32,7 @@ Returns invoice associated with the invoice id.
 
 ### Example
 ```php
-    $options['invoice_id'] = 'invoice_id_example'; // string | Alphanumeric string identifying the invoice.
+    $options['invoice_id'] = 4183280; // int
 
 try {
     $result = $apiInstance->getInvoiceByInvoiceId($options);
@@ -47,7 +47,7 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**invoice_id** | **string** | Alphanumeric string identifying the invoice. |
+**invoice_id** | **int** |  |
 
 ### Return type
 

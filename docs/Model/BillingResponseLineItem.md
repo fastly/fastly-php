@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **amount** | **float** |  | [optional] 
-**aria_invoice_id** | [**\Fastly\Model\LineItemDataReadOnlyInvoiceId**](LineItemDataReadOnlyInvoiceId.md) |  | [optional] 
+**aria_invoice_id** | **string** | An alphanumeric string identifying the invoice. | [optional] [readonly] 
 **client_service_id** | **string** |  | [optional] 
 **credit_coupon_code** | **string** |  | [optional] 
 **description** | **string** |  | [optional] 

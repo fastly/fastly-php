@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemDataReadOnlyInvoiceId
+ * BillingInvoiceId
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * LineItemDataReadOnlyInvoiceId Class Doc Comment
+ * BillingInvoiceId Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \JsonSerializable
+class BillingInvoiceId implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $fastlyModelName = 'line_item_data_read_only_invoice_id';
+    protected static $fastlyModelName = 'billing_invoice_id';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,7 @@ class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $fastlyTypes = [
-        
+        'invoice_id' => 'int'
     ];
 
     /**
@@ -64,7 +64,7 @@ class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        
+        'invoice_id' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'invoice_id' => 'invoice_id'
     ];
 
     /**
@@ -103,7 +103,7 @@ class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        
+        'invoice_id' => 'setInvoiceId'
     ];
 
     /**
@@ -112,7 +112,7 @@ class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        
+        'invoice_id' => 'getInvoiceId'
     ];
 
     /**
@@ -172,6 +172,7 @@ class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
+        $this->container['invoice_id'] = $data['invoice_id'] ?? null;
     }
 
     /**
@@ -197,6 +198,30 @@ class LineItemDataReadOnlyInvoiceId implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets invoice_id
+     *
+     * @return int|null
+     */
+    public function getInvoiceId()
+    {
+        return $this->container['invoice_id'];
+    }
+
+    /**
+     * Sets invoice_id
+     *
+     * @param int|null $invoice_id invoice_id
+     *
+     * @return self
+     */
+    public function setInvoiceId($invoice_id)
+    {
+        $this->container['invoice_id'] = $invoice_id;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *

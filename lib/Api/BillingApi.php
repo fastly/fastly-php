@@ -462,7 +462,7 @@ class BillingApi
      * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     * @param  int $invoice_id invoice_id (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -485,7 +485,7 @@ class BillingApi
      * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     * @param  int $invoice_id (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -596,7 +596,7 @@ class BillingApi
      * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     * @param  int $invoice_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -622,7 +622,7 @@ class BillingApi
      * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     * @param  int $invoice_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -674,7 +674,7 @@ class BillingApi
      * URL: https://api.fastly.com
      *
      * @param  string $customer_id Alphanumeric string identifying the customer. (required)
-     * @param  string $invoice_id Alphanumeric string identifying the invoice. (required)
+     * @param  int $invoice_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -69,7 +69,7 @@ Get the invoice for the given invoice_id.
 ### Example
 ```php
     $options['customer_id'] = 'customer_id_example'; // string | Alphanumeric string identifying the customer.
-$options['invoice_id'] = 'invoice_id_example'; // string | Alphanumeric string identifying the invoice.
+$options['invoice_id'] = 4183280; // int
 
 try {
     $result = $apiInstance->getInvoiceById($options);
@@ -85,7 +85,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **customer_id** | **string** | Alphanumeric string identifying the customer. |
-**invoice_id** | **string** | Alphanumeric string identifying the invoice. |
+**invoice_id** | **int** |  |
 
 ### Return type
 

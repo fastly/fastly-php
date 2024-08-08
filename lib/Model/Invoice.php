@@ -284,7 +284,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_id
      *
-     * @param string|null $invoice_id Alphanumeric string identifying the invoice.
+     * @param string|null $invoice_id Numeric string identifying the invoice.
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * BillingResponse
+ * BillingRegions
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * BillingResponse Class Doc Comment
+ * BillingRegions Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BillingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class BillingRegions implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class BillingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'billing_response';
+    protected static $fastlyModelName = 'billing_regions';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,15 +53,10 @@ class BillingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'end_time' => '\DateTime',
-        'start_time' => '\DateTime',
-        'customer_id' => 'string',
-        'vendor_state' => 'string',
-        'status' => '\Fastly\Model\BillingStatus',
-        'total' => '\Fastly\Model\BillingTotal',
-        'regions' => 'array<string,\Fastly\Model\BillingRegions>',
-        'invoice_id' => 'int',
-        'line_items' => '\Fastly\Model\BillingResponseLineItem[]'
+        'cost' => 'float',
+        'bandwidth' => '\Fastly\Model\BillingBandwidth',
+        'percentile' => '\Fastly\Model\BillingBandwidth',
+        'requests' => '\Fastly\Model\BillingBandwidth'
     ];
 
     /**
@@ -72,15 +67,10 @@ class BillingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'end_time' => 'date-time',
-        'start_time' => 'date-time',
-        'customer_id' => null,
-        'vendor_state' => null,
-        'status' => null,
-        'total' => null,
-        'regions' => null,
-        'invoice_id' => null,
-        'line_items' => null
+        'cost' => null,
+        'bandwidth' => null,
+        'percentile' => null,
+        'requests' => null
     ];
 
     /**
@@ -110,15 +100,10 @@ class BillingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_time' => 'end_time',
-        'start_time' => 'start_time',
-        'customer_id' => 'customer_id',
-        'vendor_state' => 'vendor_state',
-        'status' => 'status',
-        'total' => 'total',
-        'regions' => 'regions',
-        'invoice_id' => 'invoice_id',
-        'line_items' => 'line_items'
+        'cost' => 'cost',
+        'bandwidth' => 'bandwidth',
+        'percentile' => 'percentile',
+        'requests' => 'requests'
     ];
 
     /**
@@ -127,15 +112,10 @@ class BillingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'end_time' => 'setEndTime',
-        'start_time' => 'setStartTime',
-        'customer_id' => 'setCustomerId',
-        'vendor_state' => 'setVendorState',
-        'status' => 'setStatus',
-        'total' => 'setTotal',
-        'regions' => 'setRegions',
-        'invoice_id' => 'setInvoiceId',
-        'line_items' => 'setLineItems'
+        'cost' => 'setCost',
+        'bandwidth' => 'setBandwidth',
+        'percentile' => 'setPercentile',
+        'requests' => 'setRequests'
     ];
 
     /**
@@ -144,15 +124,10 @@ class BillingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'end_time' => 'getEndTime',
-        'start_time' => 'getStartTime',
-        'customer_id' => 'getCustomerId',
-        'vendor_state' => 'getVendorState',
-        'status' => 'getStatus',
-        'total' => 'getTotal',
-        'regions' => 'getRegions',
-        'invoice_id' => 'getInvoiceId',
-        'line_items' => 'getLineItems'
+        'cost' => 'getCost',
+        'bandwidth' => 'getBandwidth',
+        'percentile' => 'getPercentile',
+        'requests' => 'getRequests'
     ];
 
     /**
@@ -212,15 +187,10 @@ class BillingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['end_time'] = $data['end_time'] ?? null;
-        $this->container['start_time'] = $data['start_time'] ?? null;
-        $this->container['customer_id'] = $data['customer_id'] ?? null;
-        $this->container['vendor_state'] = $data['vendor_state'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['total'] = $data['total'] ?? null;
-        $this->container['regions'] = $data['regions'] ?? null;
-        $this->container['invoice_id'] = $data['invoice_id'] ?? null;
-        $this->container['line_items'] = $data['line_items'] ?? null;
+        $this->container['cost'] = $data['cost'] ?? null;
+        $this->container['bandwidth'] = $data['bandwidth'] ?? null;
+        $this->container['percentile'] = $data['percentile'] ?? null;
+        $this->container['requests'] = $data['requests'] ?? null;
     }
 
     /**
@@ -248,217 +218,97 @@ class BillingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets end_time
+     * Gets cost
      *
-     * @return \DateTime|null
+     * @return float|null
      */
-    public function getEndTime()
+    public function getCost()
     {
-        return $this->container['end_time'];
+        return $this->container['cost'];
     }
 
     /**
-     * Sets end_time
+     * Sets cost
      *
-     * @param \DateTime|null $end_time Date and time in ISO 8601 format.
+     * @param float|null $cost cost
      *
      * @return self
      */
-    public function setEndTime($end_time)
+    public function setCost($cost)
     {
-        $this->container['end_time'] = $end_time;
+        $this->container['cost'] = $cost;
 
         return $this;
     }
 
     /**
-     * Gets start_time
+     * Gets bandwidth
      *
-     * @return \DateTime|null
+     * @return \Fastly\Model\BillingBandwidth|null
      */
-    public function getStartTime()
+    public function getBandwidth()
     {
-        return $this->container['start_time'];
+        return $this->container['bandwidth'];
     }
 
     /**
-     * Sets start_time
+     * Sets bandwidth
      *
-     * @param \DateTime|null $start_time Date and time in ISO 8601 format.
+     * @param \Fastly\Model\BillingBandwidth|null $bandwidth bandwidth
      *
      * @return self
      */
-    public function setStartTime($start_time)
+    public function setBandwidth($bandwidth)
     {
-        $this->container['start_time'] = $start_time;
+        $this->container['bandwidth'] = $bandwidth;
 
         return $this;
     }
 
     /**
-     * Gets customer_id
+     * Gets percentile
      *
-     * @return string|null
+     * @return \Fastly\Model\BillingBandwidth|null
      */
-    public function getCustomerId()
+    public function getPercentile()
     {
-        return $this->container['customer_id'];
+        return $this->container['percentile'];
     }
 
     /**
-     * Sets customer_id
+     * Sets percentile
      *
-     * @param string|null $customer_id customer_id
+     * @param \Fastly\Model\BillingBandwidth|null $percentile percentile
      *
      * @return self
      */
-    public function setCustomerId($customer_id)
+    public function setPercentile($percentile)
     {
-        $this->container['customer_id'] = $customer_id;
+        $this->container['percentile'] = $percentile;
 
         return $this;
     }
 
     /**
-     * Gets vendor_state
+     * Gets requests
      *
-     * @return string|null
+     * @return \Fastly\Model\BillingBandwidth|null
      */
-    public function getVendorState()
+    public function getRequests()
     {
-        return $this->container['vendor_state'];
+        return $this->container['requests'];
     }
 
     /**
-     * Sets vendor_state
+     * Sets requests
      *
-     * @param string|null $vendor_state The current state of our third-party billing vendor. One of `up` or `down`.
+     * @param \Fastly\Model\BillingBandwidth|null $requests requests
      *
      * @return self
      */
-    public function setVendorState($vendor_state)
+    public function setRequests($requests)
     {
-        $this->container['vendor_state'] = $vendor_state;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return \Fastly\Model\BillingStatus|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param \Fastly\Model\BillingStatus|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \Fastly\Model\BillingTotal|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \Fastly\Model\BillingTotal|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        $this->container['total'] = $total;
-
-        return $this;
-    }
-
-    /**
-     * Gets regions
-     *
-     * @return array<string,\Fastly\Model\BillingRegions>|null
-     */
-    public function getRegions()
-    {
-        return $this->container['regions'];
-    }
-
-    /**
-     * Sets regions
-     *
-     * @param array<string,\Fastly\Model\BillingRegions>|null $regions Breakdown of regional data for products that are region based.
-     *
-     * @return self
-     */
-    public function setRegions($regions)
-    {
-        $this->container['regions'] = $regions;
-
-        return $this;
-    }
-
-    /**
-     * Gets invoice_id
-     *
-     * @return int|null
-     */
-    public function getInvoiceId()
-    {
-        return $this->container['invoice_id'];
-    }
-
-    /**
-     * Sets invoice_id
-     *
-     * @param int|null $invoice_id invoice_id
-     *
-     * @return self
-     */
-    public function setInvoiceId($invoice_id)
-    {
-        $this->container['invoice_id'] = $invoice_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets line_items
-     *
-     * @return \Fastly\Model\BillingResponseLineItem[]|null
-     */
-    public function getLineItems()
-    {
-        return $this->container['line_items'];
-    }
-
-    /**
-     * Sets line_items
-     *
-     * @param \Fastly\Model\BillingResponseLineItem[]|null $line_items line_items
-     *
-     * @return self
-     */
-    public function setLineItems($line_items)
-    {
-        $this->container['line_items'] = $line_items;
+        $this->container['requests'] = $requests;
 
         return $this;
     }

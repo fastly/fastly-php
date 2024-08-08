@@ -54,7 +54,7 @@ class LineItemData implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'amount' => 'float',
-        'aria_invoice_id' => '\Fastly\Model\LineItemDataReadOnlyInvoiceId',
+        'aria_invoice_id' => 'string',
         'client_service_id' => 'string',
         'credit_coupon_code' => 'string',
         'description' => 'string',
@@ -322,7 +322,7 @@ class LineItemData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets aria_invoice_id
      *
-     * @return \Fastly\Model\LineItemDataReadOnlyInvoiceId|null
+     * @return string|null
      */
     public function getAriaInvoiceId()
     {
@@ -332,7 +332,7 @@ class LineItemData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets aria_invoice_id
      *
-     * @param \Fastly\Model\LineItemDataReadOnlyInvoiceId|null $aria_invoice_id aria_invoice_id
+     * @param string|null $aria_invoice_id An alphanumeric string identifying the invoice.
      *
      * @return self
      */
