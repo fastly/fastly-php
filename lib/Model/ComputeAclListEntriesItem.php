@@ -1,6 +1,6 @@
 <?php
 /**
- * SubsequentRequestTimestamp
+ * ComputeAclListEntriesItem
  *
  * PHP version 7.3
  *
@@ -27,17 +27,16 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * SubsequentRequestTimestamp Class Doc Comment
+ * ComputeAclListEntriesItem Class Doc Comment
  *
  * @category Class
- * @description Value to use for subsequent requests.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSerializable
+class ComputeAclListEntriesItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -46,7 +45,7 @@ class SubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $fastlyModelName = 'subsequent_request_timestamp';
+    protected static $fastlyModelName = 'compute-acl-list-entries-item';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +53,8 @@ class SubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $fastlyTypes = [
-        
+        'prefix' => 'string',
+        'action' => 'string'
     ];
 
     /**
@@ -65,7 +65,8 @@ class SubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        
+        'prefix' => null,
+        'action' => null
     ];
 
     /**
@@ -95,7 +96,8 @@ class SubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'prefix' => 'prefix',
+        'action' => 'action'
     ];
 
     /**
@@ -104,7 +106,8 @@ class SubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        
+        'prefix' => 'setPrefix',
+        'action' => 'setAction'
     ];
 
     /**
@@ -113,7 +116,8 @@ class SubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        
+        'prefix' => 'getPrefix',
+        'action' => 'getAction'
     ];
 
     /**
@@ -173,6 +177,8 @@ class SubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
+        $this->container['prefix'] = $data['prefix'] ?? null;
+        $this->container['action'] = $data['action'] ?? null;
     }
 
     /**
@@ -198,6 +204,54 @@ class SubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets prefix
+     *
+     * @return string|null
+     */
+    public function getPrefix()
+    {
+        return $this->container['prefix'];
+    }
+
+    /**
+     * Sets prefix
+     *
+     * @param string|null $prefix An IP prefix defined in Classless Inter-Domain Routing (CIDR) format, i.e. a valid IP address (v4 or v6) followed by a forward slash (/) and a prefix length (0-32 or 0-128, depending on address family).
+     *
+     * @return self
+     */
+    public function setPrefix($prefix)
+    {
+        $this->container['prefix'] = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return string|null
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string|null $action One of \"ALLOW\" or \"BLOCK\".
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        $this->container['action'] = $action;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **service_id** | **string** |  | [optional] [readonly] 
+**environments** | [**\Fastly\Model\Environment[]**](Environment.md) | A list of environments where the service has been deployed. | [optional] 
 **backends** | [**\Fastly\Model\BackendResponse[]**](BackendResponse.md) | List of backends associated to this service. | [optional] 
 **cache_settings** | [**\Fastly\Model\CacheSettingResponse[]**](CacheSettingResponse.md) | List of cache settings associated to this service. | [optional] 
 **conditions** | [**\Fastly\Model\ConditionResponse[]**](ConditionResponse.md) | List of conditions associated to this service. | [optional] 

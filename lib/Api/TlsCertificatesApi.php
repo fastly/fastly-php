@@ -1358,9 +1358,9 @@ class TlsCertificatesApi
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to '-created_at')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1386,9 +1386,9 @@ class TlsCertificatesApi
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to '-created_at')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1502,9 +1502,9 @@ class TlsCertificatesApi
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to '-created_at')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1533,9 +1533,9 @@ class TlsCertificatesApi
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to '-created_at')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1590,9 +1590,9 @@ class TlsCertificatesApi
      * @param  string $filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  string $filter_tls_domains_id Limit the returned certificates to those that include the specific domain. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to '-created_at')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1604,9 +1604,9 @@ class TlsCertificatesApi
         $filter_not_after = array_key_exists('filter_not_after', $options) ? $options['filter_not_after'] : null;
         $filter_tls_domains_id = array_key_exists('filter_tls_domains_id', $options) ? $options['filter_tls_domains_id'] : null;
         $include = array_key_exists('include', $options) ? $options['include'] : null;
+        $sort = array_key_exists('sort', $options) ? $options['sort'] : '-created_at';
         $page_number = array_key_exists('page_number', $options) ? $options['page_number'] : null;
         $page_size = array_key_exists('page_size', $options) ? $options['page_size'] : 20;
-        $sort = array_key_exists('sort', $options) ? $options['sort'] : 'created_at';
 
         if ($page_size !== null && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling TlsCertificatesApi.listTlsCerts, must be smaller than or equal to 100.');
@@ -1668,6 +1668,17 @@ class TlsCertificatesApi
             }
         }
         // query params
+        if ($sort !== null) {
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['sort'] = ObjectSerializer::toString($sort);
+            }
+        }
+        // query params
         if ($page_number !== null) {
             if('form' === 'form' && is_array($page_number)) {
                 foreach($page_number as $key => $value) {
@@ -1687,17 +1698,6 @@ class TlsCertificatesApi
             }
             else {
                 $queryParams['page[size]'] = ObjectSerializer::toString($page_size);
-            }
-        }
-        // query params
-        if ($sort !== null) {
-            if('form' === 'form' && is_array($sort)) {
-                foreach($sort as $key => $value) {
-                    $queryParams[$key] = ObjectSerializer::toString($value);
-                }
-            }
-            else {
-                $queryParams['sort'] = ObjectSerializer::toString($sort);
             }
         }
 

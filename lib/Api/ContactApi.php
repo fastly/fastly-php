@@ -738,7 +738,7 @@ class ContactApi
             );
         }
 
-        $resourcePath = '/customer/{customer_id}/contact/{contact_id}';
+        $resourcePath = '/customer/{customer_id}/contacts/{contact_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

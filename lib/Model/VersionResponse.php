@@ -63,7 +63,8 @@ class VersionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'service_id' => 'string'
+        'service_id' => 'string',
+        'environments' => '\Fastly\Model\Environment[]'
     ];
 
     /**
@@ -84,7 +85,8 @@ class VersionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'date-time',
         'deleted_at' => 'date-time',
         'updated_at' => 'date-time',
-        'service_id' => null
+        'service_id' => null,
+        'environments' => null
     ];
 
     /**
@@ -124,7 +126,8 @@ class VersionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
-        'service_id' => 'service_id'
+        'service_id' => 'service_id',
+        'environments' => 'environments'
     ];
 
     /**
@@ -143,7 +146,8 @@ class VersionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
-        'service_id' => 'setServiceId'
+        'service_id' => 'setServiceId',
+        'environments' => 'setEnvironments'
     ];
 
     /**
@@ -162,7 +166,8 @@ class VersionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
-        'service_id' => 'getServiceId'
+        'service_id' => 'getServiceId',
+        'environments' => 'getEnvironments'
     ];
 
     /**
@@ -233,6 +238,7 @@ class VersionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['environments'] = $data['environments'] ?? null;
     }
 
     /**
@@ -519,6 +525,30 @@ class VersionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setServiceId($service_id)
     {
         $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets environments
+     *
+     * @return \Fastly\Model\Environment[]|null
+     */
+    public function getEnvironments()
+    {
+        return $this->container['environments'];
+    }
+
+    /**
+     * Sets environments
+     *
+     * @param \Fastly\Model\Environment[]|null $environments A list of environments where the service has been deployed.
+     *
+     * @return self
+     */
+    public function setEnvironments($environments)
+    {
+        $this->container['environments'] = $environments;
 
         return $this;
     }

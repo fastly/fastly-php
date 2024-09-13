@@ -123,9 +123,9 @@ class TlsDomainsApi
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
      * @param  string $filter_tls_subscriptions_id Optional. Limit the returned domains to those for a given TLS subscription. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to 'id')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -151,9 +151,9 @@ class TlsDomainsApi
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
      * @param  string $filter_tls_subscriptions_id Optional. Limit the returned domains to those for a given TLS subscription. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to 'id')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -267,9 +267,9 @@ class TlsDomainsApi
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
      * @param  string $filter_tls_subscriptions_id Optional. Limit the returned domains to those for a given TLS subscription. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to 'id')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -298,9 +298,9 @@ class TlsDomainsApi
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
      * @param  string $filter_tls_subscriptions_id Optional. Limit the returned domains to those for a given TLS subscription. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to 'id')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -355,9 +355,9 @@ class TlsDomainsApi
      * @param  string $filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
      * @param  string $filter_tls_subscriptions_id Optional. Limit the returned domains to those for a given TLS subscription. (optional)
      * @param  string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. (optional)
+     * @param  string $sort The order in which to list the results. (optional, default to 'id')
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
-     * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -369,9 +369,9 @@ class TlsDomainsApi
         $filter_tls_certificates_id = array_key_exists('filter_tls_certificates_id', $options) ? $options['filter_tls_certificates_id'] : null;
         $filter_tls_subscriptions_id = array_key_exists('filter_tls_subscriptions_id', $options) ? $options['filter_tls_subscriptions_id'] : null;
         $include = array_key_exists('include', $options) ? $options['include'] : null;
+        $sort = array_key_exists('sort', $options) ? $options['sort'] : 'id';
         $page_number = array_key_exists('page_number', $options) ? $options['page_number'] : null;
         $page_size = array_key_exists('page_size', $options) ? $options['page_size'] : 20;
-        $sort = array_key_exists('sort', $options) ? $options['sort'] : 'created_at';
 
         if ($page_size !== null && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling TlsDomainsApi.listTlsDomains, must be smaller than or equal to 100.');
@@ -433,6 +433,17 @@ class TlsDomainsApi
             }
         }
         // query params
+        if ($sort !== null) {
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['sort'] = ObjectSerializer::toString($sort);
+            }
+        }
+        // query params
         if ($page_number !== null) {
             if('form' === 'form' && is_array($page_number)) {
                 foreach($page_number as $key => $value) {
@@ -452,17 +463,6 @@ class TlsDomainsApi
             }
             else {
                 $queryParams['page[size]'] = ObjectSerializer::toString($page_size);
-            }
-        }
-        // query params
-        if ($sort !== null) {
-            if('form' === 'form' && is_array($sort)) {
-                foreach($sort as $key => $value) {
-                    $queryParams[$key] = ObjectSerializer::toString($value);
-                }
-            }
-            else {
-                $queryParams['sort'] = ObjectSerializer::toString($sort);
             }
         }
 

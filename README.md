@@ -95,6 +95,13 @@ Class | Method | Description
 [*AclEntryApi*](docs/Api/AclEntryApi.md) | [**getAclEntry**](docs/Api/AclEntryApi.md#getaclentry) | Describe an ACL entry
 [*AclEntryApi*](docs/Api/AclEntryApi.md) | [**listAclEntries**](docs/Api/AclEntryApi.md#listaclentries) | List ACL entries
 [*AclEntryApi*](docs/Api/AclEntryApi.md) | [**updateAclEntry**](docs/Api/AclEntryApi.md#updateaclentry) | Update an ACL entry
+[*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclCreateAcls**](docs/Api/AclsInComputeApi.md#computeaclcreateacls) | Create a new ACL
+[*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclDeleteSAclId**](docs/Api/AclsInComputeApi.md#computeacldeletesaclid) | Delete an ACL
+[*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclListAclEntries**](docs/Api/AclsInComputeApi.md#computeacllistaclentries) | List an ACL
+[*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclListAcls**](docs/Api/AclsInComputeApi.md#computeacllistacls) | List ACLs
+[*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclListAclsSAclId**](docs/Api/AclsInComputeApi.md#computeacllistaclssaclid) | Describe an ACL
+[*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclLookupAcls**](docs/Api/AclsInComputeApi.md#computeacllookupacls) | Lookup an ACL
+[*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclUpdateAcls**](docs/Api/AclsInComputeApi.md#computeaclupdateacls) | Update an ACL
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**createApexRedirect**](docs/Api/ApexRedirectApi.md#createapexredirect) | Create an apex redirect
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**deleteApexRedirect**](docs/Api/ApexRedirectApi.md#deleteapexredirect) | Delete an apex redirect
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**getApexRedirect**](docs/Api/ApexRedirectApi.md#getapexredirect) | Get an apex redirect
@@ -155,6 +162,9 @@ Class | Method | Description
 [*CustomerApi*](docs/Api/CustomerApi.md) | [**getLoggedInCustomer**](docs/Api/CustomerApi.md#getloggedincustomer) | Get the logged in customer
 [*CustomerApi*](docs/Api/CustomerApi.md) | [**listUsers**](docs/Api/CustomerApi.md#listusers) | List users
 [*CustomerApi*](docs/Api/CustomerApi.md) | [**updateCustomer**](docs/Api/CustomerApi.md#updatecustomer) | Update a customer
+[*CustomerAddressesApi*](docs/Api/CustomerAddressesApi.md) | [**createCustomerAddress**](docs/Api/CustomerAddressesApi.md#createcustomeraddress) | Creates an address associated with a customer account.
+[*CustomerAddressesApi*](docs/Api/CustomerAddressesApi.md) | [**listCustomerAddresses**](docs/Api/CustomerAddressesApi.md#listcustomeraddresses) | Return the list of addresses associated with a customer account.
+[*CustomerAddressesApi*](docs/Api/CustomerAddressesApi.md) | [**updateCustomerAddress**](docs/Api/CustomerAddressesApi.md#updatecustomeraddress) | Updates an address associated with a customer account.
 [*DictionaryApi*](docs/Api/DictionaryApi.md) | [**createDictionary**](docs/Api/DictionaryApi.md#createdictionary) | Create an edge dictionary
 [*DictionaryApi*](docs/Api/DictionaryApi.md) | [**deleteDictionary**](docs/Api/DictionaryApi.md#deletedictionary) | Delete an edge dictionary
 [*DictionaryApi*](docs/Api/DictionaryApi.md) | [**getDictionary**](docs/Api/DictionaryApi.md#getdictionary) | Get an edge dictionary
@@ -192,6 +202,8 @@ Class | Method | Description
 [*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**disableProduct**](docs/Api/EnabledProductsApi.md#disableproduct) | Disable a product
 [*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**enableProduct**](docs/Api/EnabledProductsApi.md#enableproduct) | Enable a product
 [*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**getEnabledProduct**](docs/Api/EnabledProductsApi.md#getenabledproduct) | Get enabled product
+[*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**getProductConfiguration**](docs/Api/EnabledProductsApi.md#getproductconfiguration) | Get configuration for a product
+[*EnabledProductsApi*](docs/Api/EnabledProductsApi.md) | [**setProductConfiguration**](docs/Api/EnabledProductsApi.md#setproductconfiguration) | Update configuration for a product
 [*EventsApi*](docs/Api/EventsApi.md) | [**getEvent**](docs/Api/EventsApi.md#getevent) | Get an event
 [*EventsApi*](docs/Api/EventsApi.md) | [**listEvents**](docs/Api/EventsApi.md#listevents) | List events
 [*GzipApi*](docs/Api/GzipApi.md) | [**createGzipConfig**](docs/Api/GzipApi.md#creategzipconfig) | Create a gzip configuration
@@ -588,9 +600,11 @@ Class | Method | Description
 [*VclApi*](docs/Api/VclApi.md) | [**updateCustomVcl**](docs/Api/VclApi.md#updatecustomvcl) | Update a custom VCL file
 [*VclDiffApi*](docs/Api/VclDiffApi.md) | [**vclDiffServiceVersions**](docs/Api/VclDiffApi.md#vcldiffserviceversions) | Get a comparison of the VCL changes between two service versions
 [*VersionApi*](docs/Api/VersionApi.md) | [**activateServiceVersion**](docs/Api/VersionApi.md#activateserviceversion) | Activate a service version
+[*VersionApi*](docs/Api/VersionApi.md) | [**activateServiceVersionEnvironment**](docs/Api/VersionApi.md#activateserviceversionenvironment) | Activate a service version on the specified environment
 [*VersionApi*](docs/Api/VersionApi.md) | [**cloneServiceVersion**](docs/Api/VersionApi.md#cloneserviceversion) | Clone a service version
 [*VersionApi*](docs/Api/VersionApi.md) | [**createServiceVersion**](docs/Api/VersionApi.md#createserviceversion) | Create a service version
 [*VersionApi*](docs/Api/VersionApi.md) | [**deactivateServiceVersion**](docs/Api/VersionApi.md#deactivateserviceversion) | Deactivate a service version
+[*VersionApi*](docs/Api/VersionApi.md) | [**deactivateServiceVersionEnvironment**](docs/Api/VersionApi.md#deactivateserviceversionenvironment) | Deactivate a service version on an environment
 [*VersionApi*](docs/Api/VersionApi.md) | [**getServiceVersion**](docs/Api/VersionApi.md#getserviceversion) | Get a version of a service
 [*VersionApi*](docs/Api/VersionApi.md) | [**listServiceVersions**](docs/Api/VersionApi.md#listserviceversions) | List versions of a service
 [*VersionApi*](docs/Api/VersionApi.md) | [**lockServiceVersion**](docs/Api/VersionApi.md#lockserviceversion) | Lock a service version
@@ -639,6 +653,8 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
 - [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/domains/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/domains`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/notifications/integration-types`](https://developer.fastly.com/reference/api/observability/notification) (GET)
 - [`/notifications/integrations/{integration_id}/rotateSigningKey`](https://developer.fastly.com/reference/api/observability/notification) (POST)
 - [`/notifications/integrations/{integration_id}/signingKey`](https://developer.fastly.com/reference/api/observability/notification) (GET)
@@ -646,12 +662,23 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/notifications/integrations`](https://developer.fastly.com/reference/api/observability/notification) (GET, POST)
 - [`/notifications/mailinglist-confirmations`](https://developer.fastly.com/reference/api/observability/notification) (POST)
 - [`/resources/stores/kv/{store_id}/batch`](https://www.fastly.com/documentation/reference/api/services/resources/kv-store-item) (PUT)
+- [`/security/workspaces/{workspace_id}/events/{event_id}`](https://docs.fastly.com/en/ngwaf/) (GET, PATCH)
+- [`/security/workspaces/{workspace_id}/events`](https://docs.fastly.com/en/ngwaf/) (GET)
+- [`/security/workspaces/{workspace_id}/redactions/{redaction_id}`](https://docs.fastly.com/en/ngwaf/) (DELETE, GET, PATCH)
+- [`/security/workspaces/{workspace_id}/redactions`](https://docs.fastly.com/en/ngwaf/) (GET, POST)
+- [`/security/workspaces/{workspace_id}/requests/{request_id}`](https://docs.fastly.com/en/ngwaf/) (GET)
+- [`/security/workspaces/{workspace_id}/requests`](https://docs.fastly.com/en/ngwaf/) (GET)
+- [`/security/workspaces/{workspace_id}/rules/{rule_id}`](https://docs.fastly.com/en/ngwaf/) (DELETE, GET, PATCH)
+- [`/security/workspaces/{workspace_id}/rules`](https://docs.fastly.com/en/ngwaf/) (GET, POST)
+- [`/security/workspaces/{workspace_id}/timeseries`](https://docs.fastly.com/en/ngwaf/) (GET)
+- [`/security/workspaces/{workspace_id}/virtual-patches/{virtual_patch_id}`](https://docs.fastly.com/en/ngwaf/) (GET, PATCH)
+- [`/security/workspaces/{workspace_id}/virtual-patches`](https://docs.fastly.com/en/ngwaf/) (GET)
+- [`/security/workspaces/{workspace_id}`](https://docs.fastly.com/en/ngwaf/) (DELETE, GET, PATCH)
+- [`/security/workspaces`](https://docs.fastly.com/en/ngwaf/) (GET, POST)
 - [`/tls/activations/{tls_activation_id}`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET, PATCH)
 - [`/tls/activations`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET)
 - [`/tls/configurations/{tls_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/tls/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
-- [`/tls/preview/domains/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
-- [`/tls/preview/domains`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
 - [`/v1/channel/{service_id}/ts/h`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
 - [`/v1/channel/{service_id}/ts/{start_timestamp}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)

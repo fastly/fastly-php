@@ -55,7 +55,8 @@ class ServiceListResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $fastlyTypes = [
         'id' => 'string',
         'version' => 'int',
-        'versions' => '\Fastly\Model\SchemasVersionResponse[]'
+        'versions' => '\Fastly\Model\SchemasVersionResponse[]',
+        'environments' => '\Fastly\Model\Environment[]'
     ];
 
     /**
@@ -68,7 +69,8 @@ class ServiceListResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $fastlyFormats = [
         'id' => null,
         'version' => null,
-        'versions' => null
+        'versions' => null,
+        'environments' => null
     ];
 
     /**
@@ -100,7 +102,8 @@ class ServiceListResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $attributeMap = [
         'id' => 'id',
         'version' => 'version',
-        'versions' => 'versions'
+        'versions' => 'versions',
+        'environments' => 'environments'
     ];
 
     /**
@@ -111,7 +114,8 @@ class ServiceListResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $setters = [
         'id' => 'setId',
         'version' => 'setVersion',
-        'versions' => 'setVersions'
+        'versions' => 'setVersions',
+        'environments' => 'setEnvironments'
     ];
 
     /**
@@ -122,7 +126,8 @@ class ServiceListResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $getters = [
         'id' => 'getId',
         'version' => 'getVersion',
-        'versions' => 'getVersions'
+        'versions' => 'getVersions',
+        'environments' => 'getEnvironments'
     ];
 
     /**
@@ -185,6 +190,7 @@ class ServiceListResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeri
         $this->container['id'] = $data['id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['versions'] = $data['versions'] ?? null;
+        $this->container['environments'] = $data['environments'] ?? null;
     }
 
     /**
@@ -279,6 +285,30 @@ class ServiceListResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     public function setVersions($versions)
     {
         $this->container['versions'] = $versions;
+
+        return $this;
+    }
+
+    /**
+     * Gets environments
+     *
+     * @return \Fastly\Model\Environment[]|null
+     */
+    public function getEnvironments()
+    {
+        return $this->container['environments'];
+    }
+
+    /**
+     * Sets environments
+     *
+     * @param \Fastly\Model\Environment[]|null $environments A list of environments where the service has been deployed.
+     *
+     * @return self
+     */
+    public function setEnvironments($environments)
+    {
+        $this->container['environments'] = $environments;
 
         return $this;
     }

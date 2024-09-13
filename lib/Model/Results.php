@@ -303,6 +303,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_4xx' => 'int',
         'all_status_5xx' => 'int',
         'origin_offload' => 'float',
+        'request_denied_get_head_body' => 'int',
         'service_id' => 'string',
         'start_time' => 'int'
     ];
@@ -564,6 +565,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_4xx' => null,
         'all_status_5xx' => null,
         'origin_offload' => null,
+        'request_denied_get_head_body' => null,
         'service_id' => null,
         'start_time' => null
     ];
@@ -844,6 +846,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_4xx' => 'all_status_4xx',
         'all_status_5xx' => 'all_status_5xx',
         'origin_offload' => 'origin_offload',
+        'request_denied_get_head_body' => 'request_denied_get_head_body',
         'service_id' => 'service_id',
         'start_time' => 'start_time'
     ];
@@ -1103,6 +1106,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_4xx' => 'setAllStatus4xx',
         'all_status_5xx' => 'setAllStatus5xx',
         'origin_offload' => 'setOriginOffload',
+        'request_denied_get_head_body' => 'setRequestDeniedGetHeadBody',
         'service_id' => 'setServiceId',
         'start_time' => 'setStartTime'
     ];
@@ -1362,6 +1366,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'all_status_4xx' => 'getAllStatus4xx',
         'all_status_5xx' => 'getAllStatus5xx',
         'origin_offload' => 'getOriginOffload',
+        'request_denied_get_head_body' => 'getRequestDeniedGetHeadBody',
         'service_id' => 'getServiceId',
         'start_time' => 'getStartTime'
     ];
@@ -1672,6 +1677,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['all_status_4xx'] = $data['all_status_4xx'] ?? null;
         $this->container['all_status_5xx'] = $data['all_status_5xx'] ?? null;
         $this->container['origin_offload'] = $data['origin_offload'] ?? null;
+        $this->container['request_denied_get_head_body'] = $data['request_denied_get_head_body'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
     }
@@ -7676,6 +7682,30 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOriginOffload($origin_offload)
     {
         $this->container['origin_offload'] = $origin_offload;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_denied_get_head_body
+     *
+     * @return int|null
+     */
+    public function getRequestDeniedGetHeadBody()
+    {
+        return $this->container['request_denied_get_head_body'];
+    }
+
+    /**
+     * Sets request_denied_get_head_body
+     *
+     * @param int|null $request_denied_get_head_body Number of requests where Fastly responded with 400 due to the request being a GET or HEAD request containing a body.
+     *
+     * @return self
+     */
+    public function setRequestDeniedGetHeadBody($request_denied_get_head_body)
+    {
+        $this->container['request_denied_get_head_body'] = $request_denied_get_head_body;
 
         return $this;
     }

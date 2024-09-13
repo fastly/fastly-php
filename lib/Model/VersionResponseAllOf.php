@@ -53,7 +53,8 @@ class VersionResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'service_id' => 'string'
+        'service_id' => 'string',
+        'environments' => '\Fastly\Model\Environment[]'
     ];
 
     /**
@@ -64,7 +65,8 @@ class VersionResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'service_id' => null
+        'service_id' => null,
+        'environments' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class VersionResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id'
+        'service_id' => 'service_id',
+        'environments' => 'environments'
     ];
 
     /**
@@ -103,7 +106,8 @@ class VersionResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId'
+        'service_id' => 'setServiceId',
+        'environments' => 'setEnvironments'
     ];
 
     /**
@@ -112,7 +116,8 @@ class VersionResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId'
+        'service_id' => 'getServiceId',
+        'environments' => 'getEnvironments'
     ];
 
     /**
@@ -173,6 +178,7 @@ class VersionResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['environments'] = $data['environments'] ?? null;
     }
 
     /**
@@ -219,6 +225,30 @@ class VersionResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setServiceId($service_id)
     {
         $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets environments
+     *
+     * @return \Fastly\Model\Environment[]|null
+     */
+    public function getEnvironments()
+    {
+        return $this->container['environments'];
+    }
+
+    /**
+     * Sets environments
+     *
+     * @param \Fastly\Model\Environment[]|null $environments A list of environments where the service has been deployed.
+     *
+     * @return self
+     */
+    public function setEnvironments($environments)
+    {
+        $this->container['environments'] = $environments;
 
         return $this;
     }

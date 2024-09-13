@@ -175,9 +175,9 @@ List all TLS certificates.
 $options['filter_not_after'] = 'filter_not_after_example'; // string | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]=2020-05-05).
 $options['filter_tls_domains_id'] = 'filter_tls_domains_id_example'; // string | Limit the returned certificates to those that include the specific domain.
 $options['include'] = 'include_example'; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`.
+$options['sort'] = '-created_at'; // string | The order in which to list the results.
 $options['page_number'] = 1; // int | Current page.
 $options['page_size'] = 20; // int | Number of records per page.
-$options['sort'] = created_at; // string | The order in which to list the results by creation date.
 
 try {
     $result = $apiInstance->listTlsCerts($options);
@@ -196,9 +196,9 @@ Name | Type | Description  | Notes
 **filter_not_after** | **string** | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). | [optional]
 **filter_tls_domains_id** | **string** | Limit the returned certificates to those that include the specific domain. | [optional]
 **include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`. | [optional]
+**sort** | **string** | The order in which to list the results. | [optional] [one of: 'created_at', '-created_at', 'not_before', '-not_before', 'not_after', '-not_after', 'tls_activations.created_at', '-tls_activations.created_at'] [defaults to '-created_at']
 **page_number** | **int** | Current page. | [optional]
 **page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
-**sort** | **string** | The order in which to list the results by creation date. | [optional] [one of: 'created_at', '-created_at'] [defaults to 'created_at']
 
 ### Return type
 

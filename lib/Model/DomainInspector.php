@@ -53,7 +53,7 @@ class DomainInspector implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'timestamp' => '\Fastly\Model\SubsequentRequestTimestamp',
+        'timestamp' => 'int',
         'aggregate_delay' => 'int',
         'data' => '\Fastly\Model\DomainInspectorRealtimeEntry[]'
     ];
@@ -214,7 +214,7 @@ class DomainInspector implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets timestamp
      *
-     * @return \Fastly\Model\SubsequentRequestTimestamp|null
+     * @return int|null
      */
     public function getTimestamp()
     {
@@ -224,7 +224,7 @@ class DomainInspector implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets timestamp
      *
-     * @param \Fastly\Model\SubsequentRequestTimestamp|null $timestamp timestamp
+     * @param int|null $timestamp Value to use for subsequent requests.
      *
      * @return self
      */

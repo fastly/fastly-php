@@ -64,6 +64,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'publish_key' => 'string',
         'paused' => 'bool',
         'versions' => '\Fastly\Model\SchemasVersionResponse[]',
+        'environments' => '\Fastly\Model\Environment[]',
         'active_version' => '\Fastly\Model\ServiceVersionDetailOrNull',
         'version' => '\Fastly\Model\ServiceVersionDetail'
     ];
@@ -87,6 +88,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'publish_key' => null,
         'paused' => null,
         'versions' => null,
+        'environments' => null,
         'active_version' => null,
         'version' => null
     ];
@@ -129,6 +131,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'publish_key' => 'publish_key',
         'paused' => 'paused',
         'versions' => 'versions',
+        'environments' => 'environments',
         'active_version' => 'active_version',
         'version' => 'version'
     ];
@@ -150,6 +153,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'publish_key' => 'setPublishKey',
         'paused' => 'setPaused',
         'versions' => 'setVersions',
+        'environments' => 'setEnvironments',
         'active_version' => 'setActiveVersion',
         'version' => 'setVersion'
     ];
@@ -171,6 +175,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'publish_key' => 'getPublishKey',
         'paused' => 'getPaused',
         'versions' => 'getVersions',
+        'environments' => 'getEnvironments',
         'active_version' => 'getActiveVersion',
         'version' => 'getVersion'
     ];
@@ -258,6 +263,7 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['publish_key'] = $data['publish_key'] ?? null;
         $this->container['paused'] = $data['paused'] ?? null;
         $this->container['versions'] = $data['versions'] ?? null;
+        $this->container['environments'] = $data['environments'] ?? null;
         $this->container['active_version'] = $data['active_version'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
     }
@@ -565,6 +571,30 @@ class ServiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVersions($versions)
     {
         $this->container['versions'] = $versions;
+
+        return $this;
+    }
+
+    /**
+     * Gets environments
+     *
+     * @return \Fastly\Model\Environment[]|null
+     */
+    public function getEnvironments()
+    {
+        return $this->container['environments'];
+    }
+
+    /**
+     * Sets environments
+     *
+     * @param \Fastly\Model\Environment[]|null $environments A list of environments where the service has been deployed.
+     *
+     * @return self
+     */
+    public function setEnvironments($environments)
+    {
+        $this->container['environments'] = $environments;
 
         return $this;
     }

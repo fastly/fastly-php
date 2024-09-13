@@ -54,7 +54,7 @@ class OriginInspectorRealtimeEntry implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'recorded' => '\Fastly\Model\OriginInspectorRealtimeEntryRecorded',
+        'recorded' => 'int',
         'aggregated' => 'array<string,\Fastly\Model\OriginInspectorMeasurements>',
         'datacenter' => 'array<string,array<string,\Fastly\Model\OriginInspectorMeasurements>>'
     ];
@@ -215,7 +215,7 @@ class OriginInspectorRealtimeEntry implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets recorded
      *
-     * @return \Fastly\Model\OriginInspectorRealtimeEntryRecorded|null
+     * @return int|null
      */
     public function getRecorded()
     {
@@ -225,7 +225,7 @@ class OriginInspectorRealtimeEntry implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets recorded
      *
-     * @param \Fastly\Model\OriginInspectorRealtimeEntryRecorded|null $recorded recorded
+     * @param int|null $recorded The Unix timestamp at which this record's data was generated.
      *
      * @return self
      */

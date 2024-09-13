@@ -262,6 +262,19 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     const EVENT_TYPE_RESPONSE_OBJECT_UPDATE = 'response_object.update';
     const EVENT_TYPE_RULE_STATUS_UPDATE = 'rule_status.update';
     const EVENT_TYPE_RULE_STATUS_UPSERT = 'rule_status.upsert';
+    const EVENT_TYPE_SECURITY_WORKSPACE_CREATE = 'security.workspace.create';
+    const EVENT_TYPE_SECURITY_WORKSPACE_UPDATE = 'security.workspace.update';
+    const EVENT_TYPE_SECURITY_WORKSPACE_DELETE = 'security.workspace.delete';
+    const EVENT_TYPE_SECURITY_REDACTION_CREATE = 'security.redaction.create';
+    const EVENT_TYPE_SECURITY_REDACTION_UPDATE = 'security.redaction.update';
+    const EVENT_TYPE_SECURITY_REDACTION_DELETE = 'security.redaction.delete';
+    const EVENT_TYPE_SECURITY_RULE_CREATE = 'security.rule.create';
+    const EVENT_TYPE_SECURITY_RULE_UPDATE = 'security.rule.update';
+    const EVENT_TYPE_SECURITY_RULE_DELETE = 'security.rule.delete';
+    const EVENT_TYPE_SECURITY_VIRTUAL_PATCH_CREATE = 'security.virtual_patch.create';
+    const EVENT_TYPE_SECURITY_VIRTUAL_PATCH_UPDATE = 'security.virtual_patch.update';
+    const EVENT_TYPE_SECURITY_VIRTUAL_PATCH_DELETE = 'security.virtual_patch.delete';
+    const EVENT_TYPE_SECURITY_EVENT_UPDATE = 'security.event.update';
     const EVENT_TYPE_SERVER_CREATE = 'server.create';
     const EVENT_TYPE_SERVER_DELETE = 'server.delete';
     const EVENT_TYPE_SERVER_UPDATE = 'server.update';
@@ -402,6 +415,19 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENT_TYPE_RESPONSE_OBJECT_UPDATE,
             self::EVENT_TYPE_RULE_STATUS_UPDATE,
             self::EVENT_TYPE_RULE_STATUS_UPSERT,
+            self::EVENT_TYPE_SECURITY_WORKSPACE_CREATE,
+            self::EVENT_TYPE_SECURITY_WORKSPACE_UPDATE,
+            self::EVENT_TYPE_SECURITY_WORKSPACE_DELETE,
+            self::EVENT_TYPE_SECURITY_REDACTION_CREATE,
+            self::EVENT_TYPE_SECURITY_REDACTION_UPDATE,
+            self::EVENT_TYPE_SECURITY_REDACTION_DELETE,
+            self::EVENT_TYPE_SECURITY_RULE_CREATE,
+            self::EVENT_TYPE_SECURITY_RULE_UPDATE,
+            self::EVENT_TYPE_SECURITY_RULE_DELETE,
+            self::EVENT_TYPE_SECURITY_VIRTUAL_PATCH_CREATE,
+            self::EVENT_TYPE_SECURITY_VIRTUAL_PATCH_UPDATE,
+            self::EVENT_TYPE_SECURITY_VIRTUAL_PATCH_DELETE,
+            self::EVENT_TYPE_SECURITY_EVENT_UPDATE,
             self::EVENT_TYPE_SERVER_CREATE,
             self::EVENT_TYPE_SERVER_DELETE,
             self::EVENT_TYPE_SERVER_UPDATE,

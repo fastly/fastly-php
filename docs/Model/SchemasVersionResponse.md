@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **deleted_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **\DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **service_id** | **string** |  | [optional] [readonly] 
+**environments** | [**\Fastly\Model\Environment[]**](Environment.md) | A list of environments where the service has been deployed. | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -452,6 +452,368 @@ class VersionApi
     }
 
     /**
+     * Operation activateServiceVersionEnvironment
+     *
+     * Activate a service version on the specified environment
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name environment_name (required)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Fastly\Model\VersionResponse
+     */
+    public function activateServiceVersionEnvironment($options)
+    {
+        list($response) = $this->activateServiceVersionEnvironmentWithHttpInfo($options);
+        return $response;
+    }
+
+    /**
+     * Operation activateServiceVersionEnvironmentWithHttpInfo
+     *
+     * Activate a service version on the specified environment
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name (required)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Fastly\Model\VersionResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function activateServiceVersionEnvironmentWithHttpInfo($options)
+    {
+        $request = $this->activateServiceVersionEnvironmentRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            if ('PUT' != 'GET' && 'PUT' != 'HEAD') {
+                $header = $response->getHeader('Fastly-RateLimit-Remaining');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitRemaining($header[0]);
+                }
+
+                $header = $response->getHeader('Fastly-RateLimit-Reset');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitReset($header[0]);
+                }
+            } 
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Fastly\Model\VersionResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\VersionResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\VersionResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\VersionResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation activateServiceVersionEnvironmentAsync
+     *
+     * Activate a service version on the specified environment
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function activateServiceVersionEnvironmentAsync($options)
+    {
+        return $this->activateServiceVersionEnvironmentAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation activateServiceVersionEnvironmentAsyncWithHttpInfo
+     *
+     * Activate a service version on the specified environment
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function activateServiceVersionEnvironmentAsyncWithHttpInfo($options)
+    {
+        $returnType = '\Fastly\Model\VersionResponse';
+        $request = $this->activateServiceVersionEnvironmentRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'activateServiceVersionEnvironment'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function activateServiceVersionEnvironmentRequest($options)
+    {
+        // unbox the parameters from the associative array
+        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $environment_name = array_key_exists('environment_name', $options) ? $options['environment_name'] : null;
+
+        // verify the required parameter 'service_id' is set
+        if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $service_id when calling activateServiceVersionEnvironment'
+            );
+        }
+        // verify the required parameter 'version_id' is set
+        if ($version_id === null || (is_array($version_id) && count($version_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version_id when calling activateServiceVersionEnvironment'
+            );
+        }
+        // verify the required parameter 'environment_name' is set
+        if ($environment_name === null || (is_array($environment_name) && count($environment_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $environment_name when calling activateServiceVersionEnvironment'
+            );
+        }
+
+        $resourcePath = '/service/{service_id}/version/{version_id}/activate/{environment_name}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($service_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'service_id' . '}',
+                ObjectSerializer::toPathValue($service_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'version_id' . '}',
+                ObjectSerializer::toPathValue($version_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($environment_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'environment_name' . '}',
+                ObjectSerializer::toPathValue($environment_name),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation cloneServiceVersion
      *
      * Clone a service version
@@ -1384,6 +1746,368 @@ class VersionApi
             $resourcePath = str_replace(
                 '{' . 'version_id' . '}',
                 ObjectSerializer::toPathValue($version_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deactivateServiceVersionEnvironment
+     *
+     * Deactivate a service version on an environment
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name environment_name (required)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Fastly\Model\VersionResponse
+     */
+    public function deactivateServiceVersionEnvironment($options)
+    {
+        list($response) = $this->deactivateServiceVersionEnvironmentWithHttpInfo($options);
+        return $response;
+    }
+
+    /**
+     * Operation deactivateServiceVersionEnvironmentWithHttpInfo
+     *
+     * Deactivate a service version on an environment
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name (required)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Fastly\Model\VersionResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deactivateServiceVersionEnvironmentWithHttpInfo($options)
+    {
+        $request = $this->deactivateServiceVersionEnvironmentRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            if ('PUT' != 'GET' && 'PUT' != 'HEAD') {
+                $header = $response->getHeader('Fastly-RateLimit-Remaining');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitRemaining($header[0]);
+                }
+
+                $header = $response->getHeader('Fastly-RateLimit-Reset');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitReset($header[0]);
+                }
+            } 
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Fastly\Model\VersionResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\VersionResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\VersionResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\VersionResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deactivateServiceVersionEnvironmentAsync
+     *
+     * Deactivate a service version on an environment
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deactivateServiceVersionEnvironmentAsync($options)
+    {
+        return $this->deactivateServiceVersionEnvironmentAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deactivateServiceVersionEnvironmentAsyncWithHttpInfo
+     *
+     * Deactivate a service version on an environment
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deactivateServiceVersionEnvironmentAsyncWithHttpInfo($options)
+    {
+        $returnType = '\Fastly\Model\VersionResponse';
+        $request = $this->deactivateServiceVersionEnvironmentRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deactivateServiceVersionEnvironment'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  int $version_id Integer identifying a service version. (required)
+     * @param  \Fastly\Model\EnvironmentName $environment_name (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deactivateServiceVersionEnvironmentRequest($options)
+    {
+        // unbox the parameters from the associative array
+        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
+        $environment_name = array_key_exists('environment_name', $options) ? $options['environment_name'] : null;
+
+        // verify the required parameter 'service_id' is set
+        if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $service_id when calling deactivateServiceVersionEnvironment'
+            );
+        }
+        // verify the required parameter 'version_id' is set
+        if ($version_id === null || (is_array($version_id) && count($version_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version_id when calling deactivateServiceVersionEnvironment'
+            );
+        }
+        // verify the required parameter 'environment_name' is set
+        if ($environment_name === null || (is_array($environment_name) && count($environment_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $environment_name when calling deactivateServiceVersionEnvironment'
+            );
+        }
+
+        $resourcePath = '/service/{service_id}/version/{version_id}/deactivate/{environment_name}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($service_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'service_id' . '}',
+                ObjectSerializer::toPathValue($service_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'version_id' . '}',
+                ObjectSerializer::toPathValue($version_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($environment_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'environment_name' . '}',
+                ObjectSerializer::toPathValue($environment_name),
                 $resourcePath
             );
         }

@@ -1,6 +1,6 @@
 <?php
 /**
- * OriginInspectorSubsequentRequestTimestamp
+ * ComputeAclUpdateEntry
  *
  * PHP version 7.3
  *
@@ -27,17 +27,17 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * OriginInspectorSubsequentRequestTimestamp Class Doc Comment
+ * ComputeAclUpdateEntry Class Doc Comment
  *
  * @category Class
- * @description Value to use for subsequent requests.
+ * @description An example of an ACL update request entry.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OriginInspectorSubsequentRequestTimestamp implements ModelInterface, ArrayAccess, \JsonSerializable
+class ComputeAclUpdateEntry implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class OriginInspectorSubsequentRequestTimestamp implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $fastlyModelName = 'origin_inspector_subsequent_request_timestamp';
+    protected static $fastlyModelName = 'compute-acl-update-entry';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +54,9 @@ class OriginInspectorSubsequentRequestTimestamp implements ModelInterface, Array
       * @var string[]
       */
     protected static $fastlyTypes = [
-        
+        'op' => 'string',
+        'prefix' => 'string',
+        'action' => 'string'
     ];
 
     /**
@@ -65,7 +67,9 @@ class OriginInspectorSubsequentRequestTimestamp implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        
+        'op' => null,
+        'prefix' => null,
+        'action' => null
     ];
 
     /**
@@ -95,7 +99,9 @@ class OriginInspectorSubsequentRequestTimestamp implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'op' => 'op',
+        'prefix' => 'prefix',
+        'action' => 'action'
     ];
 
     /**
@@ -104,7 +110,9 @@ class OriginInspectorSubsequentRequestTimestamp implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        
+        'op' => 'setOp',
+        'prefix' => 'setPrefix',
+        'action' => 'setAction'
     ];
 
     /**
@@ -113,7 +121,9 @@ class OriginInspectorSubsequentRequestTimestamp implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        
+        'op' => 'getOp',
+        'prefix' => 'getPrefix',
+        'action' => 'getAction'
     ];
 
     /**
@@ -173,6 +183,9 @@ class OriginInspectorSubsequentRequestTimestamp implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
+        $this->container['op'] = $data['op'] ?? null;
+        $this->container['prefix'] = $data['prefix'] ?? null;
+        $this->container['action'] = $data['action'] ?? null;
     }
 
     /**
@@ -198,6 +211,78 @@ class OriginInspectorSubsequentRequestTimestamp implements ModelInterface, Array
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets op
+     *
+     * @return string|null
+     */
+    public function getOp()
+    {
+        return $this->container['op'];
+    }
+
+    /**
+     * Sets op
+     *
+     * @param string|null $op One of \"create\" or \"update\", indicating that the rest of this entry is to be added to/updated in the ACL.
+     *
+     * @return self
+     */
+    public function setOp($op)
+    {
+        $this->container['op'] = $op;
+
+        return $this;
+    }
+
+    /**
+     * Gets prefix
+     *
+     * @return string|null
+     */
+    public function getPrefix()
+    {
+        return $this->container['prefix'];
+    }
+
+    /**
+     * Sets prefix
+     *
+     * @param string|null $prefix An IP prefix defined in Classless Inter-Domain Routing (CIDR) format, i.e. a valid IP address (v4 or v6) followed by a forward slash (/) and a prefix length (0-32 or 0-128, depending on address family).
+     *
+     * @return self
+     */
+    public function setPrefix($prefix)
+    {
+        $this->container['prefix'] = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return string|null
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string|null $action The action taken on the IP address, either \"block\" or \"allow\".
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        $this->container['action'] = $action;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *

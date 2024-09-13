@@ -222,10 +222,10 @@ List all TLS subscriptions.
 $options['filter_tls_domains_id'] = 'filter_tls_domains_id_example'; // string | Limit the returned subscriptions to those that include the specific domain.
 $options['filter_has_active_order'] = True; // bool | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`.
 $options['filter_certificate_authority'] = 'filter_certificate_authority_example'; // string | Limit the returned subscriptions to a specific certification authority. Values may include `certainly`, `lets-encrypt`, or `globalsign`.
+$options['sort'] = '-created_at'; // string | The order in which to list the results.
 $options['include'] = tls_authorizations; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, `tls_authorizations.self_managed_http_challenge`, and `tls_certificates`.
 $options['page_number'] = 1; // int | Current page.
 $options['page_size'] = 20; // int | Number of records per page.
-$options['sort'] = created_at; // string | The order in which to list the results by creation date.
 
 try {
     $result = $apiInstance->listTlsSubs($options);
@@ -244,10 +244,10 @@ Name | Type | Description  | Notes
 **filter_tls_domains_id** | **string** | Limit the returned subscriptions to those that include the specific domain. | [optional]
 **filter_has_active_order** | **bool** | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`. | [optional]
 **filter_certificate_authority** | **string** | Limit the returned subscriptions to a specific certification authority. Values may include `certainly`, `lets-encrypt`, or `globalsign`. | [optional]
+**sort** | **string** | The order in which to list the results. | [optional] [one of: 'created_at', '-created_at', 'tls_certificates.not_after', '-tls_certificates.not_after'] [defaults to '-created_at']
 **include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, `tls_authorizations.self_managed_http_challenge`, and `tls_certificates`. | [optional]
 **page_number** | **int** | Current page. | [optional]
 **page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
-**sort** | **string** | The order in which to list the results by creation date. | [optional] [one of: 'created_at', '-created_at'] [defaults to 'created_at']
 
 ### Return type
 

@@ -18,9 +18,11 @@ $apiInstance = new Fastly\Api\VersionApi(
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**activateServiceVersion()**](VersionApi.md#activateServiceVersion) | **PUT** /service/{service_id}/version/{version_id}/activate | Activate a service version
+[**activateServiceVersionEnvironment()**](VersionApi.md#activateServiceVersionEnvironment) | **PUT** /service/{service_id}/version/{version_id}/activate/{environment_name} | Activate a service version on the specified environment
 [**cloneServiceVersion()**](VersionApi.md#cloneServiceVersion) | **PUT** /service/{service_id}/version/{version_id}/clone | Clone a service version
 [**createServiceVersion()**](VersionApi.md#createServiceVersion) | **POST** /service/{service_id}/version | Create a service version
 [**deactivateServiceVersion()**](VersionApi.md#deactivateServiceVersion) | **PUT** /service/{service_id}/version/{version_id}/deactivate | Deactivate a service version
+[**deactivateServiceVersionEnvironment()**](VersionApi.md#deactivateServiceVersionEnvironment) | **PUT** /service/{service_id}/version/{version_id}/deactivate/{environment_name} | Deactivate a service version on an environment
 [**getServiceVersion()**](VersionApi.md#getServiceVersion) | **GET** /service/{service_id}/version/{version_id} | Get a version of a service
 [**listServiceVersions()**](VersionApi.md#listServiceVersions) | **GET** /service/{service_id}/version | List versions of a service
 [**lockServiceVersion()**](VersionApi.md#lockServiceVersion) | **PUT** /service/{service_id}/version/{version_id}/lock | Lock a service version
@@ -56,6 +58,44 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
+
+### Return type
+
+[**\Fastly\Model\VersionResponse**](../Model/VersionResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `activateServiceVersionEnvironment()`
+
+```php
+activateServiceVersionEnvironment($options): \Fastly\Model\VersionResponse // Activate a service version on the specified environment
+```
+
+Activate a version on a given environment, i.e. \"staging\"
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['environment_name'] = new \Fastly\Model\\Fastly\Model\EnvironmentName(); // \Fastly\Model\EnvironmentName
+
+try {
+    $result = $apiInstance->activateServiceVersionEnvironment($options);
+} catch (Exception $e) {
+    echo 'Exception when calling VersionApi->activateServiceVersionEnvironment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**environment_name** | [**\Fastly\Model\EnvironmentName**](../Model/.md) |  |
 
 ### Return type
 
@@ -162,6 +202,44 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
+
+### Return type
+
+[**\Fastly\Model\VersionResponse**](../Model/VersionResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `deactivateServiceVersionEnvironment()`
+
+```php
+deactivateServiceVersionEnvironment($options): \Fastly\Model\VersionResponse // Deactivate a service version on an environment
+```
+
+Deactivate the current version on a given environment, i.e. \"staging\"
+
+### Example
+```php
+    $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['version_id'] = 56; // int | Integer identifying a service version.
+$options['environment_name'] = new \Fastly\Model\\Fastly\Model\EnvironmentName(); // \Fastly\Model\EnvironmentName
+
+try {
+    $result = $apiInstance->deactivateServiceVersionEnvironment($options);
+} catch (Exception $e) {
+    echo 'Exception when calling VersionApi->deactivateServiceVersionEnvironment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | Alphanumeric string identifying the service. |
+**version_id** | **int** | Integer identifying a service version. |
+**environment_name** | [**\Fastly\Model\EnvironmentName**](../Model/.md) |  |
 
 ### Return type
 

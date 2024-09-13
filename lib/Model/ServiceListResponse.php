@@ -62,7 +62,8 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => 'string',
         'id' => 'string',
         'version' => 'int',
-        'versions' => '\Fastly\Model\SchemasVersionResponse[]'
+        'versions' => '\Fastly\Model\SchemasVersionResponse[]',
+        'environments' => '\Fastly\Model\Environment[]'
     ];
 
     /**
@@ -82,7 +83,8 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => null,
         'id' => null,
         'version' => null,
-        'versions' => null
+        'versions' => null,
+        'environments' => null
     ];
 
     /**
@@ -121,7 +123,8 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => 'type',
         'id' => 'id',
         'version' => 'version',
-        'versions' => 'versions'
+        'versions' => 'versions',
+        'environments' => 'environments'
     ];
 
     /**
@@ -139,7 +142,8 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => 'setType',
         'id' => 'setId',
         'version' => 'setVersion',
-        'versions' => 'setVersions'
+        'versions' => 'setVersions',
+        'environments' => 'setEnvironments'
     ];
 
     /**
@@ -157,7 +161,8 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'type' => 'getType',
         'id' => 'getId',
         'version' => 'getVersion',
-        'versions' => 'getVersions'
+        'versions' => 'getVersions',
+        'environments' => 'getEnvironments'
     ];
 
     /**
@@ -242,6 +247,7 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['id'] = $data['id'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['versions'] = $data['versions'] ?? null;
+        $this->container['environments'] = $data['environments'] ?? null;
     }
 
     /**
@@ -523,6 +529,30 @@ class ServiceListResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setVersions($versions)
     {
         $this->container['versions'] = $versions;
+
+        return $this;
+    }
+
+    /**
+     * Gets environments
+     *
+     * @return \Fastly\Model\Environment[]|null
+     */
+    public function getEnvironments()
+    {
+        return $this->container['environments'];
+    }
+
+    /**
+     * Sets environments
+     *
+     * @param \Fastly\Model\Environment[]|null $environments A list of environments where the service has been deployed.
+     *
+     * @return self
+     */
+    public function setEnvironments($environments)
+    {
+        $this->container['environments'] = $environments;
 
         return $this;
     }

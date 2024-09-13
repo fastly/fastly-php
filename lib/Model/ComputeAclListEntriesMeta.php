@@ -1,6 +1,6 @@
 <?php
 /**
- * RecordedTimestamp
+ * ComputeAclListEntriesMeta
  *
  * PHP version 7.3
  *
@@ -27,17 +27,16 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * RecordedTimestamp Class Doc Comment
+ * ComputeAclListEntriesMeta Class Doc Comment
  *
  * @category Class
- * @description The Unix timestamp at which this record&#39;s data was generated.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RecordedTimestamp implements ModelInterface, ArrayAccess, \JsonSerializable
+class ComputeAclListEntriesMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -46,7 +45,7 @@ class RecordedTimestamp implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $fastlyModelName = 'recorded_timestamp';
+    protected static $fastlyModelName = 'compute_acl_list_entries_meta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +53,8 @@ class RecordedTimestamp implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $fastlyTypes = [
-        
+        'limit' => 'string',
+        'next_cursor' => 'string'
     ];
 
     /**
@@ -65,7 +65,8 @@ class RecordedTimestamp implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        
+        'limit' => null,
+        'next_cursor' => null
     ];
 
     /**
@@ -95,7 +96,8 @@ class RecordedTimestamp implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'limit' => 'limit',
+        'next_cursor' => 'next_cursor'
     ];
 
     /**
@@ -104,7 +106,8 @@ class RecordedTimestamp implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        
+        'limit' => 'setLimit',
+        'next_cursor' => 'setNextCursor'
     ];
 
     /**
@@ -113,7 +116,8 @@ class RecordedTimestamp implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        
+        'limit' => 'getLimit',
+        'next_cursor' => 'getNextCursor'
     ];
 
     /**
@@ -173,6 +177,8 @@ class RecordedTimestamp implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
+        $this->container['limit'] = $data['limit'] ?? null;
+        $this->container['next_cursor'] = $data['next_cursor'] ?? null;
     }
 
     /**
@@ -198,6 +204,54 @@ class RecordedTimestamp implements ModelInterface, ArrayAccess, \JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets limit
+     *
+     * @return string|null
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit
+     *
+     * @param string|null $limit The maximum number of results shown in this response.
+     *
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets next_cursor
+     *
+     * @return string|null
+     */
+    public function getNextCursor()
+    {
+        return $this->container['next_cursor'];
+    }
+
+    /**
+     * Sets next_cursor
+     *
+     * @param string|null $next_cursor Used for pagination, supply to the next request to get the next block of results.
+     *
+     * @return self
+     */
+    public function setNextCursor($next_cursor)
+    {
+        $this->container['next_cursor'] = $next_cursor;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *

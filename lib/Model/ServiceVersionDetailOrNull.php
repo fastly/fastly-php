@@ -64,6 +64,7 @@ class ServiceVersionDetailOrNull implements ModelInterface, ArrayAccess, \JsonSe
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'service_id' => 'string',
+        'environments' => '\Fastly\Model\Environment[]',
         'backends' => '\Fastly\Model\BackendResponse[]',
         'cache_settings' => '\Fastly\Model\CacheSettingResponse[]',
         'conditions' => '\Fastly\Model\ConditionResponse[]',
@@ -99,6 +100,7 @@ class ServiceVersionDetailOrNull implements ModelInterface, ArrayAccess, \JsonSe
         'deleted_at' => 'date-time',
         'updated_at' => 'date-time',
         'service_id' => null,
+        'environments' => null,
         'backends' => null,
         'cache_settings' => null,
         'conditions' => null,
@@ -153,6 +155,7 @@ class ServiceVersionDetailOrNull implements ModelInterface, ArrayAccess, \JsonSe
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
         'service_id' => 'service_id',
+        'environments' => 'environments',
         'backends' => 'backends',
         'cache_settings' => 'cache_settings',
         'conditions' => 'conditions',
@@ -186,6 +189,7 @@ class ServiceVersionDetailOrNull implements ModelInterface, ArrayAccess, \JsonSe
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
         'service_id' => 'setServiceId',
+        'environments' => 'setEnvironments',
         'backends' => 'setBackends',
         'cache_settings' => 'setCacheSettings',
         'conditions' => 'setConditions',
@@ -219,6 +223,7 @@ class ServiceVersionDetailOrNull implements ModelInterface, ArrayAccess, \JsonSe
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
         'service_id' => 'getServiceId',
+        'environments' => 'getEnvironments',
         'backends' => 'getBackends',
         'cache_settings' => 'getCacheSettings',
         'conditions' => 'getConditions',
@@ -303,6 +308,7 @@ class ServiceVersionDetailOrNull implements ModelInterface, ArrayAccess, \JsonSe
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['environments'] = $data['environments'] ?? null;
         $this->container['backends'] = $data['backends'] ?? null;
         $this->container['cache_settings'] = $data['cache_settings'] ?? null;
         $this->container['conditions'] = $data['conditions'] ?? null;
@@ -603,6 +609,30 @@ class ServiceVersionDetailOrNull implements ModelInterface, ArrayAccess, \JsonSe
     public function setServiceId($service_id)
     {
         $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets environments
+     *
+     * @return \Fastly\Model\Environment[]|null
+     */
+    public function getEnvironments()
+    {
+        return $this->container['environments'];
+    }
+
+    /**
+     * Sets environments
+     *
+     * @param \Fastly\Model\Environment[]|null $environments A list of environments where the service has been deployed.
+     *
+     * @return self
+     */
+    public function setEnvironments($environments)
+    {
+        $this->container['environments'] = $environments;
 
         return $this;
     }

@@ -34,9 +34,9 @@ List all TLS domains.
 $options['filter_tls_certificates_id'] = 'filter_tls_certificates_id_example'; // string | Optional. Limit the returned domains to those listed in the given TLS certificate's SAN list.
 $options['filter_tls_subscriptions_id'] = 'filter_tls_subscriptions_id_example'; // string | Optional. Limit the returned domains to those for a given TLS subscription.
 $options['include'] = 'include_example'; // string | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`, `tls_certificates`, `tls_subscriptions`, `tls_subscriptions.tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.
+$options['sort'] = 'id'; // string | The order in which to list the results.
 $options['page_number'] = 1; // int | Current page.
 $options['page_size'] = 20; // int | Number of records per page.
-$options['sort'] = created_at; // string | The order in which to list the results by creation date.
 
 try {
     $result = $apiInstance->listTlsDomains($options);
@@ -55,9 +55,9 @@ Name | Type | Description  | Notes
 **filter_tls_certificates_id** | **string** | Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. | [optional]
 **filter_tls_subscriptions_id** | **string** | Optional. Limit the returned domains to those for a given TLS subscription. | [optional]
 **include** | **string** | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`, `tls_certificates`, `tls_subscriptions`, `tls_subscriptions.tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. | [optional]
+**sort** | **string** | The order in which to list the results. | [optional] [one of: 'tls_activations.created_at', '-tls_activations.created_at', 'id', '-id'] [defaults to 'id']
 **page_number** | **int** | Current page. | [optional]
 **page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
-**sort** | **string** | The order in which to list the results by creation date. | [optional] [one of: 'created_at', '-created_at'] [defaults to 'created_at']
 
 ### Return type
 

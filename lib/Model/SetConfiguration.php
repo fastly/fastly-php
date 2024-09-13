@@ -1,6 +1,6 @@
 <?php
 /**
- * OriginInspectorRealtimeEntryRecorded
+ * SetConfiguration
  *
  * PHP version 7.3
  *
@@ -27,17 +27,16 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * OriginInspectorRealtimeEntryRecorded Class Doc Comment
+ * SetConfiguration Class Doc Comment
  *
  * @category Class
- * @description The Unix timestamp at which this record&#39;s data was generated.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OriginInspectorRealtimeEntryRecorded implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -46,7 +45,7 @@ class OriginInspectorRealtimeEntryRecorded implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $fastlyModelName = 'origin_inspector_realtime_entry_recorded';
+    protected static $fastlyModelName = 'set_configuration';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +53,8 @@ class OriginInspectorRealtimeEntryRecorded implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $fastlyTypes = [
-        
+        'workspace_id' => 'string',
+        'traffic_ramp' => 'string'
     ];
 
     /**
@@ -65,7 +65,8 @@ class OriginInspectorRealtimeEntryRecorded implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        
+        'workspace_id' => null,
+        'traffic_ramp' => null
     ];
 
     /**
@@ -95,7 +96,8 @@ class OriginInspectorRealtimeEntryRecorded implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'workspace_id' => 'workspace_id',
+        'traffic_ramp' => 'traffic_ramp'
     ];
 
     /**
@@ -104,7 +106,8 @@ class OriginInspectorRealtimeEntryRecorded implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        
+        'workspace_id' => 'setWorkspaceId',
+        'traffic_ramp' => 'setTrafficRamp'
     ];
 
     /**
@@ -113,7 +116,8 @@ class OriginInspectorRealtimeEntryRecorded implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        
+        'workspace_id' => 'getWorkspaceId',
+        'traffic_ramp' => 'getTrafficRamp'
     ];
 
     /**
@@ -173,6 +177,8 @@ class OriginInspectorRealtimeEntryRecorded implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
+        $this->container['workspace_id'] = $data['workspace_id'] ?? null;
+        $this->container['traffic_ramp'] = $data['traffic_ramp'] ?? null;
     }
 
     /**
@@ -198,6 +204,54 @@ class OriginInspectorRealtimeEntryRecorded implements ModelInterface, ArrayAcces
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets workspace_id
+     *
+     * @return string|null
+     */
+    public function getWorkspaceId()
+    {
+        return $this->container['workspace_id'];
+    }
+
+    /**
+     * Sets workspace_id
+     *
+     * @param string|null $workspace_id The new workspace_id. Required in the `PUT` request body when `product_id` is `ngwaf`. Optional in the `PATCH` request body for `ngwaf`.
+     *
+     * @return self
+     */
+    public function setWorkspaceId($workspace_id)
+    {
+        $this->container['workspace_id'] = $workspace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets traffic_ramp
+     *
+     * @return string|null
+     */
+    public function getTrafficRamp()
+    {
+        return $this->container['traffic_ramp'];
+    }
+
+    /**
+     * Sets traffic_ramp
+     *
+     * @param string|null $traffic_ramp The new traffic ramp. Optional in the `PATCH` request body for `ngwaf`.
+     *
+     * @return self
+     */
+    public function setTrafficRamp($traffic_ramp)
+    {
+        $this->container['traffic_ramp'] = $traffic_ramp;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
