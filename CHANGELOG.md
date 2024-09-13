@@ -4,7 +4,6 @@
 
 **Bug fixes:**
 
-- bugfix(py): Add dependencies to pyproject.toml.
 - fix(billing): make rate-per-unit nullable
 
 ## [v5.7.0](https://github.com/fastly/fastly-php/releases/tag/release/v5.7.0) (2024-08-08)
