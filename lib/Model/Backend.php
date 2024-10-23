@@ -540,7 +540,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets connect_timeout
      *
-     * @param int|null $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
+     * @param int|null $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
      *
      * @return self
      */
@@ -564,7 +564,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets first_byte_timeout
      *
-     * @param int|null $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`.
+     * @param int|null $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`.
      *
      * @return self
      */
