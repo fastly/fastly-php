@@ -30,7 +30,7 @@ Method | HTTP request | Description
 disableProduct($options) // Disable a product
 ```
 
-Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, and `ngwaf`.
+Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, `ngwaf`, `ddos_protection`, and `log_explorer_insights`.
 
 ### Example
 ```php
@@ -66,7 +66,7 @@ void (empty response body)
 enableProduct($options): \Fastly\Model\EnabledProductResponse // Enable a product
 ```
 
-Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, and `ngwaf`.
+Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, `ngwaf`, `ddos_protection`, and `log_explorer_insights`.
 
 ### Example
 ```php
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 getEnabledProduct($options): \Fastly\Model\EnabledProductResponse // Get enabled product
 ```
 
-Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, and `ngwaf`.
+Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, `ngwaf`, `ddos_protection`, and `log_explorer_insights`.
 
 ### Example
 ```php
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 getProductConfiguration($options): \Fastly\Model\ConfiguredProductResponse // Get configuration for a product
 ```
 
-Get configuration for an enabled product on a service. Supported product IDs: `ngwaf`.
+Get configuration for an enabled product on a service. Supported product IDs: `ngwaf` and `ddos_protection`.
 
 ### Example
 ```php
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 setProductConfiguration($options): \Fastly\Model\ConfiguredProductResponse // Update configuration for a product
 ```
 
-Update configuration for an enabled product on a service. Supported product IDs: `ngwaf`.
+Update configuration for an enabled product on a service. Supported product IDs: `ngwaf` and `ddos_protection`.
 
 ### Example
 ```php

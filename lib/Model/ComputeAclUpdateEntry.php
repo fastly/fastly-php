@@ -30,7 +30,7 @@ use \Fastly\ObjectSerializer;
  * ComputeAclUpdateEntry Class Doc Comment
  *
  * @category Class
- * @description An example of an ACL update request entry.
+ * @description Defines the structure of an ACL update request entry.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>

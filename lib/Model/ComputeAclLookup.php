@@ -30,7 +30,7 @@ use \Fastly\ObjectSerializer;
  * ComputeAclLookup Class Doc Comment
  *
  * @category Class
- * @description An example of an ACL Lookup response.
+ * @description Defines the structure of an ACL Lookup response.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>

@@ -2033,7 +2033,7 @@ class AclsInComputeApi
      * URL: https://api.fastly.com
      *
      * @param  string $acl_id acl_id (required)
-     * @param  \Fastly\Model\ComputeAclUpdateEntry[] $compute_acl_update_entry compute_acl_update_entry (optional)
+     * @param  \Fastly\Model\ComputeAclUpdate $compute_acl_update compute_acl_update (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2055,7 +2055,7 @@ class AclsInComputeApi
      * URL: https://api.fastly.com
      *
      * @param  string $acl_id (required)
-     * @param  \Fastly\Model\ComputeAclUpdateEntry[] $compute_acl_update_entry (optional)
+     * @param  \Fastly\Model\ComputeAclUpdate $compute_acl_update (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2132,7 +2132,7 @@ class AclsInComputeApi
      * URL: https://api.fastly.com
      *
      * @param  string $acl_id (required)
-     * @param  \Fastly\Model\ComputeAclUpdateEntry[] $compute_acl_update_entry (optional)
+     * @param  \Fastly\Model\ComputeAclUpdate $compute_acl_update (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2158,7 +2158,7 @@ class AclsInComputeApi
      * URL: https://api.fastly.com
      *
      * @param  string $acl_id (required)
-     * @param  \Fastly\Model\ComputeAclUpdateEntry[] $compute_acl_update_entry (optional)
+     * @param  \Fastly\Model\ComputeAclUpdate $compute_acl_update (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2200,7 +2200,7 @@ class AclsInComputeApi
      * URL: https://api.fastly.com
      *
      * @param  string $acl_id (required)
-     * @param  \Fastly\Model\ComputeAclUpdateEntry[] $compute_acl_update_entry (optional)
+     * @param  \Fastly\Model\ComputeAclUpdate $compute_acl_update (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2209,7 +2209,7 @@ class AclsInComputeApi
     {
         // unbox the parameters from the associative array
         $acl_id = array_key_exists('acl_id', $options) ? $options['acl_id'] : null;
-        $compute_acl_update_entry = array_key_exists('compute_acl_update_entry', $options) ? $options['compute_acl_update_entry'] : null;
+        $compute_acl_update = array_key_exists('compute_acl_update', $options) ? $options['compute_acl_update'] : null;
 
         // verify the required parameter 'acl_id' is set
         if ($acl_id === null || (is_array($acl_id) && count($acl_id) === 0)) {
@@ -2249,11 +2249,11 @@ class AclsInComputeApi
         }
 
         // for model (json/xml)
-        if (isset($compute_acl_update_entry)) {
+        if (isset($compute_acl_update)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($compute_acl_update_entry));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($compute_acl_update));
             } else {
-                $httpBody = $compute_acl_update_entry;
+                $httpBody = $compute_acl_update;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -119,12 +119,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
      * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $time_granularity time_granularity (required)
-     * @param  string $start_date start_date (optional)
-     * @param  string $end_date end_date (optional)
      * @param  string $start_month start_month (optional)
      * @param  string $end_month end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -150,12 +146,8 @@ class BillingUsageMetricsApi
      * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
      * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $time_granularity (required)
-     * @param  string $start_date (optional)
-     * @param  string $end_date (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -329,12 +321,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
      * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $time_granularity (required)
-     * @param  string $start_date (optional)
-     * @param  string $end_date (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -363,12 +351,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
      * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $time_granularity (required)
-     * @param  string $start_date (optional)
-     * @param  string $end_date (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -423,12 +407,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
      * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
      * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $time_granularity (required)
-     * @param  string $start_date (optional)
-     * @param  string $end_date (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -440,23 +420,13 @@ class BillingUsageMetricsApi
     public function getServiceLevelUsageRequest($options)
     {
         // unbox the parameters from the associative array
-        $customer_id = array_key_exists('customer_id', $options) ? $options['customer_id'] : null;
         $product_id = array_key_exists('product_id', $options) ? $options['product_id'] : null;
         $usage_type_name = array_key_exists('usage_type_name', $options) ? $options['usage_type_name'] : null;
-        $time_granularity = array_key_exists('time_granularity', $options) ? $options['time_granularity'] : null;
-        $start_date = array_key_exists('start_date', $options) ? $options['start_date'] : null;
-        $end_date = array_key_exists('end_date', $options) ? $options['end_date'] : null;
         $start_month = array_key_exists('start_month', $options) ? $options['start_month'] : null;
         $end_month = array_key_exists('end_month', $options) ? $options['end_month'] : null;
         $limit = array_key_exists('limit', $options) ? $options['limit'] : '5';
         $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
 
-        // verify the required parameter 'customer_id' is set
-        if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling getServiceLevelUsage'
-            );
-        }
         // verify the required parameter 'product_id' is set
         if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -469,24 +439,6 @@ class BillingUsageMetricsApi
                 'Missing the required parameter $usage_type_name when calling getServiceLevelUsage'
             );
         }
-        // verify the required parameter 'time_granularity' is set
-        if ($time_granularity === null || (is_array($time_granularity) && count($time_granularity) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $time_granularity when calling getServiceLevelUsage'
-            );
-        }
-        if (!preg_match("/^day$|^month$/", $time_granularity)) {
-            throw new \InvalidArgumentException("invalid value for \"time_granularity\" when calling BillingUsageMetricsApi.getServiceLevelUsage, must conform to the pattern /^day$|^month$/.");
-        }
-
-        if ($start_date !== null && !preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $start_date)) {
-            throw new \InvalidArgumentException("invalid value for \"start_date\" when calling BillingUsageMetricsApi.getServiceLevelUsage, must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.");
-        }
-
-        if ($end_date !== null && !preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $end_date)) {
-            throw new \InvalidArgumentException("invalid value for \"end_date\" when calling BillingUsageMetricsApi.getServiceLevelUsage, must conform to the pattern /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.");
-        }
-
         if ($start_month !== null && !preg_match("/^[0-9]{4}-[0-9]{2}$/", $start_month)) {
             throw new \InvalidArgumentException("invalid value for \"start_month\" when calling BillingUsageMetricsApi.getServiceLevelUsage, must conform to the pattern /^[0-9]{4}-[0-9]{2}$/.");
         }
@@ -496,7 +448,7 @@ class BillingUsageMetricsApi
         }
 
 
-        $resourcePath = '/billing/v2/account_customers/{customer_id}/service-usage-metrics';
+        $resourcePath = '/billing/v3/service-usage-metrics';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -523,39 +475,6 @@ class BillingUsageMetricsApi
             }
             else {
                 $queryParams['usage_type_name'] = ObjectSerializer::toString($usage_type_name);
-            }
-        }
-        // query params
-        if ($time_granularity !== null) {
-            if('form' === 'form' && is_array($time_granularity)) {
-                foreach($time_granularity as $key => $value) {
-                    $queryParams[$key] = ObjectSerializer::toString($value);
-                }
-            }
-            else {
-                $queryParams['time_granularity'] = ObjectSerializer::toString($time_granularity);
-            }
-        }
-        // query params
-        if ($start_date !== null) {
-            if('form' === 'form' && is_array($start_date)) {
-                foreach($start_date as $key => $value) {
-                    $queryParams[$key] = ObjectSerializer::toString($value);
-                }
-            }
-            else {
-                $queryParams['start_date'] = ObjectSerializer::toString($start_date);
-            }
-        }
-        // query params
-        if ($end_date !== null) {
-            if('form' === 'form' && is_array($end_date)) {
-                foreach($end_date as $key => $value) {
-                    $queryParams[$key] = ObjectSerializer::toString($value);
-                }
-            }
-            else {
-                $queryParams['end_date'] = ObjectSerializer::toString($end_date);
             }
         }
         // query params
@@ -604,14 +523,6 @@ class BillingUsageMetricsApi
         }
 
 
-        // path params
-        if ($customer_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'customer_id' . '}',
-                ObjectSerializer::toPathValue($customer_id),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -683,46 +594,48 @@ class BillingUsageMetricsApi
     }
 
     /**
-     * Operation getServiceLevelUsageTypes
+     * Operation getUsageMetrics
      *
-     * Retrieve product usage types for a customer.
+     * Get monthly usage metrics
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $start_month start_month (optional)
+     * @param  string $end_month end_month (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\Serviceusagetypes|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error
+     * @return \Fastly\Model\Usagemetric|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error
      */
-    public function getServiceLevelUsageTypes($options)
+    public function getUsageMetrics($options)
     {
-        list($response) = $this->getServiceLevelUsageTypesWithHttpInfo($options);
+        list($response) = $this->getUsageMetricsWithHttpInfo($options);
         return $response;
     }
 
     /**
-     * Operation getServiceLevelUsageTypesWithHttpInfo
+     * Operation getUsageMetricsWithHttpInfo
      *
-     * Retrieve product usage types for a customer.
+     * Get monthly usage metrics
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $start_month (optional)
+     * @param  string $end_month (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\Serviceusagetypes|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\Usagemetric|\Fastly\Model\Error|\Fastly\Model\Error|\Fastly\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getServiceLevelUsageTypesWithHttpInfo($options)
+    public function getUsageMetricsWithHttpInfo($options)
     {
-        $request = $this->getServiceLevelUsageTypesRequest($options);
+        $request = $this->getUsageMetricsRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -773,14 +686,14 @@ class BillingUsageMetricsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\Serviceusagetypes' === '\SplFileObject') {
+                    if ('\Fastly\Model\Usagemetric' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\Serviceusagetypes', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\Usagemetric', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -822,7 +735,7 @@ class BillingUsageMetricsApi
                     ];
             }
 
-            $returnType = '\Fastly\Model\Serviceusagetypes';
+            $returnType = '\Fastly\Model\Usagemetric';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -840,7 +753,7 @@ class BillingUsageMetricsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\Serviceusagetypes',
+                        '\Fastly\Model\Usagemetric',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -875,23 +788,24 @@ class BillingUsageMetricsApi
     }
 
     /**
-     * Operation getServiceLevelUsageTypesAsync
+     * Operation getUsageMetricsAsync
      *
-     * Retrieve product usage types for a customer.
+     * Get monthly usage metrics
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $start_month (optional)
+     * @param  string $end_month (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getServiceLevelUsageTypesAsync($options)
+    public function getUsageMetricsAsync($options)
     {
-        return $this->getServiceLevelUsageTypesAsyncWithHttpInfo($options)
+        return $this->getUsageMetricsAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -900,24 +814,25 @@ class BillingUsageMetricsApi
     }
 
     /**
-     * Operation getServiceLevelUsageTypesAsyncWithHttpInfo
+     * Operation getUsageMetricsAsyncWithHttpInfo
      *
-     * Retrieve product usage types for a customer.
+     * Get monthly usage metrics
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $start_month (optional)
+     * @param  string $end_month (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getServiceLevelUsageTypesAsyncWithHttpInfo($options)
+    public function getUsageMetricsAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\Serviceusagetypes';
-        $request = $this->getServiceLevelUsageTypesRequest($options);
+        $returnType = '\Fastly\Model\Usagemetric';
+        $request = $this->getUsageMetricsRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -953,47 +868,65 @@ class BillingUsageMetricsApi
     }
 
     /**
-     * Create request for operation 'getServiceLevelUsageTypes'
+     * Create request for operation 'getUsageMetrics'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $customer_id Alphanumeric string identifying the customer. (required)
+     * @param  string $start_month (optional)
+     * @param  string $end_month (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getServiceLevelUsageTypesRequest($options)
+    public function getUsageMetricsRequest($options)
     {
         // unbox the parameters from the associative array
-        $customer_id = array_key_exists('customer_id', $options) ? $options['customer_id'] : null;
+        $start_month = array_key_exists('start_month', $options) ? $options['start_month'] : null;
+        $end_month = array_key_exists('end_month', $options) ? $options['end_month'] : null;
 
-        // verify the required parameter 'customer_id' is set
-        if ($customer_id === null || (is_array($customer_id) && count($customer_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_id when calling getServiceLevelUsageTypes'
-            );
+        if ($start_month !== null && !preg_match("/^[0-9]{4}-[0-9]{2}$/", $start_month)) {
+            throw new \InvalidArgumentException("invalid value for \"start_month\" when calling BillingUsageMetricsApi.getUsageMetrics, must conform to the pattern /^[0-9]{4}-[0-9]{2}$/.");
         }
 
-        $resourcePath = '/billing/v2/account_customers/{customer_id}/service-usage-types';
+        if ($end_month !== null && !preg_match("/^[0-9]{4}-[0-9]{2}$/", $end_month)) {
+            throw new \InvalidArgumentException("invalid value for \"end_month\" when calling BillingUsageMetricsApi.getUsageMetrics, must conform to the pattern /^[0-9]{4}-[0-9]{2}$/.");
+        }
+
+
+        $resourcePath = '/billing/v3/usage-metrics';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-
-        // path params
-        if ($customer_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'customer_id' . '}',
-                ObjectSerializer::toPathValue($customer_id),
-                $resourcePath
-            );
+        // query params
+        if ($start_month !== null) {
+            if('form' === 'form' && is_array($start_month)) {
+                foreach($start_month as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['start_month'] = ObjectSerializer::toString($start_month);
+            }
         }
+        // query params
+        if ($end_month !== null) {
+            if('form' === 'form' && is_array($end_month)) {
+                foreach($end_month as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['end_month'] = ObjectSerializer::toString($end_month);
+            }
+        }
+
+
 
 
         if ($multipart) {

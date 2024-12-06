@@ -420,6 +420,7 @@ class KvStoreItemApi
      * @param  string $cursor cursor (optional)
      * @param  int $limit limit (optional, default to 100)
      * @param  string $prefix prefix (optional)
+     * @param  string $consistency consistency (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -445,6 +446,7 @@ class KvStoreItemApi
      * @param  string $cursor (optional)
      * @param  int $limit (optional, default to 100)
      * @param  string $prefix (optional)
+     * @param  string $consistency (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -558,6 +560,7 @@ class KvStoreItemApi
      * @param  string $cursor (optional)
      * @param  int $limit (optional, default to 100)
      * @param  string $prefix (optional)
+     * @param  string $consistency (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -586,6 +589,7 @@ class KvStoreItemApi
      * @param  string $cursor (optional)
      * @param  int $limit (optional, default to 100)
      * @param  string $prefix (optional)
+     * @param  string $consistency (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -640,6 +644,7 @@ class KvStoreItemApi
      * @param  string $cursor (optional)
      * @param  int $limit (optional, default to 100)
      * @param  string $prefix (optional)
+     * @param  string $consistency (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -651,6 +656,7 @@ class KvStoreItemApi
         $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
         $limit = array_key_exists('limit', $options) ? $options['limit'] : 100;
         $prefix = array_key_exists('prefix', $options) ? $options['prefix'] : null;
+        $consistency = array_key_exists('consistency', $options) ? $options['consistency'] : null;
 
         // verify the required parameter 'store_id' is set
         if ($store_id === null || (is_array($store_id) && count($store_id) === 0)) {
@@ -697,6 +703,17 @@ class KvStoreItemApi
             }
             else {
                 $queryParams['prefix'] = ObjectSerializer::toString($prefix);
+            }
+        }
+        // query params
+        if ($consistency !== null) {
+            if('form' === 'form' && is_array($consistency)) {
+                foreach($consistency as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['consistency'] = ObjectSerializer::toString($consistency);
             }
         }
 

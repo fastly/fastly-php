@@ -30,7 +30,7 @@ use \Fastly\ObjectSerializer;
  * ComputeAclListEntries Class Doc Comment
  *
  * @category Class
- * @description An example of an ACL List Response.
+ * @description Defines the structure of what the ACL List endpoint returns.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>

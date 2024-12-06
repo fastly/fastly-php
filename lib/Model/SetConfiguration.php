@@ -54,7 +54,8 @@ class SetConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'workspace_id' => 'string',
-        'traffic_ramp' => 'string'
+        'traffic_ramp' => 'string',
+        'mode' => 'string'
     ];
 
     /**
@@ -66,7 +67,8 @@ class SetConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'workspace_id' => null,
-        'traffic_ramp' => null
+        'traffic_ramp' => null,
+        'mode' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class SetConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'workspace_id' => 'workspace_id',
-        'traffic_ramp' => 'traffic_ramp'
+        'traffic_ramp' => 'traffic_ramp',
+        'mode' => 'mode'
     ];
 
     /**
@@ -107,7 +110,8 @@ class SetConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'workspace_id' => 'setWorkspaceId',
-        'traffic_ramp' => 'setTrafficRamp'
+        'traffic_ramp' => 'setTrafficRamp',
+        'mode' => 'setMode'
     ];
 
     /**
@@ -117,7 +121,8 @@ class SetConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'workspace_id' => 'getWorkspaceId',
-        'traffic_ramp' => 'getTrafficRamp'
+        'traffic_ramp' => 'getTrafficRamp',
+        'mode' => 'getMode'
     ];
 
     /**
@@ -179,6 +184,7 @@ class SetConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['workspace_id'] = $data['workspace_id'] ?? null;
         $this->container['traffic_ramp'] = $data['traffic_ramp'] ?? null;
+        $this->container['mode'] = $data['mode'] ?? null;
     }
 
     /**
@@ -249,6 +255,30 @@ class SetConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrafficRamp($traffic_ramp)
     {
         $this->container['traffic_ramp'] = $traffic_ramp;
+
+        return $this;
+    }
+
+    /**
+     * Gets mode
+     *
+     * @return string|null
+     */
+    public function getMode()
+    {
+        return $this->container['mode'];
+    }
+
+    /**
+     * Sets mode
+     *
+     * @param string|null $mode The new mode to run the product in. One of `block`, `log`, or `off`. Optional in the `PATCH` request body for `ddos_protection`.
+     *
+     * @return self
+     */
+    public function setMode($mode)
+    {
+        $this->container['mode'] = $mode;
 
         return $this;
     }

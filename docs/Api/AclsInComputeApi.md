@@ -244,7 +244,7 @@ Update an ACL.
 ### Example
 ```php
     $options['acl_id'] = 'acl_id_example'; // string
-$options['compute_acl_update_entry'] = array(new \Fastly\Model\ComputeAclUpdateEntry()); // \Fastly\Model\ComputeAclUpdateEntry[]
+$options['compute_acl_update'] = new \Fastly\Model\ComputeAclUpdate(); // \Fastly\Model\ComputeAclUpdate
 
 try {
     $apiInstance->computeAclUpdateAcls($options);
@@ -260,7 +260,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **acl_id** | **string** |  |
-**compute_acl_update_entry** | [**\Fastly\Model\ComputeAclUpdateEntry[]**](../Model/ComputeAclUpdateEntry.md) |  | [optional]
+**compute_acl_update** | [**\Fastly\Model\ComputeAclUpdate**](../Model/ComputeAclUpdate.md) |  | [optional]
 
 ### Return type
 

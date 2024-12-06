@@ -73,6 +73,7 @@ List the keys of all items within an kv store.
 $options['cursor'] = 'cursor_example'; // string
 $options['limit'] = 100; // int
 $options['prefix'] = 'prefix_example'; // string
+$options['consistency'] = 'consistency_example'; // string
 
 try {
     $result = $apiInstance->getKeys($options);
@@ -91,6 +92,7 @@ Name | Type | Description  | Notes
 **cursor** | **string** |  | [optional]
 **limit** | **int** |  | [optional] [defaults to 100]
 **prefix** | **string** |  | [optional]
+**consistency** | **string** |  | [optional]
 
 ### Return type
 

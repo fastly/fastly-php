@@ -283,13 +283,6 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenge_complete_tokens_issued' => 'int',
         'ddos_action_downgrade' => 'int',
         'ddos_action_downgraded_connections' => 'int',
-        'vcl_on_compute_hit_requests' => 'int',
-        'vcl_on_compute_miss_requests' => 'int',
-        'vcl_on_compute_pass_requests' => 'int',
-        'vcl_on_compute_error_requests' => 'int',
-        'vcl_on_compute_synth_requests' => 'int',
-        'vcl_on_compute_edge_hit_requests' => 'int',
-        'vcl_on_compute_edge_miss_requests' => 'int',
         'all_hit_requests' => 'int',
         'all_miss_requests' => 'int',
         'all_pass_requests' => 'int',
@@ -303,7 +296,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_4xx' => 'int',
         'all_status_5xx' => 'int',
         'origin_offload' => 'float',
-        'request_denied_get_head_body' => 'int'
+        'request_denied_get_head_body' => 'int',
+        'service_ddos_requests_detected' => 'int',
+        'service_ddos_requests_mitigated' => 'int',
+        'service_ddos_requests_allowed' => 'int'
     ];
 
     /**
@@ -543,13 +539,6 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenge_complete_tokens_issued' => null,
         'ddos_action_downgrade' => null,
         'ddos_action_downgraded_connections' => null,
-        'vcl_on_compute_hit_requests' => null,
-        'vcl_on_compute_miss_requests' => null,
-        'vcl_on_compute_pass_requests' => null,
-        'vcl_on_compute_error_requests' => null,
-        'vcl_on_compute_synth_requests' => null,
-        'vcl_on_compute_edge_hit_requests' => null,
-        'vcl_on_compute_edge_miss_requests' => null,
         'all_hit_requests' => null,
         'all_miss_requests' => null,
         'all_pass_requests' => null,
@@ -563,7 +552,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_4xx' => null,
         'all_status_5xx' => null,
         'origin_offload' => null,
-        'request_denied_get_head_body' => null
+        'request_denied_get_head_body' => null,
+        'service_ddos_requests_detected' => null,
+        'service_ddos_requests_mitigated' => null,
+        'service_ddos_requests_allowed' => null
     ];
 
     /**
@@ -822,13 +814,6 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenge_complete_tokens_issued' => 'bot_challenge_complete_tokens_issued',
         'ddos_action_downgrade' => 'ddos_action_downgrade',
         'ddos_action_downgraded_connections' => 'ddos_action_downgraded_connections',
-        'vcl_on_compute_hit_requests' => 'vcl_on_compute_hit_requests',
-        'vcl_on_compute_miss_requests' => 'vcl_on_compute_miss_requests',
-        'vcl_on_compute_pass_requests' => 'vcl_on_compute_pass_requests',
-        'vcl_on_compute_error_requests' => 'vcl_on_compute_error_requests',
-        'vcl_on_compute_synth_requests' => 'vcl_on_compute_synth_requests',
-        'vcl_on_compute_edge_hit_requests' => 'vcl_on_compute_edge_hit_requests',
-        'vcl_on_compute_edge_miss_requests' => 'vcl_on_compute_edge_miss_requests',
         'all_hit_requests' => 'all_hit_requests',
         'all_miss_requests' => 'all_miss_requests',
         'all_pass_requests' => 'all_pass_requests',
@@ -842,7 +827,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_4xx' => 'all_status_4xx',
         'all_status_5xx' => 'all_status_5xx',
         'origin_offload' => 'origin_offload',
-        'request_denied_get_head_body' => 'request_denied_get_head_body'
+        'request_denied_get_head_body' => 'request_denied_get_head_body',
+        'service_ddos_requests_detected' => 'service_ddos_requests_detected',
+        'service_ddos_requests_mitigated' => 'service_ddos_requests_mitigated',
+        'service_ddos_requests_allowed' => 'service_ddos_requests_allowed'
     ];
 
     /**
@@ -1080,13 +1068,6 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenge_complete_tokens_issued' => 'setBotChallengeCompleteTokensIssued',
         'ddos_action_downgrade' => 'setDdosActionDowngrade',
         'ddos_action_downgraded_connections' => 'setDdosActionDowngradedConnections',
-        'vcl_on_compute_hit_requests' => 'setVclOnComputeHitRequests',
-        'vcl_on_compute_miss_requests' => 'setVclOnComputeMissRequests',
-        'vcl_on_compute_pass_requests' => 'setVclOnComputePassRequests',
-        'vcl_on_compute_error_requests' => 'setVclOnComputeErrorRequests',
-        'vcl_on_compute_synth_requests' => 'setVclOnComputeSynthRequests',
-        'vcl_on_compute_edge_hit_requests' => 'setVclOnComputeEdgeHitRequests',
-        'vcl_on_compute_edge_miss_requests' => 'setVclOnComputeEdgeMissRequests',
         'all_hit_requests' => 'setAllHitRequests',
         'all_miss_requests' => 'setAllMissRequests',
         'all_pass_requests' => 'setAllPassRequests',
@@ -1100,7 +1081,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_4xx' => 'setAllStatus4xx',
         'all_status_5xx' => 'setAllStatus5xx',
         'origin_offload' => 'setOriginOffload',
-        'request_denied_get_head_body' => 'setRequestDeniedGetHeadBody'
+        'request_denied_get_head_body' => 'setRequestDeniedGetHeadBody',
+        'service_ddos_requests_detected' => 'setServiceDdosRequestsDetected',
+        'service_ddos_requests_mitigated' => 'setServiceDdosRequestsMitigated',
+        'service_ddos_requests_allowed' => 'setServiceDdosRequestsAllowed'
     ];
 
     /**
@@ -1338,13 +1322,6 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'bot_challenge_complete_tokens_issued' => 'getBotChallengeCompleteTokensIssued',
         'ddos_action_downgrade' => 'getDdosActionDowngrade',
         'ddos_action_downgraded_connections' => 'getDdosActionDowngradedConnections',
-        'vcl_on_compute_hit_requests' => 'getVclOnComputeHitRequests',
-        'vcl_on_compute_miss_requests' => 'getVclOnComputeMissRequests',
-        'vcl_on_compute_pass_requests' => 'getVclOnComputePassRequests',
-        'vcl_on_compute_error_requests' => 'getVclOnComputeErrorRequests',
-        'vcl_on_compute_synth_requests' => 'getVclOnComputeSynthRequests',
-        'vcl_on_compute_edge_hit_requests' => 'getVclOnComputeEdgeHitRequests',
-        'vcl_on_compute_edge_miss_requests' => 'getVclOnComputeEdgeMissRequests',
         'all_hit_requests' => 'getAllHitRequests',
         'all_miss_requests' => 'getAllMissRequests',
         'all_pass_requests' => 'getAllPassRequests',
@@ -1358,7 +1335,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_4xx' => 'getAllStatus4xx',
         'all_status_5xx' => 'getAllStatus5xx',
         'origin_offload' => 'getOriginOffload',
-        'request_denied_get_head_body' => 'getRequestDeniedGetHeadBody'
+        'request_denied_get_head_body' => 'getRequestDeniedGetHeadBody',
+        'service_ddos_requests_detected' => 'getServiceDdosRequestsDetected',
+        'service_ddos_requests_mitigated' => 'getServiceDdosRequestsMitigated',
+        'service_ddos_requests_allowed' => 'getServiceDdosRequestsAllowed'
     ];
 
     /**
@@ -1647,13 +1627,6 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['bot_challenge_complete_tokens_issued'] = $data['bot_challenge_complete_tokens_issued'] ?? null;
         $this->container['ddos_action_downgrade'] = $data['ddos_action_downgrade'] ?? null;
         $this->container['ddos_action_downgraded_connections'] = $data['ddos_action_downgraded_connections'] ?? null;
-        $this->container['vcl_on_compute_hit_requests'] = $data['vcl_on_compute_hit_requests'] ?? null;
-        $this->container['vcl_on_compute_miss_requests'] = $data['vcl_on_compute_miss_requests'] ?? null;
-        $this->container['vcl_on_compute_pass_requests'] = $data['vcl_on_compute_pass_requests'] ?? null;
-        $this->container['vcl_on_compute_error_requests'] = $data['vcl_on_compute_error_requests'] ?? null;
-        $this->container['vcl_on_compute_synth_requests'] = $data['vcl_on_compute_synth_requests'] ?? null;
-        $this->container['vcl_on_compute_edge_hit_requests'] = $data['vcl_on_compute_edge_hit_requests'] ?? null;
-        $this->container['vcl_on_compute_edge_miss_requests'] = $data['vcl_on_compute_edge_miss_requests'] ?? null;
         $this->container['all_hit_requests'] = $data['all_hit_requests'] ?? null;
         $this->container['all_miss_requests'] = $data['all_miss_requests'] ?? null;
         $this->container['all_pass_requests'] = $data['all_pass_requests'] ?? null;
@@ -1668,6 +1641,9 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['all_status_5xx'] = $data['all_status_5xx'] ?? null;
         $this->container['origin_offload'] = $data['origin_offload'] ?? null;
         $this->container['request_denied_get_head_body'] = $data['request_denied_get_head_body'] ?? null;
+        $this->container['service_ddos_requests_detected'] = $data['service_ddos_requests_detected'] ?? null;
+        $this->container['service_ddos_requests_mitigated'] = $data['service_ddos_requests_mitigated'] ?? null;
+        $this->container['service_ddos_requests_allowed'] = $data['service_ddos_requests_allowed'] ?? null;
     }
 
     /**
@@ -7195,174 +7171,6 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets vcl_on_compute_hit_requests
-     *
-     * @return int|null
-     */
-    public function getVclOnComputeHitRequests()
-    {
-        return $this->container['vcl_on_compute_hit_requests'];
-    }
-
-    /**
-     * Sets vcl_on_compute_hit_requests
-     *
-     * @param int|null $vcl_on_compute_hit_requests Number of cache hits for a VCL service running on Compute.
-     *
-     * @return self
-     */
-    public function setVclOnComputeHitRequests($vcl_on_compute_hit_requests)
-    {
-        $this->container['vcl_on_compute_hit_requests'] = $vcl_on_compute_hit_requests;
-
-        return $this;
-    }
-
-    /**
-     * Gets vcl_on_compute_miss_requests
-     *
-     * @return int|null
-     */
-    public function getVclOnComputeMissRequests()
-    {
-        return $this->container['vcl_on_compute_miss_requests'];
-    }
-
-    /**
-     * Sets vcl_on_compute_miss_requests
-     *
-     * @param int|null $vcl_on_compute_miss_requests Number of cache misses for a VCL service running on Compute.
-     *
-     * @return self
-     */
-    public function setVclOnComputeMissRequests($vcl_on_compute_miss_requests)
-    {
-        $this->container['vcl_on_compute_miss_requests'] = $vcl_on_compute_miss_requests;
-
-        return $this;
-    }
-
-    /**
-     * Gets vcl_on_compute_pass_requests
-     *
-     * @return int|null
-     */
-    public function getVclOnComputePassRequests()
-    {
-        return $this->container['vcl_on_compute_pass_requests'];
-    }
-
-    /**
-     * Sets vcl_on_compute_pass_requests
-     *
-     * @param int|null $vcl_on_compute_pass_requests Number of requests that passed through the CDN without being cached for a VCL service running on Compute.
-     *
-     * @return self
-     */
-    public function setVclOnComputePassRequests($vcl_on_compute_pass_requests)
-    {
-        $this->container['vcl_on_compute_pass_requests'] = $vcl_on_compute_pass_requests;
-
-        return $this;
-    }
-
-    /**
-     * Gets vcl_on_compute_error_requests
-     *
-     * @return int|null
-     */
-    public function getVclOnComputeErrorRequests()
-    {
-        return $this->container['vcl_on_compute_error_requests'];
-    }
-
-    /**
-     * Sets vcl_on_compute_error_requests
-     *
-     * @param int|null $vcl_on_compute_error_requests Number of cache errors for a VCL service running on Compute.
-     *
-     * @return self
-     */
-    public function setVclOnComputeErrorRequests($vcl_on_compute_error_requests)
-    {
-        $this->container['vcl_on_compute_error_requests'] = $vcl_on_compute_error_requests;
-
-        return $this;
-    }
-
-    /**
-     * Gets vcl_on_compute_synth_requests
-     *
-     * @return int|null
-     */
-    public function getVclOnComputeSynthRequests()
-    {
-        return $this->container['vcl_on_compute_synth_requests'];
-    }
-
-    /**
-     * Sets vcl_on_compute_synth_requests
-     *
-     * @param int|null $vcl_on_compute_synth_requests Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement) for a VCL service running on Compute.
-     *
-     * @return self
-     */
-    public function setVclOnComputeSynthRequests($vcl_on_compute_synth_requests)
-    {
-        $this->container['vcl_on_compute_synth_requests'] = $vcl_on_compute_synth_requests;
-
-        return $this;
-    }
-
-    /**
-     * Gets vcl_on_compute_edge_hit_requests
-     *
-     * @return int|null
-     */
-    public function getVclOnComputeEdgeHitRequests()
-    {
-        return $this->container['vcl_on_compute_edge_hit_requests'];
-    }
-
-    /**
-     * Sets vcl_on_compute_edge_hit_requests
-     *
-     * @param int|null $vcl_on_compute_edge_hit_requests Number of requests sent by end users to Fastly that resulted in a hit at the edge for a VCL service running on Compute.
-     *
-     * @return self
-     */
-    public function setVclOnComputeEdgeHitRequests($vcl_on_compute_edge_hit_requests)
-    {
-        $this->container['vcl_on_compute_edge_hit_requests'] = $vcl_on_compute_edge_hit_requests;
-
-        return $this;
-    }
-
-    /**
-     * Gets vcl_on_compute_edge_miss_requests
-     *
-     * @return int|null
-     */
-    public function getVclOnComputeEdgeMissRequests()
-    {
-        return $this->container['vcl_on_compute_edge_miss_requests'];
-    }
-
-    /**
-     * Sets vcl_on_compute_edge_miss_requests
-     *
-     * @param int|null $vcl_on_compute_edge_miss_requests Number of requests sent by end users to Fastly that resulted in a miss at the edge for a VCL service running on Compute.
-     *
-     * @return self
-     */
-    public function setVclOnComputeEdgeMissRequests($vcl_on_compute_edge_miss_requests)
-    {
-        $this->container['vcl_on_compute_edge_miss_requests'] = $vcl_on_compute_edge_miss_requests;
-
-        return $this;
-    }
-
-    /**
      * Gets all_hit_requests
      *
      * @return int|null
@@ -7694,6 +7502,78 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setRequestDeniedGetHeadBody($request_denied_get_head_body)
     {
         $this->container['request_denied_get_head_body'] = $request_denied_get_head_body;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_ddos_requests_detected
+     *
+     * @return int|null
+     */
+    public function getServiceDdosRequestsDetected()
+    {
+        return $this->container['service_ddos_requests_detected'];
+    }
+
+    /**
+     * Sets service_ddos_requests_detected
+     *
+     * @param int|null $service_ddos_requests_detected Number of requests classified as a DDoS attack against a customer origin or service.
+     *
+     * @return self
+     */
+    public function setServiceDdosRequestsDetected($service_ddos_requests_detected)
+    {
+        $this->container['service_ddos_requests_detected'] = $service_ddos_requests_detected;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_ddos_requests_mitigated
+     *
+     * @return int|null
+     */
+    public function getServiceDdosRequestsMitigated()
+    {
+        return $this->container['service_ddos_requests_mitigated'];
+    }
+
+    /**
+     * Sets service_ddos_requests_mitigated
+     *
+     * @param int|null $service_ddos_requests_mitigated Number of requests classified as a DDoS attack against a customer origin or service that were mitigated by the Fastly platform.
+     *
+     * @return self
+     */
+    public function setServiceDdosRequestsMitigated($service_ddos_requests_mitigated)
+    {
+        $this->container['service_ddos_requests_mitigated'] = $service_ddos_requests_mitigated;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_ddos_requests_allowed
+     *
+     * @return int|null
+     */
+    public function getServiceDdosRequestsAllowed()
+    {
+        return $this->container['service_ddos_requests_allowed'];
+    }
+
+    /**
+     * Sets service_ddos_requests_allowed
+     *
+     * @param int|null $service_ddos_requests_allowed Number of requests analyzed for DDoS attacks against a customer origin or service, but with no DDoS detected.
+     *
+     * @return self
+     */
+    public function setServiceDdosRequestsAllowed($service_ddos_requests_allowed)
+    {
+        $this->container['service_ddos_requests_allowed'] = $service_ddos_requests_allowed;
 
         return $this;
     }
