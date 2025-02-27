@@ -139,6 +139,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'status_503' => 'int',
         'status_504' => 'int',
         'status_505' => 'int',
+        'status_530' => 'int',
         'uncacheable' => 'int',
         'pass_time' => 'float',
         'tls' => 'int',
@@ -297,9 +298,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_5xx' => 'int',
         'origin_offload' => 'float',
         'request_denied_get_head_body' => 'int',
-        'service_ddos_requests_detected' => 'int',
-        'service_ddos_requests_mitigated' => 'int',
-        'service_ddos_requests_allowed' => 'int'
+        'ddos_protection_requests_detect_count' => 'int',
+        'ddos_protection_requests_mitigate_count' => 'int',
+        'ddos_protection_requests_allow_count' => 'int',
+        'object_storage_class_a_operations_count' => 'int',
+        'object_storage_class_b_operations_count' => 'int',
+        'aia_requests' => 'int',
+        'aia_status_1xx' => 'int',
+        'aia_status_2xx' => 'int',
+        'aia_status_3xx' => 'int',
+        'aia_status_4xx' => 'int',
+        'aia_status_5xx' => 'int',
+        'aia_response_usage_tokens' => 'int',
+        'aia_origin_usage_tokens' => 'int',
+        'aia_estimated_time_saved_ms' => 'int',
+        'request_collapse_usable_count' => 'int',
+        'request_collapse_unusable_count' => 'int',
+        'compute_cache_operations_count' => 'int'
     ];
 
     /**
@@ -310,252 +325,267 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'requests' => null,
-        'logging' => null,
-        'log' => null,
-        'resp_header_bytes' => null,
-        'header_size' => null,
-        'resp_body_bytes' => null,
-        'body_size' => null,
-        'hits' => null,
-        'miss' => null,
-        'pass' => null,
-        'synth' => null,
-        'errors' => null,
+        'requests' => 'int64',
+        'logging' => 'int64',
+        'log' => 'int64',
+        'resp_header_bytes' => 'int64',
+        'header_size' => 'int64',
+        'resp_body_bytes' => 'int64',
+        'body_size' => 'int64',
+        'hits' => 'int64',
+        'miss' => 'int64',
+        'pass' => 'int64',
+        'synth' => 'int64',
+        'errors' => 'int64',
         'hits_time' => null,
         'miss_time' => null,
         'miss_histogram' => null,
-        'compute_requests' => null,
+        'compute_requests' => 'int64',
         'compute_execution_time_ms' => null,
-        'compute_ram_used' => null,
+        'compute_ram_used' => 'int64',
         'compute_request_time_ms' => null,
         'compute_request_time_billed_ms' => null,
-        'shield' => null,
-        'ipv6' => null,
-        'imgopto' => null,
-        'imgopto_shield' => null,
-        'imgopto_transforms' => null,
-        'otfp' => null,
-        'otfp_shield' => null,
-        'otfp_manifests' => null,
-        'video' => null,
-        'pci' => null,
-        'http2' => null,
-        'http3' => null,
-        'restarts' => null,
-        'req_header_bytes' => null,
-        'req_body_bytes' => null,
-        'bereq_header_bytes' => null,
-        'bereq_body_bytes' => null,
-        'waf_blocked' => null,
-        'waf_logged' => null,
-        'waf_passed' => null,
-        'attack_req_header_bytes' => null,
-        'attack_req_body_bytes' => null,
-        'attack_resp_synth_bytes' => null,
-        'attack_logged_req_header_bytes' => null,
-        'attack_logged_req_body_bytes' => null,
-        'attack_blocked_req_header_bytes' => null,
-        'attack_blocked_req_body_bytes' => null,
-        'attack_passed_req_header_bytes' => null,
-        'attack_passed_req_body_bytes' => null,
-        'shield_resp_header_bytes' => null,
-        'shield_resp_body_bytes' => null,
-        'otfp_resp_header_bytes' => null,
-        'otfp_resp_body_bytes' => null,
-        'otfp_shield_resp_header_bytes' => null,
-        'otfp_shield_resp_body_bytes' => null,
+        'shield' => 'int64',
+        'ipv6' => 'int64',
+        'imgopto' => 'int64',
+        'imgopto_shield' => 'int64',
+        'imgopto_transforms' => 'int64',
+        'otfp' => 'int64',
+        'otfp_shield' => 'int64',
+        'otfp_manifests' => 'int64',
+        'video' => 'int64',
+        'pci' => 'int64',
+        'http2' => 'int64',
+        'http3' => 'int64',
+        'restarts' => 'int64',
+        'req_header_bytes' => 'int64',
+        'req_body_bytes' => 'int64',
+        'bereq_header_bytes' => 'int64',
+        'bereq_body_bytes' => 'int64',
+        'waf_blocked' => 'int64',
+        'waf_logged' => 'int64',
+        'waf_passed' => 'int64',
+        'attack_req_header_bytes' => 'int64',
+        'attack_req_body_bytes' => 'int64',
+        'attack_resp_synth_bytes' => 'int64',
+        'attack_logged_req_header_bytes' => 'int64',
+        'attack_logged_req_body_bytes' => 'int64',
+        'attack_blocked_req_header_bytes' => 'int64',
+        'attack_blocked_req_body_bytes' => 'int64',
+        'attack_passed_req_header_bytes' => 'int64',
+        'attack_passed_req_body_bytes' => 'int64',
+        'shield_resp_header_bytes' => 'int64',
+        'shield_resp_body_bytes' => 'int64',
+        'otfp_resp_header_bytes' => 'int64',
+        'otfp_resp_body_bytes' => 'int64',
+        'otfp_shield_resp_header_bytes' => 'int64',
+        'otfp_shield_resp_body_bytes' => 'int64',
         'otfp_shield_time' => null,
         'otfp_deliver_time' => null,
-        'imgopto_resp_header_bytes' => null,
-        'imgopto_resp_body_bytes' => null,
-        'imgopto_shield_resp_header_bytes' => null,
-        'imgopto_shield_resp_body_bytes' => null,
-        'status_1xx' => null,
-        'status_2xx' => null,
-        'status_3xx' => null,
-        'status_4xx' => null,
-        'status_5xx' => null,
-        'status_200' => null,
-        'status_204' => null,
-        'status_206' => null,
-        'status_301' => null,
-        'status_302' => null,
-        'status_304' => null,
-        'status_400' => null,
-        'status_401' => null,
-        'status_403' => null,
-        'status_404' => null,
-        'status_406' => null,
-        'status_416' => null,
-        'status_429' => null,
-        'status_500' => null,
-        'status_501' => null,
-        'status_502' => null,
-        'status_503' => null,
-        'status_504' => null,
-        'status_505' => null,
-        'uncacheable' => null,
+        'imgopto_resp_header_bytes' => 'int64',
+        'imgopto_resp_body_bytes' => 'int64',
+        'imgopto_shield_resp_header_bytes' => 'int64',
+        'imgopto_shield_resp_body_bytes' => 'int64',
+        'status_1xx' => 'int64',
+        'status_2xx' => 'int64',
+        'status_3xx' => 'int64',
+        'status_4xx' => 'int64',
+        'status_5xx' => 'int64',
+        'status_200' => 'int64',
+        'status_204' => 'int64',
+        'status_206' => 'int64',
+        'status_301' => 'int64',
+        'status_302' => 'int64',
+        'status_304' => 'int64',
+        'status_400' => 'int64',
+        'status_401' => 'int64',
+        'status_403' => 'int64',
+        'status_404' => 'int64',
+        'status_406' => 'int64',
+        'status_416' => 'int64',
+        'status_429' => 'int64',
+        'status_500' => 'int64',
+        'status_501' => 'int64',
+        'status_502' => 'int64',
+        'status_503' => 'int64',
+        'status_504' => 'int64',
+        'status_505' => 'int64',
+        'status_530' => 'int64',
+        'uncacheable' => 'int64',
         'pass_time' => null,
-        'tls' => null,
-        'tls_v10' => null,
-        'tls_v11' => null,
-        'tls_v12' => null,
-        'tls_v13' => null,
-        'object_size_1k' => null,
-        'object_size_10k' => null,
-        'object_size_100k' => null,
-        'object_size_1m' => null,
-        'object_size_10m' => null,
-        'object_size_100m' => null,
-        'object_size_1g' => null,
-        'object_size_other' => null,
+        'tls' => 'int64',
+        'tls_v10' => 'int64',
+        'tls_v11' => 'int64',
+        'tls_v12' => 'int64',
+        'tls_v13' => 'int64',
+        'object_size_1k' => 'int64',
+        'object_size_10k' => 'int64',
+        'object_size_100k' => 'int64',
+        'object_size_1m' => 'int64',
+        'object_size_10m' => 'int64',
+        'object_size_100m' => 'int64',
+        'object_size_1g' => 'int64',
+        'object_size_other' => 'int64',
         'recv_sub_time' => null,
-        'recv_sub_count' => null,
+        'recv_sub_count' => 'int64',
         'hash_sub_time' => null,
-        'hash_sub_count' => null,
+        'hash_sub_count' => 'int64',
         'miss_sub_time' => null,
-        'miss_sub_count' => null,
+        'miss_sub_count' => 'int64',
         'fetch_sub_time' => null,
-        'fetch_sub_count' => null,
+        'fetch_sub_count' => 'int64',
         'pass_sub_time' => null,
-        'pass_sub_count' => null,
+        'pass_sub_count' => 'int64',
         'pipe_sub_time' => null,
-        'pipe_sub_count' => null,
+        'pipe_sub_count' => 'int64',
         'deliver_sub_time' => null,
-        'deliver_sub_count' => null,
+        'deliver_sub_count' => 'int64',
         'error_sub_time' => null,
-        'error_sub_count' => null,
+        'error_sub_count' => 'int64',
         'hit_sub_time' => null,
-        'hit_sub_count' => null,
+        'hit_sub_count' => 'int64',
         'prehash_sub_time' => null,
-        'prehash_sub_count' => null,
+        'prehash_sub_count' => 'int64',
         'predeliver_sub_time' => null,
-        'predeliver_sub_count' => null,
-        'hit_resp_body_bytes' => null,
-        'miss_resp_body_bytes' => null,
-        'pass_resp_body_bytes' => null,
-        'compute_req_header_bytes' => null,
-        'compute_req_body_bytes' => null,
-        'compute_resp_header_bytes' => null,
-        'compute_resp_body_bytes' => null,
-        'imgvideo' => null,
-        'imgvideo_frames' => null,
-        'imgvideo_resp_header_bytes' => null,
-        'imgvideo_resp_body_bytes' => null,
-        'imgvideo_shield' => null,
-        'imgvideo_shield_frames' => null,
-        'imgvideo_shield_resp_header_bytes' => null,
-        'imgvideo_shield_resp_body_bytes' => null,
-        'log_bytes' => null,
-        'edge_requests' => null,
-        'edge_resp_header_bytes' => null,
-        'edge_resp_body_bytes' => null,
-        'origin_revalidations' => null,
-        'origin_fetches' => null,
-        'origin_fetch_header_bytes' => null,
-        'origin_fetch_body_bytes' => null,
-        'origin_fetch_resp_header_bytes' => null,
-        'origin_fetch_resp_body_bytes' => null,
-        'shield_revalidations' => null,
-        'shield_fetches' => null,
-        'shield_fetch_header_bytes' => null,
-        'shield_fetch_body_bytes' => null,
-        'shield_fetch_resp_header_bytes' => null,
-        'shield_fetch_resp_body_bytes' => null,
-        'segblock_origin_fetches' => null,
-        'segblock_shield_fetches' => null,
-        'compute_resp_status_1xx' => null,
-        'compute_resp_status_2xx' => null,
-        'compute_resp_status_3xx' => null,
-        'compute_resp_status_4xx' => null,
-        'compute_resp_status_5xx' => null,
-        'edge_hit_requests' => null,
-        'edge_miss_requests' => null,
-        'compute_bereq_header_bytes' => null,
-        'compute_bereq_body_bytes' => null,
-        'compute_beresp_header_bytes' => null,
-        'compute_beresp_body_bytes' => null,
-        'origin_cache_fetches' => null,
-        'shield_cache_fetches' => null,
-        'compute_bereqs' => null,
-        'compute_bereq_errors' => null,
-        'compute_resource_limit_exceeded' => null,
-        'compute_heap_limit_exceeded' => null,
-        'compute_stack_limit_exceeded' => null,
-        'compute_globals_limit_exceeded' => null,
-        'compute_guest_errors' => null,
-        'compute_runtime_errors' => null,
-        'edge_hit_resp_body_bytes' => null,
-        'edge_hit_resp_header_bytes' => null,
-        'edge_miss_resp_body_bytes' => null,
-        'edge_miss_resp_header_bytes' => null,
-        'origin_cache_fetch_resp_body_bytes' => null,
-        'origin_cache_fetch_resp_header_bytes' => null,
-        'shield_hit_requests' => null,
-        'shield_miss_requests' => null,
-        'shield_hit_resp_header_bytes' => null,
-        'shield_hit_resp_body_bytes' => null,
-        'shield_miss_resp_header_bytes' => null,
-        'shield_miss_resp_body_bytes' => null,
-        'websocket_req_header_bytes' => null,
-        'websocket_req_body_bytes' => null,
-        'websocket_resp_header_bytes' => null,
-        'websocket_bereq_header_bytes' => null,
-        'websocket_bereq_body_bytes' => null,
-        'websocket_beresp_header_bytes' => null,
-        'websocket_beresp_body_bytes' => null,
-        'websocket_conn_time_ms' => null,
-        'websocket_resp_body_bytes' => null,
-        'fanout_recv_publishes' => null,
-        'fanout_send_publishes' => null,
-        'kv_store_class_a_operations' => null,
-        'kv_store_class_b_operations' => null,
-        'object_store_class_a_operations' => null,
-        'object_store_class_b_operations' => null,
-        'fanout_req_header_bytes' => null,
-        'fanout_req_body_bytes' => null,
-        'fanout_resp_header_bytes' => null,
-        'fanout_resp_body_bytes' => null,
-        'fanout_bereq_header_bytes' => null,
-        'fanout_bereq_body_bytes' => null,
-        'fanout_beresp_header_bytes' => null,
-        'fanout_beresp_body_bytes' => null,
-        'fanout_conn_time_ms' => null,
-        'ddos_action_limit_streams_connections' => null,
-        'ddos_action_limit_streams_requests' => null,
-        'ddos_action_tarpit_accept' => null,
-        'ddos_action_tarpit' => null,
-        'ddos_action_close' => null,
-        'ddos_action_blackhole' => null,
-        'bot_challenge_starts' => null,
-        'bot_challenge_complete_tokens_passed' => null,
-        'bot_challenge_complete_tokens_failed' => null,
-        'bot_challenge_complete_tokens_checked' => null,
-        'bot_challenge_complete_tokens_disabled' => null,
-        'bot_challenges_issued' => null,
-        'bot_challenges_succeeded' => null,
-        'bot_challenges_failed' => null,
-        'bot_challenge_complete_tokens_issued' => null,
-        'ddos_action_downgrade' => null,
-        'ddos_action_downgraded_connections' => null,
-        'all_hit_requests' => null,
-        'all_miss_requests' => null,
-        'all_pass_requests' => null,
-        'all_error_requests' => null,
-        'all_synth_requests' => null,
-        'all_edge_hit_requests' => null,
-        'all_edge_miss_requests' => null,
-        'all_status_1xx' => null,
-        'all_status_2xx' => null,
-        'all_status_3xx' => null,
-        'all_status_4xx' => null,
-        'all_status_5xx' => null,
+        'predeliver_sub_count' => 'int64',
+        'hit_resp_body_bytes' => 'int64',
+        'miss_resp_body_bytes' => 'int64',
+        'pass_resp_body_bytes' => 'int64',
+        'compute_req_header_bytes' => 'int64',
+        'compute_req_body_bytes' => 'int64',
+        'compute_resp_header_bytes' => 'int64',
+        'compute_resp_body_bytes' => 'int64',
+        'imgvideo' => 'int64',
+        'imgvideo_frames' => 'int64',
+        'imgvideo_resp_header_bytes' => 'int64',
+        'imgvideo_resp_body_bytes' => 'int64',
+        'imgvideo_shield' => 'int64',
+        'imgvideo_shield_frames' => 'int64',
+        'imgvideo_shield_resp_header_bytes' => 'int64',
+        'imgvideo_shield_resp_body_bytes' => 'int64',
+        'log_bytes' => 'int64',
+        'edge_requests' => 'int64',
+        'edge_resp_header_bytes' => 'int64',
+        'edge_resp_body_bytes' => 'int64',
+        'origin_revalidations' => 'int64',
+        'origin_fetches' => 'int64',
+        'origin_fetch_header_bytes' => 'int64',
+        'origin_fetch_body_bytes' => 'int64',
+        'origin_fetch_resp_header_bytes' => 'int64',
+        'origin_fetch_resp_body_bytes' => 'int64',
+        'shield_revalidations' => 'int64',
+        'shield_fetches' => 'int64',
+        'shield_fetch_header_bytes' => 'int64',
+        'shield_fetch_body_bytes' => 'int64',
+        'shield_fetch_resp_header_bytes' => 'int64',
+        'shield_fetch_resp_body_bytes' => 'int64',
+        'segblock_origin_fetches' => 'int64',
+        'segblock_shield_fetches' => 'int64',
+        'compute_resp_status_1xx' => 'int64',
+        'compute_resp_status_2xx' => 'int64',
+        'compute_resp_status_3xx' => 'int64',
+        'compute_resp_status_4xx' => 'int64',
+        'compute_resp_status_5xx' => 'int64',
+        'edge_hit_requests' => 'int64',
+        'edge_miss_requests' => 'int64',
+        'compute_bereq_header_bytes' => 'int64',
+        'compute_bereq_body_bytes' => 'int64',
+        'compute_beresp_header_bytes' => 'int64',
+        'compute_beresp_body_bytes' => 'int64',
+        'origin_cache_fetches' => 'int64',
+        'shield_cache_fetches' => 'int64',
+        'compute_bereqs' => 'int64',
+        'compute_bereq_errors' => 'int64',
+        'compute_resource_limit_exceeded' => 'int64',
+        'compute_heap_limit_exceeded' => 'int64',
+        'compute_stack_limit_exceeded' => 'int64',
+        'compute_globals_limit_exceeded' => 'int64',
+        'compute_guest_errors' => 'int64',
+        'compute_runtime_errors' => 'int64',
+        'edge_hit_resp_body_bytes' => 'int64',
+        'edge_hit_resp_header_bytes' => 'int64',
+        'edge_miss_resp_body_bytes' => 'int64',
+        'edge_miss_resp_header_bytes' => 'int64',
+        'origin_cache_fetch_resp_body_bytes' => 'int64',
+        'origin_cache_fetch_resp_header_bytes' => 'int64',
+        'shield_hit_requests' => 'int64',
+        'shield_miss_requests' => 'int64',
+        'shield_hit_resp_header_bytes' => 'int64',
+        'shield_hit_resp_body_bytes' => 'int64',
+        'shield_miss_resp_header_bytes' => 'int64',
+        'shield_miss_resp_body_bytes' => 'int64',
+        'websocket_req_header_bytes' => 'int64',
+        'websocket_req_body_bytes' => 'int64',
+        'websocket_resp_header_bytes' => 'int64',
+        'websocket_bereq_header_bytes' => 'int64',
+        'websocket_bereq_body_bytes' => 'int64',
+        'websocket_beresp_header_bytes' => 'int64',
+        'websocket_beresp_body_bytes' => 'int64',
+        'websocket_conn_time_ms' => 'int64',
+        'websocket_resp_body_bytes' => 'int64',
+        'fanout_recv_publishes' => 'int64',
+        'fanout_send_publishes' => 'int64',
+        'kv_store_class_a_operations' => 'int64',
+        'kv_store_class_b_operations' => 'int64',
+        'object_store_class_a_operations' => 'int64',
+        'object_store_class_b_operations' => 'int64',
+        'fanout_req_header_bytes' => 'int64',
+        'fanout_req_body_bytes' => 'int64',
+        'fanout_resp_header_bytes' => 'int64',
+        'fanout_resp_body_bytes' => 'int64',
+        'fanout_bereq_header_bytes' => 'int64',
+        'fanout_bereq_body_bytes' => 'int64',
+        'fanout_beresp_header_bytes' => 'int64',
+        'fanout_beresp_body_bytes' => 'int64',
+        'fanout_conn_time_ms' => 'int64',
+        'ddos_action_limit_streams_connections' => 'int64',
+        'ddos_action_limit_streams_requests' => 'int64',
+        'ddos_action_tarpit_accept' => 'int64',
+        'ddos_action_tarpit' => 'int64',
+        'ddos_action_close' => 'int64',
+        'ddos_action_blackhole' => 'int64',
+        'bot_challenge_starts' => 'int64',
+        'bot_challenge_complete_tokens_passed' => 'int64',
+        'bot_challenge_complete_tokens_failed' => 'int64',
+        'bot_challenge_complete_tokens_checked' => 'int64',
+        'bot_challenge_complete_tokens_disabled' => 'int64',
+        'bot_challenges_issued' => 'int64',
+        'bot_challenges_succeeded' => 'int64',
+        'bot_challenges_failed' => 'int64',
+        'bot_challenge_complete_tokens_issued' => 'int64',
+        'ddos_action_downgrade' => 'int64',
+        'ddos_action_downgraded_connections' => 'int64',
+        'all_hit_requests' => 'int64',
+        'all_miss_requests' => 'int64',
+        'all_pass_requests' => 'int64',
+        'all_error_requests' => 'int64',
+        'all_synth_requests' => 'int64',
+        'all_edge_hit_requests' => 'int64',
+        'all_edge_miss_requests' => 'int64',
+        'all_status_1xx' => 'int64',
+        'all_status_2xx' => 'int64',
+        'all_status_3xx' => 'int64',
+        'all_status_4xx' => 'int64',
+        'all_status_5xx' => 'int64',
         'origin_offload' => null,
-        'request_denied_get_head_body' => null,
-        'service_ddos_requests_detected' => null,
-        'service_ddos_requests_mitigated' => null,
-        'service_ddos_requests_allowed' => null
+        'request_denied_get_head_body' => 'int64',
+        'ddos_protection_requests_detect_count' => 'int64',
+        'ddos_protection_requests_mitigate_count' => 'int64',
+        'ddos_protection_requests_allow_count' => 'int64',
+        'object_storage_class_a_operations_count' => 'int64',
+        'object_storage_class_b_operations_count' => 'int64',
+        'aia_requests' => 'int64',
+        'aia_status_1xx' => 'int64',
+        'aia_status_2xx' => 'int64',
+        'aia_status_3xx' => 'int64',
+        'aia_status_4xx' => 'int64',
+        'aia_status_5xx' => 'int64',
+        'aia_response_usage_tokens' => 'int64',
+        'aia_origin_usage_tokens' => 'int64',
+        'aia_estimated_time_saved_ms' => 'int64',
+        'request_collapse_usable_count' => 'int64',
+        'request_collapse_unusable_count' => 'int64',
+        'compute_cache_operations_count' => 'int64'
     ];
 
     /**
@@ -670,6 +700,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'status_503' => 'status_503',
         'status_504' => 'status_504',
         'status_505' => 'status_505',
+        'status_530' => 'status_530',
         'uncacheable' => 'uncacheable',
         'pass_time' => 'pass_time',
         'tls' => 'tls',
@@ -828,9 +859,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_5xx' => 'all_status_5xx',
         'origin_offload' => 'origin_offload',
         'request_denied_get_head_body' => 'request_denied_get_head_body',
-        'service_ddos_requests_detected' => 'service_ddos_requests_detected',
-        'service_ddos_requests_mitigated' => 'service_ddos_requests_mitigated',
-        'service_ddos_requests_allowed' => 'service_ddos_requests_allowed'
+        'ddos_protection_requests_detect_count' => 'ddos_protection_requests_detect_count',
+        'ddos_protection_requests_mitigate_count' => 'ddos_protection_requests_mitigate_count',
+        'ddos_protection_requests_allow_count' => 'ddos_protection_requests_allow_count',
+        'object_storage_class_a_operations_count' => 'object_storage_class_a_operations_count',
+        'object_storage_class_b_operations_count' => 'object_storage_class_b_operations_count',
+        'aia_requests' => 'aia_requests',
+        'aia_status_1xx' => 'aia_status_1xx',
+        'aia_status_2xx' => 'aia_status_2xx',
+        'aia_status_3xx' => 'aia_status_3xx',
+        'aia_status_4xx' => 'aia_status_4xx',
+        'aia_status_5xx' => 'aia_status_5xx',
+        'aia_response_usage_tokens' => 'aia_response_usage_tokens',
+        'aia_origin_usage_tokens' => 'aia_origin_usage_tokens',
+        'aia_estimated_time_saved_ms' => 'aia_estimated_time_saved_ms',
+        'request_collapse_usable_count' => 'request_collapse_usable_count',
+        'request_collapse_unusable_count' => 'request_collapse_unusable_count',
+        'compute_cache_operations_count' => 'compute_cache_operations_count'
     ];
 
     /**
@@ -924,6 +969,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'status_503' => 'setStatus503',
         'status_504' => 'setStatus504',
         'status_505' => 'setStatus505',
+        'status_530' => 'setStatus530',
         'uncacheable' => 'setUncacheable',
         'pass_time' => 'setPassTime',
         'tls' => 'setTls',
@@ -1082,9 +1128,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_5xx' => 'setAllStatus5xx',
         'origin_offload' => 'setOriginOffload',
         'request_denied_get_head_body' => 'setRequestDeniedGetHeadBody',
-        'service_ddos_requests_detected' => 'setServiceDdosRequestsDetected',
-        'service_ddos_requests_mitigated' => 'setServiceDdosRequestsMitigated',
-        'service_ddos_requests_allowed' => 'setServiceDdosRequestsAllowed'
+        'ddos_protection_requests_detect_count' => 'setDdosProtectionRequestsDetectCount',
+        'ddos_protection_requests_mitigate_count' => 'setDdosProtectionRequestsMitigateCount',
+        'ddos_protection_requests_allow_count' => 'setDdosProtectionRequestsAllowCount',
+        'object_storage_class_a_operations_count' => 'setObjectStorageClassAOperationsCount',
+        'object_storage_class_b_operations_count' => 'setObjectStorageClassBOperationsCount',
+        'aia_requests' => 'setAiaRequests',
+        'aia_status_1xx' => 'setAiaStatus1xx',
+        'aia_status_2xx' => 'setAiaStatus2xx',
+        'aia_status_3xx' => 'setAiaStatus3xx',
+        'aia_status_4xx' => 'setAiaStatus4xx',
+        'aia_status_5xx' => 'setAiaStatus5xx',
+        'aia_response_usage_tokens' => 'setAiaResponseUsageTokens',
+        'aia_origin_usage_tokens' => 'setAiaOriginUsageTokens',
+        'aia_estimated_time_saved_ms' => 'setAiaEstimatedTimeSavedMs',
+        'request_collapse_usable_count' => 'setRequestCollapseUsableCount',
+        'request_collapse_unusable_count' => 'setRequestCollapseUnusableCount',
+        'compute_cache_operations_count' => 'setComputeCacheOperationsCount'
     ];
 
     /**
@@ -1178,6 +1238,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'status_503' => 'getStatus503',
         'status_504' => 'getStatus504',
         'status_505' => 'getStatus505',
+        'status_530' => 'getStatus530',
         'uncacheable' => 'getUncacheable',
         'pass_time' => 'getPassTime',
         'tls' => 'getTls',
@@ -1336,9 +1397,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'all_status_5xx' => 'getAllStatus5xx',
         'origin_offload' => 'getOriginOffload',
         'request_denied_get_head_body' => 'getRequestDeniedGetHeadBody',
-        'service_ddos_requests_detected' => 'getServiceDdosRequestsDetected',
-        'service_ddos_requests_mitigated' => 'getServiceDdosRequestsMitigated',
-        'service_ddos_requests_allowed' => 'getServiceDdosRequestsAllowed'
+        'ddos_protection_requests_detect_count' => 'getDdosProtectionRequestsDetectCount',
+        'ddos_protection_requests_mitigate_count' => 'getDdosProtectionRequestsMitigateCount',
+        'ddos_protection_requests_allow_count' => 'getDdosProtectionRequestsAllowCount',
+        'object_storage_class_a_operations_count' => 'getObjectStorageClassAOperationsCount',
+        'object_storage_class_b_operations_count' => 'getObjectStorageClassBOperationsCount',
+        'aia_requests' => 'getAiaRequests',
+        'aia_status_1xx' => 'getAiaStatus1xx',
+        'aia_status_2xx' => 'getAiaStatus2xx',
+        'aia_status_3xx' => 'getAiaStatus3xx',
+        'aia_status_4xx' => 'getAiaStatus4xx',
+        'aia_status_5xx' => 'getAiaStatus5xx',
+        'aia_response_usage_tokens' => 'getAiaResponseUsageTokens',
+        'aia_origin_usage_tokens' => 'getAiaOriginUsageTokens',
+        'aia_estimated_time_saved_ms' => 'getAiaEstimatedTimeSavedMs',
+        'request_collapse_usable_count' => 'getRequestCollapseUsableCount',
+        'request_collapse_unusable_count' => 'getRequestCollapseUnusableCount',
+        'compute_cache_operations_count' => 'getComputeCacheOperationsCount'
     ];
 
     /**
@@ -1483,6 +1558,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['status_503'] = $data['status_503'] ?? null;
         $this->container['status_504'] = $data['status_504'] ?? null;
         $this->container['status_505'] = $data['status_505'] ?? null;
+        $this->container['status_530'] = $data['status_530'] ?? null;
         $this->container['uncacheable'] = $data['uncacheable'] ?? null;
         $this->container['pass_time'] = $data['pass_time'] ?? null;
         $this->container['tls'] = $data['tls'] ?? null;
@@ -1641,9 +1717,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['all_status_5xx'] = $data['all_status_5xx'] ?? null;
         $this->container['origin_offload'] = $data['origin_offload'] ?? null;
         $this->container['request_denied_get_head_body'] = $data['request_denied_get_head_body'] ?? null;
-        $this->container['service_ddos_requests_detected'] = $data['service_ddos_requests_detected'] ?? null;
-        $this->container['service_ddos_requests_mitigated'] = $data['service_ddos_requests_mitigated'] ?? null;
-        $this->container['service_ddos_requests_allowed'] = $data['service_ddos_requests_allowed'] ?? null;
+        $this->container['ddos_protection_requests_detect_count'] = $data['ddos_protection_requests_detect_count'] ?? null;
+        $this->container['ddos_protection_requests_mitigate_count'] = $data['ddos_protection_requests_mitigate_count'] ?? null;
+        $this->container['ddos_protection_requests_allow_count'] = $data['ddos_protection_requests_allow_count'] ?? null;
+        $this->container['object_storage_class_a_operations_count'] = $data['object_storage_class_a_operations_count'] ?? null;
+        $this->container['object_storage_class_b_operations_count'] = $data['object_storage_class_b_operations_count'] ?? null;
+        $this->container['aia_requests'] = $data['aia_requests'] ?? null;
+        $this->container['aia_status_1xx'] = $data['aia_status_1xx'] ?? null;
+        $this->container['aia_status_2xx'] = $data['aia_status_2xx'] ?? null;
+        $this->container['aia_status_3xx'] = $data['aia_status_3xx'] ?? null;
+        $this->container['aia_status_4xx'] = $data['aia_status_4xx'] ?? null;
+        $this->container['aia_status_5xx'] = $data['aia_status_5xx'] ?? null;
+        $this->container['aia_response_usage_tokens'] = $data['aia_response_usage_tokens'] ?? null;
+        $this->container['aia_origin_usage_tokens'] = $data['aia_origin_usage_tokens'] ?? null;
+        $this->container['aia_estimated_time_saved_ms'] = $data['aia_estimated_time_saved_ms'] ?? null;
+        $this->container['request_collapse_usable_count'] = $data['request_collapse_usable_count'] ?? null;
+        $this->container['request_collapse_unusable_count'] = $data['request_collapse_unusable_count'] ?? null;
+        $this->container['compute_cache_operations_count'] = $data['compute_cache_operations_count'] ?? null;
     }
 
     /**
@@ -3706,6 +3796,30 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setStatus505($status_505)
     {
         $this->container['status_505'] = $status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_530
+     *
+     * @return int|null
+     */
+    public function getStatus530()
+    {
+        return $this->container['status_530'];
+    }
+
+    /**
+     * Sets status_530
+     *
+     * @param int|null $status_530 Number of responses sent with status code 530.
+     *
+     * @return self
+     */
+    public function setStatus530($status_530)
+    {
+        $this->container['status_530'] = $status_530;
 
         return $this;
     }
@@ -7507,73 +7621,409 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets service_ddos_requests_detected
+     * Gets ddos_protection_requests_detect_count
      *
      * @return int|null
      */
-    public function getServiceDdosRequestsDetected()
+    public function getDdosProtectionRequestsDetectCount()
     {
-        return $this->container['service_ddos_requests_detected'];
+        return $this->container['ddos_protection_requests_detect_count'];
     }
 
     /**
-     * Sets service_ddos_requests_detected
+     * Sets ddos_protection_requests_detect_count
      *
-     * @param int|null $service_ddos_requests_detected Number of requests classified as a DDoS attack against a customer origin or service.
+     * @param int|null $ddos_protection_requests_detect_count Number of requests classified as a DDoS attack against a customer origin or service.
      *
      * @return self
      */
-    public function setServiceDdosRequestsDetected($service_ddos_requests_detected)
+    public function setDdosProtectionRequestsDetectCount($ddos_protection_requests_detect_count)
     {
-        $this->container['service_ddos_requests_detected'] = $service_ddos_requests_detected;
+        $this->container['ddos_protection_requests_detect_count'] = $ddos_protection_requests_detect_count;
 
         return $this;
     }
 
     /**
-     * Gets service_ddos_requests_mitigated
+     * Gets ddos_protection_requests_mitigate_count
      *
      * @return int|null
      */
-    public function getServiceDdosRequestsMitigated()
+    public function getDdosProtectionRequestsMitigateCount()
     {
-        return $this->container['service_ddos_requests_mitigated'];
+        return $this->container['ddos_protection_requests_mitigate_count'];
     }
 
     /**
-     * Sets service_ddos_requests_mitigated
+     * Sets ddos_protection_requests_mitigate_count
      *
-     * @param int|null $service_ddos_requests_mitigated Number of requests classified as a DDoS attack against a customer origin or service that were mitigated by the Fastly platform.
+     * @param int|null $ddos_protection_requests_mitigate_count Number of requests classified as a DDoS attack against a customer origin or service that were mitigated by the Fastly platform.
      *
      * @return self
      */
-    public function setServiceDdosRequestsMitigated($service_ddos_requests_mitigated)
+    public function setDdosProtectionRequestsMitigateCount($ddos_protection_requests_mitigate_count)
     {
-        $this->container['service_ddos_requests_mitigated'] = $service_ddos_requests_mitigated;
+        $this->container['ddos_protection_requests_mitigate_count'] = $ddos_protection_requests_mitigate_count;
 
         return $this;
     }
 
     /**
-     * Gets service_ddos_requests_allowed
+     * Gets ddos_protection_requests_allow_count
      *
      * @return int|null
      */
-    public function getServiceDdosRequestsAllowed()
+    public function getDdosProtectionRequestsAllowCount()
     {
-        return $this->container['service_ddos_requests_allowed'];
+        return $this->container['ddos_protection_requests_allow_count'];
     }
 
     /**
-     * Sets service_ddos_requests_allowed
+     * Sets ddos_protection_requests_allow_count
      *
-     * @param int|null $service_ddos_requests_allowed Number of requests analyzed for DDoS attacks against a customer origin or service, but with no DDoS detected.
+     * @param int|null $ddos_protection_requests_allow_count Number of requests analyzed for DDoS attacks against a customer origin or service, but with no DDoS detected.
      *
      * @return self
      */
-    public function setServiceDdosRequestsAllowed($service_ddos_requests_allowed)
+    public function setDdosProtectionRequestsAllowCount($ddos_protection_requests_allow_count)
     {
-        $this->container['service_ddos_requests_allowed'] = $service_ddos_requests_allowed;
+        $this->container['ddos_protection_requests_allow_count'] = $ddos_protection_requests_allow_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_storage_class_a_operations_count
+     *
+     * @return int|null
+     */
+    public function getObjectStorageClassAOperationsCount()
+    {
+        return $this->container['object_storage_class_a_operations_count'];
+    }
+
+    /**
+     * Sets object_storage_class_a_operations_count
+     *
+     * @param int|null $object_storage_class_a_operations_count A count of the number of Class A Object Storage operations.
+     *
+     * @return self
+     */
+    public function setObjectStorageClassAOperationsCount($object_storage_class_a_operations_count)
+    {
+        $this->container['object_storage_class_a_operations_count'] = $object_storage_class_a_operations_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_storage_class_b_operations_count
+     *
+     * @return int|null
+     */
+    public function getObjectStorageClassBOperationsCount()
+    {
+        return $this->container['object_storage_class_b_operations_count'];
+    }
+
+    /**
+     * Sets object_storage_class_b_operations_count
+     *
+     * @param int|null $object_storage_class_b_operations_count A count of the number of Class B Object Storage operations.
+     *
+     * @return self
+     */
+    public function setObjectStorageClassBOperationsCount($object_storage_class_b_operations_count)
+    {
+        $this->container['object_storage_class_b_operations_count'] = $object_storage_class_b_operations_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_requests
+     *
+     * @return int|null
+     */
+    public function getAiaRequests()
+    {
+        return $this->container['aia_requests'];
+    }
+
+    /**
+     * Sets aia_requests
+     *
+     * @param int|null $aia_requests Number of requests received by AI Accelerator.
+     *
+     * @return self
+     */
+    public function setAiaRequests($aia_requests)
+    {
+        $this->container['aia_requests'] = $aia_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_1xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus1xx()
+    {
+        return $this->container['aia_status_1xx'];
+    }
+
+    /**
+     * Sets aia_status_1xx
+     *
+     * @param int|null $aia_status_1xx Number of \"Informational\" category status codes received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus1xx($aia_status_1xx)
+    {
+        $this->container['aia_status_1xx'] = $aia_status_1xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_2xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus2xx()
+    {
+        return $this->container['aia_status_2xx'];
+    }
+
+    /**
+     * Sets aia_status_2xx
+     *
+     * @param int|null $aia_status_2xx Number of \"Success\" status codes received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus2xx($aia_status_2xx)
+    {
+        $this->container['aia_status_2xx'] = $aia_status_2xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_3xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus3xx()
+    {
+        return $this->container['aia_status_3xx'];
+    }
+
+    /**
+     * Sets aia_status_3xx
+     *
+     * @param int|null $aia_status_3xx Number of \"Redirection\" received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus3xx($aia_status_3xx)
+    {
+        $this->container['aia_status_3xx'] = $aia_status_3xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_4xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus4xx()
+    {
+        return $this->container['aia_status_4xx'];
+    }
+
+    /**
+     * Sets aia_status_4xx
+     *
+     * @param int|null $aia_status_4xx Number of \"Client Error\" received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus4xx($aia_status_4xx)
+    {
+        $this->container['aia_status_4xx'] = $aia_status_4xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_5xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus5xx()
+    {
+        return $this->container['aia_status_5xx'];
+    }
+
+    /**
+     * Sets aia_status_5xx
+     *
+     * @param int|null $aia_status_5xx Number of \"Server Error\" received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus5xx($aia_status_5xx)
+    {
+        $this->container['aia_status_5xx'] = $aia_status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_response_usage_tokens
+     *
+     * @return int|null
+     */
+    public function getAiaResponseUsageTokens()
+    {
+        return $this->container['aia_response_usage_tokens'];
+    }
+
+    /**
+     * Sets aia_response_usage_tokens
+     *
+     * @param int|null $aia_response_usage_tokens The usage tokens associated with the response returned from the AI Accelerator cache.
+     *
+     * @return self
+     */
+    public function setAiaResponseUsageTokens($aia_response_usage_tokens)
+    {
+        $this->container['aia_response_usage_tokens'] = $aia_response_usage_tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_origin_usage_tokens
+     *
+     * @return int|null
+     */
+    public function getAiaOriginUsageTokens()
+    {
+        return $this->container['aia_origin_usage_tokens'];
+    }
+
+    /**
+     * Sets aia_origin_usage_tokens
+     *
+     * @param int|null $aia_origin_usage_tokens The number of usage tokens reported by the request to the origin from AI Accelerator.
+     *
+     * @return self
+     */
+    public function setAiaOriginUsageTokens($aia_origin_usage_tokens)
+    {
+        $this->container['aia_origin_usage_tokens'] = $aia_origin_usage_tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_estimated_time_saved_ms
+     *
+     * @return int|null
+     */
+    public function getAiaEstimatedTimeSavedMs()
+    {
+        return $this->container['aia_estimated_time_saved_ms'];
+    }
+
+    /**
+     * Sets aia_estimated_time_saved_ms
+     *
+     * @param int|null $aia_estimated_time_saved_ms The estimated amount of time saved by responses served from the AI Accelerator semantic cache.
+     *
+     * @return self
+     */
+    public function setAiaEstimatedTimeSavedMs($aia_estimated_time_saved_ms)
+    {
+        $this->container['aia_estimated_time_saved_ms'] = $aia_estimated_time_saved_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_collapse_usable_count
+     *
+     * @return int|null
+     */
+    public function getRequestCollapseUsableCount()
+    {
+        return $this->container['request_collapse_usable_count'];
+    }
+
+    /**
+     * Sets request_collapse_usable_count
+     *
+     * @param int|null $request_collapse_usable_count Number of requests that were collapsed and satisfied by a usable cache object.
+     *
+     * @return self
+     */
+    public function setRequestCollapseUsableCount($request_collapse_usable_count)
+    {
+        $this->container['request_collapse_usable_count'] = $request_collapse_usable_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_collapse_unusable_count
+     *
+     * @return int|null
+     */
+    public function getRequestCollapseUnusableCount()
+    {
+        return $this->container['request_collapse_unusable_count'];
+    }
+
+    /**
+     * Sets request_collapse_unusable_count
+     *
+     * @param int|null $request_collapse_unusable_count Number of requests that were collapsed and unable to be satisfied by the resulting cache object.
+     *
+     * @return self
+     */
+    public function setRequestCollapseUnusableCount($request_collapse_unusable_count)
+    {
+        $this->container['request_collapse_unusable_count'] = $request_collapse_unusable_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_cache_operations_count
+     *
+     * @return int|null
+     */
+    public function getComputeCacheOperationsCount()
+    {
+        return $this->container['compute_cache_operations_count'];
+    }
+
+    /**
+     * Sets compute_cache_operations_count
+     *
+     * @param int|null $compute_cache_operations_count Number of cache operations executed by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeCacheOperationsCount($compute_cache_operations_count)
+    {
+        $this->container['compute_cache_operations_count'] = $compute_cache_operations_count;
 
         return $this;
     }

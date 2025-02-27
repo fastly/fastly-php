@@ -55,7 +55,6 @@ class ComputeAclLookup implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'prefix' => 'string',
-        'length' => 'int',
         'action' => 'string'
     ];
 
@@ -68,7 +67,6 @@ class ComputeAclLookup implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'prefix' => null,
-        'length' => null,
         'action' => null
     ];
 
@@ -100,7 +98,6 @@ class ComputeAclLookup implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'prefix' => 'prefix',
-        'length' => 'length',
         'action' => 'action'
     ];
 
@@ -111,7 +108,6 @@ class ComputeAclLookup implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'prefix' => 'setPrefix',
-        'length' => 'setLength',
         'action' => 'setAction'
     ];
 
@@ -122,7 +118,6 @@ class ComputeAclLookup implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'prefix' => 'getPrefix',
-        'length' => 'getLength',
         'action' => 'getAction'
     ];
 
@@ -184,7 +179,6 @@ class ComputeAclLookup implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['prefix'] = $data['prefix'] ?? null;
-        $this->container['length'] = $data['length'] ?? null;
         $this->container['action'] = $data['action'] ?? null;
     }
 
@@ -225,37 +219,13 @@ class ComputeAclLookup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prefix
      *
-     * @param string|null $prefix A valid IPv4 or IPv6 address.
+     * @param string|null $prefix A valid IPv4 or IPv6 address and prefix in CIDR notation.
      *
      * @return self
      */
     public function setPrefix($prefix)
     {
         $this->container['prefix'] = $prefix;
-
-        return $this;
-    }
-
-    /**
-     * Gets length
-     *
-     * @return int|null
-     */
-    public function getLength()
-    {
-        return $this->container['length'];
-    }
-
-    /**
-     * Sets length
-     *
-     * @param int|null $length The length of address in the IP addressing space.
-     *
-     * @return self
-     */
-    public function setLength($length)
-    {
-        $this->container['length'] = $length;
 
         return $this;
     }

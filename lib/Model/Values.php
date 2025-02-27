@@ -80,6 +80,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_503' => 'int',
         'status_504' => 'int',
         'status_505' => 'int',
+        'status_530' => 'int',
         'requests' => 'int',
         'resp_header_bytes' => 'int',
         'resp_body_bytes' => 'int',
@@ -111,6 +112,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'origin_status_503' => 'int',
         'origin_status_504' => 'int',
         'origin_status_505' => 'int',
+        'origin_status_530' => 'int',
         'origin_status_1xx' => 'int',
         'origin_status_2xx' => 'int',
         'origin_status_3xx' => 'int',
@@ -126,68 +128,70 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'edge_requests' => null,
-        'edge_resp_header_bytes' => null,
-        'edge_resp_body_bytes' => null,
-        'status_1xx' => null,
-        'status_2xx' => null,
-        'status_3xx' => null,
-        'status_4xx' => null,
-        'status_5xx' => null,
-        'status_200' => null,
-        'status_204' => null,
-        'status_206' => null,
-        'status_301' => null,
-        'status_302' => null,
-        'status_304' => null,
-        'status_400' => null,
-        'status_401' => null,
-        'status_403' => null,
-        'status_404' => null,
-        'status_416' => null,
-        'status_429' => null,
-        'status_500' => null,
-        'status_501' => null,
-        'status_502' => null,
-        'status_503' => null,
-        'status_504' => null,
-        'status_505' => null,
-        'requests' => null,
-        'resp_header_bytes' => null,
-        'resp_body_bytes' => null,
-        'bereq_header_bytes' => null,
-        'bereq_body_bytes' => null,
-        'edge_hit_requests' => null,
-        'edge_miss_requests' => null,
-        'origin_fetches' => null,
-        'origin_fetch_resp_header_bytes' => null,
-        'origin_fetch_resp_body_bytes' => null,
-        'bandwidth' => null,
+        'edge_requests' => 'int64',
+        'edge_resp_header_bytes' => 'int64',
+        'edge_resp_body_bytes' => 'int64',
+        'status_1xx' => 'int64',
+        'status_2xx' => 'int64',
+        'status_3xx' => 'int64',
+        'status_4xx' => 'int64',
+        'status_5xx' => 'int64',
+        'status_200' => 'int64',
+        'status_204' => 'int64',
+        'status_206' => 'int64',
+        'status_301' => 'int64',
+        'status_302' => 'int64',
+        'status_304' => 'int64',
+        'status_400' => 'int64',
+        'status_401' => 'int64',
+        'status_403' => 'int64',
+        'status_404' => 'int64',
+        'status_416' => 'int64',
+        'status_429' => 'int64',
+        'status_500' => 'int64',
+        'status_501' => 'int64',
+        'status_502' => 'int64',
+        'status_503' => 'int64',
+        'status_504' => 'int64',
+        'status_505' => 'int64',
+        'status_530' => 'int64',
+        'requests' => 'int64',
+        'resp_header_bytes' => 'int64',
+        'resp_body_bytes' => 'int64',
+        'bereq_header_bytes' => 'int64',
+        'bereq_body_bytes' => 'int64',
+        'edge_hit_requests' => 'int64',
+        'edge_miss_requests' => 'int64',
+        'origin_fetches' => 'int64',
+        'origin_fetch_resp_header_bytes' => 'int64',
+        'origin_fetch_resp_body_bytes' => 'int64',
+        'bandwidth' => 'int64',
         'edge_hit_ratio' => null,
         'origin_offload' => null,
-        'origin_status_200' => null,
-        'origin_status_204' => null,
-        'origin_status_206' => null,
-        'origin_status_301' => null,
-        'origin_status_302' => null,
-        'origin_status_304' => null,
-        'origin_status_400' => null,
-        'origin_status_401' => null,
-        'origin_status_403' => null,
-        'origin_status_404' => null,
-        'origin_status_416' => null,
-        'origin_status_429' => null,
-        'origin_status_500' => null,
-        'origin_status_501' => null,
-        'origin_status_502' => null,
-        'origin_status_503' => null,
-        'origin_status_504' => null,
-        'origin_status_505' => null,
-        'origin_status_1xx' => null,
-        'origin_status_2xx' => null,
-        'origin_status_3xx' => null,
-        'origin_status_4xx' => null,
-        'origin_status_5xx' => null
+        'origin_status_200' => 'int64',
+        'origin_status_204' => 'int64',
+        'origin_status_206' => 'int64',
+        'origin_status_301' => 'int64',
+        'origin_status_302' => 'int64',
+        'origin_status_304' => 'int64',
+        'origin_status_400' => 'int64',
+        'origin_status_401' => 'int64',
+        'origin_status_403' => 'int64',
+        'origin_status_404' => 'int64',
+        'origin_status_416' => 'int64',
+        'origin_status_429' => 'int64',
+        'origin_status_500' => 'int64',
+        'origin_status_501' => 'int64',
+        'origin_status_502' => 'int64',
+        'origin_status_503' => 'int64',
+        'origin_status_504' => 'int64',
+        'origin_status_505' => 'int64',
+        'origin_status_530' => 'int64',
+        'origin_status_1xx' => 'int64',
+        'origin_status_2xx' => 'int64',
+        'origin_status_3xx' => 'int64',
+        'origin_status_4xx' => 'int64',
+        'origin_status_5xx' => 'int64'
     ];
 
     /**
@@ -243,6 +247,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_503' => 'status_503',
         'status_504' => 'status_504',
         'status_505' => 'status_505',
+        'status_530' => 'status_530',
         'requests' => 'requests',
         'resp_header_bytes' => 'resp_header_bytes',
         'resp_body_bytes' => 'resp_body_bytes',
@@ -274,6 +279,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'origin_status_503' => 'origin_status_503',
         'origin_status_504' => 'origin_status_504',
         'origin_status_505' => 'origin_status_505',
+        'origin_status_530' => 'origin_status_530',
         'origin_status_1xx' => 'origin_status_1xx',
         'origin_status_2xx' => 'origin_status_2xx',
         'origin_status_3xx' => 'origin_status_3xx',
@@ -313,6 +319,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_503' => 'setStatus503',
         'status_504' => 'setStatus504',
         'status_505' => 'setStatus505',
+        'status_530' => 'setStatus530',
         'requests' => 'setRequests',
         'resp_header_bytes' => 'setRespHeaderBytes',
         'resp_body_bytes' => 'setRespBodyBytes',
@@ -344,6 +351,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'origin_status_503' => 'setOriginStatus503',
         'origin_status_504' => 'setOriginStatus504',
         'origin_status_505' => 'setOriginStatus505',
+        'origin_status_530' => 'setOriginStatus530',
         'origin_status_1xx' => 'setOriginStatus1xx',
         'origin_status_2xx' => 'setOriginStatus2xx',
         'origin_status_3xx' => 'setOriginStatus3xx',
@@ -383,6 +391,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_503' => 'getStatus503',
         'status_504' => 'getStatus504',
         'status_505' => 'getStatus505',
+        'status_530' => 'getStatus530',
         'requests' => 'getRequests',
         'resp_header_bytes' => 'getRespHeaderBytes',
         'resp_body_bytes' => 'getRespBodyBytes',
@@ -414,6 +423,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'origin_status_503' => 'getOriginStatus503',
         'origin_status_504' => 'getOriginStatus504',
         'origin_status_505' => 'getOriginStatus505',
+        'origin_status_530' => 'getOriginStatus530',
         'origin_status_1xx' => 'getOriginStatus1xx',
         'origin_status_2xx' => 'getOriginStatus2xx',
         'origin_status_3xx' => 'getOriginStatus3xx',
@@ -504,6 +514,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['status_503'] = $data['status_503'] ?? null;
         $this->container['status_504'] = $data['status_504'] ?? null;
         $this->container['status_505'] = $data['status_505'] ?? null;
+        $this->container['status_530'] = $data['status_530'] ?? null;
         $this->container['requests'] = $data['requests'] ?? null;
         $this->container['resp_header_bytes'] = $data['resp_header_bytes'] ?? null;
         $this->container['resp_body_bytes'] = $data['resp_body_bytes'] ?? null;
@@ -535,6 +546,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['origin_status_503'] = $data['origin_status_503'] ?? null;
         $this->container['origin_status_504'] = $data['origin_status_504'] ?? null;
         $this->container['origin_status_505'] = $data['origin_status_505'] ?? null;
+        $this->container['origin_status_530'] = $data['origin_status_530'] ?? null;
         $this->container['origin_status_1xx'] = $data['origin_status_1xx'] ?? null;
         $this->container['origin_status_2xx'] = $data['origin_status_2xx'] ?? null;
         $this->container['origin_status_3xx'] = $data['origin_status_3xx'] ?? null;
@@ -1186,6 +1198,30 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStatus505($status_505)
     {
         $this->container['status_505'] = $status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_530
+     *
+     * @return int|null
+     */
+    public function getStatus530()
+    {
+        return $this->container['status_530'];
+    }
+
+    /**
+     * Sets status_530
+     *
+     * @param int|null $status_530 Number of responses delivered with status code 530.
+     *
+     * @return self
+     */
+    public function setStatus530($status_530)
+    {
+        $this->container['status_530'] = $status_530;
 
         return $this;
     }
@@ -1930,6 +1966,30 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOriginStatus505($origin_status_505)
     {
         $this->container['origin_status_505'] = $origin_status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_status_530
+     *
+     * @return int|null
+     */
+    public function getOriginStatus530()
+    {
+        return $this->container['origin_status_530'];
+    }
+
+    /**
+     * Sets origin_status_530
+     *
+     * @param int|null $origin_status_530 Number of responses received from origin with status code 530.
+     *
+     * @return self
+     */
+    public function setOriginStatus530($origin_status_530)
+    {
+        $this->container['origin_status_530'] = $origin_status_530;
 
         return $this;
     }

@@ -18,12 +18,12 @@ $apiInstance = new Fastly\Api\SnippetApi(
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**createSnippet()**](SnippetApi.md#createSnippet) | **POST** /service/{service_id}/version/{version_id}/snippet | Create a snippet
-[**deleteSnippet()**](SnippetApi.md#deleteSnippet) | **DELETE** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Delete a snippet
-[**getSnippet()**](SnippetApi.md#getSnippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Get a versioned snippet
-[**getSnippetDynamic()**](SnippetApi.md#getSnippetDynamic) | **GET** /service/{service_id}/snippet/{snippet_id} | Get a dynamic snippet
+[**deleteSnippet()**](SnippetApi.md#deleteSnippet) | **DELETE** /service/{service_id}/version/{version_id}/snippet/{name} | Delete a snippet
+[**getSnippet()**](SnippetApi.md#getSnippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{name} | Get a versioned snippet
+[**getSnippetDynamic()**](SnippetApi.md#getSnippetDynamic) | **GET** /service/{service_id}/snippet/{id} | Get a dynamic snippet
 [**listSnippets()**](SnippetApi.md#listSnippets) | **GET** /service/{service_id}/version/{version_id}/snippet | List snippets
-[**updateSnippet()**](SnippetApi.md#updateSnippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Update a versioned snippet
-[**updateSnippetDynamic()**](SnippetApi.md#updateSnippetDynamic) | **PUT** /service/{service_id}/snippet/{snippet_id} | Update a dynamic snippet
+[**updateSnippet()**](SnippetApi.md#updateSnippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{name} | Update a versioned snippet
+[**updateSnippetDynamic()**](SnippetApi.md#updateSnippetDynamic) | **PUT** /service/{service_id}/snippet/{id} | Update a dynamic snippet
 
 
 ## `createSnippet()`
@@ -84,7 +84,7 @@ Delete a specific snippet for a particular service and version.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
-$options['snippet_name'] = 'snippet_name_example'; // string | The name for the snippet.
+$options['name'] = 'name_example'; // string | The name for the snippet.
 
 try {
     $result = $apiInstance->deleteSnippet($options);
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
-**snippet_name** | **string** | The name for the snippet. |
+**name** | **string** | The name for the snippet. |
 
 ### Return type
 
@@ -122,7 +122,7 @@ Get a single snippet for a particular service and version.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
-$options['snippet_name'] = 'snippet_name_example'; // string | The name for the snippet.
+$options['name'] = 'name_example'; // string | The name for the snippet.
 
 try {
     $result = $apiInstance->getSnippet($options);
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
-**snippet_name** | **string** | The name for the snippet. |
+**name** | **string** | The name for the snippet. |
 
 ### Return type
 
@@ -159,7 +159,7 @@ Get a single dynamic snippet for a particular service.
 ### Example
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
-$options['snippet_id'] = 'snippet_id_example'; // string | Alphanumeric string identifying a VCL Snippet.
+$options['id'] = 'id_example'; // string | Alphanumeric string identifying a VCL Snippet.
 
 try {
     $result = $apiInstance->getSnippetDynamic($options);
@@ -175,7 +175,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
-**snippet_id** | **string** | Alphanumeric string identifying a VCL Snippet. |
+**id** | **string** | Alphanumeric string identifying a VCL Snippet. |
 
 ### Return type
 
@@ -232,7 +232,7 @@ Update a specific snippet for a particular service and version.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
-$options['snippet_name'] = 'snippet_name_example'; // string | The name for the snippet.
+$options['name'] = 'name_example'; // string | The name for the snippet.
 
 try {
     $result = $apiInstance->updateSnippet($options);
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
-**snippet_name** | **string** | The name for the snippet. |
+**name** | **string** | The name for the snippet. |
 
 ### Return type
 
@@ -269,7 +269,7 @@ Update a dynamic snippet for a particular service.
 ### Example
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
-$options['snippet_id'] = 'snippet_id_example'; // string | Alphanumeric string identifying a VCL Snippet.
+$options['id'] = 'id_example'; // string | Alphanumeric string identifying a VCL Snippet.
 $options['name'] = 'name_example'; // string | The name for the snippet.
 $options['type'] = 'type_example'; // string | The location in generated VCL where the snippet should be placed.
 $options['content'] = 'content_example'; // string | The VCL code that specifies exactly what the snippet does.
@@ -290,7 +290,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
-**snippet_id** | **string** | Alphanumeric string identifying a VCL Snippet. |
+**id** | **string** | Alphanumeric string identifying a VCL Snippet. |
 **name** | **string** | The name for the snippet. | [optional]
 **type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] [one of: 'init', 'recv', 'hash', 'hit', 'miss', 'pass', 'fetch', 'error', 'deliver', 'log', 'none']
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional]

@@ -66,8 +66,8 @@ class Realtime implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'timestamp' => null,
-        'aggregate_delay' => null,
+        'timestamp' => 'int64',
+        'aggregate_delay' => 'int64',
         'data' => null
     ];
 

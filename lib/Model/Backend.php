@@ -684,7 +684,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets keepalive_time
      *
-     * @param int|null $keepalive_time How long in seconds to keep a persistent connection to the backend between requests.
+     * @param int|null $keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
      *
      * @return self
      */

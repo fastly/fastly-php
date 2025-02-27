@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\StoreResponse[]**](StoreResponse.md) |  | [optional] 
-**meta** | [**\Fastly\Model\InlineResponse2003Meta**](InlineResponse2003Meta.md) |  | [optional] 
+**data** | [**\Fastly\Model\KvStoreDetails[]**](KvStoreDetails.md) |  | [optional] 
+**meta** | [**\Fastly\Model\PaginationCursorMeta**](PaginationCursorMeta.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

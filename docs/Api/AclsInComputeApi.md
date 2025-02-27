@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 ## `computeAclListAcls()`
 
 ```php
-computeAclListAcls($options): \Fastly\Model\ComputeAclCreateAclsResponse[] // List ACLs
+computeAclListAcls($options): \Fastly\Model\ComputeAclList // List ACLs
 ```
 
 List all ACLs.
@@ -158,7 +158,7 @@ This endpoint does not need any parameters.
 
 ### Return type
 
-[**\Fastly\Model\ComputeAclCreateAclsResponse[]**](../Model/ComputeAclCreateAclsResponse.md)
+[**\Fastly\Model\ComputeAclList**](../Model/ComputeAclList.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

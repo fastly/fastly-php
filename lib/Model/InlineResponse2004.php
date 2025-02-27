@@ -54,7 +54,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $fastlyTypes = [
         'data' => 'string[]',
-        'meta' => '\Fastly\Model\InlineResponse2004Meta'
+        'meta' => '\Fastly\Model\PaginationCursorMeta'
     ];
 
     /**
@@ -232,7 +232,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets meta
      *
-     * @return \Fastly\Model\InlineResponse2004Meta|null
+     * @return \Fastly\Model\PaginationCursorMeta|null
      */
     public function getMeta()
     {
@@ -242,7 +242,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets meta
      *
-     * @param \Fastly\Model\InlineResponse2004Meta|null $meta meta
+     * @param \Fastly\Model\PaginationCursorMeta|null $meta meta
      *
      * @return self
      */

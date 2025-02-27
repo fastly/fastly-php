@@ -89,7 +89,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'fastly-php/6.0.0';
+    protected $userAgent = 'fastly-php/7.0.0';
 
     /**
      * Debug switch (default set to false)
@@ -126,6 +126,13 @@ class Configuration
      * @var int
      */
     protected $rate_limit_reset = NULL;
+
+    /**
+     * Associative array to store API key(s)
+     *
+     * @var string[]
+     */
+    protected array $apiKeys = [];
 
     /**
      * Constructor
@@ -453,7 +460,7 @@ class Configuration
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the schema document: 1.0.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 6.0.0' . PHP_EOL;
+        $report .= '    SDK Package Version: 7.0.0' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;

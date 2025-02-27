@@ -110,7 +110,7 @@ class KvStoreApi
     }
 
     /**
-     * Operation createStore
+     * Operation kvStoreCreate
      *
      * Create a KV store.
      *
@@ -120,20 +120,20 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location location (optional)
-     * @param  \Fastly\Model\Store $store store (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create kv_store_request_create (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\StoreResponse
+     * @return \Fastly\Model\KvStoreDetails
      */
-    public function createStore($options)
+    public function kvStoreCreate($options)
     {
-        list($response) = $this->createStoreWithHttpInfo($options);
+        list($response) = $this->kvStoreCreateWithHttpInfo($options);
         return $response;
     }
 
     /**
-     * Operation createStoreWithHttpInfo
+     * Operation kvStoreCreateWithHttpInfo
      *
      * Create a KV store.
      *
@@ -143,15 +143,15 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location (optional)
-     * @param  \Fastly\Model\Store $store (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\StoreResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\KvStoreDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createStoreWithHttpInfo($options)
+    public function kvStoreCreateWithHttpInfo($options)
     {
-        $request = $this->createStoreRequest($options);
+        $request = $this->kvStoreCreateRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -202,20 +202,20 @@ class KvStoreApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\Fastly\Model\StoreResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\KvStoreDetails' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\StoreResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\KvStoreDetails', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\StoreResponse';
+            $returnType = '\Fastly\Model\KvStoreDetails';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -233,7 +233,7 @@ class KvStoreApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\StoreResponse',
+                        '\Fastly\Model\KvStoreDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -244,7 +244,7 @@ class KvStoreApi
     }
 
     /**
-     * Operation createStoreAsync
+     * Operation kvStoreCreateAsync
      *
      * Create a KV store.
      *
@@ -254,14 +254,14 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location (optional)
-     * @param  \Fastly\Model\Store $store (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createStoreAsync($options)
+    public function kvStoreCreateAsync($options)
     {
-        return $this->createStoreAsyncWithHttpInfo($options)
+        return $this->kvStoreCreateAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -270,7 +270,7 @@ class KvStoreApi
     }
 
     /**
-     * Operation createStoreAsyncWithHttpInfo
+     * Operation kvStoreCreateAsyncWithHttpInfo
      *
      * Create a KV store.
      *
@@ -280,15 +280,15 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location (optional)
-     * @param  \Fastly\Model\Store $store (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createStoreAsyncWithHttpInfo($options)
+    public function kvStoreCreateAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\StoreResponse';
-        $request = $this->createStoreRequest($options);
+        $returnType = '\Fastly\Model\KvStoreDetails';
+        $request = $this->kvStoreCreateRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -324,7 +324,7 @@ class KvStoreApi
     }
 
     /**
-     * Create request for operation 'createStore'
+     * Create request for operation 'kvStoreCreate'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -332,16 +332,16 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location (optional)
-     * @param  \Fastly\Model\Store $store (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createStoreRequest($options)
+    public function kvStoreCreateRequest($options)
     {
         // unbox the parameters from the associative array
         $location = array_key_exists('location', $options) ? $options['location'] : null;
-        $store = array_key_exists('store', $options) ? $options['store'] : null;
+        $kv_store_request_create = array_key_exists('kv_store_request_create', $options) ? $options['kv_store_request_create'] : null;
 
 
         $resourcePath = '/resources/stores/kv';
@@ -378,11 +378,11 @@ class KvStoreApi
         }
 
         // for model (json/xml)
-        if (isset($store)) {
+        if (isset($kv_store_request_create)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($store));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($kv_store_request_create));
             } else {
-                $httpBody = $store;
+                $httpBody = $kv_store_request_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -441,7 +441,7 @@ class KvStoreApi
     }
 
     /**
-     * Operation deleteStore
+     * Operation kvStoreDelete
      *
      * Delete a KV store.
      *
@@ -456,13 +456,13 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteStore($options)
+    public function kvStoreDelete($options)
     {
-        $this->deleteStoreWithHttpInfo($options);
+        $this->kvStoreDeleteWithHttpInfo($options);
     }
 
     /**
-     * Operation deleteStoreWithHttpInfo
+     * Operation kvStoreDeleteWithHttpInfo
      *
      * Delete a KV store.
      *
@@ -477,9 +477,9 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteStoreWithHttpInfo($options)
+    public function kvStoreDeleteWithHttpInfo($options)
     {
-        $request = $this->deleteStoreRequest($options);
+        $request = $this->kvStoreDeleteRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -538,7 +538,7 @@ class KvStoreApi
     }
 
     /**
-     * Operation deleteStoreAsync
+     * Operation kvStoreDeleteAsync
      *
      * Delete a KV store.
      *
@@ -552,9 +552,9 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteStoreAsync($options)
+    public function kvStoreDeleteAsync($options)
     {
-        return $this->deleteStoreAsyncWithHttpInfo($options)
+        return $this->kvStoreDeleteAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -563,7 +563,7 @@ class KvStoreApi
     }
 
     /**
-     * Operation deleteStoreAsyncWithHttpInfo
+     * Operation kvStoreDeleteAsyncWithHttpInfo
      *
      * Delete a KV store.
      *
@@ -577,10 +577,10 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteStoreAsyncWithHttpInfo($options)
+    public function kvStoreDeleteAsyncWithHttpInfo($options)
     {
         $returnType = '';
-        $request = $this->deleteStoreRequest($options);
+        $request = $this->kvStoreDeleteRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -606,7 +606,7 @@ class KvStoreApi
     }
 
     /**
-     * Create request for operation 'deleteStore'
+     * Create request for operation 'kvStoreDelete'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -618,7 +618,7 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteStoreRequest($options)
+    public function kvStoreDeleteRequest($options)
     {
         // unbox the parameters from the associative array
         $store_id = array_key_exists('store_id', $options) ? $options['store_id'] : null;
@@ -626,7 +626,7 @@ class KvStoreApi
         // verify the required parameter 'store_id' is set
         if ($store_id === null || (is_array($store_id) && count($store_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $store_id when calling deleteStore'
+                'Missing the required parameter $store_id when calling kvStoreDelete'
             );
         }
 
@@ -718,7 +718,7 @@ class KvStoreApi
     }
 
     /**
-     * Operation getStore
+     * Operation kvStoreGet
      *
      * Describe a KV store.
      *
@@ -731,16 +731,16 @@ class KvStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\StoreResponse
+     * @return \Fastly\Model\KvStoreDetails
      */
-    public function getStore($options)
+    public function kvStoreGet($options)
     {
-        list($response) = $this->getStoreWithHttpInfo($options);
+        list($response) = $this->kvStoreGetWithHttpInfo($options);
         return $response;
     }
 
     /**
-     * Operation getStoreWithHttpInfo
+     * Operation kvStoreGetWithHttpInfo
      *
      * Describe a KV store.
      *
@@ -753,11 +753,11 @@ class KvStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\StoreResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\KvStoreDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getStoreWithHttpInfo($options)
+    public function kvStoreGetWithHttpInfo($options)
     {
-        $request = $this->getStoreRequest($options);
+        $request = $this->kvStoreGetRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -808,20 +808,20 @@ class KvStoreApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\StoreResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\KvStoreDetails' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\StoreResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\KvStoreDetails', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\StoreResponse';
+            $returnType = '\Fastly\Model\KvStoreDetails';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -839,7 +839,7 @@ class KvStoreApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\StoreResponse',
+                        '\Fastly\Model\KvStoreDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -850,7 +850,7 @@ class KvStoreApi
     }
 
     /**
-     * Operation getStoreAsync
+     * Operation kvStoreGetAsync
      *
      * Describe a KV store.
      *
@@ -864,9 +864,9 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getStoreAsync($options)
+    public function kvStoreGetAsync($options)
     {
-        return $this->getStoreAsyncWithHttpInfo($options)
+        return $this->kvStoreGetAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -875,7 +875,7 @@ class KvStoreApi
     }
 
     /**
-     * Operation getStoreAsyncWithHttpInfo
+     * Operation kvStoreGetAsyncWithHttpInfo
      *
      * Describe a KV store.
      *
@@ -889,10 +889,10 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getStoreAsyncWithHttpInfo($options)
+    public function kvStoreGetAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\StoreResponse';
-        $request = $this->getStoreRequest($options);
+        $returnType = '\Fastly\Model\KvStoreDetails';
+        $request = $this->kvStoreGetRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -928,7 +928,7 @@ class KvStoreApi
     }
 
     /**
-     * Create request for operation 'getStore'
+     * Create request for operation 'kvStoreGet'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -940,7 +940,7 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getStoreRequest($options)
+    public function kvStoreGetRequest($options)
     {
         // unbox the parameters from the associative array
         $store_id = array_key_exists('store_id', $options) ? $options['store_id'] : null;
@@ -948,7 +948,7 @@ class KvStoreApi
         // verify the required parameter 'store_id' is set
         if ($store_id === null || (is_array($store_id) && count($store_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $store_id when calling getStore'
+                'Missing the required parameter $store_id when calling kvStoreGet'
             );
         }
 
@@ -1040,9 +1040,9 @@ class KvStoreApi
     }
 
     /**
-     * Operation getStores
+     * Operation kvStoreList
      *
-     * List KV stores.
+     * List all KV stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1056,16 +1056,16 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\InlineResponse2003
      */
-    public function getStores($options)
+    public function kvStoreList($options)
     {
-        list($response) = $this->getStoresWithHttpInfo($options);
+        list($response) = $this->kvStoreListWithHttpInfo($options);
         return $response;
     }
 
     /**
-     * Operation getStoresWithHttpInfo
+     * Operation kvStoreListWithHttpInfo
      *
-     * List KV stores.
+     * List all KV stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1079,9 +1079,9 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getStoresWithHttpInfo($options)
+    public function kvStoreListWithHttpInfo($options)
     {
-        $request = $this->getStoresRequest($options);
+        $request = $this->kvStoreListRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1174,9 +1174,9 @@ class KvStoreApi
     }
 
     /**
-     * Operation getStoresAsync
+     * Operation kvStoreListAsync
      *
-     * List KV stores.
+     * List all KV stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1189,9 +1189,9 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getStoresAsync($options)
+    public function kvStoreListAsync($options)
     {
-        return $this->getStoresAsyncWithHttpInfo($options)
+        return $this->kvStoreListAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1200,9 +1200,9 @@ class KvStoreApi
     }
 
     /**
-     * Operation getStoresAsyncWithHttpInfo
+     * Operation kvStoreListAsyncWithHttpInfo
      *
-     * List KV stores.
+     * List all KV stores.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1215,10 +1215,10 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getStoresAsyncWithHttpInfo($options)
+    public function kvStoreListAsyncWithHttpInfo($options)
     {
         $returnType = '\Fastly\Model\InlineResponse2003';
-        $request = $this->getStoresRequest($options);
+        $request = $this->kvStoreListRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1254,7 +1254,7 @@ class KvStoreApi
     }
 
     /**
-     * Create request for operation 'getStores'
+     * Create request for operation 'kvStoreList'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1267,11 +1267,15 @@ class KvStoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getStoresRequest($options)
+    public function kvStoreListRequest($options)
     {
         // unbox the parameters from the associative array
         $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
         $limit = array_key_exists('limit', $options) ? $options['limit'] : 1000;
+
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling KvStoreApi.kvStoreList, must be bigger than or equal to 1.');
+        }
 
 
         $resourcePath = '/resources/stores/kv';

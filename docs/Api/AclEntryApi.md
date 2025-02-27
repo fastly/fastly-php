@@ -75,7 +75,7 @@ Add an ACL entry to an ACL.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['acl_id'] = 'acl_id_example'; // string | Alphanumeric string identifying a ACL.
-$options['acl_entry'] = {"subnet":0,"ip":"127.0.0.1"}; // \Fastly\Model\AclEntry
+$options['acl_entry'] = {"subnet":16,"ip":"192.168.0.1"}; // \Fastly\Model\AclEntry
 
 try {
     $result = $apiInstance->createAclEntry($options);

@@ -125,6 +125,7 @@ class BillingApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\BillingResponse
+     * @deprecated
      */
     public function getInvoice($options)
     {
@@ -148,6 +149,7 @@ class BillingApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\BillingResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getInvoiceWithHttpInfo($options)
     {
@@ -258,6 +260,7 @@ class BillingApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getInvoiceAsync($options)
     {
@@ -284,6 +287,7 @@ class BillingApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getInvoiceAsyncWithHttpInfo($options)
     {
@@ -336,6 +340,7 @@ class BillingApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getInvoiceRequest($options)
     {
@@ -467,6 +472,7 @@ class BillingApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\BillingResponse
+     * @deprecated
      */
     public function getInvoiceById($options)
     {
@@ -490,6 +496,7 @@ class BillingApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\BillingResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getInvoiceByIdWithHttpInfo($options)
     {
@@ -600,6 +607,7 @@ class BillingApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getInvoiceByIdAsync($options)
     {
@@ -626,6 +634,7 @@ class BillingApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getInvoiceByIdAsyncWithHttpInfo($options)
     {
@@ -678,6 +687,7 @@ class BillingApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getInvoiceByIdRequest($options)
     {
@@ -810,6 +820,7 @@ class BillingApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\BillingEstimateResponse
+     * @deprecated
      */
     public function getInvoiceMtd($options)
     {
@@ -834,6 +845,7 @@ class BillingApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\BillingEstimateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getInvoiceMtdWithHttpInfo($options)
     {
@@ -945,6 +957,7 @@ class BillingApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getInvoiceMtdAsync($options)
     {
@@ -972,6 +985,7 @@ class BillingApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getInvoiceMtdAsyncWithHttpInfo($options)
     {
@@ -1025,6 +1039,7 @@ class BillingApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getInvoiceMtdRequest($options)
     {

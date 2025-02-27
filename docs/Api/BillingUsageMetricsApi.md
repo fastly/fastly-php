@@ -31,8 +31,8 @@ Returns product usage, broken down by service.
 
 ### Example
 ```php
-    $options['product_id'] = 'product_id_example'; // string | The product identifier for the metrics returned (e.g., `cdn_usage`). This field is not required for CSV requests.
-$options['usage_type_name'] = 'usage_type_name_example'; // string | The usage type name for the metrics returned (e.g., `North America Requests`). This field is not required for CSV requests.
+    $options['product_id'] = 'product_id_example'; // string | The product identifier for the metrics returned (e.g., `cdn_usage`).
+$options['usage_type_name'] = 'usage_type_name_example'; // string | The usage type name for the metrics returned (e.g., `North America Requests`).
 $options['start_month'] = 2023-01; // string
 $options['end_month'] = 2023-03; // string
 $options['limit'] = '5'; // string | Number of results per page. The maximum is 100.
@@ -51,8 +51,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**product_id** | **string** | The product identifier for the metrics returned (e.g., `cdn_usage`). This field is not required for CSV requests. |
-**usage_type_name** | **string** | The usage type name for the metrics returned (e.g., `North America Requests`). This field is not required for CSV requests. |
+**product_id** | **string** | The product identifier for the metrics returned (e.g., `cdn_usage`). | [optional]
+**usage_type_name** | **string** | The usage type name for the metrics returned (e.g., `North America Requests`). | [optional]
 **start_month** | **string** |  | [optional]
 **end_month** | **string** |  | [optional]
 **limit** | **string** | Number of results per page. The maximum is 100. | [optional] [defaults to '5']
@@ -75,8 +75,8 @@ Returns monthly usage metrics for customer by product.
 
 ### Example
 ```php
-    $options['start_month'] = 2023-01; // string
-$options['end_month'] = 2023-03; // string
+    $options['start_month'] = 2024-05; // string
+$options['end_month'] = 2024-06; // string
 
 try {
     $result = $apiInstance->getUsageMetrics($options);
@@ -91,8 +91,8 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**start_month** | **string** |  | [optional]
-**end_month** | **string** |  | [optional]
+**start_month** | **string** |  |
+**end_month** | **string** |  |
 
 ### Return type
 

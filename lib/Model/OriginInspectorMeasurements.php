@@ -80,6 +80,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'status_503' => 'int',
         'status_504' => 'int',
         'status_505' => 'int',
+        'status_530' => 'int',
         'latency_0_to_1ms' => 'int',
         'latency_1_to_5ms' => 'int',
         'latency_5_to_10ms' => 'int',
@@ -118,6 +119,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'waf_status_503' => 'int',
         'waf_status_504' => 'int',
         'waf_status_505' => 'int',
+        'waf_status_530' => 'int',
         'waf_latency_0_to_1ms' => 'int',
         'waf_latency_1_to_5ms' => 'int',
         'waf_latency_5_to_10ms' => 'int',
@@ -156,6 +158,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'compute_status_503' => 'int',
         'compute_status_504' => 'int',
         'compute_status_505' => 'int',
+        'compute_status_530' => 'int',
         'compute_latency_0_to_1ms' => 'int',
         'compute_latency_1_to_5ms' => 'int',
         'compute_latency_5_to_10ms' => 'int',
@@ -194,6 +197,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'all_status_503' => 'int',
         'all_status_504' => 'int',
         'all_status_505' => 'int',
+        'all_status_530' => 'int',
         'all_latency_0_to_1ms' => 'int',
         'all_latency_1_to_5ms' => 'int',
         'all_latency_5_to_10ms' => 'int',
@@ -216,158 +220,162 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'responses' => null,
-        'resp_header_bytes' => null,
-        'resp_body_bytes' => null,
-        'status_1xx' => null,
-        'status_2xx' => null,
-        'status_3xx' => null,
-        'status_4xx' => null,
-        'status_5xx' => null,
-        'status_200' => null,
-        'status_204' => null,
-        'status_206' => null,
-        'status_301' => null,
-        'status_302' => null,
-        'status_304' => null,
-        'status_400' => null,
-        'status_401' => null,
-        'status_403' => null,
-        'status_404' => null,
-        'status_416' => null,
-        'status_429' => null,
-        'status_500' => null,
-        'status_501' => null,
-        'status_502' => null,
-        'status_503' => null,
-        'status_504' => null,
-        'status_505' => null,
-        'latency_0_to_1ms' => null,
-        'latency_1_to_5ms' => null,
-        'latency_5_to_10ms' => null,
-        'latency_10_to_50ms' => null,
-        'latency_50_to_100ms' => null,
-        'latency_100_to_250ms' => null,
-        'latency_250_to_500ms' => null,
-        'latency_500_to_1000ms' => null,
-        'latency_1000_to_5000ms' => null,
-        'latency_5000_to_10000ms' => null,
-        'latency_10000_to_60000ms' => null,
-        'latency_60000ms' => null,
-        'waf_responses' => null,
-        'waf_resp_header_bytes' => null,
-        'waf_resp_body_bytes' => null,
-        'waf_status_1xx' => null,
-        'waf_status_2xx' => null,
-        'waf_status_3xx' => null,
-        'waf_status_4xx' => null,
-        'waf_status_5xx' => null,
-        'waf_status_200' => null,
-        'waf_status_204' => null,
-        'waf_status_206' => null,
-        'waf_status_301' => null,
-        'waf_status_302' => null,
-        'waf_status_304' => null,
-        'waf_status_400' => null,
-        'waf_status_401' => null,
-        'waf_status_403' => null,
-        'waf_status_404' => null,
-        'waf_status_416' => null,
-        'waf_status_429' => null,
-        'waf_status_500' => null,
-        'waf_status_501' => null,
-        'waf_status_502' => null,
-        'waf_status_503' => null,
-        'waf_status_504' => null,
-        'waf_status_505' => null,
-        'waf_latency_0_to_1ms' => null,
-        'waf_latency_1_to_5ms' => null,
-        'waf_latency_5_to_10ms' => null,
-        'waf_latency_10_to_50ms' => null,
-        'waf_latency_50_to_100ms' => null,
-        'waf_latency_100_to_250ms' => null,
-        'waf_latency_250_to_500ms' => null,
-        'waf_latency_500_to_1000ms' => null,
-        'waf_latency_1000_to_5000ms' => null,
-        'waf_latency_5000_to_10000ms' => null,
-        'waf_latency_10000_to_60000ms' => null,
-        'waf_latency_60000ms' => null,
-        'compute_responses' => null,
-        'compute_resp_header_bytes' => null,
-        'compute_resp_body_bytes' => null,
-        'compute_status_1xx' => null,
-        'compute_status_2xx' => null,
-        'compute_status_3xx' => null,
-        'compute_status_4xx' => null,
-        'compute_status_5xx' => null,
-        'compute_status_200' => null,
-        'compute_status_204' => null,
-        'compute_status_206' => null,
-        'compute_status_301' => null,
-        'compute_status_302' => null,
-        'compute_status_304' => null,
-        'compute_status_400' => null,
-        'compute_status_401' => null,
-        'compute_status_403' => null,
-        'compute_status_404' => null,
-        'compute_status_416' => null,
-        'compute_status_429' => null,
-        'compute_status_500' => null,
-        'compute_status_501' => null,
-        'compute_status_502' => null,
-        'compute_status_503' => null,
-        'compute_status_504' => null,
-        'compute_status_505' => null,
-        'compute_latency_0_to_1ms' => null,
-        'compute_latency_1_to_5ms' => null,
-        'compute_latency_5_to_10ms' => null,
-        'compute_latency_10_to_50ms' => null,
-        'compute_latency_50_to_100ms' => null,
-        'compute_latency_100_to_250ms' => null,
-        'compute_latency_250_to_500ms' => null,
-        'compute_latency_500_to_1000ms' => null,
-        'compute_latency_1000_to_5000ms' => null,
-        'compute_latency_5000_to_10000ms' => null,
-        'compute_latency_10000_to_60000ms' => null,
-        'compute_latency_60000ms' => null,
-        'all_responses' => null,
-        'all_resp_header_bytes' => null,
-        'all_resp_body_bytes' => null,
-        'all_status_1xx' => null,
-        'all_status_2xx' => null,
-        'all_status_3xx' => null,
-        'all_status_4xx' => null,
-        'all_status_5xx' => null,
-        'all_status_200' => null,
-        'all_status_204' => null,
-        'all_status_206' => null,
-        'all_status_301' => null,
-        'all_status_302' => null,
-        'all_status_304' => null,
-        'all_status_400' => null,
-        'all_status_401' => null,
-        'all_status_403' => null,
-        'all_status_404' => null,
-        'all_status_416' => null,
-        'all_status_429' => null,
-        'all_status_500' => null,
-        'all_status_501' => null,
-        'all_status_502' => null,
-        'all_status_503' => null,
-        'all_status_504' => null,
-        'all_status_505' => null,
-        'all_latency_0_to_1ms' => null,
-        'all_latency_1_to_5ms' => null,
-        'all_latency_5_to_10ms' => null,
-        'all_latency_10_to_50ms' => null,
-        'all_latency_50_to_100ms' => null,
-        'all_latency_100_to_250ms' => null,
-        'all_latency_250_to_500ms' => null,
-        'all_latency_500_to_1000ms' => null,
-        'all_latency_1000_to_5000ms' => null,
-        'all_latency_5000_to_10000ms' => null,
-        'all_latency_10000_to_60000ms' => null,
-        'all_latency_60000ms' => null
+        'responses' => 'int64',
+        'resp_header_bytes' => 'int64',
+        'resp_body_bytes' => 'int64',
+        'status_1xx' => 'int64',
+        'status_2xx' => 'int64',
+        'status_3xx' => 'int64',
+        'status_4xx' => 'int64',
+        'status_5xx' => 'int64',
+        'status_200' => 'int64',
+        'status_204' => 'int64',
+        'status_206' => 'int64',
+        'status_301' => 'int64',
+        'status_302' => 'int64',
+        'status_304' => 'int64',
+        'status_400' => 'int64',
+        'status_401' => 'int64',
+        'status_403' => 'int64',
+        'status_404' => 'int64',
+        'status_416' => 'int64',
+        'status_429' => 'int64',
+        'status_500' => 'int64',
+        'status_501' => 'int64',
+        'status_502' => 'int64',
+        'status_503' => 'int64',
+        'status_504' => 'int64',
+        'status_505' => 'int64',
+        'status_530' => 'int64',
+        'latency_0_to_1ms' => 'int64',
+        'latency_1_to_5ms' => 'int64',
+        'latency_5_to_10ms' => 'int64',
+        'latency_10_to_50ms' => 'int64',
+        'latency_50_to_100ms' => 'int64',
+        'latency_100_to_250ms' => 'int64',
+        'latency_250_to_500ms' => 'int64',
+        'latency_500_to_1000ms' => 'int64',
+        'latency_1000_to_5000ms' => 'int64',
+        'latency_5000_to_10000ms' => 'int64',
+        'latency_10000_to_60000ms' => 'int64',
+        'latency_60000ms' => 'int64',
+        'waf_responses' => 'int64',
+        'waf_resp_header_bytes' => 'int64',
+        'waf_resp_body_bytes' => 'int64',
+        'waf_status_1xx' => 'int64',
+        'waf_status_2xx' => 'int64',
+        'waf_status_3xx' => 'int64',
+        'waf_status_4xx' => 'int64',
+        'waf_status_5xx' => 'int64',
+        'waf_status_200' => 'int64',
+        'waf_status_204' => 'int64',
+        'waf_status_206' => 'int64',
+        'waf_status_301' => 'int64',
+        'waf_status_302' => 'int64',
+        'waf_status_304' => 'int64',
+        'waf_status_400' => 'int64',
+        'waf_status_401' => 'int64',
+        'waf_status_403' => 'int64',
+        'waf_status_404' => 'int64',
+        'waf_status_416' => 'int64',
+        'waf_status_429' => 'int64',
+        'waf_status_500' => 'int64',
+        'waf_status_501' => 'int64',
+        'waf_status_502' => 'int64',
+        'waf_status_503' => 'int64',
+        'waf_status_504' => 'int64',
+        'waf_status_505' => 'int64',
+        'waf_status_530' => 'int64',
+        'waf_latency_0_to_1ms' => 'int64',
+        'waf_latency_1_to_5ms' => 'int64',
+        'waf_latency_5_to_10ms' => 'int64',
+        'waf_latency_10_to_50ms' => 'int64',
+        'waf_latency_50_to_100ms' => 'int64',
+        'waf_latency_100_to_250ms' => 'int64',
+        'waf_latency_250_to_500ms' => 'int64',
+        'waf_latency_500_to_1000ms' => 'int64',
+        'waf_latency_1000_to_5000ms' => 'int64',
+        'waf_latency_5000_to_10000ms' => 'int64',
+        'waf_latency_10000_to_60000ms' => 'int64',
+        'waf_latency_60000ms' => 'int64',
+        'compute_responses' => 'int64',
+        'compute_resp_header_bytes' => 'int64',
+        'compute_resp_body_bytes' => 'int64',
+        'compute_status_1xx' => 'int64',
+        'compute_status_2xx' => 'int64',
+        'compute_status_3xx' => 'int64',
+        'compute_status_4xx' => 'int64',
+        'compute_status_5xx' => 'int64',
+        'compute_status_200' => 'int64',
+        'compute_status_204' => 'int64',
+        'compute_status_206' => 'int64',
+        'compute_status_301' => 'int64',
+        'compute_status_302' => 'int64',
+        'compute_status_304' => 'int64',
+        'compute_status_400' => 'int64',
+        'compute_status_401' => 'int64',
+        'compute_status_403' => 'int64',
+        'compute_status_404' => 'int64',
+        'compute_status_416' => 'int64',
+        'compute_status_429' => 'int64',
+        'compute_status_500' => 'int64',
+        'compute_status_501' => 'int64',
+        'compute_status_502' => 'int64',
+        'compute_status_503' => 'int64',
+        'compute_status_504' => 'int64',
+        'compute_status_505' => 'int64',
+        'compute_status_530' => 'int64',
+        'compute_latency_0_to_1ms' => 'int64',
+        'compute_latency_1_to_5ms' => 'int64',
+        'compute_latency_5_to_10ms' => 'int64',
+        'compute_latency_10_to_50ms' => 'int64',
+        'compute_latency_50_to_100ms' => 'int64',
+        'compute_latency_100_to_250ms' => 'int64',
+        'compute_latency_250_to_500ms' => 'int64',
+        'compute_latency_500_to_1000ms' => 'int64',
+        'compute_latency_1000_to_5000ms' => 'int64',
+        'compute_latency_5000_to_10000ms' => 'int64',
+        'compute_latency_10000_to_60000ms' => 'int64',
+        'compute_latency_60000ms' => 'int64',
+        'all_responses' => 'int64',
+        'all_resp_header_bytes' => 'int64',
+        'all_resp_body_bytes' => 'int64',
+        'all_status_1xx' => 'int64',
+        'all_status_2xx' => 'int64',
+        'all_status_3xx' => 'int64',
+        'all_status_4xx' => 'int64',
+        'all_status_5xx' => 'int64',
+        'all_status_200' => 'int64',
+        'all_status_204' => 'int64',
+        'all_status_206' => 'int64',
+        'all_status_301' => 'int64',
+        'all_status_302' => 'int64',
+        'all_status_304' => 'int64',
+        'all_status_400' => 'int64',
+        'all_status_401' => 'int64',
+        'all_status_403' => 'int64',
+        'all_status_404' => 'int64',
+        'all_status_416' => 'int64',
+        'all_status_429' => 'int64',
+        'all_status_500' => 'int64',
+        'all_status_501' => 'int64',
+        'all_status_502' => 'int64',
+        'all_status_503' => 'int64',
+        'all_status_504' => 'int64',
+        'all_status_505' => 'int64',
+        'all_status_530' => 'int64',
+        'all_latency_0_to_1ms' => 'int64',
+        'all_latency_1_to_5ms' => 'int64',
+        'all_latency_5_to_10ms' => 'int64',
+        'all_latency_10_to_50ms' => 'int64',
+        'all_latency_50_to_100ms' => 'int64',
+        'all_latency_100_to_250ms' => 'int64',
+        'all_latency_250_to_500ms' => 'int64',
+        'all_latency_500_to_1000ms' => 'int64',
+        'all_latency_1000_to_5000ms' => 'int64',
+        'all_latency_5000_to_10000ms' => 'int64',
+        'all_latency_10000_to_60000ms' => 'int64',
+        'all_latency_60000ms' => 'int64'
     ];
 
     /**
@@ -423,6 +431,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'status_503' => 'status_503',
         'status_504' => 'status_504',
         'status_505' => 'status_505',
+        'status_530' => 'status_530',
         'latency_0_to_1ms' => 'latency_0_to_1ms',
         'latency_1_to_5ms' => 'latency_1_to_5ms',
         'latency_5_to_10ms' => 'latency_5_to_10ms',
@@ -461,6 +470,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'waf_status_503' => 'waf_status_503',
         'waf_status_504' => 'waf_status_504',
         'waf_status_505' => 'waf_status_505',
+        'waf_status_530' => 'waf_status_530',
         'waf_latency_0_to_1ms' => 'waf_latency_0_to_1ms',
         'waf_latency_1_to_5ms' => 'waf_latency_1_to_5ms',
         'waf_latency_5_to_10ms' => 'waf_latency_5_to_10ms',
@@ -499,6 +509,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'compute_status_503' => 'compute_status_503',
         'compute_status_504' => 'compute_status_504',
         'compute_status_505' => 'compute_status_505',
+        'compute_status_530' => 'compute_status_530',
         'compute_latency_0_to_1ms' => 'compute_latency_0_to_1ms',
         'compute_latency_1_to_5ms' => 'compute_latency_1_to_5ms',
         'compute_latency_5_to_10ms' => 'compute_latency_5_to_10ms',
@@ -537,6 +548,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'all_status_503' => 'all_status_503',
         'all_status_504' => 'all_status_504',
         'all_status_505' => 'all_status_505',
+        'all_status_530' => 'all_status_530',
         'all_latency_0_to_1ms' => 'all_latency_0_to_1ms',
         'all_latency_1_to_5ms' => 'all_latency_1_to_5ms',
         'all_latency_5_to_10ms' => 'all_latency_5_to_10ms',
@@ -583,6 +595,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'status_503' => 'setStatus503',
         'status_504' => 'setStatus504',
         'status_505' => 'setStatus505',
+        'status_530' => 'setStatus530',
         'latency_0_to_1ms' => 'setLatency0To1ms',
         'latency_1_to_5ms' => 'setLatency1To5ms',
         'latency_5_to_10ms' => 'setLatency5To10ms',
@@ -621,6 +634,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'waf_status_503' => 'setWafStatus503',
         'waf_status_504' => 'setWafStatus504',
         'waf_status_505' => 'setWafStatus505',
+        'waf_status_530' => 'setWafStatus530',
         'waf_latency_0_to_1ms' => 'setWafLatency0To1ms',
         'waf_latency_1_to_5ms' => 'setWafLatency1To5ms',
         'waf_latency_5_to_10ms' => 'setWafLatency5To10ms',
@@ -659,6 +673,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'compute_status_503' => 'setComputeStatus503',
         'compute_status_504' => 'setComputeStatus504',
         'compute_status_505' => 'setComputeStatus505',
+        'compute_status_530' => 'setComputeStatus530',
         'compute_latency_0_to_1ms' => 'setComputeLatency0To1ms',
         'compute_latency_1_to_5ms' => 'setComputeLatency1To5ms',
         'compute_latency_5_to_10ms' => 'setComputeLatency5To10ms',
@@ -697,6 +712,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'all_status_503' => 'setAllStatus503',
         'all_status_504' => 'setAllStatus504',
         'all_status_505' => 'setAllStatus505',
+        'all_status_530' => 'setAllStatus530',
         'all_latency_0_to_1ms' => 'setAllLatency0To1ms',
         'all_latency_1_to_5ms' => 'setAllLatency1To5ms',
         'all_latency_5_to_10ms' => 'setAllLatency5To10ms',
@@ -743,6 +759,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'status_503' => 'getStatus503',
         'status_504' => 'getStatus504',
         'status_505' => 'getStatus505',
+        'status_530' => 'getStatus530',
         'latency_0_to_1ms' => 'getLatency0To1ms',
         'latency_1_to_5ms' => 'getLatency1To5ms',
         'latency_5_to_10ms' => 'getLatency5To10ms',
@@ -781,6 +798,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'waf_status_503' => 'getWafStatus503',
         'waf_status_504' => 'getWafStatus504',
         'waf_status_505' => 'getWafStatus505',
+        'waf_status_530' => 'getWafStatus530',
         'waf_latency_0_to_1ms' => 'getWafLatency0To1ms',
         'waf_latency_1_to_5ms' => 'getWafLatency1To5ms',
         'waf_latency_5_to_10ms' => 'getWafLatency5To10ms',
@@ -819,6 +837,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'compute_status_503' => 'getComputeStatus503',
         'compute_status_504' => 'getComputeStatus504',
         'compute_status_505' => 'getComputeStatus505',
+        'compute_status_530' => 'getComputeStatus530',
         'compute_latency_0_to_1ms' => 'getComputeLatency0To1ms',
         'compute_latency_1_to_5ms' => 'getComputeLatency1To5ms',
         'compute_latency_5_to_10ms' => 'getComputeLatency5To10ms',
@@ -857,6 +876,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'all_status_503' => 'getAllStatus503',
         'all_status_504' => 'getAllStatus504',
         'all_status_505' => 'getAllStatus505',
+        'all_status_530' => 'getAllStatus530',
         'all_latency_0_to_1ms' => 'getAllLatency0To1ms',
         'all_latency_1_to_5ms' => 'getAllLatency1To5ms',
         'all_latency_5_to_10ms' => 'getAllLatency5To10ms',
@@ -954,6 +974,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         $this->container['status_503'] = $data['status_503'] ?? null;
         $this->container['status_504'] = $data['status_504'] ?? null;
         $this->container['status_505'] = $data['status_505'] ?? null;
+        $this->container['status_530'] = $data['status_530'] ?? null;
         $this->container['latency_0_to_1ms'] = $data['latency_0_to_1ms'] ?? null;
         $this->container['latency_1_to_5ms'] = $data['latency_1_to_5ms'] ?? null;
         $this->container['latency_5_to_10ms'] = $data['latency_5_to_10ms'] ?? null;
@@ -992,6 +1013,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         $this->container['waf_status_503'] = $data['waf_status_503'] ?? null;
         $this->container['waf_status_504'] = $data['waf_status_504'] ?? null;
         $this->container['waf_status_505'] = $data['waf_status_505'] ?? null;
+        $this->container['waf_status_530'] = $data['waf_status_530'] ?? null;
         $this->container['waf_latency_0_to_1ms'] = $data['waf_latency_0_to_1ms'] ?? null;
         $this->container['waf_latency_1_to_5ms'] = $data['waf_latency_1_to_5ms'] ?? null;
         $this->container['waf_latency_5_to_10ms'] = $data['waf_latency_5_to_10ms'] ?? null;
@@ -1030,6 +1052,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         $this->container['compute_status_503'] = $data['compute_status_503'] ?? null;
         $this->container['compute_status_504'] = $data['compute_status_504'] ?? null;
         $this->container['compute_status_505'] = $data['compute_status_505'] ?? null;
+        $this->container['compute_status_530'] = $data['compute_status_530'] ?? null;
         $this->container['compute_latency_0_to_1ms'] = $data['compute_latency_0_to_1ms'] ?? null;
         $this->container['compute_latency_1_to_5ms'] = $data['compute_latency_1_to_5ms'] ?? null;
         $this->container['compute_latency_5_to_10ms'] = $data['compute_latency_5_to_10ms'] ?? null;
@@ -1068,6 +1091,7 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         $this->container['all_status_503'] = $data['all_status_503'] ?? null;
         $this->container['all_status_504'] = $data['all_status_504'] ?? null;
         $this->container['all_status_505'] = $data['all_status_505'] ?? null;
+        $this->container['all_status_530'] = $data['all_status_530'] ?? null;
         $this->container['all_latency_0_to_1ms'] = $data['all_latency_0_to_1ms'] ?? null;
         $this->container['all_latency_1_to_5ms'] = $data['all_latency_1_to_5ms'] ?? null;
         $this->container['all_latency_5_to_10ms'] = $data['all_latency_5_to_10ms'] ?? null;
@@ -1726,6 +1750,30 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
     public function setStatus505($status_505)
     {
         $this->container['status_505'] = $status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_530
+     *
+     * @return int|null
+     */
+    public function getStatus530()
+    {
+        return $this->container['status_530'];
+    }
+
+    /**
+     * Sets status_530
+     *
+     * @param int|null $status_530 Number of responses received from origin with status code 530.
+     *
+     * @return self
+     */
+    public function setStatus530($status_530)
+    {
+        $this->container['status_530'] = $status_530;
 
         return $this;
     }
@@ -2643,6 +2691,30 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets waf_status_530
+     *
+     * @return int|null
+     */
+    public function getWafStatus530()
+    {
+        return $this->container['waf_status_530'];
+    }
+
+    /**
+     * Sets waf_status_530
+     *
+     * @param int|null $waf_status_530 Number of responses received with status code 530 received for origin requests made by the Fastly WAF.
+     *
+     * @return self
+     */
+    public function setWafStatus530($waf_status_530)
+    {
+        $this->container['waf_status_530'] = $waf_status_530;
+
+        return $this;
+    }
+
+    /**
      * Gets waf_latency_0_to_1ms
      *
      * @return int|null
@@ -3555,6 +3627,30 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets compute_status_530
+     *
+     * @return int|null
+     */
+    public function getComputeStatus530()
+    {
+        return $this->container['compute_status_530'];
+    }
+
+    /**
+     * Sets compute_status_530
+     *
+     * @param int|null $compute_status_530 Number of responses received with status code 530 for origin received by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeStatus530($compute_status_530)
+    {
+        $this->container['compute_status_530'] = $compute_status_530;
+
+        return $this;
+    }
+
+    /**
      * Gets compute_latency_0_to_1ms
      *
      * @return int|null
@@ -4462,6 +4558,30 @@ class OriginInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
     public function setAllStatus505($all_status_505)
     {
         $this->container['all_status_505'] = $all_status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_530
+     *
+     * @return int|null
+     */
+    public function getAllStatus530()
+    {
+        return $this->container['all_status_530'];
+    }
+
+    /**
+     * Sets all_status_530
+     *
+     * @param int|null $all_status_530 Number of responses received with status code 530 received for origin requests made by all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus530($all_status_530)
+    {
+        $this->container['all_status_530'] = $all_status_530;
 
         return $this;
     }

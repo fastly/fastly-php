@@ -53,8 +53,8 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\StoreResponse[]',
-        'meta' => '\Fastly\Model\InlineResponse2003Meta'
+        'data' => '\Fastly\Model\KvStoreDetails[]',
+        'meta' => '\Fastly\Model\PaginationCursorMeta'
     ];
 
     /**
@@ -208,7 +208,7 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Fastly\Model\StoreResponse[]|null
+     * @return \Fastly\Model\KvStoreDetails[]|null
      */
     public function getData()
     {
@@ -218,7 +218,7 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Fastly\Model\StoreResponse[]|null $data data
+     * @param \Fastly\Model\KvStoreDetails[]|null $data data
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets meta
      *
-     * @return \Fastly\Model\InlineResponse2003Meta|null
+     * @return \Fastly\Model\PaginationCursorMeta|null
      */
     public function getMeta()
     {
@@ -242,7 +242,7 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets meta
      *
-     * @param \Fastly\Model\InlineResponse2003Meta|null $meta meta
+     * @param \Fastly\Model\PaginationCursorMeta|null $meta meta
      *
      * @return self
      */

@@ -17,29 +17,29 @@ $apiInstance = new Fastly\Api\KvStoreApi(
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**createStore()**](KvStoreApi.md#createStore) | **POST** /resources/stores/kv | Create a KV store.
-[**deleteStore()**](KvStoreApi.md#deleteStore) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
-[**getStore()**](KvStoreApi.md#getStore) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.
-[**getStores()**](KvStoreApi.md#getStores) | **GET** /resources/stores/kv | List KV stores.
+[**kvStoreCreate()**](KvStoreApi.md#kvStoreCreate) | **POST** /resources/stores/kv | Create a KV store.
+[**kvStoreDelete()**](KvStoreApi.md#kvStoreDelete) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
+[**kvStoreGet()**](KvStoreApi.md#kvStoreGet) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.
+[**kvStoreList()**](KvStoreApi.md#kvStoreList) | **GET** /resources/stores/kv | List all KV stores.
 
 
-## `createStore()`
+## `kvStoreCreate()`
 
 ```php
-createStore($options): \Fastly\Model\StoreResponse // Create a KV store.
+kvStoreCreate($options): \Fastly\Model\KvStoreDetails // Create a KV store.
 ```
 
-Create a new KV store.
+Create a KV store.
 
 ### Example
 ```php
     $options['location'] = 'location_example'; // string
-$options['store'] = {"name":"my-store"}; // \Fastly\Model\Store
+$options['kv_store_request_create'] = {"name":"my-store"}; // \Fastly\Model\KvStoreRequestCreate
 
 try {
-    $result = $apiInstance->createStore($options);
+    $result = $apiInstance->kvStoreCreate($options);
 } catch (Exception $e) {
-    echo 'Exception when calling KvStoreApi->createStore: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreApi->kvStoreCreate: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -49,32 +49,32 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**location** | **string** |  | [optional]
-**store** | [**\Fastly\Model\Store**](../Model/Store.md) |  | [optional]
+**location** | **string** |  | [optional] [one of: 'US', 'EU', 'ASIA', 'AUS']
+**kv_store_request_create** | [**\Fastly\Model\KvStoreRequestCreate**](../Model/KvStoreRequestCreate.md) |  | [optional]
 
 ### Return type
 
-[**\Fastly\Model\StoreResponse**](../Model/StoreResponse.md)
+[**\Fastly\Model\KvStoreDetails**](../Model/KvStoreDetails.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
-## `deleteStore()`
+## `kvStoreDelete()`
 
 ```php
-deleteStore($options) // Delete a KV store.
+kvStoreDelete($options) // Delete a KV store.
 ```
 
-A KV store must be empty before it can be deleted.  Deleting a KV store that still contains keys will result in a `409` (Conflict).
+A KV store must be empty before it can be deleted. Attempting to delete a KV store that contains items will result in a response with a `409` status code.
 
 ### Example
 ```php
     $options['store_id'] = 'store_id_example'; // string
 
 try {
-    $apiInstance->deleteStore($options);
+    $apiInstance->kvStoreDelete($options);
 } catch (Exception $e) {
-    echo 'Exception when calling KvStoreApi->deleteStore: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreApi->kvStoreDelete: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -93,22 +93,22 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
-## `getStore()`
+## `kvStoreGet()`
 
 ```php
-getStore($options): \Fastly\Model\StoreResponse // Describe a KV store.
+kvStoreGet($options): \Fastly\Model\KvStoreDetails // Describe a KV store.
 ```
 
-Get a KV store by ID.
+Get details of a KV store.
 
 ### Example
 ```php
     $options['store_id'] = 'store_id_example'; // string
 
 try {
-    $result = $apiInstance->getStore($options);
+    $result = $apiInstance->kvStoreGet($options);
 } catch (Exception $e) {
-    echo 'Exception when calling KvStoreApi->getStore: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreApi->kvStoreGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -122,18 +122,18 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\StoreResponse**](../Model/StoreResponse.md)
+[**\Fastly\Model\KvStoreDetails**](../Model/KvStoreDetails.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
-## `getStores()`
+## `kvStoreList()`
 
 ```php
-getStores($options): \Fastly\Model\InlineResponse2003 // List KV stores.
+kvStoreList($options): \Fastly\Model\InlineResponse2003 // List all KV stores.
 ```
 
-Get all stores for a given customer.
+List all KV stores.
 
 ### Example
 ```php
@@ -141,9 +141,9 @@ Get all stores for a given customer.
 $options['limit'] = 1000; // int
 
 try {
-    $result = $apiInstance->getStores($options);
+    $result = $apiInstance->kvStoreList($options);
 } catch (Exception $e) {
-    echo 'Exception when calling KvStoreApi->getStores: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling KvStoreApi->kvStoreList: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

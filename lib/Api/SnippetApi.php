@@ -513,7 +513,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -537,7 +537,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -649,7 +649,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -676,7 +676,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -729,7 +729,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -739,7 +739,7 @@ class SnippetApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
-        $snippet_name = array_key_exists('snippet_name', $options) ? $options['snippet_name'] : null;
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -753,14 +753,14 @@ class SnippetApi
                 'Missing the required parameter $version_id when calling deleteSnippet'
             );
         }
-        // verify the required parameter 'snippet_name' is set
-        if ($snippet_name === null || (is_array($snippet_name) && count($snippet_name) === 0)) {
+        // verify the required parameter 'name' is set
+        if ($name === null || (is_array($name) && count($name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $snippet_name when calling deleteSnippet'
+                'Missing the required parameter $name when calling deleteSnippet'
             );
         }
 
-        $resourcePath = '/service/{service_id}/version/{version_id}/snippet/{snippet_name}';
+        $resourcePath = '/service/{service_id}/version/{version_id}/snippet/{name}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -786,10 +786,10 @@ class SnippetApi
             );
         }
         // path params
-        if ($snippet_name !== null) {
+        if ($name !== null) {
             $resourcePath = str_replace(
-                '{' . 'snippet_name' . '}',
-                ObjectSerializer::toPathValue($snippet_name),
+                '{' . 'name' . '}',
+                ObjectSerializer::toPathValue($name),
                 $resourcePath
             );
         }
@@ -875,7 +875,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -899,7 +899,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1011,7 +1011,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1038,7 +1038,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1091,7 +1091,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1101,7 +1101,7 @@ class SnippetApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
-        $snippet_name = array_key_exists('snippet_name', $options) ? $options['snippet_name'] : null;
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1115,14 +1115,14 @@ class SnippetApi
                 'Missing the required parameter $version_id when calling getSnippet'
             );
         }
-        // verify the required parameter 'snippet_name' is set
-        if ($snippet_name === null || (is_array($snippet_name) && count($snippet_name) === 0)) {
+        // verify the required parameter 'name' is set
+        if ($name === null || (is_array($name) && count($name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $snippet_name when calling getSnippet'
+                'Missing the required parameter $name when calling getSnippet'
             );
         }
 
-        $resourcePath = '/service/{service_id}/version/{version_id}/snippet/{snippet_name}';
+        $resourcePath = '/service/{service_id}/version/{version_id}/snippet/{name}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1148,10 +1148,10 @@ class SnippetApi
             );
         }
         // path params
-        if ($snippet_name !== null) {
+        if ($name !== null) {
             $resourcePath = str_replace(
-                '{' . 'snippet_name' . '}',
-                ObjectSerializer::toPathValue($snippet_name),
+                '{' . 'name' . '}',
+                ObjectSerializer::toPathValue($name),
                 $resourcePath
             );
         }
@@ -1236,7 +1236,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1259,7 +1259,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1370,7 +1370,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1396,7 +1396,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1448,7 +1448,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1457,7 +1457,7 @@ class SnippetApi
     {
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
-        $snippet_id = array_key_exists('snippet_id', $options) ? $options['snippet_id'] : null;
+        $id = array_key_exists('id', $options) ? $options['id'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1465,14 +1465,14 @@ class SnippetApi
                 'Missing the required parameter $service_id when calling getSnippetDynamic'
             );
         }
-        // verify the required parameter 'snippet_id' is set
-        if ($snippet_id === null || (is_array($snippet_id) && count($snippet_id) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $snippet_id when calling getSnippetDynamic'
+                'Missing the required parameter $id when calling getSnippetDynamic'
             );
         }
 
-        $resourcePath = '/service/{service_id}/snippet/{snippet_id}';
+        $resourcePath = '/service/{service_id}/snippet/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1490,10 +1490,10 @@ class SnippetApi
             );
         }
         // path params
-        if ($snippet_id !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'snippet_id' . '}',
-                ObjectSerializer::toPathValue($snippet_id),
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }
@@ -1921,7 +1921,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1945,7 +1945,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2057,7 +2057,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2084,7 +2084,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2137,7 +2137,7 @@ class SnippetApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
-     * @param  string $snippet_name The name for the snippet. (required)
+     * @param  string $name The name for the snippet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2147,7 +2147,7 @@ class SnippetApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version_id = array_key_exists('version_id', $options) ? $options['version_id'] : null;
-        $snippet_name = array_key_exists('snippet_name', $options) ? $options['snippet_name'] : null;
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -2161,14 +2161,14 @@ class SnippetApi
                 'Missing the required parameter $version_id when calling updateSnippet'
             );
         }
-        // verify the required parameter 'snippet_name' is set
-        if ($snippet_name === null || (is_array($snippet_name) && count($snippet_name) === 0)) {
+        // verify the required parameter 'name' is set
+        if ($name === null || (is_array($name) && count($name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $snippet_name when calling updateSnippet'
+                'Missing the required parameter $name when calling updateSnippet'
             );
         }
 
-        $resourcePath = '/service/{service_id}/version/{version_id}/snippet/{snippet_name}';
+        $resourcePath = '/service/{service_id}/version/{version_id}/snippet/{name}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2194,10 +2194,10 @@ class SnippetApi
             );
         }
         // path params
-        if ($snippet_name !== null) {
+        if ($name !== null) {
             $resourcePath = str_replace(
-                '{' . 'snippet_name' . '}',
-                ObjectSerializer::toPathValue($snippet_name),
+                '{' . 'name' . '}',
+                ObjectSerializer::toPathValue($name),
                 $resourcePath
             );
         }
@@ -2282,7 +2282,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
@@ -2310,7 +2310,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
@@ -2426,7 +2426,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
@@ -2457,7 +2457,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
@@ -2514,7 +2514,7 @@ class SnippetApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
-     * @param  string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+     * @param  string $id Alphanumeric string identifying a VCL Snippet. (required)
      * @param  string $name The name for the snippet. (optional)
      * @param  string $type The location in generated VCL where the snippet should be placed. (optional)
      * @param  string $content The VCL code that specifies exactly what the snippet does. (optional)
@@ -2528,7 +2528,7 @@ class SnippetApi
     {
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
-        $snippet_id = array_key_exists('snippet_id', $options) ? $options['snippet_id'] : null;
+        $id = array_key_exists('id', $options) ? $options['id'] : null;
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
         $content = array_key_exists('content', $options) ? $options['content'] : null;
@@ -2541,14 +2541,14 @@ class SnippetApi
                 'Missing the required parameter $service_id when calling updateSnippetDynamic'
             );
         }
-        // verify the required parameter 'snippet_id' is set
-        if ($snippet_id === null || (is_array($snippet_id) && count($snippet_id) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $snippet_id when calling updateSnippetDynamic'
+                'Missing the required parameter $id when calling updateSnippetDynamic'
             );
         }
 
-        $resourcePath = '/service/{service_id}/snippet/{snippet_id}';
+        $resourcePath = '/service/{service_id}/snippet/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2566,10 +2566,10 @@ class SnippetApi
             );
         }
         // path params
-        if ($snippet_id !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'snippet_id' . '}',
-                ObjectSerializer::toPathValue($snippet_id),
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }

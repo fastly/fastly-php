@@ -1069,7 +1069,7 @@ class AclsInComputeApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\ComputeAclCreateAclsResponse[]
+     * @return \Fastly\Model\ComputeAclList
      */
     public function computeAclListAcls($options)
     {
@@ -1090,7 +1090,7 @@ class AclsInComputeApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\ComputeAclCreateAclsResponse[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\ComputeAclList, HTTP status code, HTTP response headers (array of strings)
      */
     public function computeAclListAclsWithHttpInfo($options)
     {
@@ -1145,20 +1145,20 @@ class AclsInComputeApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\ComputeAclCreateAclsResponse[]' === '\SplFileObject') {
+                    if ('\Fastly\Model\ComputeAclList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\ComputeAclCreateAclsResponse[]', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\ComputeAclList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\ComputeAclCreateAclsResponse[]';
+            $returnType = '\Fastly\Model\ComputeAclList';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1176,7 +1176,7 @@ class AclsInComputeApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\ComputeAclCreateAclsResponse[]',
+                        '\Fastly\Model\ComputeAclList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1226,7 +1226,7 @@ class AclsInComputeApi
      */
     public function computeAclListAclsAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\ComputeAclCreateAclsResponse[]';
+        $returnType = '\Fastly\Model\ComputeAclList';
         $request = $this->computeAclListAclsRequest($options);
 
         return $this->client

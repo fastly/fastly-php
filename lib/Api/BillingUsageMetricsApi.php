@@ -119,8 +119,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
      * @param  string $start_month start_month (optional)
      * @param  string $end_month end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -146,8 +146,8 @@ class BillingUsageMetricsApi
      * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -321,8 +321,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -351,8 +351,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -407,8 +407,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
      * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -427,18 +427,6 @@ class BillingUsageMetricsApi
         $limit = array_key_exists('limit', $options) ? $options['limit'] : '5';
         $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling getServiceLevelUsage'
-            );
-        }
-        // verify the required parameter 'usage_type_name' is set
-        if ($usage_type_name === null || (is_array($usage_type_name) && count($usage_type_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $usage_type_name when calling getServiceLevelUsage'
-            );
-        }
         if ($start_month !== null && !preg_match("/^[0-9]{4}-[0-9]{2}$/", $start_month)) {
             throw new \InvalidArgumentException("invalid value for \"start_month\" when calling BillingUsageMetricsApi.getServiceLevelUsage, must conform to the pattern /^[0-9]{4}-[0-9]{2}$/.");
         }
@@ -603,8 +591,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $start_month start_month (optional)
-     * @param  string $end_month end_month (optional)
+     * @param  string $start_month start_month (required)
+     * @param  string $end_month end_month (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -626,8 +614,8 @@ class BillingUsageMetricsApi
      * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $start_month (optional)
-     * @param  string $end_month (optional)
+     * @param  string $start_month (required)
+     * @param  string $end_month (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -797,8 +785,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $start_month (optional)
-     * @param  string $end_month (optional)
+     * @param  string $start_month (required)
+     * @param  string $end_month (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -823,8 +811,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $start_month (optional)
-     * @param  string $end_month (optional)
+     * @param  string $start_month (required)
+     * @param  string $end_month (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -875,8 +863,8 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $start_month (optional)
-     * @param  string $end_month (optional)
+     * @param  string $start_month (required)
+     * @param  string $end_month (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -887,11 +875,23 @@ class BillingUsageMetricsApi
         $start_month = array_key_exists('start_month', $options) ? $options['start_month'] : null;
         $end_month = array_key_exists('end_month', $options) ? $options['end_month'] : null;
 
-        if ($start_month !== null && !preg_match("/^[0-9]{4}-[0-9]{2}$/", $start_month)) {
+        // verify the required parameter 'start_month' is set
+        if ($start_month === null || (is_array($start_month) && count($start_month) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_month when calling getUsageMetrics'
+            );
+        }
+        if (!preg_match("/^[0-9]{4}-[0-9]{2}$/", $start_month)) {
             throw new \InvalidArgumentException("invalid value for \"start_month\" when calling BillingUsageMetricsApi.getUsageMetrics, must conform to the pattern /^[0-9]{4}-[0-9]{2}$/.");
         }
 
-        if ($end_month !== null && !preg_match("/^[0-9]{4}-[0-9]{2}$/", $end_month)) {
+        // verify the required parameter 'end_month' is set
+        if ($end_month === null || (is_array($end_month) && count($end_month) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end_month when calling getUsageMetrics'
+            );
+        }
+        if (!preg_match("/^[0-9]{4}-[0-9]{2}$/", $end_month)) {
             throw new \InvalidArgumentException("invalid value for \"end_month\" when calling BillingUsageMetricsApi.getUsageMetrics, must conform to the pattern /^[0-9]{4}-[0-9]{2}$/.");
         }
 
