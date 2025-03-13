@@ -719,6 +719,8 @@ class TlsBulkCertificatesApi
      * URL: https://api.fastly.com
      *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
+     * @param  string $filter_not_before Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05). (optional)
+     * @param  string $filter_not_after Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -744,6 +746,8 @@ class TlsBulkCertificatesApi
      * URL: https://api.fastly.com
      *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
+     * @param  string $filter_not_before Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05). (optional)
+     * @param  string $filter_not_after Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -857,6 +861,8 @@ class TlsBulkCertificatesApi
      * URL: https://api.fastly.com
      *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
+     * @param  string $filter_not_before Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05). (optional)
+     * @param  string $filter_not_after Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -885,6 +891,8 @@ class TlsBulkCertificatesApi
      * URL: https://api.fastly.com
      *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
+     * @param  string $filter_not_before Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05). (optional)
+     * @param  string $filter_not_after Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -939,6 +947,8 @@ class TlsBulkCertificatesApi
      * URL: https://api.fastly.com
      *
      * @param  string $filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name. (optional)
+     * @param  string $filter_not_before Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05). (optional)
+     * @param  string $filter_not_after Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05). (optional)
      * @param  int $page_number Current page. (optional)
      * @param  int $page_size Number of records per page. (optional, default to 20)
      * @param  string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -950,6 +960,8 @@ class TlsBulkCertificatesApi
     {
         // unbox the parameters from the associative array
         $filter_tls_domain_id = array_key_exists('filter_tls_domain_id', $options) ? $options['filter_tls_domain_id'] : null;
+        $filter_not_before = array_key_exists('filter_not_before', $options) ? $options['filter_not_before'] : null;
+        $filter_not_after = array_key_exists('filter_not_after', $options) ? $options['filter_not_after'] : null;
         $page_number = array_key_exists('page_number', $options) ? $options['page_number'] : null;
         $page_size = array_key_exists('page_size', $options) ? $options['page_size'] : 20;
         $sort = array_key_exists('sort', $options) ? $options['sort'] : 'created_at';
@@ -978,6 +990,28 @@ class TlsBulkCertificatesApi
             }
             else {
                 $queryParams['filter[tls_domain.id]'] = ObjectSerializer::toString($filter_tls_domain_id);
+            }
+        }
+        // query params
+        if ($filter_not_before !== null) {
+            if('form' === 'form' && is_array($filter_not_before)) {
+                foreach($filter_not_before as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['filter[not_before]'] = ObjectSerializer::toString($filter_not_before);
+            }
+        }
+        // query params
+        if ($filter_not_after !== null) {
+            if('form' === 'form' && is_array($filter_not_after)) {
+                foreach($filter_not_after as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['filter[not_after]'] = ObjectSerializer::toString($filter_not_after);
             }
         }
         // query params

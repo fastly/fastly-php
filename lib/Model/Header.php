@@ -62,7 +62,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_condition' => 'string',
         'src' => 'string',
         'substitution' => 'string',
-        'type' => 'string'
+        'type' => 'string',
+        'ignore_if_set' => 'string',
+        'priority' => 'string'
     ];
 
     /**
@@ -82,7 +84,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_condition' => null,
         'src' => null,
         'substitution' => null,
-        'type' => null
+        'type' => null,
+        'ignore_if_set' => null,
+        'priority' => null
     ];
 
     /**
@@ -121,7 +125,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_condition' => 'response_condition',
         'src' => 'src',
         'substitution' => 'substitution',
-        'type' => 'type'
+        'type' => 'type',
+        'ignore_if_set' => 'ignore_if_set',
+        'priority' => 'priority'
     ];
 
     /**
@@ -139,7 +145,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_condition' => 'setResponseCondition',
         'src' => 'setSrc',
         'substitution' => 'setSubstitution',
-        'type' => 'setType'
+        'type' => 'setType',
+        'ignore_if_set' => 'setIgnoreIfSet',
+        'priority' => 'setPriority'
     ];
 
     /**
@@ -157,7 +165,9 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_condition' => 'getResponseCondition',
         'src' => 'getSrc',
         'substitution' => 'getSubstitution',
-        'type' => 'getType'
+        'type' => 'getType',
+        'ignore_if_set' => 'getIgnoreIfSet',
+        'priority' => 'getPriority'
     ];
 
     /**
@@ -265,6 +275,8 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['src'] = $data['src'] ?? null;
         $this->container['substitution'] = $data['substitution'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['ignore_if_set'] = $data['ignore_if_set'] ?? null;
+        $this->container['priority'] = $data['priority'] ?? '100';
     }
 
     /**
@@ -565,6 +577,54 @@ class Header implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets ignore_if_set
+     *
+     * @return string|null
+     */
+    public function getIgnoreIfSet()
+    {
+        return $this->container['ignore_if_set'];
+    }
+
+    /**
+     * Sets ignore_if_set
+     *
+     * @param string|null $ignore_if_set Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\"0\" = false, \"1\" = true)
+     *
+     * @return self
+     */
+    public function setIgnoreIfSet($ignore_if_set)
+    {
+        $this->container['ignore_if_set'] = $ignore_if_set;
+
+        return $this;
+    }
+
+    /**
+     * Gets priority
+     *
+     * @return string|null
+     */
+    public function getPriority()
+    {
+        return $this->container['priority'];
+    }
+
+    /**
+     * Sets priority
+     *
+     * @param string|null $priority Priority determines execution order. Lower numbers execute first.
+     *
+     * @return self
+     */
+    public function setPriority($priority)
+    {
+        $this->container['priority'] = $priority;
 
         return $this;
     }

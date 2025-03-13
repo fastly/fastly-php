@@ -58,7 +58,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
         'role' => 'string',
         'ip' => 'string',
         'user_agent' => 'string',
-        'sudo_expires_at' => 'string',
+        'tls_access' => 'bool',
         'last_used_at' => '\DateTime',
         'created_at' => 'string',
         'expires_at' => 'string'
@@ -77,7 +77,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
         'role' => null,
         'ip' => null,
         'user_agent' => null,
-        'sudo_expires_at' => null,
+        'tls_access' => null,
         'last_used_at' => 'date-time',
         'created_at' => null,
         'expires_at' => null
@@ -115,7 +115,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
         'role' => 'role',
         'ip' => 'ip',
         'user_agent' => 'user_agent',
-        'sudo_expires_at' => 'sudo_expires_at',
+        'tls_access' => 'tls_access',
         'last_used_at' => 'last_used_at',
         'created_at' => 'created_at',
         'expires_at' => 'expires_at'
@@ -132,7 +132,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
         'role' => 'setRole',
         'ip' => 'setIp',
         'user_agent' => 'setUserAgent',
-        'sudo_expires_at' => 'setSudoExpiresAt',
+        'tls_access' => 'setTlsAccess',
         'last_used_at' => 'setLastUsedAt',
         'created_at' => 'setCreatedAt',
         'expires_at' => 'setExpiresAt'
@@ -149,7 +149,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
         'role' => 'getRole',
         'ip' => 'getIp',
         'user_agent' => 'getUserAgent',
-        'sudo_expires_at' => 'getSudoExpiresAt',
+        'tls_access' => 'getTlsAccess',
         'last_used_at' => 'getLastUsedAt',
         'created_at' => 'getCreatedAt',
         'expires_at' => 'getExpiresAt'
@@ -217,7 +217,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
         $this->container['role'] = $data['role'] ?? null;
         $this->container['ip'] = $data['ip'] ?? null;
         $this->container['user_agent'] = $data['user_agent'] ?? null;
-        $this->container['sudo_expires_at'] = $data['sudo_expires_at'] ?? null;
+        $this->container['tls_access'] = $data['tls_access'] ?? null;
         $this->container['last_used_at'] = $data['last_used_at'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['expires_at'] = $data['expires_at'] ?? null;
@@ -368,25 +368,25 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets sudo_expires_at
+     * Gets tls_access
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getSudoExpiresAt()
+    public function getTlsAccess()
     {
-        return $this->container['sudo_expires_at'];
+        return $this->container['tls_access'];
     }
 
     /**
-     * Sets sudo_expires_at
+     * Sets tls_access
      *
-     * @param string|null $sudo_expires_at sudo_expires_at
+     * @param bool|null $tls_access Indicates whether TLS access is enabled for the token.
      *
      * @return self
      */
-    public function setSudoExpiresAt($sudo_expires_at)
+    public function setTlsAccess($tls_access)
     {
-        $this->container['sudo_expires_at'] = $sudo_expires_at;
+        $this->container['tls_access'] = $tls_access;
 
         return $this;
     }
@@ -404,7 +404,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets last_used_at
      *
-     * @param \DateTime|null $last_used_at A UTC time-stamp of when the token was last used.
+     * @param \DateTime|null $last_used_at A UTC timestamp of when the token was last used.
      *
      * @return self
      */
@@ -428,7 +428,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets created_at
      *
-     * @param string|null $created_at A UTC time-stamp of when the token was created.
+     * @param string|null $created_at A UTC timestamp of when the token was created.
      *
      * @return self
      */
@@ -452,7 +452,7 @@ class AutomationTokenResponseAllOf implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets expires_at
      *
-     * @param string|null $expires_at (optional) A UTC time-stamp of when the token will expire.
+     * @param string|null $expires_at (optional) A UTC timestamp of when the token will expire.
      *
      * @return self
      */

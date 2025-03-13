@@ -412,7 +412,7 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
     /**
      * Sets expires_at
      *
-     * @param \DateTime|null $expires_at A UTC time-stamp of when the token will expire.
+     * @param \DateTime|null $expires_at A UTC timestamp of when the token will expire.
      *
      * @return self
      */

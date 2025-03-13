@@ -315,6 +315,13 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_collapse_usable_count' => 'int',
         'request_collapse_unusable_count' => 'int',
         'compute_cache_operations_count' => 'int',
+        'ngwaf_requests_total_count' => 'int',
+        'ngwaf_requests_unknown_count' => 'int',
+        'ngwaf_requests_allowed_count' => 'int',
+        'ngwaf_requests_logged_count' => 'int',
+        'ngwaf_requests_blocked_count' => 'int',
+        'ngwaf_requests_timeout_count' => 'int',
+        'ngwaf_requests_challenged_count' => 'int',
         'service_id' => 'string',
         'start_time' => 'int'
     ];
@@ -588,6 +595,13 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_collapse_usable_count' => 'int64',
         'request_collapse_unusable_count' => 'int64',
         'compute_cache_operations_count' => 'int64',
+        'ngwaf_requests_total_count' => null,
+        'ngwaf_requests_unknown_count' => null,
+        'ngwaf_requests_allowed_count' => null,
+        'ngwaf_requests_logged_count' => null,
+        'ngwaf_requests_blocked_count' => null,
+        'ngwaf_requests_timeout_count' => null,
+        'ngwaf_requests_challenged_count' => null,
         'service_id' => null,
         'start_time' => 'int64'
     ];
@@ -880,6 +894,13 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_collapse_usable_count' => 'request_collapse_usable_count',
         'request_collapse_unusable_count' => 'request_collapse_unusable_count',
         'compute_cache_operations_count' => 'compute_cache_operations_count',
+        'ngwaf_requests_total_count' => 'ngwaf_requests_total_count',
+        'ngwaf_requests_unknown_count' => 'ngwaf_requests_unknown_count',
+        'ngwaf_requests_allowed_count' => 'ngwaf_requests_allowed_count',
+        'ngwaf_requests_logged_count' => 'ngwaf_requests_logged_count',
+        'ngwaf_requests_blocked_count' => 'ngwaf_requests_blocked_count',
+        'ngwaf_requests_timeout_count' => 'ngwaf_requests_timeout_count',
+        'ngwaf_requests_challenged_count' => 'ngwaf_requests_challenged_count',
         'service_id' => 'service_id',
         'start_time' => 'start_time'
     ];
@@ -1151,6 +1172,13 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_collapse_usable_count' => 'setRequestCollapseUsableCount',
         'request_collapse_unusable_count' => 'setRequestCollapseUnusableCount',
         'compute_cache_operations_count' => 'setComputeCacheOperationsCount',
+        'ngwaf_requests_total_count' => 'setNgwafRequestsTotalCount',
+        'ngwaf_requests_unknown_count' => 'setNgwafRequestsUnknownCount',
+        'ngwaf_requests_allowed_count' => 'setNgwafRequestsAllowedCount',
+        'ngwaf_requests_logged_count' => 'setNgwafRequestsLoggedCount',
+        'ngwaf_requests_blocked_count' => 'setNgwafRequestsBlockedCount',
+        'ngwaf_requests_timeout_count' => 'setNgwafRequestsTimeoutCount',
+        'ngwaf_requests_challenged_count' => 'setNgwafRequestsChallengedCount',
         'service_id' => 'setServiceId',
         'start_time' => 'setStartTime'
     ];
@@ -1422,6 +1450,13 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_collapse_usable_count' => 'getRequestCollapseUsableCount',
         'request_collapse_unusable_count' => 'getRequestCollapseUnusableCount',
         'compute_cache_operations_count' => 'getComputeCacheOperationsCount',
+        'ngwaf_requests_total_count' => 'getNgwafRequestsTotalCount',
+        'ngwaf_requests_unknown_count' => 'getNgwafRequestsUnknownCount',
+        'ngwaf_requests_allowed_count' => 'getNgwafRequestsAllowedCount',
+        'ngwaf_requests_logged_count' => 'getNgwafRequestsLoggedCount',
+        'ngwaf_requests_blocked_count' => 'getNgwafRequestsBlockedCount',
+        'ngwaf_requests_timeout_count' => 'getNgwafRequestsTimeoutCount',
+        'ngwaf_requests_challenged_count' => 'getNgwafRequestsChallengedCount',
         'service_id' => 'getServiceId',
         'start_time' => 'getStartTime'
     ];
@@ -1744,6 +1779,13 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['request_collapse_usable_count'] = $data['request_collapse_usable_count'] ?? null;
         $this->container['request_collapse_unusable_count'] = $data['request_collapse_unusable_count'] ?? null;
         $this->container['compute_cache_operations_count'] = $data['compute_cache_operations_count'] ?? null;
+        $this->container['ngwaf_requests_total_count'] = $data['ngwaf_requests_total_count'] ?? null;
+        $this->container['ngwaf_requests_unknown_count'] = $data['ngwaf_requests_unknown_count'] ?? null;
+        $this->container['ngwaf_requests_allowed_count'] = $data['ngwaf_requests_allowed_count'] ?? null;
+        $this->container['ngwaf_requests_logged_count'] = $data['ngwaf_requests_logged_count'] ?? null;
+        $this->container['ngwaf_requests_blocked_count'] = $data['ngwaf_requests_blocked_count'] ?? null;
+        $this->container['ngwaf_requests_timeout_count'] = $data['ngwaf_requests_timeout_count'] ?? null;
+        $this->container['ngwaf_requests_challenged_count'] = $data['ngwaf_requests_challenged_count'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
     }
@@ -8036,6 +8078,174 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setComputeCacheOperationsCount($compute_cache_operations_count)
     {
         $this->container['compute_cache_operations_count'] = $compute_cache_operations_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_total_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsTotalCount()
+    {
+        return $this->container['ngwaf_requests_total_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_total_count
+     *
+     * @param int|null $ngwaf_requests_total_count Total number of Next-Gen WAF (Edge WAF & Core WAF) requests.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsTotalCount($ngwaf_requests_total_count)
+    {
+        $this->container['ngwaf_requests_total_count'] = $ngwaf_requests_total_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_unknown_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsUnknownCount()
+    {
+        return $this->container['ngwaf_requests_unknown_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_unknown_count
+     *
+     * @param int|null $ngwaf_requests_unknown_count Count of Edge WAF requests with an unknown outcome.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsUnknownCount($ngwaf_requests_unknown_count)
+    {
+        $this->container['ngwaf_requests_unknown_count'] = $ngwaf_requests_unknown_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_allowed_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsAllowedCount()
+    {
+        return $this->container['ngwaf_requests_allowed_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_allowed_count
+     *
+     * @param int|null $ngwaf_requests_allowed_count Count of Edge WAF requests allowed.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsAllowedCount($ngwaf_requests_allowed_count)
+    {
+        $this->container['ngwaf_requests_allowed_count'] = $ngwaf_requests_allowed_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_logged_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsLoggedCount()
+    {
+        return $this->container['ngwaf_requests_logged_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_logged_count
+     *
+     * @param int|null $ngwaf_requests_logged_count Count of Edge WAF requests logged.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsLoggedCount($ngwaf_requests_logged_count)
+    {
+        $this->container['ngwaf_requests_logged_count'] = $ngwaf_requests_logged_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_blocked_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsBlockedCount()
+    {
+        return $this->container['ngwaf_requests_blocked_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_blocked_count
+     *
+     * @param int|null $ngwaf_requests_blocked_count Count of Edge WAF requests blocked.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsBlockedCount($ngwaf_requests_blocked_count)
+    {
+        $this->container['ngwaf_requests_blocked_count'] = $ngwaf_requests_blocked_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_timeout_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsTimeoutCount()
+    {
+        return $this->container['ngwaf_requests_timeout_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_timeout_count
+     *
+     * @param int|null $ngwaf_requests_timeout_count Count of Edge WAF requests timed outcome.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsTimeoutCount($ngwaf_requests_timeout_count)
+    {
+        $this->container['ngwaf_requests_timeout_count'] = $ngwaf_requests_timeout_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_challenged_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsChallengedCount()
+    {
+        return $this->container['ngwaf_requests_challenged_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_challenged_count
+     *
+     * @param int|null $ngwaf_requests_challenged_count Count of Edge WAF requests challenged.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsChallengedCount($ngwaf_requests_challenged_count)
+    {
+        $this->container['ngwaf_requests_challenged_count'] = $ngwaf_requests_challenged_count;
 
         return $this;
     }

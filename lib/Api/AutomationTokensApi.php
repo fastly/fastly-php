@@ -351,12 +351,12 @@ class AutomationTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/vnd.api+json']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/vnd.api+json'],
-                ['application/vnd.api+json']
+                ['application/json'],
+                ['application/json']
             );
         }
 
@@ -719,11 +719,11 @@ class AutomationTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/vnd.api+json', 'application/problem+json']
+                ['application/json', 'application/problem+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/vnd.api+json', 'application/problem+json'],
+                ['application/json', 'application/problem+json'],
                 []
             );
         }
@@ -1115,11 +1115,11 @@ class AutomationTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/vnd.api+json', 'application/problem+json']
+                ['application/json', 'application/problem+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/vnd.api+json', 'application/problem+json'],
+                ['application/json', 'application/problem+json'],
                 []
             );
         }
@@ -1491,11 +1491,11 @@ class AutomationTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/vnd.api+json', 'application/problem+json']
+                ['application/json', 'application/problem+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/vnd.api+json', 'application/problem+json'],
+                ['application/json', 'application/problem+json'],
                 []
             );
         }
@@ -1893,11 +1893,11 @@ class AutomationTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/vnd.api+json', 'application/problem+json']
+                ['application/json', 'application/problem+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/vnd.api+json', 'application/problem+json'],
+                ['application/json', 'application/problem+json'],
                 []
             );
         }

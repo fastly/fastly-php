@@ -448,7 +448,7 @@ class KvStoreItemApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject
+     * @return string
      */
     public function kvStoreGetItem($options)
     {
@@ -471,7 +471,7 @@ class KvStoreItemApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function kvStoreGetItemWithHttpInfo($options)
     {
@@ -526,20 +526,20 @@ class KvStoreItemApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\SplFileObject' === '\SplFileObject') {
+                    if ('string' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        ObjectSerializer::deserialize($content, 'string', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\SplFileObject';
+            $returnType = 'string';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -557,7 +557,7 @@ class KvStoreItemApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\SplFileObject',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -611,7 +611,7 @@ class KvStoreItemApi
      */
     public function kvStoreGetItemAsyncWithHttpInfo($options)
     {
-        $returnType = '\SplFileObject';
+        $returnType = 'string';
         $request = $this->kvStoreGetItemRequest($options);
 
         return $this->client
@@ -1188,7 +1188,7 @@ class KvStoreItemApi
      * @param  bool $append append (optional, default to false)
      * @param  bool $prepend prepend (optional, default to false)
      * @param  bool $background_fetch background_fetch (optional, default to false)
-     * @param  \SplFileObject $body body (optional)
+     * @param  string $body body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1218,7 +1218,7 @@ class KvStoreItemApi
      * @param  bool $append (optional, default to false)
      * @param  bool $prepend (optional, default to false)
      * @param  bool $background_fetch (optional, default to false)
-     * @param  \SplFileObject $body (optional)
+     * @param  string $body (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1303,7 +1303,7 @@ class KvStoreItemApi
      * @param  bool $append (optional, default to false)
      * @param  bool $prepend (optional, default to false)
      * @param  bool $background_fetch (optional, default to false)
-     * @param  \SplFileObject $body (optional)
+     * @param  string $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1337,7 +1337,7 @@ class KvStoreItemApi
      * @param  bool $append (optional, default to false)
      * @param  bool $prepend (optional, default to false)
      * @param  bool $background_fetch (optional, default to false)
-     * @param  \SplFileObject $body (optional)
+     * @param  string $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1387,7 +1387,7 @@ class KvStoreItemApi
      * @param  bool $append (optional, default to false)
      * @param  bool $prepend (optional, default to false)
      * @param  bool $background_fetch (optional, default to false)
-     * @param  \SplFileObject $body (optional)
+     * @param  string $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

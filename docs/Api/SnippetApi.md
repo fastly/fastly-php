@@ -29,7 +29,7 @@ Method | HTTP request | Description
 ## `createSnippet()`
 
 ```php
-createSnippet($options): \Fastly\Model\SnippetResponsePost // Create a snippet
+createSnippet($options): \Fastly\Model\SnippetResponse // Create a snippet
 ```
 
 Create a snippet for a particular service and version.
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\SnippetResponsePost**](../Model/SnippetResponsePost.md)
+[**\Fastly\Model\SnippetResponse**](../Model/SnippetResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

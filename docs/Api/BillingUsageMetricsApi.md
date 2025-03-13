@@ -17,25 +17,26 @@ $apiInstance = new Fastly\Api\BillingUsageMetricsApi(
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**getServiceLevelUsage()**](BillingUsageMetricsApi.md#getServiceLevelUsage) | **GET** /billing/v3/service-usage-metrics | Retrieve service-level usage metrics for a product.
+[**getServiceLevelUsage()**](BillingUsageMetricsApi.md#getServiceLevelUsage) | **GET** /billing/v3/service-usage-metrics | Retrieve service-level usage metrics for services with non-zero usage units.
 [**getUsageMetrics()**](BillingUsageMetricsApi.md#getUsageMetrics) | **GET** /billing/v3/usage-metrics | Get monthly usage metrics
 
 
 ## `getServiceLevelUsage()`
 
 ```php
-getServiceLevelUsage($options): \Fastly\Model\Serviceusagemetrics // Retrieve service-level usage metrics for a product.
+getServiceLevelUsage($options): \Fastly\Model\Serviceusagemetrics // Retrieve service-level usage metrics for services with non-zero usage units.
 ```
 
 Returns product usage, broken down by service.
 
 ### Example
 ```php
-    $options['product_id'] = 'product_id_example'; // string | The product identifier for the metrics returned (e.g., `cdn_usage`).
-$options['usage_type_name'] = 'usage_type_name_example'; // string | The usage type name for the metrics returned (e.g., `North America Requests`).
+    $options['product_id'] = 'product_id_example'; // string | The product identifier for the metrics returned (e.g., `cdn_usage`). This should be used along with `usage_type_name`.
+$options['service'] = 'service_example'; // string | The service identifier for the metrics being requested.
+$options['usage_type_name'] = 'usage_type_name_example'; // string | The usage type name for the metrics returned (e.g., `North America Requests`). This should be used along with `product_id`.
 $options['start_month'] = 2023-01; // string
 $options['end_month'] = 2023-03; // string
-$options['limit'] = '5'; // string | Number of results per page. The maximum is 100.
+$options['limit'] = '1000'; // string | Number of results per page. The maximum is 10000.
 $options['cursor'] = 'cursor_example'; // string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 
 try {
@@ -51,11 +52,12 @@ Note: the input parameter is an associative array with the keys listed below.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**product_id** | **string** | The product identifier for the metrics returned (e.g., `cdn_usage`). | [optional]
-**usage_type_name** | **string** | The usage type name for the metrics returned (e.g., `North America Requests`). | [optional]
+**product_id** | **string** | The product identifier for the metrics returned (e.g., `cdn_usage`). This should be used along with `usage_type_name`. | [optional]
+**service** | **string** | The service identifier for the metrics being requested. | [optional]
+**usage_type_name** | **string** | The usage type name for the metrics returned (e.g., `North America Requests`). This should be used along with `product_id`. | [optional]
 **start_month** | **string** |  | [optional]
 **end_month** | **string** |  | [optional]
-**limit** | **string** | Number of results per page. The maximum is 100. | [optional] [defaults to '5']
+**limit** | **string** | Number of results per page. The maximum is 10000. | [optional] [defaults to '1000']
 **cursor** | **string** | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional]
 
 ### Return type

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **role** | **string** |  | [optional]  [one of: 'engineer', 'billing', 'user']
 **services** | **string[]** | List of service ids to limit the token | [optional] 
 **scope** | **string** |  | [optional]  [one of: 'global', 'global:read', 'purge_all', 'purge_select'] [defaults to 'global']
-**expires_at** | **\DateTime** | A UTC time-stamp of when the token will expire. | [optional] 
+**expires_at** | **\DateTime** | A UTC timestamp of when the token will expire. | [optional] 
 **tls_access** | **bool** | Indicates whether TLS access is enabled for the token. | [optional] 
 
 

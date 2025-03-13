@@ -131,8 +131,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -166,8 +166,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -289,8 +289,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -327,8 +327,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -391,8 +391,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -413,7 +413,7 @@ class HeaderApi
         $substitution = array_key_exists('substitution', $options) ? $options['substitution'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
         $ignore_if_set = array_key_exists('ignore_if_set', $options) ? $options['ignore_if_set'] : null;
-        $priority = array_key_exists('priority', $options) ? $options['priority'] : 100;
+        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1660,8 +1660,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1696,8 +1696,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1820,8 +1820,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1859,8 +1859,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1924,8 +1924,8 @@ class HeaderApi
      * @param  string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
      * @param  string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
      * @param  string $type Accepts a string value. (optional)
-     * @param  int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-     * @param  int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+     * @param  string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+     * @param  string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1947,7 +1947,7 @@ class HeaderApi
         $substitution = array_key_exists('substitution', $options) ? $options['substitution'] : null;
         $type = array_key_exists('type', $options) ? $options['type'] : null;
         $ignore_if_set = array_key_exists('ignore_if_set', $options) ? $options['ignore_if_set'] : null;
-        $priority = array_key_exists('priority', $options) ? $options['priority'] : 100;
+        $priority = array_key_exists('priority', $options) ? $options['priority'] : '100';
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {

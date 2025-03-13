@@ -129,7 +129,7 @@ class SnippetApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\SnippetResponsePost
+     * @return \Fastly\Model\SnippetResponse
      */
     public function createSnippet($options)
     {
@@ -157,7 +157,7 @@ class SnippetApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\SnippetResponsePost, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\SnippetResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSnippetWithHttpInfo($options)
     {
@@ -212,20 +212,20 @@ class SnippetApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\SnippetResponsePost' === '\SplFileObject') {
+                    if ('\Fastly\Model\SnippetResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\SnippetResponsePost', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\SnippetResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\SnippetResponsePost';
+            $returnType = '\Fastly\Model\SnippetResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -243,7 +243,7 @@ class SnippetApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\SnippetResponsePost',
+                        '\Fastly\Model\SnippetResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -307,7 +307,7 @@ class SnippetApi
      */
     public function createSnippetAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\SnippetResponsePost';
+        $returnType = '\Fastly\Model\SnippetResponse';
         $request = $this->createSnippetRequest($options);
 
         return $this->client

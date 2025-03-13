@@ -53,7 +53,7 @@ class ComputeAclListEntriesMeta implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'limit' => 'string',
+        'limit' => 'int',
         'next_cursor' => 'string'
     ];
 
@@ -208,7 +208,7 @@ class ComputeAclListEntriesMeta implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets limit
      *
-     * @return string|null
+     * @return int|null
      */
     public function getLimit()
     {
@@ -218,7 +218,7 @@ class ComputeAclListEntriesMeta implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets limit
      *
-     * @param string|null $limit The maximum number of results shown in this response.
+     * @param int|null $limit The maximum number of results shown in this response.
      *
      * @return self
      */

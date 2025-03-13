@@ -406,7 +406,7 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expires_at
      *
-     * @param string|null $expires_at A UTC time-stamp of when the token expires.
+     * @param string|null $expires_at A UTC timestamp of when the token expires.
      *
      * @return self
      */

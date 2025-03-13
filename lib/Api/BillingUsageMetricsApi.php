@@ -112,18 +112,19 @@ class BillingUsageMetricsApi
     /**
      * Operation getServiceLevelUsage
      *
-     * Retrieve service-level usage metrics for a product.
+     * Retrieve service-level usage metrics for services with non-zero usage units.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This should be used along with &#x60;usage_type_name&#x60;. (optional)
+     * @param  string $service The service identifier for the metrics being requested. (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This should be used along with &#x60;product_id&#x60;. (optional)
      * @param  string $start_month start_month (optional)
      * @param  string $end_month end_month (optional)
-     * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
+     * @param  string $limit Number of results per page. The maximum is 10000. (optional, default to '1000')
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -139,18 +140,19 @@ class BillingUsageMetricsApi
     /**
      * Operation getServiceLevelUsageWithHttpInfo
      *
-     * Retrieve service-level usage metrics for a product.
+     * Retrieve service-level usage metrics for services with non-zero usage units.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This should be used along with &#x60;usage_type_name&#x60;. (optional)
+     * @param  string $service The service identifier for the metrics being requested. (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This should be used along with &#x60;product_id&#x60;. (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
-     * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
+     * @param  string $limit Number of results per page. The maximum is 10000. (optional, default to '1000')
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -314,18 +316,19 @@ class BillingUsageMetricsApi
     /**
      * Operation getServiceLevelUsageAsync
      *
-     * Retrieve service-level usage metrics for a product.
+     * Retrieve service-level usage metrics for services with non-zero usage units.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This should be used along with &#x60;usage_type_name&#x60;. (optional)
+     * @param  string $service The service identifier for the metrics being requested. (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This should be used along with &#x60;product_id&#x60;. (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
-     * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
+     * @param  string $limit Number of results per page. The maximum is 10000. (optional, default to '1000')
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      *
      * @throws \InvalidArgumentException
@@ -344,18 +347,19 @@ class BillingUsageMetricsApi
     /**
      * Operation getServiceLevelUsageAsyncWithHttpInfo
      *
-     * Retrieve service-level usage metrics for a product.
+     * Retrieve service-level usage metrics for services with non-zero usage units.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This should be used along with &#x60;usage_type_name&#x60;. (optional)
+     * @param  string $service The service identifier for the metrics being requested. (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This should be used along with &#x60;product_id&#x60;. (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
-     * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
+     * @param  string $limit Number of results per page. The maximum is 10000. (optional, default to '1000')
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      *
      * @throws \InvalidArgumentException
@@ -407,11 +411,12 @@ class BillingUsageMetricsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
-     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
+     * @param  string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This should be used along with &#x60;usage_type_name&#x60;. (optional)
+     * @param  string $service The service identifier for the metrics being requested. (optional)
+     * @param  string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This should be used along with &#x60;product_id&#x60;. (optional)
      * @param  string $start_month (optional)
      * @param  string $end_month (optional)
-     * @param  string $limit Number of results per page. The maximum is 100. (optional, default to '5')
+     * @param  string $limit Number of results per page. The maximum is 10000. (optional, default to '1000')
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      *
      * @throws \InvalidArgumentException
@@ -421,10 +426,11 @@ class BillingUsageMetricsApi
     {
         // unbox the parameters from the associative array
         $product_id = array_key_exists('product_id', $options) ? $options['product_id'] : null;
+        $service = array_key_exists('service', $options) ? $options['service'] : null;
         $usage_type_name = array_key_exists('usage_type_name', $options) ? $options['usage_type_name'] : null;
         $start_month = array_key_exists('start_month', $options) ? $options['start_month'] : null;
         $end_month = array_key_exists('end_month', $options) ? $options['end_month'] : null;
-        $limit = array_key_exists('limit', $options) ? $options['limit'] : '5';
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : '1000';
         $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
 
         if ($start_month !== null && !preg_match("/^[0-9]{4}-[0-9]{2}$/", $start_month)) {
@@ -452,6 +458,17 @@ class BillingUsageMetricsApi
             }
             else {
                 $queryParams['product_id'] = ObjectSerializer::toString($product_id);
+            }
+        }
+        // query params
+        if ($service !== null) {
+            if('form' === 'form' && is_array($service)) {
+                foreach($service as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['service'] = ObjectSerializer::toString($service);
             }
         }
         // query params

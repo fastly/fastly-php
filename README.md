@@ -117,9 +117,6 @@ Class | Method | Description
 [*BackendApi*](docs/Api/BackendApi.md) | [**getBackend**](docs/Api/BackendApi.md#getbackend) | Describe a backend
 [*BackendApi*](docs/Api/BackendApi.md) | [**listBackends**](docs/Api/BackendApi.md#listbackends) | List backends
 [*BackendApi*](docs/Api/BackendApi.md) | [**updateBackend**](docs/Api/BackendApi.md#updatebackend) | Update a backend
-[*BillingApi*](docs/Api/BillingApi.md) | [**getInvoice**](docs/Api/BillingApi.md#getinvoice) | Get an invoice
-[*BillingApi*](docs/Api/BillingApi.md) | [**getInvoiceById**](docs/Api/BillingApi.md#getinvoicebyid) | Get an invoice
-[*BillingApi*](docs/Api/BillingApi.md) | [**getInvoiceMtd**](docs/Api/BillingApi.md#getinvoicemtd) | Get month-to-date billing estimate
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**addBillingAddr**](docs/Api/BillingAddressApi.md#addbillingaddr) | Add a billing address to a customer
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**deleteBillingAddr**](docs/Api/BillingAddressApi.md#deletebillingaddr) | Delete a billing address
 [*BillingAddressApi*](docs/Api/BillingAddressApi.md) | [**getBillingAddr**](docs/Api/BillingAddressApi.md#getbillingaddr) | Get a billing address
@@ -127,7 +124,7 @@ Class | Method | Description
 [*BillingInvoicesApi*](docs/Api/BillingInvoicesApi.md) | [**getInvoiceByInvoiceId**](docs/Api/BillingInvoicesApi.md#getinvoicebyinvoiceid) | Get invoice by ID.
 [*BillingInvoicesApi*](docs/Api/BillingInvoicesApi.md) | [**getMonthToDateInvoice**](docs/Api/BillingInvoicesApi.md#getmonthtodateinvoice) | Get month-to-date invoice.
 [*BillingInvoicesApi*](docs/Api/BillingInvoicesApi.md) | [**listInvoices**](docs/Api/BillingInvoicesApi.md#listinvoices) | List of invoices.
-[*BillingUsageMetricsApi*](docs/Api/BillingUsageMetricsApi.md) | [**getServiceLevelUsage**](docs/Api/BillingUsageMetricsApi.md#getservicelevelusage) | Retrieve service-level usage metrics for a product.
+[*BillingUsageMetricsApi*](docs/Api/BillingUsageMetricsApi.md) | [**getServiceLevelUsage**](docs/Api/BillingUsageMetricsApi.md#getservicelevelusage) | Retrieve service-level usage metrics for services with non-zero usage units.
 [*BillingUsageMetricsApi*](docs/Api/BillingUsageMetricsApi.md) | [**getUsageMetrics**](docs/Api/BillingUsageMetricsApi.md#getusagemetrics) | Get monthly usage metrics
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**createCacheSettings**](docs/Api/CacheSettingsApi.md#createcachesettings) | Create a cache settings object
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**deleteCacheSettings**](docs/Api/CacheSettingsApi.md#deletecachesettings) | Delete a cache settings object

@@ -103,6 +103,8 @@ List all certificates.
 ### Example
 ```php
     $options['filter_tls_domain_id'] = 'filter_tls_domain_id_example'; // string | Filter certificates by their matching, fully-qualified domain name.
+$options['filter_not_before'] = 'filter_not_before_example'; // string | Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]=2020-05-05).
+$options['filter_not_after'] = 'filter_not_after_example'; // string | Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]=2020-05-05).
 $options['page_number'] = 1; // int | Current page.
 $options['page_size'] = 20; // int | Number of records per page.
 $options['sort'] = created_at; // string | The order in which to list the results by creation date.
@@ -121,6 +123,8 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **filter_tls_domain_id** | **string** | Filter certificates by their matching, fully-qualified domain name. | [optional]
+**filter_not_before** | **string** | Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05). | [optional]
+**filter_not_after** | **string** | Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05). | [optional]
 **page_number** | **int** | Current page. | [optional]
 **page_size** | **int** | Number of records per page. | [optional] [defaults to 20]
 **sort** | **string** | The order in which to list the results by creation date. | [optional] [one of: 'created_at', '-created_at'] [defaults to 'created_at']

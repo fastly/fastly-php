@@ -56,9 +56,9 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
         'id' => '\Fastly\Model\ReadOnlyId',
         'user_id' => '\Fastly\Model\ReadOnlyUserId',
         'customer_id' => '\Fastly\Model\ReadOnlyCustomerId',
-        'sudo_expires_at' => '\DateTime',
         'created_at' => '\DateTime',
         'access_token' => 'string',
+        'tls_access' => 'bool',
         'last_used_at' => '\DateTime',
         'user_agent' => 'string'
     ];
@@ -74,9 +74,9 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
         'id' => null,
         'user_id' => null,
         'customer_id' => null,
-        'sudo_expires_at' => 'date-time',
         'created_at' => 'date-time',
         'access_token' => null,
+        'tls_access' => null,
         'last_used_at' => 'date-time',
         'user_agent' => null
     ];
@@ -111,9 +111,9 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
         'id' => 'id',
         'user_id' => 'user_id',
         'customer_id' => 'customer_id',
-        'sudo_expires_at' => 'sudo_expires_at',
         'created_at' => 'created_at',
         'access_token' => 'access_token',
+        'tls_access' => 'tls_access',
         'last_used_at' => 'last_used_at',
         'user_agent' => 'user_agent'
     ];
@@ -127,9 +127,9 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
         'id' => 'setId',
         'user_id' => 'setUserId',
         'customer_id' => 'setCustomerId',
-        'sudo_expires_at' => 'setSudoExpiresAt',
         'created_at' => 'setCreatedAt',
         'access_token' => 'setAccessToken',
+        'tls_access' => 'setTlsAccess',
         'last_used_at' => 'setLastUsedAt',
         'user_agent' => 'setUserAgent'
     ];
@@ -143,9 +143,9 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
         'id' => 'getId',
         'user_id' => 'getUserId',
         'customer_id' => 'getCustomerId',
-        'sudo_expires_at' => 'getSudoExpiresAt',
         'created_at' => 'getCreatedAt',
         'access_token' => 'getAccessToken',
+        'tls_access' => 'getTlsAccess',
         'last_used_at' => 'getLastUsedAt',
         'user_agent' => 'getUserAgent'
     ];
@@ -210,9 +210,9 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
         $this->container['id'] = $data['id'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['customer_id'] = $data['customer_id'] ?? null;
-        $this->container['sudo_expires_at'] = $data['sudo_expires_at'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['access_token'] = $data['access_token'] ?? null;
+        $this->container['tls_access'] = $data['tls_access'] ?? null;
         $this->container['last_used_at'] = $data['last_used_at'] ?? null;
         $this->container['user_agent'] = $data['user_agent'] ?? null;
     }
@@ -314,30 +314,6 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets sudo_expires_at
-     *
-     * @return \DateTime|null
-     */
-    public function getSudoExpiresAt()
-    {
-        return $this->container['sudo_expires_at'];
-    }
-
-    /**
-     * Sets sudo_expires_at
-     *
-     * @param \DateTime|null $sudo_expires_at sudo_expires_at
-     *
-     * @return self
-     */
-    public function setSudoExpiresAt($sudo_expires_at)
-    {
-        $this->container['sudo_expires_at'] = $sudo_expires_at;
-
-        return $this;
-    }
-
-    /**
      * Gets created_at
      *
      * @return \DateTime|null
@@ -350,7 +326,7 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at A UTC time-stamp of when the token was created.
+     * @param \DateTime|null $created_at A UTC timestamp of when the token was created.
      *
      * @return self
      */
@@ -386,6 +362,30 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
     }
 
     /**
+     * Gets tls_access
+     *
+     * @return bool|null
+     */
+    public function getTlsAccess()
+    {
+        return $this->container['tls_access'];
+    }
+
+    /**
+     * Sets tls_access
+     *
+     * @param bool|null $tls_access Indicates whether TLS access is enabled for the token.
+     *
+     * @return self
+     */
+    public function setTlsAccess($tls_access)
+    {
+        $this->container['tls_access'] = $tls_access;
+
+        return $this;
+    }
+
+    /**
      * Gets last_used_at
      *
      * @return \DateTime|null
@@ -398,7 +398,7 @@ class AutomationTokenCreateResponseAllOf implements ModelInterface, ArrayAccess,
     /**
      * Sets last_used_at
      *
-     * @param \DateTime|null $last_used_at A UTC time-stamp of when the token was last used.
+     * @param \DateTime|null $last_used_at A UTC timestamp of when the token was last used.
      *
      * @return self
      */

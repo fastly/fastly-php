@@ -46,8 +46,8 @@ $options['response_condition'] = 'response_condition_example'; // string | Optio
 $options['src'] = 'src_example'; // string | Variable to be used as a source for the header content. Does not apply to `delete` action.
 $options['substitution'] = 'substitution_example'; // string | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
 $options['type'] = 'type_example'; // string | Accepts a string value.
-$options['ignore_if_set'] = 56; // int | Don't add the header if it is added already. Only applies to 'set' action.
-$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
+$options['ignore_if_set'] = 'ignore_if_set_example'; // string | Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\\\"0\\\" = false, \\\"1\\\" = true)
+$options['priority'] = '100'; // string | Priority determines execution order. Lower numbers execute first.
 
 try {
     $result = $apiInstance->createHeaderObject($options);
@@ -74,8 +74,8 @@ Name | Type | Description  | Notes
 **src** | **string** | Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional]
 **substitution** | **string** | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional]
 **type** | **string** | Accepts a string value. | [optional] [one of: 'request', 'cache', 'response']
-**ignore_if_set** | **int** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
+**ignore_if_set** | **string** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) | [optional]
+**priority** | **string** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
 
 ### Return type
 
@@ -219,8 +219,8 @@ $options['response_condition'] = 'response_condition_example'; // string | Optio
 $options['src'] = 'src_example'; // string | Variable to be used as a source for the header content. Does not apply to `delete` action.
 $options['substitution'] = 'substitution_example'; // string | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
 $options['type'] = 'type_example'; // string | Accepts a string value.
-$options['ignore_if_set'] = 56; // int | Don't add the header if it is added already. Only applies to 'set' action.
-$options['priority'] = 100; // int | Priority determines execution order. Lower numbers execute first.
+$options['ignore_if_set'] = 'ignore_if_set_example'; // string | Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\\\"0\\\" = false, \\\"1\\\" = true)
+$options['priority'] = '100'; // string | Priority determines execution order. Lower numbers execute first.
 
 try {
     $result = $apiInstance->updateHeaderObject($options);
@@ -248,8 +248,8 @@ Name | Type | Description  | Notes
 **src** | **string** | Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional]
 **substitution** | **string** | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional]
 **type** | **string** | Accepts a string value. | [optional] [one of: 'request', 'cache', 'response']
-**ignore_if_set** | **int** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional]
-**priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to 100]
+**ignore_if_set** | **string** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) | [optional]
+**priority** | **string** | Priority determines execution order. Lower numbers execute first. | [optional] [defaults to '100']
 
 ### Return type
 

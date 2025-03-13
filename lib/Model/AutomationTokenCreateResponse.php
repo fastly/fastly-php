@@ -58,14 +58,12 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
         'services' => 'string[]',
         'scope' => 'string',
         'expires_at' => 'string',
-        'created_at' => '\DateTime',
-        'deleted_at' => '\DateTime',
-        'updated_at' => '\DateTime',
         'id' => '\Fastly\Model\ReadOnlyId',
         'user_id' => '\Fastly\Model\ReadOnlyUserId',
         'customer_id' => '\Fastly\Model\ReadOnlyCustomerId',
-        'sudo_expires_at' => '\DateTime',
+        'created_at' => '\DateTime',
         'access_token' => 'string',
+        'tls_access' => 'bool',
         'last_used_at' => '\DateTime',
         'user_agent' => 'string'
     ];
@@ -83,14 +81,12 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
         'services' => null,
         'scope' => null,
         'expires_at' => null,
-        'created_at' => 'date-time',
-        'deleted_at' => 'date-time',
-        'updated_at' => 'date-time',
         'id' => null,
         'user_id' => null,
         'customer_id' => null,
-        'sudo_expires_at' => 'date-time',
+        'created_at' => 'date-time',
         'access_token' => null,
+        'tls_access' => null,
         'last_used_at' => 'date-time',
         'user_agent' => null
     ];
@@ -127,14 +123,12 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
         'services' => 'services',
         'scope' => 'scope',
         'expires_at' => 'expires_at',
-        'created_at' => 'created_at',
-        'deleted_at' => 'deleted_at',
-        'updated_at' => 'updated_at',
         'id' => 'id',
         'user_id' => 'user_id',
         'customer_id' => 'customer_id',
-        'sudo_expires_at' => 'sudo_expires_at',
+        'created_at' => 'created_at',
         'access_token' => 'access_token',
+        'tls_access' => 'tls_access',
         'last_used_at' => 'last_used_at',
         'user_agent' => 'user_agent'
     ];
@@ -150,14 +144,12 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
         'services' => 'setServices',
         'scope' => 'setScope',
         'expires_at' => 'setExpiresAt',
-        'created_at' => 'setCreatedAt',
-        'deleted_at' => 'setDeletedAt',
-        'updated_at' => 'setUpdatedAt',
         'id' => 'setId',
         'user_id' => 'setUserId',
         'customer_id' => 'setCustomerId',
-        'sudo_expires_at' => 'setSudoExpiresAt',
+        'created_at' => 'setCreatedAt',
         'access_token' => 'setAccessToken',
+        'tls_access' => 'setTlsAccess',
         'last_used_at' => 'setLastUsedAt',
         'user_agent' => 'setUserAgent'
     ];
@@ -173,14 +165,12 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
         'services' => 'getServices',
         'scope' => 'getScope',
         'expires_at' => 'getExpiresAt',
-        'created_at' => 'getCreatedAt',
-        'deleted_at' => 'getDeletedAt',
-        'updated_at' => 'getUpdatedAt',
         'id' => 'getId',
         'user_id' => 'getUserId',
         'customer_id' => 'getCustomerId',
-        'sudo_expires_at' => 'getSudoExpiresAt',
+        'created_at' => 'getCreatedAt',
         'access_token' => 'getAccessToken',
+        'tls_access' => 'getTlsAccess',
         'last_used_at' => 'getLastUsedAt',
         'user_agent' => 'getUserAgent'
     ];
@@ -283,14 +273,12 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
         $this->container['services'] = $data['services'] ?? null;
         $this->container['scope'] = $data['scope'] ?? 'global';
         $this->container['expires_at'] = $data['expires_at'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['customer_id'] = $data['customer_id'] ?? null;
-        $this->container['sudo_expires_at'] = $data['sudo_expires_at'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['access_token'] = $data['access_token'] ?? null;
+        $this->container['tls_access'] = $data['tls_access'] ?? null;
         $this->container['last_used_at'] = $data['last_used_at'] ?? null;
         $this->container['user_agent'] = $data['user_agent'] ?? null;
     }
@@ -466,85 +454,13 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets expires_at
      *
-     * @param string|null $expires_at A UTC time-stamp of when the token expires.
+     * @param string|null $expires_at A UTC timestamp of when the token expires.
      *
      * @return self
      */
     public function setExpiresAt($expires_at)
     {
         $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at A UTC time-stamp of when the token was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime|null
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime|null $deleted_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        $this->container['deleted_at'] = $deleted_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
@@ -622,25 +538,25 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets sudo_expires_at
+     * Gets created_at
      *
      * @return \DateTime|null
      */
-    public function getSudoExpiresAt()
+    public function getCreatedAt()
     {
-        return $this->container['sudo_expires_at'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets sudo_expires_at
+     * Sets created_at
      *
-     * @param \DateTime|null $sudo_expires_at sudo_expires_at
+     * @param \DateTime|null $created_at A UTC timestamp of when the token was created.
      *
      * @return self
      */
-    public function setSudoExpiresAt($sudo_expires_at)
+    public function setCreatedAt($created_at)
     {
-        $this->container['sudo_expires_at'] = $sudo_expires_at;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -670,6 +586,30 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
+     * Gets tls_access
+     *
+     * @return bool|null
+     */
+    public function getTlsAccess()
+    {
+        return $this->container['tls_access'];
+    }
+
+    /**
+     * Sets tls_access
+     *
+     * @param bool|null $tls_access Indicates whether TLS access is enabled for the token.
+     *
+     * @return self
+     */
+    public function setTlsAccess($tls_access)
+    {
+        $this->container['tls_access'] = $tls_access;
+
+        return $this;
+    }
+
+    /**
      * Gets last_used_at
      *
      * @return \DateTime|null
@@ -682,7 +622,7 @@ class AutomationTokenCreateResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets last_used_at
      *
-     * @param \DateTime|null $last_used_at A UTC time-stamp of when the token was last used.
+     * @param \DateTime|null $last_used_at A UTC timestamp of when the token was last used.
      *
      * @return self
      */

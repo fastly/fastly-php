@@ -66,7 +66,7 @@ void (empty response body)
 ## `kvStoreGetItem()`
 
 ```php
-kvStoreGetItem($options): \SplFileObject // Get an item.
+kvStoreGetItem($options): string // Get an item.
 ```
 
 Get an item, including its value, metadata (if any), and generation marker.
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\SplFileObject**
+**string**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -160,7 +160,7 @@ $options['add'] = false; // bool
 $options['append'] = false; // bool
 $options['prepend'] = false; // bool
 $options['background_fetch'] = false; // bool
-$options['body'] = "/path/to/file.txt"; // \SplFileObject
+$options['body'] = 'body_example'; // string
 
 try {
     $apiInstance->kvStoreUpsertItem($options);
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 **append** | **bool** |  | [optional] [defaults to false]
 **prepend** | **bool** |  | [optional] [defaults to false]
 **background_fetch** | **bool** |  | [optional] [defaults to false]
-**body** | **\SplFileObject****\SplFileObject** |  | [optional]
+**body** | **string** |  | [optional]
 
 ### Return type
 
