@@ -290,7 +290,7 @@ class ResourceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The name of the resource link.
+     * @param string|null $name The name of the resource link. Note this is separate from the resource store name and might not match the store name.
      *
      * @return self
      */

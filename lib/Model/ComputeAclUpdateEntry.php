@@ -225,7 +225,7 @@ class ComputeAclUpdateEntry implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets op
      *
-     * @param string|null $op One of \"create\" or \"update\", indicating that the rest of this entry is to be added to/updated in the ACL.
+     * @param string|null $op One of \"create\", \"update\", or \"delete\" indicating the operation to perform on the update.
      *
      * @return self
      */
@@ -273,7 +273,7 @@ class ComputeAclUpdateEntry implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets action
      *
-     * @param string|null $action The action taken on the IP address, either \"block\" or \"allow\".
+     * @param string|null $action The action taken on the IP address, one of \"BLOCK\" or \"ALLOW\". If using the \"delete\" operation, no action should be specified.
      *
      * @return self
      */

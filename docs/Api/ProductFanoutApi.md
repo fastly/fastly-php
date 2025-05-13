@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**disableProductFanout()**](ProductFanoutApi.md#disableProductFanout) | **DELETE** /enabled-products/v1/fanout/services/{service_id} | Disable product
 [**enableProductFanout()**](ProductFanoutApi.md#enableProductFanout) | **PUT** /enabled-products/v1/fanout/services/{service_id} | Enable product
 [**getProductFanout()**](ProductFanoutApi.md#getProductFanout) | **GET** /enabled-products/v1/fanout/services/{service_id} | Get product enablement status
+[**getServicesProductFanout()**](ProductFanoutApi.md#getServicesProductFanout) | **GET** /enabled-products/v1/fanout/services | Get services with product enabled
 
 
 ## `disableProductFanout()`
@@ -120,6 +121,37 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\FanoutResponseBodyEnable**](../Model/FanoutResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getServicesProductFanout()`
+
+```php
+getServicesProductFanout($options): \Fastly\Model\FanoutResponseBodyGetAllServices // Get services with product enabled
+```
+
+Get all the services which have the Fanout product enabled.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getServicesProductFanout($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductFanoutApi->getServicesProductFanout: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\FanoutResponseBodyGetAllServices**](../Model/FanoutResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**disableProductWebsockets()**](ProductWebsocketsApi.md#disableProductWebsockets) | **DELETE** /enabled-products/v1/websockets/services/{service_id} | Disable product
 [**enableProductWebsockets()**](ProductWebsocketsApi.md#enableProductWebsockets) | **PUT** /enabled-products/v1/websockets/services/{service_id} | Enable product
 [**getProductWebsockets()**](ProductWebsocketsApi.md#getProductWebsockets) | **GET** /enabled-products/v1/websockets/services/{service_id} | Get product enablement status
+[**getServicesProductWebsockets()**](ProductWebsocketsApi.md#getServicesProductWebsockets) | **GET** /enabled-products/v1/websockets/services | Get services with product enabled
 
 
 ## `disableProductWebsockets()`
@@ -120,6 +121,37 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\WebsocketsResponseBodyEnable**](../Model/WebsocketsResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getServicesProductWebsockets()`
+
+```php
+getServicesProductWebsockets($options): \Fastly\Model\WebsocketsResponseBodyGetAllServices // Get services with product enabled
+```
+
+Get all the services which have the Websockets product enabled.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getServicesProductWebsockets($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductWebsocketsApi->getServicesProductWebsockets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\WebsocketsResponseBodyGetAllServices**](../Model/WebsocketsResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

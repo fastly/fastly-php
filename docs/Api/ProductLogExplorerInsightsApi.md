@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**disableProductLogExplorerInsights()**](ProductLogExplorerInsightsApi.md#disableProductLogExplorerInsights) | **DELETE** /enabled-products/v1/log_explorer_insights/services/{service_id} | Disable product
 [**enableProductLogExplorerInsights()**](ProductLogExplorerInsightsApi.md#enableProductLogExplorerInsights) | **PUT** /enabled-products/v1/log_explorer_insights/services/{service_id} | Enable product
 [**getProductLogExplorerInsights()**](ProductLogExplorerInsightsApi.md#getProductLogExplorerInsights) | **GET** /enabled-products/v1/log_explorer_insights/services/{service_id} | Get product enablement status
+[**getServicesProductLogExplorerInsights()**](ProductLogExplorerInsightsApi.md#getServicesProductLogExplorerInsights) | **GET** /enabled-products/v1/log_explorer_insights/services | Get services with product enabled
 
 
 ## `disableProductLogExplorerInsights()`
@@ -120,6 +121,37 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\LogExplorerInsightsResponseBodyEnable**](../Model/LogExplorerInsightsResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getServicesProductLogExplorerInsights()`
+
+```php
+getServicesProductLogExplorerInsights($options): \Fastly\Model\LogExplorerInsightsResponseBodyGetAllServices // Get services with product enabled
+```
+
+Get all the services which have the Log Explorer & Insights product enabled.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getServicesProductLogExplorerInsights($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductLogExplorerInsightsApi->getServicesProductLogExplorerInsights: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\LogExplorerInsightsResponseBodyGetAllServices**](../Model/LogExplorerInsightsResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

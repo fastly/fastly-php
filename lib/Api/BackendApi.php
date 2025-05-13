@@ -139,6 +139,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -197,6 +198,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -343,6 +345,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -404,6 +407,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -491,6 +495,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -535,6 +540,7 @@ class BackendApi
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : null;
         $port = array_key_exists('port', $options) ? $options['port'] : null;
+        $prefer_ipv6 = array_key_exists('prefer_ipv6', $options) ? $options['prefer_ipv6'] : null;
         $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
         $share_key = array_key_exists('share_key', $options) ? $options['share_key'] : null;
         $shield = array_key_exists('shield', $options) ? $options['shield'] : null;
@@ -667,6 +673,10 @@ class BackendApi
         // form params
         if ($port !== null) {
             $formParams['port'] = ObjectSerializer::toFormValue($port);
+        }
+        // form params
+        if ($prefer_ipv6 !== null) {
+            $formParams['prefer_ipv6'] = ObjectSerializer::toFormValue($prefer_ipv6);
         }
         // form params
         if ($request_condition !== null) {
@@ -1902,6 +1912,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -1961,6 +1972,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -2108,6 +2120,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -2170,6 +2183,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -2258,6 +2272,7 @@ class BackendApi
      * @param  string $name The name of the backend. (optional)
      * @param  string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
      * @param  int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+     * @param  bool $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
      * @param  string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
      * @param  string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
      * @param  string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -2303,6 +2318,7 @@ class BackendApi
         $name = array_key_exists('name', $options) ? $options['name'] : null;
         $override_host = array_key_exists('override_host', $options) ? $options['override_host'] : null;
         $port = array_key_exists('port', $options) ? $options['port'] : null;
+        $prefer_ipv6 = array_key_exists('prefer_ipv6', $options) ? $options['prefer_ipv6'] : null;
         $request_condition = array_key_exists('request_condition', $options) ? $options['request_condition'] : null;
         $share_key = array_key_exists('share_key', $options) ? $options['share_key'] : null;
         $shield = array_key_exists('shield', $options) ? $options['shield'] : null;
@@ -2449,6 +2465,10 @@ class BackendApi
         // form params
         if ($port !== null) {
             $formParams['port'] = ObjectSerializer::toFormValue($port);
+        }
+        // form params
+        if ($prefer_ipv6 !== null) {
+            $formParams['prefer_ipv6'] = ObjectSerializer::toFormValue($prefer_ipv6);
         }
         // form params
         if ($request_condition !== null) {

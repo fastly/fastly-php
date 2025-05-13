@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 ## `getSecrets()`
 
 ```php
-getSecrets($options): \Fastly\Model\InlineResponse2006 // List secrets within a store.
+getSecrets($options): \Fastly\Model\InlineResponse2008 // List secrets within a store.
 ```
 
 List all secrets within a store.
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\Fastly\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

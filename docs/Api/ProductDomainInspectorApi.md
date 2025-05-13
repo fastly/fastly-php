@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**disableProductDomainInspector()**](ProductDomainInspectorApi.md#disableProductDomainInspector) | **DELETE** /enabled-products/v1/domain_inspector/services/{service_id} | Disable product
 [**enableProductDomainInspector()**](ProductDomainInspectorApi.md#enableProductDomainInspector) | **PUT** /enabled-products/v1/domain_inspector/services/{service_id} | Enable product
 [**getProductDomainInspector()**](ProductDomainInspectorApi.md#getProductDomainInspector) | **GET** /enabled-products/v1/domain_inspector/services/{service_id} | Get product enablement status
+[**getServicesProductDomainInspector()**](ProductDomainInspectorApi.md#getServicesProductDomainInspector) | **GET** /enabled-products/v1/domain_inspector/services | Get services with product enabled
 
 
 ## `disableProductDomainInspector()`
@@ -120,6 +121,37 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\DomainInspectorResponseBodyEnable**](../Model/DomainInspectorResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getServicesProductDomainInspector()`
+
+```php
+getServicesProductDomainInspector($options): \Fastly\Model\DomainInspectorResponseBodyGetAllServices // Get services with product enabled
+```
+
+Get all the services which have the Domain Inspector product enabled.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getServicesProductDomainInspector($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductDomainInspectorApi->getServicesProductDomainInspector: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\DomainInspectorResponseBodyGetAllServices**](../Model/DomainInspectorResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

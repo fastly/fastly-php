@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**disableProductImageOptimizer()**](ProductImageOptimizerApi.md#disableProductImageOptimizer) | **DELETE** /enabled-products/v1/image_optimizer/services/{service_id} | Disable product
 [**enableProductImageOptimizer()**](ProductImageOptimizerApi.md#enableProductImageOptimizer) | **PUT** /enabled-products/v1/image_optimizer/services/{service_id} | Enable product
 [**getProductImageOptimizer()**](ProductImageOptimizerApi.md#getProductImageOptimizer) | **GET** /enabled-products/v1/image_optimizer/services/{service_id} | Get product enablement status
+[**getServicesProductImageOptimizer()**](ProductImageOptimizerApi.md#getServicesProductImageOptimizer) | **GET** /enabled-products/v1/image_optimizer/services | Get services with product enabled
 
 
 ## `disableProductImageOptimizer()`
@@ -120,6 +121,37 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\ImageOptimizerResponseBodyEnable**](../Model/ImageOptimizerResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getServicesProductImageOptimizer()`
+
+```php
+getServicesProductImageOptimizer($options): \Fastly\Model\ImageOptimizerResponseBodyGetAllServices // Get services with product enabled
+```
+
+Get all the services which have the Image Optimizer product enabled.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getServicesProductImageOptimizer($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductImageOptimizerApi->getServicesProductImageOptimizer: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\ImageOptimizerResponseBodyGetAllServices**](../Model/ImageOptimizerResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

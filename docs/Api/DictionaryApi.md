@@ -17,17 +17,17 @@ $apiInstance = new Fastly\Api\DictionaryApi(
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**createDictionary()**](DictionaryApi.md#createDictionary) | **POST** /service/{service_id}/version/{version_id}/dictionary | Create an edge dictionary
-[**deleteDictionary()**](DictionaryApi.md#deleteDictionary) | **DELETE** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Delete an edge dictionary
-[**getDictionary()**](DictionaryApi.md#getDictionary) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Get an edge dictionary
-[**listDictionaries()**](DictionaryApi.md#listDictionaries) | **GET** /service/{service_id}/version/{version_id}/dictionary | List edge dictionaries
-[**updateDictionary()**](DictionaryApi.md#updateDictionary) | **PUT** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Update an edge dictionary
+[**createDictionary()**](DictionaryApi.md#createDictionary) | **POST** /service/{service_id}/version/{version_id}/dictionary | Create a dictionary
+[**deleteDictionary()**](DictionaryApi.md#deleteDictionary) | **DELETE** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Delete a dictionary
+[**getDictionary()**](DictionaryApi.md#getDictionary) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Get a dictionary
+[**listDictionaries()**](DictionaryApi.md#listDictionaries) | **GET** /service/{service_id}/version/{version_id}/dictionary | List dictionaries
+[**updateDictionary()**](DictionaryApi.md#updateDictionary) | **PUT** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Update a dictionary
 
 
 ## `createDictionary()`
 
 ```php
-createDictionary($options): \Fastly\Model\DictionaryResponse // Create an edge dictionary
+createDictionary($options): \Fastly\Model\DictionaryResponse // Create a dictionary
 ```
 
 Create named dictionary for a particular service and version.
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 ## `deleteDictionary()`
 
 ```php
-deleteDictionary($options): \Fastly\Model\InlineResponse200 // Delete an edge dictionary
+deleteDictionary($options): \Fastly\Model\InlineResponse200 // Delete a dictionary
 ```
 
 Delete named dictionary for a particular service and version.
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 ## `getDictionary()`
 
 ```php
-getDictionary($options): \Fastly\Model\DictionaryResponse // Get an edge dictionary
+getDictionary($options): \Fastly\Model\DictionaryResponse // Get a dictionary
 ```
 
 Retrieve a single dictionary by name for the version and service.
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 ## `listDictionaries()`
 
 ```php
-listDictionaries($options): \Fastly\Model\DictionaryResponse[] // List edge dictionaries
+listDictionaries($options): \Fastly\Model\DictionaryResponse[] // List dictionaries
 ```
 
 List all dictionaries for the version of the service.
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 ## `updateDictionary()`
 
 ```php
-updateDictionary($options): \Fastly\Model\DictionaryResponse // Update an edge dictionary
+updateDictionary($options): \Fastly\Model\DictionaryResponse // Update a dictionary
 ```
 
 Update named dictionary for a particular service and version.

@@ -520,7 +520,7 @@ class RateLimiter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uri_dictionary_name
      *
-     * @param string|null $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
+     * @param string|null $uri_dictionary_name The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
      *
      * @return self
      */

@@ -17,13 +17,13 @@ $apiInstance = new Fastly\Api\DictionaryInfoApi(
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**getDictionaryInfo()**](DictionaryInfoApi.md#getDictionaryInfo) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_id}/info | Get edge dictionary metadata
+[**getDictionaryInfo()**](DictionaryInfoApi.md#getDictionaryInfo) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_id}/info | Get dictionary metadata
 
 
 ## `getDictionaryInfo()`
 
 ```php
-getDictionaryInfo($options): \Fastly\Model\DictionaryInfoResponse // Get edge dictionary metadata
+getDictionaryInfo($options): \Fastly\Model\DictionaryInfoResponse // Get dictionary metadata
 ```
 
 Retrieve metadata for a single dictionary by ID for a version and service.

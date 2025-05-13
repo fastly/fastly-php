@@ -112,7 +112,7 @@ class DictionaryApi
     /**
      * Operation createDictionary
      *
-     * Create an edge dictionary
+     * Create a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -137,7 +137,7 @@ class DictionaryApi
     /**
      * Operation createDictionaryWithHttpInfo
      *
-     * Create an edge dictionary
+     * Create a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -250,7 +250,7 @@ class DictionaryApi
     /**
      * Operation createDictionaryAsync
      *
-     * Create an edge dictionary
+     * Create a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -278,7 +278,7 @@ class DictionaryApi
     /**
      * Operation createDictionaryAsyncWithHttpInfo
      *
-     * Create an edge dictionary
+     * Create a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -474,7 +474,7 @@ class DictionaryApi
     /**
      * Operation deleteDictionary
      *
-     * Delete an edge dictionary
+     * Delete a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -498,7 +498,7 @@ class DictionaryApi
     /**
      * Operation deleteDictionaryWithHttpInfo
      *
-     * Delete an edge dictionary
+     * Delete a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -610,7 +610,7 @@ class DictionaryApi
     /**
      * Operation deleteDictionaryAsync
      *
-     * Delete an edge dictionary
+     * Delete a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -637,7 +637,7 @@ class DictionaryApi
     /**
      * Operation deleteDictionaryAsyncWithHttpInfo
      *
-     * Delete an edge dictionary
+     * Delete a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -836,7 +836,7 @@ class DictionaryApi
     /**
      * Operation getDictionary
      *
-     * Get an edge dictionary
+     * Get a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -860,7 +860,7 @@ class DictionaryApi
     /**
      * Operation getDictionaryWithHttpInfo
      *
-     * Get an edge dictionary
+     * Get a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -972,7 +972,7 @@ class DictionaryApi
     /**
      * Operation getDictionaryAsync
      *
-     * Get an edge dictionary
+     * Get a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -999,7 +999,7 @@ class DictionaryApi
     /**
      * Operation getDictionaryAsyncWithHttpInfo
      *
-     * Get an edge dictionary
+     * Get a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1198,7 +1198,7 @@ class DictionaryApi
     /**
      * Operation listDictionaries
      *
-     * List edge dictionaries
+     * List dictionaries
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1221,7 +1221,7 @@ class DictionaryApi
     /**
      * Operation listDictionariesWithHttpInfo
      *
-     * List edge dictionaries
+     * List dictionaries
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1332,7 +1332,7 @@ class DictionaryApi
     /**
      * Operation listDictionariesAsync
      *
-     * List edge dictionaries
+     * List dictionaries
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1358,7 +1358,7 @@ class DictionaryApi
     /**
      * Operation listDictionariesAsyncWithHttpInfo
      *
-     * List edge dictionaries
+     * List dictionaries
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1540,7 +1540,7 @@ class DictionaryApi
     /**
      * Operation updateDictionary
      *
-     * Update an edge dictionary
+     * Update a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1566,7 +1566,7 @@ class DictionaryApi
     /**
      * Operation updateDictionaryWithHttpInfo
      *
-     * Update an edge dictionary
+     * Update a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1680,7 +1680,7 @@ class DictionaryApi
     /**
      * Operation updateDictionaryAsync
      *
-     * Update an edge dictionary
+     * Update a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1709,7 +1709,7 @@ class DictionaryApi
     /**
      * Operation updateDictionaryAsyncWithHttpInfo
      *
-     * Update an edge dictionary
+     * Update a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *

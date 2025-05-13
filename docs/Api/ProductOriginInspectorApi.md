@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**disableProductOriginInspector()**](ProductOriginInspectorApi.md#disableProductOriginInspector) | **DELETE** /enabled-products/v1/origin_inspector/services/{service_id} | Disable product
 [**enableProductOriginInspector()**](ProductOriginInspectorApi.md#enableProductOriginInspector) | **PUT** /enabled-products/v1/origin_inspector/services/{service_id} | Enable product
 [**getProductOriginInspector()**](ProductOriginInspectorApi.md#getProductOriginInspector) | **GET** /enabled-products/v1/origin_inspector/services/{service_id} | Get product enablement status
+[**getServicesProductOriginInspector()**](ProductOriginInspectorApi.md#getServicesProductOriginInspector) | **GET** /enabled-products/v1/origin_inspector/services | Get services with product enabled
 
 
 ## `disableProductOriginInspector()`
@@ -120,6 +121,37 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\OriginInspectorResponseBodyEnable**](../Model/OriginInspectorResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getServicesProductOriginInspector()`
+
+```php
+getServicesProductOriginInspector($options): \Fastly\Model\OriginInspectorResponseBodyGetAllServices // Get services with product enabled
+```
+
+Get all the services which have the Origin Inspector product enabled.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getServicesProductOriginInspector($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductOriginInspectorApi->getServicesProductOriginInspector: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\OriginInspectorResponseBodyGetAllServices**](../Model/OriginInspectorResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

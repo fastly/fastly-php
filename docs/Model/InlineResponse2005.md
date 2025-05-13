@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\SecretStoreResponse[]**](SecretStoreResponse.md) |  | [optional] 
+**data** | [**\Fastly\Model\KvStoreDetails[]**](KvStoreDetails.md) |  | [optional] 
 **meta** | [**\Fastly\Model\PaginationCursorMeta**](PaginationCursorMeta.md) |  | [optional] 
 
 

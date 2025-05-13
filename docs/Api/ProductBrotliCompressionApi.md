@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**disableProductBrotliCompression()**](ProductBrotliCompressionApi.md#disableProductBrotliCompression) | **DELETE** /enabled-products/v1/brotli_compression/services/{service_id} | Disable product
 [**enableProductBrotliCompression()**](ProductBrotliCompressionApi.md#enableProductBrotliCompression) | **PUT** /enabled-products/v1/brotli_compression/services/{service_id} | Enable product
 [**getProductBrotliCompression()**](ProductBrotliCompressionApi.md#getProductBrotliCompression) | **GET** /enabled-products/v1/brotli_compression/services/{service_id} | Get product enablement status
+[**getServicesProductBrotliCompression()**](ProductBrotliCompressionApi.md#getServicesProductBrotliCompression) | **GET** /enabled-products/v1/brotli_compression/services | Get services with product enabled
 
 
 ## `disableProductBrotliCompression()`
@@ -120,6 +121,37 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\BrotliCompressionResponseBodyEnable**](../Model/BrotliCompressionResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getServicesProductBrotliCompression()`
+
+```php
+getServicesProductBrotliCompression($options): \Fastly\Model\BrotliCompressionResponseBodyGetAllServices // Get services with product enabled
+```
+
+Get all the services which have the Brotli Compression product enabled.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getServicesProductBrotliCompression($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductBrotliCompressionApi->getServicesProductBrotliCompression: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\BrotliCompressionResponseBodyGetAllServices**](../Model/BrotliCompressionResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

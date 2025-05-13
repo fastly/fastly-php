@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**enableProductNgwaf()**](ProductNgwafApi.md#enableProductNgwaf) | **PUT** /enabled-products/v1/ngwaf/services/{service_id} | Enable product
 [**getProductNgwaf()**](ProductNgwafApi.md#getProductNgwaf) | **GET** /enabled-products/v1/ngwaf/services/{service_id} | Get product enablement status
 [**getProductNgwafConfiguration()**](ProductNgwafApi.md#getProductNgwafConfiguration) | **GET** /enabled-products/v1/ngwaf/services/{service_id}/configuration | Get configuration
+[**getServicesProductNgwaf()**](ProductNgwafApi.md#getServicesProductNgwaf) | **GET** /enabled-products/v1/ngwaf/services | Get services with product enabled
 [**setProductNgwafConfiguration()**](ProductNgwafApi.md#setProductNgwafConfiguration) | **PATCH** /enabled-products/v1/ngwaf/services/{service_id}/configuration | Update configuration
 
 
@@ -158,6 +159,37 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\NgwafResponseConfigure**](../Model/NgwafResponseConfigure.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getServicesProductNgwaf()`
+
+```php
+getServicesProductNgwaf($options): \Fastly\Model\NgwafResponseBodyGetAllServices // Get services with product enabled
+```
+
+Get all the services which have the Next-Gen WAF product enabled.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getServicesProductNgwaf($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductNgwafApi->getServicesProductNgwaf: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\NgwafResponseBodyGetAllServices**](../Model/NgwafResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

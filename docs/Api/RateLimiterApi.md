@@ -37,7 +37,7 @@ Create a rate limiter for a particular service and version.
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['name'] = 'name_example'; // string | A human readable name for the rate limiting rule.
-$options['uri_dictionary_name'] = 'uri_dictionary_name_example'; // string | The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
+$options['uri_dictionary_name'] = 'uri_dictionary_name_example'; // string | The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
 $options['http_methods'] = array('http_methods_example'); // string[] | Array of HTTP methods to apply rate limiting to.
 $options['rps_limit'] = 56; // int | Upper limit of requests per second allowed by the rate limiter.
 $options['window_size'] = 56; // int | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
 **name** | **string** | A human readable name for the rate limiting rule. | [optional]
-**uri_dictionary_name** | **string** | The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional]
+**uri_dictionary_name** | **string** | The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional]
 **http_methods** | [**string[]**](../Model/string.md) | Array of HTTP methods to apply rate limiting to. | [optional] [one of: 'HEAD', 'OPTIONS', 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'TRACE']
 **rps_limit** | **int** | Upper limit of requests per second allowed by the rate limiter. | [optional]
 **window_size** | **int** | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. | [optional] [one of: 1, 10, 60]
@@ -198,7 +198,7 @@ Update a rate limiter by its ID.
 ```php
     $options['rate_limiter_id'] = 'rate_limiter_id_example'; // string | Alphanumeric string identifying the rate limiter.
 $options['name'] = 'name_example'; // string | A human readable name for the rate limiting rule.
-$options['uri_dictionary_name'] = 'uri_dictionary_name_example'; // string | The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
+$options['uri_dictionary_name'] = 'uri_dictionary_name_example'; // string | The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
 $options['http_methods'] = array('http_methods_example'); // string[] | Array of HTTP methods to apply rate limiting to.
 $options['rps_limit'] = 56; // int | Upper limit of requests per second allowed by the rate limiter.
 $options['window_size'] = 56; // int | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **rate_limiter_id** | **string** | Alphanumeric string identifying the rate limiter. |
 **name** | **string** | A human readable name for the rate limiting rule. | [optional]
-**uri_dictionary_name** | **string** | The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional]
+**uri_dictionary_name** | **string** | The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional]
 **http_methods** | [**string[]**](../Model/string.md) | Array of HTTP methods to apply rate limiting to. | [optional] [one of: 'HEAD', 'OPTIONS', 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'TRACE']
 **rps_limit** | **int** | Upper limit of requests per second allowed by the rate limiter. | [optional]
 **window_size** | **int** | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. | [optional] [one of: 1, 10, 60]

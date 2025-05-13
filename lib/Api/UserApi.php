@@ -131,6 +131,7 @@ class UserApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Fastly\Model\UserResponse
+     * @deprecated
      */
     public function createUser($options)
     {
@@ -160,6 +161,7 @@ class UserApi
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Fastly\Model\UserResponse, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createUserWithHttpInfo($options)
     {
@@ -276,6 +278,7 @@ class UserApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createUserAsync($options)
     {
@@ -308,6 +311,7 @@ class UserApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createUserAsyncWithHttpInfo($options)
     {
@@ -366,6 +370,7 @@ class UserApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createUserRequest($options)
     {

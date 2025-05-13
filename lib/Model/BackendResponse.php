@@ -71,6 +71,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'override_host' => 'string',
         'port' => 'int',
+        'prefer_ipv6' => 'bool',
         'request_condition' => 'string',
         'share_key' => 'string',
         'shield' => 'string',
@@ -122,6 +123,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'override_host' => null,
         'port' => null,
+        'prefer_ipv6' => null,
         'request_condition' => null,
         'share_key' => null,
         'shield' => null,
@@ -192,6 +194,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'override_host' => 'override_host',
         'port' => 'port',
+        'prefer_ipv6' => 'prefer_ipv6',
         'request_condition' => 'request_condition',
         'share_key' => 'share_key',
         'shield' => 'shield',
@@ -241,6 +244,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'override_host' => 'setOverrideHost',
         'port' => 'setPort',
+        'prefer_ipv6' => 'setPreferIpv6',
         'request_condition' => 'setRequestCondition',
         'share_key' => 'setShareKey',
         'shield' => 'setShield',
@@ -290,6 +294,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'override_host' => 'getOverrideHost',
         'port' => 'getPort',
+        'prefer_ipv6' => 'getPreferIpv6',
         'request_condition' => 'getRequestCondition',
         'share_key' => 'getShareKey',
         'shield' => 'getShield',
@@ -390,6 +395,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['name'] = $data['name'] ?? null;
         $this->container['override_host'] = $data['override_host'] ?? null;
         $this->container['port'] = $data['port'] ?? null;
+        $this->container['prefer_ipv6'] = $data['prefer_ipv6'] ?? null;
         $this->container['request_condition'] = $data['request_condition'] ?? null;
         $this->container['share_key'] = $data['share_key'] ?? null;
         $this->container['shield'] = $data['shield'] ?? null;
@@ -871,6 +877,30 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPort($port)
     {
         $this->container['port'] = $port;
+
+        return $this;
+    }
+
+    /**
+     * Gets prefer_ipv6
+     *
+     * @return bool|null
+     */
+    public function getPreferIpv6()
+    {
+        return $this->container['prefer_ipv6'];
+    }
+
+    /**
+     * Sets prefer_ipv6
+     *
+     * @param bool|null $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups.
+     *
+     * @return self
+     */
+    public function setPreferIpv6($prefer_ipv6)
+    {
+        $this->container['prefer_ipv6'] = $prefer_ipv6;
 
         return $this;
     }

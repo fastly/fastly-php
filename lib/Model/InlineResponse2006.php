@@ -53,7 +53,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\SecretResponse[]',
+        'data' => 'string[]',
         'meta' => '\Fastly\Model\PaginationCursorMeta'
     ];
 
@@ -208,7 +208,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Fastly\Model\SecretResponse[]|null
+     * @return string[]|null
      */
     public function getData()
     {
@@ -218,7 +218,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Fastly\Model\SecretResponse[]|null $data data
+     * @param string[]|null $data data
      *
      * @return self
      */

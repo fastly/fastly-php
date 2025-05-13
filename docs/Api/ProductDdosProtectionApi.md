@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**enableProductDdosProtection()**](ProductDdosProtectionApi.md#enableProductDdosProtection) | **PUT** /enabled-products/v1/ddos_protection/services/{service_id} | Enable product
 [**getProductDdosProtection()**](ProductDdosProtectionApi.md#getProductDdosProtection) | **GET** /enabled-products/v1/ddos_protection/services/{service_id} | Get product enablement status
 [**getProductDdosProtectionConfiguration()**](ProductDdosProtectionApi.md#getProductDdosProtectionConfiguration) | **GET** /enabled-products/v1/ddos_protection/services/{service_id}/configuration | Get configuration
+[**getServicesProductDdosProtection()**](ProductDdosProtectionApi.md#getServicesProductDdosProtection) | **GET** /enabled-products/v1/ddos_protection/services | Get services with product enabled
 [**setProductDdosProtectionConfiguration()**](ProductDdosProtectionApi.md#setProductDdosProtectionConfiguration) | **PATCH** /enabled-products/v1/ddos_protection/services/{service_id}/configuration | Update configuration
 
 
@@ -64,7 +65,7 @@ void (empty response body)
 enableProductDdosProtection($options): \Fastly\Model\DdosProtectionResponseEnable // Enable product
 ```
 
-Enable the DDoS Protection product on a service.
+Enable the DDoS Protection product on a service in 'log' mode.
 
 ### Example
 ```php
@@ -156,6 +157,37 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Fastly\Model\DdosProtectionResponseConfigure**](../Model/DdosProtectionResponseConfigure.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getServicesProductDdosProtection()`
+
+```php
+getServicesProductDdosProtection($options): \Fastly\Model\DdosProtectionResponseBodyGetAllServices // Get services with product enabled
+```
+
+Get all the services which have the DDoS Protection product enabled.
+
+### Example
+```php
+    
+try {
+    $result = $apiInstance->getServicesProductDdosProtection($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductDdosProtectionApi->getServicesProductDdosProtection: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+This endpoint does not need any parameters.
+
+### Return type
+
+[**\Fastly\Model\DdosProtectionResponseBodyGetAllServices**](../Model/DdosProtectionResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -53,7 +53,8 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\ServiceAuthorizationResponseData[]'
+        'data' => '\Fastly\Model\SecretStoreResponse[]',
+        'meta' => '\Fastly\Model\PaginationCursorMeta'
     ];
 
     /**
@@ -64,7 +65,8 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null
+        'data' => null,
+        'meta' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'data' => 'data',
+        'meta' => 'meta'
     ];
 
     /**
@@ -103,7 +106,8 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'data' => 'setData',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -112,7 +116,8 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'data' => 'getData',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -173,6 +178,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->container['data'] = $data['data'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
     }
 
     /**
@@ -202,7 +208,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Fastly\Model\ServiceAuthorizationResponseData[]|null
+     * @return \Fastly\Model\SecretStoreResponse[]|null
      */
     public function getData()
     {
@@ -212,13 +218,37 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Fastly\Model\ServiceAuthorizationResponseData[]|null $data data
+     * @param \Fastly\Model\SecretStoreResponse[]|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \Fastly\Model\PaginationCursorMeta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \Fastly\Model\PaginationCursorMeta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        $this->container['meta'] = $meta;
 
         return $this;
     }

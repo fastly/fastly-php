@@ -112,7 +112,7 @@ class DictionaryInfoApi
     /**
      * Operation getDictionaryInfo
      *
-     * Get edge dictionary metadata
+     * Get dictionary metadata
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -136,7 +136,7 @@ class DictionaryInfoApi
     /**
      * Operation getDictionaryInfoWithHttpInfo
      *
-     * Get edge dictionary metadata
+     * Get dictionary metadata
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -248,7 +248,7 @@ class DictionaryInfoApi
     /**
      * Operation getDictionaryInfoAsync
      *
-     * Get edge dictionary metadata
+     * Get dictionary metadata
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -275,7 +275,7 @@ class DictionaryInfoApi
     /**
      * Operation getDictionaryInfoAsyncWithHttpInfo
      *
-     * Get edge dictionary metadata
+     * Get dictionary metadata
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *

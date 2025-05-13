@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 computeAclUpdateAcls($options) // Update an ACL
 ```
 
-Update an ACL.
+Update an ACL entry with a new operation or action, this allows you to modify an existing entry or delete it.
 
 ### Example
 ```php

@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 ## `getSecretStores()`
 
 ```php
-getSecretStores($options): \Fastly\Model\InlineResponse2005 // Get all secret stores
+getSecretStores($options): \Fastly\Model\InlineResponse2007 // Get all secret stores
 ```
 
 Get all secret stores.
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\Fastly\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

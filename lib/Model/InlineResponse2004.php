@@ -53,8 +53,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'string[]',
-        'meta' => '\Fastly\Model\PaginationCursorMeta'
+        'expires_at' => 'string'
     ];
 
     /**
@@ -65,8 +64,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null,
-        'meta' => null
+        'expires_at' => null
     ];
 
     /**
@@ -96,8 +94,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'meta' => 'meta'
+        'expires_at' => 'expires_at'
     ];
 
     /**
@@ -106,8 +103,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'meta' => 'setMeta'
+        'expires_at' => 'setExpiresAt'
     ];
 
     /**
@@ -116,8 +112,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'meta' => 'getMeta'
+        'expires_at' => 'getExpiresAt'
     ];
 
     /**
@@ -177,8 +172,7 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
-        $this->container['meta'] = $data['meta'] ?? null;
+        $this->container['expires_at'] = $data['expires_at'] ?? null;
     }
 
     /**
@@ -206,49 +200,25 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets data
+     * Gets expires_at
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getExpiresAt()
     {
-        return $this->container['data'];
+        return $this->container['expires_at'];
     }
 
     /**
-     * Sets data
+     * Sets expires_at
      *
-     * @param string[]|null $data data
+     * @param string|null $expires_at Time-stamp (GMT) when the domain_ownership validation will expire.
      *
      * @return self
      */
-    public function setData($data)
+    public function setExpiresAt($expires_at)
     {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets meta
-     *
-     * @return \Fastly\Model\PaginationCursorMeta|null
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param \Fastly\Model\PaginationCursorMeta|null $meta meta
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        $this->container['meta'] = $meta;
+        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }

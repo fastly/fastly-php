@@ -1340,7 +1340,7 @@ class SecretStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2005
+     * @return \Fastly\Model\InlineResponse2007
      */
     public function getSecretStores($options)
     {
@@ -1364,7 +1364,7 @@ class SecretStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSecretStoresWithHttpInfo($options)
     {
@@ -1419,20 +1419,20 @@ class SecretStoreApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2005' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse2007' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2005', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2007', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2005';
+            $returnType = '\Fastly\Model\InlineResponse2007';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1450,7 +1450,7 @@ class SecretStoreApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2005',
+                        '\Fastly\Model\InlineResponse2007',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1506,7 +1506,7 @@ class SecretStoreApi
      */
     public function getSecretStoresAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2005';
+        $returnType = '\Fastly\Model\InlineResponse2007';
         $request = $this->getSecretStoresRequest($options);
 
         return $this->client

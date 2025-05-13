@@ -197,6 +197,9 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
     const REGION_EU_CENTRAL = 'EU-Central';
     const REGION_EU_EAST = 'EU-East';
     const REGION_EU_WEST = 'EU-West';
+    const REGION_MX_NORTH = 'MX-North';
+    const REGION_MX_CENTRAL = 'MX-Central';
+    const REGION_MX_SOUTH = 'MX-South';
     const REGION_MIDDLE_EAST = 'Middle-East';
     const REGION_NORTH_AMERICA = 'North-America';
     const REGION_SA_SOUTH = 'SA-South';
@@ -217,11 +220,13 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATS_REGION_USA = 'usa';
     const STATS_REGION_ASIA_INDIA = 'asia_india';
     const STATS_REGION_ASIA_SOUTHKOREA = 'asia_southkorea';
+    const STATS_REGION_MEXICO = 'mexico';
     const BILLING_REGION_AFRICA = 'Africa';
     const BILLING_REGION_AUSTRALIA = 'Australia';
     const BILLING_REGION_ASIA = 'Asia';
     const BILLING_REGION_EUROPE = 'Europe';
     const BILLING_REGION_INDIA = 'India';
+    const BILLING_REGION_MEXICO = 'Mexico';
     const BILLING_REGION_NORTH_AMERICA = 'North America';
     const BILLING_REGION_SOUTH_KOREA = 'South Korea';
     const BILLING_REGION_SOUTH_AMERICA = 'South America';
@@ -240,6 +245,9 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
             self::REGION_EU_CENTRAL,
             self::REGION_EU_EAST,
             self::REGION_EU_WEST,
+            self::REGION_MX_NORTH,
+            self::REGION_MX_CENTRAL,
+            self::REGION_MX_SOUTH,
             self::REGION_MIDDLE_EAST,
             self::REGION_NORTH_AMERICA,
             self::REGION_SA_SOUTH,
@@ -271,6 +279,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATS_REGION_USA,
             self::STATS_REGION_ASIA_INDIA,
             self::STATS_REGION_ASIA_SOUTHKOREA,
+            self::STATS_REGION_MEXICO,
         ];
     }
 
@@ -287,6 +296,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
             self::BILLING_REGION_ASIA,
             self::BILLING_REGION_EUROPE,
             self::BILLING_REGION_INDIA,
+            self::BILLING_REGION_MEXICO,
             self::BILLING_REGION_NORTH_AMERICA,
             self::BILLING_REGION_SOUTH_KOREA,
             self::BILLING_REGION_SOUTH_AMERICA,

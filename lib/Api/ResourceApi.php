@@ -122,7 +122,7 @@ class ResourceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -147,7 +147,7 @@ class ResourceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -260,7 +260,7 @@ class ResourceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -288,7 +288,7 @@ class ResourceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -342,7 +342,7 @@ class ResourceApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1551,7 +1551,7 @@ class ResourceApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $id An alphanumeric string identifying the resource link. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1577,7 +1577,7 @@ class ResourceApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $id An alphanumeric string identifying the resource link. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1691,7 +1691,7 @@ class ResourceApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $id An alphanumeric string identifying the resource link. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1720,7 +1720,7 @@ class ResourceApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $id An alphanumeric string identifying the resource link. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1775,7 +1775,7 @@ class ResourceApi
      * @param  int $version_id Integer identifying a service version. (required)
      * @param  string $id An alphanumeric string identifying the resource link. (required)
      * @param  string $resource_id The ID of the underlying linked resource. (optional)
-     * @param  string $name The name of the resource link. (optional)
+     * @param  string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -112,7 +112,7 @@ class DictionaryItemApi
     /**
      * Operation bulkUpdateDictionaryItem
      *
-     * Update multiple entries in an edge dictionary
+     * Update multiple entries in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -136,7 +136,7 @@ class DictionaryItemApi
     /**
      * Operation bulkUpdateDictionaryItemWithHttpInfo
      *
-     * Update multiple entries in an edge dictionary
+     * Update multiple entries in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -248,7 +248,7 @@ class DictionaryItemApi
     /**
      * Operation bulkUpdateDictionaryItemAsync
      *
-     * Update multiple entries in an edge dictionary
+     * Update multiple entries in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -275,7 +275,7 @@ class DictionaryItemApi
     /**
      * Operation bulkUpdateDictionaryItemAsyncWithHttpInfo
      *
-     * Update multiple entries in an edge dictionary
+     * Update multiple entries in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -466,7 +466,7 @@ class DictionaryItemApi
     /**
      * Operation createDictionaryItem
      *
-     * Create an entry in an edge dictionary
+     * Create an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -491,7 +491,7 @@ class DictionaryItemApi
     /**
      * Operation createDictionaryItemWithHttpInfo
      *
-     * Create an entry in an edge dictionary
+     * Create an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -604,7 +604,7 @@ class DictionaryItemApi
     /**
      * Operation createDictionaryItemAsync
      *
-     * Create an entry in an edge dictionary
+     * Create an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -632,7 +632,7 @@ class DictionaryItemApi
     /**
      * Operation createDictionaryItemAsyncWithHttpInfo
      *
-     * Create an entry in an edge dictionary
+     * Create an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -828,7 +828,7 @@ class DictionaryItemApi
     /**
      * Operation deleteDictionaryItem
      *
-     * Delete an item from an edge dictionary
+     * Delete an item from a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -852,7 +852,7 @@ class DictionaryItemApi
     /**
      * Operation deleteDictionaryItemWithHttpInfo
      *
-     * Delete an item from an edge dictionary
+     * Delete an item from a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -964,7 +964,7 @@ class DictionaryItemApi
     /**
      * Operation deleteDictionaryItemAsync
      *
-     * Delete an item from an edge dictionary
+     * Delete an item from a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -991,7 +991,7 @@ class DictionaryItemApi
     /**
      * Operation deleteDictionaryItemAsyncWithHttpInfo
      *
-     * Delete an item from an edge dictionary
+     * Delete an item from a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1190,7 +1190,7 @@ class DictionaryItemApi
     /**
      * Operation getDictionaryItem
      *
-     * Get an item from an edge dictionary
+     * Get an item from a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1214,7 +1214,7 @@ class DictionaryItemApi
     /**
      * Operation getDictionaryItemWithHttpInfo
      *
-     * Get an item from an edge dictionary
+     * Get an item from a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1326,7 +1326,7 @@ class DictionaryItemApi
     /**
      * Operation getDictionaryItemAsync
      *
-     * Get an item from an edge dictionary
+     * Get an item from a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1353,7 +1353,7 @@ class DictionaryItemApi
     /**
      * Operation getDictionaryItemAsyncWithHttpInfo
      *
-     * Get an item from an edge dictionary
+     * Get an item from a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1552,7 +1552,7 @@ class DictionaryItemApi
     /**
      * Operation listDictionaryItems
      *
-     * List items in an edge dictionary
+     * List items in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1562,7 +1562,7 @@ class DictionaryItemApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
-     * @param  int $per_page Number of records per page. (optional, default to 20)
+     * @param  int $per_page Number of records per page. (optional, default to 100)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
      * @param  string $direction Direction in which to sort results. (optional, default to 'ascend')
      *
@@ -1579,7 +1579,7 @@ class DictionaryItemApi
     /**
      * Operation listDictionaryItemsWithHttpInfo
      *
-     * List items in an edge dictionary
+     * List items in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1589,7 +1589,7 @@ class DictionaryItemApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
-     * @param  int $per_page Number of records per page. (optional, default to 20)
+     * @param  int $per_page Number of records per page. (optional, default to 100)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
      * @param  string $direction Direction in which to sort results. (optional, default to 'ascend')
      *
@@ -1694,7 +1694,7 @@ class DictionaryItemApi
     /**
      * Operation listDictionaryItemsAsync
      *
-     * List items in an edge dictionary
+     * List items in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1704,7 +1704,7 @@ class DictionaryItemApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
-     * @param  int $per_page Number of records per page. (optional, default to 20)
+     * @param  int $per_page Number of records per page. (optional, default to 100)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
      * @param  string $direction Direction in which to sort results. (optional, default to 'ascend')
      *
@@ -1724,7 +1724,7 @@ class DictionaryItemApi
     /**
      * Operation listDictionaryItemsAsyncWithHttpInfo
      *
-     * List items in an edge dictionary
+     * List items in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1734,7 +1734,7 @@ class DictionaryItemApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
-     * @param  int $per_page Number of records per page. (optional, default to 20)
+     * @param  int $per_page Number of records per page. (optional, default to 100)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
      * @param  string $direction Direction in which to sort results. (optional, default to 'ascend')
      *
@@ -1790,7 +1790,7 @@ class DictionaryItemApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
      * @param  int $page Current page. (optional)
-     * @param  int $per_page Number of records per page. (optional, default to 20)
+     * @param  int $per_page Number of records per page. (optional, default to 100)
      * @param  string $sort Field on which to sort. (optional, default to 'created')
      * @param  string $direction Direction in which to sort results. (optional, default to 'ascend')
      *
@@ -1803,7 +1803,7 @@ class DictionaryItemApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $dictionary_id = array_key_exists('dictionary_id', $options) ? $options['dictionary_id'] : null;
         $page = array_key_exists('page', $options) ? $options['page'] : null;
-        $per_page = array_key_exists('per_page', $options) ? $options['per_page'] : 20;
+        $per_page = array_key_exists('per_page', $options) ? $options['per_page'] : 100;
         $sort = array_key_exists('sort', $options) ? $options['sort'] : 'created';
         $direction = array_key_exists('direction', $options) ? $options['direction'] : 'ascend';
 
@@ -1819,8 +1819,8 @@ class DictionaryItemApi
                 'Missing the required parameter $dictionary_id when calling listDictionaryItems'
             );
         }
-        if ($per_page !== null && $per_page > 100) {
-            throw new \InvalidArgumentException('invalid value for "$per_page" when calling DictionaryItemApi.listDictionaryItems, must be smaller than or equal to 100.');
+        if ($per_page !== null && $per_page > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$per_page" when calling DictionaryItemApi.listDictionaryItems, must be smaller than or equal to 1000.');
         }
         if ($per_page !== null && $per_page < 1) {
             throw new \InvalidArgumentException('invalid value for "$per_page" when calling DictionaryItemApi.listDictionaryItems, must be bigger than or equal to 1.');
@@ -1969,7 +1969,7 @@ class DictionaryItemApi
     /**
      * Operation updateDictionaryItem
      *
-     * Update an entry in an edge dictionary
+     * Update an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1995,7 +1995,7 @@ class DictionaryItemApi
     /**
      * Operation updateDictionaryItemWithHttpInfo
      *
-     * Update an entry in an edge dictionary
+     * Update an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2109,7 +2109,7 @@ class DictionaryItemApi
     /**
      * Operation updateDictionaryItemAsync
      *
-     * Update an entry in an edge dictionary
+     * Update an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2138,7 +2138,7 @@ class DictionaryItemApi
     /**
      * Operation updateDictionaryItemAsyncWithHttpInfo
      *
-     * Update an entry in an edge dictionary
+     * Update an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2351,7 +2351,7 @@ class DictionaryItemApi
     /**
      * Operation upsertDictionaryItem
      *
-     * Insert or update an entry in an edge dictionary
+     * Insert or update an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2377,7 +2377,7 @@ class DictionaryItemApi
     /**
      * Operation upsertDictionaryItemWithHttpInfo
      *
-     * Insert or update an entry in an edge dictionary
+     * Insert or update an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2491,7 +2491,7 @@ class DictionaryItemApi
     /**
      * Operation upsertDictionaryItemAsync
      *
-     * Insert or update an entry in an edge dictionary
+     * Insert or update an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2520,7 +2520,7 @@ class DictionaryItemApi
     /**
      * Operation upsertDictionaryItemAsyncWithHttpInfo
      *
-     * Insert or update an entry in an edge dictionary
+     * Insert or update an entry in a dictionary
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *

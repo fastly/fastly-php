@@ -162,19 +162,24 @@ Class | Method | Description
 [*CustomerAddressesApi*](docs/Api/CustomerAddressesApi.md) | [**createCustomerAddress**](docs/Api/CustomerAddressesApi.md#createcustomeraddress) | Creates an address associated with a customer account.
 [*CustomerAddressesApi*](docs/Api/CustomerAddressesApi.md) | [**listCustomerAddresses**](docs/Api/CustomerAddressesApi.md#listcustomeraddresses) | Return the list of addresses associated with a customer account.
 [*CustomerAddressesApi*](docs/Api/CustomerAddressesApi.md) | [**updateCustomerAddress**](docs/Api/CustomerAddressesApi.md#updatecustomeraddress) | Updates an address associated with a customer account.
-[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**createDictionary**](docs/Api/DictionaryApi.md#createdictionary) | Create an edge dictionary
-[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**deleteDictionary**](docs/Api/DictionaryApi.md#deletedictionary) | Delete an edge dictionary
-[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**getDictionary**](docs/Api/DictionaryApi.md#getdictionary) | Get an edge dictionary
-[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**listDictionaries**](docs/Api/DictionaryApi.md#listdictionaries) | List edge dictionaries
-[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**updateDictionary**](docs/Api/DictionaryApi.md#updatedictionary) | Update an edge dictionary
-[*DictionaryInfoApi*](docs/Api/DictionaryInfoApi.md) | [**getDictionaryInfo**](docs/Api/DictionaryInfoApi.md#getdictionaryinfo) | Get edge dictionary metadata
-[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**bulkUpdateDictionaryItem**](docs/Api/DictionaryItemApi.md#bulkupdatedictionaryitem) | Update multiple entries in an edge dictionary
-[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**createDictionaryItem**](docs/Api/DictionaryItemApi.md#createdictionaryitem) | Create an entry in an edge dictionary
-[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**deleteDictionaryItem**](docs/Api/DictionaryItemApi.md#deletedictionaryitem) | Delete an item from an edge dictionary
-[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**getDictionaryItem**](docs/Api/DictionaryItemApi.md#getdictionaryitem) | Get an item from an edge dictionary
-[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**listDictionaryItems**](docs/Api/DictionaryItemApi.md#listdictionaryitems) | List items in an edge dictionary
-[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**updateDictionaryItem**](docs/Api/DictionaryItemApi.md#updatedictionaryitem) | Update an entry in an edge dictionary
-[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**upsertDictionaryItem**](docs/Api/DictionaryItemApi.md#upsertdictionaryitem) | Insert or update an entry in an edge dictionary
+[*DdosProtectionApi*](docs/Api/DdosProtectionApi.md) | [**ddosProtectionEventGet**](docs/Api/DdosProtectionApi.md#ddosprotectioneventget) | Get event by ID
+[*DdosProtectionApi*](docs/Api/DdosProtectionApi.md) | [**ddosProtectionEventList**](docs/Api/DdosProtectionApi.md#ddosprotectioneventlist) | Get events
+[*DdosProtectionApi*](docs/Api/DdosProtectionApi.md) | [**ddosProtectionEventRuleList**](docs/Api/DdosProtectionApi.md#ddosprotectioneventrulelist) | Get all rules for an event
+[*DdosProtectionApi*](docs/Api/DdosProtectionApi.md) | [**ddosProtectionRuleGet**](docs/Api/DdosProtectionApi.md#ddosprotectionruleget) | Get a rule by ID
+[*DdosProtectionApi*](docs/Api/DdosProtectionApi.md) | [**ddosProtectionTrafficStatsRuleGet**](docs/Api/DdosProtectionApi.md#ddosprotectiontrafficstatsruleget) | Get traffic stats for a rule
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**createDictionary**](docs/Api/DictionaryApi.md#createdictionary) | Create a dictionary
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**deleteDictionary**](docs/Api/DictionaryApi.md#deletedictionary) | Delete a dictionary
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**getDictionary**](docs/Api/DictionaryApi.md#getdictionary) | Get a dictionary
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**listDictionaries**](docs/Api/DictionaryApi.md#listdictionaries) | List dictionaries
+[*DictionaryApi*](docs/Api/DictionaryApi.md) | [**updateDictionary**](docs/Api/DictionaryApi.md#updatedictionary) | Update a dictionary
+[*DictionaryInfoApi*](docs/Api/DictionaryInfoApi.md) | [**getDictionaryInfo**](docs/Api/DictionaryInfoApi.md#getdictionaryinfo) | Get dictionary metadata
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**bulkUpdateDictionaryItem**](docs/Api/DictionaryItemApi.md#bulkupdatedictionaryitem) | Update multiple entries in a dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**createDictionaryItem**](docs/Api/DictionaryItemApi.md#createdictionaryitem) | Create an entry in a dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**deleteDictionaryItem**](docs/Api/DictionaryItemApi.md#deletedictionaryitem) | Delete an item from a dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**getDictionaryItem**](docs/Api/DictionaryItemApi.md#getdictionaryitem) | Get an item from a dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**listDictionaryItems**](docs/Api/DictionaryItemApi.md#listdictionaryitems) | List items in a dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**updateDictionaryItem**](docs/Api/DictionaryItemApi.md#updatedictionaryitem) | Update an entry in a dictionary
+[*DictionaryItemApi*](docs/Api/DictionaryItemApi.md) | [**upsertDictionaryItem**](docs/Api/DictionaryItemApi.md#upsertdictionaryitem) | Insert or update an entry in a dictionary
 [*DiffApi*](docs/Api/DiffApi.md) | [**diffServiceVersions**](docs/Api/DiffApi.md#diffserviceversions) | Diff two service versions
 [*DirectorApi*](docs/Api/DirectorApi.md) | [**createDirector**](docs/Api/DirectorApi.md#createdirector) | Create a director
 [*DirectorApi*](docs/Api/DirectorApi.md) | [**deleteDirector**](docs/Api/DirectorApi.md#deletedirector) | Delete a director
@@ -420,11 +425,13 @@ Class | Method | Description
 [*ObjectStorageAccessKeysApi*](docs/Api/ObjectStorageAccessKeysApi.md) | [**deleteAccessKey**](docs/Api/ObjectStorageAccessKeysApi.md#deleteaccesskey) | Delete an access key
 [*ObjectStorageAccessKeysApi*](docs/Api/ObjectStorageAccessKeysApi.md) | [**getAccessKey**](docs/Api/ObjectStorageAccessKeysApi.md#getaccesskey) | Get an access key
 [*ObjectStorageAccessKeysApi*](docs/Api/ObjectStorageAccessKeysApi.md) | [**listAccessKeys**](docs/Api/ObjectStorageAccessKeysApi.md#listaccesskeys) | List access keys
+[*ObservabilityAggregationsForLogsApi*](docs/Api/ObservabilityAggregationsForLogsApi.md) | [**logAggregationsGet**](docs/Api/ObservabilityAggregationsForLogsApi.md#logaggregationsget) | Retrieve aggregated log results
 [*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**createDashboard**](docs/Api/ObservabilityCustomDashboardsApi.md#createdashboard) | Create a new dashboard
 [*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**deleteDashboard**](docs/Api/ObservabilityCustomDashboardsApi.md#deletedashboard) | Delete an existing dashboard
 [*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**getDashboard**](docs/Api/ObservabilityCustomDashboardsApi.md#getdashboard) | Retrieve a dashboard by ID
 [*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**listDashboards**](docs/Api/ObservabilityCustomDashboardsApi.md#listdashboards) | List all custom dashboards
 [*ObservabilityCustomDashboardsApi*](docs/Api/ObservabilityCustomDashboardsApi.md) | [**updateDashboard**](docs/Api/ObservabilityCustomDashboardsApi.md#updatedashboard) | Update an existing dashboard
+[*ObservabilityTimeseriesForLogsApi*](docs/Api/ObservabilityTimeseriesForLogsApi.md) | [**logTimeseriesGet**](docs/Api/ObservabilityTimeseriesForLogsApi.md#logtimeseriesget) | Retrieve log data as time series
 [*OriginInspectorHistoricalApi*](docs/Api/OriginInspectorHistoricalApi.md) | [**getOriginInspectorHistorical**](docs/Api/OriginInspectorHistoricalApi.md#getorigininspectorhistorical) | Get historical origin data for a service
 [*OriginInspectorRealtimeApi*](docs/Api/OriginInspectorRealtimeApi.md) | [**getOriginInspectorLast120Seconds**](docs/Api/OriginInspectorRealtimeApi.md#getorigininspectorlast120seconds) | Get real-time origin data for the last 120 seconds
 [*OriginInspectorRealtimeApi*](docs/Api/OriginInspectorRealtimeApi.md) | [**getOriginInspectorLastMaxEntries**](docs/Api/OriginInspectorRealtimeApi.md#getorigininspectorlastmaxentries) | Get a limited number of real-time origin data entries
@@ -443,30 +450,38 @@ Class | Method | Description
 [*ProductBotManagementApi*](docs/Api/ProductBotManagementApi.md) | [**disableProductBotManagement**](docs/Api/ProductBotManagementApi.md#disableproductbotmanagement) | Disable product
 [*ProductBotManagementApi*](docs/Api/ProductBotManagementApi.md) | [**enableProductBotManagement**](docs/Api/ProductBotManagementApi.md#enableproductbotmanagement) | Enable product
 [*ProductBotManagementApi*](docs/Api/ProductBotManagementApi.md) | [**getProductBotManagement**](docs/Api/ProductBotManagementApi.md#getproductbotmanagement) | Get product enablement status
+[*ProductBotManagementApi*](docs/Api/ProductBotManagementApi.md) | [**getServicesProductBotManagement**](docs/Api/ProductBotManagementApi.md#getservicesproductbotmanagement) | Get services with product enabled
 [*ProductBrotliCompressionApi*](docs/Api/ProductBrotliCompressionApi.md) | [**disableProductBrotliCompression**](docs/Api/ProductBrotliCompressionApi.md#disableproductbrotlicompression) | Disable product
 [*ProductBrotliCompressionApi*](docs/Api/ProductBrotliCompressionApi.md) | [**enableProductBrotliCompression**](docs/Api/ProductBrotliCompressionApi.md#enableproductbrotlicompression) | Enable product
 [*ProductBrotliCompressionApi*](docs/Api/ProductBrotliCompressionApi.md) | [**getProductBrotliCompression**](docs/Api/ProductBrotliCompressionApi.md#getproductbrotlicompression) | Get product enablement status
+[*ProductBrotliCompressionApi*](docs/Api/ProductBrotliCompressionApi.md) | [**getServicesProductBrotliCompression**](docs/Api/ProductBrotliCompressionApi.md#getservicesproductbrotlicompression) | Get services with product enabled
 [*ProductDdosProtectionApi*](docs/Api/ProductDdosProtectionApi.md) | [**disableProductDdosProtection**](docs/Api/ProductDdosProtectionApi.md#disableproductddosprotection) | Disable product
 [*ProductDdosProtectionApi*](docs/Api/ProductDdosProtectionApi.md) | [**enableProductDdosProtection**](docs/Api/ProductDdosProtectionApi.md#enableproductddosprotection) | Enable product
 [*ProductDdosProtectionApi*](docs/Api/ProductDdosProtectionApi.md) | [**getProductDdosProtection**](docs/Api/ProductDdosProtectionApi.md#getproductddosprotection) | Get product enablement status
 [*ProductDdosProtectionApi*](docs/Api/ProductDdosProtectionApi.md) | [**getProductDdosProtectionConfiguration**](docs/Api/ProductDdosProtectionApi.md#getproductddosprotectionconfiguration) | Get configuration
+[*ProductDdosProtectionApi*](docs/Api/ProductDdosProtectionApi.md) | [**getServicesProductDdosProtection**](docs/Api/ProductDdosProtectionApi.md#getservicesproductddosprotection) | Get services with product enabled
 [*ProductDdosProtectionApi*](docs/Api/ProductDdosProtectionApi.md) | [**setProductDdosProtectionConfiguration**](docs/Api/ProductDdosProtectionApi.md#setproductddosprotectionconfiguration) | Update configuration
 [*ProductDomainInspectorApi*](docs/Api/ProductDomainInspectorApi.md) | [**disableProductDomainInspector**](docs/Api/ProductDomainInspectorApi.md#disableproductdomaininspector) | Disable product
 [*ProductDomainInspectorApi*](docs/Api/ProductDomainInspectorApi.md) | [**enableProductDomainInspector**](docs/Api/ProductDomainInspectorApi.md#enableproductdomaininspector) | Enable product
 [*ProductDomainInspectorApi*](docs/Api/ProductDomainInspectorApi.md) | [**getProductDomainInspector**](docs/Api/ProductDomainInspectorApi.md#getproductdomaininspector) | Get product enablement status
+[*ProductDomainInspectorApi*](docs/Api/ProductDomainInspectorApi.md) | [**getServicesProductDomainInspector**](docs/Api/ProductDomainInspectorApi.md#getservicesproductdomaininspector) | Get services with product enabled
 [*ProductFanoutApi*](docs/Api/ProductFanoutApi.md) | [**disableProductFanout**](docs/Api/ProductFanoutApi.md#disableproductfanout) | Disable product
 [*ProductFanoutApi*](docs/Api/ProductFanoutApi.md) | [**enableProductFanout**](docs/Api/ProductFanoutApi.md#enableproductfanout) | Enable product
 [*ProductFanoutApi*](docs/Api/ProductFanoutApi.md) | [**getProductFanout**](docs/Api/ProductFanoutApi.md#getproductfanout) | Get product enablement status
+[*ProductFanoutApi*](docs/Api/ProductFanoutApi.md) | [**getServicesProductFanout**](docs/Api/ProductFanoutApi.md#getservicesproductfanout) | Get services with product enabled
 [*ProductImageOptimizerApi*](docs/Api/ProductImageOptimizerApi.md) | [**disableProductImageOptimizer**](docs/Api/ProductImageOptimizerApi.md#disableproductimageoptimizer) | Disable product
 [*ProductImageOptimizerApi*](docs/Api/ProductImageOptimizerApi.md) | [**enableProductImageOptimizer**](docs/Api/ProductImageOptimizerApi.md#enableproductimageoptimizer) | Enable product
 [*ProductImageOptimizerApi*](docs/Api/ProductImageOptimizerApi.md) | [**getProductImageOptimizer**](docs/Api/ProductImageOptimizerApi.md#getproductimageoptimizer) | Get product enablement status
+[*ProductImageOptimizerApi*](docs/Api/ProductImageOptimizerApi.md) | [**getServicesProductImageOptimizer**](docs/Api/ProductImageOptimizerApi.md#getservicesproductimageoptimizer) | Get services with product enabled
 [*ProductLogExplorerInsightsApi*](docs/Api/ProductLogExplorerInsightsApi.md) | [**disableProductLogExplorerInsights**](docs/Api/ProductLogExplorerInsightsApi.md#disableproductlogexplorerinsights) | Disable product
 [*ProductLogExplorerInsightsApi*](docs/Api/ProductLogExplorerInsightsApi.md) | [**enableProductLogExplorerInsights**](docs/Api/ProductLogExplorerInsightsApi.md#enableproductlogexplorerinsights) | Enable product
 [*ProductLogExplorerInsightsApi*](docs/Api/ProductLogExplorerInsightsApi.md) | [**getProductLogExplorerInsights**](docs/Api/ProductLogExplorerInsightsApi.md#getproductlogexplorerinsights) | Get product enablement status
+[*ProductLogExplorerInsightsApi*](docs/Api/ProductLogExplorerInsightsApi.md) | [**getServicesProductLogExplorerInsights**](docs/Api/ProductLogExplorerInsightsApi.md#getservicesproductlogexplorerinsights) | Get services with product enabled
 [*ProductNgwafApi*](docs/Api/ProductNgwafApi.md) | [**disableProductNgwaf**](docs/Api/ProductNgwafApi.md#disableproductngwaf) | Disable product
 [*ProductNgwafApi*](docs/Api/ProductNgwafApi.md) | [**enableProductNgwaf**](docs/Api/ProductNgwafApi.md#enableproductngwaf) | Enable product
 [*ProductNgwafApi*](docs/Api/ProductNgwafApi.md) | [**getProductNgwaf**](docs/Api/ProductNgwafApi.md#getproductngwaf) | Get product enablement status
 [*ProductNgwafApi*](docs/Api/ProductNgwafApi.md) | [**getProductNgwafConfiguration**](docs/Api/ProductNgwafApi.md#getproductngwafconfiguration) | Get configuration
+[*ProductNgwafApi*](docs/Api/ProductNgwafApi.md) | [**getServicesProductNgwaf**](docs/Api/ProductNgwafApi.md#getservicesproductngwaf) | Get services with product enabled
 [*ProductNgwafApi*](docs/Api/ProductNgwafApi.md) | [**setProductNgwafConfiguration**](docs/Api/ProductNgwafApi.md#setproductngwafconfiguration) | Update configuration
 [*ProductObjectStorageApi*](docs/Api/ProductObjectStorageApi.md) | [**disableProductObjectStorage**](docs/Api/ProductObjectStorageApi.md#disableproductobjectstorage) | Disable product
 [*ProductObjectStorageApi*](docs/Api/ProductObjectStorageApi.md) | [**enableObjectStorage**](docs/Api/ProductObjectStorageApi.md#enableobjectstorage) | Enable product
@@ -474,9 +489,11 @@ Class | Method | Description
 [*ProductOriginInspectorApi*](docs/Api/ProductOriginInspectorApi.md) | [**disableProductOriginInspector**](docs/Api/ProductOriginInspectorApi.md#disableproductorigininspector) | Disable product
 [*ProductOriginInspectorApi*](docs/Api/ProductOriginInspectorApi.md) | [**enableProductOriginInspector**](docs/Api/ProductOriginInspectorApi.md#enableproductorigininspector) | Enable product
 [*ProductOriginInspectorApi*](docs/Api/ProductOriginInspectorApi.md) | [**getProductOriginInspector**](docs/Api/ProductOriginInspectorApi.md#getproductorigininspector) | Get product enablement status
+[*ProductOriginInspectorApi*](docs/Api/ProductOriginInspectorApi.md) | [**getServicesProductOriginInspector**](docs/Api/ProductOriginInspectorApi.md#getservicesproductorigininspector) | Get services with product enabled
 [*ProductWebsocketsApi*](docs/Api/ProductWebsocketsApi.md) | [**disableProductWebsockets**](docs/Api/ProductWebsocketsApi.md#disableproductwebsockets) | Disable product
 [*ProductWebsocketsApi*](docs/Api/ProductWebsocketsApi.md) | [**enableProductWebsockets**](docs/Api/ProductWebsocketsApi.md#enableproductwebsockets) | Enable product
 [*ProductWebsocketsApi*](docs/Api/ProductWebsocketsApi.md) | [**getProductWebsockets**](docs/Api/ProductWebsocketsApi.md#getproductwebsockets) | Get product enablement status
+[*ProductWebsocketsApi*](docs/Api/ProductWebsocketsApi.md) | [**getServicesProductWebsockets**](docs/Api/ProductWebsocketsApi.md#getservicesproductwebsockets) | Get services with product enabled
 [*PublicIpListApi*](docs/Api/PublicIpListApi.md) | [**listFastlyIps**](docs/Api/PublicIpListApi.md#listfastlyips) | List Fastly&#39;s public IPs
 [*PublishApi*](docs/Api/PublishApi.md) | [**publish**](docs/Api/PublishApi.md#publish) | Send messages to Fanout subscribers
 [*PurgeApi*](docs/Api/PurgeApi.md) | [**bulkPurgeTag**](docs/Api/PurgeApi.md#bulkpurgetag) | Purge multiple surrogate key tags
@@ -625,35 +642,6 @@ Class | Method | Description
 [*VersionApi*](docs/Api/VersionApi.md) | [**lockServiceVersion**](docs/Api/VersionApi.md#lockserviceversion) | Lock a service version
 [*VersionApi*](docs/Api/VersionApi.md) | [**updateServiceVersion**](docs/Api/VersionApi.md#updateserviceversion) | Update a service version
 [*VersionApi*](docs/Api/VersionApi.md) | [**validateServiceVersion**](docs/Api/VersionApi.md#validateserviceversion) | Validate a service version
-[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**bulkDeleteWafActiveRules**](docs/Api/WafActiveRulesApi.md#bulkdeletewafactiverules) | Delete multiple active rules from a WAF
-[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**bulkUpdateWafActiveRules**](docs/Api/WafActiveRulesApi.md#bulkupdatewafactiverules) | Update multiple active rules
-[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**createWafActiveRule**](docs/Api/WafActiveRulesApi.md#createwafactiverule) | Add a rule to a WAF as an active rule
-[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**createWafActiveRulesTag**](docs/Api/WafActiveRulesApi.md#createwafactiverulestag) | Create active rules by tag
-[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**deleteWafActiveRule**](docs/Api/WafActiveRulesApi.md#deletewafactiverule) | Delete an active rule
-[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**getWafActiveRule**](docs/Api/WafActiveRulesApi.md#getwafactiverule) | Get an active WAF rule object
-[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**listWafActiveRules**](docs/Api/WafActiveRulesApi.md#listwafactiverules) | List active rules on a WAF
-[*WafActiveRulesApi*](docs/Api/WafActiveRulesApi.md) | [**updateWafActiveRule**](docs/Api/WafActiveRulesApi.md#updatewafactiverule) | Update an active rule
-[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**createWafRuleExclusion**](docs/Api/WafExclusionsApi.md#createwafruleexclusion) | Create a WAF rule exclusion
-[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**deleteWafRuleExclusion**](docs/Api/WafExclusionsApi.md#deletewafruleexclusion) | Delete a WAF rule exclusion
-[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**getWafRuleExclusion**](docs/Api/WafExclusionsApi.md#getwafruleexclusion) | Get a WAF rule exclusion
-[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**listWafRuleExclusions**](docs/Api/WafExclusionsApi.md#listwafruleexclusions) | List WAF rule exclusions
-[*WafExclusionsApi*](docs/Api/WafExclusionsApi.md) | [**updateWafRuleExclusion**](docs/Api/WafExclusionsApi.md#updatewafruleexclusion) | Update a WAF rule exclusion
-[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**cloneWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#clonewaffirewallversion) | Clone a firewall version
-[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**createWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#createwaffirewallversion) | Create a firewall version
-[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**deployActivateWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#deployactivatewaffirewallversion) | Deploy or activate a firewall version
-[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**getWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#getwaffirewallversion) | Get a firewall version
-[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**listWafFirewallVersions**](docs/Api/WafFirewallVersionsApi.md#listwaffirewallversions) | List firewall versions
-[*WafFirewallVersionsApi*](docs/Api/WafFirewallVersionsApi.md) | [**updateWafFirewallVersion**](docs/Api/WafFirewallVersionsApi.md#updatewaffirewallversion) | Update a firewall version
-[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**createWafFirewall**](docs/Api/WafFirewallsApi.md#createwaffirewall) | Create a firewall
-[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**deleteWafFirewall**](docs/Api/WafFirewallsApi.md#deletewaffirewall) | Delete a firewall
-[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**getWafFirewall**](docs/Api/WafFirewallsApi.md#getwaffirewall) | Get a firewall
-[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**listWafFirewalls**](docs/Api/WafFirewallsApi.md#listwaffirewalls) | List firewalls
-[*WafFirewallsApi*](docs/Api/WafFirewallsApi.md) | [**updateWafFirewall**](docs/Api/WafFirewallsApi.md#updatewaffirewall) | Update a firewall
-[*WafRuleRevisionsApi*](docs/Api/WafRuleRevisionsApi.md) | [**getWafRuleRevision**](docs/Api/WafRuleRevisionsApi.md#getwafrulerevision) | Get a revision of a rule
-[*WafRuleRevisionsApi*](docs/Api/WafRuleRevisionsApi.md) | [**listWafRuleRevisions**](docs/Api/WafRuleRevisionsApi.md#listwafrulerevisions) | List revisions for a rule
-[*WafRulesApi*](docs/Api/WafRulesApi.md) | [**getWafRule**](docs/Api/WafRulesApi.md#getwafrule) | Get a rule
-[*WafRulesApi*](docs/Api/WafRulesApi.md) | [**listWafRules**](docs/Api/WafRulesApi.md#listwafrules) | List available WAF rules
-[*WafTagsApi*](docs/Api/WafTagsApi.md) | [**listWafTags**](docs/Api/WafTagsApi.md#listwaftags) | List tags
 [*WholePlatformDdosHistoricalApi*](docs/Api/WholePlatformDdosHistoricalApi.md) | [**getPlatformDdosHistorical**](docs/Api/WholePlatformDdosHistoricalApi.md#getplatformddoshistorical) | Get historical DDoS metrics for the entire Fastly platform
 
 
@@ -668,6 +656,8 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
 - [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/domains/v1/tools/status`](https://www.fastly.com/documentation/reference/api/) (GET)
+- [`/domains/v1/tools/suggest`](https://www.fastly.com/documentation/reference/api/) (GET)
 - [`/domains/v1/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/domains/v1`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/notifications/integration-types`](https://developer.fastly.com/reference/api/observability/notification) (GET)
