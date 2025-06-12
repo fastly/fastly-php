@@ -8143,7 +8143,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ngwaf_requests_allowed_count
      *
-     * @param int|null $ngwaf_requests_allowed_count Count of Edge WAF requests allowed.
+     * @param int|null $ngwaf_requests_allowed_count Count of Next-Gen WAF (Edge WAF & Core WAF) requests allowed.
      *
      * @return self
      */
@@ -8191,7 +8191,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ngwaf_requests_blocked_count
      *
-     * @param int|null $ngwaf_requests_blocked_count Count of Edge WAF requests blocked.
+     * @param int|null $ngwaf_requests_blocked_count Count of Next-Gen WAF (Edge WAF & Core WAF) requests blocked.
      *
      * @return self
      */

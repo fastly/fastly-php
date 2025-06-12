@@ -858,7 +858,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prefer_ipv6
      *
-     * @param bool|null $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups.
+     * @param bool|null $prefer_ipv6 Prefer IPv6 connections to origins for hostname backends.
      *
      * @return self
      */

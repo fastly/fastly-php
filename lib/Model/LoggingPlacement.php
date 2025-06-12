@@ -39,8 +39,6 @@ class LoggingPlacement
      */
     const NONE = 'none';
 
-    const WAF_DEBUG = 'waf_debug';
-
     const NULL = 'null';
 
     /**
@@ -51,7 +49,6 @@ class LoggingPlacement
     {
         return [
             self::NONE,
-            self::WAF_DEBUG,
             self::NULL
         ];
     }

@@ -172,7 +172,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     const PLACEMENT_NONE = 'none';
-    const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
 
     /**
@@ -184,7 +183,6 @@ class LoggingCommon implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::PLACEMENT_NONE,
-            self::PLACEMENT_WAF_DEBUG,
             self::PLACEMENT_NULL,
         ];
     }

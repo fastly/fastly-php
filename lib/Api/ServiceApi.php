@@ -1107,6 +1107,7 @@ class ServiceApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version Number identifying a version of the service. (optional)
+     * @param  bool $filter_versions_active Limits the versions array to the active versions. Accepts &#x60;true&#x60; or &#x60;false&#x60; (defaults to false). (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1130,6 +1131,7 @@ class ServiceApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version Number identifying a version of the service. (optional)
+     * @param  bool $filter_versions_active Limits the versions array to the active versions. Accepts &#x60;true&#x60; or &#x60;false&#x60; (defaults to false). (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1241,6 +1243,7 @@ class ServiceApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version Number identifying a version of the service. (optional)
+     * @param  bool $filter_versions_active Limits the versions array to the active versions. Accepts &#x60;true&#x60; or &#x60;false&#x60; (defaults to false). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1267,6 +1270,7 @@ class ServiceApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version Number identifying a version of the service. (optional)
+     * @param  bool $filter_versions_active Limits the versions array to the active versions. Accepts &#x60;true&#x60; or &#x60;false&#x60; (defaults to false). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1319,6 +1323,7 @@ class ServiceApi
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  int $version Number identifying a version of the service. (optional)
+     * @param  bool $filter_versions_active Limits the versions array to the active versions. Accepts &#x60;true&#x60; or &#x60;false&#x60; (defaults to false). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1328,6 +1333,7 @@ class ServiceApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $version = array_key_exists('version', $options) ? $options['version'] : null;
+        $filter_versions_active = array_key_exists('filter_versions_active', $options) ? $options['filter_versions_active'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1356,6 +1362,17 @@ class ServiceApi
             }
             else {
                 $queryParams['version'] = ObjectSerializer::toString($version);
+            }
+        }
+        // query params
+        if ($filter_versions_active !== null) {
+            if('form' === 'form' && is_array($filter_versions_active)) {
+                foreach($filter_versions_active as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['filter[versions.active]'] = ObjectSerializer::toString($filter_versions_active);
             }
         }
 

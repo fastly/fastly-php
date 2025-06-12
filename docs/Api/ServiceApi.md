@@ -147,6 +147,7 @@ List detailed information on a specified service.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version'] = 56; // int | Number identifying a version of the service.
+$options['filter_versions_active'] = True; // bool | Limits the versions array to the active versions. Accepts `true` or `false` (defaults to false).
 
 try {
     $result = $apiInstance->getServiceDetail($options);
@@ -163,6 +164,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version** | **int** | Number identifying a version of the service. | [optional]
+**filter_versions_active** | **bool** | Limits the versions array to the active versions. Accepts `true` or `false` (defaults to false). | [optional]
 
 ### Return type
 

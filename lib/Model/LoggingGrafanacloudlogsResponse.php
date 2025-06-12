@@ -222,7 +222,6 @@ class LoggingGrafanacloudlogsResponse implements ModelInterface, ArrayAccess, \J
     }
 
     const PLACEMENT_NONE = 'none';
-    const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
     const FORMAT_VERSION_v1 = '1';
     const FORMAT_VERSION_v2 = '2';
@@ -236,7 +235,6 @@ class LoggingGrafanacloudlogsResponse implements ModelInterface, ArrayAccess, \J
     {
         return [
             self::PLACEMENT_NONE,
-            self::PLACEMENT_WAF_DEBUG,
             self::PLACEMENT_NULL,
         ];
     }

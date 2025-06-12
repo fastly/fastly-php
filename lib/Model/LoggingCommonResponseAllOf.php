@@ -172,7 +172,6 @@ class LoggingCommonResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     const PLACEMENT_NONE = 'none';
-    const PLACEMENT_WAF_DEBUG = 'waf_debug';
     const PLACEMENT_NULL = 'null';
 
     /**
@@ -184,7 +183,6 @@ class LoggingCommonResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     {
         return [
             self::PLACEMENT_NONE,
-            self::PLACEMENT_WAF_DEBUG,
             self::PLACEMENT_NULL,
         ];
     }
