@@ -123,7 +123,7 @@ class InvitationsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InvitationResponse
+     * @return \Fastly\Model\InvitationCreateResponse
      */
     public function createInvitation($options)
     {
@@ -145,7 +145,7 @@ class InvitationsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InvitationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InvitationCreateResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createInvitationWithHttpInfo($options)
     {
@@ -200,20 +200,20 @@ class InvitationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InvitationResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\InvitationCreateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InvitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InvitationCreateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InvitationResponse';
+            $returnType = '\Fastly\Model\InvitationCreateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -231,7 +231,7 @@ class InvitationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InvitationResponse',
+                        '\Fastly\Model\InvitationCreateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -283,7 +283,7 @@ class InvitationsApi
      */
     public function createInvitationAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InvitationResponse';
+        $returnType = '\Fastly\Model\InvitationCreateResponse';
         $request = $this->createInvitationRequest($options);
 
         return $this->client

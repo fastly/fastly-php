@@ -57,6 +57,7 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
         'placement' => 'string',
         'response_condition' => 'string',
         'format' => 'string',
+        'log_processing_region' => 'string',
         'format_version' => 'string',
         'address' => 'string',
         'port' => 'int',
@@ -79,6 +80,7 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
         'placement' => null,
         'response_condition' => null,
         'format' => null,
+        'log_processing_region' => null,
         'format_version' => null,
         'address' => null,
         'port' => null,
@@ -120,6 +122,7 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
         'placement' => 'placement',
         'response_condition' => 'response_condition',
         'format' => 'format',
+        'log_processing_region' => 'log_processing_region',
         'format_version' => 'format_version',
         'address' => 'address',
         'port' => 'port',
@@ -140,6 +143,7 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
         'placement' => 'setPlacement',
         'response_condition' => 'setResponseCondition',
         'format' => 'setFormat',
+        'log_processing_region' => 'setLogProcessingRegion',
         'format_version' => 'setFormatVersion',
         'address' => 'setAddress',
         'port' => 'setPort',
@@ -160,6 +164,7 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
         'placement' => 'getPlacement',
         'response_condition' => 'getResponseCondition',
         'format' => 'getFormat',
+        'log_processing_region' => 'getLogProcessingRegion',
         'format_version' => 'getFormatVersion',
         'address' => 'getAddress',
         'port' => 'getPort',
@@ -213,6 +218,9 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
 
     const PLACEMENT_NONE = 'none';
     const PLACEMENT_NULL = 'null';
+    const LOG_PROCESSING_REGION_NONE = 'none';
+    const LOG_PROCESSING_REGION_EU = 'eu';
+    const LOG_PROCESSING_REGION_US = 'us';
     const FORMAT_VERSION_v1 = '1';
     const FORMAT_VERSION_v2 = '2';
 
@@ -226,6 +234,20 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::PLACEMENT_NONE,
             self::PLACEMENT_NULL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLogProcessingRegionAllowableValues()
+    {
+        return [
+            self::LOG_PROCESSING_REGION_NONE,
+            self::LOG_PROCESSING_REGION_EU,
+            self::LOG_PROCESSING_REGION_US,
         ];
     }
 
@@ -261,6 +283,7 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['placement'] = $data['placement'] ?? null;
         $this->container['response_condition'] = $data['response_condition'] ?? null;
         $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['log_processing_region'] = $data['log_processing_region'] ?? 'none';
         $this->container['format_version'] = $data['format_version'] ?? '2';
         $this->container['address'] = $data['address'] ?? null;
         $this->container['port'] = $data['port'] ?? 514;
@@ -285,6 +308,15 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'placement', must be one of '%s'",
                 $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getLogProcessingRegionAllowableValues();
+        if (!is_null($this->container['log_processing_region']) && !in_array($this->container['log_processing_region'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'log_processing_region', must be one of '%s'",
+                $this->container['log_processing_region'],
                 implode("', '", $allowedValues)
             );
         }
@@ -408,13 +440,47 @@ class LoggingPapertrailResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets format
      *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     * @param string|null $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
      *
      * @return self
      */
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets log_processing_region
+     *
+     * @return string|null
+     */
+    public function getLogProcessingRegion()
+    {
+        return $this->container['log_processing_region'];
+    }
+
+    /**
+     * Sets log_processing_region
+     *
+     * @param string|null $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
+     *
+     * @return self
+     */
+    public function setLogProcessingRegion($log_processing_region)
+    {
+        $allowedValues = $this->getLogProcessingRegionAllowableValues();
+        if (!is_null($log_processing_region) && !in_array($log_processing_region, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'log_processing_region', must be one of '%s'",
+                    $log_processing_region,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['log_processing_region'] = $log_processing_region;
 
         return $this;
     }

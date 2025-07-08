@@ -1,10 +1,10 @@
-# # InvitationResponseAllOf
+# # InvitationCreateDataAllOf
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\InvitationResponseData**](InvitationResponseData.md) |  | [optional] 
+**relationships** | [**\Fastly\Model\RelationshipServiceInvitationsCreate**](RelationshipServiceInvitationsCreate.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -53,7 +53,7 @@ class Invitation implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\InvitationData'
+        'data' => '\Fastly\Model\InvitationCreateData'
     ];
 
     /**
@@ -202,7 +202,7 @@ class Invitation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \Fastly\Model\InvitationData|null
+     * @return \Fastly\Model\InvitationCreateData|null
      */
     public function getData()
     {
@@ -212,7 +212,7 @@ class Invitation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \Fastly\Model\InvitationData|null $data data
+     * @param \Fastly\Model\InvitationCreateData|null $data data
      *
      * @return self
      */

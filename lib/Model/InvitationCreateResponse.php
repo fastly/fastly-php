@@ -1,6 +1,6 @@
 <?php
 /**
- * InvitationResponse
+ * InvitationCreateResponse
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * InvitationResponse Class Doc Comment
+ * InvitationCreateResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InvitationResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class InvitationCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class InvitationResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $fastlyModelName = 'invitation_response';
+    protected static $fastlyModelName = 'invitation_create_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

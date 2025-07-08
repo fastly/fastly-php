@@ -25,7 +25,7 @@ Method | HTTP request | Description
 ## `createInvitation()`
 
 ```php
-createInvitation($options): \Fastly\Model\InvitationResponse // Create an invitation
+createInvitation($options): \Fastly\Model\InvitationCreateResponse // Create an invitation
 ```
 
 Create an invitation.
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InvitationResponse**](../Model/InvitationResponse.md)
+[**\Fastly\Model\InvitationCreateResponse**](../Model/InvitationCreateResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

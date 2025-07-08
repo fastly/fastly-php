@@ -548,7 +548,7 @@ class PoolAdditional implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets override_host
      *
-     * @param string|null $override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+     * @param string|null $override_host The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
      *
      * @return self
      */

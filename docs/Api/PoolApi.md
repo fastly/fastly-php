@@ -56,7 +56,7 @@ $options['max_tls_version'] = 56; // int | Maximum allowed TLS version on connec
 $options['healthcheck'] = 'healthcheck_example'; // string | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
 $options['comment'] = 'comment_example'; // string | A freeform descriptive note.
 $options['type'] = 'type_example'; // string | What type of load balance group to use.
-$options['override_host'] = 'null'; // string | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+$options['override_host'] = 'null'; // string | The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
 $options['between_bytes_timeout'] = 10000; // int | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
 $options['connect_timeout'] = 56; // int | How long to wait for a timeout in milliseconds. Optional.
 $options['first_byte_timeout'] = 56; // int | How long to wait for the first byte in milliseconds. Optional.
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 **healthcheck** | **string** | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **type** | **string** | What type of load balance group to use. | [optional] [one of: 'random', 'hash', 'client']
-**override_host** | **string** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] [defaults to 'null']
+**override_host** | **string** | The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] [defaults to 'null']
 **between_bytes_timeout** | **int** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] [defaults to 10000]
 **connect_timeout** | **int** | How long to wait for a timeout in milliseconds. Optional. | [optional]
 **first_byte_timeout** | **int** | How long to wait for the first byte in milliseconds. Optional. | [optional]
@@ -259,7 +259,7 @@ $options['max_tls_version'] = 56; // int | Maximum allowed TLS version on connec
 $options['healthcheck'] = 'healthcheck_example'; // string | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
 $options['comment'] = 'comment_example'; // string | A freeform descriptive note.
 $options['type'] = 'type_example'; // string | What type of load balance group to use.
-$options['override_host'] = 'null'; // string | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+$options['override_host'] = 'null'; // string | The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
 $options['between_bytes_timeout'] = 10000; // int | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
 $options['connect_timeout'] = 56; // int | How long to wait for a timeout in milliseconds. Optional.
 $options['first_byte_timeout'] = 56; // int | How long to wait for the first byte in milliseconds. Optional.
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 **healthcheck** | **string** | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **type** | **string** | What type of load balance group to use. | [optional] [one of: 'random', 'hash', 'client']
-**override_host** | **string** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] [defaults to 'null']
+**override_host** | **string** | The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] [defaults to 'null']
 **between_bytes_timeout** | **int** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] [defaults to 10000]
 **connect_timeout** | **int** | How long to wait for a timeout in milliseconds. Optional. | [optional]
 **first_byte_timeout** | **int** | How long to wait for the first byte in milliseconds. Optional. | [optional]

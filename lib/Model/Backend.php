@@ -858,7 +858,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prefer_ipv6
      *
-     * @param bool|null $prefer_ipv6 Prefer IPv6 connections to origins for hostname backends.
+     * @param bool|null $prefer_ipv6 Prefer IPv6 connections to origins for hostname backends. Default is 'false' for Delivery services and 'true' for Compute services.
      *
      * @return self
      */
@@ -935,7 +935,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shield
      *
-     * @param string|null $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
+     * @param string|null $shield Identifier of the POP to use as a [shield](https://www.fastly.com/documentation/guides/getting-started/hosts/shielding/).
      *
      * @return self
      */

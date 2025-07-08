@@ -290,7 +290,7 @@ class LoggingDatadogAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets format
      *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest.
+     * @param string|null $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce valid JSON that Datadog can ingest.
      *
      * @return self
      */

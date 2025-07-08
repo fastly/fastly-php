@@ -63,7 +63,8 @@ class TlsCsrDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
         'organization' => 'string',
         'organizational_unit' => 'string',
         'email' => 'string',
-        'key_type' => 'string'
+        'key_type' => 'string',
+        'relationships_tls_private_key_id' => 'string'
     ];
 
     /**
@@ -84,7 +85,8 @@ class TlsCsrDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
         'organization' => null,
         'organizational_unit' => null,
         'email' => 'email',
-        'key_type' => null
+        'key_type' => null,
+        'relationships_tls_private_key_id' => null
     ];
 
     /**
@@ -124,7 +126,8 @@ class TlsCsrDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
         'organization' => 'organization',
         'organizational_unit' => 'organizational_unit',
         'email' => 'email',
-        'key_type' => 'key_type'
+        'key_type' => 'key_type',
+        'relationships_tls_private_key_id' => 'relationships.tls_private_key.id'
     ];
 
     /**
@@ -143,7 +146,8 @@ class TlsCsrDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
         'organization' => 'setOrganization',
         'organizational_unit' => 'setOrganizationalUnit',
         'email' => 'setEmail',
-        'key_type' => 'setKeyType'
+        'key_type' => 'setKeyType',
+        'relationships_tls_private_key_id' => 'setRelationshipsTlsPrivateKeyId'
     ];
 
     /**
@@ -162,7 +166,8 @@ class TlsCsrDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
         'organization' => 'getOrganization',
         'organizational_unit' => 'getOrganizationalUnit',
         'email' => 'getEmail',
-        'key_type' => 'getKeyType'
+        'key_type' => 'getKeyType',
+        'relationships_tls_private_key_id' => 'getRelationshipsTlsPrivateKeyId'
     ];
 
     /**
@@ -248,6 +253,7 @@ class TlsCsrDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['organizational_unit'] = $data['organizational_unit'] ?? null;
         $this->container['email'] = $data['email'] ?? null;
         $this->container['key_type'] = $data['key_type'] ?? null;
+        $this->container['relationships_tls_private_key_id'] = $data['relationships_tls_private_key_id'] ?? null;
     }
 
     /**
@@ -556,6 +562,30 @@ class TlsCsrDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
         $this->container['key_type'] = $key_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets relationships_tls_private_key_id
+     *
+     * @return string|null
+     */
+    public function getRelationshipsTlsPrivateKeyId()
+    {
+        return $this->container['relationships_tls_private_key_id'];
+    }
+
+    /**
+     * Sets relationships_tls_private_key_id
+     *
+     * @param string|null $relationships_tls_private_key_id Optional. An alphanumeric string identifying the private key you've uploaded for use with your TLS certificate. If left blank, Fastly will create and manage a key for you.
+     *
+     * @return self
+     */
+    public function setRelationshipsTlsPrivateKeyId($relationships_tls_private_key_id)
+    {
+        $this->container['relationships_tls_private_key_id'] = $relationships_tls_private_key_id;
 
         return $this;
     }

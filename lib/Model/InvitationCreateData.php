@@ -1,6 +1,6 @@
 <?php
 /**
- * TlsCertificateDataAttributes
+ * InvitationCreateData
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * TlsCertificateDataAttributes Class Doc Comment
+ * InvitationCreateData Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TlsCertificateDataAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
+class InvitationCreateData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class TlsCertificateDataAttributes implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $fastlyModelName = 'tls_certificate_data_attributes';
+    protected static $fastlyModelName = 'invitation_create_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,9 +53,9 @@ class TlsCertificateDataAttributes implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'cert_blob' => 'string',
-        'name' => 'string',
-        'allow_untrusted_root' => 'bool'
+        'type' => '\Fastly\Model\TypeInvitation',
+        'attributes' => '\Fastly\Model\InvitationDataAttributes',
+        'relationships' => '\Fastly\Model\RelationshipServiceInvitationsCreate'
     ];
 
     /**
@@ -66,9 +66,9 @@ class TlsCertificateDataAttributes implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'cert_blob' => null,
-        'name' => null,
-        'allow_untrusted_root' => null
+        'type' => null,
+        'attributes' => null,
+        'relationships' => null
     ];
 
     /**
@@ -98,9 +98,9 @@ class TlsCertificateDataAttributes implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'cert_blob' => 'cert_blob',
-        'name' => 'name',
-        'allow_untrusted_root' => 'allow_untrusted_root'
+        'type' => 'type',
+        'attributes' => 'attributes',
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -109,9 +109,9 @@ class TlsCertificateDataAttributes implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'cert_blob' => 'setCertBlob',
-        'name' => 'setName',
-        'allow_untrusted_root' => 'setAllowUntrustedRoot'
+        'type' => 'setType',
+        'attributes' => 'setAttributes',
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -120,9 +120,9 @@ class TlsCertificateDataAttributes implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'cert_blob' => 'getCertBlob',
-        'name' => 'getName',
-        'allow_untrusted_root' => 'getAllowUntrustedRoot'
+        'type' => 'getType',
+        'attributes' => 'getAttributes',
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -182,9 +182,9 @@ class TlsCertificateDataAttributes implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['cert_blob'] = $data['cert_blob'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['allow_untrusted_root'] = $data['allow_untrusted_root'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['relationships'] = $data['relationships'] ?? null;
     }
 
     /**
@@ -212,73 +212,73 @@ class TlsCertificateDataAttributes implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets cert_blob
+     * Gets type
      *
-     * @return string|null
+     * @return \Fastly\Model\TypeInvitation|null
      */
-    public function getCertBlob()
+    public function getType()
     {
-        return $this->container['cert_blob'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets cert_blob
+     * Sets type
      *
-     * @param string|null $cert_blob The PEM-formatted certificate blob. Required.
+     * @param \Fastly\Model\TypeInvitation|null $type type
      *
      * @return self
      */
-    public function setCertBlob($cert_blob)
+    public function setType($type)
     {
-        $this->container['cert_blob'] = $cert_blob;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets attributes
      *
-     * @return string|null
+     * @return \Fastly\Model\InvitationDataAttributes|null
      */
-    public function getName()
+    public function getAttributes()
     {
-        return $this->container['name'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets name
+     * Sets attributes
      *
-     * @param string|null $name A customizable name for your certificate. Defaults to the certificate's Common Name or first Subject Alternative Names (SAN) entry. Optional.
+     * @param \Fastly\Model\InvitationDataAttributes|null $attributes attributes
      *
      * @return self
      */
-    public function setName($name)
+    public function setAttributes($attributes)
     {
-        $this->container['name'] = $name;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }
 
     /**
-     * Gets allow_untrusted_root
+     * Gets relationships
      *
-     * @return bool|null
+     * @return \Fastly\Model\RelationshipServiceInvitationsCreate|null
      */
-    public function getAllowUntrustedRoot()
+    public function getRelationships()
     {
-        return $this->container['allow_untrusted_root'];
+        return $this->container['relationships'];
     }
 
     /**
-     * Sets allow_untrusted_root
+     * Sets relationships
      *
-     * @param bool|null $allow_untrusted_root Indicates that the supplied certificate was not signed by a trusted CA.
+     * @param \Fastly\Model\RelationshipServiceInvitationsCreate|null $relationships relationships
      *
      * @return self
      */
-    public function setAllowUntrustedRoot($allow_untrusted_root)
+    public function setRelationships($relationships)
     {
-        $this->container['allow_untrusted_root'] = $allow_untrusted_root;
+        $this->container['relationships'] = $relationships;
 
         return $this;
     }

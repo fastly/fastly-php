@@ -552,7 +552,7 @@ class LoggingHttpsAdditional implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets format
      *
-     * @param string|null $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+     * @param string|null $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
      *
      * @return self
      */

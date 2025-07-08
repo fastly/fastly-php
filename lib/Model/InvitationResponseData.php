@@ -55,8 +55,8 @@ class InvitationResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $fastlyTypes = [
         'type' => '\Fastly\Model\TypeInvitation',
         'attributes' => '\Fastly\Model\Timestamps',
-        'relationships' => '\Fastly\Model\RelationshipsForInvitation',
-        'id' => 'string'
+        'id' => 'string',
+        'relationships' => '\Fastly\Model\RelationshipsForInvitation'
     ];
 
     /**
@@ -69,8 +69,8 @@ class InvitationResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $fastlyFormats = [
         'type' => null,
         'attributes' => null,
-        'relationships' => null,
-        'id' => null
+        'id' => null,
+        'relationships' => null
     ];
 
     /**
@@ -102,8 +102,8 @@ class InvitationResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $attributeMap = [
         'type' => 'type',
         'attributes' => 'attributes',
-        'relationships' => 'relationships',
-        'id' => 'id'
+        'id' => 'id',
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -114,8 +114,8 @@ class InvitationResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $setters = [
         'type' => 'setType',
         'attributes' => 'setAttributes',
-        'relationships' => 'setRelationships',
-        'id' => 'setId'
+        'id' => 'setId',
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -126,8 +126,8 @@ class InvitationResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $getters = [
         'type' => 'getType',
         'attributes' => 'getAttributes',
-        'relationships' => 'getRelationships',
-        'id' => 'getId'
+        'id' => 'getId',
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -189,8 +189,8 @@ class InvitationResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
-        $this->container['relationships'] = $data['relationships'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['relationships'] = $data['relationships'] ?? null;
     }
 
     /**
@@ -266,30 +266,6 @@ class InvitationResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets relationships
-     *
-     * @return \Fastly\Model\RelationshipsForInvitation|null
-     */
-    public function getRelationships()
-    {
-        return $this->container['relationships'];
-    }
-
-    /**
-     * Sets relationships
-     *
-     * @param \Fastly\Model\RelationshipsForInvitation|null $relationships relationships
-     *
-     * @return self
-     */
-    public function setRelationships($relationships)
-    {
-        $this->container['relationships'] = $relationships;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string|null
@@ -309,6 +285,30 @@ class InvitationResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets relationships
+     *
+     * @return \Fastly\Model\RelationshipsForInvitation|null
+     */
+    public function getRelationships()
+    {
+        return $this->container['relationships'];
+    }
+
+    /**
+     * Sets relationships
+     *
+     * @param \Fastly\Model\RelationshipsForInvitation|null $relationships relationships
+     *
+     * @return self
+     */
+    public function setRelationships($relationships)
+    {
+        $this->container['relationships'] = $relationships;
 
         return $this;
     }

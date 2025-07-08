@@ -54,8 +54,7 @@ class TlsCsrData implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'type' => '\Fastly\Model\TypeTlsCsr',
-        'attributes' => '\Fastly\Model\TlsCsrDataAttributes',
-        'relationships' => '\Fastly\Model\RelationshipTlsPrivateKey'
+        'attributes' => '\Fastly\Model\TlsCsrDataAttributes'
     ];
 
     /**
@@ -67,8 +66,7 @@ class TlsCsrData implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'type' => null,
-        'attributes' => null,
-        'relationships' => null
+        'attributes' => null
     ];
 
     /**
@@ -99,8 +97,7 @@ class TlsCsrData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'type' => 'type',
-        'attributes' => 'attributes',
-        'relationships' => 'relationships'
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -110,8 +107,7 @@ class TlsCsrData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'type' => 'setType',
-        'attributes' => 'setAttributes',
-        'relationships' => 'setRelationships'
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -121,8 +117,7 @@ class TlsCsrData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'type' => 'getType',
-        'attributes' => 'getAttributes',
-        'relationships' => 'getRelationships'
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -184,7 +179,6 @@ class TlsCsrData implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
-        $this->container['relationships'] = $data['relationships'] ?? null;
     }
 
     /**
@@ -255,30 +249,6 @@ class TlsCsrData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAttributes($attributes)
     {
         $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets relationships
-     *
-     * @return \Fastly\Model\RelationshipTlsPrivateKey|null
-     */
-    public function getRelationships()
-    {
-        return $this->container['relationships'];
-    }
-
-    /**
-     * Sets relationships
-     *
-     * @param \Fastly\Model\RelationshipTlsPrivateKey|null $relationships relationships
-     *
-     * @return self
-     */
-    public function setRelationships($relationships)
-    {
-        $this->container['relationships'] = $relationships;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * InvitationResponseAllOf
+ * InvitationCreateDataAllOf
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * InvitationResponseAllOf Class Doc Comment
+ * InvitationCreateDataAllOf Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class InvitationResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class InvitationCreateDataAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class InvitationResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $fastlyModelName = 'invitation_response_allOf';
+    protected static $fastlyModelName = 'invitation_create_data_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,7 @@ class InvitationResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\InvitationResponseData'
+        'relationships' => '\Fastly\Model\RelationshipServiceInvitationsCreate'
     ];
 
     /**
@@ -64,7 +64,7 @@ class InvitationResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null
+        'relationships' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class InvitationResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'relationships' => 'relationships'
     ];
 
     /**
@@ -103,7 +103,7 @@ class InvitationResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'relationships' => 'setRelationships'
     ];
 
     /**
@@ -112,7 +112,7 @@ class InvitationResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'relationships' => 'getRelationships'
     ];
 
     /**
@@ -172,7 +172,7 @@ class InvitationResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['relationships'] = $data['relationships'] ?? null;
     }
 
     /**
@@ -200,25 +200,25 @@ class InvitationResponseAllOf implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets data
+     * Gets relationships
      *
-     * @return \Fastly\Model\InvitationResponseData|null
+     * @return \Fastly\Model\RelationshipServiceInvitationsCreate|null
      */
-    public function getData()
+    public function getRelationships()
     {
-        return $this->container['data'];
+        return $this->container['relationships'];
     }
 
     /**
-     * Sets data
+     * Sets relationships
      *
-     * @param \Fastly\Model\InvitationResponseData|null $data data
+     * @param \Fastly\Model\RelationshipServiceInvitationsCreate|null $relationships relationships
      *
      * @return self
      */
-    public function setData($data)
+    public function setRelationships($relationships)
     {
-        $this->container['data'] = $data;
+        $this->container['relationships'] = $relationships;
 
         return $this;
     }
