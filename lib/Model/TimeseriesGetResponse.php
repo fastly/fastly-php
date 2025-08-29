@@ -1,6 +1,6 @@
 <?php
 /**
- * LogTimeseriesValueField
+ * TimeseriesGetResponse
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * LogTimeseriesValueField Class Doc Comment
+ * TimeseriesGetResponse Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LogTimeseriesValueField implements ModelInterface, ArrayAccess, \JsonSerializable
+class TimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class LogTimeseriesValueField implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $fastlyModelName = 'log-timeseries-value-field';
+    protected static $fastlyModelName = 'timeseries-get-response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,8 @@ class LogTimeseriesValueField implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $fastlyTypes = [
-        
+        'data' => '\Fastly\Model\TimeseriesResult[]',
+        'meta' => '\Fastly\Model\TimeseriesMeta'
     ];
 
     /**
@@ -64,7 +65,8 @@ class LogTimeseriesValueField implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        
+        'data' => null,
+        'meta' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class LogTimeseriesValueField implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'data' => 'data',
+        'meta' => 'meta'
     ];
 
     /**
@@ -103,7 +106,8 @@ class LogTimeseriesValueField implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        
+        'data' => 'setData',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -112,7 +116,8 @@ class LogTimeseriesValueField implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        
+        'data' => 'getData',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -172,6 +177,8 @@ class LogTimeseriesValueField implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
     }
 
     /**
@@ -197,6 +204,54 @@ class LogTimeseriesValueField implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets data
+     *
+     * @return \Fastly\Model\TimeseriesResult[]|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \Fastly\Model\TimeseriesResult[]|null $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \Fastly\Model\TimeseriesMeta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \Fastly\Model\TimeseriesMeta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *

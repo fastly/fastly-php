@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique ID of the rule. | [optional] 
 **name** | **string** | A human-readable name for the rule. | [optional] 
-**action** | [**\Fastly\Model\DdosProtectionAction**](DdosProtectionAction.md) |  | [optional] 
+**action** | **string** | Action types for a rule. Supported action values are default, block, log, off. The default action value follows the current protection mode of the associated service. | [optional]  [defaults to 'default']
 **customer_id** | **string** | Alphanumeric string identifying the customer. | [optional] 
 **service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
 **source_ip** | **string** | Source IP address attribute. | [optional] 

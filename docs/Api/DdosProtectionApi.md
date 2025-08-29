@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**ddosProtectionEventList()**](DdosProtectionApi.md#ddosProtectionEventList) | **GET** /ddos-protection/v1/events | Get events
 [**ddosProtectionEventRuleList()**](DdosProtectionApi.md#ddosProtectionEventRuleList) | **GET** /ddos-protection/v1/events/{event_id}/rules | Get all rules for an event
 [**ddosProtectionRuleGet()**](DdosProtectionApi.md#ddosProtectionRuleGet) | **GET** /ddos-protection/v1/rules/{rule_id} | Get a rule by ID
+[**ddosProtectionRulePatch()**](DdosProtectionApi.md#ddosProtectionRulePatch) | **PATCH** /ddos-protection/v1/rules/{rule_id} | Update rule
 [**ddosProtectionTrafficStatsRuleGet()**](DdosProtectionApi.md#ddosProtectionTrafficStatsRuleGet) | **GET** /ddos-protection/v1/events/{event_id}/rules/{rule_id}/traffic-stats | Get traffic stats for a rule
 
 
@@ -166,6 +167,42 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **rule_id** | **string** | Unique ID of the rule. |
+
+### Return type
+
+[**\Fastly\Model\DdosProtectionRule**](../Model/DdosProtectionRule.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `ddosProtectionRulePatch()`
+
+```php
+ddosProtectionRulePatch($options): \Fastly\Model\DdosProtectionRule // Update rule
+```
+
+Update rule.
+
+### Example
+```php
+    $options['rule_id'] = 'rule_id_example'; // string | Unique ID of the rule.
+$options['ddos_protection_rule_patch'] = new \Fastly\Model\DdosProtectionRulePatch(); // \Fastly\Model\DdosProtectionRulePatch
+
+try {
+    $result = $apiInstance->ddosProtectionRulePatch($options);
+} catch (Exception $e) {
+    echo 'Exception when calling DdosProtectionApi->ddosProtectionRulePatch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**rule_id** | **string** | Unique ID of the rule. |
+**ddos_protection_rule_patch** | [**\Fastly\Model\DdosProtectionRulePatch**](../Model/DdosProtectionRulePatch.md) |  | [optional]
 
 ### Return type
 

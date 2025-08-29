@@ -1,6 +1,6 @@
 <?php
 /**
- * PoolResponseCommon
+ * DdosProtectionInvalidRequest
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * PoolResponseCommon Class Doc Comment
+ * DdosProtectionInvalidRequest Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializable
+class DdosProtectionInvalidRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $fastlyModelName = 'pool_response_common';
+    protected static $fastlyModelName = 'ddos_protection_invalid_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,12 +53,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'between_bytes_timeout' => 'string',
-        'connect_timeout' => 'string',
-        'first_byte_timeout' => 'string',
-        'max_conn_default' => 'string',
-        'tls_check_cert' => 'string',
-        'id' => 'string'
+        'title' => 'string',
+        'status' => 'int',
+        'detail' => 'string',
+        'errors' => '\Fastly\Model\DdosProtectionErrorErrors[]'
     ];
 
     /**
@@ -69,12 +67,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'between_bytes_timeout' => null,
-        'connect_timeout' => null,
-        'first_byte_timeout' => null,
-        'max_conn_default' => null,
-        'tls_check_cert' => null,
-        'id' => null
+        'title' => null,
+        'status' => null,
+        'detail' => null,
+        'errors' => null
     ];
 
     /**
@@ -104,12 +100,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'between_bytes_timeout' => 'between_bytes_timeout',
-        'connect_timeout' => 'connect_timeout',
-        'first_byte_timeout' => 'first_byte_timeout',
-        'max_conn_default' => 'max_conn_default',
-        'tls_check_cert' => 'tls_check_cert',
-        'id' => 'id'
+        'title' => 'title',
+        'status' => 'status',
+        'detail' => 'detail',
+        'errors' => 'errors'
     ];
 
     /**
@@ -118,12 +112,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'between_bytes_timeout' => 'setBetweenBytesTimeout',
-        'connect_timeout' => 'setConnectTimeout',
-        'first_byte_timeout' => 'setFirstByteTimeout',
-        'max_conn_default' => 'setMaxConnDefault',
-        'tls_check_cert' => 'setTlsCheckCert',
-        'id' => 'setId'
+        'title' => 'setTitle',
+        'status' => 'setStatus',
+        'detail' => 'setDetail',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -132,12 +124,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'between_bytes_timeout' => 'getBetweenBytesTimeout',
-        'connect_timeout' => 'getConnectTimeout',
-        'first_byte_timeout' => 'getFirstByteTimeout',
-        'max_conn_default' => 'getMaxConnDefault',
-        'tls_check_cert' => 'getTlsCheckCert',
-        'id' => 'getId'
+        'title' => 'getTitle',
+        'status' => 'getStatus',
+        'detail' => 'getDetail',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -181,6 +171,19 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$fastlyModelName;
     }
 
+    const STATUS_400 = 400;
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_400,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -197,12 +200,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['between_bytes_timeout'] = $data['between_bytes_timeout'] ?? null;
-        $this->container['connect_timeout'] = $data['connect_timeout'] ?? null;
-        $this->container['first_byte_timeout'] = $data['first_byte_timeout'] ?? null;
-        $this->container['max_conn_default'] = $data['max_conn_default'] ?? '200';
-        $this->container['tls_check_cert'] = $data['tls_check_cert'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['detail'] = $data['detail'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
     }
 
     /**
@@ -214,6 +215,27 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['detail'] === null) {
+            $invalidProperties[] = "'detail' can't be null";
+        }
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -230,145 +252,109 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets between_bytes_timeout
+     * Gets title
      *
-     * @return string|null
+     * @return string
      */
-    public function getBetweenBytesTimeout()
+    public function getTitle()
     {
-        return $this->container['between_bytes_timeout'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets between_bytes_timeout
+     * Sets title
      *
-     * @param string|null $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using `bereq.between_bytes_timeout`.
+     * @param string $title title
      *
      * @return self
      */
-    public function setBetweenBytesTimeout($between_bytes_timeout)
+    public function setTitle($title)
     {
-        $this->container['between_bytes_timeout'] = $between_bytes_timeout;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets connect_timeout
+     * Gets status
      *
-     * @return string|null
+     * @return int
      */
-    public function getConnectTimeout()
+    public function getStatus()
     {
-        return $this->container['connect_timeout'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets connect_timeout
+     * Sets status
      *
-     * @param string|null $connect_timeout How long to wait for a timeout in milliseconds.
+     * @param int $status status
      *
      * @return self
      */
-    public function setConnectTimeout($connect_timeout)
+    public function setStatus($status)
     {
-        $this->container['connect_timeout'] = $connect_timeout;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets first_byte_timeout
+     * Gets detail
      *
-     * @return string|null
+     * @return string
      */
-    public function getFirstByteTimeout()
+    public function getDetail()
     {
-        return $this->container['first_byte_timeout'];
+        return $this->container['detail'];
     }
 
     /**
-     * Sets first_byte_timeout
+     * Sets detail
      *
-     * @param string|null $first_byte_timeout How long to wait for the first byte in milliseconds.
+     * @param string $detail detail
      *
      * @return self
      */
-    public function setFirstByteTimeout($first_byte_timeout)
+    public function setDetail($detail)
     {
-        $this->container['first_byte_timeout'] = $first_byte_timeout;
+        $this->container['detail'] = $detail;
 
         return $this;
     }
 
     /**
-     * Gets max_conn_default
+     * Gets errors
      *
-     * @return string|null
+     * @return \Fastly\Model\DdosProtectionErrorErrors[]
      */
-    public function getMaxConnDefault()
+    public function getErrors()
     {
-        return $this->container['max_conn_default'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets max_conn_default
+     * Sets errors
      *
-     * @param string|null $max_conn_default Maximum number of connections.
+     * @param \Fastly\Model\DdosProtectionErrorErrors[] $errors errors
      *
      * @return self
      */
-    public function setMaxConnDefault($max_conn_default)
+    public function setErrors($errors)
     {
-        $this->container['max_conn_default'] = $max_conn_default;
 
-        return $this;
-    }
 
-    /**
-     * Gets tls_check_cert
-     *
-     * @return string|null
-     */
-    public function getTlsCheckCert()
-    {
-        return $this->container['tls_check_cert'];
-    }
-
-    /**
-     * Sets tls_check_cert
-     *
-     * @param string|null $tls_check_cert Be strict on checking TLS certs.
-     *
-     * @return self
-     */
-    public function setTlsCheckCert($tls_check_cert)
-    {
-        $this->container['tls_check_cert'] = $tls_check_cert;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

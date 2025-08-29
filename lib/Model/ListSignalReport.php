@@ -1,6 +1,6 @@
 <?php
 /**
- * LogTimeseriesFilterFieldItem
+ * ListSignalReport
  *
  * PHP version 7.3
  *
@@ -27,17 +27,16 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * LogTimeseriesFilterFieldItem Class Doc Comment
+ * ListSignalReport Class Doc Comment
  *
  * @category Class
- * @description A filtering parameter.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListSignalReport implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -46,7 +45,7 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $fastlyModelName = 'log-timeseries-filter-field-item';
+    protected static $fastlyModelName = 'ListSignalReport';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +53,7 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'field' => 'string',
-        'operator' => 'string',
-        'value' => '\Fastly\Model\LogTimeseriesValueField'
+        'data' => '\Fastly\Model\SignalReport[]'
     ];
 
     /**
@@ -67,9 +64,7 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'field' => null,
-        'operator' => null,
-        'value' => null
+        'data' => null
     ];
 
     /**
@@ -99,9 +94,7 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'field' => 'field',
-        'operator' => 'operator',
-        'value' => 'value'
+        'data' => 'data'
     ];
 
     /**
@@ -110,9 +103,7 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'field' => 'setField',
-        'operator' => 'setOperator',
-        'value' => 'setValue'
+        'data' => 'setData'
     ];
 
     /**
@@ -121,9 +112,7 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'field' => 'getField',
-        'operator' => 'getOperator',
-        'value' => 'getValue'
+        'data' => 'getData'
     ];
 
     /**
@@ -167,33 +156,6 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
         return self::$fastlyModelName;
     }
 
-    const OPERATOR_EQ = 'eq';
-    const OPERATOR_ENDS_WITH = 'ends-with';
-    const OPERATOR_IN = 'in';
-    const OPERATOR_NOT_IN = 'not_in';
-    const OPERATOR_GT = 'gt';
-    const OPERATOR_GTE = 'gte';
-    const OPERATOR_LT = 'lt';
-    const OPERATOR_LTE = 'lte';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOperatorAllowableValues()
-    {
-        return [
-            self::OPERATOR_EQ,
-            self::OPERATOR_ENDS_WITH,
-            self::OPERATOR_IN,
-            self::OPERATOR_NOT_IN,
-            self::OPERATOR_GT,
-            self::OPERATOR_GTE,
-            self::OPERATOR_LT,
-            self::OPERATOR_LTE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -210,9 +172,7 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['field'] = $data['field'] ?? null;
-        $this->container['operator'] = $data['operator'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -223,15 +183,6 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getOperatorAllowableValues();
-        if (!is_null($this->container['operator']) && !in_array($this->container['operator'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'operator', must be one of '%s'",
-                $this->container['operator'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -249,83 +200,25 @@ class LogTimeseriesFilterFieldItem implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets field
+     * Gets data
      *
-     * @return string|null
+     * @return \Fastly\Model\SignalReport[]|null
      */
-    public function getField()
+    public function getData()
     {
-        return $this->container['field'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets field
+     * Sets data
      *
-     * @param string|null $field The log field to which this filter should be applied.
+     * @param \Fastly\Model\SignalReport[]|null $data data
      *
      * @return self
      */
-    public function setField($field)
+    public function setData($data)
     {
-        $this->container['field'] = $field;
-
-        return $this;
-    }
-
-    /**
-     * Gets operator
-     *
-     * @return string|null
-     */
-    public function getOperator()
-    {
-        return $this->container['operator'];
-    }
-
-    /**
-     * Sets operator
-     *
-     * @param string|null $operator The comparison operator used for this filter.
-     *
-     * @return self
-     */
-    public function setOperator($operator)
-    {
-        $allowedValues = $this->getOperatorAllowableValues();
-        if (!is_null($operator) && !in_array($operator, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'operator', must be one of '%s'",
-                    $operator,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['operator'] = $operator;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return \Fastly\Model\LogTimeseriesValueField|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param \Fastly\Model\LogTimeseriesValueField|null $value value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * LogTimeseriesResult
+ * AttackSource
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * LogTimeseriesResult Class Doc Comment
+ * AttackSource Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttackSource implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $fastlyModelName = 'log-timeseries-result';
+    protected static $fastlyModelName = 'AttackSource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,10 @@ class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'dimensions' => '\Fastly\Model\LogTimeseriesResultDimensions',
-        'values' => 'array<string,object>'
+        'country_code' => 'string',
+        'country_name' => 'string',
+        'request_count' => 'int',
+        'total_count' => 'int'
     ];
 
     /**
@@ -65,8 +67,10 @@ class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'dimensions' => null,
-        'values' => null
+        'country_code' => null,
+        'country_name' => null,
+        'request_count' => null,
+        'total_count' => null
     ];
 
     /**
@@ -96,8 +100,10 @@ class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'dimensions' => 'dimensions',
-        'values' => 'values'
+        'country_code' => 'country_code',
+        'country_name' => 'country_name',
+        'request_count' => 'request_count',
+        'total_count' => 'total_count'
     ];
 
     /**
@@ -106,8 +112,10 @@ class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'dimensions' => 'setDimensions',
-        'values' => 'setValues'
+        'country_code' => 'setCountryCode',
+        'country_name' => 'setCountryName',
+        'request_count' => 'setRequestCount',
+        'total_count' => 'setTotalCount'
     ];
 
     /**
@@ -116,8 +124,10 @@ class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'dimensions' => 'getDimensions',
-        'values' => 'getValues'
+        'country_code' => 'getCountryCode',
+        'country_name' => 'getCountryName',
+        'request_count' => 'getRequestCount',
+        'total_count' => 'getTotalCount'
     ];
 
     /**
@@ -177,8 +187,10 @@ class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimensions'] = $data['dimensions'] ?? null;
-        $this->container['values'] = $data['values'] ?? null;
+        $this->container['country_code'] = $data['country_code'] ?? null;
+        $this->container['country_name'] = $data['country_name'] ?? null;
+        $this->container['request_count'] = $data['request_count'] ?? null;
+        $this->container['total_count'] = $data['total_count'] ?? null;
     }
 
     /**
@@ -190,6 +202,18 @@ class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['country_code'] === null) {
+            $invalidProperties[] = "'country_code' can't be null";
+        }
+        if ($this->container['country_name'] === null) {
+            $invalidProperties[] = "'country_name' can't be null";
+        }
+        if ($this->container['request_count'] === null) {
+            $invalidProperties[] = "'request_count' can't be null";
+        }
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -206,49 +230,97 @@ class LogTimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets dimensions
+     * Gets country_code
      *
-     * @return \Fastly\Model\LogTimeseriesResultDimensions|null
+     * @return string
      */
-    public function getDimensions()
+    public function getCountryCode()
     {
-        return $this->container['dimensions'];
+        return $this->container['country_code'];
     }
 
     /**
-     * Sets dimensions
+     * Sets country_code
      *
-     * @param \Fastly\Model\LogTimeseriesResultDimensions|null $dimensions dimensions
+     * @param string $country_code Country code of the attack source
      *
      * @return self
      */
-    public function setDimensions($dimensions)
+    public function setCountryCode($country_code)
     {
-        $this->container['dimensions'] = $dimensions;
+        $this->container['country_code'] = $country_code;
 
         return $this;
     }
 
     /**
-     * Gets values
+     * Gets country_name
      *
-     * @return array<string,object>|null
+     * @return string
      */
-    public function getValues()
+    public function getCountryName()
     {
-        return $this->container['values'];
+        return $this->container['country_name'];
     }
 
     /**
-     * Sets values
+     * Sets country_name
      *
-     * @param array<string,object>|null $values values
+     * @param string $country_name Name of the country
      *
      * @return self
      */
-    public function setValues($values)
+    public function setCountryName($country_name)
     {
-        $this->container['values'] = $values;
+        $this->container['country_name'] = $country_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_count
+     *
+     * @return int
+     */
+    public function getRequestCount()
+    {
+        return $this->container['request_count'];
+    }
+
+    /**
+     * Sets request_count
+     *
+     * @param int $request_count Number of requests from this country
+     *
+     * @return self
+     */
+    public function setRequestCount($request_count)
+    {
+        $this->container['request_count'] = $request_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_count
+     *
+     * @return int
+     */
+    public function getTotalCount()
+    {
+        return $this->container['total_count'];
+    }
+
+    /**
+     * Sets total_count
+     *
+     * @param int $total_count Total number of attacks considered
+     *
+     * @return self
+     */
+    public function setTotalCount($total_count)
+    {
+        $this->container['total_count'] = $total_count;
 
         return $this;
     }

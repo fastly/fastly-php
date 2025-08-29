@@ -1,6 +1,6 @@
 <?php
 /**
- * ObservabilityTimeseriesForLogsApi
+ * ObservabilityTimeseriesApi
  * PHP version 7.3
  *
  * @category Class
@@ -35,13 +35,13 @@ use Fastly\HeaderSelector;
 use Fastly\ObjectSerializer;
 
 /**
- * ObservabilityTimeseriesForLogsApi Class Doc Comment
+ * ObservabilityTimeseriesApi Class Doc Comment
  *
  * @category Class
  * @package  Fastly
  * @author   oss@fastly.com
  */
-class ObservabilityTimeseriesForLogsApi
+class ObservabilityTimeseriesApi
 {
     /**
      * @var ClientInterface
@@ -110,9 +110,9 @@ class ObservabilityTimeseriesForLogsApi
     }
 
     /**
-     * Operation logTimeseriesGet
+     * Operation timeseriesGet
      *
-     * Retrieve log data as time series
+     * Retrieve observability data as a time series
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -120,27 +120,27 @@ class ObservabilityTimeseriesForLogsApi
      * URL: https://api.fastly.com
      *
      * @param  string $source source (required)
-     * @param  string $service_id service_id (required)
-     * @param  string $start start (required)
-     * @param  string $end end (required)
+     * @param  string $from from (required)
+     * @param  string $to to (required)
      * @param  string $granularity granularity (required)
+     * @param  string $dimensions dimensions (optional)
      * @param  string $filter filter (optional)
      * @param  string $series series (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\LogTimeseriesGetResponse
+     * @return \Fastly\Model\TimeseriesGetResponse
      */
-    public function logTimeseriesGet($options)
+    public function timeseriesGet($options)
     {
-        list($response) = $this->logTimeseriesGetWithHttpInfo($options);
+        list($response) = $this->timeseriesGetWithHttpInfo($options);
         return $response;
     }
 
     /**
-     * Operation logTimeseriesGetWithHttpInfo
+     * Operation timeseriesGetWithHttpInfo
      *
-     * Retrieve log data as time series
+     * Retrieve observability data as a time series
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -148,20 +148,20 @@ class ObservabilityTimeseriesForLogsApi
      * URL: https://api.fastly.com
      *
      * @param  string $source (required)
-     * @param  string $service_id (required)
-     * @param  string $start (required)
-     * @param  string $end (required)
+     * @param  string $from (required)
+     * @param  string $to (required)
      * @param  string $granularity (required)
+     * @param  string $dimensions (optional)
      * @param  string $filter (optional)
      * @param  string $series (required)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\LogTimeseriesGetResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\TimeseriesGetResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function logTimeseriesGetWithHttpInfo($options)
+    public function timeseriesGetWithHttpInfo($options)
     {
-        $request = $this->logTimeseriesGetRequest($options);
+        $request = $this->timeseriesGetRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -212,20 +212,20 @@ class ObservabilityTimeseriesForLogsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\LogTimeseriesGetResponse' === '\SplFileObject') {
+                    if ('\Fastly\Model\TimeseriesGetResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\LogTimeseriesGetResponse', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\TimeseriesGetResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\LogTimeseriesGetResponse';
+            $returnType = '\Fastly\Model\TimeseriesGetResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -243,7 +243,7 @@ class ObservabilityTimeseriesForLogsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\LogTimeseriesGetResponse',
+                        '\Fastly\Model\TimeseriesGetResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -254,9 +254,9 @@ class ObservabilityTimeseriesForLogsApi
     }
 
     /**
-     * Operation logTimeseriesGetAsync
+     * Operation timeseriesGetAsync
      *
-     * Retrieve log data as time series
+     * Retrieve observability data as a time series
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -264,19 +264,19 @@ class ObservabilityTimeseriesForLogsApi
      * URL: https://api.fastly.com
      *
      * @param  string $source (required)
-     * @param  string $service_id (required)
-     * @param  string $start (required)
-     * @param  string $end (required)
+     * @param  string $from (required)
+     * @param  string $to (required)
      * @param  string $granularity (required)
+     * @param  string $dimensions (optional)
      * @param  string $filter (optional)
      * @param  string $series (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function logTimeseriesGetAsync($options)
+    public function timeseriesGetAsync($options)
     {
-        return $this->logTimeseriesGetAsyncWithHttpInfo($options)
+        return $this->timeseriesGetAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -285,9 +285,9 @@ class ObservabilityTimeseriesForLogsApi
     }
 
     /**
-     * Operation logTimeseriesGetAsyncWithHttpInfo
+     * Operation timeseriesGetAsyncWithHttpInfo
      *
-     * Retrieve log data as time series
+     * Retrieve observability data as a time series
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -295,20 +295,20 @@ class ObservabilityTimeseriesForLogsApi
      * URL: https://api.fastly.com
      *
      * @param  string $source (required)
-     * @param  string $service_id (required)
-     * @param  string $start (required)
-     * @param  string $end (required)
+     * @param  string $from (required)
+     * @param  string $to (required)
      * @param  string $granularity (required)
+     * @param  string $dimensions (optional)
      * @param  string $filter (optional)
      * @param  string $series (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function logTimeseriesGetAsyncWithHttpInfo($options)
+    public function timeseriesGetAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\LogTimeseriesGetResponse';
-        $request = $this->logTimeseriesGetRequest($options);
+        $returnType = '\Fastly\Model\TimeseriesGetResponse';
+        $request = $this->timeseriesGetRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -344,7 +344,7 @@ class ObservabilityTimeseriesForLogsApi
     }
 
     /**
-     * Create request for operation 'logTimeseriesGet'
+     * Create request for operation 'timeseriesGet'
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -352,61 +352,55 @@ class ObservabilityTimeseriesForLogsApi
      * URL: https://api.fastly.com
      *
      * @param  string $source (required)
-     * @param  string $service_id (required)
-     * @param  string $start (required)
-     * @param  string $end (required)
+     * @param  string $from (required)
+     * @param  string $to (required)
      * @param  string $granularity (required)
+     * @param  string $dimensions (optional)
      * @param  string $filter (optional)
      * @param  string $series (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function logTimeseriesGetRequest($options)
+    public function timeseriesGetRequest($options)
     {
         // unbox the parameters from the associative array
         $source = array_key_exists('source', $options) ? $options['source'] : null;
-        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
-        $start = array_key_exists('start', $options) ? $options['start'] : null;
-        $end = array_key_exists('end', $options) ? $options['end'] : null;
+        $from = array_key_exists('from', $options) ? $options['from'] : null;
+        $to = array_key_exists('to', $options) ? $options['to'] : null;
         $granularity = array_key_exists('granularity', $options) ? $options['granularity'] : null;
+        $dimensions = array_key_exists('dimensions', $options) ? $options['dimensions'] : null;
         $filter = array_key_exists('filter', $options) ? $options['filter'] : null;
         $series = array_key_exists('series', $options) ? $options['series'] : null;
 
         // verify the required parameter 'source' is set
         if ($source === null || (is_array($source) && count($source) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $source when calling logTimeseriesGet'
+                'Missing the required parameter $source when calling timeseriesGet'
             );
         }
-        // verify the required parameter 'service_id' is set
-        if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
+        // verify the required parameter 'from' is set
+        if ($from === null || (is_array($from) && count($from) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $service_id when calling logTimeseriesGet'
+                'Missing the required parameter $from when calling timeseriesGet'
             );
         }
-        // verify the required parameter 'start' is set
-        if ($start === null || (is_array($start) && count($start) === 0)) {
+        // verify the required parameter 'to' is set
+        if ($to === null || (is_array($to) && count($to) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $start when calling logTimeseriesGet'
-            );
-        }
-        // verify the required parameter 'end' is set
-        if ($end === null || (is_array($end) && count($end) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $end when calling logTimeseriesGet'
+                'Missing the required parameter $to when calling timeseriesGet'
             );
         }
         // verify the required parameter 'granularity' is set
         if ($granularity === null || (is_array($granularity) && count($granularity) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $granularity when calling logTimeseriesGet'
+                'Missing the required parameter $granularity when calling timeseriesGet'
             );
         }
         // verify the required parameter 'series' is set
         if ($series === null || (is_array($series) && count($series) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $series when calling logTimeseriesGet'
+                'Missing the required parameter $series when calling timeseriesGet'
             );
         }
 
@@ -429,36 +423,25 @@ class ObservabilityTimeseriesForLogsApi
             }
         }
         // query params
-        if ($service_id !== null) {
-            if('form' === 'form' && is_array($service_id)) {
-                foreach($service_id as $key => $value) {
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
                     $queryParams[$key] = ObjectSerializer::toString($value);
                 }
             }
             else {
-                $queryParams['service_id'] = ObjectSerializer::toString($service_id);
+                $queryParams['from'] = ObjectSerializer::toString($from);
             }
         }
         // query params
-        if ($start !== null) {
-            if('form' === 'form' && is_array($start)) {
-                foreach($start as $key => $value) {
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
                     $queryParams[$key] = ObjectSerializer::toString($value);
                 }
             }
             else {
-                $queryParams['start'] = ObjectSerializer::toString($start);
-            }
-        }
-        // query params
-        if ($end !== null) {
-            if('form' === 'form' && is_array($end)) {
-                foreach($end as $key => $value) {
-                    $queryParams[$key] = ObjectSerializer::toString($value);
-                }
-            }
-            else {
-                $queryParams['end'] = ObjectSerializer::toString($end);
+                $queryParams['to'] = ObjectSerializer::toString($to);
             }
         }
         // query params
@@ -470,6 +453,17 @@ class ObservabilityTimeseriesForLogsApi
             }
             else {
                 $queryParams['granularity'] = ObjectSerializer::toString($granularity);
+            }
+        }
+        // query params
+        if ($dimensions !== null) {
+            if('form' === 'form' && is_array($dimensions)) {
+                foreach($dimensions as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['dimensions'] = ObjectSerializer::toString($dimensions);
             }
         }
         // query params

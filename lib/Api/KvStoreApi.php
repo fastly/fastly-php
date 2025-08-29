@@ -1051,6 +1051,7 @@ class KvStoreApi
      *
      * @param  string $cursor cursor (optional)
      * @param  int $limit limit (optional, default to 1000)
+     * @param  string $name Returns a one-element array containing the details for the named KV store. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1074,6 +1075,7 @@ class KvStoreApi
      *
      * @param  string $cursor (optional)
      * @param  int $limit (optional, default to 1000)
+     * @param  string $name Returns a one-element array containing the details for the named KV store. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1185,6 +1187,7 @@ class KvStoreApi
      *
      * @param  string $cursor (optional)
      * @param  int $limit (optional, default to 1000)
+     * @param  string $name Returns a one-element array containing the details for the named KV store. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1211,6 +1214,7 @@ class KvStoreApi
      *
      * @param  string $cursor (optional)
      * @param  int $limit (optional, default to 1000)
+     * @param  string $name Returns a one-element array containing the details for the named KV store. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1263,6 +1267,7 @@ class KvStoreApi
      *
      * @param  string $cursor (optional)
      * @param  int $limit (optional, default to 1000)
+     * @param  string $name Returns a one-element array containing the details for the named KV store. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1272,6 +1277,7 @@ class KvStoreApi
         // unbox the parameters from the associative array
         $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
         $limit = array_key_exists('limit', $options) ? $options['limit'] : 1000;
+        $name = array_key_exists('name', $options) ? $options['name'] : null;
 
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling KvStoreApi.kvStoreList, must be bigger than or equal to 1.');
@@ -1305,6 +1311,17 @@ class KvStoreApi
             }
             else {
                 $queryParams['limit'] = ObjectSerializer::toString($limit);
+            }
+        }
+        // query params
+        if ($name !== null) {
+            if('form' === 'form' && is_array($name)) {
+                foreach($name as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['name'] = ObjectSerializer::toString($name);
             }
         }
 

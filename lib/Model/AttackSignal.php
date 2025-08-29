@@ -1,6 +1,6 @@
 <?php
 /**
- * LogTimeseriesGetResponseMetaFilters
+ * AttackSignal
  *
  * PHP version 7.3
  *
@@ -27,17 +27,16 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * LogTimeseriesGetResponseMetaFilters Class Doc Comment
+ * AttackSignal Class Doc Comment
  *
  * @category Class
- * @description Echoes the filters that were supplied in the request.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttackSignal implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -46,7 +45,7 @@ class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $fastlyModelName = 'log_timeseries_get_response_meta_filters';
+    protected static $fastlyModelName = 'AttackSignal';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +53,9 @@ class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'filter_fields' => '\Fastly\Model\LogTimeseriesFilterFieldItem[]'
+        'tag_name' => 'string',
+        'tag_count' => 'int',
+        'total_count' => 'int'
     ];
 
     /**
@@ -65,7 +66,9 @@ class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'filter_fields' => null
+        'tag_name' => null,
+        'tag_count' => null,
+        'total_count' => null
     ];
 
     /**
@@ -95,7 +98,9 @@ class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'filter_fields' => 'filter_fields'
+        'tag_name' => 'tag_name',
+        'tag_count' => 'tag_count',
+        'total_count' => 'total_count'
     ];
 
     /**
@@ -104,7 +109,9 @@ class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'filter_fields' => 'setFilterFields'
+        'tag_name' => 'setTagName',
+        'tag_count' => 'setTagCount',
+        'total_count' => 'setTotalCount'
     ];
 
     /**
@@ -113,7 +120,9 @@ class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'filter_fields' => 'getFilterFields'
+        'tag_name' => 'getTagName',
+        'tag_count' => 'getTagCount',
+        'total_count' => 'getTotalCount'
     ];
 
     /**
@@ -173,7 +182,9 @@ class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['filter_fields'] = $data['filter_fields'] ?? null;
+        $this->container['tag_name'] = $data['tag_name'] ?? null;
+        $this->container['tag_count'] = $data['tag_count'] ?? null;
+        $this->container['total_count'] = $data['total_count'] ?? null;
     }
 
     /**
@@ -185,6 +196,15 @@ class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['tag_name'] === null) {
+            $invalidProperties[] = "'tag_name' can't be null";
+        }
+        if ($this->container['tag_count'] === null) {
+            $invalidProperties[] = "'tag_count' can't be null";
+        }
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -201,25 +221,73 @@ class LogTimeseriesGetResponseMetaFilters implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets filter_fields
+     * Gets tag_name
      *
-     * @return \Fastly\Model\LogTimeseriesFilterFieldItem[]|null
+     * @return string
      */
-    public function getFilterFields()
+    public function getTagName()
     {
-        return $this->container['filter_fields'];
+        return $this->container['tag_name'];
     }
 
     /**
-     * Sets filter_fields
+     * Sets tag_name
      *
-     * @param \Fastly\Model\LogTimeseriesFilterFieldItem[]|null $filter_fields filter_fields
+     * @param string $tag_name Name of the attack signal tag
      *
      * @return self
      */
-    public function setFilterFields($filter_fields)
+    public function setTagName($tag_name)
     {
-        $this->container['filter_fields'] = $filter_fields;
+        $this->container['tag_name'] = $tag_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets tag_count
+     *
+     * @return int
+     */
+    public function getTagCount()
+    {
+        return $this->container['tag_count'];
+    }
+
+    /**
+     * Sets tag_count
+     *
+     * @param int $tag_count Count of requests with this attack signal
+     *
+     * @return self
+     */
+    public function setTagCount($tag_count)
+    {
+        $this->container['tag_count'] = $tag_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_count
+     *
+     * @return int
+     */
+    public function getTotalCount()
+    {
+        return $this->container['total_count'];
+    }
+
+    /**
+     * Sets total_count
+     *
+     * @param int $total_count Total number of attacks considered
+     *
+     * @return self
+     */
+    public function setTotalCount($total_count)
+    {
+        $this->container['total_count'] = $total_count;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * LogTimeseriesGetResponseMeta
+ * TimeseriesMeta
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * LogTimeseriesGetResponseMeta Class Doc Comment
+ * TimeseriesMeta Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \JsonSerializable
+class TimeseriesMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $fastlyModelName = 'log_timeseries_get_response_meta';
+    protected static $fastlyModelName = 'timeseries-meta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,11 +53,10 @@ class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'service_id' => 'string',
-        'start' => 'string',
-        'end' => 'string',
+        'from' => 'string',
+        'to' => 'string',
         'granularity' => 'string',
-        'filters' => '\Fastly\Model\LogTimeseriesGetResponseMetaFilters'
+        'limit' => 'string'
     ];
 
     /**
@@ -68,11 +67,10 @@ class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'service_id' => null,
-        'start' => null,
-        'end' => null,
+        'from' => null,
+        'to' => null,
         'granularity' => null,
-        'filters' => null
+        'limit' => null
     ];
 
     /**
@@ -102,11 +100,10 @@ class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id',
-        'start' => 'start',
-        'end' => 'end',
+        'from' => 'from',
+        'to' => 'to',
         'granularity' => 'granularity',
-        'filters' => 'filters'
+        'limit' => 'limit'
     ];
 
     /**
@@ -115,11 +112,10 @@ class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId',
-        'start' => 'setStart',
-        'end' => 'setEnd',
+        'from' => 'setFrom',
+        'to' => 'setTo',
         'granularity' => 'setGranularity',
-        'filters' => 'setFilters'
+        'limit' => 'setLimit'
     ];
 
     /**
@@ -128,11 +124,10 @@ class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId',
-        'start' => 'getStart',
-        'end' => 'getEnd',
+        'from' => 'getFrom',
+        'to' => 'getTo',
         'granularity' => 'getGranularity',
-        'filters' => 'getFilters'
+        'limit' => 'getLimit'
     ];
 
     /**
@@ -192,11 +187,10 @@ class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['start'] = $data['start'] ?? null;
-        $this->container['end'] = $data['end'] ?? null;
+        $this->container['from'] = $data['from'] ?? null;
+        $this->container['to'] = $data['to'] ?? null;
         $this->container['granularity'] = $data['granularity'] ?? null;
-        $this->container['filters'] = $data['filters'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? null;
     }
 
     /**
@@ -224,73 +218,49 @@ class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets service_id
+     * Gets from
      *
      * @return string|null
      */
-    public function getServiceId()
+    public function getFrom()
     {
-        return $this->container['service_id'];
+        return $this->container['from'];
     }
 
     /**
-     * Sets service_id
+     * Sets from
      *
-     * @param string|null $service_id ID of the service for which data was returned.
+     * @param string|null $from Start time for the query as supplied in the request.
      *
      * @return self
      */
-    public function setServiceId($service_id)
+    public function setFrom($from)
     {
-        $this->container['service_id'] = $service_id;
+        $this->container['from'] = $from;
 
         return $this;
     }
 
     /**
-     * Gets start
+     * Gets to
      *
      * @return string|null
      */
-    public function getStart()
+    public function getTo()
     {
-        return $this->container['start'];
+        return $this->container['to'];
     }
 
     /**
-     * Sets start
+     * Sets to
      *
-     * @param string|null $start Start time for the query as supplied in the request.
+     * @param string|null $to End time for the query as supplied in the request.
      *
      * @return self
      */
-    public function setStart($start)
+    public function setTo($to)
     {
-        $this->container['start'] = $start;
-
-        return $this;
-    }
-
-    /**
-     * Gets end
-     *
-     * @return string|null
-     */
-    public function getEnd()
-    {
-        return $this->container['end'];
-    }
-
-    /**
-     * Sets end
-     *
-     * @param string|null $end End time for the query as supplied in the request.
-     *
-     * @return self
-     */
-    public function setEnd($end)
-    {
-        $this->container['end'] = $end;
+        $this->container['to'] = $to;
 
         return $this;
     }
@@ -320,25 +290,25 @@ class LogTimeseriesGetResponseMeta implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets filters
+     * Gets limit
      *
-     * @return \Fastly\Model\LogTimeseriesGetResponseMetaFilters|null
+     * @return string|null
      */
-    public function getFilters()
+    public function getLimit()
     {
-        return $this->container['filters'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets filters
+     * Sets limit
      *
-     * @param \Fastly\Model\LogTimeseriesGetResponseMetaFilters|null $filters filters
+     * @param string|null $limit Maximum number of results returned in the request.
      *
      * @return self
      */
-    public function setFilters($filters)
+    public function setLimit($limit)
     {
-        $this->container['filters'] = $filters;
+        $this->container['limit'] = $limit;
 
         return $this;
     }

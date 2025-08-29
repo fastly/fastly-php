@@ -1,6 +1,6 @@
 <?php
 /**
- * LogTimeseriesResultDimensions
+ * DdosProtectionRulePatch
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * LogTimeseriesResultDimensions Class Doc Comment
+ * DdosProtectionRulePatch Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LogTimeseriesResultDimensions implements ModelInterface, ArrayAccess, \JsonSerializable
+class DdosProtectionRulePatch implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class LogTimeseriesResultDimensions implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $fastlyModelName = 'log_timeseries_result_dimensions';
+    protected static $fastlyModelName = 'ddos_protection_rule_patch';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,7 @@ class LogTimeseriesResultDimensions implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'time' => 'string'
+        'action' => 'string'
     ];
 
     /**
@@ -64,7 +64,7 @@ class LogTimeseriesResultDimensions implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'time' => null
+        'action' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class LogTimeseriesResultDimensions implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'time' => 'time'
+        'action' => 'action'
     ];
 
     /**
@@ -103,7 +103,7 @@ class LogTimeseriesResultDimensions implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'time' => 'setTime'
+        'action' => 'setAction'
     ];
 
     /**
@@ -112,7 +112,7 @@ class LogTimeseriesResultDimensions implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'time' => 'getTime'
+        'action' => 'getAction'
     ];
 
     /**
@@ -172,7 +172,7 @@ class LogTimeseriesResultDimensions implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['time'] = $data['time'] ?? null;
+        $this->container['action'] = $data['action'] ?? 'default';
     }
 
     /**
@@ -200,25 +200,25 @@ class LogTimeseriesResultDimensions implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets time
+     * Gets action
      *
      * @return string|null
      */
-    public function getTime()
+    public function getAction()
     {
-        return $this->container['time'];
+        return $this->container['action'];
     }
 
     /**
-     * Sets time
+     * Sets action
      *
-     * @param string|null $time time
+     * @param string|null $action Action types for a rule. Supported action values are default, block, log, off. The default action value follows the current protection mode of the associated service.
      *
      * @return self
      */
-    public function setTime($time)
+    public function setAction($action)
     {
-        $this->container['time'] = $time;
+        $this->container['action'] = $action;
 
         return $this;
     }

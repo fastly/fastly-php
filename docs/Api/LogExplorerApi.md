@@ -30,7 +30,7 @@ Retrieves log records.
 
 ### Example
 ```php
-    $options['service_id'] = 'service_id_example'; // string
+    $options['service_id'] = 1jlmtMz1ncwA0KC3TBGD0X; // string
 $options['start'] = 'start_example'; // string
 $options['end'] = 'end_example'; // string
 $options['limit'] = 3.4; // float

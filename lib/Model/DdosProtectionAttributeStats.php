@@ -53,7 +53,7 @@ class DdosProtectionAttributeStats implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => '\Fastly\Model\DdosProtectionTrafficAttribute',
+        'name' => 'string',
         'values' => '\Fastly\Model\DdosProtectionAttributeValue[]'
     ];
 
@@ -208,7 +208,7 @@ class DdosProtectionAttributeStats implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets name
      *
-     * @return \Fastly\Model\DdosProtectionTrafficAttribute|null
+     * @return string|null
      */
     public function getName()
     {
@@ -218,7 +218,7 @@ class DdosProtectionAttributeStats implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets name
      *
-     * @param \Fastly\Model\DdosProtectionTrafficAttribute|null $name name
+     * @param string|null $name Name of an attribute type used in traffic stats. Currently, supported values are source_ip, country_code, host, asn, source_ip_prefix, user_agent, method_path.
      *
      * @return self
      */

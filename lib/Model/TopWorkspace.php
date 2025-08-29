@@ -1,6 +1,6 @@
 <?php
 /**
- * LogTimeseriesGetResponse
+ * TopWorkspace
  *
  * PHP version 7.3
  *
@@ -27,16 +27,17 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * LogTimeseriesGetResponse Class Doc Comment
+ * TopWorkspace Class Doc Comment
  *
  * @category Class
+ * @description This object, found within the &#x60;top_workspaces&#x60; array, contains the workspace information and count for the requested signal.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class LogTimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class TopWorkspace implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +46,7 @@ class LogTimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $fastlyModelName = 'log-timeseries-get-response';
+    protected static $fastlyModelName = 'TopWorkspace';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +54,9 @@ class LogTimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\LogTimeseriesResult[]',
-        'meta' => '\Fastly\Model\LogTimeseriesGetResponseMeta'
+        'id' => 'string',
+        'name' => 'string',
+        'count' => 'int'
     ];
 
     /**
@@ -65,8 +67,9 @@ class LogTimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null,
-        'meta' => null
+        'id' => null,
+        'name' => null,
+        'count' => null
     ];
 
     /**
@@ -96,8 +99,9 @@ class LogTimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'meta' => 'meta'
+        'id' => 'id',
+        'name' => 'name',
+        'count' => 'count'
     ];
 
     /**
@@ -106,8 +110,9 @@ class LogTimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'meta' => 'setMeta'
+        'id' => 'setId',
+        'name' => 'setName',
+        'count' => 'setCount'
     ];
 
     /**
@@ -116,8 +121,9 @@ class LogTimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'meta' => 'getMeta'
+        'id' => 'getId',
+        'name' => 'getName',
+        'count' => 'getCount'
     ];
 
     /**
@@ -177,8 +183,9 @@ class LogTimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
-        $this->container['meta'] = $data['meta'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['count'] = $data['count'] ?? null;
     }
 
     /**
@@ -206,49 +213,73 @@ class LogTimeseriesGetResponse implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets data
+     * Gets id
      *
-     * @return \Fastly\Model\LogTimeseriesResult[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getId()
     {
-        return $this->container['data'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets data
+     * Sets id
      *
-     * @param \Fastly\Model\LogTimeseriesResult[]|null $data data
+     * @param string|null $id ID of the workspace.
      *
      * @return self
      */
-    public function setData($data)
+    public function setId($id)
     {
-        $this->container['data'] = $data;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets meta
+     * Gets name
      *
-     * @return \Fastly\Model\LogTimeseriesGetResponseMeta|null
+     * @return string|null
      */
-    public function getMeta()
+    public function getName()
     {
-        return $this->container['meta'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets meta
+     * Sets name
      *
-     * @param \Fastly\Model\LogTimeseriesGetResponseMeta|null $meta meta
+     * @param string|null $name Name of the workspace.
      *
      * @return self
      */
-    public function setMeta($meta)
+    public function setName($name)
     {
-        $this->container['meta'] = $meta;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
+     *
+     * @return int|null
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param int|null $count Count of attacks on this workspace for the specific attack type.
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        $this->container['count'] = $count;
 
         return $this;
     }

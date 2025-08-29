@@ -57,7 +57,7 @@ class DdosProtectionRule implements ModelInterface, ArrayAccess, \JsonSerializab
         'updated_at' => '\DateTime',
         'id' => 'string',
         'name' => 'string',
-        'action' => '\Fastly\Model\DdosProtectionAction',
+        'action' => 'string',
         'customer_id' => 'string',
         'service_id' => 'string',
         'source_ip' => 'string',
@@ -236,7 +236,7 @@ class DdosProtectionRule implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
+        $this->container['action'] = $data['action'] ?? 'default';
         $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['source_ip'] = $data['source_ip'] ?? null;
@@ -370,7 +370,7 @@ class DdosProtectionRule implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets action
      *
-     * @return \Fastly\Model\DdosProtectionAction|null
+     * @return string|null
      */
     public function getAction()
     {
@@ -380,7 +380,7 @@ class DdosProtectionRule implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets action
      *
-     * @param \Fastly\Model\DdosProtectionAction|null $action action
+     * @param string|null $action Action types for a rule. Supported action values are default, block, log, off. The default action value follows the current protection mode of the associated service.
      *
      * @return self
      */

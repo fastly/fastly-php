@@ -42,6 +42,7 @@ Fetches historical stats for each of your Fastly services and groups the results
 $options['to'] = 2020-04-09T18:14:30Z; // string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.
 $options['by'] = day; // string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.
 $options['region'] = usa; // string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America.
+$options['services'] = 'services_example'; // string | Limit the query to only the specified, comma-separated list of services.
 
 try {
     $result = $apiInstance->getHistStats($options);
@@ -60,6 +61,7 @@ Name | Type | Description  | Notes
 **to** | **string** | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. | [optional] [defaults to 'now']
 **by** | **string** | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. | [optional] [one of: 'hour', 'minute', 'day'] [defaults to 'day']
 **region** | **string** | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America. | [optional] [one of: 'usa', 'europe', 'asia', 'asia_india', 'asia_southkorea', 'africa_std', 'mexico', 'southamerica_std']
+**services** | **string** | Limit the query to only the specified, comma-separated list of services. | [optional]
 
 ### Return type
 

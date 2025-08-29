@@ -1,6 +1,6 @@
 <?php
 /**
- * DdosProtectionRuleAllOf
+ * AttackReport
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * DdosProtectionRuleAllOf Class Doc Comment
+ * AttackReport Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttackReport implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $fastlyModelName = 'ddos_protection_rule_allOf';
+    protected static $fastlyModelName = 'AttackReport';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,15 +55,14 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $fastlyTypes = [
         'id' => 'string',
         'name' => 'string',
-        'action' => 'string',
-        'customer_id' => 'string',
-        'service_id' => 'string',
-        'source_ip' => 'string',
-        'country_code' => 'string',
-        'host' => 'string',
-        'asn' => 'string',
-        'source_ip_prefix' => 'string',
-        'additional_attributes' => 'string[]'
+        'total_count' => 'int',
+        'blocked_count' => 'int',
+        'flagged_count' => 'int',
+        'attack_count' => 'int',
+        'all_flagged_ip_count' => 'int',
+        'flagged_ip_count' => 'int',
+        'top_attack_signals' => '\Fastly\Model\AttackSignal[]',
+        'top_attack_sources' => '\Fastly\Model\AttackSource[]'
     ];
 
     /**
@@ -76,15 +75,14 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $fastlyFormats = [
         'id' => null,
         'name' => null,
-        'action' => null,
-        'customer_id' => null,
-        'service_id' => null,
-        'source_ip' => null,
-        'country_code' => null,
-        'host' => null,
-        'asn' => null,
-        'source_ip_prefix' => null,
-        'additional_attributes' => null
+        'total_count' => null,
+        'blocked_count' => null,
+        'flagged_count' => null,
+        'attack_count' => null,
+        'all_flagged_ip_count' => null,
+        'flagged_ip_count' => null,
+        'top_attack_signals' => null,
+        'top_attack_sources' => null
     ];
 
     /**
@@ -116,15 +114,14 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'action' => 'action',
-        'customer_id' => 'customer_id',
-        'service_id' => 'service_id',
-        'source_ip' => 'source_ip',
-        'country_code' => 'country_code',
-        'host' => 'host',
-        'asn' => 'asn',
-        'source_ip_prefix' => 'source_ip_prefix',
-        'additional_attributes' => 'additional_attributes'
+        'total_count' => 'total_count',
+        'blocked_count' => 'blocked_count',
+        'flagged_count' => 'flagged_count',
+        'attack_count' => 'attack_count',
+        'all_flagged_ip_count' => 'all_flagged_ip_count',
+        'flagged_ip_count' => 'flagged_ip_count',
+        'top_attack_signals' => 'top_attack_signals',
+        'top_attack_sources' => 'top_attack_sources'
     ];
 
     /**
@@ -135,15 +132,14 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'action' => 'setAction',
-        'customer_id' => 'setCustomerId',
-        'service_id' => 'setServiceId',
-        'source_ip' => 'setSourceIp',
-        'country_code' => 'setCountryCode',
-        'host' => 'setHost',
-        'asn' => 'setAsn',
-        'source_ip_prefix' => 'setSourceIpPrefix',
-        'additional_attributes' => 'setAdditionalAttributes'
+        'total_count' => 'setTotalCount',
+        'blocked_count' => 'setBlockedCount',
+        'flagged_count' => 'setFlaggedCount',
+        'attack_count' => 'setAttackCount',
+        'all_flagged_ip_count' => 'setAllFlaggedIpCount',
+        'flagged_ip_count' => 'setFlaggedIpCount',
+        'top_attack_signals' => 'setTopAttackSignals',
+        'top_attack_sources' => 'setTopAttackSources'
     ];
 
     /**
@@ -154,15 +150,14 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'action' => 'getAction',
-        'customer_id' => 'getCustomerId',
-        'service_id' => 'getServiceId',
-        'source_ip' => 'getSourceIp',
-        'country_code' => 'getCountryCode',
-        'host' => 'getHost',
-        'asn' => 'getAsn',
-        'source_ip_prefix' => 'getSourceIpPrefix',
-        'additional_attributes' => 'getAdditionalAttributes'
+        'total_count' => 'getTotalCount',
+        'blocked_count' => 'getBlockedCount',
+        'flagged_count' => 'getFlaggedCount',
+        'attack_count' => 'getAttackCount',
+        'all_flagged_ip_count' => 'getAllFlaggedIpCount',
+        'flagged_ip_count' => 'getFlaggedIpCount',
+        'top_attack_signals' => 'getTopAttackSignals',
+        'top_attack_sources' => 'getTopAttackSources'
     ];
 
     /**
@@ -224,15 +219,14 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['action'] = $data['action'] ?? 'default';
-        $this->container['customer_id'] = $data['customer_id'] ?? null;
-        $this->container['service_id'] = $data['service_id'] ?? null;
-        $this->container['source_ip'] = $data['source_ip'] ?? null;
-        $this->container['country_code'] = $data['country_code'] ?? null;
-        $this->container['host'] = $data['host'] ?? null;
-        $this->container['asn'] = $data['asn'] ?? null;
-        $this->container['source_ip_prefix'] = $data['source_ip_prefix'] ?? null;
-        $this->container['additional_attributes'] = $data['additional_attributes'] ?? null;
+        $this->container['total_count'] = $data['total_count'] ?? null;
+        $this->container['blocked_count'] = $data['blocked_count'] ?? null;
+        $this->container['flagged_count'] = $data['flagged_count'] ?? null;
+        $this->container['attack_count'] = $data['attack_count'] ?? null;
+        $this->container['all_flagged_ip_count'] = $data['all_flagged_ip_count'] ?? null;
+        $this->container['flagged_ip_count'] = $data['flagged_ip_count'] ?? null;
+        $this->container['top_attack_signals'] = $data['top_attack_signals'] ?? null;
+        $this->container['top_attack_sources'] = $data['top_attack_sources'] ?? null;
     }
 
     /**
@@ -244,6 +238,36 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
+        }
+        if ($this->container['blocked_count'] === null) {
+            $invalidProperties[] = "'blocked_count' can't be null";
+        }
+        if ($this->container['flagged_count'] === null) {
+            $invalidProperties[] = "'flagged_count' can't be null";
+        }
+        if ($this->container['attack_count'] === null) {
+            $invalidProperties[] = "'attack_count' can't be null";
+        }
+        if ($this->container['all_flagged_ip_count'] === null) {
+            $invalidProperties[] = "'all_flagged_ip_count' can't be null";
+        }
+        if ($this->container['flagged_ip_count'] === null) {
+            $invalidProperties[] = "'flagged_ip_count' can't be null";
+        }
+        if ($this->container['top_attack_signals'] === null) {
+            $invalidProperties[] = "'top_attack_signals' can't be null";
+        }
+        if ($this->container['top_attack_sources'] === null) {
+            $invalidProperties[] = "'top_attack_sources' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -262,7 +286,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -272,7 +296,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets id
      *
-     * @param string|null $id Unique ID of the rule.
+     * @param string $id ID of the workspace.
      *
      * @return self
      */
@@ -286,7 +310,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -296,7 +320,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets name
      *
-     * @param string|null $name A human-readable name for the rule.
+     * @param string $name Name of the workspace.
      *
      * @return self
      */
@@ -308,217 +332,193 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets action
+     * Gets total_count
      *
-     * @return string|null
+     * @return int
      */
-    public function getAction()
+    public function getTotalCount()
     {
-        return $this->container['action'];
+        return $this->container['total_count'];
     }
 
     /**
-     * Sets action
+     * Sets total_count
      *
-     * @param string|null $action Action types for a rule. Supported action values are default, block, log, off. The default action value follows the current protection mode of the associated service.
+     * @param int $total_count Total request count
      *
      * @return self
      */
-    public function setAction($action)
+    public function setTotalCount($total_count)
     {
-        $this->container['action'] = $action;
+        $this->container['total_count'] = $total_count;
 
         return $this;
     }
 
     /**
-     * Gets customer_id
+     * Gets blocked_count
      *
-     * @return string|null
+     * @return int
      */
-    public function getCustomerId()
+    public function getBlockedCount()
     {
-        return $this->container['customer_id'];
+        return $this->container['blocked_count'];
     }
 
     /**
-     * Sets customer_id
+     * Sets blocked_count
      *
-     * @param string|null $customer_id Alphanumeric string identifying the customer.
+     * @param int $blocked_count Blocked request count
      *
      * @return self
      */
-    public function setCustomerId($customer_id)
+    public function setBlockedCount($blocked_count)
     {
-        $this->container['customer_id'] = $customer_id;
+        $this->container['blocked_count'] = $blocked_count;
 
         return $this;
     }
 
     /**
-     * Gets service_id
+     * Gets flagged_count
      *
-     * @return string|null
+     * @return int
      */
-    public function getServiceId()
+    public function getFlaggedCount()
     {
-        return $this->container['service_id'];
+        return $this->container['flagged_count'];
     }
 
     /**
-     * Sets service_id
+     * Sets flagged_count
      *
-     * @param string|null $service_id Alphanumeric string identifying the service.
+     * @param int $flagged_count Flagged request count
      *
      * @return self
      */
-    public function setServiceId($service_id)
+    public function setFlaggedCount($flagged_count)
     {
-        $this->container['service_id'] = $service_id;
+        $this->container['flagged_count'] = $flagged_count;
 
         return $this;
     }
 
     /**
-     * Gets source_ip
+     * Gets attack_count
      *
-     * @return string|null
+     * @return int
      */
-    public function getSourceIp()
+    public function getAttackCount()
     {
-        return $this->container['source_ip'];
+        return $this->container['attack_count'];
     }
 
     /**
-     * Sets source_ip
+     * Sets attack_count
      *
-     * @param string|null $source_ip Source IP address attribute.
+     * @param int $attack_count Attack request count
      *
      * @return self
      */
-    public function setSourceIp($source_ip)
+    public function setAttackCount($attack_count)
     {
-        $this->container['source_ip'] = $source_ip;
+        $this->container['attack_count'] = $attack_count;
 
         return $this;
     }
 
     /**
-     * Gets country_code
+     * Gets all_flagged_ip_count
      *
-     * @return string|null
+     * @return int
      */
-    public function getCountryCode()
+    public function getAllFlaggedIpCount()
     {
-        return $this->container['country_code'];
+        return $this->container['all_flagged_ip_count'];
     }
 
     /**
-     * Sets country_code
+     * Sets all_flagged_ip_count
      *
-     * @param string|null $country_code Country code attribute.
+     * @param int $all_flagged_ip_count Count of IPs that have been flagged
      *
      * @return self
      */
-    public function setCountryCode($country_code)
+    public function setAllFlaggedIpCount($all_flagged_ip_count)
     {
-        $this->container['country_code'] = $country_code;
+        $this->container['all_flagged_ip_count'] = $all_flagged_ip_count;
 
         return $this;
     }
 
     /**
-     * Gets host
+     * Gets flagged_ip_count
      *
-     * @return string|null
+     * @return int
      */
-    public function getHost()
+    public function getFlaggedIpCount()
     {
-        return $this->container['host'];
+        return $this->container['flagged_ip_count'];
     }
 
     /**
-     * Sets host
+     * Sets flagged_ip_count
      *
-     * @param string|null $host Host attribute.
+     * @param int $flagged_ip_count Count of currently flagged IPs
      *
      * @return self
      */
-    public function setHost($host)
+    public function setFlaggedIpCount($flagged_ip_count)
     {
-        $this->container['host'] = $host;
+        $this->container['flagged_ip_count'] = $flagged_ip_count;
 
         return $this;
     }
 
     /**
-     * Gets asn
+     * Gets top_attack_signals
      *
-     * @return string|null
+     * @return \Fastly\Model\AttackSignal[]
      */
-    public function getAsn()
+    public function getTopAttackSignals()
     {
-        return $this->container['asn'];
+        return $this->container['top_attack_signals'];
     }
 
     /**
-     * Sets asn
+     * Sets top_attack_signals
      *
-     * @param string|null $asn ASN attribute.
+     * @param \Fastly\Model\AttackSignal[] $top_attack_signals top_attack_signals
      *
      * @return self
      */
-    public function setAsn($asn)
+    public function setTopAttackSignals($top_attack_signals)
     {
-        $this->container['asn'] = $asn;
+        $this->container['top_attack_signals'] = $top_attack_signals;
 
         return $this;
     }
 
     /**
-     * Gets source_ip_prefix
+     * Gets top_attack_sources
      *
-     * @return string|null
+     * @return \Fastly\Model\AttackSource[]
      */
-    public function getSourceIpPrefix()
+    public function getTopAttackSources()
     {
-        return $this->container['source_ip_prefix'];
+        return $this->container['top_attack_sources'];
     }
 
     /**
-     * Sets source_ip_prefix
+     * Sets top_attack_sources
      *
-     * @param string|null $source_ip_prefix Source IP prefix attribute.
+     * @param \Fastly\Model\AttackSource[] $top_attack_sources top_attack_sources
      *
      * @return self
      */
-    public function setSourceIpPrefix($source_ip_prefix)
+    public function setTopAttackSources($top_attack_sources)
     {
-        $this->container['source_ip_prefix'] = $source_ip_prefix;
-
-        return $this;
-    }
-
-    /**
-     * Gets additional_attributes
-     *
-     * @return string[]|null
-     */
-    public function getAdditionalAttributes()
-    {
-        return $this->container['additional_attributes'];
-    }
-
-    /**
-     * Sets additional_attributes
-     *
-     * @param string[]|null $additional_attributes Attribute category for additional, unlisted attributes used in a rule.
-     *
-     * @return self
-     */
-    public function setAdditionalAttributes($additional_attributes)
-    {
-        $this->container['additional_attributes'] = $additional_attributes;
+        $this->container['top_attack_sources'] = $top_attack_sources;
 
         return $this;
     }

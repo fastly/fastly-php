@@ -1,6 +1,6 @@
 <?php
 /**
- * PoolResponseCommon
+ * SignalReport
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * PoolResponseCommon Class Doc Comment
+ * SignalReport Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializable
+class SignalReport implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $fastlyModelName = 'pool_response_common';
+    protected static $fastlyModelName = 'SignalReport';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,12 +53,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'between_bytes_timeout' => 'string',
-        'connect_timeout' => 'string',
-        'first_byte_timeout' => 'string',
-        'max_conn_default' => 'string',
-        'tls_check_cert' => 'string',
-        'id' => 'string'
+        'name' => 'string',
+        'display_name' => 'string',
+        'count' => 'int',
+        'top_workspaces' => '\Fastly\Model\TopWorkspace[]'
     ];
 
     /**
@@ -69,12 +67,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'between_bytes_timeout' => null,
-        'connect_timeout' => null,
-        'first_byte_timeout' => null,
-        'max_conn_default' => null,
-        'tls_check_cert' => null,
-        'id' => null
+        'name' => null,
+        'display_name' => null,
+        'count' => null,
+        'top_workspaces' => null
     ];
 
     /**
@@ -104,12 +100,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'between_bytes_timeout' => 'between_bytes_timeout',
-        'connect_timeout' => 'connect_timeout',
-        'first_byte_timeout' => 'first_byte_timeout',
-        'max_conn_default' => 'max_conn_default',
-        'tls_check_cert' => 'tls_check_cert',
-        'id' => 'id'
+        'name' => 'name',
+        'display_name' => 'display_name',
+        'count' => 'count',
+        'top_workspaces' => 'top_workspaces'
     ];
 
     /**
@@ -118,12 +112,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'between_bytes_timeout' => 'setBetweenBytesTimeout',
-        'connect_timeout' => 'setConnectTimeout',
-        'first_byte_timeout' => 'setFirstByteTimeout',
-        'max_conn_default' => 'setMaxConnDefault',
-        'tls_check_cert' => 'setTlsCheckCert',
-        'id' => 'setId'
+        'name' => 'setName',
+        'display_name' => 'setDisplayName',
+        'count' => 'setCount',
+        'top_workspaces' => 'setTopWorkspaces'
     ];
 
     /**
@@ -132,12 +124,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'between_bytes_timeout' => 'getBetweenBytesTimeout',
-        'connect_timeout' => 'getConnectTimeout',
-        'first_byte_timeout' => 'getFirstByteTimeout',
-        'max_conn_default' => 'getMaxConnDefault',
-        'tls_check_cert' => 'getTlsCheckCert',
-        'id' => 'getId'
+        'name' => 'getName',
+        'display_name' => 'getDisplayName',
+        'count' => 'getCount',
+        'top_workspaces' => 'getTopWorkspaces'
     ];
 
     /**
@@ -197,12 +187,10 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['between_bytes_timeout'] = $data['between_bytes_timeout'] ?? null;
-        $this->container['connect_timeout'] = $data['connect_timeout'] ?? null;
-        $this->container['first_byte_timeout'] = $data['first_byte_timeout'] ?? null;
-        $this->container['max_conn_default'] = $data['max_conn_default'] ?? '200';
-        $this->container['tls_check_cert'] = $data['tls_check_cert'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['count'] = $data['count'] ?? null;
+        $this->container['top_workspaces'] = $data['top_workspaces'] ?? null;
     }
 
     /**
@@ -230,145 +218,97 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets between_bytes_timeout
+     * Gets name
      *
      * @return string|null
      */
-    public function getBetweenBytesTimeout()
+    public function getName()
     {
-        return $this->container['between_bytes_timeout'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets between_bytes_timeout
+     * Sets name
      *
-     * @param string|null $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using `bereq.between_bytes_timeout`.
+     * @param string|null $name Name of the attack type.
      *
      * @return self
      */
-    public function setBetweenBytesTimeout($between_bytes_timeout)
+    public function setName($name)
     {
-        $this->container['between_bytes_timeout'] = $between_bytes_timeout;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets connect_timeout
+     * Gets display_name
      *
      * @return string|null
      */
-    public function getConnectTimeout()
+    public function getDisplayName()
     {
-        return $this->container['connect_timeout'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets connect_timeout
+     * Sets display_name
      *
-     * @param string|null $connect_timeout How long to wait for a timeout in milliseconds.
+     * @param string|null $display_name Display name of the attack type.
      *
      * @return self
      */
-    public function setConnectTimeout($connect_timeout)
+    public function setDisplayName($display_name)
     {
-        $this->container['connect_timeout'] = $connect_timeout;
+        $this->container['display_name'] = $display_name;
 
         return $this;
     }
 
     /**
-     * Gets first_byte_timeout
+     * Gets count
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getFirstByteTimeout()
+    public function getCount()
     {
-        return $this->container['first_byte_timeout'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets first_byte_timeout
+     * Sets count
      *
-     * @param string|null $first_byte_timeout How long to wait for the first byte in milliseconds.
+     * @param int|null $count Total count of attacks of this type.
      *
      * @return self
      */
-    public function setFirstByteTimeout($first_byte_timeout)
+    public function setCount($count)
     {
-        $this->container['first_byte_timeout'] = $first_byte_timeout;
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets max_conn_default
+     * Gets top_workspaces
      *
-     * @return string|null
+     * @return \Fastly\Model\TopWorkspace[]|null
      */
-    public function getMaxConnDefault()
+    public function getTopWorkspaces()
     {
-        return $this->container['max_conn_default'];
+        return $this->container['top_workspaces'];
     }
 
     /**
-     * Sets max_conn_default
+     * Sets top_workspaces
      *
-     * @param string|null $max_conn_default Maximum number of connections.
+     * @param \Fastly\Model\TopWorkspace[]|null $top_workspaces Top workspaces affected by this attack type.
      *
      * @return self
      */
-    public function setMaxConnDefault($max_conn_default)
+    public function setTopWorkspaces($top_workspaces)
     {
-        $this->container['max_conn_default'] = $max_conn_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets tls_check_cert
-     *
-     * @return string|null
-     */
-    public function getTlsCheckCert()
-    {
-        return $this->container['tls_check_cert'];
-    }
-
-    /**
-     * Sets tls_check_cert
-     *
-     * @param string|null $tls_check_cert Be strict on checking TLS certs.
-     *
-     * @return self
-     */
-    public function setTlsCheckCert($tls_check_cert)
-    {
-        $this->container['tls_check_cert'] = $tls_check_cert;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
+        $this->container['top_workspaces'] = $top_workspaces;
 
         return $this;
     }

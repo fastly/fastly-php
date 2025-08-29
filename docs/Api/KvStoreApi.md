@@ -139,6 +139,7 @@ List all KV stores.
 ```php
     $options['cursor'] = 'cursor_example'; // string
 $options['limit'] = 1000; // int
+$options['name'] = 'name_example'; // string | Returns a one-element array containing the details for the named KV store.
 
 try {
     $result = $apiInstance->kvStoreList($options);
@@ -155,6 +156,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **cursor** | **string** |  | [optional]
 **limit** | **int** |  | [optional] [defaults to 1000]
+**name** | **string** | Returns a one-element array containing the details for the named KV store. | [optional]
 
 ### Return type
 

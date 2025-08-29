@@ -1,10 +1,11 @@
-# # LogTimeseriesGetResponseMetaFilters
+# # DdosProtectionNotAuthorized
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filter_fields** | [**\Fastly\Model\LogTimeseriesFilterFieldItem[]**](LogTimeseriesFilterFieldItem.md) |  | [optional] 
+**title** | **string** |  | [optional] 
+**status** | **int** |  | [optional]  [one of: 403]
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

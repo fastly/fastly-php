@@ -1,6 +1,6 @@
 <?php
 /**
- * PoolResponseCommon
+ * ListAttackReportMeta
  *
  * PHP version 7.3
  *
@@ -27,16 +27,17 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * PoolResponseCommon Class Doc Comment
+ * ListAttackReportMeta Class Doc Comment
  *
  * @category Class
+ * @description Metadata about the request.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListAttackReportMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +46,7 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $fastlyModelName = 'pool_response_common';
+    protected static $fastlyModelName = 'ListAttackReport_meta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,12 +54,7 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'between_bytes_timeout' => 'string',
-        'connect_timeout' => 'string',
-        'first_byte_timeout' => 'string',
-        'max_conn_default' => 'string',
-        'tls_check_cert' => 'string',
-        'id' => 'string'
+        'total' => 'int'
     ];
 
     /**
@@ -69,12 +65,7 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'between_bytes_timeout' => null,
-        'connect_timeout' => null,
-        'first_byte_timeout' => null,
-        'max_conn_default' => null,
-        'tls_check_cert' => null,
-        'id' => null
+        'total' => null
     ];
 
     /**
@@ -104,12 +95,7 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'between_bytes_timeout' => 'between_bytes_timeout',
-        'connect_timeout' => 'connect_timeout',
-        'first_byte_timeout' => 'first_byte_timeout',
-        'max_conn_default' => 'max_conn_default',
-        'tls_check_cert' => 'tls_check_cert',
-        'id' => 'id'
+        'total' => 'total'
     ];
 
     /**
@@ -118,12 +104,7 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'between_bytes_timeout' => 'setBetweenBytesTimeout',
-        'connect_timeout' => 'setConnectTimeout',
-        'first_byte_timeout' => 'setFirstByteTimeout',
-        'max_conn_default' => 'setMaxConnDefault',
-        'tls_check_cert' => 'setTlsCheckCert',
-        'id' => 'setId'
+        'total' => 'setTotal'
     ];
 
     /**
@@ -132,12 +113,7 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'between_bytes_timeout' => 'getBetweenBytesTimeout',
-        'connect_timeout' => 'getConnectTimeout',
-        'first_byte_timeout' => 'getFirstByteTimeout',
-        'max_conn_default' => 'getMaxConnDefault',
-        'tls_check_cert' => 'getTlsCheckCert',
-        'id' => 'getId'
+        'total' => 'getTotal'
     ];
 
     /**
@@ -197,12 +173,7 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['between_bytes_timeout'] = $data['between_bytes_timeout'] ?? null;
-        $this->container['connect_timeout'] = $data['connect_timeout'] ?? null;
-        $this->container['first_byte_timeout'] = $data['first_byte_timeout'] ?? null;
-        $this->container['max_conn_default'] = $data['max_conn_default'] ?? '200';
-        $this->container['tls_check_cert'] = $data['tls_check_cert'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['total'] = $data['total'] ?? null;
     }
 
     /**
@@ -230,145 +201,25 @@ class PoolResponseCommon implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets between_bytes_timeout
+     * Gets total
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getBetweenBytesTimeout()
+    public function getTotal()
     {
-        return $this->container['between_bytes_timeout'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets between_bytes_timeout
+     * Sets total
      *
-     * @param string|null $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using `bereq.between_bytes_timeout`.
+     * @param int|null $total The count of attack reports matching the filter.
      *
      * @return self
      */
-    public function setBetweenBytesTimeout($between_bytes_timeout)
+    public function setTotal($total)
     {
-        $this->container['between_bytes_timeout'] = $between_bytes_timeout;
-
-        return $this;
-    }
-
-    /**
-     * Gets connect_timeout
-     *
-     * @return string|null
-     */
-    public function getConnectTimeout()
-    {
-        return $this->container['connect_timeout'];
-    }
-
-    /**
-     * Sets connect_timeout
-     *
-     * @param string|null $connect_timeout How long to wait for a timeout in milliseconds.
-     *
-     * @return self
-     */
-    public function setConnectTimeout($connect_timeout)
-    {
-        $this->container['connect_timeout'] = $connect_timeout;
-
-        return $this;
-    }
-
-    /**
-     * Gets first_byte_timeout
-     *
-     * @return string|null
-     */
-    public function getFirstByteTimeout()
-    {
-        return $this->container['first_byte_timeout'];
-    }
-
-    /**
-     * Sets first_byte_timeout
-     *
-     * @param string|null $first_byte_timeout How long to wait for the first byte in milliseconds.
-     *
-     * @return self
-     */
-    public function setFirstByteTimeout($first_byte_timeout)
-    {
-        $this->container['first_byte_timeout'] = $first_byte_timeout;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_conn_default
-     *
-     * @return string|null
-     */
-    public function getMaxConnDefault()
-    {
-        return $this->container['max_conn_default'];
-    }
-
-    /**
-     * Sets max_conn_default
-     *
-     * @param string|null $max_conn_default Maximum number of connections.
-     *
-     * @return self
-     */
-    public function setMaxConnDefault($max_conn_default)
-    {
-        $this->container['max_conn_default'] = $max_conn_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets tls_check_cert
-     *
-     * @return string|null
-     */
-    public function getTlsCheckCert()
-    {
-        return $this->container['tls_check_cert'];
-    }
-
-    /**
-     * Sets tls_check_cert
-     *
-     * @param string|null $tls_check_cert Be strict on checking TLS certs.
-     *
-     * @return self
-     */
-    public function setTlsCheckCert($tls_check_cert)
-    {
-        $this->container['tls_check_cert'] = $tls_check_cert;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
+        $this->container['total'] = $total;
 
         return $this;
     }

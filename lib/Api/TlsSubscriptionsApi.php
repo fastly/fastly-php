@@ -473,7 +473,6 @@ class TlsSubscriptionsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  bool $force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. (optional)
      * @param  \Fastly\Model\TlsSubscription $tls_subscription tls_subscription (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -496,7 +495,6 @@ class TlsSubscriptionsApi
      * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  bool $force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. (optional)
      * @param  \Fastly\Model\TlsSubscription $tls_subscription (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
@@ -607,7 +605,6 @@ class TlsSubscriptionsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  bool $force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. (optional)
      * @param  \Fastly\Model\TlsSubscription $tls_subscription (optional)
      *
      * @throws \InvalidArgumentException
@@ -633,7 +630,6 @@ class TlsSubscriptionsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  bool $force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. (optional)
      * @param  \Fastly\Model\TlsSubscription $tls_subscription (optional)
      *
      * @throws \InvalidArgumentException
@@ -685,7 +681,6 @@ class TlsSubscriptionsApi
      * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
      * URL: https://api.fastly.com
      *
-     * @param  bool $force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. (optional)
      * @param  \Fastly\Model\TlsSubscription $tls_subscription (optional)
      *
      * @throws \InvalidArgumentException
@@ -694,7 +689,6 @@ class TlsSubscriptionsApi
     public function createTlsSubRequest($options)
     {
         // unbox the parameters from the associative array
-        $force = array_key_exists('force', $options) ? $options['force'] : null;
         $tls_subscription = array_key_exists('tls_subscription', $options) ? $options['tls_subscription'] : null;
 
 
@@ -705,13 +699,6 @@ class TlsSubscriptionsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if (is_array($force)) {
-            $force = ObjectSerializer::serializeCollection($force, 'form', true);
-        }
-        if ($force !== null) {
-            $queryParams['force'] = ObjectSerializer::toString($force);
-        }
 
 
 
