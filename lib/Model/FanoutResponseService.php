@@ -53,7 +53,7 @@ class FanoutResponseService implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'service' => '\Fastly\Model\BotManagementResponseServiceService'
+        'service' => '\Fastly\Model\ApiDiscoveryResponseServiceService'
     ];
 
     /**
@@ -202,7 +202,7 @@ class FanoutResponseService implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets service
      *
-     * @return \Fastly\Model\BotManagementResponseServiceService|null
+     * @return \Fastly\Model\ApiDiscoveryResponseServiceService|null
      */
     public function getService()
     {
@@ -212,7 +212,7 @@ class FanoutResponseService implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets service
      *
-     * @param \Fastly\Model\BotManagementResponseServiceService|null $service service
+     * @param \Fastly\Model\ApiDiscoveryResponseServiceService|null $service service
      *
      * @return self
      */

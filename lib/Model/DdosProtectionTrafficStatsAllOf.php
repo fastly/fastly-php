@@ -55,7 +55,8 @@ class DdosProtectionTrafficStatsAllOf implements ModelInterface, ArrayAccess, \J
     protected static $fastlyTypes = [
         'customer_id' => 'string',
         'service_id' => 'string',
-        'attributes' => '\Fastly\Model\DdosProtectionAttributeStats[]'
+        'attributes' => '\Fastly\Model\DdosProtectionAttributeStats[]',
+        'traffic_percentage' => 'float'
     ];
 
     /**
@@ -68,7 +69,8 @@ class DdosProtectionTrafficStatsAllOf implements ModelInterface, ArrayAccess, \J
     protected static $fastlyFormats = [
         'customer_id' => null,
         'service_id' => null,
-        'attributes' => null
+        'attributes' => null,
+        'traffic_percentage' => 'float'
     ];
 
     /**
@@ -100,7 +102,8 @@ class DdosProtectionTrafficStatsAllOf implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'customer_id' => 'customer_id',
         'service_id' => 'service_id',
-        'attributes' => 'attributes'
+        'attributes' => 'attributes',
+        'traffic_percentage' => 'traffic_percentage'
     ];
 
     /**
@@ -111,7 +114,8 @@ class DdosProtectionTrafficStatsAllOf implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'customer_id' => 'setCustomerId',
         'service_id' => 'setServiceId',
-        'attributes' => 'setAttributes'
+        'attributes' => 'setAttributes',
+        'traffic_percentage' => 'setTrafficPercentage'
     ];
 
     /**
@@ -122,7 +126,8 @@ class DdosProtectionTrafficStatsAllOf implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'customer_id' => 'getCustomerId',
         'service_id' => 'getServiceId',
-        'attributes' => 'getAttributes'
+        'attributes' => 'getAttributes',
+        'traffic_percentage' => 'getTrafficPercentage'
     ];
 
     /**
@@ -185,6 +190,7 @@ class DdosProtectionTrafficStatsAllOf implements ModelInterface, ArrayAccess, \J
         $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['traffic_percentage'] = $data['traffic_percentage'] ?? null;
     }
 
     /**
@@ -279,6 +285,32 @@ class DdosProtectionTrafficStatsAllOf implements ModelInterface, ArrayAccess, \J
     public function setAttributes($attributes)
     {
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets traffic_percentage
+     *
+     * @return float|null
+     */
+    public function getTrafficPercentage()
+    {
+        return $this->container['traffic_percentage'];
+    }
+
+    /**
+     * Sets traffic_percentage
+     *
+     * @param float|null $traffic_percentage Rule traffic percentage for the event.
+     *
+     * @return self
+     */
+    public function setTrafficPercentage($traffic_percentage)
+    {
+
+
+        $this->container['traffic_percentage'] = $traffic_percentage;
 
         return $this;
     }

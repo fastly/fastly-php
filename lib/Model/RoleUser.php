@@ -28,7 +28,7 @@ use \Fastly\ObjectSerializer;
  * RoleUser Class Doc Comment
  *
  * @category Class
- * @description The permissions role assigned to the user. Can be &#x60;user&#x60;, &#x60;billing&#x60;, &#x60;engineer&#x60;, or &#x60;superuser&#x60;.
+ * @description The permissions role assigned to the user. Can be &#x60;user&#x60;, &#x60;tls_viewer&#x60;, &#x60;tls_admin&#x60;, &#x60;billing&#x60;, &#x60;engineer&#x60;, or &#x60;superuser&#x60;.
  * @package  Fastly
  * @author   oss@fastly.com
  */
@@ -38,6 +38,10 @@ class RoleUser
      * Possible values of this enum
      */
     const USER = 'user';
+
+    const TLS_VIEWER = 'tls_viewer';
+
+    const TLS_ADMIN = 'tls_admin';
 
     const BILLING = 'billing';
 
@@ -53,6 +57,8 @@ class RoleUser
     {
         return [
             self::USER,
+            self::TLS_VIEWER,
+            self::TLS_ADMIN,
             self::BILLING,
             self::ENGINEER,
             self::SUPERUSER

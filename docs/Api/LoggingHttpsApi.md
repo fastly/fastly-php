@@ -55,6 +55,7 @@ $options['message_type'] = new \Fastly\Model\LoggingMessageType(); // \Fastly\Mo
 $options['header_value'] = 'null'; // string | Value of the custom header sent with the request.
 $options['method'] = 'POST'; // string | HTTP method used for request.
 $options['json_format'] = 'json_format_example'; // string | Enforces valid JSON formatting for log entries.
+$options['period'] = 5; // int | How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds.
 
 try {
     $result = $apiInstance->createLogHttps($options);
@@ -90,6 +91,7 @@ Name | Type | Description  | Notes
 **header_value** | **string** | Value of the custom header sent with the request. | [optional] [defaults to 'null']
 **method** | **string** | HTTP method used for request. | [optional] [one of: 'POST', 'PUT'] [defaults to 'POST']
 **json_format** | **string** | Enforces valid JSON formatting for log entries. | [optional] [one of: '0', '1', '2']
+**period** | **int** | How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds. | [optional] [defaults to 5]
 
 ### Return type
 
@@ -242,6 +244,7 @@ $options['message_type'] = new \Fastly\Model\LoggingMessageType(); // \Fastly\Mo
 $options['header_value'] = 'null'; // string | Value of the custom header sent with the request.
 $options['method'] = 'POST'; // string | HTTP method used for request.
 $options['json_format'] = 'json_format_example'; // string | Enforces valid JSON formatting for log entries.
+$options['period'] = 5; // int | How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds.
 
 try {
     $result = $apiInstance->updateLogHttps($options);
@@ -278,6 +281,7 @@ Name | Type | Description  | Notes
 **header_value** | **string** | Value of the custom header sent with the request. | [optional] [defaults to 'null']
 **method** | **string** | HTTP method used for request. | [optional] [one of: 'POST', 'PUT'] [defaults to 'POST']
 **json_format** | **string** | Enforces valid JSON formatting for log entries. | [optional] [one of: '0', '1', '2']
+**period** | **int** | How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds. | [optional] [defaults to 5]
 
 ### Return type
 

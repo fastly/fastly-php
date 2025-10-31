@@ -125,6 +125,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -155,6 +156,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -273,6 +275,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -306,6 +309,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -365,6 +369,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -381,6 +386,7 @@ class UserApi
         $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $require_new_password = array_key_exists('require_new_password', $options) ? $options['require_new_password'] : null;
         $role = array_key_exists('role', $options) ? $options['role'] : null;
+        $roles = array_key_exists('roles', $options) ? $options['roles'] : null;
         $two_factor_auth_enabled = array_key_exists('two_factor_auth_enabled', $options) ? $options['two_factor_auth_enabled'] : null;
         $two_factor_setup_required = array_key_exists('two_factor_setup_required', $options) ? $options['two_factor_setup_required'] : null;
 
@@ -418,6 +424,10 @@ class UserApi
         // form params
         if ($role !== null) {
             $formParams['role'] = ObjectSerializer::toFormValue($role);
+        }
+        // form params
+        if ($roles !== null) {
+            $formParams['roles'] = ObjectSerializer::toFormValue($roles);
         }
         // form params
         if ($two_factor_auth_enabled !== null) {
@@ -1781,6 +1791,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -1811,6 +1822,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -1929,6 +1941,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -1962,6 +1975,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -2021,6 +2035,7 @@ class UserApi
      * @param  bool $locked Indicates whether the is account is locked for editing or not. (optional)
      * @param  bool $require_new_password Indicates if a new password is required at next login. (optional)
      * @param  \Fastly\Model\RoleUser $role (optional)
+     * @param  string[] $roles A list of role IDs assigned to the user. (optional)
      * @param  bool $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
      * @param  bool $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
      *
@@ -2037,6 +2052,7 @@ class UserApi
         $locked = array_key_exists('locked', $options) ? $options['locked'] : null;
         $require_new_password = array_key_exists('require_new_password', $options) ? $options['require_new_password'] : null;
         $role = array_key_exists('role', $options) ? $options['role'] : null;
+        $roles = array_key_exists('roles', $options) ? $options['roles'] : null;
         $two_factor_auth_enabled = array_key_exists('two_factor_auth_enabled', $options) ? $options['two_factor_auth_enabled'] : null;
         $two_factor_setup_required = array_key_exists('two_factor_setup_required', $options) ? $options['two_factor_setup_required'] : null;
 
@@ -2088,6 +2104,10 @@ class UserApi
         // form params
         if ($role !== null) {
             $formParams['role'] = ObjectSerializer::toFormValue($role);
+        }
+        // form params
+        if ($roles !== null) {
+            $formParams['roles'] = ObjectSerializer::toFormValue($roles);
         }
         // form params
         if ($two_factor_auth_enabled !== null) {

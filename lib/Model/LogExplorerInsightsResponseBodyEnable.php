@@ -54,7 +54,7 @@ class LogExplorerInsightsResponseBodyEnable implements ModelInterface, ArrayAcce
       */
     protected static $fastlyTypes = [
         'product' => '\Fastly\Model\LogExplorerInsightsResponseProductProduct',
-        'service' => '\Fastly\Model\BotManagementResponseServiceService',
+        'service' => '\Fastly\Model\ApiDiscoveryResponseServiceService',
         '_links' => '\Fastly\Model\LogExplorerInsightsResponseLinksLinks'
     ];
 
@@ -238,7 +238,7 @@ class LogExplorerInsightsResponseBodyEnable implements ModelInterface, ArrayAcce
     /**
      * Gets service
      *
-     * @return \Fastly\Model\BotManagementResponseServiceService|null
+     * @return \Fastly\Model\ApiDiscoveryResponseServiceService|null
      */
     public function getService()
     {
@@ -248,7 +248,7 @@ class LogExplorerInsightsResponseBodyEnable implements ModelInterface, ArrayAcce
     /**
      * Sets service
      *
-     * @param \Fastly\Model\BotManagementResponseServiceService|null $service service
+     * @param \Fastly\Model\ApiDiscoveryResponseServiceService|null $service service
      *
      * @return self
      */

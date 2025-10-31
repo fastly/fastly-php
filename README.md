@@ -190,6 +190,11 @@ Class | Method | Description
 [*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**createDirectorBackend**](docs/Api/DirectorBackendApi.md#createdirectorbackend) | Create a director-backend relationship
 [*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**deleteDirectorBackend**](docs/Api/DirectorBackendApi.md#deletedirectorbackend) | Delete a director-backend relationship
 [*DirectorBackendApi*](docs/Api/DirectorBackendApi.md) | [**getDirectorBackend**](docs/Api/DirectorBackendApi.md#getdirectorbackend) | Get a director-backend relationship
+[*DmDomainsApi*](docs/Api/DmDomainsApi.md) | [**createDmDomain**](docs/Api/DmDomainsApi.md#createdmdomain) | Create a domain
+[*DmDomainsApi*](docs/Api/DmDomainsApi.md) | [**deleteDmDomain**](docs/Api/DmDomainsApi.md#deletedmdomain) | Delete a domain
+[*DmDomainsApi*](docs/Api/DmDomainsApi.md) | [**getDmDomain**](docs/Api/DmDomainsApi.md#getdmdomain) | Get a domain
+[*DmDomainsApi*](docs/Api/DmDomainsApi.md) | [**listDmDomains**](docs/Api/DmDomainsApi.md#listdmdomains) | List domains
+[*DmDomainsApi*](docs/Api/DmDomainsApi.md) | [**updateDmDomain**](docs/Api/DmDomainsApi.md#updatedmdomain) | Update a domain
 [*DomainApi*](docs/Api/DomainApi.md) | [**checkDomain**](docs/Api/DomainApi.md#checkdomain) | Validate DNS configuration for a single domain on a service
 [*DomainApi*](docs/Api/DomainApi.md) | [**checkDomains**](docs/Api/DomainApi.md#checkdomains) | Validate DNS configuration for all domains on a service
 [*DomainApi*](docs/Api/DomainApi.md) | [**createDomain**](docs/Api/DomainApi.md#createdomain) | Add a domain name to a service
@@ -232,14 +237,8 @@ Class | Method | Description
 [*Http3Api*](docs/Api/Http3Api.md) | [**deleteHttp3**](docs/Api/Http3Api.md#deletehttp3) | Disable support for HTTP/3
 [*Http3Api*](docs/Api/Http3Api.md) | [**getHttp3**](docs/Api/Http3Api.md#gethttp3) | Get HTTP/3 status
 [*IamPermissionsApi*](docs/Api/IamPermissionsApi.md) | [**listPermissions**](docs/Api/IamPermissionsApi.md#listpermissions) | List permissions
-[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**addRolePermissions**](docs/Api/IamRolesApi.md#addrolepermissions) | Add permissions to a role
-[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**createARole**](docs/Api/IamRolesApi.md#createarole) | Create a role
-[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**deleteARole**](docs/Api/IamRolesApi.md#deletearole) | Delete a role
-[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**getARole**](docs/Api/IamRolesApi.md#getarole) | Get a role
-[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**listRolePermissions**](docs/Api/IamRolesApi.md#listrolepermissions) | List permissions in a role
-[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**listRoles**](docs/Api/IamRolesApi.md#listroles) | List roles
-[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**removeRolePermissions**](docs/Api/IamRolesApi.md#removerolepermissions) | Remove permissions from a role
-[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**updateARole**](docs/Api/IamRolesApi.md#updatearole) | Update a role
+[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**iamV1RolesGet**](docs/Api/IamRolesApi.md#iamv1rolesget) | Get IAM role by ID
+[*IamRolesApi*](docs/Api/IamRolesApi.md) | [**iamV1RolesList**](docs/Api/IamRolesApi.md#iamv1roleslist) | List IAM roles
 [*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**addServiceGroupServices**](docs/Api/IamServiceGroupsApi.md#addservicegroupservices) | Add services in a service group
 [*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**createAServiceGroup**](docs/Api/IamServiceGroupsApi.md#createaservicegroup) | Create a service group
 [*IamServiceGroupsApi*](docs/Api/IamServiceGroupsApi.md) | [**deleteAServiceGroup**](docs/Api/IamServiceGroupsApi.md#deleteaservicegroup) | Delete a service group
@@ -450,6 +449,10 @@ Class | Method | Description
 [*ProductAiAcceleratorApi*](docs/Api/ProductAiAcceleratorApi.md) | [**disableProductAiAccelerator**](docs/Api/ProductAiAcceleratorApi.md#disableproductaiaccelerator) | Disable product
 [*ProductAiAcceleratorApi*](docs/Api/ProductAiAcceleratorApi.md) | [**enableAiAccelerator**](docs/Api/ProductAiAcceleratorApi.md#enableaiaccelerator) | Enable product
 [*ProductAiAcceleratorApi*](docs/Api/ProductAiAcceleratorApi.md) | [**getAiAccelerator**](docs/Api/ProductAiAcceleratorApi.md#getaiaccelerator) | Get product enablement status
+[*ProductApiDiscoveryApi*](docs/Api/ProductApiDiscoveryApi.md) | [**disableProductApiDiscovery**](docs/Api/ProductApiDiscoveryApi.md#disableproductapidiscovery) | Disable product
+[*ProductApiDiscoveryApi*](docs/Api/ProductApiDiscoveryApi.md) | [**enableProductApiDiscovery**](docs/Api/ProductApiDiscoveryApi.md#enableproductapidiscovery) | Enable product
+[*ProductApiDiscoveryApi*](docs/Api/ProductApiDiscoveryApi.md) | [**getProductApiDiscovery**](docs/Api/ProductApiDiscoveryApi.md#getproductapidiscovery) | Get product enablement status
+[*ProductApiDiscoveryApi*](docs/Api/ProductApiDiscoveryApi.md) | [**getServicesProductApiDiscovery**](docs/Api/ProductApiDiscoveryApi.md#getservicesproductapidiscovery) | Get services with product enabled
 [*ProductBotManagementApi*](docs/Api/ProductBotManagementApi.md) | [**disableProductBotManagement**](docs/Api/ProductBotManagementApi.md#disableproductbotmanagement) | Disable product
 [*ProductBotManagementApi*](docs/Api/ProductBotManagementApi.md) | [**enableProductBotManagement**](docs/Api/ProductBotManagementApi.md#enableproductbotmanagement) | Enable product
 [*ProductBotManagementApi*](docs/Api/ProductBotManagementApi.md) | [**getProductBotManagement**](docs/Api/ProductBotManagementApi.md#getproductbotmanagement) | Get product enablement status
@@ -659,8 +662,6 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
 - [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
-- [`/domain-management/v1/domains/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
-- [`/domain-management/v1/domains`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/domains/v1/tools/status`](https://www.fastly.com/documentation/reference/api/) (GET)
 - [`/domains/v1/tools/suggest`](https://www.fastly.com/documentation/reference/api/) (GET)
 - [`/ngwaf/v1/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (DELETE, GET, PATCH)
@@ -677,6 +678,7 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/events`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/redactions/{redaction_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/redactions) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/redactions`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/redactions) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/requests/{request_id}/report`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/requests/{request_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/requests`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/rules/{rule_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (DELETE, GET, PATCH)

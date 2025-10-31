@@ -1,6 +1,6 @@
 <?php
 /**
- * IamRole
+ * ApiDiscoveryResponseLinks
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * IamRole Class Doc Comment
+ * ApiDiscoveryResponseLinks Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IamRole implements ModelInterface, ArrayAccess, \JsonSerializable
+class ApiDiscoveryResponseLinks implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class IamRole implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'iam_role';
+    protected static $fastlyModelName = 'api_discovery_response_links';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,14 +53,7 @@ class IamRole implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'id' => 'string',
-        'object' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'custom' => 'bool',
-        'permissions_count' => 'int'
+        '_links' => '\Fastly\Model\ApiDiscoveryResponseLinksLinks'
     ];
 
     /**
@@ -71,14 +64,7 @@ class IamRole implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'id' => null,
-        'object' => null,
-        'name' => null,
-        'description' => null,
-        'custom' => null,
-        'permissions_count' => null
+        '_links' => null
     ];
 
     /**
@@ -108,14 +94,7 @@ class IamRole implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
-        'id' => 'id',
-        'object' => 'object',
-        'name' => 'name',
-        'description' => 'description',
-        'custom' => 'custom',
-        'permissions_count' => 'permissions_count'
+        '_links' => '_links'
     ];
 
     /**
@@ -124,14 +103,7 @@ class IamRole implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'id' => 'setId',
-        'object' => 'setObject',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'custom' => 'setCustom',
-        'permissions_count' => 'setPermissionsCount'
+        '_links' => 'setLinks'
     ];
 
     /**
@@ -140,14 +112,7 @@ class IamRole implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'id' => 'getId',
-        'object' => 'getObject',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'custom' => 'getCustom',
-        'permissions_count' => 'getPermissionsCount'
+        '_links' => 'getLinks'
     ];
 
     /**
@@ -207,14 +172,7 @@ class IamRole implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['object'] = $data['object'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['custom'] = $data['custom'] ?? null;
-        $this->container['permissions_count'] = $data['permissions_count'] ?? null;
+        $this->container['_links'] = $data['_links'] ?? null;
     }
 
     /**
@@ -242,193 +200,25 @@ class IamRole implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets created_at
+     * Gets _links
      *
-     * @return \DateTime|null
+     * @return \Fastly\Model\ApiDiscoveryResponseLinksLinks|null
      */
-    public function getCreatedAt()
+    public function getLinks()
     {
-        return $this->container['created_at'];
+        return $this->container['_links'];
     }
 
     /**
-     * Sets created_at
+     * Sets _links
      *
-     * @param \DateTime|null $created_at Date and time in ISO 8601 format.
+     * @param \Fastly\Model\ApiDiscoveryResponseLinksLinks|null $_links _links
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setLinks($_links)
     {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at Date and time in ISO 8601 format.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Alphanumeric string identifying the role.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string|null
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string|null $object The type of the object.
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Name of the role.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Description of the role.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets custom
-     *
-     * @return bool|null
-     */
-    public function getCustom()
-    {
-        return $this->container['custom'];
-    }
-
-    /**
-     * Sets custom
-     *
-     * @param bool|null $custom This attribute is set to `true` if the role is managed by the customer. It is set to `false` if the role was created by Fastly.
-     *
-     * @return self
-     */
-    public function setCustom($custom)
-    {
-        $this->container['custom'] = $custom;
-
-        return $this;
-    }
-
-    /**
-     * Gets permissions_count
-     *
-     * @return int|null
-     */
-    public function getPermissionsCount()
-    {
-        return $this->container['permissions_count'];
-    }
-
-    /**
-     * Sets permissions_count
-     *
-     * @param int|null $permissions_count Number of permissions assigned to the role.
-     *
-     * @return self
-     */
-    public function setPermissionsCount($permissions_count)
-    {
-        $this->container['permissions_count'] = $permissions_count;
+        $this->container['_links'] = $_links;
 
         return $this;
     }

@@ -322,6 +322,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_blocked_count' => 'int',
         'ngwaf_requests_timeout_count' => 'int',
         'ngwaf_requests_challenged_count' => 'int',
+        'api_discovery_requests_count' => 'int',
         'service_id' => 'string',
         'start_time' => 'int'
     ];
@@ -602,6 +603,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_blocked_count' => null,
         'ngwaf_requests_timeout_count' => null,
         'ngwaf_requests_challenged_count' => null,
+        'api_discovery_requests_count' => null,
         'service_id' => null,
         'start_time' => 'int64'
     ];
@@ -901,6 +903,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_blocked_count' => 'ngwaf_requests_blocked_count',
         'ngwaf_requests_timeout_count' => 'ngwaf_requests_timeout_count',
         'ngwaf_requests_challenged_count' => 'ngwaf_requests_challenged_count',
+        'api_discovery_requests_count' => 'api_discovery_requests_count',
         'service_id' => 'service_id',
         'start_time' => 'start_time'
     ];
@@ -1179,6 +1182,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_blocked_count' => 'setNgwafRequestsBlockedCount',
         'ngwaf_requests_timeout_count' => 'setNgwafRequestsTimeoutCount',
         'ngwaf_requests_challenged_count' => 'setNgwafRequestsChallengedCount',
+        'api_discovery_requests_count' => 'setApiDiscoveryRequestsCount',
         'service_id' => 'setServiceId',
         'start_time' => 'setStartTime'
     ];
@@ -1457,6 +1461,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_blocked_count' => 'getNgwafRequestsBlockedCount',
         'ngwaf_requests_timeout_count' => 'getNgwafRequestsTimeoutCount',
         'ngwaf_requests_challenged_count' => 'getNgwafRequestsChallengedCount',
+        'api_discovery_requests_count' => 'getApiDiscoveryRequestsCount',
         'service_id' => 'getServiceId',
         'start_time' => 'getStartTime'
     ];
@@ -1786,6 +1791,7 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['ngwaf_requests_blocked_count'] = $data['ngwaf_requests_blocked_count'] ?? null;
         $this->container['ngwaf_requests_timeout_count'] = $data['ngwaf_requests_timeout_count'] ?? null;
         $this->container['ngwaf_requests_challenged_count'] = $data['ngwaf_requests_challenged_count'] ?? null;
+        $this->container['api_discovery_requests_count'] = $data['api_discovery_requests_count'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
     }
@@ -8246,6 +8252,30 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNgwafRequestsChallengedCount($ngwaf_requests_challenged_count)
     {
         $this->container['ngwaf_requests_challenged_count'] = $ngwaf_requests_challenged_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets api_discovery_requests_count
+     *
+     * @return int|null
+     */
+    public function getApiDiscoveryRequestsCount()
+    {
+        return $this->container['api_discovery_requests_count'];
+    }
+
+    /**
+     * Sets api_discovery_requests_count
+     *
+     * @param int|null $api_discovery_requests_count Number of requests processed by the API Discovery engine.
+     *
+     * @return self
+     */
+    public function setApiDiscoveryRequestsCount($api_discovery_requests_count)
+    {
+        $this->container['api_discovery_requests_count'] = $api_discovery_requests_count;
 
         return $this;
     }

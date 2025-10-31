@@ -62,7 +62,8 @@ class LoggingHttpsAdditional implements ModelInterface, ArrayAccess, \JsonSerial
         'header_value' => 'string',
         'method' => 'string',
         'json_format' => 'string',
-        'format' => 'string'
+        'format' => 'string',
+        'period' => 'int'
     ];
 
     /**
@@ -82,7 +83,8 @@ class LoggingHttpsAdditional implements ModelInterface, ArrayAccess, \JsonSerial
         'header_value' => null,
         'method' => null,
         'json_format' => null,
-        'format' => null
+        'format' => null,
+        'period' => null
     ];
 
     /**
@@ -121,7 +123,8 @@ class LoggingHttpsAdditional implements ModelInterface, ArrayAccess, \JsonSerial
         'header_value' => 'header_value',
         'method' => 'method',
         'json_format' => 'json_format',
-        'format' => 'format'
+        'format' => 'format',
+        'period' => 'period'
     ];
 
     /**
@@ -139,7 +142,8 @@ class LoggingHttpsAdditional implements ModelInterface, ArrayAccess, \JsonSerial
         'header_value' => 'setHeaderValue',
         'method' => 'setMethod',
         'json_format' => 'setJsonFormat',
-        'format' => 'setFormat'
+        'format' => 'setFormat',
+        'period' => 'setPeriod'
     ];
 
     /**
@@ -157,7 +161,8 @@ class LoggingHttpsAdditional implements ModelInterface, ArrayAccess, \JsonSerial
         'header_value' => 'getHeaderValue',
         'method' => 'getMethod',
         'json_format' => 'getJsonFormat',
-        'format' => 'getFormat'
+        'format' => 'getFormat',
+        'period' => 'getPeriod'
     ];
 
     /**
@@ -259,6 +264,7 @@ class LoggingHttpsAdditional implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['method'] = $data['method'] ?? 'POST';
         $this->container['json_format'] = $data['json_format'] ?? null;
         $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
+        $this->container['period'] = $data['period'] ?? 5;
     }
 
     /**
@@ -559,6 +565,30 @@ class LoggingHttpsAdditional implements ModelInterface, ArrayAccess, \JsonSerial
     public function setFormat($format)
     {
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return int|null
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param int|null $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds.
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $this->container['period'] = $period;
 
         return $this;
     }

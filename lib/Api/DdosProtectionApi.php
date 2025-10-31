@@ -932,6 +932,7 @@ class DdosProtectionApi
      * @param  string $event_id Unique ID of the event. (required)
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  int $limit Limit how many results are returned. (optional, default to 20)
+     * @param  string $include Include relationships. Optional. Comma-separated values. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -956,6 +957,7 @@ class DdosProtectionApi
      * @param  string $event_id Unique ID of the event. (required)
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  int $limit Limit how many results are returned. (optional, default to 20)
+     * @param  string $include Include relationships. Optional. Comma-separated values. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1108,6 +1110,7 @@ class DdosProtectionApi
      * @param  string $event_id Unique ID of the event. (required)
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  int $limit Limit how many results are returned. (optional, default to 20)
+     * @param  string $include Include relationships. Optional. Comma-separated values. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1135,6 +1138,7 @@ class DdosProtectionApi
      * @param  string $event_id Unique ID of the event. (required)
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  int $limit Limit how many results are returned. (optional, default to 20)
+     * @param  string $include Include relationships. Optional. Comma-separated values. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1188,6 +1192,7 @@ class DdosProtectionApi
      * @param  string $event_id Unique ID of the event. (required)
      * @param  string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
      * @param  int $limit Limit how many results are returned. (optional, default to 20)
+     * @param  string $include Include relationships. Optional. Comma-separated values. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1198,6 +1203,7 @@ class DdosProtectionApi
         $event_id = array_key_exists('event_id', $options) ? $options['event_id'] : null;
         $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
         $limit = array_key_exists('limit', $options) ? $options['limit'] : 20;
+        $include = array_key_exists('include', $options) ? $options['include'] : null;
 
         // verify the required parameter 'event_id' is set
         if ($event_id === null || (is_array($event_id) && count($event_id) === 0)) {
@@ -1237,6 +1243,17 @@ class DdosProtectionApi
             }
             else {
                 $queryParams['limit'] = ObjectSerializer::toString($limit);
+            }
+        }
+        // query params
+        if ($include !== null) {
+            if('form' === 'form' && is_array($include)) {
+                foreach($include as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['include'] = ObjectSerializer::toString($include);
             }
         }
 

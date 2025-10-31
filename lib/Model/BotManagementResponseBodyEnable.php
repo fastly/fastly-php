@@ -54,7 +54,7 @@ class BotManagementResponseBodyEnable implements ModelInterface, ArrayAccess, \J
       */
     protected static $fastlyTypes = [
         'product' => '\Fastly\Model\BotManagementResponseProductProduct',
-        'service' => '\Fastly\Model\BotManagementResponseServiceService',
+        'service' => '\Fastly\Model\ApiDiscoveryResponseServiceService',
         '_links' => '\Fastly\Model\BotManagementResponseLinksLinks'
     ];
 
@@ -238,7 +238,7 @@ class BotManagementResponseBodyEnable implements ModelInterface, ArrayAccess, \J
     /**
      * Gets service
      *
-     * @return \Fastly\Model\BotManagementResponseServiceService|null
+     * @return \Fastly\Model\ApiDiscoveryResponseServiceService|null
      */
     public function getService()
     {
@@ -248,7 +248,7 @@ class BotManagementResponseBodyEnable implements ModelInterface, ArrayAccess, \J
     /**
      * Sets service
      *
-     * @param \Fastly\Model\BotManagementResponseServiceService|null $service service
+     * @param \Fastly\Model\ApiDiscoveryResponseServiceService|null $service service
      *
      * @return self
      */

@@ -54,7 +54,7 @@ class NgwafResponseEnable implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $fastlyTypes = [
         'product' => '\Fastly\Model\NgwafResponseProductProduct',
-        'service' => '\Fastly\Model\BotManagementResponseServiceService',
+        'service' => '\Fastly\Model\ApiDiscoveryResponseServiceService',
         '_links' => '\Fastly\Model\NgwafResponseLinksLinks'
     ];
 
@@ -238,7 +238,7 @@ class NgwafResponseEnable implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets service
      *
-     * @return \Fastly\Model\BotManagementResponseServiceService|null
+     * @return \Fastly\Model\ApiDiscoveryResponseServiceService|null
      */
     public function getService()
     {
@@ -248,7 +248,7 @@ class NgwafResponseEnable implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets service
      *
-     * @param \Fastly\Model\BotManagementResponseServiceService|null $service service
+     * @param \Fastly\Model\ApiDiscoveryResponseServiceService|null $service service
      *
      * @return self
      */

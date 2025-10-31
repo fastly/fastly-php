@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\KvStoreDetails[]**](KvStoreDetails.md) |  | [optional] 
-**meta** | [**\Fastly\Model\PaginationCursorMeta**](PaginationCursorMeta.md) |  | [optional] 
+**expires_at** | **string** | Time-stamp (GMT) when the domain_ownership validation will expire. | [optional] [readonly] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

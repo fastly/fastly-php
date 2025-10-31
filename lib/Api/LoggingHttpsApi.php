@@ -140,6 +140,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -182,6 +183,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -312,6 +314,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -357,6 +360,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -428,6 +432,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -456,6 +461,7 @@ class LoggingHttpsApi
         $header_value = array_key_exists('header_value', $options) ? $options['header_value'] : 'null';
         $method = array_key_exists('method', $options) ? $options['method'] : 'POST';
         $json_format = array_key_exists('json_format', $options) ? $options['json_format'] : null;
+        $period = array_key_exists('period', $options) ? $options['period'] : 5;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -571,6 +577,10 @@ class LoggingHttpsApi
         // form params
         if ($json_format !== null) {
             $formParams['json_format'] = ObjectSerializer::toFormValue($json_format);
+        }
+        // form params
+        if ($period !== null) {
+            $formParams['period'] = ObjectSerializer::toFormValue($period);
         }
 
         if ($multipart) {
@@ -1739,6 +1749,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1782,6 +1793,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1913,6 +1925,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1959,6 +1972,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2031,6 +2045,7 @@ class LoggingHttpsApi
      * @param  string $header_value Value of the custom header sent with the request. (optional, default to 'null')
      * @param  string $method HTTP method used for request. (optional, default to 'POST')
      * @param  string $json_format Enforces valid JSON formatting for log entries. (optional)
+     * @param  int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2060,6 +2075,7 @@ class LoggingHttpsApi
         $header_value = array_key_exists('header_value', $options) ? $options['header_value'] : 'null';
         $method = array_key_exists('method', $options) ? $options['method'] : 'POST';
         $json_format = array_key_exists('json_format', $options) ? $options['json_format'] : null;
+        $period = array_key_exists('period', $options) ? $options['period'] : 5;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -2189,6 +2205,10 @@ class LoggingHttpsApi
         // form params
         if ($json_format !== null) {
             $formParams['json_format'] = ObjectSerializer::toFormValue($json_format);
+        }
+        // form params
+        if ($period !== null) {
+            $formParams['period'] = ObjectSerializer::toFormValue($period);
         }
 
         if ($multipart) {

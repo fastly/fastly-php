@@ -54,7 +54,7 @@ class BrotliCompressionResponseBodyEnable implements ModelInterface, ArrayAccess
       */
     protected static $fastlyTypes = [
         'product' => '\Fastly\Model\BrotliCompressionResponseProductProduct',
-        'service' => '\Fastly\Model\BotManagementResponseServiceService',
+        'service' => '\Fastly\Model\ApiDiscoveryResponseServiceService',
         '_links' => '\Fastly\Model\BrotliCompressionResponseLinksLinks'
     ];
 
@@ -238,7 +238,7 @@ class BrotliCompressionResponseBodyEnable implements ModelInterface, ArrayAccess
     /**
      * Gets service
      *
-     * @return \Fastly\Model\BotManagementResponseServiceService|null
+     * @return \Fastly\Model\ApiDiscoveryResponseServiceService|null
      */
     public function getService()
     {
@@ -248,7 +248,7 @@ class BrotliCompressionResponseBodyEnable implements ModelInterface, ArrayAccess
     /**
      * Sets service
      *
-     * @param \Fastly\Model\BotManagementResponseServiceService|null $service service
+     * @param \Fastly\Model\ApiDiscoveryResponseServiceService|null $service service
      *
      * @return self
      */

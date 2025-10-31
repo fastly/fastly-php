@@ -59,6 +59,7 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'locked' => 'bool',
         'require_new_password' => 'bool',
         'role' => '\Fastly\Model\RoleUser',
+        'roles' => 'string[]',
         'two_factor_auth_enabled' => 'bool',
         'two_factor_setup_required' => 'bool',
         'created_at' => '\DateTime',
@@ -83,6 +84,7 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'locked' => null,
         'require_new_password' => null,
         'role' => null,
+        'roles' => null,
         'two_factor_auth_enabled' => null,
         'two_factor_setup_required' => null,
         'created_at' => 'date-time',
@@ -126,6 +128,7 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'locked' => 'locked',
         'require_new_password' => 'require_new_password',
         'role' => 'role',
+        'roles' => 'roles',
         'two_factor_auth_enabled' => 'two_factor_auth_enabled',
         'two_factor_setup_required' => 'two_factor_setup_required',
         'created_at' => 'created_at',
@@ -148,6 +151,7 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'locked' => 'setLocked',
         'require_new_password' => 'setRequireNewPassword',
         'role' => 'setRole',
+        'roles' => 'setRoles',
         'two_factor_auth_enabled' => 'setTwoFactorAuthEnabled',
         'two_factor_setup_required' => 'setTwoFactorSetupRequired',
         'created_at' => 'setCreatedAt',
@@ -170,6 +174,7 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'locked' => 'getLocked',
         'require_new_password' => 'getRequireNewPassword',
         'role' => 'getRole',
+        'roles' => 'getRoles',
         'two_factor_auth_enabled' => 'getTwoFactorAuthEnabled',
         'two_factor_setup_required' => 'getTwoFactorSetupRequired',
         'created_at' => 'getCreatedAt',
@@ -243,6 +248,7 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['locked'] = $data['locked'] ?? null;
         $this->container['require_new_password'] = $data['require_new_password'] ?? null;
         $this->container['role'] = $data['role'] ?? null;
+        $this->container['roles'] = $data['roles'] ?? null;
         $this->container['two_factor_auth_enabled'] = $data['two_factor_auth_enabled'] ?? null;
         $this->container['two_factor_setup_required'] = $data['two_factor_setup_required'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -417,6 +423,30 @@ class SchemasUserResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setRole($role)
     {
         $this->container['role'] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Gets roles
+     *
+     * @return string[]|null
+     */
+    public function getRoles()
+    {
+        return $this->container['roles'];
+    }
+
+    /**
+     * Sets roles
+     *
+     * @param string[]|null $roles A list of role IDs assigned to the user.
+     *
+     * @return self
+     */
+    public function setRoles($roles)
+    {
+        $this->container['roles'] = $roles;
 
         return $this;
     }

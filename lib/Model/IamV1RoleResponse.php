@@ -1,6 +1,6 @@
 <?php
 /**
- * IamRoleAllOf
+ * IamV1RoleResponse
  *
  * PHP version 7.3
  *
@@ -27,16 +27,17 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * IamRoleAllOf Class Doc Comment
+ * IamV1RoleResponse Class Doc Comment
  *
  * @category Class
+ * @description An IAM role.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class IamV1RoleResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +46,7 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $fastlyModelName = 'iam_role_allOf';
+    protected static $fastlyModelName = 'iam_v1_role_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,11 +55,9 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'id' => 'string',
-        'object' => 'string',
         'name' => 'string',
         'description' => 'string',
-        'custom' => 'bool',
-        'permissions_count' => 'int'
+        'permissions' => 'string[]'
     ];
 
     /**
@@ -70,11 +69,9 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'id' => null,
-        'object' => null,
         'name' => null,
         'description' => null,
-        'custom' => null,
-        'permissions_count' => null
+        'permissions' => null
     ];
 
     /**
@@ -105,11 +102,9 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'object' => 'object',
         'name' => 'name',
         'description' => 'description',
-        'custom' => 'custom',
-        'permissions_count' => 'permissions_count'
+        'permissions' => 'permissions'
     ];
 
     /**
@@ -119,11 +114,9 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'object' => 'setObject',
         'name' => 'setName',
         'description' => 'setDescription',
-        'custom' => 'setCustom',
-        'permissions_count' => 'setPermissionsCount'
+        'permissions' => 'setPermissions'
     ];
 
     /**
@@ -133,11 +126,9 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'object' => 'getObject',
         'name' => 'getName',
         'description' => 'getDescription',
-        'custom' => 'getCustom',
-        'permissions_count' => 'getPermissionsCount'
+        'permissions' => 'getPermissions'
     ];
 
     /**
@@ -198,11 +189,9 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['object'] = $data['object'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
-        $this->container['custom'] = $data['custom'] ?? null;
-        $this->container['permissions_count'] = $data['permissions_count'] ?? null;
+        $this->container['permissions'] = $data['permissions'] ?? null;
     }
 
     /**
@@ -242,37 +231,13 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Alphanumeric string identifying the role.
+     * @param string|null $id id
      *
      * @return self
      */
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string|null
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string|null $object The type of the object.
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
 
         return $this;
     }
@@ -290,7 +255,7 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Name of the role.
+     * @param string|null $name name
      *
      * @return self
      */
@@ -314,7 +279,7 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description Description of the role.
+     * @param string|null $description description
      *
      * @return self
      */
@@ -326,49 +291,25 @@ class IamRoleAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets custom
+     * Gets permissions
      *
-     * @return bool|null
+     * @return string[]|null
      */
-    public function getCustom()
+    public function getPermissions()
     {
-        return $this->container['custom'];
+        return $this->container['permissions'];
     }
 
     /**
-     * Sets custom
+     * Sets permissions
      *
-     * @param bool|null $custom This attribute is set to `true` if the role is managed by the customer. It is set to `false` if the role was created by Fastly.
+     * @param string[]|null $permissions The set of permissions granted to this role.
      *
      * @return self
      */
-    public function setCustom($custom)
+    public function setPermissions($permissions)
     {
-        $this->container['custom'] = $custom;
-
-        return $this;
-    }
-
-    /**
-     * Gets permissions_count
-     *
-     * @return int|null
-     */
-    public function getPermissionsCount()
-    {
-        return $this->container['permissions_count'];
-    }
-
-    /**
-     * Sets permissions_count
-     *
-     * @param int|null $permissions_count Number of permissions assigned to the role.
-     *
-     * @return self
-     */
-    public function setPermissionsCount($permissions_count)
-    {
-        $this->container['permissions_count'] = $permissions_count;
+        $this->container['permissions'] = $permissions;
 
         return $this;
     }

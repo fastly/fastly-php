@@ -1,6 +1,6 @@
 <?php
 /**
- * BotManagementResponseServiceService
+ * ApiDiscoveryResponseLinksGetAllServices
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * BotManagementResponseServiceService Class Doc Comment
+ * ApiDiscoveryResponseLinksGetAllServices Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BotManagementResponseServiceService implements ModelInterface, ArrayAccess, \JsonSerializable
+class ApiDiscoveryResponseLinksGetAllServices implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class BotManagementResponseServiceService implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $fastlyModelName = 'bot_management_response_service_service';
+    protected static $fastlyModelName = 'api_discovery_response_links_get_all_services';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,8 +53,7 @@ class BotManagementResponseServiceService implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string',
-        'object' => 'string'
+        '_links' => '\Fastly\Model\ApiDiscoveryResponseLinksGetAllServicesLinks'
     ];
 
     /**
@@ -65,8 +64,7 @@ class BotManagementResponseServiceService implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null,
-        'object' => null
+        '_links' => null
     ];
 
     /**
@@ -96,8 +94,7 @@ class BotManagementResponseServiceService implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'object' => 'object'
+        '_links' => '_links'
     ];
 
     /**
@@ -106,8 +103,7 @@ class BotManagementResponseServiceService implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'object' => 'setObject'
+        '_links' => 'setLinks'
     ];
 
     /**
@@ -116,8 +112,7 @@ class BotManagementResponseServiceService implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'object' => 'getObject'
+        '_links' => 'getLinks'
     ];
 
     /**
@@ -177,8 +172,7 @@ class BotManagementResponseServiceService implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['object'] = $data['object'] ?? null;
+        $this->container['_links'] = $data['_links'] ?? null;
     }
 
     /**
@@ -206,49 +200,25 @@ class BotManagementResponseServiceService implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets _links
      *
-     * @return string|null
+     * @return \Fastly\Model\ApiDiscoveryResponseLinksGetAllServicesLinks|null
      */
-    public function getId()
+    public function getLinks()
     {
-        return $this->container['id'];
+        return $this->container['_links'];
     }
 
     /**
-     * Sets id
+     * Sets _links
      *
-     * @param string|null $id Service identifier
+     * @param \Fastly\Model\ApiDiscoveryResponseLinksGetAllServicesLinks|null $_links _links
      *
      * @return self
      */
-    public function setId($id)
+    public function setLinks($_links)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string|null
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string|null $object Name of the object
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
+        $this->container['_links'] = $_links;
 
         return $this;
     }

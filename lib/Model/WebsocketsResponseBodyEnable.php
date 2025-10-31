@@ -54,7 +54,7 @@ class WebsocketsResponseBodyEnable implements ModelInterface, ArrayAccess, \Json
       */
     protected static $fastlyTypes = [
         'product' => '\Fastly\Model\WebsocketsResponseProductProduct',
-        'service' => '\Fastly\Model\BotManagementResponseServiceService',
+        'service' => '\Fastly\Model\ApiDiscoveryResponseServiceService',
         '_links' => '\Fastly\Model\WebsocketsResponseLinksLinks'
     ];
 
@@ -238,7 +238,7 @@ class WebsocketsResponseBodyEnable implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets service
      *
-     * @return \Fastly\Model\BotManagementResponseServiceService|null
+     * @return \Fastly\Model\ApiDiscoveryResponseServiceService|null
      */
     public function getService()
     {
@@ -248,7 +248,7 @@ class WebsocketsResponseBodyEnable implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets service
      *
-     * @param \Fastly\Model\BotManagementResponseServiceService|null $service service
+     * @param \Fastly\Model\ApiDiscoveryResponseServiceService|null $service service
      *
      * @return self
      */

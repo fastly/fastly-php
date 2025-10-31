@@ -116,6 +116,7 @@ Get all rules for an event.
     $options['event_id'] = 'event_id_example'; // string | Unique ID of the event.
 $options['cursor'] = 'cursor_example'; // string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 $options['limit'] = 20; // int | Limit how many results are returned.
+$options['include'] = 'include_example'; // string | Include relationships. Optional. Comma-separated values.
 
 try {
     $result = $apiInstance->ddosProtectionEventRuleList($options);
@@ -133,6 +134,7 @@ Name | Type | Description  | Notes
 **event_id** | **string** | Unique ID of the event. |
 **cursor** | **string** | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional]
 **limit** | **int** | Limit how many results are returned. | [optional] [defaults to 20]
+**include** | **string** | Include relationships. Optional. Comma-separated values. | [optional]
 
 ### Return type
 

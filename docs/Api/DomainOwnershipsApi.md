@@ -23,7 +23,7 @@ Method | HTTP request | Description
 ## `listDomainOwnerships()`
 
 ```php
-listDomainOwnerships($options): \Fastly\Model\InlineResponse2004 // List domain-ownerships
+listDomainOwnerships($options): \Fastly\Model\InlineResponse2005 // List domain-ownerships
 ```
 
 List all domain-ownerships.
@@ -46,7 +46,7 @@ This endpoint does not need any parameters.
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\Fastly\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

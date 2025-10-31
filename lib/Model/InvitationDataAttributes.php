@@ -56,6 +56,7 @@ class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => 'string',
         'limit_services' => 'bool',
         'role' => '\Fastly\Model\RoleUser',
+        'roles' => 'string[]',
         'status_code' => 'int'
     ];
 
@@ -70,6 +71,7 @@ class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => null,
         'limit_services' => null,
         'role' => null,
+        'roles' => null,
         'status_code' => null
     ];
 
@@ -103,6 +105,7 @@ class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => 'email',
         'limit_services' => 'limit_services',
         'role' => 'role',
+        'roles' => 'roles',
         'status_code' => 'status_code'
     ];
 
@@ -115,6 +118,7 @@ class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => 'setEmail',
         'limit_services' => 'setLimitServices',
         'role' => 'setRole',
+        'roles' => 'setRoles',
         'status_code' => 'setStatusCode'
     ];
 
@@ -127,6 +131,7 @@ class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSeri
         'email' => 'getEmail',
         'limit_services' => 'getLimitServices',
         'role' => 'getRole',
+        'roles' => 'getRoles',
         'status_code' => 'getStatusCode'
     ];
 
@@ -205,6 +210,7 @@ class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSeri
         $this->container['email'] = $data['email'] ?? null;
         $this->container['limit_services'] = $data['limit_services'] ?? null;
         $this->container['role'] = $data['role'] ?? null;
+        $this->container['roles'] = $data['roles'] ?? null;
         $this->container['status_code'] = $data['status_code'] ?? null;
     }
 
@@ -309,6 +315,30 @@ class InvitationDataAttributes implements ModelInterface, ArrayAccess, \JsonSeri
     public function setRole($role)
     {
         $this->container['role'] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Gets roles
+     *
+     * @return string[]|null
+     */
+    public function getRoles()
+    {
+        return $this->container['roles'];
+    }
+
+    /**
+     * Sets roles
+     *
+     * @param string[]|null $roles roles
+     *
+     * @return self
+     */
+    public function setRoles($roles)
+    {
+        $this->container['roles'] = $roles;
 
         return $this;
     }

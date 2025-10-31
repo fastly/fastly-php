@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **product** | [**\Fastly\Model\WebsocketsResponseProductProduct**](WebsocketsResponseProductProduct.md) |  | [optional] 
-**service** | [**\Fastly\Model\BotManagementResponseServiceService**](BotManagementResponseServiceService.md) |  | [optional] 
+**service** | [**\Fastly\Model\ApiDiscoveryResponseServiceService**](ApiDiscoveryResponseServiceService.md) |  | [optional] 
 **_links** | [**\Fastly\Model\WebsocketsResponseLinksLinks**](WebsocketsResponseLinksLinks.md) |  | [optional] 
 
 

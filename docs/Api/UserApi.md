@@ -42,6 +42,7 @@ $options['limit_services'] = True; // bool | Indicates that the user has limited
 $options['locked'] = True; // bool | Indicates whether the is account is locked for editing or not.
 $options['require_new_password'] = True; // bool | Indicates if a new password is required at next login.
 $options['role'] = new \Fastly\Model\RoleUser(); // \Fastly\Model\RoleUser
+$options['roles'] = array('roles_example'); // string[] | A list of role IDs assigned to the user.
 $options['two_factor_auth_enabled'] = True; // bool | Indicates if 2FA is enabled on the user.
 $options['two_factor_setup_required'] = True; // bool | Indicates if 2FA is required by the user's customer account.
 
@@ -64,6 +65,7 @@ Name | Type | Description  | Notes
 **locked** | **bool** | Indicates whether the is account is locked for editing or not. | [optional]
 **require_new_password** | **bool** | Indicates if a new password is required at next login. | [optional]
 **role** | [**\Fastly\Model\RoleUser**](../Model/RoleUser.md) |  | [optional]
+**roles** | [**string[]**](../Model/string.md) | A list of role IDs assigned to the user. | [optional]
 **two_factor_auth_enabled** | **bool** | Indicates if 2FA is enabled on the user. | [optional]
 **two_factor_setup_required** | **bool** | Indicates if 2FA is required by the user&#39;s customer account. | [optional]
 
@@ -224,6 +226,7 @@ $options['limit_services'] = True; // bool | Indicates that the user has limited
 $options['locked'] = True; // bool | Indicates whether the is account is locked for editing or not.
 $options['require_new_password'] = True; // bool | Indicates if a new password is required at next login.
 $options['role'] = new \Fastly\Model\RoleUser(); // \Fastly\Model\RoleUser
+$options['roles'] = array('roles_example'); // string[] | A list of role IDs assigned to the user.
 $options['two_factor_auth_enabled'] = True; // bool | Indicates if 2FA is enabled on the user.
 $options['two_factor_setup_required'] = True; // bool | Indicates if 2FA is required by the user's customer account.
 
@@ -247,6 +250,7 @@ Name | Type | Description  | Notes
 **locked** | **bool** | Indicates whether the is account is locked for editing or not. | [optional]
 **require_new_password** | **bool** | Indicates if a new password is required at next login. | [optional]
 **role** | [**\Fastly\Model\RoleUser**](../Model/RoleUser.md) |  | [optional]
+**roles** | [**string[]**](../Model/string.md) | A list of role IDs assigned to the user. | [optional]
 **two_factor_auth_enabled** | **bool** | Indicates if 2FA is enabled on the user. | [optional]
 **two_factor_setup_required** | **bool** | Indicates if 2FA is required by the user&#39;s customer account. | [optional]
 

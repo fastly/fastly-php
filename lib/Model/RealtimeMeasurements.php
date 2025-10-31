@@ -314,7 +314,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'aia_estimated_time_saved_ms' => 'int',
         'request_collapse_usable_count' => 'int',
         'request_collapse_unusable_count' => 'int',
-        'compute_cache_operations_count' => 'int'
+        'compute_cache_operations_count' => 'int',
+        'api_discovery_requests_count' => 'int'
     ];
 
     /**
@@ -585,7 +586,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'aia_estimated_time_saved_ms' => 'int64',
         'request_collapse_usable_count' => 'int64',
         'request_collapse_unusable_count' => 'int64',
-        'compute_cache_operations_count' => 'int64'
+        'compute_cache_operations_count' => 'int64',
+        'api_discovery_requests_count' => null
     ];
 
     /**
@@ -875,7 +877,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'aia_estimated_time_saved_ms' => 'aia_estimated_time_saved_ms',
         'request_collapse_usable_count' => 'request_collapse_usable_count',
         'request_collapse_unusable_count' => 'request_collapse_unusable_count',
-        'compute_cache_operations_count' => 'compute_cache_operations_count'
+        'compute_cache_operations_count' => 'compute_cache_operations_count',
+        'api_discovery_requests_count' => 'api_discovery_requests_count'
     ];
 
     /**
@@ -1144,7 +1147,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'aia_estimated_time_saved_ms' => 'setAiaEstimatedTimeSavedMs',
         'request_collapse_usable_count' => 'setRequestCollapseUsableCount',
         'request_collapse_unusable_count' => 'setRequestCollapseUnusableCount',
-        'compute_cache_operations_count' => 'setComputeCacheOperationsCount'
+        'compute_cache_operations_count' => 'setComputeCacheOperationsCount',
+        'api_discovery_requests_count' => 'setApiDiscoveryRequestsCount'
     ];
 
     /**
@@ -1413,7 +1417,8 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'aia_estimated_time_saved_ms' => 'getAiaEstimatedTimeSavedMs',
         'request_collapse_usable_count' => 'getRequestCollapseUsableCount',
         'request_collapse_unusable_count' => 'getRequestCollapseUnusableCount',
-        'compute_cache_operations_count' => 'getComputeCacheOperationsCount'
+        'compute_cache_operations_count' => 'getComputeCacheOperationsCount',
+        'api_discovery_requests_count' => 'getApiDiscoveryRequestsCount'
     ];
 
     /**
@@ -1734,6 +1739,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['request_collapse_usable_count'] = $data['request_collapse_usable_count'] ?? null;
         $this->container['request_collapse_unusable_count'] = $data['request_collapse_unusable_count'] ?? null;
         $this->container['compute_cache_operations_count'] = $data['compute_cache_operations_count'] ?? null;
+        $this->container['api_discovery_requests_count'] = $data['api_discovery_requests_count'] ?? null;
     }
 
     /**
@@ -8024,6 +8030,30 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setComputeCacheOperationsCount($compute_cache_operations_count)
     {
         $this->container['compute_cache_operations_count'] = $compute_cache_operations_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets api_discovery_requests_count
+     *
+     * @return int|null
+     */
+    public function getApiDiscoveryRequestsCount()
+    {
+        return $this->container['api_discovery_requests_count'];
+    }
+
+    /**
+     * Sets api_discovery_requests_count
+     *
+     * @param int|null $api_discovery_requests_count Number of requests processed by the API Discovery engine.
+     *
+     * @return self
+     */
+    public function setApiDiscoveryRequestsCount($api_discovery_requests_count)
+    {
+        $this->container['api_discovery_requests_count'] = $api_discovery_requests_count;
 
         return $this;
     }

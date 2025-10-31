@@ -286,6 +286,14 @@ class HealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['check_interval']) && ($this->container['check_interval'] > 3600000)) {
+            $invalidProperties[] = "invalid value for 'check_interval', must be smaller than or equal to 3600000.";
+        }
+
+        if (!is_null($this->container['check_interval']) && ($this->container['check_interval'] < 1000)) {
+            $invalidProperties[] = "invalid value for 'check_interval', must be bigger than or equal to 1000.";
+        }
+
         return $invalidProperties;
     }
 
@@ -314,12 +322,20 @@ class HealthcheckResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets check_interval
      *
-     * @param int|null $check_interval How often to run the health check in milliseconds.
+     * @param int|null $check_interval How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
      *
      * @return self
      */
     public function setCheckInterval($check_interval)
     {
+
+        if (!is_null($check_interval) && ($check_interval > 3600000)) {
+            throw new \InvalidArgumentException('invalid value for $check_interval when calling HealthcheckResponse., must be smaller than or equal to 3600000.');
+        }
+        if (!is_null($check_interval) && ($check_interval < 1000)) {
+            throw new \InvalidArgumentException('invalid value for $check_interval when calling HealthcheckResponse., must be bigger than or equal to 1000.');
+        }
+
         $this->container['check_interval'] = $check_interval;
 
         return $this;

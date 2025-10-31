@@ -72,6 +72,7 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'header_value' => 'string',
         'method' => 'string',
         'json_format' => 'string',
+        'period' => 'int',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
         'updated_at' => '\DateTime',
@@ -106,6 +107,7 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'header_value' => null,
         'method' => null,
         'json_format' => null,
+        'period' => null,
         'created_at' => 'date-time',
         'deleted_at' => 'date-time',
         'updated_at' => 'date-time',
@@ -159,6 +161,7 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'header_value' => 'header_value',
         'method' => 'method',
         'json_format' => 'json_format',
+        'period' => 'period',
         'created_at' => 'created_at',
         'deleted_at' => 'deleted_at',
         'updated_at' => 'updated_at',
@@ -191,6 +194,7 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'header_value' => 'setHeaderValue',
         'method' => 'setMethod',
         'json_format' => 'setJsonFormat',
+        'period' => 'setPeriod',
         'created_at' => 'setCreatedAt',
         'deleted_at' => 'setDeletedAt',
         'updated_at' => 'setUpdatedAt',
@@ -223,6 +227,7 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'header_value' => 'getHeaderValue',
         'method' => 'getMethod',
         'json_format' => 'getJsonFormat',
+        'period' => 'getPeriod',
         'created_at' => 'getCreatedAt',
         'deleted_at' => 'getDeletedAt',
         'updated_at' => 'getUpdatedAt',
@@ -385,6 +390,7 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['header_value'] = $data['header_value'] ?? 'null';
         $this->container['method'] = $data['method'] ?? 'POST';
         $this->container['json_format'] = $data['json_format'] ?? null;
+        $this->container['period'] = $data['period'] ?? 5;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -963,6 +969,30 @@ class LoggingHttpsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
         $this->container['json_format'] = $json_format;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return int|null
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param int|null $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds.
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $this->container['period'] = $period;
 
         return $this;
     }

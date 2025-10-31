@@ -36,7 +36,7 @@ Create a health check for a particular service and version.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
-$options['check_interval'] = 56; // int | How often to run the health check in milliseconds.
+$options['check_interval'] = 56; // int | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
 $options['comment'] = 'comment_example'; // string | A freeform descriptive note.
 $options['expected_response'] = 56; // int | The status code expected from the host.
 $options['headers'] = array('headers_example'); // string[] | Array of custom headers that will be added to the health check probes.
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
-**check_interval** | **int** | How often to run the health check in milliseconds. | [optional]
+**check_interval** | **int** | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **expected_response** | **int** | The status code expected from the host. | [optional]
 **headers** | [**string[]**](../Model/string.md) | Array of custom headers that will be added to the health check probes. | [optional]
@@ -211,7 +211,7 @@ Update the health check for a particular service and version.
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['version_id'] = 56; // int | Integer identifying a service version.
 $options['healthcheck_name'] = 'healthcheck_name_example'; // string | The name of the health check.
-$options['check_interval'] = 56; // int | How often to run the health check in milliseconds.
+$options['check_interval'] = 56; // int | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
 $options['comment'] = 'comment_example'; // string | A freeform descriptive note.
 $options['expected_response'] = 56; // int | The status code expected from the host.
 $options['headers'] = array('headers_example'); // string[] | Array of custom headers that will be added to the health check probes.
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **version_id** | **int** | Integer identifying a service version. |
 **healthcheck_name** | **string** | The name of the health check. |
-**check_interval** | **int** | How often to run the health check in milliseconds. | [optional]
+**check_interval** | **int** | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour. | [optional]
 **comment** | **string** | A freeform descriptive note. | [optional]
 **expected_response** | **int** | The status code expected from the host. | [optional]
 **headers** | [**string[]**](../Model/string.md) | Array of custom headers that will be added to the health check probes. | [optional]

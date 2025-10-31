@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **string[]** |  | [optional] 
+**data** | [**\Fastly\Model\KvStoreDetails[]**](KvStoreDetails.md) |  | [optional] 
 **meta** | [**\Fastly\Model\PaginationCursorMeta**](PaginationCursorMeta.md) |  | [optional] 
 
 

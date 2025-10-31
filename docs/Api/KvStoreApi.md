@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 ## `kvStoreList()`
 
 ```php
-kvStoreList($options): \Fastly\Model\InlineResponse2005 // List all KV stores.
+kvStoreList($options): \Fastly\Model\InlineResponse2006 // List all KV stores.
 ```
 
 List all KV stores.
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\Fastly\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
