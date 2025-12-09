@@ -120,7 +120,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location location (optional)
-     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create kv_store_request_create (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update kv_store_request_create_or_update (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -143,7 +143,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location (optional)
-     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -254,7 +254,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location (optional)
-     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -280,7 +280,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location (optional)
-     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -332,7 +332,7 @@ class KvStoreApi
      * URL: https://api.fastly.com
      *
      * @param  string $location (optional)
-     * @param  \Fastly\Model\KvStoreRequestCreate $kv_store_request_create (optional)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -341,7 +341,7 @@ class KvStoreApi
     {
         // unbox the parameters from the associative array
         $location = array_key_exists('location', $options) ? $options['location'] : null;
-        $kv_store_request_create = array_key_exists('kv_store_request_create', $options) ? $options['kv_store_request_create'] : null;
+        $kv_store_request_create_or_update = array_key_exists('kv_store_request_create_or_update', $options) ? $options['kv_store_request_create_or_update'] : null;
 
 
         $resourcePath = '/resources/stores/kv';
@@ -378,11 +378,11 @@ class KvStoreApi
         }
 
         // for model (json/xml)
-        if (isset($kv_store_request_create)) {
+        if (isset($kv_store_request_create_or_update)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($kv_store_request_create));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($kv_store_request_create_or_update));
             } else {
-                $httpBody = $kv_store_request_create;
+                $httpBody = $kv_store_request_create_or_update;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1055,7 +1055,7 @@ class KvStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2006
+     * @return \Fastly\Model\InlineResponse2007
      */
     public function kvStoreList($options)
     {
@@ -1079,7 +1079,7 @@ class KvStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
     public function kvStoreListWithHttpInfo($options)
     {
@@ -1134,20 +1134,20 @@ class KvStoreApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2006' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse2007' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2006', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2007', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2006';
+            $returnType = '\Fastly\Model\InlineResponse2007';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1165,7 +1165,7 @@ class KvStoreApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2006',
+                        '\Fastly\Model\InlineResponse2007',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1221,7 +1221,7 @@ class KvStoreApi
      */
     public function kvStoreListAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2006';
+        $returnType = '\Fastly\Model\InlineResponse2007';
         $request = $this->kvStoreListRequest($options);
 
         return $this->client
@@ -1390,6 +1390,295 @@ class KvStoreApi
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation kvStorePut
+     *
+     * Update a KV store.
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $store_id store_id (required)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update kv_store_request_create_or_update (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function kvStorePut($options)
+    {
+        $this->kvStorePutWithHttpInfo($options);
+    }
+
+    /**
+     * Operation kvStorePutWithHttpInfo
+     *
+     * Update a KV store.
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $store_id (required)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function kvStorePutWithHttpInfo($options)
+    {
+        $request = $this->kvStorePutRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            if ('PUT' != 'GET' && 'PUT' != 'HEAD') {
+                $header = $response->getHeader('Fastly-RateLimit-Remaining');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitRemaining($header[0]);
+                }
+
+                $header = $response->getHeader('Fastly-RateLimit-Reset');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitReset($header[0]);
+                }
+            } 
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation kvStorePutAsync
+     *
+     * Update a KV store.
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $store_id (required)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function kvStorePutAsync($options)
+    {
+        return $this->kvStorePutAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation kvStorePutAsyncWithHttpInfo
+     *
+     * Update a KV store.
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $store_id (required)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function kvStorePutAsyncWithHttpInfo($options)
+    {
+        $returnType = '';
+        $request = $this->kvStorePutRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'kvStorePut'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $store_id (required)
+     * @param  \Fastly\Model\KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function kvStorePutRequest($options)
+    {
+        // unbox the parameters from the associative array
+        $store_id = array_key_exists('store_id', $options) ? $options['store_id'] : null;
+        $kv_store_request_create_or_update = array_key_exists('kv_store_request_create_or_update', $options) ? $options['kv_store_request_create_or_update'] : null;
+
+        // verify the required parameter 'store_id' is set
+        if ($store_id === null || (is_array($store_id) && count($store_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $store_id when calling kvStorePut'
+            );
+        }
+
+        $resourcePath = '/resources/stores/kv/{store_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($store_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'store_id' . '}',
+                ObjectSerializer::toPathValue($store_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($kv_store_request_create_or_update)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($kv_store_request_create_or_update));
+            } else {
+                $httpBody = $kv_store_request_create_or_update;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

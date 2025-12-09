@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
+**display_name** | **string** |  | [optional] 
 **description** | **string** |  | [optional] 
 **permissions** | **string[]** | The set of permissions granted to this role. | [optional] 
 

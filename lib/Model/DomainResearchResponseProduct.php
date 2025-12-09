@@ -1,6 +1,6 @@
 <?php
 /**
- * KvStoreRequestCreate
+ * DomainResearchResponseProduct
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * KvStoreRequestCreate Class Doc Comment
+ * DomainResearchResponseProduct Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class DomainResearchResponseProduct implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $fastlyModelName = 'kv_store_request_create';
+    protected static $fastlyModelName = 'domain_research_response_product';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,7 +53,7 @@ class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => 'string'
+        'product' => '\Fastly\Model\DomainResearchResponseProductProduct'
     ];
 
     /**
@@ -64,7 +64,7 @@ class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'name' => null
+        'product' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name'
+        'product' => 'product'
     ];
 
     /**
@@ -103,7 +103,7 @@ class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName'
+        'product' => 'setProduct'
     ];
 
     /**
@@ -112,7 +112,7 @@ class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName'
+        'product' => 'getProduct'
     ];
 
     /**
@@ -172,7 +172,7 @@ class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
+        $this->container['product'] = $data['product'] ?? null;
     }
 
     /**
@@ -184,9 +184,6 @@ class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -203,25 +200,25 @@ class KvStoreRequestCreate implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets name
+     * Gets product
      *
-     * @return string
+     * @return \Fastly\Model\DomainResearchResponseProductProduct|null
      */
-    public function getName()
+    public function getProduct()
     {
-        return $this->container['name'];
+        return $this->container['product'];
     }
 
     /**
-     * Sets name
+     * Sets product
      *
-     * @param string $name A human-readable name for the store. Refer to https://docs.fastly.com/products/compute-resource-limits#kv-store for limitations on the KV store name.
+     * @param \Fastly\Model\DomainResearchResponseProductProduct|null $product product
      *
      * @return self
      */
-    public function setName($name)
+    public function setProduct($product)
     {
-        $this->container['name'] = $name;
+        $this->container['product'] = $product;
 
         return $this;
     }

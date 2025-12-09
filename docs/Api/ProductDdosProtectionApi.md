@@ -65,11 +65,12 @@ void (empty response body)
 enableProductDdosProtection($options): \Fastly\Model\DdosProtectionResponseEnable // Enable product
 ```
 
-Enable the DDoS Protection product on a service in 'log' mode.
+Enable the DDoS Protection product on a service in default 'log' mode unless otherwise specified in the request body.
 
 ### Example
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
+$options['ddos_protection_request_enable_mode'] = {"mode":"block"}; // \Fastly\Model\DdosProtectionRequestEnableMode
 
 try {
     $result = $apiInstance->enableProductDdosProtection($options);
@@ -85,6 +86,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
+**ddos_protection_request_enable_mode** | [**\Fastly\Model\DdosProtectionRequestEnableMode**](../Model/DdosProtectionRequestEnableMode.md) |  | [optional]
 
 ### Return type
 

@@ -56,6 +56,7 @@ class IamV1RoleResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $fastlyTypes = [
         'id' => 'string',
         'name' => 'string',
+        'display_name' => 'string',
         'description' => 'string',
         'permissions' => 'string[]'
     ];
@@ -70,6 +71,7 @@ class IamV1RoleResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $fastlyFormats = [
         'id' => null,
         'name' => null,
+        'display_name' => null,
         'description' => null,
         'permissions' => null
     ];
@@ -103,6 +105,7 @@ class IamV1RoleResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
+        'display_name' => 'display_name',
         'description' => 'description',
         'permissions' => 'permissions'
     ];
@@ -115,6 +118,7 @@ class IamV1RoleResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
+        'display_name' => 'setDisplayName',
         'description' => 'setDescription',
         'permissions' => 'setPermissions'
     ];
@@ -127,6 +131,7 @@ class IamV1RoleResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
+        'display_name' => 'getDisplayName',
         'description' => 'getDescription',
         'permissions' => 'getPermissions'
     ];
@@ -190,6 +195,7 @@ class IamV1RoleResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['permissions'] = $data['permissions'] ?? null;
     }
@@ -262,6 +268,30 @@ class IamV1RoleResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_name
+     *
+     * @return string|null
+     */
+    public function getDisplayName()
+    {
+        return $this->container['display_name'];
+    }
+
+    /**
+     * Sets display_name
+     *
+     * @param string|null $display_name display_name
+     *
+     * @return self
+     */
+    public function setDisplayName($display_name)
+    {
+        $this->container['display_name'] = $display_name;
 
         return $this;
     }

@@ -53,7 +53,8 @@ class NgwafRequestEnable implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'workspace_id' => 'string'
+        'workspace_id' => 'string',
+        'traffic_ramp' => 'string'
     ];
 
     /**
@@ -64,7 +65,8 @@ class NgwafRequestEnable implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'workspace_id' => null
+        'workspace_id' => null,
+        'traffic_ramp' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class NgwafRequestEnable implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'workspace_id' => 'workspace_id'
+        'workspace_id' => 'workspace_id',
+        'traffic_ramp' => 'traffic_ramp'
     ];
 
     /**
@@ -103,7 +106,8 @@ class NgwafRequestEnable implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'workspace_id' => 'setWorkspaceId'
+        'workspace_id' => 'setWorkspaceId',
+        'traffic_ramp' => 'setTrafficRamp'
     ];
 
     /**
@@ -112,7 +116,8 @@ class NgwafRequestEnable implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'workspace_id' => 'getWorkspaceId'
+        'workspace_id' => 'getWorkspaceId',
+        'traffic_ramp' => 'getTrafficRamp'
     ];
 
     /**
@@ -173,6 +178,7 @@ class NgwafRequestEnable implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->container['workspace_id'] = $data['workspace_id'] ?? null;
+        $this->container['traffic_ramp'] = $data['traffic_ramp'] ?? null;
     }
 
     /**
@@ -222,6 +228,30 @@ class NgwafRequestEnable implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setWorkspaceId($workspace_id)
     {
         $this->container['workspace_id'] = $workspace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets traffic_ramp
+     *
+     * @return string|null
+     */
+    public function getTrafficRamp()
+    {
+        return $this->container['traffic_ramp'];
+    }
+
+    /**
+     * Sets traffic_ramp
+     *
+     * @param string|null $traffic_ramp The percentage of traffic to inspect.
+     *
+     * @return self
+     */
+    public function setTrafficRamp($traffic_ramp)
+    {
+        $this->container['traffic_ramp'] = $traffic_ramp;
 
         return $this;
     }

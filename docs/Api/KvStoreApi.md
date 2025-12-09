@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**kvStoreDelete()**](KvStoreApi.md#kvStoreDelete) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
 [**kvStoreGet()**](KvStoreApi.md#kvStoreGet) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.
 [**kvStoreList()**](KvStoreApi.md#kvStoreList) | **GET** /resources/stores/kv | List all KV stores.
+[**kvStorePut()**](KvStoreApi.md#kvStorePut) | **PUT** /resources/stores/kv/{store_id} | Update a KV store.
 
 
 ## `kvStoreCreate()`
@@ -34,7 +35,7 @@ Create a KV store.
 ### Example
 ```php
     $options['location'] = 'location_example'; // string
-$options['kv_store_request_create'] = {"name":"my-store"}; // \Fastly\Model\KvStoreRequestCreate
+$options['kv_store_request_create_or_update'] = {"name":"my-store"}; // \Fastly\Model\KvStoreRequestCreateOrUpdate
 
 try {
     $result = $apiInstance->kvStoreCreate($options);
@@ -50,7 +51,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **location** | **string** |  | [optional] [one of: 'US', 'EU', 'ASIA', 'AUS']
-**kv_store_request_create** | [**\Fastly\Model\KvStoreRequestCreate**](../Model/KvStoreRequestCreate.md) |  | [optional]
+**kv_store_request_create_or_update** | [**\Fastly\Model\KvStoreRequestCreateOrUpdate**](../Model/KvStoreRequestCreateOrUpdate.md) |  | [optional]
 
 ### Return type
 
@@ -130,7 +131,7 @@ Name | Type | Description  | Notes
 ## `kvStoreList()`
 
 ```php
-kvStoreList($options): \Fastly\Model\InlineResponse2006 // List all KV stores.
+kvStoreList($options): \Fastly\Model\InlineResponse2007 // List all KV stores.
 ```
 
 List all KV stores.
@@ -160,7 +161,43 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\Fastly\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `kvStorePut()`
+
+```php
+kvStorePut($options) // Update a KV store.
+```
+
+Update the name of a KV store.
+
+### Example
+```php
+    $options['store_id'] = 'store_id_example'; // string
+$options['kv_store_request_create_or_update'] = {"name":"my-renamed-store"}; // \Fastly\Model\KvStoreRequestCreateOrUpdate
+
+try {
+    $apiInstance->kvStorePut($options);
+} catch (Exception $e) {
+    echo 'Exception when calling KvStoreApi->kvStorePut: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**store_id** | **string** |  |
+**kv_store_request_create_or_update** | [**\Fastly\Model\KvStoreRequestCreateOrUpdate**](../Model/KvStoreRequestCreateOrUpdate.md) |  | [optional]
+
+### Return type
+
+void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

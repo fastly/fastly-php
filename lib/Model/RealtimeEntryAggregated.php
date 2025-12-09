@@ -315,7 +315,11 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'request_collapse_usable_count' => 'int',
         'request_collapse_unusable_count' => 'int',
         'compute_cache_operations_count' => 'int',
-        'api_discovery_requests_count' => 'int'
+        'api_discovery_requests_count' => 'int',
+        'imgopto_compute_requests' => 'int',
+        'dns_billable_responses_count' => 'int',
+        'dns_nonbillable_responses_count' => 'int',
+        'upgrade' => 'int'
     ];
 
     /**
@@ -587,7 +591,11 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'request_collapse_usable_count' => 'int64',
         'request_collapse_unusable_count' => 'int64',
         'compute_cache_operations_count' => 'int64',
-        'api_discovery_requests_count' => null
+        'api_discovery_requests_count' => null,
+        'imgopto_compute_requests' => null,
+        'dns_billable_responses_count' => null,
+        'dns_nonbillable_responses_count' => null,
+        'upgrade' => null
     ];
 
     /**
@@ -878,7 +886,11 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'request_collapse_usable_count' => 'request_collapse_usable_count',
         'request_collapse_unusable_count' => 'request_collapse_unusable_count',
         'compute_cache_operations_count' => 'compute_cache_operations_count',
-        'api_discovery_requests_count' => 'api_discovery_requests_count'
+        'api_discovery_requests_count' => 'api_discovery_requests_count',
+        'imgopto_compute_requests' => 'imgopto_compute_requests',
+        'dns_billable_responses_count' => 'dns_billable_responses_count',
+        'dns_nonbillable_responses_count' => 'dns_nonbillable_responses_count',
+        'upgrade' => 'upgrade'
     ];
 
     /**
@@ -1148,7 +1160,11 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'request_collapse_usable_count' => 'setRequestCollapseUsableCount',
         'request_collapse_unusable_count' => 'setRequestCollapseUnusableCount',
         'compute_cache_operations_count' => 'setComputeCacheOperationsCount',
-        'api_discovery_requests_count' => 'setApiDiscoveryRequestsCount'
+        'api_discovery_requests_count' => 'setApiDiscoveryRequestsCount',
+        'imgopto_compute_requests' => 'setImgoptoComputeRequests',
+        'dns_billable_responses_count' => 'setDnsBillableResponsesCount',
+        'dns_nonbillable_responses_count' => 'setDnsNonbillableResponsesCount',
+        'upgrade' => 'setUpgrade'
     ];
 
     /**
@@ -1418,7 +1434,11 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'request_collapse_usable_count' => 'getRequestCollapseUsableCount',
         'request_collapse_unusable_count' => 'getRequestCollapseUnusableCount',
         'compute_cache_operations_count' => 'getComputeCacheOperationsCount',
-        'api_discovery_requests_count' => 'getApiDiscoveryRequestsCount'
+        'api_discovery_requests_count' => 'getApiDiscoveryRequestsCount',
+        'imgopto_compute_requests' => 'getImgoptoComputeRequests',
+        'dns_billable_responses_count' => 'getDnsBillableResponsesCount',
+        'dns_nonbillable_responses_count' => 'getDnsNonbillableResponsesCount',
+        'upgrade' => 'getUpgrade'
     ];
 
     /**
@@ -1740,6 +1760,10 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['request_collapse_unusable_count'] = $data['request_collapse_unusable_count'] ?? null;
         $this->container['compute_cache_operations_count'] = $data['compute_cache_operations_count'] ?? null;
         $this->container['api_discovery_requests_count'] = $data['api_discovery_requests_count'] ?? null;
+        $this->container['imgopto_compute_requests'] = $data['imgopto_compute_requests'] ?? null;
+        $this->container['dns_billable_responses_count'] = $data['dns_billable_responses_count'] ?? null;
+        $this->container['dns_nonbillable_responses_count'] = $data['dns_nonbillable_responses_count'] ?? null;
+        $this->container['upgrade'] = $data['upgrade'] ?? null;
     }
 
     /**
@@ -8054,6 +8078,102 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
     public function setApiDiscoveryRequestsCount($api_discovery_requests_count)
     {
         $this->container['api_discovery_requests_count'] = $api_discovery_requests_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_compute_requests
+     *
+     * @return int|null
+     */
+    public function getImgoptoComputeRequests()
+    {
+        return $this->container['imgopto_compute_requests'];
+    }
+
+    /**
+     * Sets imgopto_compute_requests
+     *
+     * @param int|null $imgopto_compute_requests The number of Image Optimizer requests made from Compute services.
+     *
+     * @return self
+     */
+    public function setImgoptoComputeRequests($imgopto_compute_requests)
+    {
+        $this->container['imgopto_compute_requests'] = $imgopto_compute_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets dns_billable_responses_count
+     *
+     * @return int|null
+     */
+    public function getDnsBillableResponsesCount()
+    {
+        return $this->container['dns_billable_responses_count'];
+    }
+
+    /**
+     * Sets dns_billable_responses_count
+     *
+     * @param int|null $dns_billable_responses_count Number of billable DNS responses (e.g., A, CNAME).
+     *
+     * @return self
+     */
+    public function setDnsBillableResponsesCount($dns_billable_responses_count)
+    {
+        $this->container['dns_billable_responses_count'] = $dns_billable_responses_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets dns_nonbillable_responses_count
+     *
+     * @return int|null
+     */
+    public function getDnsNonbillableResponsesCount()
+    {
+        return $this->container['dns_nonbillable_responses_count'];
+    }
+
+    /**
+     * Sets dns_nonbillable_responses_count
+     *
+     * @param int|null $dns_nonbillable_responses_count Number of non-billable DNS responses (e.g., NODATA, NXDOMAIN).
+     *
+     * @return self
+     */
+    public function setDnsNonbillableResponsesCount($dns_nonbillable_responses_count)
+    {
+        $this->container['dns_nonbillable_responses_count'] = $dns_nonbillable_responses_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets upgrade
+     *
+     * @return int|null
+     */
+    public function getUpgrade()
+    {
+        return $this->container['upgrade'];
+    }
+
+    /**
+     * Sets upgrade
+     *
+     * @param int|null $upgrade Number of requests that resulted in a WebSocket upgrade.
+     *
+     * @return self
+     */
+    public function setUpgrade($upgrade)
+    {
+        $this->container['upgrade'] = $upgrade;
 
         return $this;
     }

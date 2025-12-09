@@ -55,6 +55,8 @@ class DdosProtectionEventAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $fastlyTypes = [
         'id' => 'string',
         'name' => 'string',
+        'requests_allowed' => 'int',
+        'requests_detected' => 'int',
         'customer_id' => 'string',
         'service_id' => 'string',
         'started_at' => '\DateTime',
@@ -71,6 +73,8 @@ class DdosProtectionEventAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $fastlyFormats = [
         'id' => null,
         'name' => null,
+        'requests_allowed' => null,
+        'requests_detected' => null,
         'customer_id' => null,
         'service_id' => null,
         'started_at' => 'date-time',
@@ -106,6 +110,8 @@ class DdosProtectionEventAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
+        'requests_allowed' => 'requests_allowed',
+        'requests_detected' => 'requests_detected',
         'customer_id' => 'customer_id',
         'service_id' => 'service_id',
         'started_at' => 'started_at',
@@ -120,6 +126,8 @@ class DdosProtectionEventAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
+        'requests_allowed' => 'setRequestsAllowed',
+        'requests_detected' => 'setRequestsDetected',
         'customer_id' => 'setCustomerId',
         'service_id' => 'setServiceId',
         'started_at' => 'setStartedAt',
@@ -134,6 +142,8 @@ class DdosProtectionEventAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
+        'requests_allowed' => 'getRequestsAllowed',
+        'requests_detected' => 'getRequestsDetected',
         'customer_id' => 'getCustomerId',
         'service_id' => 'getServiceId',
         'started_at' => 'getStartedAt',
@@ -199,6 +209,8 @@ class DdosProtectionEventAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['requests_allowed'] = $data['requests_allowed'] ?? null;
+        $this->container['requests_detected'] = $data['requests_detected'] ?? null;
         $this->container['customer_id'] = $data['customer_id'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['started_at'] = $data['started_at'] ?? null;
@@ -273,6 +285,54 @@ class DdosProtectionEventAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets requests_allowed
+     *
+     * @return int|null
+     */
+    public function getRequestsAllowed()
+    {
+        return $this->container['requests_allowed'];
+    }
+
+    /**
+     * Sets requests_allowed
+     *
+     * @param int|null $requests_allowed Number of requests classified as non-attack traffic for an event.
+     *
+     * @return self
+     */
+    public function setRequestsAllowed($requests_allowed)
+    {
+        $this->container['requests_allowed'] = $requests_allowed;
+
+        return $this;
+    }
+
+    /**
+     * Gets requests_detected
+     *
+     * @return int|null
+     */
+    public function getRequestsDetected()
+    {
+        return $this->container['requests_detected'];
+    }
+
+    /**
+     * Sets requests_detected
+     *
+     * @param int|null $requests_detected Number of requests classified as DDoS attack traffic for an event.
+     *
+     * @return self
+     */
+    public function setRequestsDetected($requests_detected)
+    {
+        $this->container['requests_detected'] = $requests_detected;
 
         return $this;
     }

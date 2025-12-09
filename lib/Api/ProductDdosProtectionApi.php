@@ -397,6 +397,7 @@ class ProductDdosProtectionApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  \Fastly\Model\DdosProtectionRequestEnableMode $ddos_protection_request_enable_mode ddos_protection_request_enable_mode (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -419,6 +420,7 @@ class ProductDdosProtectionApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  \Fastly\Model\DdosProtectionRequestEnableMode $ddos_protection_request_enable_mode (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -529,6 +531,7 @@ class ProductDdosProtectionApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  \Fastly\Model\DdosProtectionRequestEnableMode $ddos_protection_request_enable_mode (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -554,6 +557,7 @@ class ProductDdosProtectionApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  \Fastly\Model\DdosProtectionRequestEnableMode $ddos_protection_request_enable_mode (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -605,6 +609,7 @@ class ProductDdosProtectionApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  \Fastly\Model\DdosProtectionRequestEnableMode $ddos_protection_request_enable_mode (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -613,6 +618,7 @@ class ProductDdosProtectionApi
     {
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $ddos_protection_request_enable_mode = array_key_exists('ddos_protection_request_enable_mode', $options) ? $options['ddos_protection_request_enable_mode'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -647,12 +653,18 @@ class ProductDdosProtectionApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($ddos_protection_request_enable_mode)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($ddos_protection_request_enable_mode));
+            } else {
+                $httpBody = $ddos_protection_request_enable_mode;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

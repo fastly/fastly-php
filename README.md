@@ -207,6 +207,8 @@ Class | Method | Description
 [*DomainInspectorRealtimeApi*](docs/Api/DomainInspectorRealtimeApi.md) | [**getDomainInspectorLastMaxEntries**](docs/Api/DomainInspectorRealtimeApi.md#getdomaininspectorlastmaxentries) | Get a limited number of real-time domain data entries
 [*DomainInspectorRealtimeApi*](docs/Api/DomainInspectorRealtimeApi.md) | [**getDomainInspectorLastSecond**](docs/Api/DomainInspectorRealtimeApi.md#getdomaininspectorlastsecond) | Get real-time domain data from a specified time
 [*DomainOwnershipsApi*](docs/Api/DomainOwnershipsApi.md) | [**listDomainOwnerships**](docs/Api/DomainOwnershipsApi.md#listdomainownerships) | List domain-ownerships
+[*DomainResearchApi*](docs/Api/DomainResearchApi.md) | [**domainStatus**](docs/Api/DomainResearchApi.md#domainstatus) | Domain status
+[*DomainResearchApi*](docs/Api/DomainResearchApi.md) | [**suggestDomains**](docs/Api/DomainResearchApi.md#suggestdomains) | Suggest domains
 [*EventsApi*](docs/Api/EventsApi.md) | [**getEvent**](docs/Api/EventsApi.md#getevent) | Get an event
 [*EventsApi*](docs/Api/EventsApi.md) | [**listEvents**](docs/Api/EventsApi.md#listevents) | List events
 [*GzipApi*](docs/Api/GzipApi.md) | [**createGzipConfig**](docs/Api/GzipApi.md#creategzipconfig) | Create a gzip configuration
@@ -271,6 +273,7 @@ Class | Method | Description
 [*KvStoreApi*](docs/Api/KvStoreApi.md) | [**kvStoreDelete**](docs/Api/KvStoreApi.md#kvstoredelete) | Delete a KV store.
 [*KvStoreApi*](docs/Api/KvStoreApi.md) | [**kvStoreGet**](docs/Api/KvStoreApi.md#kvstoreget) | Describe a KV store.
 [*KvStoreApi*](docs/Api/KvStoreApi.md) | [**kvStoreList**](docs/Api/KvStoreApi.md#kvstorelist) | List all KV stores.
+[*KvStoreApi*](docs/Api/KvStoreApi.md) | [**kvStorePut**](docs/Api/KvStoreApi.md#kvstoreput) | Update a KV store.
 [*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**kvStoreDeleteItem**](docs/Api/KvStoreItemApi.md#kvstoredeleteitem) | Delete an item.
 [*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**kvStoreGetItem**](docs/Api/KvStoreItemApi.md#kvstoregetitem) | Get an item.
 [*KvStoreItemApi*](docs/Api/KvStoreItemApi.md) | [**kvStoreListItemKeys**](docs/Api/KvStoreItemApi.md#kvstorelistitemkeys) | List item keys.
@@ -416,6 +419,7 @@ Class | Method | Description
 [*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**getLogSyslog**](docs/Api/LoggingSyslogApi.md#getlogsyslog) | Get a syslog log endpoint
 [*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**listLogSyslog**](docs/Api/LoggingSyslogApi.md#listlogsyslog) | List Syslog log endpoints
 [*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**updateLogSyslog**](docs/Api/LoggingSyslogApi.md#updatelogsyslog) | Update a syslog log endpoint
+[*MetricsPlatformApi*](docs/Api/MetricsPlatformApi.md) | [**getPlatformMetricsServiceHistorical**](docs/Api/MetricsPlatformApi.md#getplatformmetricsservicehistorical) | Get historical time series metrics for a single service
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**createMutualTlsAuthentication**](docs/Api/MutualAuthenticationApi.md#createmutualtlsauthentication) | Create a Mutual Authentication
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**deleteMutualTls**](docs/Api/MutualAuthenticationApi.md#deletemutualtls) | Delete a Mutual TLS
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**getMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#getmutualauthentication) | Get a Mutual Authentication
@@ -471,6 +475,9 @@ Class | Method | Description
 [*ProductDomainInspectorApi*](docs/Api/ProductDomainInspectorApi.md) | [**enableProductDomainInspector**](docs/Api/ProductDomainInspectorApi.md#enableproductdomaininspector) | Enable product
 [*ProductDomainInspectorApi*](docs/Api/ProductDomainInspectorApi.md) | [**getProductDomainInspector**](docs/Api/ProductDomainInspectorApi.md#getproductdomaininspector) | Get product enablement status
 [*ProductDomainInspectorApi*](docs/Api/ProductDomainInspectorApi.md) | [**getServicesProductDomainInspector**](docs/Api/ProductDomainInspectorApi.md#getservicesproductdomaininspector) | Get services with product enabled
+[*ProductDomainResearchApi*](docs/Api/ProductDomainResearchApi.md) | [**disableProductDomainResearch**](docs/Api/ProductDomainResearchApi.md#disableproductdomainresearch) | Disable product
+[*ProductDomainResearchApi*](docs/Api/ProductDomainResearchApi.md) | [**enableDomainResearch**](docs/Api/ProductDomainResearchApi.md#enabledomainresearch) | Enable product
+[*ProductDomainResearchApi*](docs/Api/ProductDomainResearchApi.md) | [**getDomainResearch**](docs/Api/ProductDomainResearchApi.md#getdomainresearch) | Get product enablement status
 [*ProductFanoutApi*](docs/Api/ProductFanoutApi.md) | [**disableProductFanout**](docs/Api/ProductFanoutApi.md#disableproductfanout) | Disable product
 [*ProductFanoutApi*](docs/Api/ProductFanoutApi.md) | [**enableProductFanout**](docs/Api/ProductFanoutApi.md#enableproductfanout) | Enable product
 [*ProductFanoutApi*](docs/Api/ProductFanoutApi.md) | [**getProductFanout**](docs/Api/ProductFanoutApi.md#getproductfanout) | Get product enablement status
@@ -662,8 +669,6 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
 - [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
-- [`/domains/v1/tools/status`](https://www.fastly.com/documentation/reference/api/) (GET)
-- [`/domains/v1/tools/suggest`](https://www.fastly.com/documentation/reference/api/) (GET)
 - [`/ngwaf/v1/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/lists`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (GET, POST)
 - [`/ngwaf/v1/signals/{signal_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/signals) (DELETE, GET, PATCH)
@@ -676,6 +681,8 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events/{event_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET)
+- [`/ngwaf/v1/workspaces/{workspace_id}/header-links/{header_link_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/header-links) (DELETE, GET, PUT)
+- [`/ngwaf/v1/workspaces/{workspace_id}/header-links`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/header-links) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/redactions/{redaction_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/redactions) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/redactions`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/redactions) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/requests/{request_id}/report`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (POST)

@@ -323,6 +323,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => 'int',
         'ngwaf_requests_challenged_count' => 'int',
         'api_discovery_requests_count' => 'int',
+        'imgopto_compute_requests' => 'int',
+        'dns_billable_responses_count' => 'int',
+        'dns_nonbillable_responses_count' => 'int',
+        'upgrade' => 'int',
         'service_id' => 'string',
         'start_time' => 'int'
     ];
@@ -604,6 +608,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => null,
         'ngwaf_requests_challenged_count' => null,
         'api_discovery_requests_count' => null,
+        'imgopto_compute_requests' => null,
+        'dns_billable_responses_count' => null,
+        'dns_nonbillable_responses_count' => null,
+        'upgrade' => null,
         'service_id' => null,
         'start_time' => 'int64'
     ];
@@ -904,6 +912,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => 'ngwaf_requests_timeout_count',
         'ngwaf_requests_challenged_count' => 'ngwaf_requests_challenged_count',
         'api_discovery_requests_count' => 'api_discovery_requests_count',
+        'imgopto_compute_requests' => 'imgopto_compute_requests',
+        'dns_billable_responses_count' => 'dns_billable_responses_count',
+        'dns_nonbillable_responses_count' => 'dns_nonbillable_responses_count',
+        'upgrade' => 'upgrade',
         'service_id' => 'service_id',
         'start_time' => 'start_time'
     ];
@@ -1183,6 +1195,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => 'setNgwafRequestsTimeoutCount',
         'ngwaf_requests_challenged_count' => 'setNgwafRequestsChallengedCount',
         'api_discovery_requests_count' => 'setApiDiscoveryRequestsCount',
+        'imgopto_compute_requests' => 'setImgoptoComputeRequests',
+        'dns_billable_responses_count' => 'setDnsBillableResponsesCount',
+        'dns_nonbillable_responses_count' => 'setDnsNonbillableResponsesCount',
+        'upgrade' => 'setUpgrade',
         'service_id' => 'setServiceId',
         'start_time' => 'setStartTime'
     ];
@@ -1462,6 +1478,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => 'getNgwafRequestsTimeoutCount',
         'ngwaf_requests_challenged_count' => 'getNgwafRequestsChallengedCount',
         'api_discovery_requests_count' => 'getApiDiscoveryRequestsCount',
+        'imgopto_compute_requests' => 'getImgoptoComputeRequests',
+        'dns_billable_responses_count' => 'getDnsBillableResponsesCount',
+        'dns_nonbillable_responses_count' => 'getDnsNonbillableResponsesCount',
+        'upgrade' => 'getUpgrade',
         'service_id' => 'getServiceId',
         'start_time' => 'getStartTime'
     ];
@@ -1792,6 +1812,10 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['ngwaf_requests_timeout_count'] = $data['ngwaf_requests_timeout_count'] ?? null;
         $this->container['ngwaf_requests_challenged_count'] = $data['ngwaf_requests_challenged_count'] ?? null;
         $this->container['api_discovery_requests_count'] = $data['api_discovery_requests_count'] ?? null;
+        $this->container['imgopto_compute_requests'] = $data['imgopto_compute_requests'] ?? null;
+        $this->container['dns_billable_responses_count'] = $data['dns_billable_responses_count'] ?? null;
+        $this->container['dns_nonbillable_responses_count'] = $data['dns_nonbillable_responses_count'] ?? null;
+        $this->container['upgrade'] = $data['upgrade'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
     }
@@ -8276,6 +8300,102 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setApiDiscoveryRequestsCount($api_discovery_requests_count)
     {
         $this->container['api_discovery_requests_count'] = $api_discovery_requests_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_compute_requests
+     *
+     * @return int|null
+     */
+    public function getImgoptoComputeRequests()
+    {
+        return $this->container['imgopto_compute_requests'];
+    }
+
+    /**
+     * Sets imgopto_compute_requests
+     *
+     * @param int|null $imgopto_compute_requests The number of Image Optimizer requests made from Compute services.
+     *
+     * @return self
+     */
+    public function setImgoptoComputeRequests($imgopto_compute_requests)
+    {
+        $this->container['imgopto_compute_requests'] = $imgopto_compute_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets dns_billable_responses_count
+     *
+     * @return int|null
+     */
+    public function getDnsBillableResponsesCount()
+    {
+        return $this->container['dns_billable_responses_count'];
+    }
+
+    /**
+     * Sets dns_billable_responses_count
+     *
+     * @param int|null $dns_billable_responses_count Number of billable DNS responses (e.g., A, CNAME).
+     *
+     * @return self
+     */
+    public function setDnsBillableResponsesCount($dns_billable_responses_count)
+    {
+        $this->container['dns_billable_responses_count'] = $dns_billable_responses_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets dns_nonbillable_responses_count
+     *
+     * @return int|null
+     */
+    public function getDnsNonbillableResponsesCount()
+    {
+        return $this->container['dns_nonbillable_responses_count'];
+    }
+
+    /**
+     * Sets dns_nonbillable_responses_count
+     *
+     * @param int|null $dns_nonbillable_responses_count Number of non-billable DNS responses (e.g., NODATA, NXDOMAIN).
+     *
+     * @return self
+     */
+    public function setDnsNonbillableResponsesCount($dns_nonbillable_responses_count)
+    {
+        $this->container['dns_nonbillable_responses_count'] = $dns_nonbillable_responses_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets upgrade
+     *
+     * @return int|null
+     */
+    public function getUpgrade()
+    {
+        return $this->container['upgrade'];
+    }
+
+    /**
+     * Sets upgrade
+     *
+     * @param int|null $upgrade Number of requests that resulted in a WebSocket upgrade.
+     *
+     * @return self
+     */
+    public function setUpgrade($upgrade)
+    {
+        $this->container['upgrade'] = $upgrade;
 
         return $this;
     }

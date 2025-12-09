@@ -97,7 +97,7 @@ void (empty response body)
 ## `deleteServiceAuthorization2()`
 
 ```php
-deleteServiceAuthorization2($options): \Fastly\Model\InlineResponse20010 // Delete service authorizations
+deleteServiceAuthorization2($options): \Fastly\Model\InlineResponse20011 // Delete service authorizations
 ```
 
 Delete service authorizations.
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\Fastly\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
