@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **string[]** | The service IDs of the services the token will have access to. Separate service IDs with a space. | [optional] 
+**meta** | [**\Fastly\Model\Meta**](Meta.md) |  | [optional] 
+**data** | [**\Fastly\Model\DiscoveredOperationGet[]**](DiscoveredOperationGet.md) | The discovered operations returned by the request. | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

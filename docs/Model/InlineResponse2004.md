@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\SuccessfulResponseAsObject[]**](SuccessfulResponseAsObject.md) |  | [optional] 
-**meta** | **object** | Meta for the pagination. | [optional] 
+**data** | **string[]** | The service IDs of the services the token will have access to. Separate service IDs with a space. | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

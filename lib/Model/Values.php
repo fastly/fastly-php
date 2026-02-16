@@ -117,7 +117,70 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'origin_status_2xx' => 'int',
         'origin_status_3xx' => 'int',
         'origin_status_4xx' => 'int',
-        'origin_status_5xx' => 'int'
+        'origin_status_5xx' => 'int',
+        'compute_bereq_body_bytes' => 'int',
+        'compute_bereq_errors' => 'int',
+        'compute_bereq_header_bytes' => 'int',
+        'compute_bereqs' => 'int',
+        'compute_beresp_body_bytes' => 'int',
+        'compute_beresp_header_bytes' => 'int',
+        'compute_execution_time_ms' => 'int',
+        'compute_origin_status_1xx' => 'int',
+        'compute_origin_status_200' => 'int',
+        'compute_origin_status_204' => 'int',
+        'compute_origin_status_206' => 'int',
+        'compute_origin_status_2xx' => 'int',
+        'compute_origin_status_301' => 'int',
+        'compute_origin_status_302' => 'int',
+        'compute_origin_status_304' => 'int',
+        'compute_origin_status_3xx' => 'int',
+        'compute_origin_status_400' => 'int',
+        'compute_origin_status_401' => 'int',
+        'compute_origin_status_403' => 'int',
+        'compute_origin_status_404' => 'int',
+        'compute_origin_status_416' => 'int',
+        'compute_origin_status_429' => 'int',
+        'compute_origin_status_4xx' => 'int',
+        'compute_origin_status_500' => 'int',
+        'compute_origin_status_501' => 'int',
+        'compute_origin_status_502' => 'int',
+        'compute_origin_status_503' => 'int',
+        'compute_origin_status_504' => 'int',
+        'compute_origin_status_505' => 'int',
+        'compute_origin_status_530' => 'int',
+        'compute_origin_status_5xx' => 'int',
+        'compute_req_body_bytes' => 'int',
+        'compute_req_header_bytes' => 'int',
+        'compute_request_time_billed_ms' => 'int',
+        'compute_request_time_ms' => 'int',
+        'compute_request' => 'int',
+        'compute_resp_body_bytes' => 'int',
+        'compute_resp_header_bytes' => 'int',
+        'compute_resp_status_103' => 'int',
+        'compute_resp_status_1xx' => 'int',
+        'compute_resp_status_200' => 'int',
+        'compute_resp_status_204' => 'int',
+        'compute_resp_status_206' => 'int',
+        'compute_resp_status_2xx' => 'int',
+        'compute_resp_status_301' => 'int',
+        'compute_resp_status_302' => 'int',
+        'compute_resp_status_304' => 'int',
+        'compute_resp_status_3xx' => 'int',
+        'compute_resp_status_400' => 'int',
+        'compute_resp_status_401' => 'int',
+        'compute_resp_status_403' => 'int',
+        'compute_resp_status_404' => 'int',
+        'compute_resp_status_416' => 'int',
+        'compute_resp_status_429' => 'int',
+        'compute_resp_status_4xx' => 'int',
+        'compute_resp_status_500' => 'int',
+        'compute_resp_status_501' => 'int',
+        'compute_resp_status_502' => 'int',
+        'compute_resp_status_503' => 'int',
+        'compute_resp_status_504' => 'int',
+        'compute_resp_status_505' => 'int',
+        'compute_resp_status_530' => 'int',
+        'compute_resp_status_5xx' => 'int'
     ];
 
     /**
@@ -191,7 +254,70 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'origin_status_2xx' => 'int64',
         'origin_status_3xx' => 'int64',
         'origin_status_4xx' => 'int64',
-        'origin_status_5xx' => 'int64'
+        'origin_status_5xx' => 'int64',
+        'compute_bereq_body_bytes' => 'int64',
+        'compute_bereq_errors' => 'int64',
+        'compute_bereq_header_bytes' => 'int64',
+        'compute_bereqs' => 'int64',
+        'compute_beresp_body_bytes' => 'int64',
+        'compute_beresp_header_bytes' => 'int64',
+        'compute_execution_time_ms' => 'int64',
+        'compute_origin_status_1xx' => 'int64',
+        'compute_origin_status_200' => 'int64',
+        'compute_origin_status_204' => 'int64',
+        'compute_origin_status_206' => 'int64',
+        'compute_origin_status_2xx' => 'int64',
+        'compute_origin_status_301' => 'int64',
+        'compute_origin_status_302' => 'int64',
+        'compute_origin_status_304' => 'int64',
+        'compute_origin_status_3xx' => 'int64',
+        'compute_origin_status_400' => 'int64',
+        'compute_origin_status_401' => 'int64',
+        'compute_origin_status_403' => 'int64',
+        'compute_origin_status_404' => 'int64',
+        'compute_origin_status_416' => 'int64',
+        'compute_origin_status_429' => 'int64',
+        'compute_origin_status_4xx' => 'int64',
+        'compute_origin_status_500' => 'int64',
+        'compute_origin_status_501' => 'int64',
+        'compute_origin_status_502' => 'int64',
+        'compute_origin_status_503' => 'int64',
+        'compute_origin_status_504' => 'int64',
+        'compute_origin_status_505' => 'int64',
+        'compute_origin_status_530' => 'int64',
+        'compute_origin_status_5xx' => 'int64',
+        'compute_req_body_bytes' => 'int64',
+        'compute_req_header_bytes' => 'int64',
+        'compute_request_time_billed_ms' => 'int64',
+        'compute_request_time_ms' => 'int64',
+        'compute_request' => 'int64',
+        'compute_resp_body_bytes' => 'int64',
+        'compute_resp_header_bytes' => 'int64',
+        'compute_resp_status_103' => 'int64',
+        'compute_resp_status_1xx' => 'int64',
+        'compute_resp_status_200' => 'int64',
+        'compute_resp_status_204' => 'int64',
+        'compute_resp_status_206' => 'int64',
+        'compute_resp_status_2xx' => 'int64',
+        'compute_resp_status_301' => 'int64',
+        'compute_resp_status_302' => 'int64',
+        'compute_resp_status_304' => 'int64',
+        'compute_resp_status_3xx' => 'int64',
+        'compute_resp_status_400' => 'int64',
+        'compute_resp_status_401' => 'int64',
+        'compute_resp_status_403' => 'int64',
+        'compute_resp_status_404' => 'int64',
+        'compute_resp_status_416' => 'int64',
+        'compute_resp_status_429' => 'int64',
+        'compute_resp_status_4xx' => 'int64',
+        'compute_resp_status_500' => 'int64',
+        'compute_resp_status_501' => 'int64',
+        'compute_resp_status_502' => 'int64',
+        'compute_resp_status_503' => 'int64',
+        'compute_resp_status_504' => 'int64',
+        'compute_resp_status_505' => 'int64',
+        'compute_resp_status_530' => 'int64',
+        'compute_resp_status_5xx' => 'int64'
     ];
 
     /**
@@ -284,7 +410,70 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'origin_status_2xx' => 'origin_status_2xx',
         'origin_status_3xx' => 'origin_status_3xx',
         'origin_status_4xx' => 'origin_status_4xx',
-        'origin_status_5xx' => 'origin_status_5xx'
+        'origin_status_5xx' => 'origin_status_5xx',
+        'compute_bereq_body_bytes' => 'compute_bereq_body_bytes',
+        'compute_bereq_errors' => 'compute_bereq_errors',
+        'compute_bereq_header_bytes' => 'compute_bereq_header_bytes',
+        'compute_bereqs' => 'compute_bereqs',
+        'compute_beresp_body_bytes' => 'compute_beresp_body_bytes',
+        'compute_beresp_header_bytes' => 'compute_beresp_header_bytes',
+        'compute_execution_time_ms' => 'compute_execution_time_ms',
+        'compute_origin_status_1xx' => 'compute_origin_status_1xx',
+        'compute_origin_status_200' => 'compute_origin_status_200',
+        'compute_origin_status_204' => 'compute_origin_status_204',
+        'compute_origin_status_206' => 'compute_origin_status_206',
+        'compute_origin_status_2xx' => 'compute_origin_status_2xx',
+        'compute_origin_status_301' => 'compute_origin_status_301',
+        'compute_origin_status_302' => 'compute_origin_status_302',
+        'compute_origin_status_304' => 'compute_origin_status_304',
+        'compute_origin_status_3xx' => 'compute_origin_status_3xx',
+        'compute_origin_status_400' => 'compute_origin_status_400',
+        'compute_origin_status_401' => 'compute_origin_status_401',
+        'compute_origin_status_403' => 'compute_origin_status_403',
+        'compute_origin_status_404' => 'compute_origin_status_404',
+        'compute_origin_status_416' => 'compute_origin_status_416',
+        'compute_origin_status_429' => 'compute_origin_status_429',
+        'compute_origin_status_4xx' => 'compute_origin_status_4xx',
+        'compute_origin_status_500' => 'compute_origin_status_500',
+        'compute_origin_status_501' => 'compute_origin_status_501',
+        'compute_origin_status_502' => 'compute_origin_status_502',
+        'compute_origin_status_503' => 'compute_origin_status_503',
+        'compute_origin_status_504' => 'compute_origin_status_504',
+        'compute_origin_status_505' => 'compute_origin_status_505',
+        'compute_origin_status_530' => 'compute_origin_status_530',
+        'compute_origin_status_5xx' => 'compute_origin_status_5xx',
+        'compute_req_body_bytes' => 'compute_req_body_bytes',
+        'compute_req_header_bytes' => 'compute_req_header_bytes',
+        'compute_request_time_billed_ms' => 'compute_request_time_billed_ms',
+        'compute_request_time_ms' => 'compute_request_time_ms',
+        'compute_request' => 'compute_request',
+        'compute_resp_body_bytes' => 'compute_resp_body_bytes',
+        'compute_resp_header_bytes' => 'compute_resp_header_bytes',
+        'compute_resp_status_103' => 'compute_resp_status_103',
+        'compute_resp_status_1xx' => 'compute_resp_status_1xx',
+        'compute_resp_status_200' => 'compute_resp_status_200',
+        'compute_resp_status_204' => 'compute_resp_status_204',
+        'compute_resp_status_206' => 'compute_resp_status_206',
+        'compute_resp_status_2xx' => 'compute_resp_status_2xx',
+        'compute_resp_status_301' => 'compute_resp_status_301',
+        'compute_resp_status_302' => 'compute_resp_status_302',
+        'compute_resp_status_304' => 'compute_resp_status_304',
+        'compute_resp_status_3xx' => 'compute_resp_status_3xx',
+        'compute_resp_status_400' => 'compute_resp_status_400',
+        'compute_resp_status_401' => 'compute_resp_status_401',
+        'compute_resp_status_403' => 'compute_resp_status_403',
+        'compute_resp_status_404' => 'compute_resp_status_404',
+        'compute_resp_status_416' => 'compute_resp_status_416',
+        'compute_resp_status_429' => 'compute_resp_status_429',
+        'compute_resp_status_4xx' => 'compute_resp_status_4xx',
+        'compute_resp_status_500' => 'compute_resp_status_500',
+        'compute_resp_status_501' => 'compute_resp_status_501',
+        'compute_resp_status_502' => 'compute_resp_status_502',
+        'compute_resp_status_503' => 'compute_resp_status_503',
+        'compute_resp_status_504' => 'compute_resp_status_504',
+        'compute_resp_status_505' => 'compute_resp_status_505',
+        'compute_resp_status_530' => 'compute_resp_status_530',
+        'compute_resp_status_5xx' => 'compute_resp_status_5xx'
     ];
 
     /**
@@ -356,7 +545,70 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'origin_status_2xx' => 'setOriginStatus2xx',
         'origin_status_3xx' => 'setOriginStatus3xx',
         'origin_status_4xx' => 'setOriginStatus4xx',
-        'origin_status_5xx' => 'setOriginStatus5xx'
+        'origin_status_5xx' => 'setOriginStatus5xx',
+        'compute_bereq_body_bytes' => 'setComputeBereqBodyBytes',
+        'compute_bereq_errors' => 'setComputeBereqErrors',
+        'compute_bereq_header_bytes' => 'setComputeBereqHeaderBytes',
+        'compute_bereqs' => 'setComputeBereqs',
+        'compute_beresp_body_bytes' => 'setComputeBerespBodyBytes',
+        'compute_beresp_header_bytes' => 'setComputeBerespHeaderBytes',
+        'compute_execution_time_ms' => 'setComputeExecutionTimeMs',
+        'compute_origin_status_1xx' => 'setComputeOriginStatus1xx',
+        'compute_origin_status_200' => 'setComputeOriginStatus200',
+        'compute_origin_status_204' => 'setComputeOriginStatus204',
+        'compute_origin_status_206' => 'setComputeOriginStatus206',
+        'compute_origin_status_2xx' => 'setComputeOriginStatus2xx',
+        'compute_origin_status_301' => 'setComputeOriginStatus301',
+        'compute_origin_status_302' => 'setComputeOriginStatus302',
+        'compute_origin_status_304' => 'setComputeOriginStatus304',
+        'compute_origin_status_3xx' => 'setComputeOriginStatus3xx',
+        'compute_origin_status_400' => 'setComputeOriginStatus400',
+        'compute_origin_status_401' => 'setComputeOriginStatus401',
+        'compute_origin_status_403' => 'setComputeOriginStatus403',
+        'compute_origin_status_404' => 'setComputeOriginStatus404',
+        'compute_origin_status_416' => 'setComputeOriginStatus416',
+        'compute_origin_status_429' => 'setComputeOriginStatus429',
+        'compute_origin_status_4xx' => 'setComputeOriginStatus4xx',
+        'compute_origin_status_500' => 'setComputeOriginStatus500',
+        'compute_origin_status_501' => 'setComputeOriginStatus501',
+        'compute_origin_status_502' => 'setComputeOriginStatus502',
+        'compute_origin_status_503' => 'setComputeOriginStatus503',
+        'compute_origin_status_504' => 'setComputeOriginStatus504',
+        'compute_origin_status_505' => 'setComputeOriginStatus505',
+        'compute_origin_status_530' => 'setComputeOriginStatus530',
+        'compute_origin_status_5xx' => 'setComputeOriginStatus5xx',
+        'compute_req_body_bytes' => 'setComputeReqBodyBytes',
+        'compute_req_header_bytes' => 'setComputeReqHeaderBytes',
+        'compute_request_time_billed_ms' => 'setComputeRequestTimeBilledMs',
+        'compute_request_time_ms' => 'setComputeRequestTimeMs',
+        'compute_request' => 'setComputeRequest',
+        'compute_resp_body_bytes' => 'setComputeRespBodyBytes',
+        'compute_resp_header_bytes' => 'setComputeRespHeaderBytes',
+        'compute_resp_status_103' => 'setComputeRespStatus103',
+        'compute_resp_status_1xx' => 'setComputeRespStatus1xx',
+        'compute_resp_status_200' => 'setComputeRespStatus200',
+        'compute_resp_status_204' => 'setComputeRespStatus204',
+        'compute_resp_status_206' => 'setComputeRespStatus206',
+        'compute_resp_status_2xx' => 'setComputeRespStatus2xx',
+        'compute_resp_status_301' => 'setComputeRespStatus301',
+        'compute_resp_status_302' => 'setComputeRespStatus302',
+        'compute_resp_status_304' => 'setComputeRespStatus304',
+        'compute_resp_status_3xx' => 'setComputeRespStatus3xx',
+        'compute_resp_status_400' => 'setComputeRespStatus400',
+        'compute_resp_status_401' => 'setComputeRespStatus401',
+        'compute_resp_status_403' => 'setComputeRespStatus403',
+        'compute_resp_status_404' => 'setComputeRespStatus404',
+        'compute_resp_status_416' => 'setComputeRespStatus416',
+        'compute_resp_status_429' => 'setComputeRespStatus429',
+        'compute_resp_status_4xx' => 'setComputeRespStatus4xx',
+        'compute_resp_status_500' => 'setComputeRespStatus500',
+        'compute_resp_status_501' => 'setComputeRespStatus501',
+        'compute_resp_status_502' => 'setComputeRespStatus502',
+        'compute_resp_status_503' => 'setComputeRespStatus503',
+        'compute_resp_status_504' => 'setComputeRespStatus504',
+        'compute_resp_status_505' => 'setComputeRespStatus505',
+        'compute_resp_status_530' => 'setComputeRespStatus530',
+        'compute_resp_status_5xx' => 'setComputeRespStatus5xx'
     ];
 
     /**
@@ -428,7 +680,70 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'origin_status_2xx' => 'getOriginStatus2xx',
         'origin_status_3xx' => 'getOriginStatus3xx',
         'origin_status_4xx' => 'getOriginStatus4xx',
-        'origin_status_5xx' => 'getOriginStatus5xx'
+        'origin_status_5xx' => 'getOriginStatus5xx',
+        'compute_bereq_body_bytes' => 'getComputeBereqBodyBytes',
+        'compute_bereq_errors' => 'getComputeBereqErrors',
+        'compute_bereq_header_bytes' => 'getComputeBereqHeaderBytes',
+        'compute_bereqs' => 'getComputeBereqs',
+        'compute_beresp_body_bytes' => 'getComputeBerespBodyBytes',
+        'compute_beresp_header_bytes' => 'getComputeBerespHeaderBytes',
+        'compute_execution_time_ms' => 'getComputeExecutionTimeMs',
+        'compute_origin_status_1xx' => 'getComputeOriginStatus1xx',
+        'compute_origin_status_200' => 'getComputeOriginStatus200',
+        'compute_origin_status_204' => 'getComputeOriginStatus204',
+        'compute_origin_status_206' => 'getComputeOriginStatus206',
+        'compute_origin_status_2xx' => 'getComputeOriginStatus2xx',
+        'compute_origin_status_301' => 'getComputeOriginStatus301',
+        'compute_origin_status_302' => 'getComputeOriginStatus302',
+        'compute_origin_status_304' => 'getComputeOriginStatus304',
+        'compute_origin_status_3xx' => 'getComputeOriginStatus3xx',
+        'compute_origin_status_400' => 'getComputeOriginStatus400',
+        'compute_origin_status_401' => 'getComputeOriginStatus401',
+        'compute_origin_status_403' => 'getComputeOriginStatus403',
+        'compute_origin_status_404' => 'getComputeOriginStatus404',
+        'compute_origin_status_416' => 'getComputeOriginStatus416',
+        'compute_origin_status_429' => 'getComputeOriginStatus429',
+        'compute_origin_status_4xx' => 'getComputeOriginStatus4xx',
+        'compute_origin_status_500' => 'getComputeOriginStatus500',
+        'compute_origin_status_501' => 'getComputeOriginStatus501',
+        'compute_origin_status_502' => 'getComputeOriginStatus502',
+        'compute_origin_status_503' => 'getComputeOriginStatus503',
+        'compute_origin_status_504' => 'getComputeOriginStatus504',
+        'compute_origin_status_505' => 'getComputeOriginStatus505',
+        'compute_origin_status_530' => 'getComputeOriginStatus530',
+        'compute_origin_status_5xx' => 'getComputeOriginStatus5xx',
+        'compute_req_body_bytes' => 'getComputeReqBodyBytes',
+        'compute_req_header_bytes' => 'getComputeReqHeaderBytes',
+        'compute_request_time_billed_ms' => 'getComputeRequestTimeBilledMs',
+        'compute_request_time_ms' => 'getComputeRequestTimeMs',
+        'compute_request' => 'getComputeRequest',
+        'compute_resp_body_bytes' => 'getComputeRespBodyBytes',
+        'compute_resp_header_bytes' => 'getComputeRespHeaderBytes',
+        'compute_resp_status_103' => 'getComputeRespStatus103',
+        'compute_resp_status_1xx' => 'getComputeRespStatus1xx',
+        'compute_resp_status_200' => 'getComputeRespStatus200',
+        'compute_resp_status_204' => 'getComputeRespStatus204',
+        'compute_resp_status_206' => 'getComputeRespStatus206',
+        'compute_resp_status_2xx' => 'getComputeRespStatus2xx',
+        'compute_resp_status_301' => 'getComputeRespStatus301',
+        'compute_resp_status_302' => 'getComputeRespStatus302',
+        'compute_resp_status_304' => 'getComputeRespStatus304',
+        'compute_resp_status_3xx' => 'getComputeRespStatus3xx',
+        'compute_resp_status_400' => 'getComputeRespStatus400',
+        'compute_resp_status_401' => 'getComputeRespStatus401',
+        'compute_resp_status_403' => 'getComputeRespStatus403',
+        'compute_resp_status_404' => 'getComputeRespStatus404',
+        'compute_resp_status_416' => 'getComputeRespStatus416',
+        'compute_resp_status_429' => 'getComputeRespStatus429',
+        'compute_resp_status_4xx' => 'getComputeRespStatus4xx',
+        'compute_resp_status_500' => 'getComputeRespStatus500',
+        'compute_resp_status_501' => 'getComputeRespStatus501',
+        'compute_resp_status_502' => 'getComputeRespStatus502',
+        'compute_resp_status_503' => 'getComputeRespStatus503',
+        'compute_resp_status_504' => 'getComputeRespStatus504',
+        'compute_resp_status_505' => 'getComputeRespStatus505',
+        'compute_resp_status_530' => 'getComputeRespStatus530',
+        'compute_resp_status_5xx' => 'getComputeRespStatus5xx'
     ];
 
     /**
@@ -552,6 +867,69 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['origin_status_3xx'] = $data['origin_status_3xx'] ?? null;
         $this->container['origin_status_4xx'] = $data['origin_status_4xx'] ?? null;
         $this->container['origin_status_5xx'] = $data['origin_status_5xx'] ?? null;
+        $this->container['compute_bereq_body_bytes'] = $data['compute_bereq_body_bytes'] ?? null;
+        $this->container['compute_bereq_errors'] = $data['compute_bereq_errors'] ?? null;
+        $this->container['compute_bereq_header_bytes'] = $data['compute_bereq_header_bytes'] ?? null;
+        $this->container['compute_bereqs'] = $data['compute_bereqs'] ?? null;
+        $this->container['compute_beresp_body_bytes'] = $data['compute_beresp_body_bytes'] ?? null;
+        $this->container['compute_beresp_header_bytes'] = $data['compute_beresp_header_bytes'] ?? null;
+        $this->container['compute_execution_time_ms'] = $data['compute_execution_time_ms'] ?? null;
+        $this->container['compute_origin_status_1xx'] = $data['compute_origin_status_1xx'] ?? null;
+        $this->container['compute_origin_status_200'] = $data['compute_origin_status_200'] ?? null;
+        $this->container['compute_origin_status_204'] = $data['compute_origin_status_204'] ?? null;
+        $this->container['compute_origin_status_206'] = $data['compute_origin_status_206'] ?? null;
+        $this->container['compute_origin_status_2xx'] = $data['compute_origin_status_2xx'] ?? null;
+        $this->container['compute_origin_status_301'] = $data['compute_origin_status_301'] ?? null;
+        $this->container['compute_origin_status_302'] = $data['compute_origin_status_302'] ?? null;
+        $this->container['compute_origin_status_304'] = $data['compute_origin_status_304'] ?? null;
+        $this->container['compute_origin_status_3xx'] = $data['compute_origin_status_3xx'] ?? null;
+        $this->container['compute_origin_status_400'] = $data['compute_origin_status_400'] ?? null;
+        $this->container['compute_origin_status_401'] = $data['compute_origin_status_401'] ?? null;
+        $this->container['compute_origin_status_403'] = $data['compute_origin_status_403'] ?? null;
+        $this->container['compute_origin_status_404'] = $data['compute_origin_status_404'] ?? null;
+        $this->container['compute_origin_status_416'] = $data['compute_origin_status_416'] ?? null;
+        $this->container['compute_origin_status_429'] = $data['compute_origin_status_429'] ?? null;
+        $this->container['compute_origin_status_4xx'] = $data['compute_origin_status_4xx'] ?? null;
+        $this->container['compute_origin_status_500'] = $data['compute_origin_status_500'] ?? null;
+        $this->container['compute_origin_status_501'] = $data['compute_origin_status_501'] ?? null;
+        $this->container['compute_origin_status_502'] = $data['compute_origin_status_502'] ?? null;
+        $this->container['compute_origin_status_503'] = $data['compute_origin_status_503'] ?? null;
+        $this->container['compute_origin_status_504'] = $data['compute_origin_status_504'] ?? null;
+        $this->container['compute_origin_status_505'] = $data['compute_origin_status_505'] ?? null;
+        $this->container['compute_origin_status_530'] = $data['compute_origin_status_530'] ?? null;
+        $this->container['compute_origin_status_5xx'] = $data['compute_origin_status_5xx'] ?? null;
+        $this->container['compute_req_body_bytes'] = $data['compute_req_body_bytes'] ?? null;
+        $this->container['compute_req_header_bytes'] = $data['compute_req_header_bytes'] ?? null;
+        $this->container['compute_request_time_billed_ms'] = $data['compute_request_time_billed_ms'] ?? null;
+        $this->container['compute_request_time_ms'] = $data['compute_request_time_ms'] ?? null;
+        $this->container['compute_request'] = $data['compute_request'] ?? null;
+        $this->container['compute_resp_body_bytes'] = $data['compute_resp_body_bytes'] ?? null;
+        $this->container['compute_resp_header_bytes'] = $data['compute_resp_header_bytes'] ?? null;
+        $this->container['compute_resp_status_103'] = $data['compute_resp_status_103'] ?? null;
+        $this->container['compute_resp_status_1xx'] = $data['compute_resp_status_1xx'] ?? null;
+        $this->container['compute_resp_status_200'] = $data['compute_resp_status_200'] ?? null;
+        $this->container['compute_resp_status_204'] = $data['compute_resp_status_204'] ?? null;
+        $this->container['compute_resp_status_206'] = $data['compute_resp_status_206'] ?? null;
+        $this->container['compute_resp_status_2xx'] = $data['compute_resp_status_2xx'] ?? null;
+        $this->container['compute_resp_status_301'] = $data['compute_resp_status_301'] ?? null;
+        $this->container['compute_resp_status_302'] = $data['compute_resp_status_302'] ?? null;
+        $this->container['compute_resp_status_304'] = $data['compute_resp_status_304'] ?? null;
+        $this->container['compute_resp_status_3xx'] = $data['compute_resp_status_3xx'] ?? null;
+        $this->container['compute_resp_status_400'] = $data['compute_resp_status_400'] ?? null;
+        $this->container['compute_resp_status_401'] = $data['compute_resp_status_401'] ?? null;
+        $this->container['compute_resp_status_403'] = $data['compute_resp_status_403'] ?? null;
+        $this->container['compute_resp_status_404'] = $data['compute_resp_status_404'] ?? null;
+        $this->container['compute_resp_status_416'] = $data['compute_resp_status_416'] ?? null;
+        $this->container['compute_resp_status_429'] = $data['compute_resp_status_429'] ?? null;
+        $this->container['compute_resp_status_4xx'] = $data['compute_resp_status_4xx'] ?? null;
+        $this->container['compute_resp_status_500'] = $data['compute_resp_status_500'] ?? null;
+        $this->container['compute_resp_status_501'] = $data['compute_resp_status_501'] ?? null;
+        $this->container['compute_resp_status_502'] = $data['compute_resp_status_502'] ?? null;
+        $this->container['compute_resp_status_503'] = $data['compute_resp_status_503'] ?? null;
+        $this->container['compute_resp_status_504'] = $data['compute_resp_status_504'] ?? null;
+        $this->container['compute_resp_status_505'] = $data['compute_resp_status_505'] ?? null;
+        $this->container['compute_resp_status_530'] = $data['compute_resp_status_530'] ?? null;
+        $this->container['compute_resp_status_5xx'] = $data['compute_resp_status_5xx'] ?? null;
     }
 
     /**
@@ -2110,6 +2488,1518 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOriginStatus5xx($origin_status_5xx)
     {
         $this->container['origin_status_5xx'] = $origin_status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_bereq_body_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeBereqBodyBytes()
+    {
+        return $this->container['compute_bereq_body_bytes'];
+    }
+
+    /**
+     * Sets compute_bereq_body_bytes
+     *
+     * @param int|null $compute_bereq_body_bytes Total body bytes sent to backends (origins) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBereqBodyBytes($compute_bereq_body_bytes)
+    {
+        $this->container['compute_bereq_body_bytes'] = $compute_bereq_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_bereq_errors
+     *
+     * @return int|null
+     */
+    public function getComputeBereqErrors()
+    {
+        return $this->container['compute_bereq_errors'];
+    }
+
+    /**
+     * Sets compute_bereq_errors
+     *
+     * @param int|null $compute_bereq_errors Number of backend request errors, including timeouts, by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBereqErrors($compute_bereq_errors)
+    {
+        $this->container['compute_bereq_errors'] = $compute_bereq_errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_bereq_header_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeBereqHeaderBytes()
+    {
+        return $this->container['compute_bereq_header_bytes'];
+    }
+
+    /**
+     * Sets compute_bereq_header_bytes
+     *
+     * @param int|null $compute_bereq_header_bytes Total header bytes sent to backends (origins) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBereqHeaderBytes($compute_bereq_header_bytes)
+    {
+        $this->container['compute_bereq_header_bytes'] = $compute_bereq_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_bereqs
+     *
+     * @return int|null
+     */
+    public function getComputeBereqs()
+    {
+        return $this->container['compute_bereqs'];
+    }
+
+    /**
+     * Sets compute_bereqs
+     *
+     * @param int|null $compute_bereqs Number of backend requests started by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBereqs($compute_bereqs)
+    {
+        $this->container['compute_bereqs'] = $compute_bereqs;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_beresp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeBerespBodyBytes()
+    {
+        return $this->container['compute_beresp_body_bytes'];
+    }
+
+    /**
+     * Sets compute_beresp_body_bytes
+     *
+     * @param int|null $compute_beresp_body_bytes Total body bytes received from backends (origins) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBerespBodyBytes($compute_beresp_body_bytes)
+    {
+        $this->container['compute_beresp_body_bytes'] = $compute_beresp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_beresp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeBerespHeaderBytes()
+    {
+        return $this->container['compute_beresp_header_bytes'];
+    }
+
+    /**
+     * Sets compute_beresp_header_bytes
+     *
+     * @param int|null $compute_beresp_header_bytes Total header bytes received from backends (origins) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBerespHeaderBytes($compute_beresp_header_bytes)
+    {
+        $this->container['compute_beresp_header_bytes'] = $compute_beresp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_execution_time_ms
+     *
+     * @return int|null
+     */
+    public function getComputeExecutionTimeMs()
+    {
+        return $this->container['compute_execution_time_ms'];
+    }
+
+    /**
+     * Sets compute_execution_time_ms
+     *
+     * @param int|null $compute_execution_time_ms The amount of active CPU time used to process your requests (in milliseconds).
+     *
+     * @return self
+     */
+    public function setComputeExecutionTimeMs($compute_execution_time_ms)
+    {
+        $this->container['compute_execution_time_ms'] = $compute_execution_time_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_1xx
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus1xx()
+    {
+        return $this->container['compute_origin_status_1xx'];
+    }
+
+    /**
+     * Sets compute_origin_status_1xx
+     *
+     * @param int|null $compute_origin_status_1xx Number of \"Informational\" category status codes received from origin by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus1xx($compute_origin_status_1xx)
+    {
+        $this->container['compute_origin_status_1xx'] = $compute_origin_status_1xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_200
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus200()
+    {
+        return $this->container['compute_origin_status_200'];
+    }
+
+    /**
+     * Sets compute_origin_status_200
+     *
+     * @param int|null $compute_origin_status_200 Number of responses received from origin with status code 200 (Success) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus200($compute_origin_status_200)
+    {
+        $this->container['compute_origin_status_200'] = $compute_origin_status_200;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_204
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus204()
+    {
+        return $this->container['compute_origin_status_204'];
+    }
+
+    /**
+     * Sets compute_origin_status_204
+     *
+     * @param int|null $compute_origin_status_204 Number of responses received from origin with status code 204 (No Content) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus204($compute_origin_status_204)
+    {
+        $this->container['compute_origin_status_204'] = $compute_origin_status_204;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_206
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus206()
+    {
+        return $this->container['compute_origin_status_206'];
+    }
+
+    /**
+     * Sets compute_origin_status_206
+     *
+     * @param int|null $compute_origin_status_206 Number of responses received from origin with status code 206 (Partial Content) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus206($compute_origin_status_206)
+    {
+        $this->container['compute_origin_status_206'] = $compute_origin_status_206;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_2xx
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus2xx()
+    {
+        return $this->container['compute_origin_status_2xx'];
+    }
+
+    /**
+     * Sets compute_origin_status_2xx
+     *
+     * @param int|null $compute_origin_status_2xx Number of \"Success\" status codes received from origin by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus2xx($compute_origin_status_2xx)
+    {
+        $this->container['compute_origin_status_2xx'] = $compute_origin_status_2xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_301
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus301()
+    {
+        return $this->container['compute_origin_status_301'];
+    }
+
+    /**
+     * Sets compute_origin_status_301
+     *
+     * @param int|null $compute_origin_status_301 Number of responses received from origin with status code 301 (Moved Permanently) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus301($compute_origin_status_301)
+    {
+        $this->container['compute_origin_status_301'] = $compute_origin_status_301;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_302
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus302()
+    {
+        return $this->container['compute_origin_status_302'];
+    }
+
+    /**
+     * Sets compute_origin_status_302
+     *
+     * @param int|null $compute_origin_status_302 Number of responses received from origin with status code 302 (Found) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus302($compute_origin_status_302)
+    {
+        $this->container['compute_origin_status_302'] = $compute_origin_status_302;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_304
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus304()
+    {
+        return $this->container['compute_origin_status_304'];
+    }
+
+    /**
+     * Sets compute_origin_status_304
+     *
+     * @param int|null $compute_origin_status_304 Number of responses received from origin with status code 304 (Not Modified) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus304($compute_origin_status_304)
+    {
+        $this->container['compute_origin_status_304'] = $compute_origin_status_304;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_3xx
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus3xx()
+    {
+        return $this->container['compute_origin_status_3xx'];
+    }
+
+    /**
+     * Sets compute_origin_status_3xx
+     *
+     * @param int|null $compute_origin_status_3xx Number of \"Redirection\" codes received from origin by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus3xx($compute_origin_status_3xx)
+    {
+        $this->container['compute_origin_status_3xx'] = $compute_origin_status_3xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_400
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus400()
+    {
+        return $this->container['compute_origin_status_400'];
+    }
+
+    /**
+     * Sets compute_origin_status_400
+     *
+     * @param int|null $compute_origin_status_400 Number of responses received from origin with status code 400 (Bad Request) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus400($compute_origin_status_400)
+    {
+        $this->container['compute_origin_status_400'] = $compute_origin_status_400;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_401
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus401()
+    {
+        return $this->container['compute_origin_status_401'];
+    }
+
+    /**
+     * Sets compute_origin_status_401
+     *
+     * @param int|null $compute_origin_status_401 Number of responses received from origin with status code 401 (Unauthorized) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus401($compute_origin_status_401)
+    {
+        $this->container['compute_origin_status_401'] = $compute_origin_status_401;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_403
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus403()
+    {
+        return $this->container['compute_origin_status_403'];
+    }
+
+    /**
+     * Sets compute_origin_status_403
+     *
+     * @param int|null $compute_origin_status_403 Number of responses received from origin with status code 403 (Forbidden) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus403($compute_origin_status_403)
+    {
+        $this->container['compute_origin_status_403'] = $compute_origin_status_403;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_404
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus404()
+    {
+        return $this->container['compute_origin_status_404'];
+    }
+
+    /**
+     * Sets compute_origin_status_404
+     *
+     * @param int|null $compute_origin_status_404 Number of responses received from origin with status code 404 (Not Found) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus404($compute_origin_status_404)
+    {
+        $this->container['compute_origin_status_404'] = $compute_origin_status_404;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_416
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus416()
+    {
+        return $this->container['compute_origin_status_416'];
+    }
+
+    /**
+     * Sets compute_origin_status_416
+     *
+     * @param int|null $compute_origin_status_416 Number of responses received from origin with status code 416 (Range Not Satisfiable) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus416($compute_origin_status_416)
+    {
+        $this->container['compute_origin_status_416'] = $compute_origin_status_416;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_429
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus429()
+    {
+        return $this->container['compute_origin_status_429'];
+    }
+
+    /**
+     * Sets compute_origin_status_429
+     *
+     * @param int|null $compute_origin_status_429 Number of responses received from origin with status code 429 (Too Many Requests) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus429($compute_origin_status_429)
+    {
+        $this->container['compute_origin_status_429'] = $compute_origin_status_429;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_4xx
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus4xx()
+    {
+        return $this->container['compute_origin_status_4xx'];
+    }
+
+    /**
+     * Sets compute_origin_status_4xx
+     *
+     * @param int|null $compute_origin_status_4xx Number of \"Client Error\" codes received from origin by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus4xx($compute_origin_status_4xx)
+    {
+        $this->container['compute_origin_status_4xx'] = $compute_origin_status_4xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_500
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus500()
+    {
+        return $this->container['compute_origin_status_500'];
+    }
+
+    /**
+     * Sets compute_origin_status_500
+     *
+     * @param int|null $compute_origin_status_500 Number of responses received from origin with status code 500 (Internal Server Error) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus500($compute_origin_status_500)
+    {
+        $this->container['compute_origin_status_500'] = $compute_origin_status_500;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_501
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus501()
+    {
+        return $this->container['compute_origin_status_501'];
+    }
+
+    /**
+     * Sets compute_origin_status_501
+     *
+     * @param int|null $compute_origin_status_501 Number of responses received from origin with status code 501 (Not Implemented) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus501($compute_origin_status_501)
+    {
+        $this->container['compute_origin_status_501'] = $compute_origin_status_501;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_502
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus502()
+    {
+        return $this->container['compute_origin_status_502'];
+    }
+
+    /**
+     * Sets compute_origin_status_502
+     *
+     * @param int|null $compute_origin_status_502 Number of responses received from origin with status code 502 (Bad Gateway) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus502($compute_origin_status_502)
+    {
+        $this->container['compute_origin_status_502'] = $compute_origin_status_502;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_503
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus503()
+    {
+        return $this->container['compute_origin_status_503'];
+    }
+
+    /**
+     * Sets compute_origin_status_503
+     *
+     * @param int|null $compute_origin_status_503 Number of responses received from origin with status code 503 (Service Unavailable) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus503($compute_origin_status_503)
+    {
+        $this->container['compute_origin_status_503'] = $compute_origin_status_503;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_504
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus504()
+    {
+        return $this->container['compute_origin_status_504'];
+    }
+
+    /**
+     * Sets compute_origin_status_504
+     *
+     * @param int|null $compute_origin_status_504 Number of responses received from origin with status code 504 (Gateway Timeout) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus504($compute_origin_status_504)
+    {
+        $this->container['compute_origin_status_504'] = $compute_origin_status_504;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_505
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus505()
+    {
+        return $this->container['compute_origin_status_505'];
+    }
+
+    /**
+     * Sets compute_origin_status_505
+     *
+     * @param int|null $compute_origin_status_505 Number of responses received from origin with status code 505 (HTTP Version Not Supported) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus505($compute_origin_status_505)
+    {
+        $this->container['compute_origin_status_505'] = $compute_origin_status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_530
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus530()
+    {
+        return $this->container['compute_origin_status_530'];
+    }
+
+    /**
+     * Sets compute_origin_status_530
+     *
+     * @param int|null $compute_origin_status_530 Number of responses received from origin with status code 530 by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus530($compute_origin_status_530)
+    {
+        $this->container['compute_origin_status_530'] = $compute_origin_status_530;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_origin_status_5xx
+     *
+     * @return int|null
+     */
+    public function getComputeOriginStatus5xx()
+    {
+        return $this->container['compute_origin_status_5xx'];
+    }
+
+    /**
+     * Sets compute_origin_status_5xx
+     *
+     * @param int|null $compute_origin_status_5xx Number of \"Server Error\" codes received from origin by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeOriginStatus5xx($compute_origin_status_5xx)
+    {
+        $this->container['compute_origin_status_5xx'] = $compute_origin_status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_req_body_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeReqBodyBytes()
+    {
+        return $this->container['compute_req_body_bytes'];
+    }
+
+    /**
+     * Sets compute_req_body_bytes
+     *
+     * @param int|null $compute_req_body_bytes Total body bytes received by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeReqBodyBytes($compute_req_body_bytes)
+    {
+        $this->container['compute_req_body_bytes'] = $compute_req_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_req_header_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeReqHeaderBytes()
+    {
+        return $this->container['compute_req_header_bytes'];
+    }
+
+    /**
+     * Sets compute_req_header_bytes
+     *
+     * @param int|null $compute_req_header_bytes Total header bytes received by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeReqHeaderBytes($compute_req_header_bytes)
+    {
+        $this->container['compute_req_header_bytes'] = $compute_req_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_request_time_billed_ms
+     *
+     * @return int|null
+     */
+    public function getComputeRequestTimeBilledMs()
+    {
+        return $this->container['compute_request_time_billed_ms'];
+    }
+
+    /**
+     * Sets compute_request_time_billed_ms
+     *
+     * @param int|null $compute_request_time_billed_ms The total amount of request processing time you will be billed for, measured in 50 millisecond increments.
+     *
+     * @return self
+     */
+    public function setComputeRequestTimeBilledMs($compute_request_time_billed_ms)
+    {
+        $this->container['compute_request_time_billed_ms'] = $compute_request_time_billed_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_request_time_ms
+     *
+     * @return int|null
+     */
+    public function getComputeRequestTimeMs()
+    {
+        return $this->container['compute_request_time_ms'];
+    }
+
+    /**
+     * Sets compute_request_time_ms
+     *
+     * @param int|null $compute_request_time_ms The total amount of time used to process your requests, including active CPU time (in milliseconds).
+     *
+     * @return self
+     */
+    public function setComputeRequestTimeMs($compute_request_time_ms)
+    {
+        $this->container['compute_request_time_ms'] = $compute_request_time_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_request
+     *
+     * @return int|null
+     */
+    public function getComputeRequest()
+    {
+        return $this->container['compute_request'];
+    }
+
+    /**
+     * Sets compute_request
+     *
+     * @param int|null $compute_request The total number of requests that were received by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRequest($compute_request)
+    {
+        $this->container['compute_request'] = $compute_request;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeRespBodyBytes()
+    {
+        return $this->container['compute_resp_body_bytes'];
+    }
+
+    /**
+     * Sets compute_resp_body_bytes
+     *
+     * @param int|null $compute_resp_body_bytes Total body bytes sent from Compute to the end user.
+     *
+     * @return self
+     */
+    public function setComputeRespBodyBytes($compute_resp_body_bytes)
+    {
+        $this->container['compute_resp_body_bytes'] = $compute_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeRespHeaderBytes()
+    {
+        return $this->container['compute_resp_header_bytes'];
+    }
+
+    /**
+     * Sets compute_resp_header_bytes
+     *
+     * @param int|null $compute_resp_header_bytes Total header bytes sent from Compute to the end user.
+     *
+     * @return self
+     */
+    public function setComputeRespHeaderBytes($compute_resp_header_bytes)
+    {
+        $this->container['compute_resp_header_bytes'] = $compute_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_103
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus103()
+    {
+        return $this->container['compute_resp_status_103'];
+    }
+
+    /**
+     * Sets compute_resp_status_103
+     *
+     * @param int|null $compute_resp_status_103 Number of responses delivered with status code 103 (Early Hints) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus103($compute_resp_status_103)
+    {
+        $this->container['compute_resp_status_103'] = $compute_resp_status_103;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_1xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus1xx()
+    {
+        return $this->container['compute_resp_status_1xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_1xx
+     *
+     * @param int|null $compute_resp_status_1xx Number of 1xx \"Informational\" category status codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus1xx($compute_resp_status_1xx)
+    {
+        $this->container['compute_resp_status_1xx'] = $compute_resp_status_1xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_200
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus200()
+    {
+        return $this->container['compute_resp_status_200'];
+    }
+
+    /**
+     * Sets compute_resp_status_200
+     *
+     * @param int|null $compute_resp_status_200 Number of responses delivered with status code 200 (Success) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus200($compute_resp_status_200)
+    {
+        $this->container['compute_resp_status_200'] = $compute_resp_status_200;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_204
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus204()
+    {
+        return $this->container['compute_resp_status_204'];
+    }
+
+    /**
+     * Sets compute_resp_status_204
+     *
+     * @param int|null $compute_resp_status_204 Number of responses delivered with status code 204 (No Content) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus204($compute_resp_status_204)
+    {
+        $this->container['compute_resp_status_204'] = $compute_resp_status_204;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_206
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus206()
+    {
+        return $this->container['compute_resp_status_206'];
+    }
+
+    /**
+     * Sets compute_resp_status_206
+     *
+     * @param int|null $compute_resp_status_206 Number of responses delivered with status code 206 (Partial Content) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus206($compute_resp_status_206)
+    {
+        $this->container['compute_resp_status_206'] = $compute_resp_status_206;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_2xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus2xx()
+    {
+        return $this->container['compute_resp_status_2xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_2xx
+     *
+     * @param int|null $compute_resp_status_2xx Number of 2xx \"Success\" status codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus2xx($compute_resp_status_2xx)
+    {
+        $this->container['compute_resp_status_2xx'] = $compute_resp_status_2xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_301
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus301()
+    {
+        return $this->container['compute_resp_status_301'];
+    }
+
+    /**
+     * Sets compute_resp_status_301
+     *
+     * @param int|null $compute_resp_status_301 Number of responses delivered with status code 301 (Moved Permanently) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus301($compute_resp_status_301)
+    {
+        $this->container['compute_resp_status_301'] = $compute_resp_status_301;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_302
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus302()
+    {
+        return $this->container['compute_resp_status_302'];
+    }
+
+    /**
+     * Sets compute_resp_status_302
+     *
+     * @param int|null $compute_resp_status_302 Number of responses delivered with status code 302 (Found) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus302($compute_resp_status_302)
+    {
+        $this->container['compute_resp_status_302'] = $compute_resp_status_302;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_304
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus304()
+    {
+        return $this->container['compute_resp_status_304'];
+    }
+
+    /**
+     * Sets compute_resp_status_304
+     *
+     * @param int|null $compute_resp_status_304 Number of responses delivered with status code 304 (Not Modified) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus304($compute_resp_status_304)
+    {
+        $this->container['compute_resp_status_304'] = $compute_resp_status_304;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_3xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus3xx()
+    {
+        return $this->container['compute_resp_status_3xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_3xx
+     *
+     * @param int|null $compute_resp_status_3xx Number of 3xx \"Redirection\" codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus3xx($compute_resp_status_3xx)
+    {
+        $this->container['compute_resp_status_3xx'] = $compute_resp_status_3xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_400
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus400()
+    {
+        return $this->container['compute_resp_status_400'];
+    }
+
+    /**
+     * Sets compute_resp_status_400
+     *
+     * @param int|null $compute_resp_status_400 Number of responses delivered with status code 400 (Bad Request) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus400($compute_resp_status_400)
+    {
+        $this->container['compute_resp_status_400'] = $compute_resp_status_400;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_401
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus401()
+    {
+        return $this->container['compute_resp_status_401'];
+    }
+
+    /**
+     * Sets compute_resp_status_401
+     *
+     * @param int|null $compute_resp_status_401 Number of responses delivered with status code 401 (Unauthorized) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus401($compute_resp_status_401)
+    {
+        $this->container['compute_resp_status_401'] = $compute_resp_status_401;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_403
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus403()
+    {
+        return $this->container['compute_resp_status_403'];
+    }
+
+    /**
+     * Sets compute_resp_status_403
+     *
+     * @param int|null $compute_resp_status_403 Number of responses delivered with status code 403 (Forbidden) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus403($compute_resp_status_403)
+    {
+        $this->container['compute_resp_status_403'] = $compute_resp_status_403;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_404
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus404()
+    {
+        return $this->container['compute_resp_status_404'];
+    }
+
+    /**
+     * Sets compute_resp_status_404
+     *
+     * @param int|null $compute_resp_status_404 Number of responses delivered with status code 404 (Not Found) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus404($compute_resp_status_404)
+    {
+        $this->container['compute_resp_status_404'] = $compute_resp_status_404;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_416
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus416()
+    {
+        return $this->container['compute_resp_status_416'];
+    }
+
+    /**
+     * Sets compute_resp_status_416
+     *
+     * @param int|null $compute_resp_status_416 Number of responses delivered with status code 416 (Range Not Satisfiable) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus416($compute_resp_status_416)
+    {
+        $this->container['compute_resp_status_416'] = $compute_resp_status_416;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_429
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus429()
+    {
+        return $this->container['compute_resp_status_429'];
+    }
+
+    /**
+     * Sets compute_resp_status_429
+     *
+     * @param int|null $compute_resp_status_429 Number of responses delivered with status code 429 (Too Many Requests) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus429($compute_resp_status_429)
+    {
+        $this->container['compute_resp_status_429'] = $compute_resp_status_429;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_4xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus4xx()
+    {
+        return $this->container['compute_resp_status_4xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_4xx
+     *
+     * @param int|null $compute_resp_status_4xx Number of 4xx \"Client Error\" codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus4xx($compute_resp_status_4xx)
+    {
+        $this->container['compute_resp_status_4xx'] = $compute_resp_status_4xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_500
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus500()
+    {
+        return $this->container['compute_resp_status_500'];
+    }
+
+    /**
+     * Sets compute_resp_status_500
+     *
+     * @param int|null $compute_resp_status_500 Number of responses delivered with status code 500 (Internal Server Error) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus500($compute_resp_status_500)
+    {
+        $this->container['compute_resp_status_500'] = $compute_resp_status_500;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_501
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus501()
+    {
+        return $this->container['compute_resp_status_501'];
+    }
+
+    /**
+     * Sets compute_resp_status_501
+     *
+     * @param int|null $compute_resp_status_501 Number of responses delivered with status code 501 (Not Implemented) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus501($compute_resp_status_501)
+    {
+        $this->container['compute_resp_status_501'] = $compute_resp_status_501;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_502
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus502()
+    {
+        return $this->container['compute_resp_status_502'];
+    }
+
+    /**
+     * Sets compute_resp_status_502
+     *
+     * @param int|null $compute_resp_status_502 Number of responses delivered with status code 502 (Bad Gateway) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus502($compute_resp_status_502)
+    {
+        $this->container['compute_resp_status_502'] = $compute_resp_status_502;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_503
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus503()
+    {
+        return $this->container['compute_resp_status_503'];
+    }
+
+    /**
+     * Sets compute_resp_status_503
+     *
+     * @param int|null $compute_resp_status_503 Number of responses delivered with status code 503 (Service Unavailable) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus503($compute_resp_status_503)
+    {
+        $this->container['compute_resp_status_503'] = $compute_resp_status_503;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_504
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus504()
+    {
+        return $this->container['compute_resp_status_504'];
+    }
+
+    /**
+     * Sets compute_resp_status_504
+     *
+     * @param int|null $compute_resp_status_504 Number of responses delivered with status code 504 (Gateway Timeout) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus504($compute_resp_status_504)
+    {
+        $this->container['compute_resp_status_504'] = $compute_resp_status_504;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_505
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus505()
+    {
+        return $this->container['compute_resp_status_505'];
+    }
+
+    /**
+     * Sets compute_resp_status_505
+     *
+     * @param int|null $compute_resp_status_505 Number of responses delivered with status code 505 (HTTP Version Not Supported) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus505($compute_resp_status_505)
+    {
+        $this->container['compute_resp_status_505'] = $compute_resp_status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_530
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus530()
+    {
+        return $this->container['compute_resp_status_530'];
+    }
+
+    /**
+     * Sets compute_resp_status_530
+     *
+     * @param int|null $compute_resp_status_530 Number of responses delivered with status code 530 by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus530($compute_resp_status_530)
+    {
+        $this->container['compute_resp_status_530'] = $compute_resp_status_530;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_5xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus5xx()
+    {
+        return $this->container['compute_resp_status_5xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_5xx
+     *
+     * @param int|null $compute_resp_status_5xx Number of \"Server Error\" category status codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus5xx($compute_resp_status_5xx)
+    {
+        $this->container['compute_resp_status_5xx'] = $compute_resp_status_5xx;
 
         return $this;
     }

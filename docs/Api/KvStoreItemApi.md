@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 ## `kvStoreListItemKeys()`
 
 ```php
-kvStoreListItemKeys($options): \Fastly\Model\InlineResponse2008 // List item keys.
+kvStoreListItemKeys($options): \Fastly\Model\InlineResponse20011 // List item keys.
 ```
 
 Lists the matching item keys (or all item keys, if no prefix is supplied).
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\Fastly\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

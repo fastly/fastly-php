@@ -60,6 +60,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'string',
         'connect_timeout' => 'int',
         'first_byte_timeout' => 'int',
+        'fetch_timeout' => 'int',
         'healthcheck' => 'string',
         'hostname' => 'string',
         'ipv4' => 'string',
@@ -106,6 +107,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => null,
         'connect_timeout' => null,
         'first_byte_timeout' => null,
+        'fetch_timeout' => null,
         'healthcheck' => null,
         'hostname' => null,
         'ipv4' => null,
@@ -171,6 +173,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'comment',
         'connect_timeout' => 'connect_timeout',
         'first_byte_timeout' => 'first_byte_timeout',
+        'fetch_timeout' => 'fetch_timeout',
         'healthcheck' => 'healthcheck',
         'hostname' => 'hostname',
         'ipv4' => 'ipv4',
@@ -215,6 +218,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'setComment',
         'connect_timeout' => 'setConnectTimeout',
         'first_byte_timeout' => 'setFirstByteTimeout',
+        'fetch_timeout' => 'setFetchTimeout',
         'healthcheck' => 'setHealthcheck',
         'hostname' => 'setHostname',
         'ipv4' => 'setIpv4',
@@ -259,6 +263,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'getComment',
         'connect_timeout' => 'getConnectTimeout',
         'first_byte_timeout' => 'getFirstByteTimeout',
+        'fetch_timeout' => 'getFetchTimeout',
         'healthcheck' => 'getHealthcheck',
         'hostname' => 'getHostname',
         'ipv4' => 'getIpv4',
@@ -354,6 +359,7 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['comment'] = $data['comment'] ?? null;
         $this->container['connect_timeout'] = $data['connect_timeout'] ?? null;
         $this->container['first_byte_timeout'] = $data['first_byte_timeout'] ?? null;
+        $this->container['fetch_timeout'] = $data['fetch_timeout'] ?? null;
         $this->container['healthcheck'] = $data['healthcheck'] ?? null;
         $this->container['hostname'] = $data['hostname'] ?? null;
         $this->container['ipv4'] = $data['ipv4'] ?? null;
@@ -577,6 +583,30 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFirstByteTimeout($first_byte_timeout)
     {
         $this->container['first_byte_timeout'] = $first_byte_timeout;
+
+        return $this;
+    }
+
+    /**
+     * Gets fetch_timeout
+     *
+     * @return int|null
+     */
+    public function getFetchTimeout()
+    {
+        return $this->container['fetch_timeout'];
+    }
+
+    /**
+     * Sets fetch_timeout
+     *
+     * @param int|null $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.fetch_timeout`.
+     *
+     * @return self
+     */
+    public function setFetchTimeout($fetch_timeout)
+    {
+        $this->container['fetch_timeout'] = $fetch_timeout;
 
         return $this;
     }

@@ -336,6 +336,7 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets size
      *
      * @return int|null
+     * @deprecated
      */
     public function getSize()
     {
@@ -345,9 +346,10 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets size
      *
-     * @param int|null $size Size of the Compute package in bytes.
+     * @param int|null $size Size of the Compute package in bytes. This is deprecated along with `hashsum`.
      *
      * @return self
+     * @deprecated
      */
     public function setSize($size)
     {
@@ -360,6 +362,7 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets hashsum
      *
      * @return string|null
+     * @deprecated
      */
     public function getHashsum()
     {
@@ -369,9 +372,10 @@ class PackageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hashsum
      *
-     * @param string|null $hashsum Hash of the Compute package.
+     * @param string|null $hashsum Hash of the Compute package. This is deprecated in favor of `files_hash`.
      *
      * @return self
+     * @deprecated
      */
     public function setHashsum($hashsum)
     {

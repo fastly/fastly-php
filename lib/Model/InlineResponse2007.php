@@ -53,8 +53,8 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\KvStoreDetails[]',
-        'meta' => '\Fastly\Model\PaginationCursorMeta'
+        'data' => '\Fastly\Model\SuccessfulResponseAsObject[]',
+        'meta' => 'object'
     ];
 
     /**
@@ -208,7 +208,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Fastly\Model\KvStoreDetails[]|null
+     * @return \Fastly\Model\SuccessfulResponseAsObject[]|null
      */
     public function getData()
     {
@@ -218,7 +218,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Fastly\Model\KvStoreDetails[]|null $data data
+     * @param \Fastly\Model\SuccessfulResponseAsObject[]|null $data data
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets meta
      *
-     * @return \Fastly\Model\PaginationCursorMeta|null
+     * @return object|null
      */
     public function getMeta()
     {
@@ -242,7 +242,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets meta
      *
-     * @param \Fastly\Model\PaginationCursorMeta|null $meta meta
+     * @param object|null $meta Meta for the pagination.
      *
      * @return self
      */

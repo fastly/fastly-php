@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 ## `ddosProtectionEventList()`
 
 ```php
-ddosProtectionEventList($options): \Fastly\Model\InlineResponse2002 // Get events
+ddosProtectionEventList($options): \Fastly\Model\InlineResponse2005 // Get events
 ```
 
 Get events.
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\Fastly\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 ## `ddosProtectionEventRuleList()`
 
 ```php
-ddosProtectionEventRuleList($options): \Fastly\Model\InlineResponse2003 // Get all rules for an event
+ddosProtectionEventRuleList($options): \Fastly\Model\InlineResponse2006 // Get all rules for an event
 ```
 
 Get all rules for an event.
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\Fastly\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

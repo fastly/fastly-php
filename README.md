@@ -107,6 +107,17 @@ Class | Method | Description
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**getApexRedirect**](docs/Api/ApexRedirectApi.md#getapexredirect) | Get an apex redirect
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**listApexRedirects**](docs/Api/ApexRedirectApi.md#listapexredirects) | List apex redirects
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**updateApexRedirect**](docs/Api/ApexRedirectApi.md#updateapexredirect) | Update an apex redirect
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityCreateOperation**](docs/Api/ApisecurityOperationsApi.md#apisecuritycreateoperation) | Create operation
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityCreateOperationTag**](docs/Api/ApisecurityOperationsApi.md#apisecuritycreateoperationtag) | Create operation tag
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityDeleteOperation**](docs/Api/ApisecurityOperationsApi.md#apisecuritydeleteoperation) | Delete operation
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityDeleteOperationTag**](docs/Api/ApisecurityOperationsApi.md#apisecuritydeleteoperationtag) | Delete operation tag
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityGetOperation**](docs/Api/ApisecurityOperationsApi.md#apisecuritygetoperation) | Retrieve operation
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityGetOperationTag**](docs/Api/ApisecurityOperationsApi.md#apisecuritygetoperationtag) | Retrieve operation tag
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityListDiscoveredOperations**](docs/Api/ApisecurityOperationsApi.md#apisecuritylistdiscoveredoperations) | List discovered operations
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityListOperationTags**](docs/Api/ApisecurityOperationsApi.md#apisecuritylistoperationtags) | List operation tags
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityListOperations**](docs/Api/ApisecurityOperationsApi.md#apisecuritylistoperations) | List operations
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityUpdateOperation**](docs/Api/ApisecurityOperationsApi.md#apisecurityupdateoperation) | Update operation
+[*ApisecurityOperationsApi*](docs/Api/ApisecurityOperationsApi.md) | [**apiSecurityUpdateOperationTag**](docs/Api/ApisecurityOperationsApi.md#apisecurityupdateoperationtag) | Update operation tag
 [*AutomationTokensApi*](docs/Api/AutomationTokensApi.md) | [**createAutomationToken**](docs/Api/AutomationTokensApi.md#createautomationtoken) | Create Automation Token
 [*AutomationTokensApi*](docs/Api/AutomationTokensApi.md) | [**getAutomationTokenId**](docs/Api/AutomationTokensApi.md#getautomationtokenid) | Retrieve an Automation Token by ID
 [*AutomationTokensApi*](docs/Api/AutomationTokensApi.md) | [**getAutomationTokensIdServices**](docs/Api/AutomationTokensApi.md#getautomationtokensidservices) | List Automation Token Services
@@ -669,6 +680,11 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
 - [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/dns/v1/tsig-keys/{tsig_key_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/dns/v1/tsig-keys`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/dns/v1/zones/{zone_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/dns/v1/zones`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/ngwaf/v1/default-dashboards`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (GET)
 - [`/ngwaf/v1/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/lists`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (GET, POST)
 - [`/ngwaf/v1/signals/{signal_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/signals) (DELETE, GET, PATCH)
@@ -679,6 +695,9 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}/signing-key`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/dashboards/{dashboard_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/workspaces/{workspace_id}/dashboards`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/default-dashboard`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (GET, PUT)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events/{event_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/header-links/{header_link_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/header-links) (DELETE, GET, PUT)
@@ -690,7 +709,10 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/requests`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/rules/{rule_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/rules`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/thresholds/{threshold_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/thresholds) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/workspaces/{workspace_id}/thresholds`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/thresholds) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/timeseries`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/timeseries) (GET)
+- [`/ngwaf/v1/workspaces/{workspace_id}/top-attacks`](https://www.fastly.com/documentation/reference/api/ngwaf/workspaces) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/virtual-patches/{virtual_patch_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/virtual-patches) (GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/virtual-patches`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/virtual-patches) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/workspaces) (DELETE, GET, PATCH)

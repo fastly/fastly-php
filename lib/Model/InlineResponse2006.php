@@ -53,7 +53,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'results' => '\Fastly\Model\Suggestion[]'
+        'data' => '\Fastly\Model\DdosProtectionRuleWithStats[]',
+        'meta' => '\Fastly\Model\PaginationCursorMeta'
     ];
 
     /**
@@ -64,7 +65,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'results' => null
+        'data' => null,
+        'meta' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results'
+        'data' => 'data',
+        'meta' => 'meta'
     ];
 
     /**
@@ -103,7 +106,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults'
+        'data' => 'setData',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -112,7 +116,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults'
+        'data' => 'getData',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -172,7 +177,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = $data['results'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
     }
 
     /**
@@ -184,6 +190,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['meta'] === null) {
+            $invalidProperties[] = "'meta' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -200,25 +212,49 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets results
+     * Gets data
      *
-     * @return \Fastly\Model\Suggestion[]|null
+     * @return \Fastly\Model\DdosProtectionRuleWithStats[]
      */
-    public function getResults()
+    public function getData()
     {
-        return $this->container['results'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets results
+     * Sets data
      *
-     * @param \Fastly\Model\Suggestion[]|null $results results
+     * @param \Fastly\Model\DdosProtectionRuleWithStats[] $data data
      *
      * @return self
      */
-    public function setResults($results)
+    public function setData($data)
     {
-        $this->container['results'] = $results;
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \Fastly\Model\PaginationCursorMeta
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \Fastly\Model\PaginationCursorMeta $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        $this->container['meta'] = $meta;
 
         return $this;
     }

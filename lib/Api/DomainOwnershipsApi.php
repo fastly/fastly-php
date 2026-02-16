@@ -122,7 +122,7 @@ class DomainOwnershipsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2005
+     * @return \Fastly\Model\InlineResponse2008
      */
     public function listDomainOwnerships($options)
     {
@@ -143,7 +143,7 @@ class DomainOwnershipsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDomainOwnershipsWithHttpInfo($options)
     {
@@ -198,20 +198,20 @@ class DomainOwnershipsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2005' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse2008' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2005', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2008', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2005';
+            $returnType = '\Fastly\Model\InlineResponse2008';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -229,7 +229,7 @@ class DomainOwnershipsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2005',
+                        '\Fastly\Model\InlineResponse2008',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -279,7 +279,7 @@ class DomainOwnershipsApi
      */
     public function listDomainOwnershipsAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2005';
+        $returnType = '\Fastly\Model\InlineResponse2008';
         $request = $this->listDomainOwnershipsRequest($options);
 
         return $this->client

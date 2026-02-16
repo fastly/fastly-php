@@ -30,10 +30,10 @@ Retrieves statistics from sampled log records.
 
 ### Example
 ```php
-    $options['visualization'] = 'visualization_example'; // string
-$options['service_id'] = 'service_id_example'; // string
-$options['start'] = 'start_example'; // string
-$options['end'] = 'end_example'; // string
+    $options['visualization'] = top-url-by-requests; // string
+$options['service_id'] = 1jlmtMz1ncwA0KC3TBGD0X; // string
+$options['start'] = 2024-01-01T14:30:23Z; // string
+$options['end'] = 2024-01-05T14:30:23Z; // string
 $options['pops'] = 'pops_example'; // string
 $options['domain'] = 'domain_example'; // string
 $options['domain_exact_match'] = True; // bool

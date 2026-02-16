@@ -801,7 +801,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2001|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse
+     * @return \Fastly\Model\InlineResponse2004|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse
      */
     public function getAutomationTokensIdServices($options)
     {
@@ -825,7 +825,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2001|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2004|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAutomationTokensIdServicesWithHttpInfo($options)
     {
@@ -880,14 +880,14 @@ class AutomationTokensApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2001' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse2004' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2001', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2004', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -917,7 +917,7 @@ class AutomationTokensApi
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2001';
+            $returnType = '\Fastly\Model\InlineResponse2004';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -935,7 +935,7 @@ class AutomationTokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2001',
+                        '\Fastly\Model\InlineResponse2004',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1007,7 +1007,7 @@ class AutomationTokensApi
      */
     public function getAutomationTokensIdServicesAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2001';
+        $returnType = '\Fastly\Model\InlineResponse2004';
         $request = $this->getAutomationTokensIdServicesRequest($options);
 
         return $this->client

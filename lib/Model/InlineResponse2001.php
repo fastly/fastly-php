@@ -53,7 +53,8 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'string[]'
+        'meta' => '\Fastly\Model\Meta',
+        'data' => '\Fastly\Model\DiscoveredOperationGet[]'
     ];
 
     /**
@@ -64,6 +65,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
+        'meta' => null,
         'data' => null
     ];
 
@@ -94,6 +96,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
+        'meta' => 'meta',
         'data' => 'data'
     ];
 
@@ -103,6 +106,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
+        'meta' => 'setMeta',
         'data' => 'setData'
     ];
 
@@ -112,6 +116,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
+        'meta' => 'getMeta',
         'data' => 'getData'
     ];
 
@@ -172,6 +177,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
+        $this->container['meta'] = $data['meta'] ?? null;
         $this->container['data'] = $data['data'] ?? null;
     }
 
@@ -200,9 +206,33 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
+     * Gets meta
+     *
+     * @return \Fastly\Model\Meta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \Fastly\Model\Meta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
      * Gets data
      *
-     * @return string[]|null
+     * @return \Fastly\Model\DiscoveredOperationGet[]|null
      */
     public function getData()
     {
@@ -212,7 +242,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param string[]|null $data The service IDs of the services the token will have access to. Separate service IDs with a space.
+     * @param \Fastly\Model\DiscoveredOperationGet[]|null $data The discovered operations returned by the request.
      *
      * @return self
      */

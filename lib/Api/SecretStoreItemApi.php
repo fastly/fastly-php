@@ -1098,7 +1098,7 @@ class SecretStoreItemApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse20010
+     * @return \Fastly\Model\InlineResponse20013
      */
     public function getSecrets($options)
     {
@@ -1122,7 +1122,7 @@ class SecretStoreItemApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSecretsWithHttpInfo($options)
     {
@@ -1177,20 +1177,20 @@ class SecretStoreItemApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse20010' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse20013' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse20010', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse20013', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse20010';
+            $returnType = '\Fastly\Model\InlineResponse20013';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1208,7 +1208,7 @@ class SecretStoreItemApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse20010',
+                        '\Fastly\Model\InlineResponse20013',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1264,7 +1264,7 @@ class SecretStoreItemApi
      */
     public function getSecretsAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse20010';
+        $returnType = '\Fastly\Model\InlineResponse20013';
         $request = $this->getSecretsRequest($options);
 
         return $this->client

@@ -469,7 +469,7 @@ class DomainResearchApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2006
+     * @return \Fastly\Model\InlineResponse2009
      */
     public function suggestDomains($options)
     {
@@ -495,7 +495,7 @@ class DomainResearchApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
      */
     public function suggestDomainsWithHttpInfo($options)
     {
@@ -550,20 +550,20 @@ class DomainResearchApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2006' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse2009' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2006', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2009', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2006';
+            $returnType = '\Fastly\Model\InlineResponse2009';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -581,7 +581,7 @@ class DomainResearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2006',
+                        '\Fastly\Model\InlineResponse2009',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -641,7 +641,7 @@ class DomainResearchApi
      */
     public function suggestDomainsAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2006';
+        $returnType = '\Fastly\Model\InlineResponse2009';
         $request = $this->suggestDomainsRequest($options);
 
         return $this->client

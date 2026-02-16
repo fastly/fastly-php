@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\DdosProtectionRuleWithStats[]**](DdosProtectionRuleWithStats.md) |  | 
-**meta** | [**\Fastly\Model\PaginationCursorMeta**](PaginationCursorMeta.md) |  | 
+**meta** | [**\Fastly\Model\Meta**](Meta.md) |  | [optional] 
+**data** | [**\Fastly\Model\TagGet[]**](TagGet.md) | The operation tags returned by the request. | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

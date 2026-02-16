@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 ## `suggestDomains()`
 
 ```php
-suggestDomains($options): \Fastly\Model\InlineResponse2006 // Suggest domains
+suggestDomains($options): \Fastly\Model\InlineResponse2009 // Suggest domains
 ```
 
 The `Suggest` method performs a real-time query of the search term(s) against the [known zone database](http://zonedb.org), making recommendations, stemming, and applying Unicode folding, IDN normalization, registrar supported-zone restrictions, and other refinements. **Note:** `Suggest` method responses do not include domain availability status.
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\Fastly\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

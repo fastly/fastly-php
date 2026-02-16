@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 ## `getAutomationTokensIdServices()`
 
 ```php
-getAutomationTokensIdServices($options): \Fastly\Model\InlineResponse2001 // List Automation Token Services
+getAutomationTokensIdServices($options): \Fastly\Model\InlineResponse2004 // List Automation Token Services
 ```
 
 List of services associated with the automation token.
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\Fastly\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

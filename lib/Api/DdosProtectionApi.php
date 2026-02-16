@@ -490,7 +490,7 @@ class DdosProtectionApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2002|DdosProtectionError|DdosProtectionError
+     * @return \Fastly\Model\InlineResponse2005|DdosProtectionError|DdosProtectionError
      */
     public function ddosProtectionEventList($options)
     {
@@ -517,7 +517,7 @@ class DdosProtectionApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2002|DdosProtectionError|DdosProtectionError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2005|DdosProtectionError|DdosProtectionError, HTTP status code, HTTP response headers (array of strings)
      */
     public function ddosProtectionEventListWithHttpInfo($options)
     {
@@ -572,14 +572,14 @@ class DdosProtectionApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2002' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse2005' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2002', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2005', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -609,7 +609,7 @@ class DdosProtectionApi
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2002';
+            $returnType = '\Fastly\Model\InlineResponse2005';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -627,7 +627,7 @@ class DdosProtectionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2002',
+                        '\Fastly\Model\InlineResponse2005',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -705,7 +705,7 @@ class DdosProtectionApi
      */
     public function ddosProtectionEventListAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2002';
+        $returnType = '\Fastly\Model\InlineResponse2005';
         $request = $this->ddosProtectionEventListRequest($options);
 
         return $this->client
@@ -936,7 +936,7 @@ class DdosProtectionApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2003|DdosProtectionError|DdosProtectionError
+     * @return \Fastly\Model\InlineResponse2006|DdosProtectionError|DdosProtectionError
      */
     public function ddosProtectionEventRuleList($options)
     {
@@ -961,7 +961,7 @@ class DdosProtectionApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2003|DdosProtectionError|DdosProtectionError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2006|DdosProtectionError|DdosProtectionError, HTTP status code, HTTP response headers (array of strings)
      */
     public function ddosProtectionEventRuleListWithHttpInfo($options)
     {
@@ -1016,14 +1016,14 @@ class DdosProtectionApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2003' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse2006' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2003', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2006', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1053,7 +1053,7 @@ class DdosProtectionApi
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2003';
+            $returnType = '\Fastly\Model\InlineResponse2006';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1071,7 +1071,7 @@ class DdosProtectionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2003',
+                        '\Fastly\Model\InlineResponse2006',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1145,7 +1145,7 @@ class DdosProtectionApi
      */
     public function ddosProtectionEventRuleListAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2003';
+        $returnType = '\Fastly\Model\InlineResponse2006';
         $request = $this->ddosProtectionEventRuleListRequest($options);
 
         return $this->client

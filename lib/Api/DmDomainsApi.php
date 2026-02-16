@@ -1042,7 +1042,7 @@ class DmDomainsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2004
+     * @return \Fastly\Model\InlineResponse2007
      */
     public function listDmDomains($options)
     {
@@ -1070,7 +1070,7 @@ class DmDomainsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDmDomainsWithHttpInfo($options)
     {
@@ -1125,20 +1125,20 @@ class DmDomainsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2004' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse2007' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2004', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2007', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2004';
+            $returnType = '\Fastly\Model\InlineResponse2007';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1156,7 +1156,7 @@ class DmDomainsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2004',
+                        '\Fastly\Model\InlineResponse2007',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1220,7 +1220,7 @@ class DmDomainsApi
      */
     public function listDmDomainsAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2004';
+        $returnType = '\Fastly\Model\InlineResponse2007';
         $request = $this->listDmDomainsRequest($options);
 
         return $this->client

@@ -1055,7 +1055,7 @@ class KvStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse2007
+     * @return \Fastly\Model\InlineResponse20010
      */
     public function kvStoreList($options)
     {
@@ -1079,7 +1079,7 @@ class KvStoreApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
      */
     public function kvStoreListWithHttpInfo($options)
     {
@@ -1134,20 +1134,20 @@ class KvStoreApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse2007' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse20010' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2007', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse20010', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse2007';
+            $returnType = '\Fastly\Model\InlineResponse20010';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1165,7 +1165,7 @@ class KvStoreApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse2007',
+                        '\Fastly\Model\InlineResponse20010',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1221,7 +1221,7 @@ class KvStoreApi
      */
     public function kvStoreListAsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse2007';
+        $returnType = '\Fastly\Model\InlineResponse20010';
         $request = $this->kvStoreListRequest($options);
 
         return $this->client

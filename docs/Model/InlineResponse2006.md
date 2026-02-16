@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**\Fastly\Model\Suggestion[]**](Suggestion.md) |  | [optional] 
+**data** | [**\Fastly\Model\DdosProtectionRuleWithStats[]**](DdosProtectionRuleWithStats.md) |  | 
+**meta** | [**\Fastly\Model\PaginationCursorMeta**](PaginationCursorMeta.md) |  | 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

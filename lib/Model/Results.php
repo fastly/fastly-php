@@ -323,10 +323,31 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => 'int',
         'ngwaf_requests_challenged_count' => 'int',
         'api_discovery_requests_count' => 'int',
+        'compute_resp_status_103' => 'int',
+        'compute_resp_status_200' => 'int',
+        'compute_resp_status_204' => 'int',
+        'compute_resp_status_206' => 'int',
+        'compute_resp_status_301' => 'int',
+        'compute_resp_status_302' => 'int',
+        'compute_resp_status_304' => 'int',
+        'compute_resp_status_400' => 'int',
+        'compute_resp_status_401' => 'int',
+        'compute_resp_status_403' => 'int',
+        'compute_resp_status_404' => 'int',
+        'compute_resp_status_416' => 'int',
+        'compute_resp_status_429' => 'int',
+        'compute_resp_status_500' => 'int',
+        'compute_resp_status_501' => 'int',
+        'compute_resp_status_502' => 'int',
+        'compute_resp_status_503' => 'int',
+        'compute_resp_status_504' => 'int',
+        'compute_resp_status_505' => 'int',
+        'compute_resp_status_530' => 'int',
         'imgopto_compute_requests' => 'int',
         'dns_billable_responses_count' => 'int',
         'dns_nonbillable_responses_count' => 'int',
         'upgrade' => 'int',
+        'ngwaf_bot_analysis_request_count' => 'int',
         'service_id' => 'string',
         'start_time' => 'int'
     ];
@@ -608,10 +629,31 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => null,
         'ngwaf_requests_challenged_count' => null,
         'api_discovery_requests_count' => null,
+        'compute_resp_status_103' => null,
+        'compute_resp_status_200' => null,
+        'compute_resp_status_204' => null,
+        'compute_resp_status_206' => null,
+        'compute_resp_status_301' => null,
+        'compute_resp_status_302' => null,
+        'compute_resp_status_304' => null,
+        'compute_resp_status_400' => null,
+        'compute_resp_status_401' => null,
+        'compute_resp_status_403' => null,
+        'compute_resp_status_404' => null,
+        'compute_resp_status_416' => null,
+        'compute_resp_status_429' => null,
+        'compute_resp_status_500' => null,
+        'compute_resp_status_501' => null,
+        'compute_resp_status_502' => null,
+        'compute_resp_status_503' => null,
+        'compute_resp_status_504' => null,
+        'compute_resp_status_505' => null,
+        'compute_resp_status_530' => null,
         'imgopto_compute_requests' => null,
         'dns_billable_responses_count' => null,
         'dns_nonbillable_responses_count' => null,
         'upgrade' => null,
+        'ngwaf_bot_analysis_request_count' => null,
         'service_id' => null,
         'start_time' => 'int64'
     ];
@@ -912,10 +954,31 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => 'ngwaf_requests_timeout_count',
         'ngwaf_requests_challenged_count' => 'ngwaf_requests_challenged_count',
         'api_discovery_requests_count' => 'api_discovery_requests_count',
+        'compute_resp_status_103' => 'compute_resp_status_103',
+        'compute_resp_status_200' => 'compute_resp_status_200',
+        'compute_resp_status_204' => 'compute_resp_status_204',
+        'compute_resp_status_206' => 'compute_resp_status_206',
+        'compute_resp_status_301' => 'compute_resp_status_301',
+        'compute_resp_status_302' => 'compute_resp_status_302',
+        'compute_resp_status_304' => 'compute_resp_status_304',
+        'compute_resp_status_400' => 'compute_resp_status_400',
+        'compute_resp_status_401' => 'compute_resp_status_401',
+        'compute_resp_status_403' => 'compute_resp_status_403',
+        'compute_resp_status_404' => 'compute_resp_status_404',
+        'compute_resp_status_416' => 'compute_resp_status_416',
+        'compute_resp_status_429' => 'compute_resp_status_429',
+        'compute_resp_status_500' => 'compute_resp_status_500',
+        'compute_resp_status_501' => 'compute_resp_status_501',
+        'compute_resp_status_502' => 'compute_resp_status_502',
+        'compute_resp_status_503' => 'compute_resp_status_503',
+        'compute_resp_status_504' => 'compute_resp_status_504',
+        'compute_resp_status_505' => 'compute_resp_status_505',
+        'compute_resp_status_530' => 'compute_resp_status_530',
         'imgopto_compute_requests' => 'imgopto_compute_requests',
         'dns_billable_responses_count' => 'dns_billable_responses_count',
         'dns_nonbillable_responses_count' => 'dns_nonbillable_responses_count',
         'upgrade' => 'upgrade',
+        'ngwaf_bot_analysis_request_count' => 'ngwaf_bot_analysis_request_count',
         'service_id' => 'service_id',
         'start_time' => 'start_time'
     ];
@@ -1195,10 +1258,31 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => 'setNgwafRequestsTimeoutCount',
         'ngwaf_requests_challenged_count' => 'setNgwafRequestsChallengedCount',
         'api_discovery_requests_count' => 'setApiDiscoveryRequestsCount',
+        'compute_resp_status_103' => 'setComputeRespStatus103',
+        'compute_resp_status_200' => 'setComputeRespStatus200',
+        'compute_resp_status_204' => 'setComputeRespStatus204',
+        'compute_resp_status_206' => 'setComputeRespStatus206',
+        'compute_resp_status_301' => 'setComputeRespStatus301',
+        'compute_resp_status_302' => 'setComputeRespStatus302',
+        'compute_resp_status_304' => 'setComputeRespStatus304',
+        'compute_resp_status_400' => 'setComputeRespStatus400',
+        'compute_resp_status_401' => 'setComputeRespStatus401',
+        'compute_resp_status_403' => 'setComputeRespStatus403',
+        'compute_resp_status_404' => 'setComputeRespStatus404',
+        'compute_resp_status_416' => 'setComputeRespStatus416',
+        'compute_resp_status_429' => 'setComputeRespStatus429',
+        'compute_resp_status_500' => 'setComputeRespStatus500',
+        'compute_resp_status_501' => 'setComputeRespStatus501',
+        'compute_resp_status_502' => 'setComputeRespStatus502',
+        'compute_resp_status_503' => 'setComputeRespStatus503',
+        'compute_resp_status_504' => 'setComputeRespStatus504',
+        'compute_resp_status_505' => 'setComputeRespStatus505',
+        'compute_resp_status_530' => 'setComputeRespStatus530',
         'imgopto_compute_requests' => 'setImgoptoComputeRequests',
         'dns_billable_responses_count' => 'setDnsBillableResponsesCount',
         'dns_nonbillable_responses_count' => 'setDnsNonbillableResponsesCount',
         'upgrade' => 'setUpgrade',
+        'ngwaf_bot_analysis_request_count' => 'setNgwafBotAnalysisRequestCount',
         'service_id' => 'setServiceId',
         'start_time' => 'setStartTime'
     ];
@@ -1478,10 +1562,31 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'ngwaf_requests_timeout_count' => 'getNgwafRequestsTimeoutCount',
         'ngwaf_requests_challenged_count' => 'getNgwafRequestsChallengedCount',
         'api_discovery_requests_count' => 'getApiDiscoveryRequestsCount',
+        'compute_resp_status_103' => 'getComputeRespStatus103',
+        'compute_resp_status_200' => 'getComputeRespStatus200',
+        'compute_resp_status_204' => 'getComputeRespStatus204',
+        'compute_resp_status_206' => 'getComputeRespStatus206',
+        'compute_resp_status_301' => 'getComputeRespStatus301',
+        'compute_resp_status_302' => 'getComputeRespStatus302',
+        'compute_resp_status_304' => 'getComputeRespStatus304',
+        'compute_resp_status_400' => 'getComputeRespStatus400',
+        'compute_resp_status_401' => 'getComputeRespStatus401',
+        'compute_resp_status_403' => 'getComputeRespStatus403',
+        'compute_resp_status_404' => 'getComputeRespStatus404',
+        'compute_resp_status_416' => 'getComputeRespStatus416',
+        'compute_resp_status_429' => 'getComputeRespStatus429',
+        'compute_resp_status_500' => 'getComputeRespStatus500',
+        'compute_resp_status_501' => 'getComputeRespStatus501',
+        'compute_resp_status_502' => 'getComputeRespStatus502',
+        'compute_resp_status_503' => 'getComputeRespStatus503',
+        'compute_resp_status_504' => 'getComputeRespStatus504',
+        'compute_resp_status_505' => 'getComputeRespStatus505',
+        'compute_resp_status_530' => 'getComputeRespStatus530',
         'imgopto_compute_requests' => 'getImgoptoComputeRequests',
         'dns_billable_responses_count' => 'getDnsBillableResponsesCount',
         'dns_nonbillable_responses_count' => 'getDnsNonbillableResponsesCount',
         'upgrade' => 'getUpgrade',
+        'ngwaf_bot_analysis_request_count' => 'getNgwafBotAnalysisRequestCount',
         'service_id' => 'getServiceId',
         'start_time' => 'getStartTime'
     ];
@@ -1812,10 +1917,31 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['ngwaf_requests_timeout_count'] = $data['ngwaf_requests_timeout_count'] ?? null;
         $this->container['ngwaf_requests_challenged_count'] = $data['ngwaf_requests_challenged_count'] ?? null;
         $this->container['api_discovery_requests_count'] = $data['api_discovery_requests_count'] ?? null;
+        $this->container['compute_resp_status_103'] = $data['compute_resp_status_103'] ?? null;
+        $this->container['compute_resp_status_200'] = $data['compute_resp_status_200'] ?? null;
+        $this->container['compute_resp_status_204'] = $data['compute_resp_status_204'] ?? null;
+        $this->container['compute_resp_status_206'] = $data['compute_resp_status_206'] ?? null;
+        $this->container['compute_resp_status_301'] = $data['compute_resp_status_301'] ?? null;
+        $this->container['compute_resp_status_302'] = $data['compute_resp_status_302'] ?? null;
+        $this->container['compute_resp_status_304'] = $data['compute_resp_status_304'] ?? null;
+        $this->container['compute_resp_status_400'] = $data['compute_resp_status_400'] ?? null;
+        $this->container['compute_resp_status_401'] = $data['compute_resp_status_401'] ?? null;
+        $this->container['compute_resp_status_403'] = $data['compute_resp_status_403'] ?? null;
+        $this->container['compute_resp_status_404'] = $data['compute_resp_status_404'] ?? null;
+        $this->container['compute_resp_status_416'] = $data['compute_resp_status_416'] ?? null;
+        $this->container['compute_resp_status_429'] = $data['compute_resp_status_429'] ?? null;
+        $this->container['compute_resp_status_500'] = $data['compute_resp_status_500'] ?? null;
+        $this->container['compute_resp_status_501'] = $data['compute_resp_status_501'] ?? null;
+        $this->container['compute_resp_status_502'] = $data['compute_resp_status_502'] ?? null;
+        $this->container['compute_resp_status_503'] = $data['compute_resp_status_503'] ?? null;
+        $this->container['compute_resp_status_504'] = $data['compute_resp_status_504'] ?? null;
+        $this->container['compute_resp_status_505'] = $data['compute_resp_status_505'] ?? null;
+        $this->container['compute_resp_status_530'] = $data['compute_resp_status_530'] ?? null;
         $this->container['imgopto_compute_requests'] = $data['imgopto_compute_requests'] ?? null;
         $this->container['dns_billable_responses_count'] = $data['dns_billable_responses_count'] ?? null;
         $this->container['dns_nonbillable_responses_count'] = $data['dns_nonbillable_responses_count'] ?? null;
         $this->container['upgrade'] = $data['upgrade'] ?? null;
+        $this->container['ngwaf_bot_analysis_request_count'] = $data['ngwaf_bot_analysis_request_count'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
     }
@@ -8305,6 +8431,486 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets compute_resp_status_103
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus103()
+    {
+        return $this->container['compute_resp_status_103'];
+    }
+
+    /**
+     * Sets compute_resp_status_103
+     *
+     * @param int|null $compute_resp_status_103 Number of responses delivered with status code 103 (Early Hints) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus103($compute_resp_status_103)
+    {
+        $this->container['compute_resp_status_103'] = $compute_resp_status_103;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_200
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus200()
+    {
+        return $this->container['compute_resp_status_200'];
+    }
+
+    /**
+     * Sets compute_resp_status_200
+     *
+     * @param int|null $compute_resp_status_200 Number of responses delivered with status code 200 (Success) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus200($compute_resp_status_200)
+    {
+        $this->container['compute_resp_status_200'] = $compute_resp_status_200;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_204
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus204()
+    {
+        return $this->container['compute_resp_status_204'];
+    }
+
+    /**
+     * Sets compute_resp_status_204
+     *
+     * @param int|null $compute_resp_status_204 Number of responses delivered with status code 204 (No Content) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus204($compute_resp_status_204)
+    {
+        $this->container['compute_resp_status_204'] = $compute_resp_status_204;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_206
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus206()
+    {
+        return $this->container['compute_resp_status_206'];
+    }
+
+    /**
+     * Sets compute_resp_status_206
+     *
+     * @param int|null $compute_resp_status_206 Number of responses delivered with status code 206 (Partial Content) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus206($compute_resp_status_206)
+    {
+        $this->container['compute_resp_status_206'] = $compute_resp_status_206;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_301
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus301()
+    {
+        return $this->container['compute_resp_status_301'];
+    }
+
+    /**
+     * Sets compute_resp_status_301
+     *
+     * @param int|null $compute_resp_status_301 Number of responses delivered with status code 301 (Moved Permanently) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus301($compute_resp_status_301)
+    {
+        $this->container['compute_resp_status_301'] = $compute_resp_status_301;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_302
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus302()
+    {
+        return $this->container['compute_resp_status_302'];
+    }
+
+    /**
+     * Sets compute_resp_status_302
+     *
+     * @param int|null $compute_resp_status_302 Number of responses delivered with status code 302 (Found) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus302($compute_resp_status_302)
+    {
+        $this->container['compute_resp_status_302'] = $compute_resp_status_302;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_304
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus304()
+    {
+        return $this->container['compute_resp_status_304'];
+    }
+
+    /**
+     * Sets compute_resp_status_304
+     *
+     * @param int|null $compute_resp_status_304 Number of responses delivered with status code 304 (Not Modified) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus304($compute_resp_status_304)
+    {
+        $this->container['compute_resp_status_304'] = $compute_resp_status_304;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_400
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus400()
+    {
+        return $this->container['compute_resp_status_400'];
+    }
+
+    /**
+     * Sets compute_resp_status_400
+     *
+     * @param int|null $compute_resp_status_400 Number of responses delivered with status code 400 (Bad Request) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus400($compute_resp_status_400)
+    {
+        $this->container['compute_resp_status_400'] = $compute_resp_status_400;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_401
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus401()
+    {
+        return $this->container['compute_resp_status_401'];
+    }
+
+    /**
+     * Sets compute_resp_status_401
+     *
+     * @param int|null $compute_resp_status_401 Number of responses delivered with status code 401 (Unauthorized) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus401($compute_resp_status_401)
+    {
+        $this->container['compute_resp_status_401'] = $compute_resp_status_401;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_403
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus403()
+    {
+        return $this->container['compute_resp_status_403'];
+    }
+
+    /**
+     * Sets compute_resp_status_403
+     *
+     * @param int|null $compute_resp_status_403 Number of responses delivered with status code 403 (Forbidden) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus403($compute_resp_status_403)
+    {
+        $this->container['compute_resp_status_403'] = $compute_resp_status_403;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_404
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus404()
+    {
+        return $this->container['compute_resp_status_404'];
+    }
+
+    /**
+     * Sets compute_resp_status_404
+     *
+     * @param int|null $compute_resp_status_404 Number of responses delivered with status code 404 (Not Found) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus404($compute_resp_status_404)
+    {
+        $this->container['compute_resp_status_404'] = $compute_resp_status_404;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_416
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus416()
+    {
+        return $this->container['compute_resp_status_416'];
+    }
+
+    /**
+     * Sets compute_resp_status_416
+     *
+     * @param int|null $compute_resp_status_416 Number of responses delivered with status code 416 (Range Not Satisfiable) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus416($compute_resp_status_416)
+    {
+        $this->container['compute_resp_status_416'] = $compute_resp_status_416;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_429
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus429()
+    {
+        return $this->container['compute_resp_status_429'];
+    }
+
+    /**
+     * Sets compute_resp_status_429
+     *
+     * @param int|null $compute_resp_status_429 Number of responses delivered with status code 429 (Too Many Requests) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus429($compute_resp_status_429)
+    {
+        $this->container['compute_resp_status_429'] = $compute_resp_status_429;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_500
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus500()
+    {
+        return $this->container['compute_resp_status_500'];
+    }
+
+    /**
+     * Sets compute_resp_status_500
+     *
+     * @param int|null $compute_resp_status_500 Number of responses delivered with status code 500 (Internal Server Error) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus500($compute_resp_status_500)
+    {
+        $this->container['compute_resp_status_500'] = $compute_resp_status_500;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_501
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus501()
+    {
+        return $this->container['compute_resp_status_501'];
+    }
+
+    /**
+     * Sets compute_resp_status_501
+     *
+     * @param int|null $compute_resp_status_501 Number of responses delivered with status code 501 (Not Implemented) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus501($compute_resp_status_501)
+    {
+        $this->container['compute_resp_status_501'] = $compute_resp_status_501;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_502
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus502()
+    {
+        return $this->container['compute_resp_status_502'];
+    }
+
+    /**
+     * Sets compute_resp_status_502
+     *
+     * @param int|null $compute_resp_status_502 Number of responses delivered with status code 502 (Bad Gateway) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus502($compute_resp_status_502)
+    {
+        $this->container['compute_resp_status_502'] = $compute_resp_status_502;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_503
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus503()
+    {
+        return $this->container['compute_resp_status_503'];
+    }
+
+    /**
+     * Sets compute_resp_status_503
+     *
+     * @param int|null $compute_resp_status_503 Number of responses delivered with status code 503 (Service Unavailable) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus503($compute_resp_status_503)
+    {
+        $this->container['compute_resp_status_503'] = $compute_resp_status_503;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_504
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus504()
+    {
+        return $this->container['compute_resp_status_504'];
+    }
+
+    /**
+     * Sets compute_resp_status_504
+     *
+     * @param int|null $compute_resp_status_504 Number of responses delivered with status code 504 (Gateway Timeout) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus504($compute_resp_status_504)
+    {
+        $this->container['compute_resp_status_504'] = $compute_resp_status_504;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_505
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus505()
+    {
+        return $this->container['compute_resp_status_505'];
+    }
+
+    /**
+     * Sets compute_resp_status_505
+     *
+     * @param int|null $compute_resp_status_505 Number of responses delivered with status code 505 (HTTP Version Not Supported) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus505($compute_resp_status_505)
+    {
+        $this->container['compute_resp_status_505'] = $compute_resp_status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_530
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus530()
+    {
+        return $this->container['compute_resp_status_530'];
+    }
+
+    /**
+     * Sets compute_resp_status_530
+     *
+     * @param int|null $compute_resp_status_530 Number of responses delivered with status code 530 by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus530($compute_resp_status_530)
+    {
+        $this->container['compute_resp_status_530'] = $compute_resp_status_530;
+
+        return $this;
+    }
+
+    /**
      * Gets imgopto_compute_requests
      *
      * @return int|null
@@ -8396,6 +9002,30 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpgrade($upgrade)
     {
         $this->container['upgrade'] = $upgrade;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_bot_analysis_request_count
+     *
+     * @return int|null
+     */
+    public function getNgwafBotAnalysisRequestCount()
+    {
+        return $this->container['ngwaf_bot_analysis_request_count'];
+    }
+
+    /**
+     * Sets ngwaf_bot_analysis_request_count
+     *
+     * @param int|null $ngwaf_bot_analysis_request_count Count of Next-Gen WAF Bot Management requests.
+     *
+     * @return self
+     */
+    public function setNgwafBotAnalysisRequestCount($ngwaf_bot_analysis_request_count)
+    {
+        $this->container['ngwaf_bot_analysis_request_count'] = $ngwaf_bot_analysis_request_count;
 
         return $this;
     }

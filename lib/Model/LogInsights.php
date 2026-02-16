@@ -55,7 +55,7 @@ class LogInsights implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'dimensions' => '\Fastly\Model\LogInsightsDimensions',
         'dimension_attributes' => '\Fastly\Model\LogInsightsDimensionAttributes',
-        'values' => '\Fastly\Model\LogInsightsValues'
+        'values' => '\Fastly\Model\LogInsightsValues[]'
     ];
 
     /**
@@ -262,7 +262,7 @@ class LogInsights implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets values
      *
-     * @return \Fastly\Model\LogInsightsValues|null
+     * @return \Fastly\Model\LogInsightsValues[]|null
      */
     public function getValues()
     {
@@ -272,7 +272,7 @@ class LogInsights implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets values
      *
-     * @param \Fastly\Model\LogInsightsValues|null $values values
+     * @param \Fastly\Model\LogInsightsValues[]|null $values values
      *
      * @return self
      */

@@ -53,8 +53,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\DdosProtectionEvent[]',
-        'meta' => '\Fastly\Model\PaginationCursorMeta'
+        'meta' => '\Fastly\Model\Meta',
+        'data' => '\Fastly\Model\OperationGet[]'
     ];
 
     /**
@@ -65,8 +65,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'data' => null,
-        'meta' => null
+        'meta' => null,
+        'data' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'meta' => 'meta'
+        'meta' => 'meta',
+        'data' => 'data'
     ];
 
     /**
@@ -106,8 +106,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'meta' => 'setMeta'
+        'meta' => 'setMeta',
+        'data' => 'setData'
     ];
 
     /**
@@ -116,8 +116,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'meta' => 'getMeta'
+        'meta' => 'getMeta',
+        'data' => 'getData'
     ];
 
     /**
@@ -177,8 +177,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
         $this->container['meta'] = $data['meta'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -206,33 +206,9 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets data
-     *
-     * @return \Fastly\Model\DdosProtectionEvent[]|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Fastly\Model\DdosProtectionEvent[]|null $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
      * Gets meta
      *
-     * @return \Fastly\Model\PaginationCursorMeta|null
+     * @return \Fastly\Model\Meta|null
      */
     public function getMeta()
     {
@@ -242,13 +218,37 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets meta
      *
-     * @param \Fastly\Model\PaginationCursorMeta|null $meta meta
+     * @param \Fastly\Model\Meta|null $meta meta
      *
      * @return self
      */
     public function setMeta($meta)
     {
         $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \Fastly\Model\OperationGet[]|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \Fastly\Model\OperationGet[]|null $data The operations returned by the request.
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

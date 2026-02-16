@@ -128,6 +128,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -187,6 +188,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -334,6 +336,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -396,6 +399,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -484,6 +488,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -529,6 +534,7 @@ class BackendApi
         $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $connect_timeout = array_key_exists('connect_timeout', $options) ? $options['connect_timeout'] : null;
         $first_byte_timeout = array_key_exists('first_byte_timeout', $options) ? $options['first_byte_timeout'] : null;
+        $fetch_timeout = array_key_exists('fetch_timeout', $options) ? $options['fetch_timeout'] : null;
         $healthcheck = array_key_exists('healthcheck', $options) ? $options['healthcheck'] : null;
         $hostname = array_key_exists('hostname', $options) ? $options['hostname'] : null;
         $ipv4 = array_key_exists('ipv4', $options) ? $options['ipv4'] : null;
@@ -629,6 +635,10 @@ class BackendApi
         // form params
         if ($first_byte_timeout !== null) {
             $formParams['first_byte_timeout'] = ObjectSerializer::toFormValue($first_byte_timeout);
+        }
+        // form params
+        if ($fetch_timeout !== null) {
+            $formParams['fetch_timeout'] = ObjectSerializer::toFormValue($fetch_timeout);
         }
         // form params
         if ($healthcheck !== null) {
@@ -1901,6 +1911,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -1961,6 +1972,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -2109,6 +2121,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -2172,6 +2185,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -2261,6 +2275,7 @@ class BackendApi
      * @param  string $comment A freeform descriptive note. (optional)
      * @param  int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
      * @param  int $first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;. (optional)
+     * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
@@ -2307,6 +2322,7 @@ class BackendApi
         $comment = array_key_exists('comment', $options) ? $options['comment'] : null;
         $connect_timeout = array_key_exists('connect_timeout', $options) ? $options['connect_timeout'] : null;
         $first_byte_timeout = array_key_exists('first_byte_timeout', $options) ? $options['first_byte_timeout'] : null;
+        $fetch_timeout = array_key_exists('fetch_timeout', $options) ? $options['fetch_timeout'] : null;
         $healthcheck = array_key_exists('healthcheck', $options) ? $options['healthcheck'] : null;
         $hostname = array_key_exists('hostname', $options) ? $options['hostname'] : null;
         $ipv4 = array_key_exists('ipv4', $options) ? $options['ipv4'] : null;
@@ -2421,6 +2437,10 @@ class BackendApi
         // form params
         if ($first_byte_timeout !== null) {
             $formParams['first_byte_timeout'] = ObjectSerializer::toFormValue($first_byte_timeout);
+        }
+        // form params
+        if ($fetch_timeout !== null) {
+            $formParams['fetch_timeout'] = ObjectSerializer::toFormValue($fetch_timeout);
         }
         // form params
         if ($healthcheck !== null) {

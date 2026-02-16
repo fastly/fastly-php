@@ -57,7 +57,8 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
         'to' => 'string',
         'from' => 'string',
         'by' => 'string',
-        'region' => 'string'
+        'region' => 'string',
+        'datacenter' => 'string'
     ];
 
     /**
@@ -71,7 +72,8 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
         'to' => null,
         'from' => null,
         'by' => null,
-        'region' => null
+        'region' => null,
+        'datacenter' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
         'to' => 'to',
         'from' => 'from',
         'by' => 'by',
-        'region' => 'region'
+        'region' => 'region',
+        'datacenter' => 'datacenter'
     ];
 
     /**
@@ -116,7 +119,8 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
         'to' => 'setTo',
         'from' => 'setFrom',
         'by' => 'setBy',
-        'region' => 'setRegion'
+        'region' => 'setRegion',
+        'datacenter' => 'setDatacenter'
     ];
 
     /**
@@ -128,7 +132,8 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
         'to' => 'getTo',
         'from' => 'getFrom',
         'by' => 'getBy',
-        'region' => 'getRegion'
+        'region' => 'getRegion',
+        'datacenter' => 'getDatacenter'
     ];
 
     /**
@@ -192,6 +197,7 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['from'] = $data['from'] ?? null;
         $this->container['by'] = $data['by'] ?? null;
         $this->container['region'] = $data['region'] ?? null;
+        $this->container['datacenter'] = $data['datacenter'] ?? null;
     }
 
     /**
@@ -310,6 +316,30 @@ class HistoricalMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRegion($region)
     {
         $this->container['region'] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Gets datacenter
+     *
+     * @return string|null
+     */
+    public function getDatacenter()
+    {
+        return $this->container['datacenter'];
+    }
+
+    /**
+     * Sets datacenter
+     *
+     * @param string|null $datacenter datacenter
+     *
+     * @return self
+     */
+    public function setDatacenter($datacenter)
+    {
+        $this->container['datacenter'] = $datacenter;
 
         return $this;
     }
