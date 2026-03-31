@@ -1,6 +1,6 @@
 <?php
 /**
- * DiscoveredOperationGet
+ * OperationBulkCreateOperations
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * DiscoveredOperationGet Class Doc Comment
+ * OperationBulkCreateOperations Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
+class OperationBulkCreateOperations implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $fastlyModelName = 'discoveredOperationGet';
+    protected static $fastlyModelName = 'operationBulkCreate_operations';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,10 +56,9 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
         'method' => 'string',
         'domain' => 'string',
         'path' => 'string',
-        'id' => 'string',
-        'updated_at' => '\DateTime',
-        'last_seen_at' => '\DateTime',
-        'rps' => 'float'
+        'description' => 'string',
+        'tag_ids' => 'string[]',
+        'status' => 'string'
     ];
 
     /**
@@ -73,10 +72,9 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
         'method' => null,
         'domain' => null,
         'path' => null,
-        'id' => null,
-        'updated_at' => 'date-time',
-        'last_seen_at' => 'date-time',
-        'rps' => null
+        'description' => null,
+        'tag_ids' => null,
+        'status' => null
     ];
 
     /**
@@ -109,10 +107,9 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
         'method' => 'method',
         'domain' => 'domain',
         'path' => 'path',
-        'id' => 'id',
-        'updated_at' => 'updated_at',
-        'last_seen_at' => 'last_seen_at',
-        'rps' => 'rps'
+        'description' => 'description',
+        'tag_ids' => 'tag_ids',
+        'status' => 'status'
     ];
 
     /**
@@ -124,10 +121,9 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
         'method' => 'setMethod',
         'domain' => 'setDomain',
         'path' => 'setPath',
-        'id' => 'setId',
-        'updated_at' => 'setUpdatedAt',
-        'last_seen_at' => 'setLastSeenAt',
-        'rps' => 'setRps'
+        'description' => 'setDescription',
+        'tag_ids' => 'setTagIds',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -139,10 +135,9 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
         'method' => 'getMethod',
         'domain' => 'getDomain',
         'path' => 'getPath',
-        'id' => 'getId',
-        'updated_at' => 'getUpdatedAt',
-        'last_seen_at' => 'getLastSeenAt',
-        'rps' => 'getRps'
+        'description' => 'getDescription',
+        'tag_ids' => 'getTagIds',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -195,6 +190,8 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
     const METHOD_OPTIONS = 'OPTIONS';
     const METHOD_CONNECT = 'CONNECT';
     const METHOD_TRACE = 'TRACE';
+    const STATUS_SAVED = 'SAVED';
+    const STATUS_IGNORED = 'IGNORED';
 
     /**
      * Gets allowable values of the enum
@@ -217,6 +214,19 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_SAVED,
+            self::STATUS_IGNORED,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -234,10 +244,9 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['method'] = $data['method'] ?? null;
         $this->container['domain'] = $data['domain'] ?? null;
         $this->container['path'] = $data['path'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['last_seen_at'] = $data['last_seen_at'] ?? null;
-        $this->container['rps'] = $data['rps'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['tag_ids'] = $data['tag_ids'] ?? null;
+        $this->container['status'] = $data['status'] ?? 'SAVED';
     }
 
     /**
@@ -267,9 +276,15 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['path'] === null) {
             $invalidProperties[] = "'path' can't be null";
         }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -356,7 +371,7 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets path
      *
-     * @param string $path The path for the operation, which may include path parameters.
+     * @param string $path The path for the operation.
      *
      * @return self
      */
@@ -368,97 +383,83 @@ class DiscoveredOperationGet implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets id
+     * Gets description
      *
-     * @return string
+     * @return string|null
      */
-    public function getId()
+    public function getDescription()
     {
-        return $this->container['id'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets id
+     * Sets description
      *
-     * @param string $id The unique identifier of the discovered operation.
+     * @param string|null $description A description of what the operation does.
      *
      * @return self
      */
-    public function setId($id)
+    public function setDescription($description)
     {
-        $this->container['id'] = $id;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets tag_ids
      *
-     * @return \DateTime|null
+     * @return string[]|null
      */
-    public function getUpdatedAt()
+    public function getTagIds()
     {
-        return $this->container['updated_at'];
+        return $this->container['tag_ids'];
     }
 
     /**
-     * Sets updated_at
+     * Sets tag_ids
      *
-     * @param \DateTime|null $updated_at The timestamp when the operation was last updated.
+     * @param string[]|null $tag_ids An array of tag IDs to associate with this operation.
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setTagIds($tag_ids)
     {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['tag_ids'] = $tag_ids;
 
         return $this;
     }
 
     /**
-     * Gets last_seen_at
+     * Gets status
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getLastSeenAt()
+    public function getStatus()
     {
-        return $this->container['last_seen_at'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets last_seen_at
+     * Sets status
      *
-     * @param \DateTime|null $last_seen_at The timestamp when the operation was last seen in traffic.
+     * @param string|null $status The status to assign to the operation. Defaults to SAVED if omitted.
      *
      * @return self
      */
-    public function setLastSeenAt($last_seen_at)
+    public function setStatus($status)
     {
-        $this->container['last_seen_at'] = $last_seen_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets rps
-     *
-     * @return float|null
-     */
-    public function getRps()
-    {
-        return $this->container['rps'];
-    }
-
-    /**
-     * Sets rps
-     *
-     * @param float|null $rps Requests per second observed for this operation.
-     *
-     * @return self
-     */
-    public function setRps($rps)
-    {
-        $this->container['rps'] = $rps;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

@@ -61,7 +61,9 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'string',
         'tag_ids' => 'string[]',
         'created_at' => '\DateTime',
-        'last_seen_at' => '\DateTime'
+        'last_seen_at' => '\DateTime',
+        'rps' => 'float',
+        'status' => 'string'
     ];
 
     /**
@@ -80,7 +82,9 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => null,
         'tag_ids' => null,
         'created_at' => 'date-time',
-        'last_seen_at' => 'date-time'
+        'last_seen_at' => 'date-time',
+        'rps' => null,
+        'status' => null
     ];
 
     /**
@@ -118,7 +122,9 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'description',
         'tag_ids' => 'tag_ids',
         'created_at' => 'created_at',
-        'last_seen_at' => 'last_seen_at'
+        'last_seen_at' => 'last_seen_at',
+        'rps' => 'rps',
+        'status' => 'status'
     ];
 
     /**
@@ -135,7 +141,9 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'setDescription',
         'tag_ids' => 'setTagIds',
         'created_at' => 'setCreatedAt',
-        'last_seen_at' => 'setLastSeenAt'
+        'last_seen_at' => 'setLastSeenAt',
+        'rps' => 'setRps',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -152,7 +160,9 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'getDescription',
         'tag_ids' => 'getTagIds',
         'created_at' => 'getCreatedAt',
-        'last_seen_at' => 'getLastSeenAt'
+        'last_seen_at' => 'getLastSeenAt',
+        'rps' => 'getRps',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -205,6 +215,8 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
     const METHOD_OPTIONS = 'OPTIONS';
     const METHOD_CONNECT = 'CONNECT';
     const METHOD_TRACE = 'TRACE';
+    const STATUS_SAVED = 'SAVED';
+    const STATUS_IGNORED = 'IGNORED';
 
     /**
      * Gets allowable values of the enum
@@ -223,6 +235,19 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
             self::METHOD_OPTIONS,
             self::METHOD_CONNECT,
             self::METHOD_TRACE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_SAVED,
+            self::STATUS_IGNORED,
         ];
     }
 
@@ -250,6 +275,8 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['tag_ids'] = $data['tag_ids'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['last_seen_at'] = $data['last_seen_at'] ?? null;
+        $this->container['rps'] = $data['rps'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -287,6 +314,15 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 140)) {
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 140.";
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -530,6 +566,64 @@ class OperationGet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLastSeenAt($last_seen_at)
     {
         $this->container['last_seen_at'] = $last_seen_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets rps
+     *
+     * @return float|null
+     */
+    public function getRps()
+    {
+        return $this->container['rps'];
+    }
+
+    /**
+     * Sets rps
+     *
+     * @param float|null $rps Requests per second observed for this operation.
+     *
+     * @return self
+     */
+    public function setRps($rps)
+    {
+        $this->container['rps'] = $rps;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status The status of the operation.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

@@ -110,6 +110,1308 @@ class ApisecurityOperationsApi
     }
 
     /**
+     * Operation apiSecurityBulkAddTagsToOperations
+     *
+     * Bulk add tags to operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkAddTags $operation_bulk_add_tags operation_bulk_add_tags (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Fastly\Model\InlineResponse2071|object|object|object|object|object
+     */
+    public function apiSecurityBulkAddTagsToOperations($options)
+    {
+        list($response) = $this->apiSecurityBulkAddTagsToOperationsWithHttpInfo($options);
+        return $response;
+    }
+
+    /**
+     * Operation apiSecurityBulkAddTagsToOperationsWithHttpInfo
+     *
+     * Bulk add tags to operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkAddTags $operation_bulk_add_tags (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Fastly\Model\InlineResponse2071|object|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function apiSecurityBulkAddTagsToOperationsWithHttpInfo($options)
+    {
+        $request = $this->apiSecurityBulkAddTagsToOperationsRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            if ('POST' != 'GET' && 'POST' != 'HEAD') {
+                $header = $response->getHeader('Fastly-RateLimit-Remaining');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitRemaining($header[0]);
+                }
+
+                $header = $response->getHeader('Fastly-RateLimit-Reset');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitReset($header[0]);
+                }
+            } 
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 207:
+                    if ('\Fastly\Model\InlineResponse2071' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2071', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\InlineResponse2071';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\InlineResponse2071',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation apiSecurityBulkAddTagsToOperationsAsync
+     *
+     * Bulk add tags to operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkAddTags $operation_bulk_add_tags (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function apiSecurityBulkAddTagsToOperationsAsync($options)
+    {
+        return $this->apiSecurityBulkAddTagsToOperationsAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation apiSecurityBulkAddTagsToOperationsAsyncWithHttpInfo
+     *
+     * Bulk add tags to operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkAddTags $operation_bulk_add_tags (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function apiSecurityBulkAddTagsToOperationsAsyncWithHttpInfo($options)
+    {
+        $returnType = '\Fastly\Model\InlineResponse2071';
+        $request = $this->apiSecurityBulkAddTagsToOperationsRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'apiSecurityBulkAddTagsToOperations'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkAddTags $operation_bulk_add_tags (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function apiSecurityBulkAddTagsToOperationsRequest($options)
+    {
+        // unbox the parameters from the associative array
+        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $operation_bulk_add_tags = array_key_exists('operation_bulk_add_tags', $options) ? $options['operation_bulk_add_tags'] : null;
+
+        // verify the required parameter 'service_id' is set
+        if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $service_id when calling apiSecurityBulkAddTagsToOperations'
+            );
+        }
+
+        $resourcePath = '/api-security/v1/services/{service_id}/operations-bulk-tags';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($service_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'service_id' . '}',
+                ObjectSerializer::toPathValue($service_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'application/problem+json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'application/problem+json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($operation_bulk_add_tags)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($operation_bulk_add_tags));
+            } else {
+                $httpBody = $operation_bulk_add_tags;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation apiSecurityBulkCreateOperations
+     *
+     * Bulk create operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkCreate $operation_bulk_create operation_bulk_create (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Fastly\Model\InlineResponse207|object|object|object|object|object
+     */
+    public function apiSecurityBulkCreateOperations($options)
+    {
+        list($response) = $this->apiSecurityBulkCreateOperationsWithHttpInfo($options);
+        return $response;
+    }
+
+    /**
+     * Operation apiSecurityBulkCreateOperationsWithHttpInfo
+     *
+     * Bulk create operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkCreate $operation_bulk_create (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Fastly\Model\InlineResponse207|object|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function apiSecurityBulkCreateOperationsWithHttpInfo($options)
+    {
+        $request = $this->apiSecurityBulkCreateOperationsRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            if ('POST' != 'GET' && 'POST' != 'HEAD') {
+                $header = $response->getHeader('Fastly-RateLimit-Remaining');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitRemaining($header[0]);
+                }
+
+                $header = $response->getHeader('Fastly-RateLimit-Reset');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitReset($header[0]);
+                }
+            } 
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 207:
+                    if ('\Fastly\Model\InlineResponse207' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse207', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\InlineResponse207';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\InlineResponse207',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation apiSecurityBulkCreateOperationsAsync
+     *
+     * Bulk create operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkCreate $operation_bulk_create (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function apiSecurityBulkCreateOperationsAsync($options)
+    {
+        return $this->apiSecurityBulkCreateOperationsAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation apiSecurityBulkCreateOperationsAsyncWithHttpInfo
+     *
+     * Bulk create operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkCreate $operation_bulk_create (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function apiSecurityBulkCreateOperationsAsyncWithHttpInfo($options)
+    {
+        $returnType = '\Fastly\Model\InlineResponse207';
+        $request = $this->apiSecurityBulkCreateOperationsRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'apiSecurityBulkCreateOperations'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkCreate $operation_bulk_create (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function apiSecurityBulkCreateOperationsRequest($options)
+    {
+        // unbox the parameters from the associative array
+        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $operation_bulk_create = array_key_exists('operation_bulk_create', $options) ? $options['operation_bulk_create'] : null;
+
+        // verify the required parameter 'service_id' is set
+        if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $service_id when calling apiSecurityBulkCreateOperations'
+            );
+        }
+
+        $resourcePath = '/api-security/v1/services/{service_id}/operations-bulk';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($service_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'service_id' . '}',
+                ObjectSerializer::toPathValue($service_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'application/problem+json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'application/problem+json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($operation_bulk_create)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($operation_bulk_create));
+            } else {
+                $httpBody = $operation_bulk_create;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation apiSecurityBulkDeleteOperations
+     *
+     * Bulk delete operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkDelete $operation_bulk_delete operation_bulk_delete (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Fastly\Model\InlineResponse2071|object|object|object|object|object
+     */
+    public function apiSecurityBulkDeleteOperations($options)
+    {
+        list($response) = $this->apiSecurityBulkDeleteOperationsWithHttpInfo($options);
+        return $response;
+    }
+
+    /**
+     * Operation apiSecurityBulkDeleteOperationsWithHttpInfo
+     *
+     * Bulk delete operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkDelete $operation_bulk_delete (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Fastly\Model\InlineResponse2071|object|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function apiSecurityBulkDeleteOperationsWithHttpInfo($options)
+    {
+        $request = $this->apiSecurityBulkDeleteOperationsRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            if ('DELETE' != 'GET' && 'DELETE' != 'HEAD') {
+                $header = $response->getHeader('Fastly-RateLimit-Remaining');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitRemaining($header[0]);
+                }
+
+                $header = $response->getHeader('Fastly-RateLimit-Reset');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitReset($header[0]);
+                }
+            } 
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 207:
+                    if ('\Fastly\Model\InlineResponse2071' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse2071', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\InlineResponse2071';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\InlineResponse2071',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation apiSecurityBulkDeleteOperationsAsync
+     *
+     * Bulk delete operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkDelete $operation_bulk_delete (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function apiSecurityBulkDeleteOperationsAsync($options)
+    {
+        return $this->apiSecurityBulkDeleteOperationsAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation apiSecurityBulkDeleteOperationsAsyncWithHttpInfo
+     *
+     * Bulk delete operations
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkDelete $operation_bulk_delete (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function apiSecurityBulkDeleteOperationsAsyncWithHttpInfo($options)
+    {
+        $returnType = '\Fastly\Model\InlineResponse2071';
+        $request = $this->apiSecurityBulkDeleteOperationsRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'apiSecurityBulkDeleteOperations'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $service_id The unique identifier of the service. (required)
+     * @param  \Fastly\Model\OperationBulkDelete $operation_bulk_delete (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function apiSecurityBulkDeleteOperationsRequest($options)
+    {
+        // unbox the parameters from the associative array
+        $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $operation_bulk_delete = array_key_exists('operation_bulk_delete', $options) ? $options['operation_bulk_delete'] : null;
+
+        // verify the required parameter 'service_id' is set
+        if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $service_id when calling apiSecurityBulkDeleteOperations'
+            );
+        }
+
+        $resourcePath = '/api-security/v1/services/{service_id}/operations-bulk';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($service_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'service_id' . '}',
+                ObjectSerializer::toPathValue($service_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'application/problem+json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'application/problem+json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($operation_bulk_delete)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($operation_bulk_delete));
+            } else {
+                $httpBody = $operation_bulk_delete;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation apiSecurityCreateOperation
      *
      * Create operation
@@ -2526,7 +3828,9 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
-     * @param  string $status Filter operations by status. Only operations with this status will be returned. (optional)
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -2551,7 +3855,9 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
-     * @param  string $status Filter operations by status. Only operations with this status will be returned. (optional)
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -2764,7 +4070,9 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
-     * @param  string $status Filter operations by status. Only operations with this status will be returned. (optional)
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -2792,7 +4100,9 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
-     * @param  string $status Filter operations by status. Only operations with this status will be returned. (optional)
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -2846,7 +4156,9 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
-     * @param  string $status Filter operations by status. Only operations with this status will be returned. (optional)
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -2857,7 +4169,9 @@ class ApisecurityOperationsApi
     {
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
-        $status = array_key_exists('status', $options) ? $options['status'] : null;
+        $method = array_key_exists('method', $options) ? $options['method'] : null;
+        $domain = array_key_exists('domain', $options) ? $options['domain'] : null;
+        $path = array_key_exists('path', $options) ? $options['path'] : null;
         $limit = array_key_exists('limit', $options) ? $options['limit'] : 100;
         $page = array_key_exists('page', $options) ? $options['page'] : 0;
 
@@ -2887,14 +4201,36 @@ class ApisecurityOperationsApi
         $multipart = false;
 
         // query params
-        if ($status !== null) {
-            if('form' === 'form' && is_array($status)) {
-                foreach($status as $key => $value) {
+        if ($method !== null) {
+            if('form' === 'form' && is_array($method)) {
+                foreach($method as $key => $value) {
                     $queryParams[$key] = ObjectSerializer::toString($value);
                 }
             }
             else {
-                $queryParams['status'] = ObjectSerializer::toString($status);
+                $queryParams['method'] = ObjectSerializer::toString($method);
+            }
+        }
+        // query params
+        if ($domain !== null) {
+            if('form' === 'form' && is_array($domain)) {
+                foreach($domain as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['domain'] = ObjectSerializer::toString($domain);
+            }
+        }
+        // query params
+        if ($path !== null) {
+            if('form' === 'form' && is_array($path)) {
+                foreach($path as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['path'] = ObjectSerializer::toString($path);
             }
         }
         // query params
@@ -3010,6 +4346,8 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
+     * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
+     * @param  int $page The page number to return. (optional, default to 0)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3032,6 +4370,8 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
+     * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
+     * @param  int $page The page number to return. (optional, default to 0)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3222,6 +4562,8 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
+     * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
+     * @param  int $page The page number to return. (optional, default to 0)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3247,6 +4589,8 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
+     * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
+     * @param  int $page The page number to return. (optional, default to 0)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3298,6 +4642,8 @@ class ApisecurityOperationsApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id The unique identifier of the service. (required)
+     * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
+     * @param  int $page The page number to return. (optional, default to 0)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3306,6 +4652,8 @@ class ApisecurityOperationsApi
     {
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : 100;
+        $page = array_key_exists('page', $options) ? $options['page'] : 0;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -3313,6 +4661,17 @@ class ApisecurityOperationsApi
                 'Missing the required parameter $service_id when calling apiSecurityListOperationTags'
             );
         }
+        if ($limit !== null && $limit > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ApisecurityOperationsApi.apiSecurityListOperationTags, must be smaller than or equal to 1000.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ApisecurityOperationsApi.apiSecurityListOperationTags, must be bigger than or equal to 1.');
+        }
+
+        if ($page !== null && $page < 0) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling ApisecurityOperationsApi.apiSecurityListOperationTags, must be bigger than or equal to 0.');
+        }
+
 
         $resourcePath = '/api-security/v1/services/{service_id}/tags';
         $formParams = [];
@@ -3321,6 +4680,28 @@ class ApisecurityOperationsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['limit'] = ObjectSerializer::toString($limit);
+            }
+        }
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['page'] = ObjectSerializer::toString($page);
+            }
+        }
 
 
         // path params
@@ -3413,6 +4794,10 @@ class ApisecurityOperationsApi
      *
      * @param  string $service_id The unique identifier of the service. (required)
      * @param  string $tag_id Filter operations by operation tag ID. Only operations associated with this operation tag will be returned. (optional)
+     * @param  string $status Filter operations by status. Defaults to SAVED if omitted. (optional, default to 'SAVED')
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -3438,6 +4823,10 @@ class ApisecurityOperationsApi
      *
      * @param  string $service_id The unique identifier of the service. (required)
      * @param  string $tag_id Filter operations by operation tag ID. Only operations associated with this operation tag will be returned. (optional)
+     * @param  string $status Filter operations by status. Defaults to SAVED if omitted. (optional, default to 'SAVED')
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -3651,6 +5040,10 @@ class ApisecurityOperationsApi
      *
      * @param  string $service_id The unique identifier of the service. (required)
      * @param  string $tag_id Filter operations by operation tag ID. Only operations associated with this operation tag will be returned. (optional)
+     * @param  string $status Filter operations by status. Defaults to SAVED if omitted. (optional, default to 'SAVED')
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -3679,6 +5072,10 @@ class ApisecurityOperationsApi
      *
      * @param  string $service_id The unique identifier of the service. (required)
      * @param  string $tag_id Filter operations by operation tag ID. Only operations associated with this operation tag will be returned. (optional)
+     * @param  string $status Filter operations by status. Defaults to SAVED if omitted. (optional, default to 'SAVED')
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -3733,6 +5130,10 @@ class ApisecurityOperationsApi
      *
      * @param  string $service_id The unique identifier of the service. (required)
      * @param  string $tag_id Filter operations by operation tag ID. Only operations associated with this operation tag will be returned. (optional)
+     * @param  string $status Filter operations by status. Defaults to SAVED if omitted. (optional, default to 'SAVED')
+     * @param  string[] $method Filter operations by HTTP method. (optional)
+     * @param  string[] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+     * @param  string $path Filter operations by path (exact match). (optional)
      * @param  int $limit The maximum number of operations to return per page. (optional, default to 100)
      * @param  int $page The page number to return. (optional, default to 0)
      *
@@ -3744,6 +5145,10 @@ class ApisecurityOperationsApi
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $tag_id = array_key_exists('tag_id', $options) ? $options['tag_id'] : null;
+        $status = array_key_exists('status', $options) ? $options['status'] : 'SAVED';
+        $method = array_key_exists('method', $options) ? $options['method'] : null;
+        $domain = array_key_exists('domain', $options) ? $options['domain'] : null;
+        $path = array_key_exists('path', $options) ? $options['path'] : null;
         $limit = array_key_exists('limit', $options) ? $options['limit'] : 100;
         $page = array_key_exists('page', $options) ? $options['page'] : 0;
 
@@ -3781,6 +5186,50 @@ class ApisecurityOperationsApi
             }
             else {
                 $queryParams['tag_id'] = ObjectSerializer::toString($tag_id);
+            }
+        }
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['status'] = ObjectSerializer::toString($status);
+            }
+        }
+        // query params
+        if ($method !== null) {
+            if('form' === 'form' && is_array($method)) {
+                foreach($method as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['method'] = ObjectSerializer::toString($method);
+            }
+        }
+        // query params
+        if ($domain !== null) {
+            if('form' === 'form' && is_array($domain)) {
+                foreach($domain as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['domain'] = ObjectSerializer::toString($domain);
+            }
+        }
+        // query params
+        if ($path !== null) {
+            if('form' === 'form' && is_array($path)) {
+                foreach($path as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['path'] = ObjectSerializer::toString($path);
             }
         }
         // query params

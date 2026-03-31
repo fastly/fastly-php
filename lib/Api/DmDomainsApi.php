@@ -1033,6 +1033,7 @@ class DmDomainsApi
      * URL: https://api.fastly.com
      *
      * @param  string $fqdn fqdn (optional)
+     * @param  string $fqdn_match (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. (optional, default to 'contains')
      * @param  string $service_id Filter results based on a service_id. (optional)
      * @param  string $sort The order in which to list the results. (optional, default to 'fqdn')
      * @param  bool $activated activated (optional)
@@ -1061,6 +1062,7 @@ class DmDomainsApi
      * URL: https://api.fastly.com
      *
      * @param  string $fqdn (optional)
+     * @param  string $fqdn_match (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. (optional, default to 'contains')
      * @param  string $service_id Filter results based on a service_id. (optional)
      * @param  string $sort The order in which to list the results. (optional, default to 'fqdn')
      * @param  bool $activated (optional)
@@ -1177,6 +1179,7 @@ class DmDomainsApi
      * URL: https://api.fastly.com
      *
      * @param  string $fqdn (optional)
+     * @param  string $fqdn_match (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. (optional, default to 'contains')
      * @param  string $service_id Filter results based on a service_id. (optional)
      * @param  string $sort The order in which to list the results. (optional, default to 'fqdn')
      * @param  bool $activated (optional)
@@ -1208,6 +1211,7 @@ class DmDomainsApi
      * URL: https://api.fastly.com
      *
      * @param  string $fqdn (optional)
+     * @param  string $fqdn_match (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. (optional, default to 'contains')
      * @param  string $service_id Filter results based on a service_id. (optional)
      * @param  string $sort The order in which to list the results. (optional, default to 'fqdn')
      * @param  bool $activated (optional)
@@ -1265,6 +1269,7 @@ class DmDomainsApi
      * URL: https://api.fastly.com
      *
      * @param  string $fqdn (optional)
+     * @param  string $fqdn_match (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. (optional, default to 'contains')
      * @param  string $service_id Filter results based on a service_id. (optional)
      * @param  string $sort The order in which to list the results. (optional, default to 'fqdn')
      * @param  bool $activated (optional)
@@ -1279,6 +1284,7 @@ class DmDomainsApi
     {
         // unbox the parameters from the associative array
         $fqdn = array_key_exists('fqdn', $options) ? $options['fqdn'] : null;
+        $fqdn_match = array_key_exists('fqdn_match', $options) ? $options['fqdn_match'] : 'contains';
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $sort = array_key_exists('sort', $options) ? $options['sort'] : 'fqdn';
         $activated = array_key_exists('activated', $options) ? $options['activated'] : null;
@@ -1307,6 +1313,17 @@ class DmDomainsApi
             }
             else {
                 $queryParams['fqdn'] = ObjectSerializer::toString($fqdn);
+            }
+        }
+        // query params
+        if ($fqdn_match !== null) {
+            if('form' === 'form' && is_array($fqdn_match)) {
+                foreach($fqdn_match as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['fqdn_match'] = ObjectSerializer::toString($fqdn_match);
             }
         }
         // query params

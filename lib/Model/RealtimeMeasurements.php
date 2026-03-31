@@ -225,8 +225,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'shield_cache_fetches' => 'int',
         'compute_bereqs' => 'int',
         'compute_bereq_errors' => 'int',
+        'compute_service_bereq_error' => 'int',
         'compute_resource_limit_exceeded' => 'int',
         'compute_heap_limit_exceeded' => 'int',
+        'compute_service_memory_exceeded_error' => 'int',
         'compute_stack_limit_exceeded' => 'int',
         'compute_globals_limit_exceeded' => 'int',
         'compute_guest_errors' => 'int',
@@ -340,7 +342,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'dns_billable_responses_count' => 'int',
         'dns_nonbillable_responses_count' => 'int',
         'upgrade' => 'int',
-        'ngwaf_bot_analysis_request_count' => 'int'
+        'ngwaf_bot_analysis_request_count' => 'int',
+        'imgopto_avif_count' => 'int',
+        'imgopto_jpeg_count' => 'int',
+        'imgopto_png_count' => 'int',
+        'imgopto_gif_count' => 'int',
+        'imgopto_webp_count' => 'int',
+        'imgopto_jpegxl_count' => 'int',
+        'imgopto_svg_count' => 'int',
+        'imgopto_mp4_count' => 'int',
+        'compute_service_resource_limits_error' => 'int',
+        'compute_service_runtime_error' => 'int',
+        'compute_service_chain_error' => 'int',
+        'compute_platform_internal_error' => 'int',
+        'compute_service_timeout_error' => 'int',
+        'compute_service_vcpu_exceeded_error' => 'int',
+        'compute_service_limits_error' => 'int',
+        'compute_platform_invalid_request_error' => 'int'
     ];
 
     /**
@@ -522,8 +540,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'shield_cache_fetches' => 'int64',
         'compute_bereqs' => 'int64',
         'compute_bereq_errors' => 'int64',
+        'compute_service_bereq_error' => 'int64',
         'compute_resource_limit_exceeded' => 'int64',
         'compute_heap_limit_exceeded' => 'int64',
+        'compute_service_memory_exceeded_error' => 'int64',
         'compute_stack_limit_exceeded' => 'int64',
         'compute_globals_limit_exceeded' => 'int64',
         'compute_guest_errors' => 'int64',
@@ -637,7 +657,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'dns_billable_responses_count' => null,
         'dns_nonbillable_responses_count' => null,
         'upgrade' => null,
-        'ngwaf_bot_analysis_request_count' => null
+        'ngwaf_bot_analysis_request_count' => null,
+        'imgopto_avif_count' => null,
+        'imgopto_jpeg_count' => null,
+        'imgopto_png_count' => null,
+        'imgopto_gif_count' => null,
+        'imgopto_webp_count' => null,
+        'imgopto_jpegxl_count' => null,
+        'imgopto_svg_count' => null,
+        'imgopto_mp4_count' => null,
+        'compute_service_resource_limits_error' => null,
+        'compute_service_runtime_error' => null,
+        'compute_service_chain_error' => null,
+        'compute_platform_internal_error' => null,
+        'compute_service_timeout_error' => null,
+        'compute_service_vcpu_exceeded_error' => null,
+        'compute_service_limits_error' => null,
+        'compute_platform_invalid_request_error' => null
     ];
 
     /**
@@ -838,8 +874,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'shield_cache_fetches' => 'shield_cache_fetches',
         'compute_bereqs' => 'compute_bereqs',
         'compute_bereq_errors' => 'compute_bereq_errors',
+        'compute_service_bereq_error' => 'compute_service_bereq_error',
         'compute_resource_limit_exceeded' => 'compute_resource_limit_exceeded',
         'compute_heap_limit_exceeded' => 'compute_heap_limit_exceeded',
+        'compute_service_memory_exceeded_error' => 'compute_service_memory_exceeded_error',
         'compute_stack_limit_exceeded' => 'compute_stack_limit_exceeded',
         'compute_globals_limit_exceeded' => 'compute_globals_limit_exceeded',
         'compute_guest_errors' => 'compute_guest_errors',
@@ -953,7 +991,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'dns_billable_responses_count' => 'dns_billable_responses_count',
         'dns_nonbillable_responses_count' => 'dns_nonbillable_responses_count',
         'upgrade' => 'upgrade',
-        'ngwaf_bot_analysis_request_count' => 'ngwaf_bot_analysis_request_count'
+        'ngwaf_bot_analysis_request_count' => 'ngwaf_bot_analysis_request_count',
+        'imgopto_avif_count' => 'imgopto_avif_count',
+        'imgopto_jpeg_count' => 'imgopto_jpeg_count',
+        'imgopto_png_count' => 'imgopto_png_count',
+        'imgopto_gif_count' => 'imgopto_gif_count',
+        'imgopto_webp_count' => 'imgopto_webp_count',
+        'imgopto_jpegxl_count' => 'imgopto_jpegxl_count',
+        'imgopto_svg_count' => 'imgopto_svg_count',
+        'imgopto_mp4_count' => 'imgopto_mp4_count',
+        'compute_service_resource_limits_error' => 'compute_service_resource_limits_error',
+        'compute_service_runtime_error' => 'compute_service_runtime_error',
+        'compute_service_chain_error' => 'compute_service_chain_error',
+        'compute_platform_internal_error' => 'compute_platform_internal_error',
+        'compute_service_timeout_error' => 'compute_service_timeout_error',
+        'compute_service_vcpu_exceeded_error' => 'compute_service_vcpu_exceeded_error',
+        'compute_service_limits_error' => 'compute_service_limits_error',
+        'compute_platform_invalid_request_error' => 'compute_platform_invalid_request_error'
     ];
 
     /**
@@ -1133,8 +1187,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'shield_cache_fetches' => 'setShieldCacheFetches',
         'compute_bereqs' => 'setComputeBereqs',
         'compute_bereq_errors' => 'setComputeBereqErrors',
+        'compute_service_bereq_error' => 'setComputeServiceBereqError',
         'compute_resource_limit_exceeded' => 'setComputeResourceLimitExceeded',
         'compute_heap_limit_exceeded' => 'setComputeHeapLimitExceeded',
+        'compute_service_memory_exceeded_error' => 'setComputeServiceMemoryExceededError',
         'compute_stack_limit_exceeded' => 'setComputeStackLimitExceeded',
         'compute_globals_limit_exceeded' => 'setComputeGlobalsLimitExceeded',
         'compute_guest_errors' => 'setComputeGuestErrors',
@@ -1248,7 +1304,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'dns_billable_responses_count' => 'setDnsBillableResponsesCount',
         'dns_nonbillable_responses_count' => 'setDnsNonbillableResponsesCount',
         'upgrade' => 'setUpgrade',
-        'ngwaf_bot_analysis_request_count' => 'setNgwafBotAnalysisRequestCount'
+        'ngwaf_bot_analysis_request_count' => 'setNgwafBotAnalysisRequestCount',
+        'imgopto_avif_count' => 'setImgoptoAvifCount',
+        'imgopto_jpeg_count' => 'setImgoptoJpegCount',
+        'imgopto_png_count' => 'setImgoptoPngCount',
+        'imgopto_gif_count' => 'setImgoptoGifCount',
+        'imgopto_webp_count' => 'setImgoptoWebpCount',
+        'imgopto_jpegxl_count' => 'setImgoptoJpegxlCount',
+        'imgopto_svg_count' => 'setImgoptoSvgCount',
+        'imgopto_mp4_count' => 'setImgoptoMp4Count',
+        'compute_service_resource_limits_error' => 'setComputeServiceResourceLimitsError',
+        'compute_service_runtime_error' => 'setComputeServiceRuntimeError',
+        'compute_service_chain_error' => 'setComputeServiceChainError',
+        'compute_platform_internal_error' => 'setComputePlatformInternalError',
+        'compute_service_timeout_error' => 'setComputeServiceTimeoutError',
+        'compute_service_vcpu_exceeded_error' => 'setComputeServiceVcpuExceededError',
+        'compute_service_limits_error' => 'setComputeServiceLimitsError',
+        'compute_platform_invalid_request_error' => 'setComputePlatformInvalidRequestError'
     ];
 
     /**
@@ -1428,8 +1500,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'shield_cache_fetches' => 'getShieldCacheFetches',
         'compute_bereqs' => 'getComputeBereqs',
         'compute_bereq_errors' => 'getComputeBereqErrors',
+        'compute_service_bereq_error' => 'getComputeServiceBereqError',
         'compute_resource_limit_exceeded' => 'getComputeResourceLimitExceeded',
         'compute_heap_limit_exceeded' => 'getComputeHeapLimitExceeded',
+        'compute_service_memory_exceeded_error' => 'getComputeServiceMemoryExceededError',
         'compute_stack_limit_exceeded' => 'getComputeStackLimitExceeded',
         'compute_globals_limit_exceeded' => 'getComputeGlobalsLimitExceeded',
         'compute_guest_errors' => 'getComputeGuestErrors',
@@ -1543,7 +1617,23 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         'dns_billable_responses_count' => 'getDnsBillableResponsesCount',
         'dns_nonbillable_responses_count' => 'getDnsNonbillableResponsesCount',
         'upgrade' => 'getUpgrade',
-        'ngwaf_bot_analysis_request_count' => 'getNgwafBotAnalysisRequestCount'
+        'ngwaf_bot_analysis_request_count' => 'getNgwafBotAnalysisRequestCount',
+        'imgopto_avif_count' => 'getImgoptoAvifCount',
+        'imgopto_jpeg_count' => 'getImgoptoJpegCount',
+        'imgopto_png_count' => 'getImgoptoPngCount',
+        'imgopto_gif_count' => 'getImgoptoGifCount',
+        'imgopto_webp_count' => 'getImgoptoWebpCount',
+        'imgopto_jpegxl_count' => 'getImgoptoJpegxlCount',
+        'imgopto_svg_count' => 'getImgoptoSvgCount',
+        'imgopto_mp4_count' => 'getImgoptoMp4Count',
+        'compute_service_resource_limits_error' => 'getComputeServiceResourceLimitsError',
+        'compute_service_runtime_error' => 'getComputeServiceRuntimeError',
+        'compute_service_chain_error' => 'getComputeServiceChainError',
+        'compute_platform_internal_error' => 'getComputePlatformInternalError',
+        'compute_service_timeout_error' => 'getComputeServiceTimeoutError',
+        'compute_service_vcpu_exceeded_error' => 'getComputeServiceVcpuExceededError',
+        'compute_service_limits_error' => 'getComputeServiceLimitsError',
+        'compute_platform_invalid_request_error' => 'getComputePlatformInvalidRequestError'
     ];
 
     /**
@@ -1774,8 +1864,10 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['shield_cache_fetches'] = $data['shield_cache_fetches'] ?? null;
         $this->container['compute_bereqs'] = $data['compute_bereqs'] ?? null;
         $this->container['compute_bereq_errors'] = $data['compute_bereq_errors'] ?? null;
+        $this->container['compute_service_bereq_error'] = $data['compute_service_bereq_error'] ?? null;
         $this->container['compute_resource_limit_exceeded'] = $data['compute_resource_limit_exceeded'] ?? null;
         $this->container['compute_heap_limit_exceeded'] = $data['compute_heap_limit_exceeded'] ?? null;
+        $this->container['compute_service_memory_exceeded_error'] = $data['compute_service_memory_exceeded_error'] ?? null;
         $this->container['compute_stack_limit_exceeded'] = $data['compute_stack_limit_exceeded'] ?? null;
         $this->container['compute_globals_limit_exceeded'] = $data['compute_globals_limit_exceeded'] ?? null;
         $this->container['compute_guest_errors'] = $data['compute_guest_errors'] ?? null;
@@ -1890,6 +1982,22 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['dns_nonbillable_responses_count'] = $data['dns_nonbillable_responses_count'] ?? null;
         $this->container['upgrade'] = $data['upgrade'] ?? null;
         $this->container['ngwaf_bot_analysis_request_count'] = $data['ngwaf_bot_analysis_request_count'] ?? null;
+        $this->container['imgopto_avif_count'] = $data['imgopto_avif_count'] ?? null;
+        $this->container['imgopto_jpeg_count'] = $data['imgopto_jpeg_count'] ?? null;
+        $this->container['imgopto_png_count'] = $data['imgopto_png_count'] ?? null;
+        $this->container['imgopto_gif_count'] = $data['imgopto_gif_count'] ?? null;
+        $this->container['imgopto_webp_count'] = $data['imgopto_webp_count'] ?? null;
+        $this->container['imgopto_jpegxl_count'] = $data['imgopto_jpegxl_count'] ?? null;
+        $this->container['imgopto_svg_count'] = $data['imgopto_svg_count'] ?? null;
+        $this->container['imgopto_mp4_count'] = $data['imgopto_mp4_count'] ?? null;
+        $this->container['compute_service_resource_limits_error'] = $data['compute_service_resource_limits_error'] ?? null;
+        $this->container['compute_service_runtime_error'] = $data['compute_service_runtime_error'] ?? null;
+        $this->container['compute_service_chain_error'] = $data['compute_service_chain_error'] ?? null;
+        $this->container['compute_platform_internal_error'] = $data['compute_platform_internal_error'] ?? null;
+        $this->container['compute_service_timeout_error'] = $data['compute_service_timeout_error'] ?? null;
+        $this->container['compute_service_vcpu_exceeded_error'] = $data['compute_service_vcpu_exceeded_error'] ?? null;
+        $this->container['compute_service_limits_error'] = $data['compute_service_limits_error'] ?? null;
+        $this->container['compute_platform_invalid_request_error'] = $data['compute_platform_invalid_request_error'] ?? null;
     }
 
     /**
@@ -6000,6 +6108,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * Gets compute_bereq_errors
      *
      * @return int|null
+     * @deprecated
      */
     public function getComputeBereqErrors()
     {
@@ -6012,6 +6121,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param int|null $compute_bereq_errors Number of backend request errors, including timeouts.
      *
      * @return self
+     * @deprecated
      */
     public function setComputeBereqErrors($compute_bereq_errors)
     {
@@ -6021,9 +6131,34 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets compute_service_bereq_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqError()
+    {
+        return $this->container['compute_service_bereq_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_error
+     *
+     * @param int|null $compute_service_bereq_error Number of backend request errors, including timeouts.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqError($compute_service_bereq_error)
+    {
+        $this->container['compute_service_bereq_error'] = $compute_service_bereq_error;
+
+        return $this;
+    }
+
+    /**
      * Gets compute_resource_limit_exceeded
      *
      * @return int|null
+     * @deprecated
      */
     public function getComputeResourceLimitExceeded()
     {
@@ -6036,6 +6171,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param int|null $compute_resource_limit_exceeded Number of times a guest exceeded its resource limit, includes heap, stack, globals, and code execution timeout.
      *
      * @return self
+     * @deprecated
      */
     public function setComputeResourceLimitExceeded($compute_resource_limit_exceeded)
     {
@@ -6048,6 +6184,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * Gets compute_heap_limit_exceeded
      *
      * @return int|null
+     * @deprecated
      */
     public function getComputeHeapLimitExceeded()
     {
@@ -6060,6 +6197,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param int|null $compute_heap_limit_exceeded Number of times a guest exceeded its heap limit.
      *
      * @return self
+     * @deprecated
      */
     public function setComputeHeapLimitExceeded($compute_heap_limit_exceeded)
     {
@@ -6069,9 +6207,34 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets compute_service_memory_exceeded_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceMemoryExceededError()
+    {
+        return $this->container['compute_service_memory_exceeded_error'];
+    }
+
+    /**
+     * Sets compute_service_memory_exceeded_error
+     *
+     * @param int|null $compute_service_memory_exceeded_error Number of times a guest exceeded its heap limit.
+     *
+     * @return self
+     */
+    public function setComputeServiceMemoryExceededError($compute_service_memory_exceeded_error)
+    {
+        $this->container['compute_service_memory_exceeded_error'] = $compute_service_memory_exceeded_error;
+
+        return $this;
+    }
+
+    /**
      * Gets compute_stack_limit_exceeded
      *
      * @return int|null
+     * @deprecated
      */
     public function getComputeStackLimitExceeded()
     {
@@ -6084,6 +6247,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param int|null $compute_stack_limit_exceeded Number of times a guest exceeded its stack limit.
      *
      * @return self
+     * @deprecated
      */
     public function setComputeStackLimitExceeded($compute_stack_limit_exceeded)
     {
@@ -6096,6 +6260,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * Gets compute_globals_limit_exceeded
      *
      * @return int|null
+     * @deprecated
      */
     public function getComputeGlobalsLimitExceeded()
     {
@@ -6108,6 +6273,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param int|null $compute_globals_limit_exceeded Number of times a guest exceeded its globals limit.
      *
      * @return self
+     * @deprecated
      */
     public function setComputeGlobalsLimitExceeded($compute_globals_limit_exceeded)
     {
@@ -6120,6 +6286,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * Gets compute_guest_errors
      *
      * @return int|null
+     * @deprecated
      */
     public function getComputeGuestErrors()
     {
@@ -6132,6 +6299,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param int|null $compute_guest_errors Number of times a service experienced a guest code error.
      *
      * @return self
+     * @deprecated
      */
     public function setComputeGuestErrors($compute_guest_errors)
     {
@@ -6144,6 +6312,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * Gets compute_runtime_errors
      *
      * @return int|null
+     * @deprecated
      */
     public function getComputeRuntimeErrors()
     {
@@ -6156,6 +6325,7 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param int|null $compute_runtime_errors Number of times a service experienced a guest runtime error.
      *
      * @return self
+     * @deprecated
      */
     public function setComputeRuntimeErrors($compute_runtime_errors)
     {
@@ -8804,6 +8974,390 @@ class RealtimeMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setNgwafBotAnalysisRequestCount($ngwaf_bot_analysis_request_count)
     {
         $this->container['ngwaf_bot_analysis_request_count'] = $ngwaf_bot_analysis_request_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_avif_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoAvifCount()
+    {
+        return $this->container['imgopto_avif_count'];
+    }
+
+    /**
+     * Sets imgopto_avif_count
+     *
+     * @param int|null $imgopto_avif_count Count of AVIF images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoAvifCount($imgopto_avif_count)
+    {
+        $this->container['imgopto_avif_count'] = $imgopto_avif_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_jpeg_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoJpegCount()
+    {
+        return $this->container['imgopto_jpeg_count'];
+    }
+
+    /**
+     * Sets imgopto_jpeg_count
+     *
+     * @param int|null $imgopto_jpeg_count Count of JPEG images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoJpegCount($imgopto_jpeg_count)
+    {
+        $this->container['imgopto_jpeg_count'] = $imgopto_jpeg_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_png_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoPngCount()
+    {
+        return $this->container['imgopto_png_count'];
+    }
+
+    /**
+     * Sets imgopto_png_count
+     *
+     * @param int|null $imgopto_png_count Count of PNG images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoPngCount($imgopto_png_count)
+    {
+        $this->container['imgopto_png_count'] = $imgopto_png_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_gif_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoGifCount()
+    {
+        return $this->container['imgopto_gif_count'];
+    }
+
+    /**
+     * Sets imgopto_gif_count
+     *
+     * @param int|null $imgopto_gif_count Count of GIF images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoGifCount($imgopto_gif_count)
+    {
+        $this->container['imgopto_gif_count'] = $imgopto_gif_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_webp_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoWebpCount()
+    {
+        return $this->container['imgopto_webp_count'];
+    }
+
+    /**
+     * Sets imgopto_webp_count
+     *
+     * @param int|null $imgopto_webp_count Count of WebP images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoWebpCount($imgopto_webp_count)
+    {
+        $this->container['imgopto_webp_count'] = $imgopto_webp_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_jpegxl_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoJpegxlCount()
+    {
+        return $this->container['imgopto_jpegxl_count'];
+    }
+
+    /**
+     * Sets imgopto_jpegxl_count
+     *
+     * @param int|null $imgopto_jpegxl_count Count of JPEGXL images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoJpegxlCount($imgopto_jpegxl_count)
+    {
+        $this->container['imgopto_jpegxl_count'] = $imgopto_jpegxl_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_svg_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoSvgCount()
+    {
+        return $this->container['imgopto_svg_count'];
+    }
+
+    /**
+     * Sets imgopto_svg_count
+     *
+     * @param int|null $imgopto_svg_count Count of SVG images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoSvgCount($imgopto_svg_count)
+    {
+        $this->container['imgopto_svg_count'] = $imgopto_svg_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_mp4_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoMp4Count()
+    {
+        return $this->container['imgopto_mp4_count'];
+    }
+
+    /**
+     * Sets imgopto_mp4_count
+     *
+     * @param int|null $imgopto_mp4_count Count of MP4s delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoMp4Count($imgopto_mp4_count)
+    {
+        $this->container['imgopto_mp4_count'] = $imgopto_mp4_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_resource_limits_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceResourceLimitsError()
+    {
+        return $this->container['compute_service_resource_limits_error'];
+    }
+
+    /**
+     * Sets compute_service_resource_limits_error
+     *
+     * @param int|null $compute_service_resource_limits_error Aggregate of fatal errors caused by exceeding allocated resource limits, specifically runtime duration, vCPU usage, and heap memory limits.
+     *
+     * @return self
+     */
+    public function setComputeServiceResourceLimitsError($compute_service_resource_limits_error)
+    {
+        $this->container['compute_service_resource_limits_error'] = $compute_service_resource_limits_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_runtime_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceRuntimeError()
+    {
+        return $this->container['compute_service_runtime_error'];
+    }
+
+    /**
+     * Sets compute_service_runtime_error
+     *
+     * @param int|null $compute_service_runtime_error Fatal errors caused by service logic faults, including stack overflows, unreachable code traps, illegal memory access, or attempts to send multiple responses.
+     *
+     * @return self
+     */
+    public function setComputeServiceRuntimeError($compute_service_runtime_error)
+    {
+        $this->container['compute_service_runtime_error'] = $compute_service_runtime_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_chain_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceChainError()
+    {
+        return $this->container['compute_service_chain_error'];
+    }
+
+    /**
+     * Sets compute_service_chain_error
+     *
+     * @param int|null $compute_service_chain_error Fatal errors caused by the service path exceeding hop or service limits, or where a forwarding loop is detected via CDN-Loop headers.
+     *
+     * @return self
+     */
+    public function setComputeServiceChainError($compute_service_chain_error)
+    {
+        $this->container['compute_service_chain_error'] = $compute_service_chain_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_platform_internal_error
+     *
+     * @return int|null
+     */
+    public function getComputePlatformInternalError()
+    {
+        return $this->container['compute_platform_internal_error'];
+    }
+
+    /**
+     * Sets compute_platform_internal_error
+     *
+     * @param int|null $compute_platform_internal_error Fatal errors caused by internal errors in Fastly’s Compute platform.
+     *
+     * @return self
+     */
+    public function setComputePlatformInternalError($compute_platform_internal_error)
+    {
+        $this->container['compute_platform_internal_error'] = $compute_platform_internal_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_timeout_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceTimeoutError()
+    {
+        return $this->container['compute_service_timeout_error'];
+    }
+
+    /**
+     * Sets compute_service_timeout_error
+     *
+     * @param int|null $compute_service_timeout_error Fatal errors caused by exceeding the per-request runtime limit.
+     *
+     * @return self
+     */
+    public function setComputeServiceTimeoutError($compute_service_timeout_error)
+    {
+        $this->container['compute_service_timeout_error'] = $compute_service_timeout_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_vcpu_exceeded_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceVcpuExceededError()
+    {
+        return $this->container['compute_service_vcpu_exceeded_error'];
+    }
+
+    /**
+     * Sets compute_service_vcpu_exceeded_error
+     *
+     * @param int|null $compute_service_vcpu_exceeded_error Fatal errors caused by exceeding the per-request vCPU time limit.
+     *
+     * @return self
+     */
+    public function setComputeServiceVcpuExceededError($compute_service_vcpu_exceeded_error)
+    {
+        $this->container['compute_service_vcpu_exceeded_error'] = $compute_service_vcpu_exceeded_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_limits_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceLimitsError()
+    {
+        return $this->container['compute_service_limits_error'];
+    }
+
+    /**
+     * Sets compute_service_limits_error
+     *
+     * @param int|null $compute_service_limits_error Non-fatal errors caused by attempts to exceed defined operational limits, such as simultaneous backend requests or cache transactions.
+     *
+     * @return self
+     */
+    public function setComputeServiceLimitsError($compute_service_limits_error)
+    {
+        $this->container['compute_service_limits_error'] = $compute_service_limits_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_platform_invalid_request_error
+     *
+     * @return int|null
+     */
+    public function getComputePlatformInvalidRequestError()
+    {
+        return $this->container['compute_platform_invalid_request_error'];
+    }
+
+    /**
+     * Sets compute_platform_invalid_request_error
+     *
+     * @param int|null $compute_platform_invalid_request_error Fatal errors caused by unprocessable requests to the service, such as requests with malformed CDN-Loop headers or invalid purge credentials.
+     *
+     * @return self
+     */
+    public function setComputePlatformInvalidRequestError($compute_platform_invalid_request_error)
+    {
+        $this->container['compute_platform_invalid_request_error'] = $compute_platform_invalid_request_error;
 
         return $this;
     }

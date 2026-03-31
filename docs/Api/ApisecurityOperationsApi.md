@@ -17,6 +17,9 @@ $apiInstance = new Fastly\Api\ApisecurityOperationsApi(
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
+[**apiSecurityBulkAddTagsToOperations()**](ApisecurityOperationsApi.md#apiSecurityBulkAddTagsToOperations) | **POST** /api-security/v1/services/{service_id}/operations-bulk-tags | Bulk add tags to operations
+[**apiSecurityBulkCreateOperations()**](ApisecurityOperationsApi.md#apiSecurityBulkCreateOperations) | **POST** /api-security/v1/services/{service_id}/operations-bulk | Bulk create operations
+[**apiSecurityBulkDeleteOperations()**](ApisecurityOperationsApi.md#apiSecurityBulkDeleteOperations) | **DELETE** /api-security/v1/services/{service_id}/operations-bulk | Bulk delete operations
 [**apiSecurityCreateOperation()**](ApisecurityOperationsApi.md#apiSecurityCreateOperation) | **POST** /api-security/v1/services/{service_id}/operations | Create operation
 [**apiSecurityCreateOperationTag()**](ApisecurityOperationsApi.md#apiSecurityCreateOperationTag) | **POST** /api-security/v1/services/{service_id}/tags | Create operation tag
 [**apiSecurityDeleteOperation()**](ApisecurityOperationsApi.md#apiSecurityDeleteOperation) | **DELETE** /api-security/v1/services/{service_id}/operations/{operation_id} | Delete operation
@@ -29,6 +32,114 @@ Method | HTTP request | Description
 [**apiSecurityUpdateOperation()**](ApisecurityOperationsApi.md#apiSecurityUpdateOperation) | **PATCH** /api-security/v1/services/{service_id}/operations/{operation_id} | Update operation
 [**apiSecurityUpdateOperationTag()**](ApisecurityOperationsApi.md#apiSecurityUpdateOperationTag) | **PATCH** /api-security/v1/services/{service_id}/tags/{tag_id} | Update operation tag
 
+
+## `apiSecurityBulkAddTagsToOperations()`
+
+```php
+apiSecurityBulkAddTagsToOperations($options): \Fastly\Model\InlineResponse2071 // Bulk add tags to operations
+```
+
+Add tags to multiple operations in a single request.
+
+### Example
+```php
+    $options['service_id'] = 3NeCFuZNP1v0iyJ2vmYQI6; // string | The unique identifier of the service.
+$options['operation_bulk_add_tags'] = new \Fastly\Model\OperationBulkAddTags(); // \Fastly\Model\OperationBulkAddTags
+
+try {
+    $result = $apiInstance->apiSecurityBulkAddTagsToOperations($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ApisecurityOperationsApi->apiSecurityBulkAddTagsToOperations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | The unique identifier of the service. |
+**operation_bulk_add_tags** | [**\Fastly\Model\OperationBulkAddTags**](../Model/OperationBulkAddTags.md) |  | [optional]
+
+### Return type
+
+[**\Fastly\Model\InlineResponse2071**](../Model/InlineResponse2071.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `apiSecurityBulkCreateOperations()`
+
+```php
+apiSecurityBulkCreateOperations($options): \Fastly\Model\InlineResponse207 // Bulk create operations
+```
+
+Create multiple operations associated with a specific service in a single request.
+
+### Example
+```php
+    $options['service_id'] = 3NeCFuZNP1v0iyJ2vmYQI6; // string | The unique identifier of the service.
+$options['operation_bulk_create'] = new \Fastly\Model\OperationBulkCreate(); // \Fastly\Model\OperationBulkCreate
+
+try {
+    $result = $apiInstance->apiSecurityBulkCreateOperations($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ApisecurityOperationsApi->apiSecurityBulkCreateOperations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | The unique identifier of the service. |
+**operation_bulk_create** | [**\Fastly\Model\OperationBulkCreate**](../Model/OperationBulkCreate.md) |  | [optional]
+
+### Return type
+
+[**\Fastly\Model\InlineResponse207**](../Model/InlineResponse207.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `apiSecurityBulkDeleteOperations()`
+
+```php
+apiSecurityBulkDeleteOperations($options): \Fastly\Model\InlineResponse2071 // Bulk delete operations
+```
+
+Delete multiple operations in a single request.
+
+### Example
+```php
+    $options['service_id'] = 3NeCFuZNP1v0iyJ2vmYQI6; // string | The unique identifier of the service.
+$options['operation_bulk_delete'] = new \Fastly\Model\OperationBulkDelete(); // \Fastly\Model\OperationBulkDelete
+
+try {
+    $result = $apiInstance->apiSecurityBulkDeleteOperations($options);
+} catch (Exception $e) {
+    echo 'Exception when calling ApisecurityOperationsApi->apiSecurityBulkDeleteOperations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Options
+
+Note: the input parameter is an associative array with the keys listed below.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**service_id** | **string** | The unique identifier of the service. |
+**operation_bulk_delete** | [**\Fastly\Model\OperationBulkDelete**](../Model/OperationBulkDelete.md) |  | [optional]
+
+### Return type
+
+[**\Fastly\Model\InlineResponse2071**](../Model/InlineResponse2071.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 
 ## `apiSecurityCreateOperation()`
 
@@ -257,7 +368,9 @@ List all discovered operations associated with a specific service. Optionally fi
 ### Example
 ```php
     $options['service_id'] = 3NeCFuZNP1v0iyJ2vmYQI6; // string | The unique identifier of the service.
-$options['status'] = SAVED; // string | Filter operations by status. Only operations with this status will be returned.
+$options['method'] = ["GET","POST"]; // string[] | Filter operations by HTTP method.
+$options['domain'] = ["example.com","api.example.com"]; // string[] | Filter operations by fully-qualified domain name (exact match).
+$options['path'] = /api/v1/users; // string | Filter operations by path (exact match).
 $options['limit'] = 100; // int | The maximum number of operations to return per page.
 $options['page'] = 1; // int | The page number to return.
 
@@ -275,7 +388,9 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | The unique identifier of the service. |
-**status** | **string** | Filter operations by status. Only operations with this status will be returned. | [optional] [one of: 'DISCOVERED', 'SAVED', 'IGNORED']
+**method** | [**string[]**](../Model/string.md) | Filter operations by HTTP method. | [optional] [one of: 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS', 'CONNECT', 'TRACE']
+**domain** | [**string[]**](../Model/string.md) | Filter operations by fully-qualified domain name (exact match). | [optional]
+**path** | **string** | Filter operations by path (exact match). | [optional]
 **limit** | **int** | The maximum number of operations to return per page. | [optional] [defaults to 100]
 **page** | **int** | The page number to return. | [optional] [defaults to 0]
 
@@ -297,6 +412,8 @@ List all operation tags associated with a specific service.
 ### Example
 ```php
     $options['service_id'] = 3NeCFuZNP1v0iyJ2vmYQI6; // string | The unique identifier of the service.
+$options['limit'] = 100; // int | The maximum number of operations to return per page.
+$options['page'] = 1; // int | The page number to return.
 
 try {
     $result = $apiInstance->apiSecurityListOperationTags($options);
@@ -312,6 +429,8 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | The unique identifier of the service. |
+**limit** | **int** | The maximum number of operations to return per page. | [optional] [defaults to 100]
+**page** | **int** | The page number to return. | [optional] [defaults to 0]
 
 ### Return type
 
@@ -332,6 +451,10 @@ List all operations associated with a specific service. Optionally filter operat
 ```php
     $options['service_id'] = 3NeCFuZNP1v0iyJ2vmYQI6; // string | The unique identifier of the service.
 $options['tag_id'] = tag_abc123def456; // string | Filter operations by operation tag ID. Only operations associated with this operation tag will be returned.
+$options['status'] = SAVED; // string | Filter operations by status. Defaults to SAVED if omitted.
+$options['method'] = ["GET","POST"]; // string[] | Filter operations by HTTP method.
+$options['domain'] = ["example.com","api.example.com"]; // string[] | Filter operations by fully-qualified domain name (exact match).
+$options['path'] = /api/v1/users; // string | Filter operations by path (exact match).
 $options['limit'] = 100; // int | The maximum number of operations to return per page.
 $options['page'] = 1; // int | The page number to return.
 
@@ -350,6 +473,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | The unique identifier of the service. |
 **tag_id** | **string** | Filter operations by operation tag ID. Only operations associated with this operation tag will be returned. | [optional]
+**status** | **string** | Filter operations by status. Defaults to SAVED if omitted. | [optional] [one of: 'SAVED', 'IGNORED'] [defaults to 'SAVED']
+**method** | [**string[]**](../Model/string.md) | Filter operations by HTTP method. | [optional] [one of: 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS', 'CONNECT', 'TRACE']
+**domain** | [**string[]**](../Model/string.md) | Filter operations by fully-qualified domain name (exact match). | [optional]
+**path** | **string** | Filter operations by path (exact match). | [optional]
 **limit** | **int** | The maximum number of operations to return per page. | [optional] [defaults to 100]
 **page** | **int** | The page number to return. | [optional] [defaults to 0]
 

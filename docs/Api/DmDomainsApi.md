@@ -137,6 +137,7 @@ List all domains
 ### Example
 ```php
     $options['fqdn'] = 'fqdn_example'; // string
+$options['fqdn_match'] = 'contains'; // string | (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN.
 $options['service_id'] = 'service_id_example'; // string | Filter results based on a service_id.
 $options['sort'] = 'fqdn'; // string | The order in which to list the results.
 $options['activated'] = True; // bool
@@ -158,6 +159,7 @@ Note: the input parameter is an associative array with the keys listed below.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **fqdn** | **string** |  | [optional]
+**fqdn_match** | **string** | (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. | [optional] [one of: 'contains', 'exact', 'starts_with', 'ends_with'] [defaults to 'contains']
 **service_id** | **string** | Filter results based on a service_id. | [optional]
 **sort** | **string** | The order in which to list the results. | [optional] [one of: 'fqdn', '-fqdn'] [defaults to 'fqdn']
 **activated** | **bool** |  | [optional]

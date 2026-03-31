@@ -57,7 +57,8 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'domain' => 'string',
         'path' => 'string',
         'description' => 'string',
-        'tag_ids' => 'string[]'
+        'tag_ids' => 'string[]',
+        'status' => 'string'
     ];
 
     /**
@@ -72,7 +73,8 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'domain' => null,
         'path' => null,
         'description' => null,
-        'tag_ids' => null
+        'tag_ids' => null,
+        'status' => null
     ];
 
     /**
@@ -106,7 +108,8 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'domain' => 'domain',
         'path' => 'path',
         'description' => 'description',
-        'tag_ids' => 'tag_ids'
+        'tag_ids' => 'tag_ids',
+        'status' => 'status'
     ];
 
     /**
@@ -119,7 +122,8 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'domain' => 'setDomain',
         'path' => 'setPath',
         'description' => 'setDescription',
-        'tag_ids' => 'setTagIds'
+        'tag_ids' => 'setTagIds',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -132,7 +136,8 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'domain' => 'getDomain',
         'path' => 'getPath',
         'description' => 'getDescription',
-        'tag_ids' => 'getTagIds'
+        'tag_ids' => 'getTagIds',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -185,6 +190,8 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     const METHOD_OPTIONS = 'OPTIONS';
     const METHOD_CONNECT = 'CONNECT';
     const METHOD_TRACE = 'TRACE';
+    const STATUS_SAVED = 'SAVED';
+    const STATUS_IGNORED = 'IGNORED';
 
     /**
      * Gets allowable values of the enum
@@ -203,6 +210,19 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::METHOD_OPTIONS,
             self::METHOD_CONNECT,
             self::METHOD_TRACE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_SAVED,
+            self::STATUS_IGNORED,
         ];
     }
 
@@ -226,6 +246,7 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['path'] = $data['path'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['tag_ids'] = $data['tag_ids'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -248,6 +269,15 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 140)) {
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 140.";
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -395,6 +425,40 @@ class OperationUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTagIds($tag_ids)
     {
         $this->container['tag_ids'] = $tag_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status The status of the operation.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

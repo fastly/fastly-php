@@ -1,6 +1,6 @@
 <?php
 /**
- * DiscoveredOperationGetExtra
+ * OperationBulkAddTags
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * DiscoveredOperationGetExtra Class Doc Comment
+ * OperationBulkAddTags Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializable
+class OperationBulkAddTags implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $fastlyModelName = 'discoveredOperationGetExtra';
+    protected static $fastlyModelName = 'operationBulkAddTags';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,10 +53,8 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string',
-        'updated_at' => '\DateTime',
-        'last_seen_at' => '\DateTime',
-        'rps' => 'float'
+        'operation_ids' => 'string[]',
+        'tag_ids' => 'string[]'
     ];
 
     /**
@@ -67,10 +65,8 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null,
-        'updated_at' => 'date-time',
-        'last_seen_at' => 'date-time',
-        'rps' => null
+        'operation_ids' => null,
+        'tag_ids' => null
     ];
 
     /**
@@ -100,10 +96,8 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'updated_at' => 'updated_at',
-        'last_seen_at' => 'last_seen_at',
-        'rps' => 'rps'
+        'operation_ids' => 'operation_ids',
+        'tag_ids' => 'tag_ids'
     ];
 
     /**
@@ -112,10 +106,8 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'updated_at' => 'setUpdatedAt',
-        'last_seen_at' => 'setLastSeenAt',
-        'rps' => 'setRps'
+        'operation_ids' => 'setOperationIds',
+        'tag_ids' => 'setTagIds'
     ];
 
     /**
@@ -124,10 +116,8 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'updated_at' => 'getUpdatedAt',
-        'last_seen_at' => 'getLastSeenAt',
-        'rps' => 'getRps'
+        'operation_ids' => 'getOperationIds',
+        'tag_ids' => 'getTagIds'
     ];
 
     /**
@@ -187,10 +177,8 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['last_seen_at'] = $data['last_seen_at'] ?? null;
-        $this->container['rps'] = $data['rps'] ?? null;
+        $this->container['operation_ids'] = $data['operation_ids'] ?? null;
+        $this->container['tag_ids'] = $data['tag_ids'] ?? null;
     }
 
     /**
@@ -202,8 +190,11 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['operation_ids'] === null) {
+            $invalidProperties[] = "'operation_ids' can't be null";
+        }
+        if ($this->container['tag_ids'] === null) {
+            $invalidProperties[] = "'tag_ids' can't be null";
         }
         return $invalidProperties;
     }
@@ -221,97 +212,49 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets id
+     * Gets operation_ids
      *
-     * @return string
+     * @return string[]
      */
-    public function getId()
+    public function getOperationIds()
     {
-        return $this->container['id'];
+        return $this->container['operation_ids'];
     }
 
     /**
-     * Sets id
+     * Sets operation_ids
      *
-     * @param string $id The unique identifier of the discovered operation.
+     * @param string[] $operation_ids List of operation IDs to add tags to.
      *
      * @return self
      */
-    public function setId($id)
+    public function setOperationIds($operation_ids)
     {
-        $this->container['id'] = $id;
+        $this->container['operation_ids'] = $operation_ids;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets tag_ids
      *
-     * @return \DateTime|null
+     * @return string[]
      */
-    public function getUpdatedAt()
+    public function getTagIds()
     {
-        return $this->container['updated_at'];
+        return $this->container['tag_ids'];
     }
 
     /**
-     * Sets updated_at
+     * Sets tag_ids
      *
-     * @param \DateTime|null $updated_at The timestamp when the operation was last updated.
+     * @param string[] $tag_ids List of tag IDs to add to the operations.
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setTagIds($tag_ids)
     {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_seen_at
-     *
-     * @return \DateTime|null
-     */
-    public function getLastSeenAt()
-    {
-        return $this->container['last_seen_at'];
-    }
-
-    /**
-     * Sets last_seen_at
-     *
-     * @param \DateTime|null $last_seen_at The timestamp when the operation was last seen in traffic.
-     *
-     * @return self
-     */
-    public function setLastSeenAt($last_seen_at)
-    {
-        $this->container['last_seen_at'] = $last_seen_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets rps
-     *
-     * @return float|null
-     */
-    public function getRps()
-    {
-        return $this->container['rps'];
-    }
-
-    /**
-     * Sets rps
-     *
-     * @param float|null $rps Requests per second observed for this operation.
-     *
-     * @return self
-     */
-    public function setRps($rps)
-    {
-        $this->container['rps'] = $rps;
+        $this->container['tag_ids'] = $tag_ids;
 
         return $this;
     }

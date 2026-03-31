@@ -1,6 +1,6 @@
 <?php
 /**
- * DiscoveredOperationGetExtra
+ * OperationBulkCreate
  *
  * PHP version 7.3
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * DiscoveredOperationGetExtra Class Doc Comment
+ * OperationBulkCreate Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializable
+class OperationBulkCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $fastlyModelName = 'discoveredOperationGetExtra';
+    protected static $fastlyModelName = 'operationBulkCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,10 +53,7 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'id' => 'string',
-        'updated_at' => '\DateTime',
-        'last_seen_at' => '\DateTime',
-        'rps' => 'float'
+        'operations' => '\Fastly\Model\OperationBulkCreateOperations[]'
     ];
 
     /**
@@ -67,10 +64,7 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'id' => null,
-        'updated_at' => 'date-time',
-        'last_seen_at' => 'date-time',
-        'rps' => null
+        'operations' => null
     ];
 
     /**
@@ -100,10 +94,7 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'updated_at' => 'updated_at',
-        'last_seen_at' => 'last_seen_at',
-        'rps' => 'rps'
+        'operations' => 'operations'
     ];
 
     /**
@@ -112,10 +103,7 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'updated_at' => 'setUpdatedAt',
-        'last_seen_at' => 'setLastSeenAt',
-        'rps' => 'setRps'
+        'operations' => 'setOperations'
     ];
 
     /**
@@ -124,10 +112,7 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'updated_at' => 'getUpdatedAt',
-        'last_seen_at' => 'getLastSeenAt',
-        'rps' => 'getRps'
+        'operations' => 'getOperations'
     ];
 
     /**
@@ -187,10 +172,7 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['last_seen_at'] = $data['last_seen_at'] ?? null;
-        $this->container['rps'] = $data['rps'] ?? null;
+        $this->container['operations'] = $data['operations'] ?? null;
     }
 
     /**
@@ -202,8 +184,8 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['operations'] === null) {
+            $invalidProperties[] = "'operations' can't be null";
         }
         return $invalidProperties;
     }
@@ -221,97 +203,25 @@ class DiscoveredOperationGetExtra implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets id
+     * Gets operations
      *
-     * @return string
+     * @return \Fastly\Model\OperationBulkCreateOperations[]
      */
-    public function getId()
+    public function getOperations()
     {
-        return $this->container['id'];
+        return $this->container['operations'];
     }
 
     /**
-     * Sets id
+     * Sets operations
      *
-     * @param string $id The unique identifier of the discovered operation.
+     * @param \Fastly\Model\OperationBulkCreateOperations[] $operations List of operations to create.
      *
      * @return self
      */
-    public function setId($id)
+    public function setOperations($operations)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at The timestamp when the operation was last updated.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_seen_at
-     *
-     * @return \DateTime|null
-     */
-    public function getLastSeenAt()
-    {
-        return $this->container['last_seen_at'];
-    }
-
-    /**
-     * Sets last_seen_at
-     *
-     * @param \DateTime|null $last_seen_at The timestamp when the operation was last seen in traffic.
-     *
-     * @return self
-     */
-    public function setLastSeenAt($last_seen_at)
-    {
-        $this->container['last_seen_at'] = $last_seen_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets rps
-     *
-     * @return float|null
-     */
-    public function getRps()
-    {
-        return $this->container['rps'];
-    }
-
-    /**
-     * Sets rps
-     *
-     * @param float|null $rps Requests per second observed for this operation.
-     *
-     * @return self
-     */
-    public function setRps($rps)
-    {
-        $this->container['rps'] = $rps;
+        $this->container['operations'] = $operations;
 
         return $this;
     }

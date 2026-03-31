@@ -56,7 +56,9 @@ class OperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializabl
         'id' => 'string',
         'updated_at' => '\DateTime',
         'created_at' => '\DateTime',
-        'last_seen_at' => '\DateTime'
+        'last_seen_at' => '\DateTime',
+        'rps' => 'float',
+        'status' => 'string'
     ];
 
     /**
@@ -70,7 +72,9 @@ class OperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializabl
         'id' => null,
         'updated_at' => 'date-time',
         'created_at' => 'date-time',
-        'last_seen_at' => 'date-time'
+        'last_seen_at' => 'date-time',
+        'rps' => null,
+        'status' => null
     ];
 
     /**
@@ -103,7 +107,9 @@ class OperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializabl
         'id' => 'id',
         'updated_at' => 'updated_at',
         'created_at' => 'created_at',
-        'last_seen_at' => 'last_seen_at'
+        'last_seen_at' => 'last_seen_at',
+        'rps' => 'rps',
+        'status' => 'status'
     ];
 
     /**
@@ -115,7 +121,9 @@ class OperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializabl
         'id' => 'setId',
         'updated_at' => 'setUpdatedAt',
         'created_at' => 'setCreatedAt',
-        'last_seen_at' => 'setLastSeenAt'
+        'last_seen_at' => 'setLastSeenAt',
+        'rps' => 'setRps',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -127,7 +135,9 @@ class OperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializabl
         'id' => 'getId',
         'updated_at' => 'getUpdatedAt',
         'created_at' => 'getCreatedAt',
-        'last_seen_at' => 'getLastSeenAt'
+        'last_seen_at' => 'getLastSeenAt',
+        'rps' => 'getRps',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -171,6 +181,21 @@ class OperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$fastlyModelName;
     }
 
+    const STATUS_SAVED = 'SAVED';
+    const STATUS_IGNORED = 'IGNORED';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_SAVED,
+            self::STATUS_IGNORED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -191,6 +216,8 @@ class OperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['last_seen_at'] = $data['last_seen_at'] ?? null;
+        $this->container['rps'] = $data['rps'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -208,6 +235,15 @@ class OperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -315,6 +351,64 @@ class OperationGetExtra implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setLastSeenAt($last_seen_at)
     {
         $this->container['last_seen_at'] = $last_seen_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets rps
+     *
+     * @return float|null
+     */
+    public function getRps()
+    {
+        return $this->container['rps'];
+    }
+
+    /**
+     * Sets rps
+     *
+     * @param float|null $rps Requests per second observed for this operation.
+     *
+     * @return self
+     */
+    public function setRps($rps)
+    {
+        $this->container['rps'] = $rps;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status The status of the operation.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
