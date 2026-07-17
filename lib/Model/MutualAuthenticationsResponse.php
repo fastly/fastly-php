@@ -54,7 +54,7 @@ class MutualAuthenticationsResponse implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $fastlyTypes = [
         'links' => '\Fastly\Model\PaginationLinks',
-        'meta' => '\Fastly\Model\PaginationMeta',
+        'meta' => '\Fastly\Model\PaginationMeta1',
         'data' => '\Fastly\Model\MutualAuthenticationResponseData[]'
     ];
 
@@ -238,7 +238,7 @@ class MutualAuthenticationsResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets meta
      *
-     * @return \Fastly\Model\PaginationMeta|null
+     * @return \Fastly\Model\PaginationMeta1|null
      */
     public function getMeta()
     {
@@ -248,7 +248,7 @@ class MutualAuthenticationsResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets meta
      *
-     * @param \Fastly\Model\PaginationMeta|null $meta meta
+     * @param \Fastly\Model\PaginationMeta1|null $meta meta
      *
      * @return self
      */

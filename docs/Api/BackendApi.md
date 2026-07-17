@@ -48,10 +48,12 @@ $options['healthcheck'] = 'healthcheck_example'; // string | The name of the hea
 $options['hostname'] = 'hostname_example'; // string | The hostname of the backend. May be used as an alternative to `address` to set the backend location.
 $options['ipv4'] = 'ipv4_example'; // string | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location.
 $options['ipv6'] = 'ipv6_example'; // string | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location.
-$options['keepalive_time'] = 56; // int | How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
+$options['keepalive_time'] = 56; // int | How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
 $options['max_conn'] = 56; // int | Maximum number of concurrent connections this backend will accept.
+$options['max_lifetime'] = 56; // int | Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.
 $options['max_tls_version'] = 'max_tls_version_example'; // string | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
 $options['min_tls_version'] = 'min_tls_version_example'; // string | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
+$options['max_use'] = 56; // int | Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.
 $options['name'] = 'name_example'; // string | The name of the backend.
 $options['override_host'] = 'override_host_example'; // string | If set, will replace the client-supplied HTTP `Host` header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing `bereq.http.Host` in VCL.
 $options['port'] = 56; // int | Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request.
@@ -101,10 +103,12 @@ Name | Type | Description  | Notes
 **hostname** | **string** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
 **ipv4** | **string** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
 **ipv6** | **string** | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
-**keepalive_time** | **int** | How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can. | [optional]
+**keepalive_time** | **int** | How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. | [optional]
 **max_conn** | **int** | Maximum number of concurrent connections this backend will accept. | [optional]
+**max_lifetime** | **int** | Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited. | [optional]
 **max_tls_version** | **string** | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional]
 **min_tls_version** | **string** | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional]
+**max_use** | **int** | Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited. | [optional]
 **name** | **string** | The name of the backend. | [optional]
 **override_host** | **string** | If set, will replace the client-supplied HTTP `Host` header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing `bereq.http.Host` in VCL. | [optional]
 **port** | **int** | Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request. | [optional]
@@ -271,10 +275,12 @@ $options['healthcheck'] = 'healthcheck_example'; // string | The name of the hea
 $options['hostname'] = 'hostname_example'; // string | The hostname of the backend. May be used as an alternative to `address` to set the backend location.
 $options['ipv4'] = 'ipv4_example'; // string | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location.
 $options['ipv6'] = 'ipv6_example'; // string | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location.
-$options['keepalive_time'] = 56; // int | How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
+$options['keepalive_time'] = 56; // int | How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
 $options['max_conn'] = 56; // int | Maximum number of concurrent connections this backend will accept.
+$options['max_lifetime'] = 56; // int | Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.
 $options['max_tls_version'] = 'max_tls_version_example'; // string | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
 $options['min_tls_version'] = 'min_tls_version_example'; // string | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
+$options['max_use'] = 56; // int | Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.
 $options['name'] = 'name_example'; // string | The name of the backend.
 $options['override_host'] = 'override_host_example'; // string | If set, will replace the client-supplied HTTP `Host` header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing `bereq.http.Host` in VCL.
 $options['port'] = 56; // int | Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request.
@@ -325,10 +331,12 @@ Name | Type | Description  | Notes
 **hostname** | **string** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
 **ipv4** | **string** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
 **ipv6** | **string** | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional]
-**keepalive_time** | **int** | How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can. | [optional]
+**keepalive_time** | **int** | How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. | [optional]
 **max_conn** | **int** | Maximum number of concurrent connections this backend will accept. | [optional]
+**max_lifetime** | **int** | Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited. | [optional]
 **max_tls_version** | **string** | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional]
 **min_tls_version** | **string** | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional]
+**max_use** | **int** | Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited. | [optional]
 **name** | **string** | The name of the backend. | [optional]
 **override_host** | **string** | If set, will replace the client-supplied HTTP `Host` header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing `bereq.http.Host` in VCL. | [optional]
 **port** | **int** | Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request. | [optional]

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **format** | **string** | A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). | [optional]  [defaults to '%h %l %u %t "%r" %&gt;s %b']
 **log_processing_region** | **string** | The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global. | [optional]  [one of: 'none', 'eu', 'us'] [defaults to 'none']
 **format_version** | **string** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. | [optional]  [one of: '1', '2'] [defaults to '2']
-**message_type** | **string** | How the message should be formatted. | [optional]  [one of: 'classic', 'loggly', 'logplex', 'blank'] [defaults to 'classic']
+**message_type** | **string** | How the message should be formatted. | [optional]  [one of: 'blank', 'classic', 'loggly', 'logplex'] [defaults to 'blank']
 **timestamp_format** | **string** | A timestamp format | [optional] [readonly] 
 **compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional]  [one of: 'zstd', 'snappy', 'gzip']
 **period** | **string** | How frequently log files are finalized so they can be available for reading (in seconds). | [optional]  [defaults to '3600']

@@ -56,6 +56,7 @@ class RequestBodyForCreate implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $fastlyTypes = [
         'fqdn' => 'string',
         'service_id' => 'string',
+        'routing_configuration_id' => 'string',
         'description' => 'string'
     ];
 
@@ -69,6 +70,7 @@ class RequestBodyForCreate implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $fastlyFormats = [
         'fqdn' => null,
         'service_id' => null,
+        'routing_configuration_id' => null,
         'description' => null
     ];
 
@@ -101,6 +103,7 @@ class RequestBodyForCreate implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $attributeMap = [
         'fqdn' => 'fqdn',
         'service_id' => 'service_id',
+        'routing_configuration_id' => 'routing_configuration_id',
         'description' => 'description'
     ];
 
@@ -112,6 +115,7 @@ class RequestBodyForCreate implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $setters = [
         'fqdn' => 'setFqdn',
         'service_id' => 'setServiceId',
+        'routing_configuration_id' => 'setRoutingConfigurationId',
         'description' => 'setDescription'
     ];
 
@@ -123,6 +127,7 @@ class RequestBodyForCreate implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $getters = [
         'fqdn' => 'getFqdn',
         'service_id' => 'getServiceId',
+        'routing_configuration_id' => 'getRoutingConfigurationId',
         'description' => 'getDescription'
     ];
 
@@ -185,6 +190,7 @@ class RequestBodyForCreate implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $this->container['fqdn'] = $data['fqdn'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['routing_configuration_id'] = $data['routing_configuration_id'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
     }
 
@@ -259,6 +265,30 @@ class RequestBodyForCreate implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setServiceId($service_id)
     {
         $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets routing_configuration_id
+     *
+     * @return string|null
+     */
+    public function getRoutingConfigurationId()
+    {
+        return $this->container['routing_configuration_id'];
+    }
+
+    /**
+     * Sets routing_configuration_id
+     *
+     * @param string|null $routing_configuration_id The `routing_configuration_id` associated with your domain or `null` if there is no association.
+     *
+     * @return self
+     */
+    public function setRoutingConfigurationId($routing_configuration_id)
+    {
+        $this->container['routing_configuration_id'] = $routing_configuration_id;
 
         return $this;
     }

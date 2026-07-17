@@ -53,8 +53,8 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\SuccessfulResponseAsObject[]',
-        'meta' => 'object'
+        'data' => '\Fastly\Model\Script[]',
+        'meta' => '\Fastly\Model\PaginationMeta'
     ];
 
     /**
@@ -208,7 +208,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Fastly\Model\SuccessfulResponseAsObject[]|null
+     * @return \Fastly\Model\Script[]|null
      */
     public function getData()
     {
@@ -218,7 +218,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Fastly\Model\SuccessfulResponseAsObject[]|null $data data
+     * @param \Fastly\Model\Script[]|null $data data
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets meta
      *
-     * @return object|null
+     * @return \Fastly\Model\PaginationMeta|null
      */
     public function getMeta()
     {
@@ -242,7 +242,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets meta
      *
-     * @param object|null $meta Meta for the pagination.
+     * @param \Fastly\Model\PaginationMeta|null $meta meta
      *
      * @return self
      */

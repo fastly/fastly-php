@@ -1,0 +1,11 @@
+# # InlineResponse20019
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**meta** | [**\Fastly\Model\AgentKeyMeta**](AgentKeyMeta.md) |  | [optional] 
+**data** | [**\Fastly\Model\AgentKey[]**](AgentKey.md) | The agent keys returned by the request. | [optional] 
+
+
+[[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

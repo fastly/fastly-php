@@ -30,6 +30,7 @@ use \Fastly\ObjectSerializer;
  * PaginationMeta Class Doc Comment
  *
  * @category Class
+ * @description Cursor-based pagination metadata.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
@@ -53,10 +54,10 @@ class PaginationMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'current_page' => 'int',
-        'per_page' => 'int',
-        'record_count' => 'int',
-        'total_pages' => 'int'
+        'limit' => 'int',
+        'next_cursor' => 'string',
+        'previous_cursor' => 'string',
+        'sort' => 'string'
     ];
 
     /**
@@ -67,10 +68,10 @@ class PaginationMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'current_page' => null,
-        'per_page' => null,
-        'record_count' => null,
-        'total_pages' => null
+        'limit' => null,
+        'next_cursor' => null,
+        'previous_cursor' => null,
+        'sort' => null
     ];
 
     /**
@@ -100,10 +101,10 @@ class PaginationMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'current_page' => 'current_page',
-        'per_page' => 'per_page',
-        'record_count' => 'record_count',
-        'total_pages' => 'total_pages'
+        'limit' => 'limit',
+        'next_cursor' => 'next_cursor',
+        'previous_cursor' => 'previous_cursor',
+        'sort' => 'sort'
     ];
 
     /**
@@ -112,10 +113,10 @@ class PaginationMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'current_page' => 'setCurrentPage',
-        'per_page' => 'setPerPage',
-        'record_count' => 'setRecordCount',
-        'total_pages' => 'setTotalPages'
+        'limit' => 'setLimit',
+        'next_cursor' => 'setNextCursor',
+        'previous_cursor' => 'setPreviousCursor',
+        'sort' => 'setSort'
     ];
 
     /**
@@ -124,10 +125,10 @@ class PaginationMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'current_page' => 'getCurrentPage',
-        'per_page' => 'getPerPage',
-        'record_count' => 'getRecordCount',
-        'total_pages' => 'getTotalPages'
+        'limit' => 'getLimit',
+        'next_cursor' => 'getNextCursor',
+        'previous_cursor' => 'getPreviousCursor',
+        'sort' => 'getSort'
     ];
 
     /**
@@ -187,10 +188,10 @@ class PaginationMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['current_page'] = $data['current_page'] ?? null;
-        $this->container['per_page'] = $data['per_page'] ?? 20;
-        $this->container['record_count'] = $data['record_count'] ?? null;
-        $this->container['total_pages'] = $data['total_pages'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? null;
+        $this->container['next_cursor'] = $data['next_cursor'] ?? null;
+        $this->container['previous_cursor'] = $data['previous_cursor'] ?? null;
+        $this->container['sort'] = $data['sort'] ?? null;
     }
 
     /**
@@ -201,14 +202,6 @@ class PaginationMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['per_page']) && ($this->container['per_page'] > 100)) {
-            $invalidProperties[] = "invalid value for 'per_page', must be smaller than or equal to 100.";
-        }
-
-        if (!is_null($this->container['per_page']) && ($this->container['per_page'] < 1)) {
-            $invalidProperties[] = "invalid value for 'per_page', must be bigger than or equal to 1.";
-        }
 
         return $invalidProperties;
     }
@@ -226,105 +219,97 @@ class PaginationMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets current_page
+     * Gets limit
      *
      * @return int|null
      */
-    public function getCurrentPage()
+    public function getLimit()
     {
-        return $this->container['current_page'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets current_page
+     * Sets limit
      *
-     * @param int|null $current_page Current page.
+     * @param int|null $limit The number of records returned per page.
      *
      * @return self
      */
-    public function setCurrentPage($current_page)
+    public function setLimit($limit)
     {
-        $this->container['current_page'] = $current_page;
+        $this->container['limit'] = $limit;
 
         return $this;
     }
 
     /**
-     * Gets per_page
+     * Gets next_cursor
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getPerPage()
+    public function getNextCursor()
     {
-        return $this->container['per_page'];
+        return $this->container['next_cursor'];
     }
 
     /**
-     * Sets per_page
+     * Sets next_cursor
      *
-     * @param int|null $per_page Number of records per page.
+     * @param string|null $next_cursor Cursor value used to retrieve the next page of results. Empty if there are no more results.
      *
      * @return self
      */
-    public function setPerPage($per_page)
+    public function setNextCursor($next_cursor)
     {
-
-        if (!is_null($per_page) && ($per_page > 100)) {
-            throw new \InvalidArgumentException('invalid value for $per_page when calling PaginationMeta., must be smaller than or equal to 100.');
-        }
-        if (!is_null($per_page) && ($per_page < 1)) {
-            throw new \InvalidArgumentException('invalid value for $per_page when calling PaginationMeta., must be bigger than or equal to 1.');
-        }
-
-        $this->container['per_page'] = $per_page;
+        $this->container['next_cursor'] = $next_cursor;
 
         return $this;
     }
 
     /**
-     * Gets record_count
+     * Gets previous_cursor
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getRecordCount()
+    public function getPreviousCursor()
     {
-        return $this->container['record_count'];
+        return $this->container['previous_cursor'];
     }
 
     /**
-     * Sets record_count
+     * Sets previous_cursor
      *
-     * @param int|null $record_count Total records in result set.
+     * @param string|null $previous_cursor Cursor value used to retrieve the previous page of results. Empty if there is no previous page.
      *
      * @return self
      */
-    public function setRecordCount($record_count)
+    public function setPreviousCursor($previous_cursor)
     {
-        $this->container['record_count'] = $record_count;
+        $this->container['previous_cursor'] = $previous_cursor;
 
         return $this;
     }
 
     /**
-     * Gets total_pages
+     * Gets sort
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getTotalPages()
+    public function getSort()
     {
-        return $this->container['total_pages'];
+        return $this->container['sort'];
     }
 
     /**
-     * Sets total_pages
+     * Sets sort
      *
-     * @param int|null $total_pages Total pages in result set.
+     * @param string|null $sort The sort order applied to the results.
      *
      * @return self
      */
-    public function setTotalPages($total_pages)
+    public function setSort($sort)
     {
-        $this->container['total_pages'] = $total_pages;
+        $this->container['sort'] = $sort;
 
         return $this;
     }

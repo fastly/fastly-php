@@ -56,6 +56,7 @@ class SuccessfulResponseAsObjectAllOf implements ModelInterface, ArrayAccess, \J
         'id' => 'string',
         'fqdn' => 'string',
         'service_id' => 'string',
+        'routing_configuration_id' => 'string',
         'description' => 'string',
         'activated' => 'bool',
         'verified' => 'bool'
@@ -72,6 +73,7 @@ class SuccessfulResponseAsObjectAllOf implements ModelInterface, ArrayAccess, \J
         'id' => null,
         'fqdn' => null,
         'service_id' => null,
+        'routing_configuration_id' => null,
         'description' => null,
         'activated' => null,
         'verified' => null
@@ -107,6 +109,7 @@ class SuccessfulResponseAsObjectAllOf implements ModelInterface, ArrayAccess, \J
         'id' => 'id',
         'fqdn' => 'fqdn',
         'service_id' => 'service_id',
+        'routing_configuration_id' => 'routing_configuration_id',
         'description' => 'description',
         'activated' => 'activated',
         'verified' => 'verified'
@@ -121,6 +124,7 @@ class SuccessfulResponseAsObjectAllOf implements ModelInterface, ArrayAccess, \J
         'id' => 'setId',
         'fqdn' => 'setFqdn',
         'service_id' => 'setServiceId',
+        'routing_configuration_id' => 'setRoutingConfigurationId',
         'description' => 'setDescription',
         'activated' => 'setActivated',
         'verified' => 'setVerified'
@@ -135,6 +139,7 @@ class SuccessfulResponseAsObjectAllOf implements ModelInterface, ArrayAccess, \J
         'id' => 'getId',
         'fqdn' => 'getFqdn',
         'service_id' => 'getServiceId',
+        'routing_configuration_id' => 'getRoutingConfigurationId',
         'description' => 'getDescription',
         'activated' => 'getActivated',
         'verified' => 'getVerified'
@@ -200,6 +205,7 @@ class SuccessfulResponseAsObjectAllOf implements ModelInterface, ArrayAccess, \J
         $this->container['id'] = $data['id'] ?? null;
         $this->container['fqdn'] = $data['fqdn'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
+        $this->container['routing_configuration_id'] = $data['routing_configuration_id'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['activated'] = $data['activated'] ?? null;
         $this->container['verified'] = $data['verified'] ?? null;
@@ -297,6 +303,30 @@ class SuccessfulResponseAsObjectAllOf implements ModelInterface, ArrayAccess, \J
     public function setServiceId($service_id)
     {
         $this->container['service_id'] = $service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets routing_configuration_id
+     *
+     * @return string|null
+     */
+    public function getRoutingConfigurationId()
+    {
+        return $this->container['routing_configuration_id'];
+    }
+
+    /**
+     * Sets routing_configuration_id
+     *
+     * @param string|null $routing_configuration_id The `routing_configuration_id` associated with your domain or `null` if there is no association.
+     *
+     * @return self
+     */
+    public function setRoutingConfigurationId($routing_configuration_id)
+    {
+        $this->container['routing_configuration_id'] = $routing_configuration_id;
 
         return $this;
     }

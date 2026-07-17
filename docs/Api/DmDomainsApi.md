@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 ## `listDmDomains()`
 
 ```php
-listDmDomains($options): \Fastly\Model\InlineResponse2007 // List domains
+listDmDomains($options): \Fastly\Model\InlineResponse20014 // List domains
 ```
 
 List all domains
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Fastly\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
+[**\Fastly\Model\InlineResponse20014**](../Model/InlineResponse20014.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **service_id** | **string** | The `service_id` associated with your domain or `null` if there is no association. | [optional] 
+**routing_configuration_id** | **string** | The `routing_configuration_id` associated with your domain or `null` if there is no association. | [optional] 
 **description** | **string** | A freeform descriptive note. | [optional] 
 
 

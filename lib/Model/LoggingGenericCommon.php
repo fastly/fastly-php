@@ -166,10 +166,10 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$fastlyModelName;
     }
 
+    const MESSAGE_TYPE_BLANK = 'blank';
     const MESSAGE_TYPE_CLASSIC = 'classic';
     const MESSAGE_TYPE_LOGGLY = 'loggly';
     const MESSAGE_TYPE_LOGPLEX = 'logplex';
-    const MESSAGE_TYPE_BLANK = 'blank';
     const COMPRESSION_CODEC_ZSTD = 'zstd';
     const COMPRESSION_CODEC_SNAPPY = 'snappy';
     const COMPRESSION_CODEC_GZIP = 'gzip';
@@ -182,10 +182,10 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
     public function getMessageTypeAllowableValues()
     {
         return [
+            self::MESSAGE_TYPE_BLANK,
             self::MESSAGE_TYPE_CLASSIC,
             self::MESSAGE_TYPE_LOGGLY,
             self::MESSAGE_TYPE_LOGPLEX,
-            self::MESSAGE_TYPE_BLANK,
         ];
     }
 
@@ -218,7 +218,7 @@ class LoggingGenericCommon implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['message_type'] = $data['message_type'] ?? 'classic';
+        $this->container['message_type'] = $data['message_type'] ?? 'blank';
         $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
     }

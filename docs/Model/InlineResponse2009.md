@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**\Fastly\Model\Suggestion[]**](Suggestion.md) |  | [optional] 
+**data** | [**\Fastly\Model\Report[]**](Report.md) |  | [optional] 
+**meta** | [**\Fastly\Model\PaginationMeta**](PaginationMeta.md) |  | [optional] 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

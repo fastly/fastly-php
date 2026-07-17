@@ -268,10 +268,10 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     const LOG_PROCESSING_REGION_US = 'us';
     const FORMAT_VERSION_v1 = '1';
     const FORMAT_VERSION_v2 = '2';
+    const MESSAGE_TYPE_BLANK = 'blank';
     const MESSAGE_TYPE_CLASSIC = 'classic';
     const MESSAGE_TYPE_LOGGLY = 'loggly';
     const MESSAGE_TYPE_LOGPLEX = 'logplex';
-    const MESSAGE_TYPE_BLANK = 'blank';
     const COMPRESSION_CODEC_ZSTD = 'zstd';
     const COMPRESSION_CODEC_SNAPPY = 'snappy';
     const COMPRESSION_CODEC_GZIP = 'gzip';
@@ -324,10 +324,10 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function getMessageTypeAllowableValues()
     {
         return [
+            self::MESSAGE_TYPE_BLANK,
             self::MESSAGE_TYPE_CLASSIC,
             self::MESSAGE_TYPE_LOGGLY,
             self::MESSAGE_TYPE_LOGPLEX,
-            self::MESSAGE_TYPE_BLANK,
         ];
     }
 
@@ -366,7 +366,7 @@ class LoggingAzureblobResponse implements ModelInterface, ArrayAccess, \JsonSeri
         $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';
         $this->container['log_processing_region'] = $data['log_processing_region'] ?? 'none';
         $this->container['format_version'] = $data['format_version'] ?? '2';
-        $this->container['message_type'] = $data['message_type'] ?? 'classic';
+        $this->container['message_type'] = $data['message_type'] ?? 'blank';
         $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;
         $this->container['compression_codec'] = $data['compression_codec'] ?? null;
         $this->container['period'] = $data['period'] ?? '3600';

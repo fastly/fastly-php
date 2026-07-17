@@ -67,8 +67,10 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'ipv6' => 'string',
         'keepalive_time' => 'int',
         'max_conn' => 'int',
+        'max_lifetime' => 'int',
         'max_tls_version' => 'string',
         'min_tls_version' => 'string',
+        'max_use' => 'int',
         'name' => 'string',
         'override_host' => 'string',
         'port' => 'int',
@@ -120,8 +122,10 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'ipv6' => null,
         'keepalive_time' => null,
         'max_conn' => null,
+        'max_lifetime' => null,
         'max_tls_version' => null,
         'min_tls_version' => null,
+        'max_use' => null,
         'name' => null,
         'override_host' => null,
         'port' => null,
@@ -192,8 +196,10 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'ipv6' => 'ipv6',
         'keepalive_time' => 'keepalive_time',
         'max_conn' => 'max_conn',
+        'max_lifetime' => 'max_lifetime',
         'max_tls_version' => 'max_tls_version',
         'min_tls_version' => 'min_tls_version',
+        'max_use' => 'max_use',
         'name' => 'name',
         'override_host' => 'override_host',
         'port' => 'port',
@@ -243,8 +249,10 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'ipv6' => 'setIpv6',
         'keepalive_time' => 'setKeepaliveTime',
         'max_conn' => 'setMaxConn',
+        'max_lifetime' => 'setMaxLifetime',
         'max_tls_version' => 'setMaxTlsVersion',
         'min_tls_version' => 'setMinTlsVersion',
+        'max_use' => 'setMaxUse',
         'name' => 'setName',
         'override_host' => 'setOverrideHost',
         'port' => 'setPort',
@@ -294,8 +302,10 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'ipv6' => 'getIpv6',
         'keepalive_time' => 'getKeepaliveTime',
         'max_conn' => 'getMaxConn',
+        'max_lifetime' => 'getMaxLifetime',
         'max_tls_version' => 'getMaxTlsVersion',
         'min_tls_version' => 'getMinTlsVersion',
+        'max_use' => 'getMaxUse',
         'name' => 'getName',
         'override_host' => 'getOverrideHost',
         'port' => 'getPort',
@@ -396,8 +406,10 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['ipv6'] = $data['ipv6'] ?? null;
         $this->container['keepalive_time'] = $data['keepalive_time'] ?? null;
         $this->container['max_conn'] = $data['max_conn'] ?? null;
+        $this->container['max_lifetime'] = $data['max_lifetime'] ?? null;
         $this->container['max_tls_version'] = $data['max_tls_version'] ?? null;
         $this->container['min_tls_version'] = $data['min_tls_version'] ?? null;
+        $this->container['max_use'] = $data['max_use'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['override_host'] = $data['override_host'] ?? null;
         $this->container['port'] = $data['port'] ?? null;
@@ -756,7 +768,7 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets keepalive_time
      *
-     * @param int|null $keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
+     * @param int|null $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
      *
      * @return self
      */
@@ -787,6 +799,30 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMaxConn($max_conn)
     {
         $this->container['max_conn'] = $max_conn;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_lifetime
+     *
+     * @return int|null
+     */
+    public function getMaxLifetime()
+    {
+        return $this->container['max_lifetime'];
+    }
+
+    /**
+     * Sets max_lifetime
+     *
+     * @param int|null $max_lifetime Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.
+     *
+     * @return self
+     */
+    public function setMaxLifetime($max_lifetime)
+    {
+        $this->container['max_lifetime'] = $max_lifetime;
 
         return $this;
     }
@@ -835,6 +871,30 @@ class BackendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMinTlsVersion($min_tls_version)
     {
         $this->container['min_tls_version'] = $min_tls_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_use
+     *
+     * @return int|null
+     */
+    public function getMaxUse()
+    {
+        return $this->container['max_use'];
+    }
+
+    /**
+     * Sets max_use
+     *
+     * @param int|null $max_use Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.
+     *
+     * @return self
+     */
+    public function setMaxUse($max_use)
+    {
+        $this->container['max_use'] = $max_use;
 
         return $this;
     }

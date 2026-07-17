@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Fastly\Model\SecretResponse[]**](SecretResponse.md) |  | [optional] 
-**meta** | [**\Fastly\Model\PaginationCursorMeta**](PaginationCursorMeta.md) |  | [optional] 
+**data** | [**\Fastly\Model\DdosProtectionRuleWithStats[]**](DdosProtectionRuleWithStats.md) |  | 
+**meta** | [**\Fastly\Model\PaginationCursorMeta**](PaginationCursorMeta.md) |  | 
 
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

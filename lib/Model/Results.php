@@ -118,9 +118,6 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'log_bytes' => 'int',
         'http2' => 'int',
         'http3' => 'int',
-        'waf_logged' => 'int',
-        'waf_blocked' => 'int',
-        'waf_passed' => 'int',
         'attack_req_body_bytes' => 'int',
         'attack_req_header_bytes' => 'int',
         'attack_logged_req_body_bytes' => 'int',
@@ -366,6 +363,40 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_vcpu_exceeded_error' => 'int',
         'compute_service_limits_error' => 'int',
         'compute_platform_invalid_request_error' => 'int',
+        'compute_sandboxes' => 'int',
+        'bot_requests_total_count' => 'int',
+        'bot_edge_requests_analyzed_count' => 'int',
+        'bot_edge_requests_detected_count' => 'int',
+        'bot_edge_requests_verified_count' => 'int',
+        'bot_edge_requests_ai_crawler_count' => 'int',
+        'bot_edge_requests_ai_fetcher_count' => 'int',
+        'bot_edge_requests_accessibility_count' => 'int',
+        'bot_edge_requests_content_fetcher_count' => 'int',
+        'bot_edge_requests_monitoring_count' => 'int',
+        'bot_edge_requests_online_marketing_count' => 'int',
+        'bot_edge_requests_page_preview_count' => 'int',
+        'bot_edge_requests_platform_integrations_count' => 'int',
+        'bot_edge_requests_research_count' => 'int',
+        'bot_edge_requests_search_engine_crawler_count' => 'int',
+        'bot_edge_requests_search_engine_optimization_count' => 'int',
+        'bot_edge_requests_security_tools_count' => 'int',
+        'compute_handoff' => 'int',
+        'compute_service_bereq_dns_error' => 'int',
+        'compute_service_bereq_conn_timeout_error' => 'int',
+        'compute_service_bereq_conn_refused_error' => 'int',
+        'compute_service_bereq_conn_other_error' => 'int',
+        'compute_service_bereq_tls_server_cert_error' => 'int',
+        'compute_service_bereq_tls_other_error' => 'int',
+        'compute_service_bereq_http_proto_v1_error' => 'int',
+        'compute_service_bereq_http_proto_v2_error' => 'int',
+        'compute_service_bereq_http_incomplete_error' => 'int',
+        'compute_service_bereq_http_timeout_error' => 'int',
+        'compute_service_bereq_http_other_error' => 'int',
+        'compute_service_bereq_other_error' => 'int',
+        'compute_service_bereq_5xx_error' => 'int',
+        'compute_service_bereq_conn_error' => 'int',
+        'compute_service_bereq_tls_error' => 'int',
+        'compute_service_bereq_http_error' => 'int',
         'service_id' => 'string',
         'start_time' => 'int'
     ];
@@ -442,9 +473,6 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'log_bytes' => 'int64',
         'http2' => 'int64',
         'http3' => 'int64',
-        'waf_logged' => 'int64',
-        'waf_blocked' => 'int64',
-        'waf_passed' => 'int64',
         'attack_req_body_bytes' => 'int64',
         'attack_req_header_bytes' => 'int64',
         'attack_logged_req_body_bytes' => 'int64',
@@ -690,6 +718,40 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_vcpu_exceeded_error' => null,
         'compute_service_limits_error' => null,
         'compute_platform_invalid_request_error' => null,
+        'compute_sandboxes' => null,
+        'bot_requests_total_count' => null,
+        'bot_edge_requests_analyzed_count' => null,
+        'bot_edge_requests_detected_count' => null,
+        'bot_edge_requests_verified_count' => null,
+        'bot_edge_requests_ai_crawler_count' => null,
+        'bot_edge_requests_ai_fetcher_count' => null,
+        'bot_edge_requests_accessibility_count' => null,
+        'bot_edge_requests_content_fetcher_count' => null,
+        'bot_edge_requests_monitoring_count' => null,
+        'bot_edge_requests_online_marketing_count' => null,
+        'bot_edge_requests_page_preview_count' => null,
+        'bot_edge_requests_platform_integrations_count' => null,
+        'bot_edge_requests_research_count' => null,
+        'bot_edge_requests_search_engine_crawler_count' => null,
+        'bot_edge_requests_search_engine_optimization_count' => null,
+        'bot_edge_requests_security_tools_count' => null,
+        'compute_handoff' => null,
+        'compute_service_bereq_dns_error' => null,
+        'compute_service_bereq_conn_timeout_error' => null,
+        'compute_service_bereq_conn_refused_error' => null,
+        'compute_service_bereq_conn_other_error' => null,
+        'compute_service_bereq_tls_server_cert_error' => null,
+        'compute_service_bereq_tls_other_error' => null,
+        'compute_service_bereq_http_proto_v1_error' => null,
+        'compute_service_bereq_http_proto_v2_error' => null,
+        'compute_service_bereq_http_incomplete_error' => null,
+        'compute_service_bereq_http_timeout_error' => null,
+        'compute_service_bereq_http_other_error' => null,
+        'compute_service_bereq_other_error' => null,
+        'compute_service_bereq_5xx_error' => null,
+        'compute_service_bereq_conn_error' => null,
+        'compute_service_bereq_tls_error' => null,
+        'compute_service_bereq_http_error' => null,
         'service_id' => null,
         'start_time' => 'int64'
     ];
@@ -785,9 +847,6 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'log_bytes' => 'log_bytes',
         'http2' => 'http2',
         'http3' => 'http3',
-        'waf_logged' => 'waf_logged',
-        'waf_blocked' => 'waf_blocked',
-        'waf_passed' => 'waf_passed',
         'attack_req_body_bytes' => 'attack_req_body_bytes',
         'attack_req_header_bytes' => 'attack_req_header_bytes',
         'attack_logged_req_body_bytes' => 'attack_logged_req_body_bytes',
@@ -1033,6 +1092,40 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_vcpu_exceeded_error' => 'compute_service_vcpu_exceeded_error',
         'compute_service_limits_error' => 'compute_service_limits_error',
         'compute_platform_invalid_request_error' => 'compute_platform_invalid_request_error',
+        'compute_sandboxes' => 'compute_sandboxes',
+        'bot_requests_total_count' => 'bot_requests_total_count',
+        'bot_edge_requests_analyzed_count' => 'bot_edge_requests_analyzed_count',
+        'bot_edge_requests_detected_count' => 'bot_edge_requests_detected_count',
+        'bot_edge_requests_verified_count' => 'bot_edge_requests_verified_count',
+        'bot_edge_requests_ai_crawler_count' => 'bot_edge_requests_ai_crawler_count',
+        'bot_edge_requests_ai_fetcher_count' => 'bot_edge_requests_ai_fetcher_count',
+        'bot_edge_requests_accessibility_count' => 'bot_edge_requests_accessibility_count',
+        'bot_edge_requests_content_fetcher_count' => 'bot_edge_requests_content_fetcher_count',
+        'bot_edge_requests_monitoring_count' => 'bot_edge_requests_monitoring_count',
+        'bot_edge_requests_online_marketing_count' => 'bot_edge_requests_online_marketing_count',
+        'bot_edge_requests_page_preview_count' => 'bot_edge_requests_page_preview_count',
+        'bot_edge_requests_platform_integrations_count' => 'bot_edge_requests_platform_integrations_count',
+        'bot_edge_requests_research_count' => 'bot_edge_requests_research_count',
+        'bot_edge_requests_search_engine_crawler_count' => 'bot_edge_requests_search_engine_crawler_count',
+        'bot_edge_requests_search_engine_optimization_count' => 'bot_edge_requests_search_engine_optimization_count',
+        'bot_edge_requests_security_tools_count' => 'bot_edge_requests_security_tools_count',
+        'compute_handoff' => 'compute_handoff',
+        'compute_service_bereq_dns_error' => 'compute_service_bereq_dns_error',
+        'compute_service_bereq_conn_timeout_error' => 'compute_service_bereq_conn_timeout_error',
+        'compute_service_bereq_conn_refused_error' => 'compute_service_bereq_conn_refused_error',
+        'compute_service_bereq_conn_other_error' => 'compute_service_bereq_conn_other_error',
+        'compute_service_bereq_tls_server_cert_error' => 'compute_service_bereq_tls_server_cert_error',
+        'compute_service_bereq_tls_other_error' => 'compute_service_bereq_tls_other_error',
+        'compute_service_bereq_http_proto_v1_error' => 'compute_service_bereq_http_proto_v1_error',
+        'compute_service_bereq_http_proto_v2_error' => 'compute_service_bereq_http_proto_v2_error',
+        'compute_service_bereq_http_incomplete_error' => 'compute_service_bereq_http_incomplete_error',
+        'compute_service_bereq_http_timeout_error' => 'compute_service_bereq_http_timeout_error',
+        'compute_service_bereq_http_other_error' => 'compute_service_bereq_http_other_error',
+        'compute_service_bereq_other_error' => 'compute_service_bereq_other_error',
+        'compute_service_bereq_5xx_error' => 'compute_service_bereq_5xx_error',
+        'compute_service_bereq_conn_error' => 'compute_service_bereq_conn_error',
+        'compute_service_bereq_tls_error' => 'compute_service_bereq_tls_error',
+        'compute_service_bereq_http_error' => 'compute_service_bereq_http_error',
         'service_id' => 'service_id',
         'start_time' => 'start_time'
     ];
@@ -1107,9 +1200,6 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'log_bytes' => 'setLogBytes',
         'http2' => 'setHttp2',
         'http3' => 'setHttp3',
-        'waf_logged' => 'setWafLogged',
-        'waf_blocked' => 'setWafBlocked',
-        'waf_passed' => 'setWafPassed',
         'attack_req_body_bytes' => 'setAttackReqBodyBytes',
         'attack_req_header_bytes' => 'setAttackReqHeaderBytes',
         'attack_logged_req_body_bytes' => 'setAttackLoggedReqBodyBytes',
@@ -1355,6 +1445,40 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_vcpu_exceeded_error' => 'setComputeServiceVcpuExceededError',
         'compute_service_limits_error' => 'setComputeServiceLimitsError',
         'compute_platform_invalid_request_error' => 'setComputePlatformInvalidRequestError',
+        'compute_sandboxes' => 'setComputeSandboxes',
+        'bot_requests_total_count' => 'setBotRequestsTotalCount',
+        'bot_edge_requests_analyzed_count' => 'setBotEdgeRequestsAnalyzedCount',
+        'bot_edge_requests_detected_count' => 'setBotEdgeRequestsDetectedCount',
+        'bot_edge_requests_verified_count' => 'setBotEdgeRequestsVerifiedCount',
+        'bot_edge_requests_ai_crawler_count' => 'setBotEdgeRequestsAiCrawlerCount',
+        'bot_edge_requests_ai_fetcher_count' => 'setBotEdgeRequestsAiFetcherCount',
+        'bot_edge_requests_accessibility_count' => 'setBotEdgeRequestsAccessibilityCount',
+        'bot_edge_requests_content_fetcher_count' => 'setBotEdgeRequestsContentFetcherCount',
+        'bot_edge_requests_monitoring_count' => 'setBotEdgeRequestsMonitoringCount',
+        'bot_edge_requests_online_marketing_count' => 'setBotEdgeRequestsOnlineMarketingCount',
+        'bot_edge_requests_page_preview_count' => 'setBotEdgeRequestsPagePreviewCount',
+        'bot_edge_requests_platform_integrations_count' => 'setBotEdgeRequestsPlatformIntegrationsCount',
+        'bot_edge_requests_research_count' => 'setBotEdgeRequestsResearchCount',
+        'bot_edge_requests_search_engine_crawler_count' => 'setBotEdgeRequestsSearchEngineCrawlerCount',
+        'bot_edge_requests_search_engine_optimization_count' => 'setBotEdgeRequestsSearchEngineOptimizationCount',
+        'bot_edge_requests_security_tools_count' => 'setBotEdgeRequestsSecurityToolsCount',
+        'compute_handoff' => 'setComputeHandoff',
+        'compute_service_bereq_dns_error' => 'setComputeServiceBereqDnsError',
+        'compute_service_bereq_conn_timeout_error' => 'setComputeServiceBereqConnTimeoutError',
+        'compute_service_bereq_conn_refused_error' => 'setComputeServiceBereqConnRefusedError',
+        'compute_service_bereq_conn_other_error' => 'setComputeServiceBereqConnOtherError',
+        'compute_service_bereq_tls_server_cert_error' => 'setComputeServiceBereqTlsServerCertError',
+        'compute_service_bereq_tls_other_error' => 'setComputeServiceBereqTlsOtherError',
+        'compute_service_bereq_http_proto_v1_error' => 'setComputeServiceBereqHttpProtoV1Error',
+        'compute_service_bereq_http_proto_v2_error' => 'setComputeServiceBereqHttpProtoV2Error',
+        'compute_service_bereq_http_incomplete_error' => 'setComputeServiceBereqHttpIncompleteError',
+        'compute_service_bereq_http_timeout_error' => 'setComputeServiceBereqHttpTimeoutError',
+        'compute_service_bereq_http_other_error' => 'setComputeServiceBereqHttpOtherError',
+        'compute_service_bereq_other_error' => 'setComputeServiceBereqOtherError',
+        'compute_service_bereq_5xx_error' => 'setComputeServiceBereq5xxError',
+        'compute_service_bereq_conn_error' => 'setComputeServiceBereqConnError',
+        'compute_service_bereq_tls_error' => 'setComputeServiceBereqTlsError',
+        'compute_service_bereq_http_error' => 'setComputeServiceBereqHttpError',
         'service_id' => 'setServiceId',
         'start_time' => 'setStartTime'
     ];
@@ -1429,9 +1553,6 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'log_bytes' => 'getLogBytes',
         'http2' => 'getHttp2',
         'http3' => 'getHttp3',
-        'waf_logged' => 'getWafLogged',
-        'waf_blocked' => 'getWafBlocked',
-        'waf_passed' => 'getWafPassed',
         'attack_req_body_bytes' => 'getAttackReqBodyBytes',
         'attack_req_header_bytes' => 'getAttackReqHeaderBytes',
         'attack_logged_req_body_bytes' => 'getAttackLoggedReqBodyBytes',
@@ -1677,6 +1798,40 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_vcpu_exceeded_error' => 'getComputeServiceVcpuExceededError',
         'compute_service_limits_error' => 'getComputeServiceLimitsError',
         'compute_platform_invalid_request_error' => 'getComputePlatformInvalidRequestError',
+        'compute_sandboxes' => 'getComputeSandboxes',
+        'bot_requests_total_count' => 'getBotRequestsTotalCount',
+        'bot_edge_requests_analyzed_count' => 'getBotEdgeRequestsAnalyzedCount',
+        'bot_edge_requests_detected_count' => 'getBotEdgeRequestsDetectedCount',
+        'bot_edge_requests_verified_count' => 'getBotEdgeRequestsVerifiedCount',
+        'bot_edge_requests_ai_crawler_count' => 'getBotEdgeRequestsAiCrawlerCount',
+        'bot_edge_requests_ai_fetcher_count' => 'getBotEdgeRequestsAiFetcherCount',
+        'bot_edge_requests_accessibility_count' => 'getBotEdgeRequestsAccessibilityCount',
+        'bot_edge_requests_content_fetcher_count' => 'getBotEdgeRequestsContentFetcherCount',
+        'bot_edge_requests_monitoring_count' => 'getBotEdgeRequestsMonitoringCount',
+        'bot_edge_requests_online_marketing_count' => 'getBotEdgeRequestsOnlineMarketingCount',
+        'bot_edge_requests_page_preview_count' => 'getBotEdgeRequestsPagePreviewCount',
+        'bot_edge_requests_platform_integrations_count' => 'getBotEdgeRequestsPlatformIntegrationsCount',
+        'bot_edge_requests_research_count' => 'getBotEdgeRequestsResearchCount',
+        'bot_edge_requests_search_engine_crawler_count' => 'getBotEdgeRequestsSearchEngineCrawlerCount',
+        'bot_edge_requests_search_engine_optimization_count' => 'getBotEdgeRequestsSearchEngineOptimizationCount',
+        'bot_edge_requests_security_tools_count' => 'getBotEdgeRequestsSecurityToolsCount',
+        'compute_handoff' => 'getComputeHandoff',
+        'compute_service_bereq_dns_error' => 'getComputeServiceBereqDnsError',
+        'compute_service_bereq_conn_timeout_error' => 'getComputeServiceBereqConnTimeoutError',
+        'compute_service_bereq_conn_refused_error' => 'getComputeServiceBereqConnRefusedError',
+        'compute_service_bereq_conn_other_error' => 'getComputeServiceBereqConnOtherError',
+        'compute_service_bereq_tls_server_cert_error' => 'getComputeServiceBereqTlsServerCertError',
+        'compute_service_bereq_tls_other_error' => 'getComputeServiceBereqTlsOtherError',
+        'compute_service_bereq_http_proto_v1_error' => 'getComputeServiceBereqHttpProtoV1Error',
+        'compute_service_bereq_http_proto_v2_error' => 'getComputeServiceBereqHttpProtoV2Error',
+        'compute_service_bereq_http_incomplete_error' => 'getComputeServiceBereqHttpIncompleteError',
+        'compute_service_bereq_http_timeout_error' => 'getComputeServiceBereqHttpTimeoutError',
+        'compute_service_bereq_http_other_error' => 'getComputeServiceBereqHttpOtherError',
+        'compute_service_bereq_other_error' => 'getComputeServiceBereqOtherError',
+        'compute_service_bereq_5xx_error' => 'getComputeServiceBereq5xxError',
+        'compute_service_bereq_conn_error' => 'getComputeServiceBereqConnError',
+        'compute_service_bereq_tls_error' => 'getComputeServiceBereqTlsError',
+        'compute_service_bereq_http_error' => 'getComputeServiceBereqHttpError',
         'service_id' => 'getServiceId',
         'start_time' => 'getStartTime'
     ];
@@ -1802,9 +1957,6 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['log_bytes'] = $data['log_bytes'] ?? null;
         $this->container['http2'] = $data['http2'] ?? null;
         $this->container['http3'] = $data['http3'] ?? null;
-        $this->container['waf_logged'] = $data['waf_logged'] ?? null;
-        $this->container['waf_blocked'] = $data['waf_blocked'] ?? null;
-        $this->container['waf_passed'] = $data['waf_passed'] ?? null;
         $this->container['attack_req_body_bytes'] = $data['attack_req_body_bytes'] ?? null;
         $this->container['attack_req_header_bytes'] = $data['attack_req_header_bytes'] ?? null;
         $this->container['attack_logged_req_body_bytes'] = $data['attack_logged_req_body_bytes'] ?? null;
@@ -2050,6 +2202,40 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['compute_service_vcpu_exceeded_error'] = $data['compute_service_vcpu_exceeded_error'] ?? null;
         $this->container['compute_service_limits_error'] = $data['compute_service_limits_error'] ?? null;
         $this->container['compute_platform_invalid_request_error'] = $data['compute_platform_invalid_request_error'] ?? null;
+        $this->container['compute_sandboxes'] = $data['compute_sandboxes'] ?? null;
+        $this->container['bot_requests_total_count'] = $data['bot_requests_total_count'] ?? null;
+        $this->container['bot_edge_requests_analyzed_count'] = $data['bot_edge_requests_analyzed_count'] ?? null;
+        $this->container['bot_edge_requests_detected_count'] = $data['bot_edge_requests_detected_count'] ?? null;
+        $this->container['bot_edge_requests_verified_count'] = $data['bot_edge_requests_verified_count'] ?? null;
+        $this->container['bot_edge_requests_ai_crawler_count'] = $data['bot_edge_requests_ai_crawler_count'] ?? null;
+        $this->container['bot_edge_requests_ai_fetcher_count'] = $data['bot_edge_requests_ai_fetcher_count'] ?? null;
+        $this->container['bot_edge_requests_accessibility_count'] = $data['bot_edge_requests_accessibility_count'] ?? null;
+        $this->container['bot_edge_requests_content_fetcher_count'] = $data['bot_edge_requests_content_fetcher_count'] ?? null;
+        $this->container['bot_edge_requests_monitoring_count'] = $data['bot_edge_requests_monitoring_count'] ?? null;
+        $this->container['bot_edge_requests_online_marketing_count'] = $data['bot_edge_requests_online_marketing_count'] ?? null;
+        $this->container['bot_edge_requests_page_preview_count'] = $data['bot_edge_requests_page_preview_count'] ?? null;
+        $this->container['bot_edge_requests_platform_integrations_count'] = $data['bot_edge_requests_platform_integrations_count'] ?? null;
+        $this->container['bot_edge_requests_research_count'] = $data['bot_edge_requests_research_count'] ?? null;
+        $this->container['bot_edge_requests_search_engine_crawler_count'] = $data['bot_edge_requests_search_engine_crawler_count'] ?? null;
+        $this->container['bot_edge_requests_search_engine_optimization_count'] = $data['bot_edge_requests_search_engine_optimization_count'] ?? null;
+        $this->container['bot_edge_requests_security_tools_count'] = $data['bot_edge_requests_security_tools_count'] ?? null;
+        $this->container['compute_handoff'] = $data['compute_handoff'] ?? null;
+        $this->container['compute_service_bereq_dns_error'] = $data['compute_service_bereq_dns_error'] ?? null;
+        $this->container['compute_service_bereq_conn_timeout_error'] = $data['compute_service_bereq_conn_timeout_error'] ?? null;
+        $this->container['compute_service_bereq_conn_refused_error'] = $data['compute_service_bereq_conn_refused_error'] ?? null;
+        $this->container['compute_service_bereq_conn_other_error'] = $data['compute_service_bereq_conn_other_error'] ?? null;
+        $this->container['compute_service_bereq_tls_server_cert_error'] = $data['compute_service_bereq_tls_server_cert_error'] ?? null;
+        $this->container['compute_service_bereq_tls_other_error'] = $data['compute_service_bereq_tls_other_error'] ?? null;
+        $this->container['compute_service_bereq_http_proto_v1_error'] = $data['compute_service_bereq_http_proto_v1_error'] ?? null;
+        $this->container['compute_service_bereq_http_proto_v2_error'] = $data['compute_service_bereq_http_proto_v2_error'] ?? null;
+        $this->container['compute_service_bereq_http_incomplete_error'] = $data['compute_service_bereq_http_incomplete_error'] ?? null;
+        $this->container['compute_service_bereq_http_timeout_error'] = $data['compute_service_bereq_http_timeout_error'] ?? null;
+        $this->container['compute_service_bereq_http_other_error'] = $data['compute_service_bereq_http_other_error'] ?? null;
+        $this->container['compute_service_bereq_other_error'] = $data['compute_service_bereq_other_error'] ?? null;
+        $this->container['compute_service_bereq_5xx_error'] = $data['compute_service_bereq_5xx_error'] ?? null;
+        $this->container['compute_service_bereq_conn_error'] = $data['compute_service_bereq_conn_error'] ?? null;
+        $this->container['compute_service_bereq_tls_error'] = $data['compute_service_bereq_tls_error'] ?? null;
+        $this->container['compute_service_bereq_http_error'] = $data['compute_service_bereq_http_error'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
     }
@@ -3610,78 +3796,6 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHttp3($http3)
     {
         $this->container['http3'] = $http3;
-
-        return $this;
-    }
-
-    /**
-     * Gets waf_logged
-     *
-     * @return int|null
-     */
-    public function getWafLogged()
-    {
-        return $this->container['waf_logged'];
-    }
-
-    /**
-     * Sets waf_logged
-     *
-     * @param int|null $waf_logged Number of requests that triggered a WAF rule and were logged.
-     *
-     * @return self
-     */
-    public function setWafLogged($waf_logged)
-    {
-        $this->container['waf_logged'] = $waf_logged;
-
-        return $this;
-    }
-
-    /**
-     * Gets waf_blocked
-     *
-     * @return int|null
-     */
-    public function getWafBlocked()
-    {
-        return $this->container['waf_blocked'];
-    }
-
-    /**
-     * Sets waf_blocked
-     *
-     * @param int|null $waf_blocked Number of requests that triggered a WAF rule and were blocked.
-     *
-     * @return self
-     */
-    public function setWafBlocked($waf_blocked)
-    {
-        $this->container['waf_blocked'] = $waf_blocked;
-
-        return $this;
-    }
-
-    /**
-     * Gets waf_passed
-     *
-     * @return int|null
-     */
-    public function getWafPassed()
-    {
-        return $this->container['waf_passed'];
-    }
-
-    /**
-     * Sets waf_passed
-     *
-     * @param int|null $waf_passed Number of requests that triggered a WAF rule and were passed.
-     *
-     * @return self
-     */
-    public function setWafPassed($waf_passed)
-    {
-        $this->container['waf_passed'] = $waf_passed;
 
         return $this;
     }
@@ -9580,6 +9694,822 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setComputePlatformInvalidRequestError($compute_platform_invalid_request_error)
     {
         $this->container['compute_platform_invalid_request_error'] = $compute_platform_invalid_request_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_sandboxes
+     *
+     * @return int|null
+     */
+    public function getComputeSandboxes()
+    {
+        return $this->container['compute_sandboxes'];
+    }
+
+    /**
+     * Sets compute_sandboxes
+     *
+     * @param int|null $compute_sandboxes Number of WebAssembly (Wasm) sandboxes created.
+     *
+     * @return self
+     */
+    public function setComputeSandboxes($compute_sandboxes)
+    {
+        $this->container['compute_sandboxes'] = $compute_sandboxes;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_requests_total_count
+     *
+     * @return int|null
+     */
+    public function getBotRequestsTotalCount()
+    {
+        return $this->container['bot_requests_total_count'];
+    }
+
+    /**
+     * Sets bot_requests_total_count
+     *
+     * @param int|null $bot_requests_total_count Total number of Bot Management requests across all deployments.
+     *
+     * @return self
+     */
+    public function setBotRequestsTotalCount($bot_requests_total_count)
+    {
+        $this->container['bot_requests_total_count'] = $bot_requests_total_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_analyzed_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsAnalyzedCount()
+    {
+        return $this->container['bot_edge_requests_analyzed_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_analyzed_count
+     *
+     * @param int|null $bot_edge_requests_analyzed_count Count of edge requests where bot detection analysis was performed.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsAnalyzedCount($bot_edge_requests_analyzed_count)
+    {
+        $this->container['bot_edge_requests_analyzed_count'] = $bot_edge_requests_analyzed_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_detected_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsDetectedCount()
+    {
+        return $this->container['bot_edge_requests_detected_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_detected_count
+     *
+     * @param int|null $bot_edge_requests_detected_count Count of edge requests where a bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsDetectedCount($bot_edge_requests_detected_count)
+    {
+        $this->container['bot_edge_requests_detected_count'] = $bot_edge_requests_detected_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_verified_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsVerifiedCount()
+    {
+        return $this->container['bot_edge_requests_verified_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_verified_count
+     *
+     * @param int|null $bot_edge_requests_verified_count Count of edge requests where a verified bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsVerifiedCount($bot_edge_requests_verified_count)
+    {
+        $this->container['bot_edge_requests_verified_count'] = $bot_edge_requests_verified_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_ai_crawler_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsAiCrawlerCount()
+    {
+        return $this->container['bot_edge_requests_ai_crawler_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_ai_crawler_count
+     *
+     * @param int|null $bot_edge_requests_ai_crawler_count Count of edge requests where an AI crawler was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsAiCrawlerCount($bot_edge_requests_ai_crawler_count)
+    {
+        $this->container['bot_edge_requests_ai_crawler_count'] = $bot_edge_requests_ai_crawler_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_ai_fetcher_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsAiFetcherCount()
+    {
+        return $this->container['bot_edge_requests_ai_fetcher_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_ai_fetcher_count
+     *
+     * @param int|null $bot_edge_requests_ai_fetcher_count Count of edge requests where an AI fetcher was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsAiFetcherCount($bot_edge_requests_ai_fetcher_count)
+    {
+        $this->container['bot_edge_requests_ai_fetcher_count'] = $bot_edge_requests_ai_fetcher_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_accessibility_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsAccessibilityCount()
+    {
+        return $this->container['bot_edge_requests_accessibility_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_accessibility_count
+     *
+     * @param int|null $bot_edge_requests_accessibility_count Count of edge requests where an accessibility bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsAccessibilityCount($bot_edge_requests_accessibility_count)
+    {
+        $this->container['bot_edge_requests_accessibility_count'] = $bot_edge_requests_accessibility_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_content_fetcher_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsContentFetcherCount()
+    {
+        return $this->container['bot_edge_requests_content_fetcher_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_content_fetcher_count
+     *
+     * @param int|null $bot_edge_requests_content_fetcher_count Count of edge requests where a content fetcher was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsContentFetcherCount($bot_edge_requests_content_fetcher_count)
+    {
+        $this->container['bot_edge_requests_content_fetcher_count'] = $bot_edge_requests_content_fetcher_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_monitoring_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsMonitoringCount()
+    {
+        return $this->container['bot_edge_requests_monitoring_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_monitoring_count
+     *
+     * @param int|null $bot_edge_requests_monitoring_count Count of edge requests where a monitoring and site tool was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsMonitoringCount($bot_edge_requests_monitoring_count)
+    {
+        $this->container['bot_edge_requests_monitoring_count'] = $bot_edge_requests_monitoring_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_online_marketing_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsOnlineMarketingCount()
+    {
+        return $this->container['bot_edge_requests_online_marketing_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_online_marketing_count
+     *
+     * @param int|null $bot_edge_requests_online_marketing_count Count of edge requests where an online marketing bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsOnlineMarketingCount($bot_edge_requests_online_marketing_count)
+    {
+        $this->container['bot_edge_requests_online_marketing_count'] = $bot_edge_requests_online_marketing_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_page_preview_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsPagePreviewCount()
+    {
+        return $this->container['bot_edge_requests_page_preview_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_page_preview_count
+     *
+     * @param int|null $bot_edge_requests_page_preview_count Count of edge requests where a page preview bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsPagePreviewCount($bot_edge_requests_page_preview_count)
+    {
+        $this->container['bot_edge_requests_page_preview_count'] = $bot_edge_requests_page_preview_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_platform_integrations_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsPlatformIntegrationsCount()
+    {
+        return $this->container['bot_edge_requests_platform_integrations_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_platform_integrations_count
+     *
+     * @param int|null $bot_edge_requests_platform_integrations_count Count of edge requests where a platform integration was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsPlatformIntegrationsCount($bot_edge_requests_platform_integrations_count)
+    {
+        $this->container['bot_edge_requests_platform_integrations_count'] = $bot_edge_requests_platform_integrations_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_research_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsResearchCount()
+    {
+        return $this->container['bot_edge_requests_research_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_research_count
+     *
+     * @param int|null $bot_edge_requests_research_count Count of edge requests where a research bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsResearchCount($bot_edge_requests_research_count)
+    {
+        $this->container['bot_edge_requests_research_count'] = $bot_edge_requests_research_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_search_engine_crawler_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsSearchEngineCrawlerCount()
+    {
+        return $this->container['bot_edge_requests_search_engine_crawler_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_search_engine_crawler_count
+     *
+     * @param int|null $bot_edge_requests_search_engine_crawler_count Count of edge requests where a search engine crawler was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsSearchEngineCrawlerCount($bot_edge_requests_search_engine_crawler_count)
+    {
+        $this->container['bot_edge_requests_search_engine_crawler_count'] = $bot_edge_requests_search_engine_crawler_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_search_engine_optimization_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsSearchEngineOptimizationCount()
+    {
+        return $this->container['bot_edge_requests_search_engine_optimization_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_search_engine_optimization_count
+     *
+     * @param int|null $bot_edge_requests_search_engine_optimization_count Count of edge requests where a search engine optimization bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsSearchEngineOptimizationCount($bot_edge_requests_search_engine_optimization_count)
+    {
+        $this->container['bot_edge_requests_search_engine_optimization_count'] = $bot_edge_requests_search_engine_optimization_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_security_tools_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsSecurityToolsCount()
+    {
+        return $this->container['bot_edge_requests_security_tools_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_security_tools_count
+     *
+     * @param int|null $bot_edge_requests_security_tools_count Count of edge requests where a security tool was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsSecurityToolsCount($bot_edge_requests_security_tools_count)
+    {
+        $this->container['bot_edge_requests_security_tools_count'] = $bot_edge_requests_security_tools_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_handoff
+     *
+     * @return int|null
+     */
+    public function getComputeHandoff()
+    {
+        return $this->container['compute_handoff'];
+    }
+
+    /**
+     * Sets compute_handoff
+     *
+     * @param int|null $compute_handoff The number of times Compute has handed off a request to the Fanout proxy or WebSocket proxy.
+     *
+     * @return self
+     */
+    public function setComputeHandoff($compute_handoff)
+    {
+        $this->container['compute_handoff'] = $compute_handoff;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_dns_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqDnsError()
+    {
+        return $this->container['compute_service_bereq_dns_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_dns_error
+     *
+     * @param int|null $compute_service_bereq_dns_error Number of backend requests from a Compute service that failed during DNS resolution.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqDnsError($compute_service_bereq_dns_error)
+    {
+        $this->container['compute_service_bereq_dns_error'] = $compute_service_bereq_dns_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_conn_timeout_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqConnTimeoutError()
+    {
+        return $this->container['compute_service_bereq_conn_timeout_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_conn_timeout_error
+     *
+     * @param int|null $compute_service_bereq_conn_timeout_error Number of backend requests from a Compute service where the connection to the origin timed out before being established.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqConnTimeoutError($compute_service_bereq_conn_timeout_error)
+    {
+        $this->container['compute_service_bereq_conn_timeout_error'] = $compute_service_bereq_conn_timeout_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_conn_refused_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqConnRefusedError()
+    {
+        return $this->container['compute_service_bereq_conn_refused_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_conn_refused_error
+     *
+     * @param int|null $compute_service_bereq_conn_refused_error Number of backend requests from a Compute service where the origin actively refused the connection.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqConnRefusedError($compute_service_bereq_conn_refused_error)
+    {
+        $this->container['compute_service_bereq_conn_refused_error'] = $compute_service_bereq_conn_refused_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_conn_other_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqConnOtherError()
+    {
+        return $this->container['compute_service_bereq_conn_other_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_conn_other_error
+     *
+     * @param int|null $compute_service_bereq_conn_other_error Number of backend requests from a Compute service that failed due to a connection error not classified as a timeout or refusal.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqConnOtherError($compute_service_bereq_conn_other_error)
+    {
+        $this->container['compute_service_bereq_conn_other_error'] = $compute_service_bereq_conn_other_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_tls_server_cert_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqTlsServerCertError()
+    {
+        return $this->container['compute_service_bereq_tls_server_cert_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_tls_server_cert_error
+     *
+     * @param int|null $compute_service_bereq_tls_server_cert_error Number of backend requests from a Compute service that failed due to a TLS certificate validation error (e.g., expired, untrusted CA, hostname mismatch).
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqTlsServerCertError($compute_service_bereq_tls_server_cert_error)
+    {
+        $this->container['compute_service_bereq_tls_server_cert_error'] = $compute_service_bereq_tls_server_cert_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_tls_other_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqTlsOtherError()
+    {
+        return $this->container['compute_service_bereq_tls_other_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_tls_other_error
+     *
+     * @param int|null $compute_service_bereq_tls_other_error Number of backend requests from a Compute service that failed due to a TLS error not classified as a certificate error.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqTlsOtherError($compute_service_bereq_tls_other_error)
+    {
+        $this->container['compute_service_bereq_tls_other_error'] = $compute_service_bereq_tls_other_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_proto_v1_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpProtoV1Error()
+    {
+        return $this->container['compute_service_bereq_http_proto_v1_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_proto_v1_error
+     *
+     * @param int|null $compute_service_bereq_http_proto_v1_error Number of backend requests from a Compute service that failed due to an HTTP/1.x protocol violation after the request was transmitted.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpProtoV1Error($compute_service_bereq_http_proto_v1_error)
+    {
+        $this->container['compute_service_bereq_http_proto_v1_error'] = $compute_service_bereq_http_proto_v1_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_proto_v2_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpProtoV2Error()
+    {
+        return $this->container['compute_service_bereq_http_proto_v2_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_proto_v2_error
+     *
+     * @param int|null $compute_service_bereq_http_proto_v2_error Number of backend requests from a Compute service that failed due to an HTTP/2 protocol error, typically a `RST_STREAM` or `GO_AWAY` from the origin.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpProtoV2Error($compute_service_bereq_http_proto_v2_error)
+    {
+        $this->container['compute_service_bereq_http_proto_v2_error'] = $compute_service_bereq_http_proto_v2_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_incomplete_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpIncompleteError()
+    {
+        return $this->container['compute_service_bereq_http_incomplete_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_incomplete_error
+     *
+     * @param int|null $compute_service_bereq_http_incomplete_error Number of backend requests from a Compute service where the origin sent an incomplete HTTP response.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpIncompleteError($compute_service_bereq_http_incomplete_error)
+    {
+        $this->container['compute_service_bereq_http_incomplete_error'] = $compute_service_bereq_http_incomplete_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_timeout_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpTimeoutError()
+    {
+        return $this->container['compute_service_bereq_http_timeout_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_timeout_error
+     *
+     * @param int|null $compute_service_bereq_http_timeout_error Number of backend requests from a Compute service where the origin did not respond within the configured timeout period.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpTimeoutError($compute_service_bereq_http_timeout_error)
+    {
+        $this->container['compute_service_bereq_http_timeout_error'] = $compute_service_bereq_http_timeout_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_other_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpOtherError()
+    {
+        return $this->container['compute_service_bereq_http_other_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_other_error
+     *
+     * @param int|null $compute_service_bereq_http_other_error Number of backend requests from a Compute service that failed due to an HTTP-level error not classified in any category.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpOtherError($compute_service_bereq_http_other_error)
+    {
+        $this->container['compute_service_bereq_http_other_error'] = $compute_service_bereq_http_other_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_other_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqOtherError()
+    {
+        return $this->container['compute_service_bereq_other_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_other_error
+     *
+     * @param int|null $compute_service_bereq_other_error Number of backend requests from a Compute service that failed due to an error not classified into the DNS, connection, TLS, or HTTP categories.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqOtherError($compute_service_bereq_other_error)
+    {
+        $this->container['compute_service_bereq_other_error'] = $compute_service_bereq_other_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_5xx_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereq5xxError()
+    {
+        return $this->container['compute_service_bereq_5xx_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_5xx_error
+     *
+     * @param int|null $compute_service_bereq_5xx_error Number of backend requests from a Compute service where the origin returned a 5xx status code.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereq5xxError($compute_service_bereq_5xx_error)
+    {
+        $this->container['compute_service_bereq_5xx_error'] = $compute_service_bereq_5xx_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_conn_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqConnError()
+    {
+        return $this->container['compute_service_bereq_conn_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_conn_error
+     *
+     * @param int|null $compute_service_bereq_conn_error Number of backend requests from a Compute service that failed at the TCP connection level. Sum of `compute_service_bereq_conn_timeout_error`, `compute_service_bereq_conn_refused_error`, and `compute_service_bereq_conn_other_error`.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqConnError($compute_service_bereq_conn_error)
+    {
+        $this->container['compute_service_bereq_conn_error'] = $compute_service_bereq_conn_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_tls_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqTlsError()
+    {
+        return $this->container['compute_service_bereq_tls_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_tls_error
+     *
+     * @param int|null $compute_service_bereq_tls_error Number of backend requests from a Compute service that failed during the TLS handshake or session with the origin. Sum of `compute_service_bereq_tls_server_cert_error` and `compute_service_bereq_tls_other_error`.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqTlsError($compute_service_bereq_tls_error)
+    {
+        $this->container['compute_service_bereq_tls_error'] = $compute_service_bereq_tls_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpError()
+    {
+        return $this->container['compute_service_bereq_http_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_error
+     *
+     * @param int|null $compute_service_bereq_http_error Number of backend requests from a Compute service that failed at the HTTP protocol level. Sum of `compute_service_bereq_http_proto_v1_error`, `compute_service_bereq_http_proto_v2_error`, `compute_service_bereq_http_incomplete_error`, `compute_service_bereq_http_timeout_error`, and `compute_service_bereq_http_other_error`.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpError($compute_service_bereq_http_error)
+    {
+        $this->container['compute_service_bereq_http_error'] = $compute_service_bereq_http_error;
 
         return $this;
     }

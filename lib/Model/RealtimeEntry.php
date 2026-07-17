@@ -56,7 +56,7 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'recorded' => '\Fastly\Model\RealtimeEntryRecorded',
         'aggregated' => '\Fastly\Model\RealtimeEntryAggregated',
-        'datacenter' => 'array<string,\Fastly\Model\RealtimeMeasurements>'
+        'datacenter' => '\Fastly\Model\RealtimeEntryDatacenter'
     ];
 
     /**
@@ -263,7 +263,7 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets datacenter
      *
-     * @return array<string,\Fastly\Model\RealtimeMeasurements>|null
+     * @return \Fastly\Model\RealtimeEntryDatacenter|null
      */
     public function getDatacenter()
     {
@@ -273,7 +273,7 @@ class RealtimeEntry implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets datacenter
      *
-     * @param array<string,\Fastly\Model\RealtimeMeasurements>|null $datacenter Groups [measurements](#measurements-data-model) by POP. See the [POPs API](https://www.fastly.com/documentation/reference/api/utils/pops/) for details of POP identifiers.
+     * @param \Fastly\Model\RealtimeEntryDatacenter|null $datacenter datacenter
      *
      * @return self
      */

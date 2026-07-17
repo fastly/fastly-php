@@ -53,8 +53,8 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => 'string[]',
-        'meta' => '\Fastly\Model\PaginationCursorMeta'
+        'data' => '\Fastly\Model\HeaderEvent[]',
+        'meta' => '\Fastly\Model\PaginationMeta'
     ];
 
     /**
@@ -208,7 +208,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets data
      *
-     * @return string[]|null
+     * @return \Fastly\Model\HeaderEvent[]|null
      */
     public function getData()
     {
@@ -218,7 +218,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets data
      *
-     * @param string[]|null $data data
+     * @param \Fastly\Model\HeaderEvent[]|null $data data
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets meta
      *
-     * @return \Fastly\Model\PaginationCursorMeta|null
+     * @return \Fastly\Model\PaginationMeta|null
      */
     public function getMeta()
     {
@@ -242,7 +242,7 @@ class InlineResponse20011 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets meta
      *
-     * @param \Fastly\Model\PaginationCursorMeta|null $meta meta
+     * @param \Fastly\Model\PaginationMeta|null $meta meta
      *
      * @return self
      */

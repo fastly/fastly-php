@@ -127,7 +127,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -168,7 +168,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -297,7 +297,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -341,7 +341,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -411,7 +411,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -438,7 +438,7 @@ class LoggingGcsApi
         $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $log_processing_region = array_key_exists('log_processing_region', $options) ? $options['log_processing_region'] : 'none';
         $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : 'classic';
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : 'blank';
         $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
         $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
         $period = array_key_exists('period', $options) ? $options['period'] : 3600;
@@ -1716,7 +1716,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -1758,7 +1758,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -1888,7 +1888,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -1933,7 +1933,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -2004,7 +2004,7 @@ class LoggingGcsApi
      * @param  string $format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
      * @param  string $log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (optional, default to 'none')
      * @param  int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. (optional, default to self::FORMAT_VERSION_v2)
-     * @param  string $message_type How the message should be formatted. (optional, default to 'classic')
+     * @param  string $message_type How the message should be formatted. (optional, default to 'blank')
      * @param  string $timestamp_format A timestamp format (optional)
      * @param  string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
      * @param  int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
@@ -2032,7 +2032,7 @@ class LoggingGcsApi
         $format = array_key_exists('format', $options) ? $options['format'] : '%h %l %u %t "%r" %&gt;s %b';
         $log_processing_region = array_key_exists('log_processing_region', $options) ? $options['log_processing_region'] : 'none';
         $format_version = array_key_exists('format_version', $options) ? $options['format_version'] : self::FORMAT_VERSION_v2;
-        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : 'classic';
+        $message_type = array_key_exists('message_type', $options) ? $options['message_type'] : 'blank';
         $timestamp_format = array_key_exists('timestamp_format', $options) ? $options['timestamp_format'] : null;
         $compression_codec = array_key_exists('compression_codec', $options) ? $options['compression_codec'] : null;
         $period = array_key_exists('period', $options) ? $options['period'] : 3600;

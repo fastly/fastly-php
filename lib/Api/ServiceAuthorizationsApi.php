@@ -714,7 +714,7 @@ class ServiceAuthorizationsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\InlineResponse20014
+     * @return \Fastly\Model\InlineResponse20022
      */
     public function deleteServiceAuthorization2($options)
     {
@@ -736,7 +736,7 @@ class ServiceAuthorizationsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\InlineResponse20014, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\InlineResponse20022, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteServiceAuthorization2WithHttpInfo($options)
     {
@@ -791,20 +791,20 @@ class ServiceAuthorizationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Fastly\Model\InlineResponse20014' === '\SplFileObject') {
+                    if ('\Fastly\Model\InlineResponse20022' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse20014', []),
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\InlineResponse20022', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Fastly\Model\InlineResponse20014';
+            $returnType = '\Fastly\Model\InlineResponse20022';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -822,7 +822,7 @@ class ServiceAuthorizationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Fastly\Model\InlineResponse20014',
+                        '\Fastly\Model\InlineResponse20022',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -874,7 +874,7 @@ class ServiceAuthorizationsApi
      */
     public function deleteServiceAuthorization2AsyncWithHttpInfo($options)
     {
-        $returnType = '\Fastly\Model\InlineResponse20014';
+        $returnType = '\Fastly\Model\InlineResponse20022';
         $request = $this->deleteServiceAuthorization2Request($options);
 
         return $this->client

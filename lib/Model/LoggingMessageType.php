@@ -37,13 +37,13 @@ class LoggingMessageType
     /**
      * Possible values of this enum
      */
+    const BLANK = 'blank';
+
     const CLASSIC = 'classic';
 
     const LOGGLY = 'loggly';
 
     const LOGPLEX = 'logplex';
-
-    const BLANK = 'blank';
 
     /**
      * Gets allowable values of the enum
@@ -52,10 +52,10 @@ class LoggingMessageType
     public static function getAllowableEnumValues()
     {
         return [
+            self::BLANK,
             self::CLASSIC,
             self::LOGGLY,
-            self::LOGPLEX,
-            self::BLANK
+            self::LOGPLEX
         ];
     }
 }

@@ -53,7 +53,8 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'results' => '\Fastly\Model\Suggestion[]'
+        'data' => '\Fastly\Model\Report[]',
+        'meta' => '\Fastly\Model\PaginationMeta'
     ];
 
     /**
@@ -64,7 +65,8 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'results' => null
+        'data' => null,
+        'meta' => null
     ];
 
     /**
@@ -94,7 +96,8 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results'
+        'data' => 'data',
+        'meta' => 'meta'
     ];
 
     /**
@@ -103,7 +106,8 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults'
+        'data' => 'setData',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -112,7 +116,8 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults'
+        'data' => 'getData',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -172,7 +177,8 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = $data['results'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
     }
 
     /**
@@ -200,25 +206,49 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets results
+     * Gets data
      *
-     * @return \Fastly\Model\Suggestion[]|null
+     * @return \Fastly\Model\Report[]|null
      */
-    public function getResults()
+    public function getData()
     {
-        return $this->container['results'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets results
+     * Sets data
      *
-     * @param \Fastly\Model\Suggestion[]|null $results results
+     * @param \Fastly\Model\Report[]|null $data data
      *
      * @return self
      */
-    public function setResults($results)
+    public function setData($data)
     {
-        $this->container['results'] = $results;
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \Fastly\Model\PaginationMeta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \Fastly\Model\PaginationMeta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        $this->container['meta'] = $meta;
 
         return $this;
     }

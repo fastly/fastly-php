@@ -53,8 +53,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'data' => '\Fastly\Model\DdosProtectionRuleWithStats[]',
-        'meta' => '\Fastly\Model\PaginationCursorMeta'
+        'data' => '\Fastly\Model\Page[]',
+        'meta' => '\Fastly\Model\PaginationMeta'
     ];
 
     /**
@@ -190,12 +190,6 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -214,7 +208,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Fastly\Model\DdosProtectionRuleWithStats[]
+     * @return \Fastly\Model\Page[]|null
      */
     public function getData()
     {
@@ -224,7 +218,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Fastly\Model\DdosProtectionRuleWithStats[] $data data
+     * @param \Fastly\Model\Page[]|null $data data
      *
      * @return self
      */
@@ -238,7 +232,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets meta
      *
-     * @return \Fastly\Model\PaginationCursorMeta
+     * @return \Fastly\Model\PaginationMeta|null
      */
     public function getMeta()
     {
@@ -248,7 +242,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets meta
      *
-     * @param \Fastly\Model\PaginationCursorMeta $meta meta
+     * @param \Fastly\Model\PaginationMeta|null $meta meta
      *
      * @return self
      */
