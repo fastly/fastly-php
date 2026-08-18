@@ -2,7 +2,7 @@
 /**
  * ContactResponse
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -238,7 +238,7 @@ class ContactResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['contact_type'] = $data['contact_type'] ?? null;

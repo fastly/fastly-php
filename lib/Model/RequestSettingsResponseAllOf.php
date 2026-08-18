@@ -2,7 +2,7 @@
 /**
  * RequestSettingsResponseAllOf
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -195,7 +195,7 @@ class RequestSettingsResponseAllOf implements ModelInterface, ArrayAccess, \Json
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['bypass_busy_wait'] = $data['bypass_busy_wait'] ?? null;
         $this->container['force_miss'] = $data['force_miss'] ?? null;

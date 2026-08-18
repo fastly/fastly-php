@@ -2,7 +2,7 @@
 /**
  * ServerResponse
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -230,7 +230,7 @@ class ServerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['weight'] = $data['weight'] ?? 100;
         $this->container['max_conn'] = $data['max_conn'] ?? 0;

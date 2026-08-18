@@ -2,7 +2,7 @@
 /**
  * Values
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -180,7 +180,13 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_resp_status_504' => 'int',
         'compute_resp_status_505' => 'int',
         'compute_resp_status_530' => 'int',
-        'compute_resp_status_5xx' => 'int'
+        'compute_resp_status_5xx' => 'int',
+        'http2' => 'int',
+        'http3' => 'int',
+        'tls_v10' => 'int',
+        'tls_v11' => 'int',
+        'tls_v12' => 'int',
+        'tls_v13' => 'int'
     ];
 
     /**
@@ -317,7 +323,13 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_resp_status_504' => 'int64',
         'compute_resp_status_505' => 'int64',
         'compute_resp_status_530' => 'int64',
-        'compute_resp_status_5xx' => 'int64'
+        'compute_resp_status_5xx' => 'int64',
+        'http2' => 'int64',
+        'http3' => 'int64',
+        'tls_v10' => 'int64',
+        'tls_v11' => 'int64',
+        'tls_v12' => 'int64',
+        'tls_v13' => 'int64'
     ];
 
     /**
@@ -473,7 +485,13 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_resp_status_504' => 'compute_resp_status_504',
         'compute_resp_status_505' => 'compute_resp_status_505',
         'compute_resp_status_530' => 'compute_resp_status_530',
-        'compute_resp_status_5xx' => 'compute_resp_status_5xx'
+        'compute_resp_status_5xx' => 'compute_resp_status_5xx',
+        'http2' => 'http2',
+        'http3' => 'http3',
+        'tls_v10' => 'tls_v10',
+        'tls_v11' => 'tls_v11',
+        'tls_v12' => 'tls_v12',
+        'tls_v13' => 'tls_v13'
     ];
 
     /**
@@ -608,7 +626,13 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_resp_status_504' => 'setComputeRespStatus504',
         'compute_resp_status_505' => 'setComputeRespStatus505',
         'compute_resp_status_530' => 'setComputeRespStatus530',
-        'compute_resp_status_5xx' => 'setComputeRespStatus5xx'
+        'compute_resp_status_5xx' => 'setComputeRespStatus5xx',
+        'http2' => 'setHttp2',
+        'http3' => 'setHttp3',
+        'tls_v10' => 'setTlsV10',
+        'tls_v11' => 'setTlsV11',
+        'tls_v12' => 'setTlsV12',
+        'tls_v13' => 'setTlsV13'
     ];
 
     /**
@@ -743,7 +767,13 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_resp_status_504' => 'getComputeRespStatus504',
         'compute_resp_status_505' => 'getComputeRespStatus505',
         'compute_resp_status_530' => 'getComputeRespStatus530',
-        'compute_resp_status_5xx' => 'getComputeRespStatus5xx'
+        'compute_resp_status_5xx' => 'getComputeRespStatus5xx',
+        'http2' => 'getHttp2',
+        'http3' => 'getHttp3',
+        'tls_v10' => 'getTlsV10',
+        'tls_v11' => 'getTlsV11',
+        'tls_v12' => 'getTlsV12',
+        'tls_v13' => 'getTlsV13'
     ];
 
     /**
@@ -801,7 +831,7 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['edge_requests'] = $data['edge_requests'] ?? null;
         $this->container['edge_resp_header_bytes'] = $data['edge_resp_header_bytes'] ?? null;
@@ -930,6 +960,12 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['compute_resp_status_505'] = $data['compute_resp_status_505'] ?? null;
         $this->container['compute_resp_status_530'] = $data['compute_resp_status_530'] ?? null;
         $this->container['compute_resp_status_5xx'] = $data['compute_resp_status_5xx'] ?? null;
+        $this->container['http2'] = $data['http2'] ?? null;
+        $this->container['http3'] = $data['http3'] ?? null;
+        $this->container['tls_v10'] = $data['tls_v10'] ?? null;
+        $this->container['tls_v11'] = $data['tls_v11'] ?? null;
+        $this->container['tls_v12'] = $data['tls_v12'] ?? null;
+        $this->container['tls_v13'] = $data['tls_v13'] ?? null;
     }
 
     /**
@@ -4000,6 +4036,150 @@ class Values implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setComputeRespStatus5xx($compute_resp_status_5xx)
     {
         $this->container['compute_resp_status_5xx'] = $compute_resp_status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets http2
+     *
+     * @return int|null
+     */
+    public function getHttp2()
+    {
+        return $this->container['http2'];
+    }
+
+    /**
+     * Sets http2
+     *
+     * @param int|null $http2 Number of requests received over HTTP/2.
+     *
+     * @return self
+     */
+    public function setHttp2($http2)
+    {
+        $this->container['http2'] = $http2;
+
+        return $this;
+    }
+
+    /**
+     * Gets http3
+     *
+     * @return int|null
+     */
+    public function getHttp3()
+    {
+        return $this->container['http3'];
+    }
+
+    /**
+     * Sets http3
+     *
+     * @param int|null $http3 Number of requests received over HTTP/3.
+     *
+     * @return self
+     */
+    public function setHttp3($http3)
+    {
+        $this->container['http3'] = $http3;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_v10
+     *
+     * @return int|null
+     */
+    public function getTlsV10()
+    {
+        return $this->container['tls_v10'];
+    }
+
+    /**
+     * Sets tls_v10
+     *
+     * @param int|null $tls_v10 Number of requests received over TLS 1.0.
+     *
+     * @return self
+     */
+    public function setTlsV10($tls_v10)
+    {
+        $this->container['tls_v10'] = $tls_v10;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_v11
+     *
+     * @return int|null
+     */
+    public function getTlsV11()
+    {
+        return $this->container['tls_v11'];
+    }
+
+    /**
+     * Sets tls_v11
+     *
+     * @param int|null $tls_v11 Number of requests received over TLS 1.1.
+     *
+     * @return self
+     */
+    public function setTlsV11($tls_v11)
+    {
+        $this->container['tls_v11'] = $tls_v11;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_v12
+     *
+     * @return int|null
+     */
+    public function getTlsV12()
+    {
+        return $this->container['tls_v12'];
+    }
+
+    /**
+     * Sets tls_v12
+     *
+     * @param int|null $tls_v12 Number of requests received over TLS 1.2.
+     *
+     * @return self
+     */
+    public function setTlsV12($tls_v12)
+    {
+        $this->container['tls_v12'] = $tls_v12;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_v13
+     *
+     * @return int|null
+     */
+    public function getTlsV13()
+    {
+        return $this->container['tls_v13'];
+    }
+
+    /**
+     * Sets tls_v13
+     *
+     * @param int|null $tls_v13 Number of requests received over TLS 1.3.
+     *
+     * @return self
+     */
+    public function setTlsV13($tls_v13)
+    {
+        $this->container['tls_v13'] = $tls_v13;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 /**
  * LoggingGooglePubsubAdditional
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -180,7 +180,7 @@ class LoggingGooglePubsubAdditional implements ModelInterface, ArrayAccess, \Jso
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['topic'] = $data['topic'] ?? null;
         $this->container['format'] = $data['format'] ?? '%h %l %u %t "%r" %&gt;s %b';

@@ -2,7 +2,7 @@
 /**
  * ValuesDdos
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -196,7 +196,7 @@ class ValuesDdos implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['ddos_action_limit_streams_connections'] = $data['ddos_action_limit_streams_connections'] ?? null;
         $this->container['ddos_action_limit_streams_requests'] = $data['ddos_action_limit_streams_requests'] ?? null;

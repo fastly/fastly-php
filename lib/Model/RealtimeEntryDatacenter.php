@@ -2,7 +2,7 @@
 /**
  * RealtimeEntryDatacenter
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -389,7 +389,9 @@ class RealtimeEntryDatacenter implements ModelInterface, ArrayAccess, \JsonSeria
         'compute_service_bereq_5xx_error' => 'int',
         'compute_service_bereq_conn_error' => 'int',
         'compute_service_bereq_tls_error' => 'int',
-        'compute_service_bereq_http_error' => 'int'
+        'compute_service_bereq_http_error' => 'int',
+        'bot_challenges_pats_issued' => 'int',
+        'bot_challenges_pats_succeeded' => 'int'
     ];
 
     /**
@@ -735,7 +737,9 @@ class RealtimeEntryDatacenter implements ModelInterface, ArrayAccess, \JsonSeria
         'compute_service_bereq_5xx_error' => null,
         'compute_service_bereq_conn_error' => null,
         'compute_service_bereq_tls_error' => null,
-        'compute_service_bereq_http_error' => null
+        'compute_service_bereq_http_error' => null,
+        'bot_challenges_pats_issued' => null,
+        'bot_challenges_pats_succeeded' => null
     ];
 
     /**
@@ -1100,7 +1104,9 @@ class RealtimeEntryDatacenter implements ModelInterface, ArrayAccess, \JsonSeria
         'compute_service_bereq_5xx_error' => 'compute_service_bereq_5xx_error',
         'compute_service_bereq_conn_error' => 'compute_service_bereq_conn_error',
         'compute_service_bereq_tls_error' => 'compute_service_bereq_tls_error',
-        'compute_service_bereq_http_error' => 'compute_service_bereq_http_error'
+        'compute_service_bereq_http_error' => 'compute_service_bereq_http_error',
+        'bot_challenges_pats_issued' => 'bot_challenges_pats_issued',
+        'bot_challenges_pats_succeeded' => 'bot_challenges_pats_succeeded'
     ];
 
     /**
@@ -1444,7 +1450,9 @@ class RealtimeEntryDatacenter implements ModelInterface, ArrayAccess, \JsonSeria
         'compute_service_bereq_5xx_error' => 'setComputeServiceBereq5xxError',
         'compute_service_bereq_conn_error' => 'setComputeServiceBereqConnError',
         'compute_service_bereq_tls_error' => 'setComputeServiceBereqTlsError',
-        'compute_service_bereq_http_error' => 'setComputeServiceBereqHttpError'
+        'compute_service_bereq_http_error' => 'setComputeServiceBereqHttpError',
+        'bot_challenges_pats_issued' => 'setBotChallengesPatsIssued',
+        'bot_challenges_pats_succeeded' => 'setBotChallengesPatsSucceeded'
     ];
 
     /**
@@ -1788,7 +1796,9 @@ class RealtimeEntryDatacenter implements ModelInterface, ArrayAccess, \JsonSeria
         'compute_service_bereq_5xx_error' => 'getComputeServiceBereq5xxError',
         'compute_service_bereq_conn_error' => 'getComputeServiceBereqConnError',
         'compute_service_bereq_tls_error' => 'getComputeServiceBereqTlsError',
-        'compute_service_bereq_http_error' => 'getComputeServiceBereqHttpError'
+        'compute_service_bereq_http_error' => 'getComputeServiceBereqHttpError',
+        'bot_challenges_pats_issued' => 'getBotChallengesPatsIssued',
+        'bot_challenges_pats_succeeded' => 'getBotChallengesPatsSucceeded'
     ];
 
     /**
@@ -1846,7 +1856,7 @@ class RealtimeEntryDatacenter implements ModelInterface, ArrayAccess, \JsonSeria
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['requests'] = $data['requests'] ?? null;
         $this->container['logging'] = $data['logging'] ?? null;
@@ -2184,6 +2194,8 @@ class RealtimeEntryDatacenter implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['compute_service_bereq_conn_error'] = $data['compute_service_bereq_conn_error'] ?? null;
         $this->container['compute_service_bereq_tls_error'] = $data['compute_service_bereq_tls_error'] ?? null;
         $this->container['compute_service_bereq_http_error'] = $data['compute_service_bereq_http_error'] ?? null;
+        $this->container['bot_challenges_pats_issued'] = $data['bot_challenges_pats_issued'] ?? null;
+        $this->container['bot_challenges_pats_succeeded'] = $data['bot_challenges_pats_succeeded'] ?? null;
     }
 
     /**
@@ -10288,6 +10300,54 @@ class RealtimeEntryDatacenter implements ModelInterface, ArrayAccess, \JsonSeria
     public function setComputeServiceBereqHttpError($compute_service_bereq_http_error)
     {
         $this->container['compute_service_bereq_http_error'] = $compute_service_bereq_http_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_pats_issued
+     *
+     * @return int|null
+     */
+    public function getBotChallengesPatsIssued()
+    {
+        return $this->container['bot_challenges_pats_issued'];
+    }
+
+    /**
+     * Sets bot_challenges_pats_issued
+     *
+     * @param int|null $bot_challenges_pats_issued Number of Private Access Token challenges issued.
+     *
+     * @return self
+     */
+    public function setBotChallengesPatsIssued($bot_challenges_pats_issued)
+    {
+        $this->container['bot_challenges_pats_issued'] = $bot_challenges_pats_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_pats_succeeded
+     *
+     * @return int|null
+     */
+    public function getBotChallengesPatsSucceeded()
+    {
+        return $this->container['bot_challenges_pats_succeeded'];
+    }
+
+    /**
+     * Sets bot_challenges_pats_succeeded
+     *
+     * @param int|null $bot_challenges_pats_succeeded Number of successful Private Access Token challenge solutions processed.
+     *
+     * @return self
+     */
+    public function setBotChallengesPatsSucceeded($bot_challenges_pats_succeeded)
+    {
+        $this->container['bot_challenges_pats_succeeded'] = $bot_challenges_pats_succeeded;
 
         return $this;
     }

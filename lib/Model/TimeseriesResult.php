@@ -2,7 +2,7 @@
 /**
  * TimeseriesResult
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -175,7 +175,7 @@ class TimeseriesResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['dimensions'] = $data['dimensions'] ?? null;
         $this->container['values'] = $data['values'] ?? null;

@@ -2,7 +2,7 @@
 /**
  * LoggingGenericCommonResponseAllOf
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -216,7 +216,7 @@ class LoggingGenericCommonResponseAllOf implements ModelInterface, ArrayAccess, 
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['message_type'] = $data['message_type'] ?? 'blank';
         $this->container['timestamp_format'] = $data['timestamp_format'] ?? null;

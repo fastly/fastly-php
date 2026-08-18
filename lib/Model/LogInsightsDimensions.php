@@ -2,7 +2,7 @@
 /**
  * LogInsightsDimensions
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -205,7 +205,7 @@ class LogInsightsDimensions implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['url'] = $data['url'] ?? null;
         $this->container['country'] = $data['country'] ?? null;

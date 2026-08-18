@@ -1,7 +1,7 @@
 <?php
 /**
  * NgwafReportsApi
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -70,9 +70,9 @@ class NgwafReportsApi
      * @param int             $hostIndex (Optional) host index to select the list of hosts if multiple are defined
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null,
         $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
@@ -124,7 +124,7 @@ class NgwafReportsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\ListAttackReport|object|object|object|object
+     * @return \Fastly\Model\ListAttackReport|object|object|object|object|object
      */
     public function getAttacksReport($options)
     {
@@ -147,7 +147,7 @@ class NgwafReportsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\ListAttackReport|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\ListAttackReport|object|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAttacksReportWithHttpInfo($options)
     {
@@ -249,6 +249,18 @@ class NgwafReportsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 429:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -303,6 +315,14 @@ class NgwafReportsApi
                     $e->setResponseObject($data);
                     break;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',
@@ -547,7 +567,7 @@ class NgwafReportsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\ListSignalReport|object|object|object|object
+     * @return \Fastly\Model\ListSignalReport|object|object|object|object|object
      */
     public function getSignalsReport($options)
     {
@@ -571,7 +591,7 @@ class NgwafReportsApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\ListSignalReport|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\ListSignalReport|object|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSignalsReportWithHttpInfo($options)
     {
@@ -673,6 +693,18 @@ class NgwafReportsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('object' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'object', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 429:
                     if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -727,6 +759,14 @@ class NgwafReportsApi
                     $e->setResponseObject($data);
                     break;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'object',

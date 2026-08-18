@@ -1,5 +1,35 @@
 # Changelog
 
+## [v15.0.0](https://github.com/fastly/fastly-php/releases/tag/release/v15.0.0) (2026-08-18)
+
+**Breaking Changes:**
+
+- breaking(php): Raise the minimum supported PHP version to 8.0. The generated code has
+  required PHP 8.0 since it began emitting `mixed` return types (offsetGet, jsonSerialize),
+  but composer.json still declared ">=7.3"; the constraint now matches reality.
+
+**Bug fixes:**
+
+- bugfix(php): Use explicit nullable parameter types in API and model constructors, fixing
+  "Implicitly marking parameter as nullable is deprecated" warnings on PHP 8.4 (fastly-php#52)
+
+**Enhancements:**
+
+- feat(historical, realtime): Add new Private Access Token (PAT) challenge metrics: `bot_challenges_pats_issued` and `bot_challenges_pats_succeeded`.
+- feat(domain_inspector_historical, domain_inspector_realtime): Add new metrics describing the distribution of HTTP and TLS versions used by incoming requests: `http2`, `http3`, `tls_v10`, `tls_v11`, `tls_v12`, and `tls_v13`.
+
+- feat(ngwaf_rules): Add `created_by` to rule responses.
+- feat(ngwaf_signals): Add `created_by` to signal responses.
+- feat(ngwaf): Document missing error response codes across several Next-Gen WAF endpoints.
+
+- feat(logging_endpoint_errors): Add new Logging Endpoint Errors API for creating error records and streaming recent errors from logging endpoints.
+
+
+**Documentation:**
+
+- doc(config_store, config_store_item, secret_store, secret_store_item): Update links to the config store and secret store documentation guides.
+
+
 ## [v14.0.0](https://github.com/fastly/fastly-php/releases/tag/release/v14.0.0) (2026-07-17)
 
 **Breaking Changes:**

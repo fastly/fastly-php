@@ -21,7 +21,7 @@
         "email": "oss@fastly.com"
     },
     "require": {
-        "php": ">=7.3",
+        "php": ">=8.0",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",

@@ -1,7 +1,7 @@
 <?php
 /**
  * Configuration
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -29,7 +29,7 @@ define("DEFAULT_RATELIMIT", 1000);
 
 /**
  * Configuration Class Doc Comment
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -89,7 +89,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'fastly-php/14.0.0';
+    protected $userAgent = 'fastly-php/15.0.0';
 
     /**
      * Debug switch (default set to false)
@@ -460,7 +460,7 @@ class Configuration
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the schema document: 1.0.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 14.0.0' . PHP_EOL;
+        $report .= '    SDK Package Version: 15.0.0' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;

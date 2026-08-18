@@ -1,7 +1,7 @@
 <?php
 /**
  * ClientSideProtectionApi
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -70,9 +70,9 @@ class ClientSideProtectionApi
      * @param int             $hostIndex (Optional) host index to select the list of hosts if multiple are defined
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null,
         $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();

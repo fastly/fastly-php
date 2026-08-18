@@ -2,7 +2,7 @@
 /**
  * LoggingRequestCapsCommon
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -175,7 +175,7 @@ class LoggingRequestCapsCommon implements ModelInterface, ArrayAccess, \JsonSeri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['request_max_entries'] = $data['request_max_entries'] ?? 0;
         $this->container['request_max_bytes'] = $data['request_max_bytes'] ?? 0;

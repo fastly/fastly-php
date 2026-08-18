@@ -2,7 +2,7 @@
 /**
  * TlsConfigurationDataAttributes
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -170,7 +170,7 @@ class TlsConfigurationDataAttributes implements ModelInterface, ArrayAccess, \Js
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
     }

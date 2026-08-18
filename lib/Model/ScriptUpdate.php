@@ -2,7 +2,7 @@
 /**
  * ScriptUpdate
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -195,7 +195,7 @@ class ScriptUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['authorization_status'] = $data['authorization_status'] ?? null;
         $this->container['justification'] = $data['justification'] ?? null;

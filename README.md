@@ -5,7 +5,7 @@ A PHP client library for interacting with most facets of the [Fastly API](https:
 
 ## Installation
 
-Requires PHP 7.3 or later.
+Requires PHP 8.0 or later.
 
 To install via [Composer](https://getcomposer.org/), add the following to your project's `composer.json`:
 
@@ -365,6 +365,7 @@ Class | Method | Description
 [*LoggingElasticsearchApi*](docs/Api/LoggingElasticsearchApi.md) | [**getLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#getlogelasticsearch) | Get an Elasticsearch log endpoint
 [*LoggingElasticsearchApi*](docs/Api/LoggingElasticsearchApi.md) | [**listLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#listlogelasticsearch) | List Elasticsearch log endpoints
 [*LoggingElasticsearchApi*](docs/Api/LoggingElasticsearchApi.md) | [**updateLogElasticsearch**](docs/Api/LoggingElasticsearchApi.md#updatelogelasticsearch) | Update an Elasticsearch log endpoint
+[*LoggingEndpointErrorsApi*](docs/Api/LoggingEndpointErrorsApi.md) | [**getLogEndpointErrors**](docs/Api/LoggingEndpointErrorsApi.md#getlogendpointerrors) | Stream Log Endpoint Errors
 [*LoggingFtpApi*](docs/Api/LoggingFtpApi.md) | [**createLogFtp**](docs/Api/LoggingFtpApi.md#createlogftp) | Create an FTP log endpoint
 [*LoggingFtpApi*](docs/Api/LoggingFtpApi.md) | [**deleteLogFtp**](docs/Api/LoggingFtpApi.md#deletelogftp) | Delete an FTP log endpoint
 [*LoggingFtpApi*](docs/Api/LoggingFtpApi.md) | [**getLogFtp**](docs/Api/LoggingFtpApi.md#getlogftp) | Get an FTP log endpoint

@@ -2,7 +2,7 @@
 /**
  * VersionDetail
  *
- * PHP version 7.3
+ * PHP version 8.0
  *
  * @category Class
  * @package  Fastly
@@ -235,7 +235,7 @@ class VersionDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['backends'] = $data['backends'] ?? null;
         $this->container['cache_settings'] = $data['cache_settings'] ?? null;
