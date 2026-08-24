@@ -13,6 +13,13 @@ jobs:
   publish:
     name: Publish to Packagist
     runs-on: ubuntu-latest
+    permissions:
+      # Needed twice over: `publish.sh` pushes the `v<version>` tag that
+      # Packagist watches, and the "Create GitHub release" step creates the
+      # release. `write` is the repository default, but stating it explicitly
+      # means adding another scope here later (e.g. `id-token: write` for
+      # trusted publishing) cannot silently drop `contents` to `none`.
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
