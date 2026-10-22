@@ -128,6 +128,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'attack_passed_req_header_bytes' => 'int',
         'attack_resp_synth_bytes' => 'int',
         'imgopto' => 'int',
+        'imgopto_input_image_bytes' => 'int',
+        'imgopto_output_image_bytes' => 'int',
         'imgopto_resp_body_bytes' => 'int',
         'imgopto_resp_header_bytes' => 'int',
         'imgopto_shield' => 'int',
@@ -399,6 +401,35 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_bereq_http_error' => 'int',
         'bot_challenges_pats_issued' => 'int',
         'bot_challenges_pats_succeeded' => 'int',
+        'bot_edge_requests_headless_count' => 'int',
+        'status_499' => 'int',
+        'arc_requests' => 'int',
+        'ddos_challenge_complete_tokens_checked' => 'int',
+        'ddos_challenge_complete_tokens_passed' => 'int',
+        'ddos_challenge_complete_tokens_failed' => 'int',
+        'ddos_challenge_starts' => 'int',
+        'ddos_challenge_complete_tokens_issued' => 'int',
+        'ddos_challenges_issued' => 'int',
+        'ddos_challenges_succeeded' => 'int',
+        'ddos_challenges_failed' => 'int',
+        'ddos_challenges_pats_issued' => 'int',
+        'ddos_challenges_pats_succeeded' => 'int',
+        'arc_ai_firewall_requests' => 'int',
+        'arc_ai_firewall_blocked' => 'int',
+        'bot_edge_challenge_complete_tokens_issued' => 'int',
+        'bot_edge_challenges_issued' => 'int',
+        'bot_edge_challenges_succeeded' => 'int',
+        'bot_edge_challenges_failed' => 'int',
+        'bot_edge_challenges_pats_issued' => 'int',
+        'bot_edge_challenges_pats_succeeded' => 'int',
+        'netprotect_gre_sent_bytes' => 'int',
+        'netprotect_gre_sent_packets' => 'int',
+        'netprotect_received_bytes' => 'int',
+        'netprotect_received_packets' => 'int',
+        'netprotect_firewall_dropped_bytes' => 'int',
+        'netprotect_firewall_dropped_packets' => 'int',
+        'api_enforcement_allowed_requests_count' => 'int',
+        'api_enforcement_flagged_requests_count' => 'int',
         'service_id' => 'string',
         'start_time' => 'int'
     ];
@@ -485,6 +516,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'attack_passed_req_header_bytes' => 'int64',
         'attack_resp_synth_bytes' => 'int64',
         'imgopto' => 'int64',
+        'imgopto_input_image_bytes' => 'int64',
+        'imgopto_output_image_bytes' => 'int64',
         'imgopto_resp_body_bytes' => 'int64',
         'imgopto_resp_header_bytes' => 'int64',
         'imgopto_shield' => 'int64',
@@ -756,6 +789,35 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_bereq_http_error' => null,
         'bot_challenges_pats_issued' => null,
         'bot_challenges_pats_succeeded' => null,
+        'bot_edge_requests_headless_count' => null,
+        'status_499' => null,
+        'arc_requests' => null,
+        'ddos_challenge_complete_tokens_checked' => null,
+        'ddos_challenge_complete_tokens_passed' => null,
+        'ddos_challenge_complete_tokens_failed' => null,
+        'ddos_challenge_starts' => null,
+        'ddos_challenge_complete_tokens_issued' => null,
+        'ddos_challenges_issued' => null,
+        'ddos_challenges_succeeded' => null,
+        'ddos_challenges_failed' => null,
+        'ddos_challenges_pats_issued' => null,
+        'ddos_challenges_pats_succeeded' => null,
+        'arc_ai_firewall_requests' => null,
+        'arc_ai_firewall_blocked' => null,
+        'bot_edge_challenge_complete_tokens_issued' => null,
+        'bot_edge_challenges_issued' => null,
+        'bot_edge_challenges_succeeded' => null,
+        'bot_edge_challenges_failed' => null,
+        'bot_edge_challenges_pats_issued' => null,
+        'bot_edge_challenges_pats_succeeded' => null,
+        'netprotect_gre_sent_bytes' => null,
+        'netprotect_gre_sent_packets' => null,
+        'netprotect_received_bytes' => null,
+        'netprotect_received_packets' => null,
+        'netprotect_firewall_dropped_bytes' => null,
+        'netprotect_firewall_dropped_packets' => null,
+        'api_enforcement_allowed_requests_count' => null,
+        'api_enforcement_flagged_requests_count' => null,
         'service_id' => null,
         'start_time' => 'int64'
     ];
@@ -861,6 +923,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'attack_passed_req_header_bytes' => 'attack_passed_req_header_bytes',
         'attack_resp_synth_bytes' => 'attack_resp_synth_bytes',
         'imgopto' => 'imgopto',
+        'imgopto_input_image_bytes' => 'imgopto_input_image_bytes',
+        'imgopto_output_image_bytes' => 'imgopto_output_image_bytes',
         'imgopto_resp_body_bytes' => 'imgopto_resp_body_bytes',
         'imgopto_resp_header_bytes' => 'imgopto_resp_header_bytes',
         'imgopto_shield' => 'imgopto_shield',
@@ -1132,6 +1196,35 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_bereq_http_error' => 'compute_service_bereq_http_error',
         'bot_challenges_pats_issued' => 'bot_challenges_pats_issued',
         'bot_challenges_pats_succeeded' => 'bot_challenges_pats_succeeded',
+        'bot_edge_requests_headless_count' => 'bot_edge_requests_headless_count',
+        'status_499' => 'status_499',
+        'arc_requests' => 'arc_requests',
+        'ddos_challenge_complete_tokens_checked' => 'ddos_challenge_complete_tokens_checked',
+        'ddos_challenge_complete_tokens_passed' => 'ddos_challenge_complete_tokens_passed',
+        'ddos_challenge_complete_tokens_failed' => 'ddos_challenge_complete_tokens_failed',
+        'ddos_challenge_starts' => 'ddos_challenge_starts',
+        'ddos_challenge_complete_tokens_issued' => 'ddos_challenge_complete_tokens_issued',
+        'ddos_challenges_issued' => 'ddos_challenges_issued',
+        'ddos_challenges_succeeded' => 'ddos_challenges_succeeded',
+        'ddos_challenges_failed' => 'ddos_challenges_failed',
+        'ddos_challenges_pats_issued' => 'ddos_challenges_pats_issued',
+        'ddos_challenges_pats_succeeded' => 'ddos_challenges_pats_succeeded',
+        'arc_ai_firewall_requests' => 'arc_ai_firewall_requests',
+        'arc_ai_firewall_blocked' => 'arc_ai_firewall_blocked',
+        'bot_edge_challenge_complete_tokens_issued' => 'bot_edge_challenge_complete_tokens_issued',
+        'bot_edge_challenges_issued' => 'bot_edge_challenges_issued',
+        'bot_edge_challenges_succeeded' => 'bot_edge_challenges_succeeded',
+        'bot_edge_challenges_failed' => 'bot_edge_challenges_failed',
+        'bot_edge_challenges_pats_issued' => 'bot_edge_challenges_pats_issued',
+        'bot_edge_challenges_pats_succeeded' => 'bot_edge_challenges_pats_succeeded',
+        'netprotect_gre_sent_bytes' => 'netprotect_gre_sent_bytes',
+        'netprotect_gre_sent_packets' => 'netprotect_gre_sent_packets',
+        'netprotect_received_bytes' => 'netprotect_received_bytes',
+        'netprotect_received_packets' => 'netprotect_received_packets',
+        'netprotect_firewall_dropped_bytes' => 'netprotect_firewall_dropped_bytes',
+        'netprotect_firewall_dropped_packets' => 'netprotect_firewall_dropped_packets',
+        'api_enforcement_allowed_requests_count' => 'api_enforcement_allowed_requests_count',
+        'api_enforcement_flagged_requests_count' => 'api_enforcement_flagged_requests_count',
         'service_id' => 'service_id',
         'start_time' => 'start_time'
     ];
@@ -1216,6 +1309,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'attack_passed_req_header_bytes' => 'setAttackPassedReqHeaderBytes',
         'attack_resp_synth_bytes' => 'setAttackRespSynthBytes',
         'imgopto' => 'setImgopto',
+        'imgopto_input_image_bytes' => 'setImgoptoInputImageBytes',
+        'imgopto_output_image_bytes' => 'setImgoptoOutputImageBytes',
         'imgopto_resp_body_bytes' => 'setImgoptoRespBodyBytes',
         'imgopto_resp_header_bytes' => 'setImgoptoRespHeaderBytes',
         'imgopto_shield' => 'setImgoptoShield',
@@ -1487,6 +1582,35 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_bereq_http_error' => 'setComputeServiceBereqHttpError',
         'bot_challenges_pats_issued' => 'setBotChallengesPatsIssued',
         'bot_challenges_pats_succeeded' => 'setBotChallengesPatsSucceeded',
+        'bot_edge_requests_headless_count' => 'setBotEdgeRequestsHeadlessCount',
+        'status_499' => 'setStatus499',
+        'arc_requests' => 'setArcRequests',
+        'ddos_challenge_complete_tokens_checked' => 'setDdosChallengeCompleteTokensChecked',
+        'ddos_challenge_complete_tokens_passed' => 'setDdosChallengeCompleteTokensPassed',
+        'ddos_challenge_complete_tokens_failed' => 'setDdosChallengeCompleteTokensFailed',
+        'ddos_challenge_starts' => 'setDdosChallengeStarts',
+        'ddos_challenge_complete_tokens_issued' => 'setDdosChallengeCompleteTokensIssued',
+        'ddos_challenges_issued' => 'setDdosChallengesIssued',
+        'ddos_challenges_succeeded' => 'setDdosChallengesSucceeded',
+        'ddos_challenges_failed' => 'setDdosChallengesFailed',
+        'ddos_challenges_pats_issued' => 'setDdosChallengesPatsIssued',
+        'ddos_challenges_pats_succeeded' => 'setDdosChallengesPatsSucceeded',
+        'arc_ai_firewall_requests' => 'setArcAiFirewallRequests',
+        'arc_ai_firewall_blocked' => 'setArcAiFirewallBlocked',
+        'bot_edge_challenge_complete_tokens_issued' => 'setBotEdgeChallengeCompleteTokensIssued',
+        'bot_edge_challenges_issued' => 'setBotEdgeChallengesIssued',
+        'bot_edge_challenges_succeeded' => 'setBotEdgeChallengesSucceeded',
+        'bot_edge_challenges_failed' => 'setBotEdgeChallengesFailed',
+        'bot_edge_challenges_pats_issued' => 'setBotEdgeChallengesPatsIssued',
+        'bot_edge_challenges_pats_succeeded' => 'setBotEdgeChallengesPatsSucceeded',
+        'netprotect_gre_sent_bytes' => 'setNetprotectGreSentBytes',
+        'netprotect_gre_sent_packets' => 'setNetprotectGreSentPackets',
+        'netprotect_received_bytes' => 'setNetprotectReceivedBytes',
+        'netprotect_received_packets' => 'setNetprotectReceivedPackets',
+        'netprotect_firewall_dropped_bytes' => 'setNetprotectFirewallDroppedBytes',
+        'netprotect_firewall_dropped_packets' => 'setNetprotectFirewallDroppedPackets',
+        'api_enforcement_allowed_requests_count' => 'setApiEnforcementAllowedRequestsCount',
+        'api_enforcement_flagged_requests_count' => 'setApiEnforcementFlaggedRequestsCount',
         'service_id' => 'setServiceId',
         'start_time' => 'setStartTime'
     ];
@@ -1571,6 +1695,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'attack_passed_req_header_bytes' => 'getAttackPassedReqHeaderBytes',
         'attack_resp_synth_bytes' => 'getAttackRespSynthBytes',
         'imgopto' => 'getImgopto',
+        'imgopto_input_image_bytes' => 'getImgoptoInputImageBytes',
+        'imgopto_output_image_bytes' => 'getImgoptoOutputImageBytes',
         'imgopto_resp_body_bytes' => 'getImgoptoRespBodyBytes',
         'imgopto_resp_header_bytes' => 'getImgoptoRespHeaderBytes',
         'imgopto_shield' => 'getImgoptoShield',
@@ -1842,6 +1968,35 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'compute_service_bereq_http_error' => 'getComputeServiceBereqHttpError',
         'bot_challenges_pats_issued' => 'getBotChallengesPatsIssued',
         'bot_challenges_pats_succeeded' => 'getBotChallengesPatsSucceeded',
+        'bot_edge_requests_headless_count' => 'getBotEdgeRequestsHeadlessCount',
+        'status_499' => 'getStatus499',
+        'arc_requests' => 'getArcRequests',
+        'ddos_challenge_complete_tokens_checked' => 'getDdosChallengeCompleteTokensChecked',
+        'ddos_challenge_complete_tokens_passed' => 'getDdosChallengeCompleteTokensPassed',
+        'ddos_challenge_complete_tokens_failed' => 'getDdosChallengeCompleteTokensFailed',
+        'ddos_challenge_starts' => 'getDdosChallengeStarts',
+        'ddos_challenge_complete_tokens_issued' => 'getDdosChallengeCompleteTokensIssued',
+        'ddos_challenges_issued' => 'getDdosChallengesIssued',
+        'ddos_challenges_succeeded' => 'getDdosChallengesSucceeded',
+        'ddos_challenges_failed' => 'getDdosChallengesFailed',
+        'ddos_challenges_pats_issued' => 'getDdosChallengesPatsIssued',
+        'ddos_challenges_pats_succeeded' => 'getDdosChallengesPatsSucceeded',
+        'arc_ai_firewall_requests' => 'getArcAiFirewallRequests',
+        'arc_ai_firewall_blocked' => 'getArcAiFirewallBlocked',
+        'bot_edge_challenge_complete_tokens_issued' => 'getBotEdgeChallengeCompleteTokensIssued',
+        'bot_edge_challenges_issued' => 'getBotEdgeChallengesIssued',
+        'bot_edge_challenges_succeeded' => 'getBotEdgeChallengesSucceeded',
+        'bot_edge_challenges_failed' => 'getBotEdgeChallengesFailed',
+        'bot_edge_challenges_pats_issued' => 'getBotEdgeChallengesPatsIssued',
+        'bot_edge_challenges_pats_succeeded' => 'getBotEdgeChallengesPatsSucceeded',
+        'netprotect_gre_sent_bytes' => 'getNetprotectGreSentBytes',
+        'netprotect_gre_sent_packets' => 'getNetprotectGreSentPackets',
+        'netprotect_received_bytes' => 'getNetprotectReceivedBytes',
+        'netprotect_received_packets' => 'getNetprotectReceivedPackets',
+        'netprotect_firewall_dropped_bytes' => 'getNetprotectFirewallDroppedBytes',
+        'netprotect_firewall_dropped_packets' => 'getNetprotectFirewallDroppedPackets',
+        'api_enforcement_allowed_requests_count' => 'getApiEnforcementAllowedRequestsCount',
+        'api_enforcement_flagged_requests_count' => 'getApiEnforcementFlaggedRequestsCount',
         'service_id' => 'getServiceId',
         'start_time' => 'getStartTime'
     ];
@@ -1977,6 +2132,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['attack_passed_req_header_bytes'] = $data['attack_passed_req_header_bytes'] ?? null;
         $this->container['attack_resp_synth_bytes'] = $data['attack_resp_synth_bytes'] ?? null;
         $this->container['imgopto'] = $data['imgopto'] ?? null;
+        $this->container['imgopto_input_image_bytes'] = $data['imgopto_input_image_bytes'] ?? null;
+        $this->container['imgopto_output_image_bytes'] = $data['imgopto_output_image_bytes'] ?? null;
         $this->container['imgopto_resp_body_bytes'] = $data['imgopto_resp_body_bytes'] ?? null;
         $this->container['imgopto_resp_header_bytes'] = $data['imgopto_resp_header_bytes'] ?? null;
         $this->container['imgopto_shield'] = $data['imgopto_shield'] ?? null;
@@ -2248,6 +2405,35 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['compute_service_bereq_http_error'] = $data['compute_service_bereq_http_error'] ?? null;
         $this->container['bot_challenges_pats_issued'] = $data['bot_challenges_pats_issued'] ?? null;
         $this->container['bot_challenges_pats_succeeded'] = $data['bot_challenges_pats_succeeded'] ?? null;
+        $this->container['bot_edge_requests_headless_count'] = $data['bot_edge_requests_headless_count'] ?? null;
+        $this->container['status_499'] = $data['status_499'] ?? null;
+        $this->container['arc_requests'] = $data['arc_requests'] ?? null;
+        $this->container['ddos_challenge_complete_tokens_checked'] = $data['ddos_challenge_complete_tokens_checked'] ?? null;
+        $this->container['ddos_challenge_complete_tokens_passed'] = $data['ddos_challenge_complete_tokens_passed'] ?? null;
+        $this->container['ddos_challenge_complete_tokens_failed'] = $data['ddos_challenge_complete_tokens_failed'] ?? null;
+        $this->container['ddos_challenge_starts'] = $data['ddos_challenge_starts'] ?? null;
+        $this->container['ddos_challenge_complete_tokens_issued'] = $data['ddos_challenge_complete_tokens_issued'] ?? null;
+        $this->container['ddos_challenges_issued'] = $data['ddos_challenges_issued'] ?? null;
+        $this->container['ddos_challenges_succeeded'] = $data['ddos_challenges_succeeded'] ?? null;
+        $this->container['ddos_challenges_failed'] = $data['ddos_challenges_failed'] ?? null;
+        $this->container['ddos_challenges_pats_issued'] = $data['ddos_challenges_pats_issued'] ?? null;
+        $this->container['ddos_challenges_pats_succeeded'] = $data['ddos_challenges_pats_succeeded'] ?? null;
+        $this->container['arc_ai_firewall_requests'] = $data['arc_ai_firewall_requests'] ?? null;
+        $this->container['arc_ai_firewall_blocked'] = $data['arc_ai_firewall_blocked'] ?? null;
+        $this->container['bot_edge_challenge_complete_tokens_issued'] = $data['bot_edge_challenge_complete_tokens_issued'] ?? null;
+        $this->container['bot_edge_challenges_issued'] = $data['bot_edge_challenges_issued'] ?? null;
+        $this->container['bot_edge_challenges_succeeded'] = $data['bot_edge_challenges_succeeded'] ?? null;
+        $this->container['bot_edge_challenges_failed'] = $data['bot_edge_challenges_failed'] ?? null;
+        $this->container['bot_edge_challenges_pats_issued'] = $data['bot_edge_challenges_pats_issued'] ?? null;
+        $this->container['bot_edge_challenges_pats_succeeded'] = $data['bot_edge_challenges_pats_succeeded'] ?? null;
+        $this->container['netprotect_gre_sent_bytes'] = $data['netprotect_gre_sent_bytes'] ?? null;
+        $this->container['netprotect_gre_sent_packets'] = $data['netprotect_gre_sent_packets'] ?? null;
+        $this->container['netprotect_received_bytes'] = $data['netprotect_received_bytes'] ?? null;
+        $this->container['netprotect_received_packets'] = $data['netprotect_received_packets'] ?? null;
+        $this->container['netprotect_firewall_dropped_bytes'] = $data['netprotect_firewall_dropped_bytes'] ?? null;
+        $this->container['netprotect_firewall_dropped_packets'] = $data['netprotect_firewall_dropped_packets'] ?? null;
+        $this->container['api_enforcement_allowed_requests_count'] = $data['api_enforcement_allowed_requests_count'] ?? null;
+        $this->container['api_enforcement_flagged_requests_count'] = $data['api_enforcement_flagged_requests_count'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
     }
@@ -4048,6 +4234,54 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setImgopto($imgopto)
     {
         $this->container['imgopto'] = $imgopto;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_input_image_bytes
+     *
+     * @return int|null
+     */
+    public function getImgoptoInputImageBytes()
+    {
+        return $this->container['imgopto_input_image_bytes'];
+    }
+
+    /**
+     * Sets imgopto_input_image_bytes
+     *
+     * @param int|null $imgopto_input_image_bytes The total image bytes that would have been delivered if the images had not been transformed by the Fastly Image Optimizer. Bytes are counted once per client request. Byte counts exclude shield traffic and requests where Fastly Image Optimizer proxied a request without attempting to transform it (e.g., file types that are not supported by Image Optimizer).
+     *
+     * @return self
+     */
+    public function setImgoptoInputImageBytes($imgopto_input_image_bytes)
+    {
+        $this->container['imgopto_input_image_bytes'] = $imgopto_input_image_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_output_image_bytes
+     *
+     * @return int|null
+     */
+    public function getImgoptoOutputImageBytes()
+    {
+        return $this->container['imgopto_output_image_bytes'];
+    }
+
+    /**
+     * Sets imgopto_output_image_bytes
+     *
+     * @param int|null $imgopto_output_image_bytes The total image bytes delivered that have been transformed by the Fastly Image Optimizer. Bytes are counted once per client request. Byte counts exclude shield traffic and requests where Fastly Image Optimizer proxied a request without attempting to transform it (e.g., file types that are not supported by Image Optimizer).
+     *
+     * @return self
+     */
+    public function setImgoptoOutputImageBytes($imgopto_output_image_bytes)
+    {
+        $this->container['imgopto_output_image_bytes'] = $imgopto_output_image_bytes;
 
         return $this;
     }
@@ -10570,6 +10804,702 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBotChallengesPatsSucceeded($bot_challenges_pats_succeeded)
     {
         $this->container['bot_challenges_pats_succeeded'] = $bot_challenges_pats_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_headless_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsHeadlessCount()
+    {
+        return $this->container['bot_edge_requests_headless_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_headless_count
+     *
+     * @param int|null $bot_edge_requests_headless_count Number of edge requests where a headless bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsHeadlessCount($bot_edge_requests_headless_count)
+    {
+        $this->container['bot_edge_requests_headless_count'] = $bot_edge_requests_headless_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_499
+     *
+     * @return int|null
+     */
+    public function getStatus499()
+    {
+        return $this->container['status_499'];
+    }
+
+    /**
+     * Sets status_499
+     *
+     * @param int|null $status_499 Number of responses sent with status code 499 (Client Disconnected).
+     *
+     * @return self
+     */
+    public function setStatus499($status_499)
+    {
+        $this->container['status_499'] = $status_499;
+
+        return $this;
+    }
+
+    /**
+     * Gets arc_requests
+     *
+     * @return int|null
+     */
+    public function getArcRequests()
+    {
+        return $this->container['arc_requests'];
+    }
+
+    /**
+     * Sets arc_requests
+     *
+     * @param int|null $arc_requests Number of requests received by AI Runtime Control.
+     *
+     * @return self
+     */
+    public function setArcRequests($arc_requests)
+    {
+        $this->container['arc_requests'] = $arc_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_complete_tokens_checked
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeCompleteTokensChecked()
+    {
+        return $this->container['ddos_challenge_complete_tokens_checked'];
+    }
+
+    /**
+     * Sets ddos_challenge_complete_tokens_checked
+     *
+     * @param int|null $ddos_challenge_complete_tokens_checked The number of challenge-complete tokens checked while enforcing DDoS protection rules.
+     *
+     * @return self
+     */
+    public function setDdosChallengeCompleteTokensChecked($ddos_challenge_complete_tokens_checked)
+    {
+        $this->container['ddos_challenge_complete_tokens_checked'] = $ddos_challenge_complete_tokens_checked;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_complete_tokens_passed
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeCompleteTokensPassed()
+    {
+        return $this->container['ddos_challenge_complete_tokens_passed'];
+    }
+
+    /**
+     * Sets ddos_challenge_complete_tokens_passed
+     *
+     * @param int|null $ddos_challenge_complete_tokens_passed The number of challenge-complete tokens that passed validation while enforcing DDoS protection rules.
+     *
+     * @return self
+     */
+    public function setDdosChallengeCompleteTokensPassed($ddos_challenge_complete_tokens_passed)
+    {
+        $this->container['ddos_challenge_complete_tokens_passed'] = $ddos_challenge_complete_tokens_passed;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_complete_tokens_failed
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeCompleteTokensFailed()
+    {
+        return $this->container['ddos_challenge_complete_tokens_failed'];
+    }
+
+    /**
+     * Sets ddos_challenge_complete_tokens_failed
+     *
+     * @param int|null $ddos_challenge_complete_tokens_failed The number of challenge-complete tokens that failed validation while enforcing DDoS protection rules.
+     *
+     * @return self
+     */
+    public function setDdosChallengeCompleteTokensFailed($ddos_challenge_complete_tokens_failed)
+    {
+        $this->container['ddos_challenge_complete_tokens_failed'] = $ddos_challenge_complete_tokens_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_starts
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeStarts()
+    {
+        return $this->container['ddos_challenge_starts'];
+    }
+
+    /**
+     * Sets ddos_challenge_starts
+     *
+     * @param int|null $ddos_challenge_starts The number of challenge-start tokens created while enforcing DDoS protection rules.
+     *
+     * @return self
+     */
+    public function setDdosChallengeStarts($ddos_challenge_starts)
+    {
+        $this->container['ddos_challenge_starts'] = $ddos_challenge_starts;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_complete_tokens_issued
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeCompleteTokensIssued()
+    {
+        return $this->container['ddos_challenge_complete_tokens_issued'];
+    }
+
+    /**
+     * Sets ddos_challenge_complete_tokens_issued
+     *
+     * @param int|null $ddos_challenge_complete_tokens_issued Number of challenge-complete tokens issued as a result of a DDoS action. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success.
+     *
+     * @return self
+     */
+    public function setDdosChallengeCompleteTokensIssued($ddos_challenge_complete_tokens_issued)
+    {
+        $this->container['ddos_challenge_complete_tokens_issued'] = $ddos_challenge_complete_tokens_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_issued
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesIssued()
+    {
+        return $this->container['ddos_challenges_issued'];
+    }
+
+    /**
+     * Sets ddos_challenges_issued
+     *
+     * @param int|null $ddos_challenges_issued Number of challenges issued from a DDoS action.
+     *
+     * @return self
+     */
+    public function setDdosChallengesIssued($ddos_challenges_issued)
+    {
+        $this->container['ddos_challenges_issued'] = $ddos_challenges_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_succeeded
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesSucceeded()
+    {
+        return $this->container['ddos_challenges_succeeded'];
+    }
+
+    /**
+     * Sets ddos_challenges_succeeded
+     *
+     * @param int|null $ddos_challenges_succeeded Number of successful challenge solutions processed as a result of a DDoS action. For example, a correct CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setDdosChallengesSucceeded($ddos_challenges_succeeded)
+    {
+        $this->container['ddos_challenges_succeeded'] = $ddos_challenges_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_failed
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesFailed()
+    {
+        return $this->container['ddos_challenges_failed'];
+    }
+
+    /**
+     * Sets ddos_challenges_failed
+     *
+     * @param int|null $ddos_challenges_failed Number of failed challenge solutions processed as a result of a DDoS action. For example, an incorrect CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setDdosChallengesFailed($ddos_challenges_failed)
+    {
+        $this->container['ddos_challenges_failed'] = $ddos_challenges_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_pats_issued
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesPatsIssued()
+    {
+        return $this->container['ddos_challenges_pats_issued'];
+    }
+
+    /**
+     * Sets ddos_challenges_pats_issued
+     *
+     * @param int|null $ddos_challenges_pats_issued Number of Private Access Token challenges issued as a result of a DDoS action.
+     *
+     * @return self
+     */
+    public function setDdosChallengesPatsIssued($ddos_challenges_pats_issued)
+    {
+        $this->container['ddos_challenges_pats_issued'] = $ddos_challenges_pats_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_pats_succeeded
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesPatsSucceeded()
+    {
+        return $this->container['ddos_challenges_pats_succeeded'];
+    }
+
+    /**
+     * Sets ddos_challenges_pats_succeeded
+     *
+     * @param int|null $ddos_challenges_pats_succeeded Number of successful Private Access Token challenge solutions processed as a result of a DDoS action.
+     *
+     * @return self
+     */
+    public function setDdosChallengesPatsSucceeded($ddos_challenges_pats_succeeded)
+    {
+        $this->container['ddos_challenges_pats_succeeded'] = $ddos_challenges_pats_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets arc_ai_firewall_requests
+     *
+     * @return int|null
+     */
+    public function getArcAiFirewallRequests()
+    {
+        return $this->container['arc_ai_firewall_requests'];
+    }
+
+    /**
+     * Sets arc_ai_firewall_requests
+     *
+     * @param int|null $arc_ai_firewall_requests Number of requests received by AI Firewall in AI Runtime Control.
+     *
+     * @return self
+     */
+    public function setArcAiFirewallRequests($arc_ai_firewall_requests)
+    {
+        $this->container['arc_ai_firewall_requests'] = $arc_ai_firewall_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets arc_ai_firewall_blocked
+     *
+     * @return int|null
+     */
+    public function getArcAiFirewallBlocked()
+    {
+        return $this->container['arc_ai_firewall_blocked'];
+    }
+
+    /**
+     * Sets arc_ai_firewall_blocked
+     *
+     * @param int|null $arc_ai_firewall_blocked Number of requests blocked by AI Firewall in AI Runtime Control.
+     *
+     * @return self
+     */
+    public function setArcAiFirewallBlocked($arc_ai_firewall_blocked)
+    {
+        $this->container['arc_ai_firewall_blocked'] = $arc_ai_firewall_blocked;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_challenge_complete_tokens_issued
+     *
+     * @return int|null
+     */
+    public function getBotEdgeChallengeCompleteTokensIssued()
+    {
+        return $this->container['bot_edge_challenge_complete_tokens_issued'];
+    }
+
+    /**
+     * Sets bot_edge_challenge_complete_tokens_issued
+     *
+     * @param int|null $bot_edge_challenge_complete_tokens_issued The number of challenge-complete tokens issued as a result of a ContentGuard action. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success.
+     *
+     * @return self
+     */
+    public function setBotEdgeChallengeCompleteTokensIssued($bot_edge_challenge_complete_tokens_issued)
+    {
+        $this->container['bot_edge_challenge_complete_tokens_issued'] = $bot_edge_challenge_complete_tokens_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_challenges_issued
+     *
+     * @return int|null
+     */
+    public function getBotEdgeChallengesIssued()
+    {
+        return $this->container['bot_edge_challenges_issued'];
+    }
+
+    /**
+     * Sets bot_edge_challenges_issued
+     *
+     * @param int|null $bot_edge_challenges_issued The number of challenges issued as a result of a ContentGuard action.
+     *
+     * @return self
+     */
+    public function setBotEdgeChallengesIssued($bot_edge_challenges_issued)
+    {
+        $this->container['bot_edge_challenges_issued'] = $bot_edge_challenges_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_challenges_succeeded
+     *
+     * @return int|null
+     */
+    public function getBotEdgeChallengesSucceeded()
+    {
+        return $this->container['bot_edge_challenges_succeeded'];
+    }
+
+    /**
+     * Sets bot_edge_challenges_succeeded
+     *
+     * @param int|null $bot_edge_challenges_succeeded The number of successful challenge solutions processed as a result of a ContentGuard action. For example, a correct CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setBotEdgeChallengesSucceeded($bot_edge_challenges_succeeded)
+    {
+        $this->container['bot_edge_challenges_succeeded'] = $bot_edge_challenges_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_challenges_failed
+     *
+     * @return int|null
+     */
+    public function getBotEdgeChallengesFailed()
+    {
+        return $this->container['bot_edge_challenges_failed'];
+    }
+
+    /**
+     * Sets bot_edge_challenges_failed
+     *
+     * @param int|null $bot_edge_challenges_failed The number of failed challenge solutions processed as a result of a ContentGuard action. For example, an incorrect CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setBotEdgeChallengesFailed($bot_edge_challenges_failed)
+    {
+        $this->container['bot_edge_challenges_failed'] = $bot_edge_challenges_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_challenges_pats_issued
+     *
+     * @return int|null
+     */
+    public function getBotEdgeChallengesPatsIssued()
+    {
+        return $this->container['bot_edge_challenges_pats_issued'];
+    }
+
+    /**
+     * Sets bot_edge_challenges_pats_issued
+     *
+     * @param int|null $bot_edge_challenges_pats_issued The number of Private Access Token challenges issued as a result of a ContentGuard action.
+     *
+     * @return self
+     */
+    public function setBotEdgeChallengesPatsIssued($bot_edge_challenges_pats_issued)
+    {
+        $this->container['bot_edge_challenges_pats_issued'] = $bot_edge_challenges_pats_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_challenges_pats_succeeded
+     *
+     * @return int|null
+     */
+    public function getBotEdgeChallengesPatsSucceeded()
+    {
+        return $this->container['bot_edge_challenges_pats_succeeded'];
+    }
+
+    /**
+     * Sets bot_edge_challenges_pats_succeeded
+     *
+     * @param int|null $bot_edge_challenges_pats_succeeded The number of successful Private Access Token challenge solutions processed as a result of a ContentGuard action.
+     *
+     * @return self
+     */
+    public function setBotEdgeChallengesPatsSucceeded($bot_edge_challenges_pats_succeeded)
+    {
+        $this->container['bot_edge_challenges_pats_succeeded'] = $bot_edge_challenges_pats_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets netprotect_gre_sent_bytes
+     *
+     * @return int|null
+     */
+    public function getNetprotectGreSentBytes()
+    {
+        return $this->container['netprotect_gre_sent_bytes'];
+    }
+
+    /**
+     * Sets netprotect_gre_sent_bytes
+     *
+     * @param int|null $netprotect_gre_sent_bytes Number of bytes sent via GRE tunnel.
+     *
+     * @return self
+     */
+    public function setNetprotectGreSentBytes($netprotect_gre_sent_bytes)
+    {
+        $this->container['netprotect_gre_sent_bytes'] = $netprotect_gre_sent_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets netprotect_gre_sent_packets
+     *
+     * @return int|null
+     */
+    public function getNetprotectGreSentPackets()
+    {
+        return $this->container['netprotect_gre_sent_packets'];
+    }
+
+    /**
+     * Sets netprotect_gre_sent_packets
+     *
+     * @param int|null $netprotect_gre_sent_packets Number of packets sent via GRE tunnel.
+     *
+     * @return self
+     */
+    public function setNetprotectGreSentPackets($netprotect_gre_sent_packets)
+    {
+        $this->container['netprotect_gre_sent_packets'] = $netprotect_gre_sent_packets;
+
+        return $this;
+    }
+
+    /**
+     * Gets netprotect_received_bytes
+     *
+     * @return int|null
+     */
+    public function getNetprotectReceivedBytes()
+    {
+        return $this->container['netprotect_received_bytes'];
+    }
+
+    /**
+     * Sets netprotect_received_bytes
+     *
+     * @param int|null $netprotect_received_bytes Number of ingress bytes received for network protection.
+     *
+     * @return self
+     */
+    public function setNetprotectReceivedBytes($netprotect_received_bytes)
+    {
+        $this->container['netprotect_received_bytes'] = $netprotect_received_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets netprotect_received_packets
+     *
+     * @return int|null
+     */
+    public function getNetprotectReceivedPackets()
+    {
+        return $this->container['netprotect_received_packets'];
+    }
+
+    /**
+     * Sets netprotect_received_packets
+     *
+     * @param int|null $netprotect_received_packets Number of ingress packets received for network protection.
+     *
+     * @return self
+     */
+    public function setNetprotectReceivedPackets($netprotect_received_packets)
+    {
+        $this->container['netprotect_received_packets'] = $netprotect_received_packets;
+
+        return $this;
+    }
+
+    /**
+     * Gets netprotect_firewall_dropped_bytes
+     *
+     * @return int|null
+     */
+    public function getNetprotectFirewallDroppedBytes()
+    {
+        return $this->container['netprotect_firewall_dropped_bytes'];
+    }
+
+    /**
+     * Sets netprotect_firewall_dropped_bytes
+     *
+     * @param int|null $netprotect_firewall_dropped_bytes Number of bytes dropped by network protection firewall.
+     *
+     * @return self
+     */
+    public function setNetprotectFirewallDroppedBytes($netprotect_firewall_dropped_bytes)
+    {
+        $this->container['netprotect_firewall_dropped_bytes'] = $netprotect_firewall_dropped_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets netprotect_firewall_dropped_packets
+     *
+     * @return int|null
+     */
+    public function getNetprotectFirewallDroppedPackets()
+    {
+        return $this->container['netprotect_firewall_dropped_packets'];
+    }
+
+    /**
+     * Sets netprotect_firewall_dropped_packets
+     *
+     * @param int|null $netprotect_firewall_dropped_packets Number of packets dropped by network protection firewall.
+     *
+     * @return self
+     */
+    public function setNetprotectFirewallDroppedPackets($netprotect_firewall_dropped_packets)
+    {
+        $this->container['netprotect_firewall_dropped_packets'] = $netprotect_firewall_dropped_packets;
+
+        return $this;
+    }
+
+    /**
+     * Gets api_enforcement_allowed_requests_count
+     *
+     * @return int|null
+     */
+    public function getApiEnforcementAllowedRequestsCount()
+    {
+        return $this->container['api_enforcement_allowed_requests_count'];
+    }
+
+    /**
+     * Sets api_enforcement_allowed_requests_count
+     *
+     * @param int|null $api_enforcement_allowed_requests_count Number of requests allowed after evaluation by the API Enforcement engine.
+     *
+     * @return self
+     */
+    public function setApiEnforcementAllowedRequestsCount($api_enforcement_allowed_requests_count)
+    {
+        $this->container['api_enforcement_allowed_requests_count'] = $api_enforcement_allowed_requests_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets api_enforcement_flagged_requests_count
+     *
+     * @return int|null
+     */
+    public function getApiEnforcementFlaggedRequestsCount()
+    {
+        return $this->container['api_enforcement_flagged_requests_count'];
+    }
+
+    /**
+     * Sets api_enforcement_flagged_requests_count
+     *
+     * @param int|null $api_enforcement_flagged_requests_count Number of requests flagged after evaluation by the API Enforcement engine.
+     *
+     * @return self
+     */
+    public function setApiEnforcementFlaggedRequestsCount($api_enforcement_flagged_requests_count)
+    {
+        $this->container['api_enforcement_flagged_requests_count'] = $api_enforcement_flagged_requests_count;
 
         return $this;
     }

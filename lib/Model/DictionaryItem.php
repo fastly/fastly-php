@@ -218,7 +218,7 @@ class DictionaryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_key
      *
-     * @param string|null $item_key Item key, maximum 256 characters.
+     * @param string|null $item_key Item key, maximum 255 characters.
      *
      * @return self
      */

@@ -123,7 +123,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Fastly\Model\AutomationTokenCreateResponse
+     * @return \Fastly\Model\AutomationTokenCreateResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse
      */
     public function createAutomationToken($options)
     {
@@ -145,7 +145,7 @@ class AutomationTokensApi
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Fastly\Model\AutomationTokenCreateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Fastly\Model\AutomationTokenCreateResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse|\Fastly\Model\AutomationTokenErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAutomationTokenWithHttpInfo($options)
     {
@@ -211,6 +211,42 @@ class AutomationTokensApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Fastly\Model\AutomationTokenErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\Fastly\Model\AutomationTokenCreateResponse';
@@ -232,6 +268,30 @@ class AutomationTokensApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Fastly\Model\AutomationTokenCreateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\AutomationTokenErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\AutomationTokenErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\AutomationTokenErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -351,11 +411,11 @@ class AutomationTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['application/json', 'application/problem+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['application/json', 'application/problem+json'],
                 ['application/json']
             );
         }
@@ -1099,6 +1159,429 @@ class AutomationTokensApi
             }
             else {
                 $queryParams['page'] = ObjectSerializer::toString($page);
+            }
+        }
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'application/problem+json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'application/problem+json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API token authentication
+        $apiToken = $this->config->getApiTokenWithPrefix('Fastly-Key');
+        if ($apiToken !== null) {
+            $headers['Fastly-Key'] = $apiToken;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHosts = ["https://api.fastly.com"];
+        if ($this->hostIndex < 0 || $this->hostIndex >= sizeof($operationHosts)) {
+            throw new \InvalidArgumentException("Invalid index {$this->hostIndex} when selecting the host. Must be less than ".sizeof($operationHosts));
+        }
+        $operationHost = $operationHosts[$this->hostIndex];
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAutomationTokensIdWorkspaces
+     *
+     * List Automation Token Workspaces
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $id The alphanumeric string identifying the automation token. (required)
+     * @param  int $limit Maximum number of workspaces to return per page. (optional, default to 20)
+     * @param  string $cursor Pagination cursor from a previous response. Pass the &#x60;next_cursor&#x60; value to retrieve the next page, or &#x60;previous_cursor&#x60; to go back. (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Fastly\Model\AutomationTokenWorkspacesResponse|\Fastly\Model\AutomationTokenUnversionedErrorResponse|\Fastly\Model\AutomationTokenUnversionedErrorResponse|\Fastly\Model\AutomationTokenUnversionedErrorResponse
+     */
+    public function getAutomationTokensIdWorkspaces($options)
+    {
+        list($response) = $this->getAutomationTokensIdWorkspacesWithHttpInfo($options);
+        return $response;
+    }
+
+    /**
+     * Operation getAutomationTokensIdWorkspacesWithHttpInfo
+     *
+     * List Automation Token Workspaces
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains Fastly API host(s). Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $id The alphanumeric string identifying the automation token. (required)
+     * @param  int $limit Maximum number of workspaces to return per page. (optional, default to 20)
+     * @param  string $cursor Pagination cursor from a previous response. Pass the &#x60;next_cursor&#x60; value to retrieve the next page, or &#x60;previous_cursor&#x60; to go back. (optional)
+     *
+     * @throws \Fastly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Fastly\Model\AutomationTokenWorkspacesResponse|\Fastly\Model\AutomationTokenUnversionedErrorResponse|\Fastly\Model\AutomationTokenUnversionedErrorResponse|\Fastly\Model\AutomationTokenUnversionedErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAutomationTokensIdWorkspacesWithHttpInfo($options)
+    {
+        $request = $this->getAutomationTokensIdWorkspacesRequest($options);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            if ('GET' != 'GET' && 'GET' != 'HEAD') {
+                $header = $response->getHeader('Fastly-RateLimit-Remaining');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitRemaining($header[0]);
+                }
+
+                $header = $response->getHeader('Fastly-RateLimit-Reset');
+                if (count($header) > 0) {
+                  $this->config->setRateLimitReset($header[0]);
+                }
+            } 
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Fastly\Model\AutomationTokenWorkspacesResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenWorkspacesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Fastly\Model\AutomationTokenUnversionedErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenUnversionedErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Fastly\Model\AutomationTokenUnversionedErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenUnversionedErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Fastly\Model\AutomationTokenUnversionedErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Fastly\Model\AutomationTokenUnversionedErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Fastly\Model\AutomationTokenWorkspacesResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\AutomationTokenWorkspacesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\AutomationTokenUnversionedErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\AutomationTokenUnversionedErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Fastly\Model\AutomationTokenUnversionedErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAutomationTokensIdWorkspacesAsync
+     *
+     * List Automation Token Workspaces
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $id The alphanumeric string identifying the automation token. (required)
+     * @param  int $limit Maximum number of workspaces to return per page. (optional, default to 20)
+     * @param  string $cursor Pagination cursor from a previous response. Pass the &#x60;next_cursor&#x60; value to retrieve the next page, or &#x60;previous_cursor&#x60; to go back. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAutomationTokensIdWorkspacesAsync($options)
+    {
+        return $this->getAutomationTokensIdWorkspacesAsyncWithHttpInfo($options)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAutomationTokensIdWorkspacesAsyncWithHttpInfo
+     *
+     * List Automation Token Workspaces
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $id The alphanumeric string identifying the automation token. (required)
+     * @param  int $limit Maximum number of workspaces to return per page. (optional, default to 20)
+     * @param  string $cursor Pagination cursor from a previous response. Pass the &#x60;next_cursor&#x60; value to retrieve the next page, or &#x60;previous_cursor&#x60; to go back. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAutomationTokensIdWorkspacesAsyncWithHttpInfo($options)
+    {
+        $returnType = '\Fastly\Model\AutomationTokenWorkspacesResponse';
+        $request = $this->getAutomationTokensIdWorkspacesRequest($options);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAutomationTokensIdWorkspaces'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * This operation contains host(s) defined in the OpenAP spec. Use 'hostIndex' to select the host.
+     * URL: https://api.fastly.com
+     *
+     * @param  string $id The alphanumeric string identifying the automation token. (required)
+     * @param  int $limit Maximum number of workspaces to return per page. (optional, default to 20)
+     * @param  string $cursor Pagination cursor from a previous response. Pass the &#x60;next_cursor&#x60; value to retrieve the next page, or &#x60;previous_cursor&#x60; to go back. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAutomationTokensIdWorkspacesRequest($options)
+    {
+        // unbox the parameters from the associative array
+        $id = array_key_exists('id', $options) ? $options['id'] : null;
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : 20;
+        $cursor = array_key_exists('cursor', $options) ? $options['cursor'] : null;
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getAutomationTokensIdWorkspaces'
+            );
+        }
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AutomationTokensApi.getAutomationTokensIdWorkspaces, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AutomationTokensApi.getAutomationTokensIdWorkspaces, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/automation-tokens/{id}/workspaces';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['limit'] = ObjectSerializer::toString($limit);
+            }
+        }
+        // query params
+        if ($cursor !== null) {
+            if('form' === 'form' && is_array($cursor)) {
+                foreach($cursor as $key => $value) {
+                    $queryParams[$key] = ObjectSerializer::toString($value);
+                }
+            }
+            else {
+                $queryParams['cursor'] = ObjectSerializer::toString($cursor);
             }
         }
 

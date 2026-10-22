@@ -251,6 +251,43 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
     const EVENT_TYPE_LOGGING_CREATE = 'logging.create';
     const EVENT_TYPE_LOGGING_DELETE = 'logging.delete';
     const EVENT_TYPE_LOGGING_UPDATE = 'logging.update';
+    const EVENT_TYPE_NGWAF_AGENT_KEY_CREATE = 'ngwaf.agent_key.create';
+    const EVENT_TYPE_NGWAF_AGENT_KEY_DELETE = 'ngwaf.agent_key.delete';
+    const EVENT_TYPE_NGWAF_AGENT_KEY_UPDATE = 'ngwaf.agent_key.update';
+    const EVENT_TYPE_NGWAF_CUSTOM_SIGNAL_CREATE = 'ngwaf.custom_signal.create';
+    const EVENT_TYPE_NGWAF_CUSTOM_SIGNAL_DELETE = 'ngwaf.custom_signal.delete';
+    const EVENT_TYPE_NGWAF_CUSTOM_SIGNAL_UPDATE = 'ngwaf.custom_signal.update';
+    const EVENT_TYPE_NGWAF_DASHBOARD_CREATE = 'ngwaf.dashboard.create';
+    const EVENT_TYPE_NGWAF_DASHBOARD_DELETE = 'ngwaf.dashboard.delete';
+    const EVENT_TYPE_NGWAF_DASHBOARD_UPDATE = 'ngwaf.dashboard.update';
+    const EVENT_TYPE_NGWAF_DEFAULT_DASHBOARD_UPDATE = 'ngwaf.default_dashboard.update';
+    const EVENT_TYPE_NGWAF_EVENT_UPDATE = 'ngwaf.event.update';
+    const EVENT_TYPE_NGWAF_HEADER_LINK_CREATE = 'ngwaf.header_link.create';
+    const EVENT_TYPE_NGWAF_HEADER_LINK_DELETE = 'ngwaf.header_link.delete';
+    const EVENT_TYPE_NGWAF_HEADER_LINK_UPDATE = 'ngwaf.header_link.update';
+    const EVENT_TYPE_NGWAF_LIST_CREATE = 'ngwaf.list.create';
+    const EVENT_TYPE_NGWAF_LIST_DELETE = 'ngwaf.list.delete';
+    const EVENT_TYPE_NGWAF_LIST_UPDATE = 'ngwaf.list.update';
+    const EVENT_TYPE_NGWAF_RATE_LIMITED_SOURCE_BULK_DELETE = 'ngwaf.rate_limited_source.bulk_delete';
+    const EVENT_TYPE_NGWAF_RATE_LIMITED_SOURCE_DELETE = 'ngwaf.rate_limited_source.delete';
+    const EVENT_TYPE_NGWAF_REDACTION_CREATE = 'ngwaf.redaction.create';
+    const EVENT_TYPE_NGWAF_REDACTION_DELETE = 'ngwaf.redaction.delete';
+    const EVENT_TYPE_NGWAF_REDACTION_UPDATE = 'ngwaf.redaction.update';
+    const EVENT_TYPE_NGWAF_REQUEST_REPORT_CREATE = 'ngwaf.request_report.create';
+    const EVENT_TYPE_NGWAF_RULE_CREATE = 'ngwaf.rule.create';
+    const EVENT_TYPE_NGWAF_RULE_DELETE = 'ngwaf.rule.delete';
+    const EVENT_TYPE_NGWAF_RULE_UPDATE = 'ngwaf.rule.update';
+    const EVENT_TYPE_NGWAF_THRESHOLD_CREATE = 'ngwaf.threshold.create';
+    const EVENT_TYPE_NGWAF_THRESHOLD_DELETE = 'ngwaf.threshold.delete';
+    const EVENT_TYPE_NGWAF_THRESHOLD_UPDATE = 'ngwaf.threshold.update';
+    const EVENT_TYPE_NGWAF_VIRTUAL_PATCH_UPDATE = 'ngwaf.virtual_patch.update';
+    const EVENT_TYPE_NGWAF_WORKSPACE_CREATE = 'ngwaf.workspace.create';
+    const EVENT_TYPE_NGWAF_WORKSPACE_DELETE = 'ngwaf.workspace.delete';
+    const EVENT_TYPE_NGWAF_WORKSPACE_UPDATE = 'ngwaf.workspace.update';
+    const EVENT_TYPE_NGWAF_WORKSPACE_ALERT_CREATE = 'ngwaf.workspace_alert.create';
+    const EVENT_TYPE_NGWAF_WORKSPACE_ALERT_DELETE = 'ngwaf.workspace_alert.delete';
+    const EVENT_TYPE_NGWAF_WORKSPACE_ALERT_UPDATE = 'ngwaf.workspace_alert.update';
+    const EVENT_TYPE_NGWAF_WORKSPACE_ALERT_KEY_UPDATE = 'ngwaf.workspace_alert_key.update';
     const EVENT_TYPE_POOL_CREATE = 'pool.create';
     const EVENT_TYPE_POOL_DELETE = 'pool.delete';
     const EVENT_TYPE_POOL_UPDATE = 'pool.update';
@@ -404,6 +441,43 @@ class EventAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENT_TYPE_LOGGING_CREATE,
             self::EVENT_TYPE_LOGGING_DELETE,
             self::EVENT_TYPE_LOGGING_UPDATE,
+            self::EVENT_TYPE_NGWAF_AGENT_KEY_CREATE,
+            self::EVENT_TYPE_NGWAF_AGENT_KEY_DELETE,
+            self::EVENT_TYPE_NGWAF_AGENT_KEY_UPDATE,
+            self::EVENT_TYPE_NGWAF_CUSTOM_SIGNAL_CREATE,
+            self::EVENT_TYPE_NGWAF_CUSTOM_SIGNAL_DELETE,
+            self::EVENT_TYPE_NGWAF_CUSTOM_SIGNAL_UPDATE,
+            self::EVENT_TYPE_NGWAF_DASHBOARD_CREATE,
+            self::EVENT_TYPE_NGWAF_DASHBOARD_DELETE,
+            self::EVENT_TYPE_NGWAF_DASHBOARD_UPDATE,
+            self::EVENT_TYPE_NGWAF_DEFAULT_DASHBOARD_UPDATE,
+            self::EVENT_TYPE_NGWAF_EVENT_UPDATE,
+            self::EVENT_TYPE_NGWAF_HEADER_LINK_CREATE,
+            self::EVENT_TYPE_NGWAF_HEADER_LINK_DELETE,
+            self::EVENT_TYPE_NGWAF_HEADER_LINK_UPDATE,
+            self::EVENT_TYPE_NGWAF_LIST_CREATE,
+            self::EVENT_TYPE_NGWAF_LIST_DELETE,
+            self::EVENT_TYPE_NGWAF_LIST_UPDATE,
+            self::EVENT_TYPE_NGWAF_RATE_LIMITED_SOURCE_BULK_DELETE,
+            self::EVENT_TYPE_NGWAF_RATE_LIMITED_SOURCE_DELETE,
+            self::EVENT_TYPE_NGWAF_REDACTION_CREATE,
+            self::EVENT_TYPE_NGWAF_REDACTION_DELETE,
+            self::EVENT_TYPE_NGWAF_REDACTION_UPDATE,
+            self::EVENT_TYPE_NGWAF_REQUEST_REPORT_CREATE,
+            self::EVENT_TYPE_NGWAF_RULE_CREATE,
+            self::EVENT_TYPE_NGWAF_RULE_DELETE,
+            self::EVENT_TYPE_NGWAF_RULE_UPDATE,
+            self::EVENT_TYPE_NGWAF_THRESHOLD_CREATE,
+            self::EVENT_TYPE_NGWAF_THRESHOLD_DELETE,
+            self::EVENT_TYPE_NGWAF_THRESHOLD_UPDATE,
+            self::EVENT_TYPE_NGWAF_VIRTUAL_PATCH_UPDATE,
+            self::EVENT_TYPE_NGWAF_WORKSPACE_CREATE,
+            self::EVENT_TYPE_NGWAF_WORKSPACE_DELETE,
+            self::EVENT_TYPE_NGWAF_WORKSPACE_UPDATE,
+            self::EVENT_TYPE_NGWAF_WORKSPACE_ALERT_CREATE,
+            self::EVENT_TYPE_NGWAF_WORKSPACE_ALERT_DELETE,
+            self::EVENT_TYPE_NGWAF_WORKSPACE_ALERT_UPDATE,
+            self::EVENT_TYPE_NGWAF_WORKSPACE_ALERT_KEY_UPDATE,
             self::EVENT_TYPE_POOL_CREATE,
             self::EVENT_TYPE_POOL_DELETE,
             self::EVENT_TYPE_POOL_UPDATE,

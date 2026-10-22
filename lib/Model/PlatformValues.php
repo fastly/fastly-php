@@ -30,7 +30,7 @@ use \Fastly\ObjectSerializer;
  * PlatformValues Class Doc Comment
  *
  * @category Class
- * @description The results of the query, optionally filtered and grouped over the requested timespan.
+ * @description Metric values for the timestamp field. Note that this dataset is sparse: only the keys with non-zero values will be included in the record.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
@@ -55,21 +55,364 @@ class PlatformValues implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyTypes = [
         'timestamp' => '\DateTime',
-        'ttfb_origin_p25_us' => 'float',
-        'ttfb_origin_p50_us' => 'float',
-        'ttfb_origin_p75_us' => 'float',
-        'ttfb_origin_p95_us' => 'float',
-        'ttfb_origin_p99_us' => 'float',
-        'ttfb_shield_p25_us' => 'float',
-        'ttfb_shield_p50_us' => 'float',
-        'ttfb_shield_p75_us' => 'float',
-        'ttfb_shield_p95_us' => 'float',
-        'ttfb_shield_p99_us' => 'float',
-        'ttfb_edge_p25_us' => 'float',
-        'ttfb_edge_p50_us' => 'float',
-        'ttfb_edge_p75_us' => 'float',
-        'ttfb_edge_p95_us' => 'float',
-        'ttfb_edge_p99_us' => 'float'
+        'datacenter' => 'string',
+        'region' => 'string',
+        'requests' => 'int',
+        'hits' => 'int',
+        'hits_time' => 'float',
+        'miss' => 'int',
+        'miss_time' => 'float',
+        'pass' => 'int',
+        'pass_time' => 'float',
+        'errors' => 'int',
+        'restarts' => 'int',
+        'hit_ratio' => 'float',
+        'bandwidth' => 'int',
+        'req_body_bytes' => 'int',
+        'req_header_bytes' => 'int',
+        'resp_body_bytes' => 'int',
+        'resp_header_bytes' => 'int',
+        'bereq_body_bytes' => 'int',
+        'bereq_header_bytes' => 'int',
+        'uncacheable' => 'int',
+        'pipe' => 'int',
+        'synth' => 'int',
+        'tls' => 'int',
+        'tls_v10' => 'int',
+        'tls_v11' => 'int',
+        'tls_v12' => 'int',
+        'tls_v13' => 'int',
+        'edge_requests' => 'int',
+        'edge_resp_header_bytes' => 'int',
+        'edge_resp_body_bytes' => 'int',
+        'edge_hit_requests' => 'int',
+        'edge_miss_requests' => 'int',
+        'origin_fetches' => 'int',
+        'origin_fetch_header_bytes' => 'int',
+        'origin_fetch_body_bytes' => 'int',
+        'origin_fetch_resp_header_bytes' => 'int',
+        'origin_fetch_resp_body_bytes' => 'int',
+        'origin_revalidations' => 'int',
+        'origin_cache_fetches' => 'int',
+        'shield' => 'int',
+        'shield_resp_body_bytes' => 'int',
+        'shield_resp_header_bytes' => 'int',
+        'shield_fetches' => 'int',
+        'shield_fetch_header_bytes' => 'int',
+        'shield_fetch_body_bytes' => 'int',
+        'shield_fetch_resp_header_bytes' => 'int',
+        'shield_fetch_resp_body_bytes' => 'int',
+        'shield_revalidations' => 'int',
+        'shield_cache_fetches' => 'int',
+        'ipv6' => 'int',
+        'otfp' => 'int',
+        'otfp_resp_body_bytes' => 'int',
+        'otfp_resp_header_bytes' => 'int',
+        'otfp_shield_resp_body_bytes' => 'int',
+        'otfp_shield_resp_header_bytes' => 'int',
+        'otfp_manifests' => 'int',
+        'otfp_deliver_time' => 'float',
+        'otfp_shield_time' => 'float',
+        'video' => 'int',
+        'pci' => 'int',
+        'log' => 'int',
+        'log_bytes' => 'int',
+        'http2' => 'int',
+        'http3' => 'int',
+        'attack_req_body_bytes' => 'int',
+        'attack_req_header_bytes' => 'int',
+        'attack_logged_req_body_bytes' => 'int',
+        'attack_logged_req_header_bytes' => 'int',
+        'attack_blocked_req_body_bytes' => 'int',
+        'attack_blocked_req_header_bytes' => 'int',
+        'attack_passed_req_body_bytes' => 'int',
+        'attack_passed_req_header_bytes' => 'int',
+        'attack_resp_synth_bytes' => 'int',
+        'imgopto' => 'int',
+        'imgopto_input_image_bytes' => 'int',
+        'imgopto_output_image_bytes' => 'int',
+        'imgopto_resp_body_bytes' => 'int',
+        'imgopto_resp_header_bytes' => 'int',
+        'imgopto_shield' => 'int',
+        'imgopto_shield_resp_body_bytes' => 'int',
+        'imgopto_shield_resp_header_bytes' => 'int',
+        'imgopto_transforms' => 'int',
+        'imgvideo' => 'int',
+        'imgvideo_frames' => 'int',
+        'imgvideo_resp_header_bytes' => 'int',
+        'imgvideo_resp_body_bytes' => 'int',
+        'imgvideo_shield_resp_header_bytes' => 'int',
+        'imgvideo_shield_resp_body_bytes' => 'int',
+        'imgvideo_shield' => 'int',
+        'imgvideo_shield_frames' => 'int',
+        'status_200' => 'int',
+        'status_204' => 'int',
+        'status_206' => 'int',
+        'status_301' => 'int',
+        'status_302' => 'int',
+        'status_304' => 'int',
+        'status_400' => 'int',
+        'status_401' => 'int',
+        'status_403' => 'int',
+        'status_404' => 'int',
+        'status_406' => 'int',
+        'status_416' => 'int',
+        'status_429' => 'int',
+        'status_500' => 'int',
+        'status_501' => 'int',
+        'status_502' => 'int',
+        'status_503' => 'int',
+        'status_504' => 'int',
+        'status_505' => 'int',
+        'status_530' => 'int',
+        'status_1xx' => 'int',
+        'status_2xx' => 'int',
+        'status_3xx' => 'int',
+        'status_4xx' => 'int',
+        'status_5xx' => 'int',
+        'object_size_1k' => 'int',
+        'object_size_10k' => 'int',
+        'object_size_100k' => 'int',
+        'object_size_1m' => 'int',
+        'object_size_10m' => 'int',
+        'object_size_100m' => 'int',
+        'object_size_1g' => 'int',
+        'recv_sub_time' => 'float',
+        'recv_sub_count' => 'int',
+        'hash_sub_time' => 'float',
+        'hash_sub_count' => 'int',
+        'miss_sub_time' => 'float',
+        'miss_sub_count' => 'int',
+        'fetch_sub_time' => 'float',
+        'fetch_sub_count' => 'int',
+        'pass_sub_time' => 'float',
+        'pass_sub_count' => 'int',
+        'pipe_sub_time' => 'float',
+        'pipe_sub_count' => 'int',
+        'deliver_sub_time' => 'float',
+        'deliver_sub_count' => 'int',
+        'error_sub_time' => 'float',
+        'error_sub_count' => 'int',
+        'hit_sub_time' => 'float',
+        'hit_sub_count' => 'int',
+        'prehash_sub_time' => 'float',
+        'prehash_sub_count' => 'int',
+        'predeliver_sub_time' => 'float',
+        'predeliver_sub_count' => 'int',
+        'tls_handshake_sent_bytes' => 'int',
+        'hit_resp_body_bytes' => 'int',
+        'miss_resp_body_bytes' => 'int',
+        'pass_resp_body_bytes' => 'int',
+        'segblock_origin_fetches' => 'int',
+        'segblock_shield_fetches' => 'int',
+        'compute_requests' => 'int',
+        'compute_request_time_ms' => 'float',
+        'compute_request_time_billed_ms' => 'float',
+        'compute_ram_used' => 'int',
+        'compute_execution_time_ms' => 'float',
+        'compute_req_header_bytes' => 'int',
+        'compute_req_body_bytes' => 'int',
+        'compute_resp_header_bytes' => 'int',
+        'compute_resp_body_bytes' => 'int',
+        'compute_resp_status_1xx' => 'int',
+        'compute_resp_status_2xx' => 'int',
+        'compute_resp_status_3xx' => 'int',
+        'compute_resp_status_4xx' => 'int',
+        'compute_resp_status_5xx' => 'int',
+        'compute_bereq_header_bytes' => 'int',
+        'compute_bereq_body_bytes' => 'int',
+        'compute_beresp_header_bytes' => 'int',
+        'compute_beresp_body_bytes' => 'int',
+        'compute_bereqs' => 'int',
+        'compute_service_bereq_error' => 'int',
+        'compute_service_memory_exceeded_error' => 'int',
+        'edge_hit_resp_body_bytes' => 'int',
+        'edge_hit_resp_header_bytes' => 'int',
+        'edge_miss_resp_body_bytes' => 'int',
+        'edge_miss_resp_header_bytes' => 'int',
+        'origin_cache_fetch_resp_body_bytes' => 'int',
+        'origin_cache_fetch_resp_header_bytes' => 'int',
+        'shield_hit_requests' => 'int',
+        'shield_miss_requests' => 'int',
+        'shield_hit_resp_header_bytes' => 'int',
+        'shield_hit_resp_body_bytes' => 'int',
+        'shield_miss_resp_header_bytes' => 'int',
+        'shield_miss_resp_body_bytes' => 'int',
+        'websocket_req_header_bytes' => 'int',
+        'websocket_req_body_bytes' => 'int',
+        'websocket_resp_header_bytes' => 'int',
+        'websocket_resp_body_bytes' => 'int',
+        'websocket_bereq_header_bytes' => 'int',
+        'websocket_bereq_body_bytes' => 'int',
+        'websocket_beresp_header_bytes' => 'int',
+        'websocket_beresp_body_bytes' => 'int',
+        'websocket_conn_time_ms' => 'int',
+        'fanout_recv_publishes' => 'int',
+        'fanout_send_publishes' => 'int',
+        'kv_store_class_a_operations' => 'int',
+        'kv_store_class_b_operations' => 'int',
+        'fanout_req_header_bytes' => 'int',
+        'fanout_req_body_bytes' => 'int',
+        'fanout_resp_header_bytes' => 'int',
+        'fanout_resp_body_bytes' => 'int',
+        'fanout_bereq_header_bytes' => 'int',
+        'fanout_bereq_body_bytes' => 'int',
+        'fanout_beresp_header_bytes' => 'int',
+        'fanout_beresp_body_bytes' => 'int',
+        'fanout_conn_time_ms' => 'int',
+        'ddos_action_limit_streams_connections' => 'int',
+        'ddos_action_limit_streams_requests' => 'int',
+        'ddos_action_tarpit_accept' => 'int',
+        'ddos_action_tarpit' => 'int',
+        'ddos_action_close' => 'int',
+        'ddos_action_blackhole' => 'int',
+        'bot_challenge_starts' => 'int',
+        'bot_challenge_complete_tokens_passed' => 'int',
+        'bot_challenge_complete_tokens_failed' => 'int',
+        'bot_challenge_complete_tokens_checked' => 'int',
+        'bot_challenge_complete_tokens_disabled' => 'int',
+        'bot_challenge_complete_tokens_issued' => 'int',
+        'bot_challenges_issued' => 'int',
+        'bot_challenges_succeeded' => 'int',
+        'bot_challenges_failed' => 'int',
+        'ddos_action_downgrade' => 'int',
+        'ddos_action_downgraded_connections' => 'int',
+        'all_hit_requests' => 'int',
+        'all_miss_requests' => 'int',
+        'all_pass_requests' => 'int',
+        'all_error_requests' => 'int',
+        'all_synth_requests' => 'int',
+        'all_edge_hit_requests' => 'int',
+        'all_edge_miss_requests' => 'int',
+        'all_status_1xx' => 'int',
+        'all_status_2xx' => 'int',
+        'all_status_3xx' => 'int',
+        'all_status_4xx' => 'int',
+        'all_status_5xx' => 'int',
+        'origin_offload' => 'float',
+        'request_denied_get_head_body' => 'int',
+        'ddos_protection_requests_detect_count' => 'int',
+        'ddos_protection_requests_mitigate_count' => 'int',
+        'ddos_protection_requests_allow_count' => 'int',
+        'object_storage_class_a_operations_count' => 'int',
+        'object_storage_class_b_operations_count' => 'int',
+        'aia_requests' => 'int',
+        'aia_status_1xx' => 'int',
+        'aia_status_2xx' => 'int',
+        'aia_status_3xx' => 'int',
+        'aia_status_4xx' => 'int',
+        'aia_status_5xx' => 'int',
+        'aia_response_usage_tokens' => 'int',
+        'aia_origin_usage_tokens' => 'int',
+        'aia_estimated_time_saved_ms' => 'int',
+        'request_collapse_usable_count' => 'int',
+        'request_collapse_unusable_count' => 'int',
+        'compute_cache_operations_count' => 'int',
+        'ngwaf_requests_total_count' => 'int',
+        'ngwaf_requests_unknown_count' => 'int',
+        'ngwaf_requests_allowed_count' => 'int',
+        'ngwaf_requests_logged_count' => 'int',
+        'ngwaf_requests_blocked_count' => 'int',
+        'ngwaf_requests_timeout_count' => 'int',
+        'ngwaf_requests_challenged_count' => 'int',
+        'api_discovery_requests_count' => 'int',
+        'compute_resp_status_103' => 'int',
+        'compute_resp_status_200' => 'int',
+        'compute_resp_status_204' => 'int',
+        'compute_resp_status_206' => 'int',
+        'compute_resp_status_301' => 'int',
+        'compute_resp_status_302' => 'int',
+        'compute_resp_status_304' => 'int',
+        'compute_resp_status_400' => 'int',
+        'compute_resp_status_401' => 'int',
+        'compute_resp_status_403' => 'int',
+        'compute_resp_status_404' => 'int',
+        'compute_resp_status_416' => 'int',
+        'compute_resp_status_429' => 'int',
+        'compute_resp_status_500' => 'int',
+        'compute_resp_status_501' => 'int',
+        'compute_resp_status_502' => 'int',
+        'compute_resp_status_503' => 'int',
+        'compute_resp_status_504' => 'int',
+        'compute_resp_status_505' => 'int',
+        'compute_resp_status_530' => 'int',
+        'imgopto_compute_requests' => 'int',
+        'dns_billable_responses_count' => 'int',
+        'dns_nonbillable_responses_count' => 'int',
+        'upgrade' => 'int',
+        'ngwaf_bot_analysis_request_count' => 'int',
+        'imgopto_avif_count' => 'int',
+        'imgopto_jpeg_count' => 'int',
+        'imgopto_png_count' => 'int',
+        'imgopto_gif_count' => 'int',
+        'imgopto_webp_count' => 'int',
+        'imgopto_jpegxl_count' => 'int',
+        'imgopto_svg_count' => 'int',
+        'imgopto_mp4_count' => 'int',
+        'compute_service_resource_limits_error' => 'int',
+        'compute_service_runtime_error' => 'int',
+        'compute_service_chain_error' => 'int',
+        'compute_platform_internal_error' => 'int',
+        'compute_service_timeout_error' => 'int',
+        'compute_service_vcpu_exceeded_error' => 'int',
+        'compute_service_limits_error' => 'int',
+        'compute_platform_invalid_request_error' => 'int',
+        'compute_sandboxes' => 'int',
+        'bot_requests_total_count' => 'int',
+        'bot_edge_requests_analyzed_count' => 'int',
+        'bot_edge_requests_detected_count' => 'int',
+        'bot_edge_requests_verified_count' => 'int',
+        'bot_edge_requests_ai_crawler_count' => 'int',
+        'bot_edge_requests_ai_fetcher_count' => 'int',
+        'bot_edge_requests_accessibility_count' => 'int',
+        'bot_edge_requests_content_fetcher_count' => 'int',
+        'bot_edge_requests_monitoring_count' => 'int',
+        'bot_edge_requests_online_marketing_count' => 'int',
+        'bot_edge_requests_page_preview_count' => 'int',
+        'bot_edge_requests_platform_integrations_count' => 'int',
+        'bot_edge_requests_research_count' => 'int',
+        'bot_edge_requests_search_engine_crawler_count' => 'int',
+        'bot_edge_requests_search_engine_optimization_count' => 'int',
+        'bot_edge_requests_security_tools_count' => 'int',
+        'compute_handoff' => 'int',
+        'compute_service_bereq_dns_error' => 'int',
+        'compute_service_bereq_conn_timeout_error' => 'int',
+        'compute_service_bereq_conn_refused_error' => 'int',
+        'compute_service_bereq_conn_other_error' => 'int',
+        'compute_service_bereq_tls_server_cert_error' => 'int',
+        'compute_service_bereq_tls_other_error' => 'int',
+        'compute_service_bereq_http_proto_v1_error' => 'int',
+        'compute_service_bereq_http_proto_v2_error' => 'int',
+        'compute_service_bereq_http_incomplete_error' => 'int',
+        'compute_service_bereq_http_timeout_error' => 'int',
+        'compute_service_bereq_http_other_error' => 'int',
+        'compute_service_bereq_other_error' => 'int',
+        'compute_service_bereq_5xx_error' => 'int',
+        'compute_service_bereq_conn_error' => 'int',
+        'compute_service_bereq_tls_error' => 'int',
+        'compute_service_bereq_http_error' => 'int',
+        'bot_challenges_pats_issued' => 'int',
+        'bot_challenges_pats_succeeded' => 'int',
+        'bot_edge_requests_headless_count' => 'int',
+        'status_499' => 'int',
+        'arc_requests' => 'int',
+        'ddos_challenge_complete_tokens_checked' => 'int',
+        'ddos_challenge_complete_tokens_passed' => 'int',
+        'ddos_challenge_complete_tokens_failed' => 'int',
+        'ddos_challenge_starts' => 'int',
+        'ddos_challenge_complete_tokens_issued' => 'int',
+        'ddos_challenges_issued' => 'int',
+        'ddos_challenges_succeeded' => 'int',
+        'ddos_challenges_failed' => 'int',
+        'ddos_challenges_pats_issued' => 'int',
+        'ddos_challenges_pats_succeeded' => 'int',
+        'csp_pages_gauge' => 'int',
+        'ngwaf_account_rules_gauge' => 'int',
+        'ngwaf_account_workspaces' => 'int',
+        'ngwaf_workspace_rules_gauge' => 'int',
+        'ngwaf_workspace_thresholds_gauge' => 'int',
+        'object_storage_buckets_count' => 'int',
+        'object_storage_bytes_count' => 'int'
     ];
 
     /**
@@ -81,21 +424,364 @@ class PlatformValues implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $fastlyFormats = [
         'timestamp' => 'date-time',
-        'ttfb_origin_p25_us' => 'float',
-        'ttfb_origin_p50_us' => 'float',
-        'ttfb_origin_p75_us' => 'float',
-        'ttfb_origin_p95_us' => 'float',
-        'ttfb_origin_p99_us' => 'float',
-        'ttfb_shield_p25_us' => 'float',
-        'ttfb_shield_p50_us' => 'float',
-        'ttfb_shield_p75_us' => 'float',
-        'ttfb_shield_p95_us' => 'float',
-        'ttfb_shield_p99_us' => 'float',
-        'ttfb_edge_p25_us' => 'float',
-        'ttfb_edge_p50_us' => 'float',
-        'ttfb_edge_p75_us' => 'float',
-        'ttfb_edge_p95_us' => 'float',
-        'ttfb_edge_p99_us' => 'float'
+        'datacenter' => null,
+        'region' => null,
+        'requests' => 'int64',
+        'hits' => 'int64',
+        'hits_time' => null,
+        'miss' => 'int64',
+        'miss_time' => null,
+        'pass' => 'int64',
+        'pass_time' => null,
+        'errors' => 'int64',
+        'restarts' => 'int64',
+        'hit_ratio' => null,
+        'bandwidth' => 'int64',
+        'req_body_bytes' => 'int64',
+        'req_header_bytes' => 'int64',
+        'resp_body_bytes' => 'int64',
+        'resp_header_bytes' => 'int64',
+        'bereq_body_bytes' => 'int64',
+        'bereq_header_bytes' => 'int64',
+        'uncacheable' => 'int64',
+        'pipe' => 'int64',
+        'synth' => 'int64',
+        'tls' => 'int64',
+        'tls_v10' => 'int64',
+        'tls_v11' => 'int64',
+        'tls_v12' => 'int64',
+        'tls_v13' => 'int64',
+        'edge_requests' => 'int64',
+        'edge_resp_header_bytes' => 'int64',
+        'edge_resp_body_bytes' => 'int64',
+        'edge_hit_requests' => 'int64',
+        'edge_miss_requests' => 'int64',
+        'origin_fetches' => 'int64',
+        'origin_fetch_header_bytes' => 'int64',
+        'origin_fetch_body_bytes' => 'int64',
+        'origin_fetch_resp_header_bytes' => 'int64',
+        'origin_fetch_resp_body_bytes' => 'int64',
+        'origin_revalidations' => 'int64',
+        'origin_cache_fetches' => 'int64',
+        'shield' => 'int64',
+        'shield_resp_body_bytes' => 'int64',
+        'shield_resp_header_bytes' => 'int64',
+        'shield_fetches' => 'int64',
+        'shield_fetch_header_bytes' => 'int64',
+        'shield_fetch_body_bytes' => 'int64',
+        'shield_fetch_resp_header_bytes' => 'int64',
+        'shield_fetch_resp_body_bytes' => 'int64',
+        'shield_revalidations' => 'int64',
+        'shield_cache_fetches' => 'int64',
+        'ipv6' => 'int64',
+        'otfp' => 'int64',
+        'otfp_resp_body_bytes' => 'int64',
+        'otfp_resp_header_bytes' => 'int64',
+        'otfp_shield_resp_body_bytes' => 'int64',
+        'otfp_shield_resp_header_bytes' => 'int64',
+        'otfp_manifests' => 'int64',
+        'otfp_deliver_time' => null,
+        'otfp_shield_time' => null,
+        'video' => 'int64',
+        'pci' => 'int64',
+        'log' => 'int64',
+        'log_bytes' => 'int64',
+        'http2' => 'int64',
+        'http3' => 'int64',
+        'attack_req_body_bytes' => 'int64',
+        'attack_req_header_bytes' => 'int64',
+        'attack_logged_req_body_bytes' => 'int64',
+        'attack_logged_req_header_bytes' => 'int64',
+        'attack_blocked_req_body_bytes' => 'int64',
+        'attack_blocked_req_header_bytes' => 'int64',
+        'attack_passed_req_body_bytes' => 'int64',
+        'attack_passed_req_header_bytes' => 'int64',
+        'attack_resp_synth_bytes' => 'int64',
+        'imgopto' => 'int64',
+        'imgopto_input_image_bytes' => 'int64',
+        'imgopto_output_image_bytes' => 'int64',
+        'imgopto_resp_body_bytes' => 'int64',
+        'imgopto_resp_header_bytes' => 'int64',
+        'imgopto_shield' => 'int64',
+        'imgopto_shield_resp_body_bytes' => 'int64',
+        'imgopto_shield_resp_header_bytes' => 'int64',
+        'imgopto_transforms' => 'int64',
+        'imgvideo' => 'int64',
+        'imgvideo_frames' => 'int64',
+        'imgvideo_resp_header_bytes' => 'int64',
+        'imgvideo_resp_body_bytes' => 'int64',
+        'imgvideo_shield_resp_header_bytes' => 'int64',
+        'imgvideo_shield_resp_body_bytes' => 'int64',
+        'imgvideo_shield' => 'int64',
+        'imgvideo_shield_frames' => 'int64',
+        'status_200' => 'int64',
+        'status_204' => 'int64',
+        'status_206' => 'int64',
+        'status_301' => 'int64',
+        'status_302' => 'int64',
+        'status_304' => 'int64',
+        'status_400' => 'int64',
+        'status_401' => 'int64',
+        'status_403' => 'int64',
+        'status_404' => 'int64',
+        'status_406' => 'int64',
+        'status_416' => 'int64',
+        'status_429' => 'int64',
+        'status_500' => 'int64',
+        'status_501' => 'int64',
+        'status_502' => 'int64',
+        'status_503' => 'int64',
+        'status_504' => 'int64',
+        'status_505' => 'int64',
+        'status_530' => 'int64',
+        'status_1xx' => 'int64',
+        'status_2xx' => 'int64',
+        'status_3xx' => 'int64',
+        'status_4xx' => 'int64',
+        'status_5xx' => 'int64',
+        'object_size_1k' => 'int64',
+        'object_size_10k' => 'int64',
+        'object_size_100k' => 'int64',
+        'object_size_1m' => 'int64',
+        'object_size_10m' => 'int64',
+        'object_size_100m' => 'int64',
+        'object_size_1g' => 'int64',
+        'recv_sub_time' => null,
+        'recv_sub_count' => 'int64',
+        'hash_sub_time' => null,
+        'hash_sub_count' => 'int64',
+        'miss_sub_time' => null,
+        'miss_sub_count' => 'int64',
+        'fetch_sub_time' => null,
+        'fetch_sub_count' => 'int64',
+        'pass_sub_time' => null,
+        'pass_sub_count' => 'int64',
+        'pipe_sub_time' => null,
+        'pipe_sub_count' => 'int64',
+        'deliver_sub_time' => null,
+        'deliver_sub_count' => 'int64',
+        'error_sub_time' => null,
+        'error_sub_count' => 'int64',
+        'hit_sub_time' => null,
+        'hit_sub_count' => 'int64',
+        'prehash_sub_time' => null,
+        'prehash_sub_count' => 'int64',
+        'predeliver_sub_time' => null,
+        'predeliver_sub_count' => 'int64',
+        'tls_handshake_sent_bytes' => 'int64',
+        'hit_resp_body_bytes' => 'int64',
+        'miss_resp_body_bytes' => 'int64',
+        'pass_resp_body_bytes' => 'int64',
+        'segblock_origin_fetches' => 'int64',
+        'segblock_shield_fetches' => 'int64',
+        'compute_requests' => 'int64',
+        'compute_request_time_ms' => null,
+        'compute_request_time_billed_ms' => null,
+        'compute_ram_used' => 'int64',
+        'compute_execution_time_ms' => null,
+        'compute_req_header_bytes' => 'int64',
+        'compute_req_body_bytes' => 'int64',
+        'compute_resp_header_bytes' => 'int64',
+        'compute_resp_body_bytes' => 'int64',
+        'compute_resp_status_1xx' => 'int64',
+        'compute_resp_status_2xx' => 'int64',
+        'compute_resp_status_3xx' => 'int64',
+        'compute_resp_status_4xx' => 'int64',
+        'compute_resp_status_5xx' => 'int64',
+        'compute_bereq_header_bytes' => 'int64',
+        'compute_bereq_body_bytes' => 'int64',
+        'compute_beresp_header_bytes' => 'int64',
+        'compute_beresp_body_bytes' => 'int64',
+        'compute_bereqs' => 'int64',
+        'compute_service_bereq_error' => 'int64',
+        'compute_service_memory_exceeded_error' => 'int64',
+        'edge_hit_resp_body_bytes' => 'int64',
+        'edge_hit_resp_header_bytes' => 'int64',
+        'edge_miss_resp_body_bytes' => 'int64',
+        'edge_miss_resp_header_bytes' => 'int64',
+        'origin_cache_fetch_resp_body_bytes' => 'int64',
+        'origin_cache_fetch_resp_header_bytes' => 'int64',
+        'shield_hit_requests' => 'int64',
+        'shield_miss_requests' => 'int64',
+        'shield_hit_resp_header_bytes' => 'int64',
+        'shield_hit_resp_body_bytes' => 'int64',
+        'shield_miss_resp_header_bytes' => 'int64',
+        'shield_miss_resp_body_bytes' => 'int64',
+        'websocket_req_header_bytes' => 'int64',
+        'websocket_req_body_bytes' => 'int64',
+        'websocket_resp_header_bytes' => 'int64',
+        'websocket_resp_body_bytes' => 'int64',
+        'websocket_bereq_header_bytes' => 'int64',
+        'websocket_bereq_body_bytes' => 'int64',
+        'websocket_beresp_header_bytes' => 'int64',
+        'websocket_beresp_body_bytes' => 'int64',
+        'websocket_conn_time_ms' => 'int64',
+        'fanout_recv_publishes' => 'int64',
+        'fanout_send_publishes' => 'int64',
+        'kv_store_class_a_operations' => 'int64',
+        'kv_store_class_b_operations' => 'int64',
+        'fanout_req_header_bytes' => 'int64',
+        'fanout_req_body_bytes' => 'int64',
+        'fanout_resp_header_bytes' => 'int64',
+        'fanout_resp_body_bytes' => 'int64',
+        'fanout_bereq_header_bytes' => 'int64',
+        'fanout_bereq_body_bytes' => 'int64',
+        'fanout_beresp_header_bytes' => 'int64',
+        'fanout_beresp_body_bytes' => 'int64',
+        'fanout_conn_time_ms' => 'int64',
+        'ddos_action_limit_streams_connections' => 'int64',
+        'ddos_action_limit_streams_requests' => 'int64',
+        'ddos_action_tarpit_accept' => 'int64',
+        'ddos_action_tarpit' => 'int64',
+        'ddos_action_close' => 'int64',
+        'ddos_action_blackhole' => 'int64',
+        'bot_challenge_starts' => 'int64',
+        'bot_challenge_complete_tokens_passed' => 'int64',
+        'bot_challenge_complete_tokens_failed' => 'int64',
+        'bot_challenge_complete_tokens_checked' => 'int64',
+        'bot_challenge_complete_tokens_disabled' => 'int64',
+        'bot_challenge_complete_tokens_issued' => 'int64',
+        'bot_challenges_issued' => 'int64',
+        'bot_challenges_succeeded' => 'int64',
+        'bot_challenges_failed' => 'int64',
+        'ddos_action_downgrade' => 'int64',
+        'ddos_action_downgraded_connections' => 'int64',
+        'all_hit_requests' => 'int64',
+        'all_miss_requests' => 'int64',
+        'all_pass_requests' => 'int64',
+        'all_error_requests' => 'int64',
+        'all_synth_requests' => 'int64',
+        'all_edge_hit_requests' => 'int64',
+        'all_edge_miss_requests' => 'int64',
+        'all_status_1xx' => 'int64',
+        'all_status_2xx' => 'int64',
+        'all_status_3xx' => 'int64',
+        'all_status_4xx' => 'int64',
+        'all_status_5xx' => 'int64',
+        'origin_offload' => null,
+        'request_denied_get_head_body' => 'int64',
+        'ddos_protection_requests_detect_count' => 'int64',
+        'ddos_protection_requests_mitigate_count' => 'int64',
+        'ddos_protection_requests_allow_count' => 'int64',
+        'object_storage_class_a_operations_count' => 'int64',
+        'object_storage_class_b_operations_count' => 'int64',
+        'aia_requests' => 'int64',
+        'aia_status_1xx' => 'int64',
+        'aia_status_2xx' => 'int64',
+        'aia_status_3xx' => 'int64',
+        'aia_status_4xx' => 'int64',
+        'aia_status_5xx' => 'int64',
+        'aia_response_usage_tokens' => 'int64',
+        'aia_origin_usage_tokens' => 'int64',
+        'aia_estimated_time_saved_ms' => 'int64',
+        'request_collapse_usable_count' => 'int64',
+        'request_collapse_unusable_count' => 'int64',
+        'compute_cache_operations_count' => 'int64',
+        'ngwaf_requests_total_count' => null,
+        'ngwaf_requests_unknown_count' => null,
+        'ngwaf_requests_allowed_count' => null,
+        'ngwaf_requests_logged_count' => null,
+        'ngwaf_requests_blocked_count' => null,
+        'ngwaf_requests_timeout_count' => null,
+        'ngwaf_requests_challenged_count' => null,
+        'api_discovery_requests_count' => null,
+        'compute_resp_status_103' => null,
+        'compute_resp_status_200' => null,
+        'compute_resp_status_204' => null,
+        'compute_resp_status_206' => null,
+        'compute_resp_status_301' => null,
+        'compute_resp_status_302' => null,
+        'compute_resp_status_304' => null,
+        'compute_resp_status_400' => null,
+        'compute_resp_status_401' => null,
+        'compute_resp_status_403' => null,
+        'compute_resp_status_404' => null,
+        'compute_resp_status_416' => null,
+        'compute_resp_status_429' => null,
+        'compute_resp_status_500' => null,
+        'compute_resp_status_501' => null,
+        'compute_resp_status_502' => null,
+        'compute_resp_status_503' => null,
+        'compute_resp_status_504' => null,
+        'compute_resp_status_505' => null,
+        'compute_resp_status_530' => null,
+        'imgopto_compute_requests' => null,
+        'dns_billable_responses_count' => null,
+        'dns_nonbillable_responses_count' => null,
+        'upgrade' => null,
+        'ngwaf_bot_analysis_request_count' => null,
+        'imgopto_avif_count' => null,
+        'imgopto_jpeg_count' => null,
+        'imgopto_png_count' => null,
+        'imgopto_gif_count' => null,
+        'imgopto_webp_count' => null,
+        'imgopto_jpegxl_count' => null,
+        'imgopto_svg_count' => null,
+        'imgopto_mp4_count' => null,
+        'compute_service_resource_limits_error' => null,
+        'compute_service_runtime_error' => null,
+        'compute_service_chain_error' => null,
+        'compute_platform_internal_error' => null,
+        'compute_service_timeout_error' => null,
+        'compute_service_vcpu_exceeded_error' => null,
+        'compute_service_limits_error' => null,
+        'compute_platform_invalid_request_error' => null,
+        'compute_sandboxes' => null,
+        'bot_requests_total_count' => null,
+        'bot_edge_requests_analyzed_count' => null,
+        'bot_edge_requests_detected_count' => null,
+        'bot_edge_requests_verified_count' => null,
+        'bot_edge_requests_ai_crawler_count' => null,
+        'bot_edge_requests_ai_fetcher_count' => null,
+        'bot_edge_requests_accessibility_count' => null,
+        'bot_edge_requests_content_fetcher_count' => null,
+        'bot_edge_requests_monitoring_count' => null,
+        'bot_edge_requests_online_marketing_count' => null,
+        'bot_edge_requests_page_preview_count' => null,
+        'bot_edge_requests_platform_integrations_count' => null,
+        'bot_edge_requests_research_count' => null,
+        'bot_edge_requests_search_engine_crawler_count' => null,
+        'bot_edge_requests_search_engine_optimization_count' => null,
+        'bot_edge_requests_security_tools_count' => null,
+        'compute_handoff' => null,
+        'compute_service_bereq_dns_error' => null,
+        'compute_service_bereq_conn_timeout_error' => null,
+        'compute_service_bereq_conn_refused_error' => null,
+        'compute_service_bereq_conn_other_error' => null,
+        'compute_service_bereq_tls_server_cert_error' => null,
+        'compute_service_bereq_tls_other_error' => null,
+        'compute_service_bereq_http_proto_v1_error' => null,
+        'compute_service_bereq_http_proto_v2_error' => null,
+        'compute_service_bereq_http_incomplete_error' => null,
+        'compute_service_bereq_http_timeout_error' => null,
+        'compute_service_bereq_http_other_error' => null,
+        'compute_service_bereq_other_error' => null,
+        'compute_service_bereq_5xx_error' => null,
+        'compute_service_bereq_conn_error' => null,
+        'compute_service_bereq_tls_error' => null,
+        'compute_service_bereq_http_error' => null,
+        'bot_challenges_pats_issued' => null,
+        'bot_challenges_pats_succeeded' => null,
+        'bot_edge_requests_headless_count' => null,
+        'status_499' => null,
+        'arc_requests' => null,
+        'ddos_challenge_complete_tokens_checked' => null,
+        'ddos_challenge_complete_tokens_passed' => null,
+        'ddos_challenge_complete_tokens_failed' => null,
+        'ddos_challenge_starts' => null,
+        'ddos_challenge_complete_tokens_issued' => null,
+        'ddos_challenges_issued' => null,
+        'ddos_challenges_succeeded' => null,
+        'ddos_challenges_failed' => null,
+        'ddos_challenges_pats_issued' => null,
+        'ddos_challenges_pats_succeeded' => null,
+        'csp_pages_gauge' => 'int64',
+        'ngwaf_account_rules_gauge' => 'int64',
+        'ngwaf_account_workspaces' => 'int64',
+        'ngwaf_workspace_rules_gauge' => 'int64',
+        'ngwaf_workspace_thresholds_gauge' => 'int64',
+        'object_storage_buckets_count' => 'int64',
+        'object_storage_bytes_count' => 'int64'
     ];
 
     /**
@@ -126,21 +812,364 @@ class PlatformValues implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'timestamp' => 'timestamp',
-        'ttfb_origin_p25_us' => 'ttfb_origin_p25_us',
-        'ttfb_origin_p50_us' => 'ttfb_origin_p50_us',
-        'ttfb_origin_p75_us' => 'ttfb_origin_p75_us',
-        'ttfb_origin_p95_us' => 'ttfb_origin_p95_us',
-        'ttfb_origin_p99_us' => 'ttfb_origin_p99_us',
-        'ttfb_shield_p25_us' => 'ttfb_shield_p25_us',
-        'ttfb_shield_p50_us' => 'ttfb_shield_p50_us',
-        'ttfb_shield_p75_us' => 'ttfb_shield_p75_us',
-        'ttfb_shield_p95_us' => 'ttfb_shield_p95_us',
-        'ttfb_shield_p99_us' => 'ttfb_shield_p99_us',
-        'ttfb_edge_p25_us' => 'ttfb_edge_p25_us',
-        'ttfb_edge_p50_us' => 'ttfb_edge_p50_us',
-        'ttfb_edge_p75_us' => 'ttfb_edge_p75_us',
-        'ttfb_edge_p95_us' => 'ttfb_edge_p95_us',
-        'ttfb_edge_p99_us' => 'ttfb_edge_p99_us'
+        'datacenter' => 'datacenter',
+        'region' => 'region',
+        'requests' => 'requests',
+        'hits' => 'hits',
+        'hits_time' => 'hits_time',
+        'miss' => 'miss',
+        'miss_time' => 'miss_time',
+        'pass' => 'pass',
+        'pass_time' => 'pass_time',
+        'errors' => 'errors',
+        'restarts' => 'restarts',
+        'hit_ratio' => 'hit_ratio',
+        'bandwidth' => 'bandwidth',
+        'req_body_bytes' => 'req_body_bytes',
+        'req_header_bytes' => 'req_header_bytes',
+        'resp_body_bytes' => 'resp_body_bytes',
+        'resp_header_bytes' => 'resp_header_bytes',
+        'bereq_body_bytes' => 'bereq_body_bytes',
+        'bereq_header_bytes' => 'bereq_header_bytes',
+        'uncacheable' => 'uncacheable',
+        'pipe' => 'pipe',
+        'synth' => 'synth',
+        'tls' => 'tls',
+        'tls_v10' => 'tls_v10',
+        'tls_v11' => 'tls_v11',
+        'tls_v12' => 'tls_v12',
+        'tls_v13' => 'tls_v13',
+        'edge_requests' => 'edge_requests',
+        'edge_resp_header_bytes' => 'edge_resp_header_bytes',
+        'edge_resp_body_bytes' => 'edge_resp_body_bytes',
+        'edge_hit_requests' => 'edge_hit_requests',
+        'edge_miss_requests' => 'edge_miss_requests',
+        'origin_fetches' => 'origin_fetches',
+        'origin_fetch_header_bytes' => 'origin_fetch_header_bytes',
+        'origin_fetch_body_bytes' => 'origin_fetch_body_bytes',
+        'origin_fetch_resp_header_bytes' => 'origin_fetch_resp_header_bytes',
+        'origin_fetch_resp_body_bytes' => 'origin_fetch_resp_body_bytes',
+        'origin_revalidations' => 'origin_revalidations',
+        'origin_cache_fetches' => 'origin_cache_fetches',
+        'shield' => 'shield',
+        'shield_resp_body_bytes' => 'shield_resp_body_bytes',
+        'shield_resp_header_bytes' => 'shield_resp_header_bytes',
+        'shield_fetches' => 'shield_fetches',
+        'shield_fetch_header_bytes' => 'shield_fetch_header_bytes',
+        'shield_fetch_body_bytes' => 'shield_fetch_body_bytes',
+        'shield_fetch_resp_header_bytes' => 'shield_fetch_resp_header_bytes',
+        'shield_fetch_resp_body_bytes' => 'shield_fetch_resp_body_bytes',
+        'shield_revalidations' => 'shield_revalidations',
+        'shield_cache_fetches' => 'shield_cache_fetches',
+        'ipv6' => 'ipv6',
+        'otfp' => 'otfp',
+        'otfp_resp_body_bytes' => 'otfp_resp_body_bytes',
+        'otfp_resp_header_bytes' => 'otfp_resp_header_bytes',
+        'otfp_shield_resp_body_bytes' => 'otfp_shield_resp_body_bytes',
+        'otfp_shield_resp_header_bytes' => 'otfp_shield_resp_header_bytes',
+        'otfp_manifests' => 'otfp_manifests',
+        'otfp_deliver_time' => 'otfp_deliver_time',
+        'otfp_shield_time' => 'otfp_shield_time',
+        'video' => 'video',
+        'pci' => 'pci',
+        'log' => 'log',
+        'log_bytes' => 'log_bytes',
+        'http2' => 'http2',
+        'http3' => 'http3',
+        'attack_req_body_bytes' => 'attack_req_body_bytes',
+        'attack_req_header_bytes' => 'attack_req_header_bytes',
+        'attack_logged_req_body_bytes' => 'attack_logged_req_body_bytes',
+        'attack_logged_req_header_bytes' => 'attack_logged_req_header_bytes',
+        'attack_blocked_req_body_bytes' => 'attack_blocked_req_body_bytes',
+        'attack_blocked_req_header_bytes' => 'attack_blocked_req_header_bytes',
+        'attack_passed_req_body_bytes' => 'attack_passed_req_body_bytes',
+        'attack_passed_req_header_bytes' => 'attack_passed_req_header_bytes',
+        'attack_resp_synth_bytes' => 'attack_resp_synth_bytes',
+        'imgopto' => 'imgopto',
+        'imgopto_input_image_bytes' => 'imgopto_input_image_bytes',
+        'imgopto_output_image_bytes' => 'imgopto_output_image_bytes',
+        'imgopto_resp_body_bytes' => 'imgopto_resp_body_bytes',
+        'imgopto_resp_header_bytes' => 'imgopto_resp_header_bytes',
+        'imgopto_shield' => 'imgopto_shield',
+        'imgopto_shield_resp_body_bytes' => 'imgopto_shield_resp_body_bytes',
+        'imgopto_shield_resp_header_bytes' => 'imgopto_shield_resp_header_bytes',
+        'imgopto_transforms' => 'imgopto_transforms',
+        'imgvideo' => 'imgvideo',
+        'imgvideo_frames' => 'imgvideo_frames',
+        'imgvideo_resp_header_bytes' => 'imgvideo_resp_header_bytes',
+        'imgvideo_resp_body_bytes' => 'imgvideo_resp_body_bytes',
+        'imgvideo_shield_resp_header_bytes' => 'imgvideo_shield_resp_header_bytes',
+        'imgvideo_shield_resp_body_bytes' => 'imgvideo_shield_resp_body_bytes',
+        'imgvideo_shield' => 'imgvideo_shield',
+        'imgvideo_shield_frames' => 'imgvideo_shield_frames',
+        'status_200' => 'status_200',
+        'status_204' => 'status_204',
+        'status_206' => 'status_206',
+        'status_301' => 'status_301',
+        'status_302' => 'status_302',
+        'status_304' => 'status_304',
+        'status_400' => 'status_400',
+        'status_401' => 'status_401',
+        'status_403' => 'status_403',
+        'status_404' => 'status_404',
+        'status_406' => 'status_406',
+        'status_416' => 'status_416',
+        'status_429' => 'status_429',
+        'status_500' => 'status_500',
+        'status_501' => 'status_501',
+        'status_502' => 'status_502',
+        'status_503' => 'status_503',
+        'status_504' => 'status_504',
+        'status_505' => 'status_505',
+        'status_530' => 'status_530',
+        'status_1xx' => 'status_1xx',
+        'status_2xx' => 'status_2xx',
+        'status_3xx' => 'status_3xx',
+        'status_4xx' => 'status_4xx',
+        'status_5xx' => 'status_5xx',
+        'object_size_1k' => 'object_size_1k',
+        'object_size_10k' => 'object_size_10k',
+        'object_size_100k' => 'object_size_100k',
+        'object_size_1m' => 'object_size_1m',
+        'object_size_10m' => 'object_size_10m',
+        'object_size_100m' => 'object_size_100m',
+        'object_size_1g' => 'object_size_1g',
+        'recv_sub_time' => 'recv_sub_time',
+        'recv_sub_count' => 'recv_sub_count',
+        'hash_sub_time' => 'hash_sub_time',
+        'hash_sub_count' => 'hash_sub_count',
+        'miss_sub_time' => 'miss_sub_time',
+        'miss_sub_count' => 'miss_sub_count',
+        'fetch_sub_time' => 'fetch_sub_time',
+        'fetch_sub_count' => 'fetch_sub_count',
+        'pass_sub_time' => 'pass_sub_time',
+        'pass_sub_count' => 'pass_sub_count',
+        'pipe_sub_time' => 'pipe_sub_time',
+        'pipe_sub_count' => 'pipe_sub_count',
+        'deliver_sub_time' => 'deliver_sub_time',
+        'deliver_sub_count' => 'deliver_sub_count',
+        'error_sub_time' => 'error_sub_time',
+        'error_sub_count' => 'error_sub_count',
+        'hit_sub_time' => 'hit_sub_time',
+        'hit_sub_count' => 'hit_sub_count',
+        'prehash_sub_time' => 'prehash_sub_time',
+        'prehash_sub_count' => 'prehash_sub_count',
+        'predeliver_sub_time' => 'predeliver_sub_time',
+        'predeliver_sub_count' => 'predeliver_sub_count',
+        'tls_handshake_sent_bytes' => 'tls_handshake_sent_bytes',
+        'hit_resp_body_bytes' => 'hit_resp_body_bytes',
+        'miss_resp_body_bytes' => 'miss_resp_body_bytes',
+        'pass_resp_body_bytes' => 'pass_resp_body_bytes',
+        'segblock_origin_fetches' => 'segblock_origin_fetches',
+        'segblock_shield_fetches' => 'segblock_shield_fetches',
+        'compute_requests' => 'compute_requests',
+        'compute_request_time_ms' => 'compute_request_time_ms',
+        'compute_request_time_billed_ms' => 'compute_request_time_billed_ms',
+        'compute_ram_used' => 'compute_ram_used',
+        'compute_execution_time_ms' => 'compute_execution_time_ms',
+        'compute_req_header_bytes' => 'compute_req_header_bytes',
+        'compute_req_body_bytes' => 'compute_req_body_bytes',
+        'compute_resp_header_bytes' => 'compute_resp_header_bytes',
+        'compute_resp_body_bytes' => 'compute_resp_body_bytes',
+        'compute_resp_status_1xx' => 'compute_resp_status_1xx',
+        'compute_resp_status_2xx' => 'compute_resp_status_2xx',
+        'compute_resp_status_3xx' => 'compute_resp_status_3xx',
+        'compute_resp_status_4xx' => 'compute_resp_status_4xx',
+        'compute_resp_status_5xx' => 'compute_resp_status_5xx',
+        'compute_bereq_header_bytes' => 'compute_bereq_header_bytes',
+        'compute_bereq_body_bytes' => 'compute_bereq_body_bytes',
+        'compute_beresp_header_bytes' => 'compute_beresp_header_bytes',
+        'compute_beresp_body_bytes' => 'compute_beresp_body_bytes',
+        'compute_bereqs' => 'compute_bereqs',
+        'compute_service_bereq_error' => 'compute_service_bereq_error',
+        'compute_service_memory_exceeded_error' => 'compute_service_memory_exceeded_error',
+        'edge_hit_resp_body_bytes' => 'edge_hit_resp_body_bytes',
+        'edge_hit_resp_header_bytes' => 'edge_hit_resp_header_bytes',
+        'edge_miss_resp_body_bytes' => 'edge_miss_resp_body_bytes',
+        'edge_miss_resp_header_bytes' => 'edge_miss_resp_header_bytes',
+        'origin_cache_fetch_resp_body_bytes' => 'origin_cache_fetch_resp_body_bytes',
+        'origin_cache_fetch_resp_header_bytes' => 'origin_cache_fetch_resp_header_bytes',
+        'shield_hit_requests' => 'shield_hit_requests',
+        'shield_miss_requests' => 'shield_miss_requests',
+        'shield_hit_resp_header_bytes' => 'shield_hit_resp_header_bytes',
+        'shield_hit_resp_body_bytes' => 'shield_hit_resp_body_bytes',
+        'shield_miss_resp_header_bytes' => 'shield_miss_resp_header_bytes',
+        'shield_miss_resp_body_bytes' => 'shield_miss_resp_body_bytes',
+        'websocket_req_header_bytes' => 'websocket_req_header_bytes',
+        'websocket_req_body_bytes' => 'websocket_req_body_bytes',
+        'websocket_resp_header_bytes' => 'websocket_resp_header_bytes',
+        'websocket_resp_body_bytes' => 'websocket_resp_body_bytes',
+        'websocket_bereq_header_bytes' => 'websocket_bereq_header_bytes',
+        'websocket_bereq_body_bytes' => 'websocket_bereq_body_bytes',
+        'websocket_beresp_header_bytes' => 'websocket_beresp_header_bytes',
+        'websocket_beresp_body_bytes' => 'websocket_beresp_body_bytes',
+        'websocket_conn_time_ms' => 'websocket_conn_time_ms',
+        'fanout_recv_publishes' => 'fanout_recv_publishes',
+        'fanout_send_publishes' => 'fanout_send_publishes',
+        'kv_store_class_a_operations' => 'kv_store_class_a_operations',
+        'kv_store_class_b_operations' => 'kv_store_class_b_operations',
+        'fanout_req_header_bytes' => 'fanout_req_header_bytes',
+        'fanout_req_body_bytes' => 'fanout_req_body_bytes',
+        'fanout_resp_header_bytes' => 'fanout_resp_header_bytes',
+        'fanout_resp_body_bytes' => 'fanout_resp_body_bytes',
+        'fanout_bereq_header_bytes' => 'fanout_bereq_header_bytes',
+        'fanout_bereq_body_bytes' => 'fanout_bereq_body_bytes',
+        'fanout_beresp_header_bytes' => 'fanout_beresp_header_bytes',
+        'fanout_beresp_body_bytes' => 'fanout_beresp_body_bytes',
+        'fanout_conn_time_ms' => 'fanout_conn_time_ms',
+        'ddos_action_limit_streams_connections' => 'ddos_action_limit_streams_connections',
+        'ddos_action_limit_streams_requests' => 'ddos_action_limit_streams_requests',
+        'ddos_action_tarpit_accept' => 'ddos_action_tarpit_accept',
+        'ddos_action_tarpit' => 'ddos_action_tarpit',
+        'ddos_action_close' => 'ddos_action_close',
+        'ddos_action_blackhole' => 'ddos_action_blackhole',
+        'bot_challenge_starts' => 'bot_challenge_starts',
+        'bot_challenge_complete_tokens_passed' => 'bot_challenge_complete_tokens_passed',
+        'bot_challenge_complete_tokens_failed' => 'bot_challenge_complete_tokens_failed',
+        'bot_challenge_complete_tokens_checked' => 'bot_challenge_complete_tokens_checked',
+        'bot_challenge_complete_tokens_disabled' => 'bot_challenge_complete_tokens_disabled',
+        'bot_challenge_complete_tokens_issued' => 'bot_challenge_complete_tokens_issued',
+        'bot_challenges_issued' => 'bot_challenges_issued',
+        'bot_challenges_succeeded' => 'bot_challenges_succeeded',
+        'bot_challenges_failed' => 'bot_challenges_failed',
+        'ddos_action_downgrade' => 'ddos_action_downgrade',
+        'ddos_action_downgraded_connections' => 'ddos_action_downgraded_connections',
+        'all_hit_requests' => 'all_hit_requests',
+        'all_miss_requests' => 'all_miss_requests',
+        'all_pass_requests' => 'all_pass_requests',
+        'all_error_requests' => 'all_error_requests',
+        'all_synth_requests' => 'all_synth_requests',
+        'all_edge_hit_requests' => 'all_edge_hit_requests',
+        'all_edge_miss_requests' => 'all_edge_miss_requests',
+        'all_status_1xx' => 'all_status_1xx',
+        'all_status_2xx' => 'all_status_2xx',
+        'all_status_3xx' => 'all_status_3xx',
+        'all_status_4xx' => 'all_status_4xx',
+        'all_status_5xx' => 'all_status_5xx',
+        'origin_offload' => 'origin_offload',
+        'request_denied_get_head_body' => 'request_denied_get_head_body',
+        'ddos_protection_requests_detect_count' => 'ddos_protection_requests_detect_count',
+        'ddos_protection_requests_mitigate_count' => 'ddos_protection_requests_mitigate_count',
+        'ddos_protection_requests_allow_count' => 'ddos_protection_requests_allow_count',
+        'object_storage_class_a_operations_count' => 'object_storage_class_a_operations_count',
+        'object_storage_class_b_operations_count' => 'object_storage_class_b_operations_count',
+        'aia_requests' => 'aia_requests',
+        'aia_status_1xx' => 'aia_status_1xx',
+        'aia_status_2xx' => 'aia_status_2xx',
+        'aia_status_3xx' => 'aia_status_3xx',
+        'aia_status_4xx' => 'aia_status_4xx',
+        'aia_status_5xx' => 'aia_status_5xx',
+        'aia_response_usage_tokens' => 'aia_response_usage_tokens',
+        'aia_origin_usage_tokens' => 'aia_origin_usage_tokens',
+        'aia_estimated_time_saved_ms' => 'aia_estimated_time_saved_ms',
+        'request_collapse_usable_count' => 'request_collapse_usable_count',
+        'request_collapse_unusable_count' => 'request_collapse_unusable_count',
+        'compute_cache_operations_count' => 'compute_cache_operations_count',
+        'ngwaf_requests_total_count' => 'ngwaf_requests_total_count',
+        'ngwaf_requests_unknown_count' => 'ngwaf_requests_unknown_count',
+        'ngwaf_requests_allowed_count' => 'ngwaf_requests_allowed_count',
+        'ngwaf_requests_logged_count' => 'ngwaf_requests_logged_count',
+        'ngwaf_requests_blocked_count' => 'ngwaf_requests_blocked_count',
+        'ngwaf_requests_timeout_count' => 'ngwaf_requests_timeout_count',
+        'ngwaf_requests_challenged_count' => 'ngwaf_requests_challenged_count',
+        'api_discovery_requests_count' => 'api_discovery_requests_count',
+        'compute_resp_status_103' => 'compute_resp_status_103',
+        'compute_resp_status_200' => 'compute_resp_status_200',
+        'compute_resp_status_204' => 'compute_resp_status_204',
+        'compute_resp_status_206' => 'compute_resp_status_206',
+        'compute_resp_status_301' => 'compute_resp_status_301',
+        'compute_resp_status_302' => 'compute_resp_status_302',
+        'compute_resp_status_304' => 'compute_resp_status_304',
+        'compute_resp_status_400' => 'compute_resp_status_400',
+        'compute_resp_status_401' => 'compute_resp_status_401',
+        'compute_resp_status_403' => 'compute_resp_status_403',
+        'compute_resp_status_404' => 'compute_resp_status_404',
+        'compute_resp_status_416' => 'compute_resp_status_416',
+        'compute_resp_status_429' => 'compute_resp_status_429',
+        'compute_resp_status_500' => 'compute_resp_status_500',
+        'compute_resp_status_501' => 'compute_resp_status_501',
+        'compute_resp_status_502' => 'compute_resp_status_502',
+        'compute_resp_status_503' => 'compute_resp_status_503',
+        'compute_resp_status_504' => 'compute_resp_status_504',
+        'compute_resp_status_505' => 'compute_resp_status_505',
+        'compute_resp_status_530' => 'compute_resp_status_530',
+        'imgopto_compute_requests' => 'imgopto_compute_requests',
+        'dns_billable_responses_count' => 'dns_billable_responses_count',
+        'dns_nonbillable_responses_count' => 'dns_nonbillable_responses_count',
+        'upgrade' => 'upgrade',
+        'ngwaf_bot_analysis_request_count' => 'ngwaf_bot_analysis_request_count',
+        'imgopto_avif_count' => 'imgopto_avif_count',
+        'imgopto_jpeg_count' => 'imgopto_jpeg_count',
+        'imgopto_png_count' => 'imgopto_png_count',
+        'imgopto_gif_count' => 'imgopto_gif_count',
+        'imgopto_webp_count' => 'imgopto_webp_count',
+        'imgopto_jpegxl_count' => 'imgopto_jpegxl_count',
+        'imgopto_svg_count' => 'imgopto_svg_count',
+        'imgopto_mp4_count' => 'imgopto_mp4_count',
+        'compute_service_resource_limits_error' => 'compute_service_resource_limits_error',
+        'compute_service_runtime_error' => 'compute_service_runtime_error',
+        'compute_service_chain_error' => 'compute_service_chain_error',
+        'compute_platform_internal_error' => 'compute_platform_internal_error',
+        'compute_service_timeout_error' => 'compute_service_timeout_error',
+        'compute_service_vcpu_exceeded_error' => 'compute_service_vcpu_exceeded_error',
+        'compute_service_limits_error' => 'compute_service_limits_error',
+        'compute_platform_invalid_request_error' => 'compute_platform_invalid_request_error',
+        'compute_sandboxes' => 'compute_sandboxes',
+        'bot_requests_total_count' => 'bot_requests_total_count',
+        'bot_edge_requests_analyzed_count' => 'bot_edge_requests_analyzed_count',
+        'bot_edge_requests_detected_count' => 'bot_edge_requests_detected_count',
+        'bot_edge_requests_verified_count' => 'bot_edge_requests_verified_count',
+        'bot_edge_requests_ai_crawler_count' => 'bot_edge_requests_ai_crawler_count',
+        'bot_edge_requests_ai_fetcher_count' => 'bot_edge_requests_ai_fetcher_count',
+        'bot_edge_requests_accessibility_count' => 'bot_edge_requests_accessibility_count',
+        'bot_edge_requests_content_fetcher_count' => 'bot_edge_requests_content_fetcher_count',
+        'bot_edge_requests_monitoring_count' => 'bot_edge_requests_monitoring_count',
+        'bot_edge_requests_online_marketing_count' => 'bot_edge_requests_online_marketing_count',
+        'bot_edge_requests_page_preview_count' => 'bot_edge_requests_page_preview_count',
+        'bot_edge_requests_platform_integrations_count' => 'bot_edge_requests_platform_integrations_count',
+        'bot_edge_requests_research_count' => 'bot_edge_requests_research_count',
+        'bot_edge_requests_search_engine_crawler_count' => 'bot_edge_requests_search_engine_crawler_count',
+        'bot_edge_requests_search_engine_optimization_count' => 'bot_edge_requests_search_engine_optimization_count',
+        'bot_edge_requests_security_tools_count' => 'bot_edge_requests_security_tools_count',
+        'compute_handoff' => 'compute_handoff',
+        'compute_service_bereq_dns_error' => 'compute_service_bereq_dns_error',
+        'compute_service_bereq_conn_timeout_error' => 'compute_service_bereq_conn_timeout_error',
+        'compute_service_bereq_conn_refused_error' => 'compute_service_bereq_conn_refused_error',
+        'compute_service_bereq_conn_other_error' => 'compute_service_bereq_conn_other_error',
+        'compute_service_bereq_tls_server_cert_error' => 'compute_service_bereq_tls_server_cert_error',
+        'compute_service_bereq_tls_other_error' => 'compute_service_bereq_tls_other_error',
+        'compute_service_bereq_http_proto_v1_error' => 'compute_service_bereq_http_proto_v1_error',
+        'compute_service_bereq_http_proto_v2_error' => 'compute_service_bereq_http_proto_v2_error',
+        'compute_service_bereq_http_incomplete_error' => 'compute_service_bereq_http_incomplete_error',
+        'compute_service_bereq_http_timeout_error' => 'compute_service_bereq_http_timeout_error',
+        'compute_service_bereq_http_other_error' => 'compute_service_bereq_http_other_error',
+        'compute_service_bereq_other_error' => 'compute_service_bereq_other_error',
+        'compute_service_bereq_5xx_error' => 'compute_service_bereq_5xx_error',
+        'compute_service_bereq_conn_error' => 'compute_service_bereq_conn_error',
+        'compute_service_bereq_tls_error' => 'compute_service_bereq_tls_error',
+        'compute_service_bereq_http_error' => 'compute_service_bereq_http_error',
+        'bot_challenges_pats_issued' => 'bot_challenges_pats_issued',
+        'bot_challenges_pats_succeeded' => 'bot_challenges_pats_succeeded',
+        'bot_edge_requests_headless_count' => 'bot_edge_requests_headless_count',
+        'status_499' => 'status_499',
+        'arc_requests' => 'arc_requests',
+        'ddos_challenge_complete_tokens_checked' => 'ddos_challenge_complete_tokens_checked',
+        'ddos_challenge_complete_tokens_passed' => 'ddos_challenge_complete_tokens_passed',
+        'ddos_challenge_complete_tokens_failed' => 'ddos_challenge_complete_tokens_failed',
+        'ddos_challenge_starts' => 'ddos_challenge_starts',
+        'ddos_challenge_complete_tokens_issued' => 'ddos_challenge_complete_tokens_issued',
+        'ddos_challenges_issued' => 'ddos_challenges_issued',
+        'ddos_challenges_succeeded' => 'ddos_challenges_succeeded',
+        'ddos_challenges_failed' => 'ddos_challenges_failed',
+        'ddos_challenges_pats_issued' => 'ddos_challenges_pats_issued',
+        'ddos_challenges_pats_succeeded' => 'ddos_challenges_pats_succeeded',
+        'csp_pages_gauge' => 'csp_pages_gauge',
+        'ngwaf_account_rules_gauge' => 'ngwaf_account_rules_gauge',
+        'ngwaf_account_workspaces' => 'ngwaf_account_workspaces',
+        'ngwaf_workspace_rules_gauge' => 'ngwaf_workspace_rules_gauge',
+        'ngwaf_workspace_thresholds_gauge' => 'ngwaf_workspace_thresholds_gauge',
+        'object_storage_buckets_count' => 'object_storage_buckets_count',
+        'object_storage_bytes_count' => 'object_storage_bytes_count'
     ];
 
     /**
@@ -150,21 +1179,364 @@ class PlatformValues implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'timestamp' => 'setTimestamp',
-        'ttfb_origin_p25_us' => 'setTtfbOriginP25Us',
-        'ttfb_origin_p50_us' => 'setTtfbOriginP50Us',
-        'ttfb_origin_p75_us' => 'setTtfbOriginP75Us',
-        'ttfb_origin_p95_us' => 'setTtfbOriginP95Us',
-        'ttfb_origin_p99_us' => 'setTtfbOriginP99Us',
-        'ttfb_shield_p25_us' => 'setTtfbShieldP25Us',
-        'ttfb_shield_p50_us' => 'setTtfbShieldP50Us',
-        'ttfb_shield_p75_us' => 'setTtfbShieldP75Us',
-        'ttfb_shield_p95_us' => 'setTtfbShieldP95Us',
-        'ttfb_shield_p99_us' => 'setTtfbShieldP99Us',
-        'ttfb_edge_p25_us' => 'setTtfbEdgeP25Us',
-        'ttfb_edge_p50_us' => 'setTtfbEdgeP50Us',
-        'ttfb_edge_p75_us' => 'setTtfbEdgeP75Us',
-        'ttfb_edge_p95_us' => 'setTtfbEdgeP95Us',
-        'ttfb_edge_p99_us' => 'setTtfbEdgeP99Us'
+        'datacenter' => 'setDatacenter',
+        'region' => 'setRegion',
+        'requests' => 'setRequests',
+        'hits' => 'setHits',
+        'hits_time' => 'setHitsTime',
+        'miss' => 'setMiss',
+        'miss_time' => 'setMissTime',
+        'pass' => 'setPass',
+        'pass_time' => 'setPassTime',
+        'errors' => 'setErrors',
+        'restarts' => 'setRestarts',
+        'hit_ratio' => 'setHitRatio',
+        'bandwidth' => 'setBandwidth',
+        'req_body_bytes' => 'setReqBodyBytes',
+        'req_header_bytes' => 'setReqHeaderBytes',
+        'resp_body_bytes' => 'setRespBodyBytes',
+        'resp_header_bytes' => 'setRespHeaderBytes',
+        'bereq_body_bytes' => 'setBereqBodyBytes',
+        'bereq_header_bytes' => 'setBereqHeaderBytes',
+        'uncacheable' => 'setUncacheable',
+        'pipe' => 'setPipe',
+        'synth' => 'setSynth',
+        'tls' => 'setTls',
+        'tls_v10' => 'setTlsV10',
+        'tls_v11' => 'setTlsV11',
+        'tls_v12' => 'setTlsV12',
+        'tls_v13' => 'setTlsV13',
+        'edge_requests' => 'setEdgeRequests',
+        'edge_resp_header_bytes' => 'setEdgeRespHeaderBytes',
+        'edge_resp_body_bytes' => 'setEdgeRespBodyBytes',
+        'edge_hit_requests' => 'setEdgeHitRequests',
+        'edge_miss_requests' => 'setEdgeMissRequests',
+        'origin_fetches' => 'setOriginFetches',
+        'origin_fetch_header_bytes' => 'setOriginFetchHeaderBytes',
+        'origin_fetch_body_bytes' => 'setOriginFetchBodyBytes',
+        'origin_fetch_resp_header_bytes' => 'setOriginFetchRespHeaderBytes',
+        'origin_fetch_resp_body_bytes' => 'setOriginFetchRespBodyBytes',
+        'origin_revalidations' => 'setOriginRevalidations',
+        'origin_cache_fetches' => 'setOriginCacheFetches',
+        'shield' => 'setShield',
+        'shield_resp_body_bytes' => 'setShieldRespBodyBytes',
+        'shield_resp_header_bytes' => 'setShieldRespHeaderBytes',
+        'shield_fetches' => 'setShieldFetches',
+        'shield_fetch_header_bytes' => 'setShieldFetchHeaderBytes',
+        'shield_fetch_body_bytes' => 'setShieldFetchBodyBytes',
+        'shield_fetch_resp_header_bytes' => 'setShieldFetchRespHeaderBytes',
+        'shield_fetch_resp_body_bytes' => 'setShieldFetchRespBodyBytes',
+        'shield_revalidations' => 'setShieldRevalidations',
+        'shield_cache_fetches' => 'setShieldCacheFetches',
+        'ipv6' => 'setIpv6',
+        'otfp' => 'setOtfp',
+        'otfp_resp_body_bytes' => 'setOtfpRespBodyBytes',
+        'otfp_resp_header_bytes' => 'setOtfpRespHeaderBytes',
+        'otfp_shield_resp_body_bytes' => 'setOtfpShieldRespBodyBytes',
+        'otfp_shield_resp_header_bytes' => 'setOtfpShieldRespHeaderBytes',
+        'otfp_manifests' => 'setOtfpManifests',
+        'otfp_deliver_time' => 'setOtfpDeliverTime',
+        'otfp_shield_time' => 'setOtfpShieldTime',
+        'video' => 'setVideo',
+        'pci' => 'setPci',
+        'log' => 'setLog',
+        'log_bytes' => 'setLogBytes',
+        'http2' => 'setHttp2',
+        'http3' => 'setHttp3',
+        'attack_req_body_bytes' => 'setAttackReqBodyBytes',
+        'attack_req_header_bytes' => 'setAttackReqHeaderBytes',
+        'attack_logged_req_body_bytes' => 'setAttackLoggedReqBodyBytes',
+        'attack_logged_req_header_bytes' => 'setAttackLoggedReqHeaderBytes',
+        'attack_blocked_req_body_bytes' => 'setAttackBlockedReqBodyBytes',
+        'attack_blocked_req_header_bytes' => 'setAttackBlockedReqHeaderBytes',
+        'attack_passed_req_body_bytes' => 'setAttackPassedReqBodyBytes',
+        'attack_passed_req_header_bytes' => 'setAttackPassedReqHeaderBytes',
+        'attack_resp_synth_bytes' => 'setAttackRespSynthBytes',
+        'imgopto' => 'setImgopto',
+        'imgopto_input_image_bytes' => 'setImgoptoInputImageBytes',
+        'imgopto_output_image_bytes' => 'setImgoptoOutputImageBytes',
+        'imgopto_resp_body_bytes' => 'setImgoptoRespBodyBytes',
+        'imgopto_resp_header_bytes' => 'setImgoptoRespHeaderBytes',
+        'imgopto_shield' => 'setImgoptoShield',
+        'imgopto_shield_resp_body_bytes' => 'setImgoptoShieldRespBodyBytes',
+        'imgopto_shield_resp_header_bytes' => 'setImgoptoShieldRespHeaderBytes',
+        'imgopto_transforms' => 'setImgoptoTransforms',
+        'imgvideo' => 'setImgvideo',
+        'imgvideo_frames' => 'setImgvideoFrames',
+        'imgvideo_resp_header_bytes' => 'setImgvideoRespHeaderBytes',
+        'imgvideo_resp_body_bytes' => 'setImgvideoRespBodyBytes',
+        'imgvideo_shield_resp_header_bytes' => 'setImgvideoShieldRespHeaderBytes',
+        'imgvideo_shield_resp_body_bytes' => 'setImgvideoShieldRespBodyBytes',
+        'imgvideo_shield' => 'setImgvideoShield',
+        'imgvideo_shield_frames' => 'setImgvideoShieldFrames',
+        'status_200' => 'setStatus200',
+        'status_204' => 'setStatus204',
+        'status_206' => 'setStatus206',
+        'status_301' => 'setStatus301',
+        'status_302' => 'setStatus302',
+        'status_304' => 'setStatus304',
+        'status_400' => 'setStatus400',
+        'status_401' => 'setStatus401',
+        'status_403' => 'setStatus403',
+        'status_404' => 'setStatus404',
+        'status_406' => 'setStatus406',
+        'status_416' => 'setStatus416',
+        'status_429' => 'setStatus429',
+        'status_500' => 'setStatus500',
+        'status_501' => 'setStatus501',
+        'status_502' => 'setStatus502',
+        'status_503' => 'setStatus503',
+        'status_504' => 'setStatus504',
+        'status_505' => 'setStatus505',
+        'status_530' => 'setStatus530',
+        'status_1xx' => 'setStatus1xx',
+        'status_2xx' => 'setStatus2xx',
+        'status_3xx' => 'setStatus3xx',
+        'status_4xx' => 'setStatus4xx',
+        'status_5xx' => 'setStatus5xx',
+        'object_size_1k' => 'setObjectSize1k',
+        'object_size_10k' => 'setObjectSize10k',
+        'object_size_100k' => 'setObjectSize100k',
+        'object_size_1m' => 'setObjectSize1m',
+        'object_size_10m' => 'setObjectSize10m',
+        'object_size_100m' => 'setObjectSize100m',
+        'object_size_1g' => 'setObjectSize1g',
+        'recv_sub_time' => 'setRecvSubTime',
+        'recv_sub_count' => 'setRecvSubCount',
+        'hash_sub_time' => 'setHashSubTime',
+        'hash_sub_count' => 'setHashSubCount',
+        'miss_sub_time' => 'setMissSubTime',
+        'miss_sub_count' => 'setMissSubCount',
+        'fetch_sub_time' => 'setFetchSubTime',
+        'fetch_sub_count' => 'setFetchSubCount',
+        'pass_sub_time' => 'setPassSubTime',
+        'pass_sub_count' => 'setPassSubCount',
+        'pipe_sub_time' => 'setPipeSubTime',
+        'pipe_sub_count' => 'setPipeSubCount',
+        'deliver_sub_time' => 'setDeliverSubTime',
+        'deliver_sub_count' => 'setDeliverSubCount',
+        'error_sub_time' => 'setErrorSubTime',
+        'error_sub_count' => 'setErrorSubCount',
+        'hit_sub_time' => 'setHitSubTime',
+        'hit_sub_count' => 'setHitSubCount',
+        'prehash_sub_time' => 'setPrehashSubTime',
+        'prehash_sub_count' => 'setPrehashSubCount',
+        'predeliver_sub_time' => 'setPredeliverSubTime',
+        'predeliver_sub_count' => 'setPredeliverSubCount',
+        'tls_handshake_sent_bytes' => 'setTlsHandshakeSentBytes',
+        'hit_resp_body_bytes' => 'setHitRespBodyBytes',
+        'miss_resp_body_bytes' => 'setMissRespBodyBytes',
+        'pass_resp_body_bytes' => 'setPassRespBodyBytes',
+        'segblock_origin_fetches' => 'setSegblockOriginFetches',
+        'segblock_shield_fetches' => 'setSegblockShieldFetches',
+        'compute_requests' => 'setComputeRequests',
+        'compute_request_time_ms' => 'setComputeRequestTimeMs',
+        'compute_request_time_billed_ms' => 'setComputeRequestTimeBilledMs',
+        'compute_ram_used' => 'setComputeRamUsed',
+        'compute_execution_time_ms' => 'setComputeExecutionTimeMs',
+        'compute_req_header_bytes' => 'setComputeReqHeaderBytes',
+        'compute_req_body_bytes' => 'setComputeReqBodyBytes',
+        'compute_resp_header_bytes' => 'setComputeRespHeaderBytes',
+        'compute_resp_body_bytes' => 'setComputeRespBodyBytes',
+        'compute_resp_status_1xx' => 'setComputeRespStatus1xx',
+        'compute_resp_status_2xx' => 'setComputeRespStatus2xx',
+        'compute_resp_status_3xx' => 'setComputeRespStatus3xx',
+        'compute_resp_status_4xx' => 'setComputeRespStatus4xx',
+        'compute_resp_status_5xx' => 'setComputeRespStatus5xx',
+        'compute_bereq_header_bytes' => 'setComputeBereqHeaderBytes',
+        'compute_bereq_body_bytes' => 'setComputeBereqBodyBytes',
+        'compute_beresp_header_bytes' => 'setComputeBerespHeaderBytes',
+        'compute_beresp_body_bytes' => 'setComputeBerespBodyBytes',
+        'compute_bereqs' => 'setComputeBereqs',
+        'compute_service_bereq_error' => 'setComputeServiceBereqError',
+        'compute_service_memory_exceeded_error' => 'setComputeServiceMemoryExceededError',
+        'edge_hit_resp_body_bytes' => 'setEdgeHitRespBodyBytes',
+        'edge_hit_resp_header_bytes' => 'setEdgeHitRespHeaderBytes',
+        'edge_miss_resp_body_bytes' => 'setEdgeMissRespBodyBytes',
+        'edge_miss_resp_header_bytes' => 'setEdgeMissRespHeaderBytes',
+        'origin_cache_fetch_resp_body_bytes' => 'setOriginCacheFetchRespBodyBytes',
+        'origin_cache_fetch_resp_header_bytes' => 'setOriginCacheFetchRespHeaderBytes',
+        'shield_hit_requests' => 'setShieldHitRequests',
+        'shield_miss_requests' => 'setShieldMissRequests',
+        'shield_hit_resp_header_bytes' => 'setShieldHitRespHeaderBytes',
+        'shield_hit_resp_body_bytes' => 'setShieldHitRespBodyBytes',
+        'shield_miss_resp_header_bytes' => 'setShieldMissRespHeaderBytes',
+        'shield_miss_resp_body_bytes' => 'setShieldMissRespBodyBytes',
+        'websocket_req_header_bytes' => 'setWebsocketReqHeaderBytes',
+        'websocket_req_body_bytes' => 'setWebsocketReqBodyBytes',
+        'websocket_resp_header_bytes' => 'setWebsocketRespHeaderBytes',
+        'websocket_resp_body_bytes' => 'setWebsocketRespBodyBytes',
+        'websocket_bereq_header_bytes' => 'setWebsocketBereqHeaderBytes',
+        'websocket_bereq_body_bytes' => 'setWebsocketBereqBodyBytes',
+        'websocket_beresp_header_bytes' => 'setWebsocketBerespHeaderBytes',
+        'websocket_beresp_body_bytes' => 'setWebsocketBerespBodyBytes',
+        'websocket_conn_time_ms' => 'setWebsocketConnTimeMs',
+        'fanout_recv_publishes' => 'setFanoutRecvPublishes',
+        'fanout_send_publishes' => 'setFanoutSendPublishes',
+        'kv_store_class_a_operations' => 'setKvStoreClassAOperations',
+        'kv_store_class_b_operations' => 'setKvStoreClassBOperations',
+        'fanout_req_header_bytes' => 'setFanoutReqHeaderBytes',
+        'fanout_req_body_bytes' => 'setFanoutReqBodyBytes',
+        'fanout_resp_header_bytes' => 'setFanoutRespHeaderBytes',
+        'fanout_resp_body_bytes' => 'setFanoutRespBodyBytes',
+        'fanout_bereq_header_bytes' => 'setFanoutBereqHeaderBytes',
+        'fanout_bereq_body_bytes' => 'setFanoutBereqBodyBytes',
+        'fanout_beresp_header_bytes' => 'setFanoutBerespHeaderBytes',
+        'fanout_beresp_body_bytes' => 'setFanoutBerespBodyBytes',
+        'fanout_conn_time_ms' => 'setFanoutConnTimeMs',
+        'ddos_action_limit_streams_connections' => 'setDdosActionLimitStreamsConnections',
+        'ddos_action_limit_streams_requests' => 'setDdosActionLimitStreamsRequests',
+        'ddos_action_tarpit_accept' => 'setDdosActionTarpitAccept',
+        'ddos_action_tarpit' => 'setDdosActionTarpit',
+        'ddos_action_close' => 'setDdosActionClose',
+        'ddos_action_blackhole' => 'setDdosActionBlackhole',
+        'bot_challenge_starts' => 'setBotChallengeStarts',
+        'bot_challenge_complete_tokens_passed' => 'setBotChallengeCompleteTokensPassed',
+        'bot_challenge_complete_tokens_failed' => 'setBotChallengeCompleteTokensFailed',
+        'bot_challenge_complete_tokens_checked' => 'setBotChallengeCompleteTokensChecked',
+        'bot_challenge_complete_tokens_disabled' => 'setBotChallengeCompleteTokensDisabled',
+        'bot_challenge_complete_tokens_issued' => 'setBotChallengeCompleteTokensIssued',
+        'bot_challenges_issued' => 'setBotChallengesIssued',
+        'bot_challenges_succeeded' => 'setBotChallengesSucceeded',
+        'bot_challenges_failed' => 'setBotChallengesFailed',
+        'ddos_action_downgrade' => 'setDdosActionDowngrade',
+        'ddos_action_downgraded_connections' => 'setDdosActionDowngradedConnections',
+        'all_hit_requests' => 'setAllHitRequests',
+        'all_miss_requests' => 'setAllMissRequests',
+        'all_pass_requests' => 'setAllPassRequests',
+        'all_error_requests' => 'setAllErrorRequests',
+        'all_synth_requests' => 'setAllSynthRequests',
+        'all_edge_hit_requests' => 'setAllEdgeHitRequests',
+        'all_edge_miss_requests' => 'setAllEdgeMissRequests',
+        'all_status_1xx' => 'setAllStatus1xx',
+        'all_status_2xx' => 'setAllStatus2xx',
+        'all_status_3xx' => 'setAllStatus3xx',
+        'all_status_4xx' => 'setAllStatus4xx',
+        'all_status_5xx' => 'setAllStatus5xx',
+        'origin_offload' => 'setOriginOffload',
+        'request_denied_get_head_body' => 'setRequestDeniedGetHeadBody',
+        'ddos_protection_requests_detect_count' => 'setDdosProtectionRequestsDetectCount',
+        'ddos_protection_requests_mitigate_count' => 'setDdosProtectionRequestsMitigateCount',
+        'ddos_protection_requests_allow_count' => 'setDdosProtectionRequestsAllowCount',
+        'object_storage_class_a_operations_count' => 'setObjectStorageClassAOperationsCount',
+        'object_storage_class_b_operations_count' => 'setObjectStorageClassBOperationsCount',
+        'aia_requests' => 'setAiaRequests',
+        'aia_status_1xx' => 'setAiaStatus1xx',
+        'aia_status_2xx' => 'setAiaStatus2xx',
+        'aia_status_3xx' => 'setAiaStatus3xx',
+        'aia_status_4xx' => 'setAiaStatus4xx',
+        'aia_status_5xx' => 'setAiaStatus5xx',
+        'aia_response_usage_tokens' => 'setAiaResponseUsageTokens',
+        'aia_origin_usage_tokens' => 'setAiaOriginUsageTokens',
+        'aia_estimated_time_saved_ms' => 'setAiaEstimatedTimeSavedMs',
+        'request_collapse_usable_count' => 'setRequestCollapseUsableCount',
+        'request_collapse_unusable_count' => 'setRequestCollapseUnusableCount',
+        'compute_cache_operations_count' => 'setComputeCacheOperationsCount',
+        'ngwaf_requests_total_count' => 'setNgwafRequestsTotalCount',
+        'ngwaf_requests_unknown_count' => 'setNgwafRequestsUnknownCount',
+        'ngwaf_requests_allowed_count' => 'setNgwafRequestsAllowedCount',
+        'ngwaf_requests_logged_count' => 'setNgwafRequestsLoggedCount',
+        'ngwaf_requests_blocked_count' => 'setNgwafRequestsBlockedCount',
+        'ngwaf_requests_timeout_count' => 'setNgwafRequestsTimeoutCount',
+        'ngwaf_requests_challenged_count' => 'setNgwafRequestsChallengedCount',
+        'api_discovery_requests_count' => 'setApiDiscoveryRequestsCount',
+        'compute_resp_status_103' => 'setComputeRespStatus103',
+        'compute_resp_status_200' => 'setComputeRespStatus200',
+        'compute_resp_status_204' => 'setComputeRespStatus204',
+        'compute_resp_status_206' => 'setComputeRespStatus206',
+        'compute_resp_status_301' => 'setComputeRespStatus301',
+        'compute_resp_status_302' => 'setComputeRespStatus302',
+        'compute_resp_status_304' => 'setComputeRespStatus304',
+        'compute_resp_status_400' => 'setComputeRespStatus400',
+        'compute_resp_status_401' => 'setComputeRespStatus401',
+        'compute_resp_status_403' => 'setComputeRespStatus403',
+        'compute_resp_status_404' => 'setComputeRespStatus404',
+        'compute_resp_status_416' => 'setComputeRespStatus416',
+        'compute_resp_status_429' => 'setComputeRespStatus429',
+        'compute_resp_status_500' => 'setComputeRespStatus500',
+        'compute_resp_status_501' => 'setComputeRespStatus501',
+        'compute_resp_status_502' => 'setComputeRespStatus502',
+        'compute_resp_status_503' => 'setComputeRespStatus503',
+        'compute_resp_status_504' => 'setComputeRespStatus504',
+        'compute_resp_status_505' => 'setComputeRespStatus505',
+        'compute_resp_status_530' => 'setComputeRespStatus530',
+        'imgopto_compute_requests' => 'setImgoptoComputeRequests',
+        'dns_billable_responses_count' => 'setDnsBillableResponsesCount',
+        'dns_nonbillable_responses_count' => 'setDnsNonbillableResponsesCount',
+        'upgrade' => 'setUpgrade',
+        'ngwaf_bot_analysis_request_count' => 'setNgwafBotAnalysisRequestCount',
+        'imgopto_avif_count' => 'setImgoptoAvifCount',
+        'imgopto_jpeg_count' => 'setImgoptoJpegCount',
+        'imgopto_png_count' => 'setImgoptoPngCount',
+        'imgopto_gif_count' => 'setImgoptoGifCount',
+        'imgopto_webp_count' => 'setImgoptoWebpCount',
+        'imgopto_jpegxl_count' => 'setImgoptoJpegxlCount',
+        'imgopto_svg_count' => 'setImgoptoSvgCount',
+        'imgopto_mp4_count' => 'setImgoptoMp4Count',
+        'compute_service_resource_limits_error' => 'setComputeServiceResourceLimitsError',
+        'compute_service_runtime_error' => 'setComputeServiceRuntimeError',
+        'compute_service_chain_error' => 'setComputeServiceChainError',
+        'compute_platform_internal_error' => 'setComputePlatformInternalError',
+        'compute_service_timeout_error' => 'setComputeServiceTimeoutError',
+        'compute_service_vcpu_exceeded_error' => 'setComputeServiceVcpuExceededError',
+        'compute_service_limits_error' => 'setComputeServiceLimitsError',
+        'compute_platform_invalid_request_error' => 'setComputePlatformInvalidRequestError',
+        'compute_sandboxes' => 'setComputeSandboxes',
+        'bot_requests_total_count' => 'setBotRequestsTotalCount',
+        'bot_edge_requests_analyzed_count' => 'setBotEdgeRequestsAnalyzedCount',
+        'bot_edge_requests_detected_count' => 'setBotEdgeRequestsDetectedCount',
+        'bot_edge_requests_verified_count' => 'setBotEdgeRequestsVerifiedCount',
+        'bot_edge_requests_ai_crawler_count' => 'setBotEdgeRequestsAiCrawlerCount',
+        'bot_edge_requests_ai_fetcher_count' => 'setBotEdgeRequestsAiFetcherCount',
+        'bot_edge_requests_accessibility_count' => 'setBotEdgeRequestsAccessibilityCount',
+        'bot_edge_requests_content_fetcher_count' => 'setBotEdgeRequestsContentFetcherCount',
+        'bot_edge_requests_monitoring_count' => 'setBotEdgeRequestsMonitoringCount',
+        'bot_edge_requests_online_marketing_count' => 'setBotEdgeRequestsOnlineMarketingCount',
+        'bot_edge_requests_page_preview_count' => 'setBotEdgeRequestsPagePreviewCount',
+        'bot_edge_requests_platform_integrations_count' => 'setBotEdgeRequestsPlatformIntegrationsCount',
+        'bot_edge_requests_research_count' => 'setBotEdgeRequestsResearchCount',
+        'bot_edge_requests_search_engine_crawler_count' => 'setBotEdgeRequestsSearchEngineCrawlerCount',
+        'bot_edge_requests_search_engine_optimization_count' => 'setBotEdgeRequestsSearchEngineOptimizationCount',
+        'bot_edge_requests_security_tools_count' => 'setBotEdgeRequestsSecurityToolsCount',
+        'compute_handoff' => 'setComputeHandoff',
+        'compute_service_bereq_dns_error' => 'setComputeServiceBereqDnsError',
+        'compute_service_bereq_conn_timeout_error' => 'setComputeServiceBereqConnTimeoutError',
+        'compute_service_bereq_conn_refused_error' => 'setComputeServiceBereqConnRefusedError',
+        'compute_service_bereq_conn_other_error' => 'setComputeServiceBereqConnOtherError',
+        'compute_service_bereq_tls_server_cert_error' => 'setComputeServiceBereqTlsServerCertError',
+        'compute_service_bereq_tls_other_error' => 'setComputeServiceBereqTlsOtherError',
+        'compute_service_bereq_http_proto_v1_error' => 'setComputeServiceBereqHttpProtoV1Error',
+        'compute_service_bereq_http_proto_v2_error' => 'setComputeServiceBereqHttpProtoV2Error',
+        'compute_service_bereq_http_incomplete_error' => 'setComputeServiceBereqHttpIncompleteError',
+        'compute_service_bereq_http_timeout_error' => 'setComputeServiceBereqHttpTimeoutError',
+        'compute_service_bereq_http_other_error' => 'setComputeServiceBereqHttpOtherError',
+        'compute_service_bereq_other_error' => 'setComputeServiceBereqOtherError',
+        'compute_service_bereq_5xx_error' => 'setComputeServiceBereq5xxError',
+        'compute_service_bereq_conn_error' => 'setComputeServiceBereqConnError',
+        'compute_service_bereq_tls_error' => 'setComputeServiceBereqTlsError',
+        'compute_service_bereq_http_error' => 'setComputeServiceBereqHttpError',
+        'bot_challenges_pats_issued' => 'setBotChallengesPatsIssued',
+        'bot_challenges_pats_succeeded' => 'setBotChallengesPatsSucceeded',
+        'bot_edge_requests_headless_count' => 'setBotEdgeRequestsHeadlessCount',
+        'status_499' => 'setStatus499',
+        'arc_requests' => 'setArcRequests',
+        'ddos_challenge_complete_tokens_checked' => 'setDdosChallengeCompleteTokensChecked',
+        'ddos_challenge_complete_tokens_passed' => 'setDdosChallengeCompleteTokensPassed',
+        'ddos_challenge_complete_tokens_failed' => 'setDdosChallengeCompleteTokensFailed',
+        'ddos_challenge_starts' => 'setDdosChallengeStarts',
+        'ddos_challenge_complete_tokens_issued' => 'setDdosChallengeCompleteTokensIssued',
+        'ddos_challenges_issued' => 'setDdosChallengesIssued',
+        'ddos_challenges_succeeded' => 'setDdosChallengesSucceeded',
+        'ddos_challenges_failed' => 'setDdosChallengesFailed',
+        'ddos_challenges_pats_issued' => 'setDdosChallengesPatsIssued',
+        'ddos_challenges_pats_succeeded' => 'setDdosChallengesPatsSucceeded',
+        'csp_pages_gauge' => 'setCspPagesGauge',
+        'ngwaf_account_rules_gauge' => 'setNgwafAccountRulesGauge',
+        'ngwaf_account_workspaces' => 'setNgwafAccountWorkspaces',
+        'ngwaf_workspace_rules_gauge' => 'setNgwafWorkspaceRulesGauge',
+        'ngwaf_workspace_thresholds_gauge' => 'setNgwafWorkspaceThresholdsGauge',
+        'object_storage_buckets_count' => 'setObjectStorageBucketsCount',
+        'object_storage_bytes_count' => 'setObjectStorageBytesCount'
     ];
 
     /**
@@ -174,21 +1546,364 @@ class PlatformValues implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'timestamp' => 'getTimestamp',
-        'ttfb_origin_p25_us' => 'getTtfbOriginP25Us',
-        'ttfb_origin_p50_us' => 'getTtfbOriginP50Us',
-        'ttfb_origin_p75_us' => 'getTtfbOriginP75Us',
-        'ttfb_origin_p95_us' => 'getTtfbOriginP95Us',
-        'ttfb_origin_p99_us' => 'getTtfbOriginP99Us',
-        'ttfb_shield_p25_us' => 'getTtfbShieldP25Us',
-        'ttfb_shield_p50_us' => 'getTtfbShieldP50Us',
-        'ttfb_shield_p75_us' => 'getTtfbShieldP75Us',
-        'ttfb_shield_p95_us' => 'getTtfbShieldP95Us',
-        'ttfb_shield_p99_us' => 'getTtfbShieldP99Us',
-        'ttfb_edge_p25_us' => 'getTtfbEdgeP25Us',
-        'ttfb_edge_p50_us' => 'getTtfbEdgeP50Us',
-        'ttfb_edge_p75_us' => 'getTtfbEdgeP75Us',
-        'ttfb_edge_p95_us' => 'getTtfbEdgeP95Us',
-        'ttfb_edge_p99_us' => 'getTtfbEdgeP99Us'
+        'datacenter' => 'getDatacenter',
+        'region' => 'getRegion',
+        'requests' => 'getRequests',
+        'hits' => 'getHits',
+        'hits_time' => 'getHitsTime',
+        'miss' => 'getMiss',
+        'miss_time' => 'getMissTime',
+        'pass' => 'getPass',
+        'pass_time' => 'getPassTime',
+        'errors' => 'getErrors',
+        'restarts' => 'getRestarts',
+        'hit_ratio' => 'getHitRatio',
+        'bandwidth' => 'getBandwidth',
+        'req_body_bytes' => 'getReqBodyBytes',
+        'req_header_bytes' => 'getReqHeaderBytes',
+        'resp_body_bytes' => 'getRespBodyBytes',
+        'resp_header_bytes' => 'getRespHeaderBytes',
+        'bereq_body_bytes' => 'getBereqBodyBytes',
+        'bereq_header_bytes' => 'getBereqHeaderBytes',
+        'uncacheable' => 'getUncacheable',
+        'pipe' => 'getPipe',
+        'synth' => 'getSynth',
+        'tls' => 'getTls',
+        'tls_v10' => 'getTlsV10',
+        'tls_v11' => 'getTlsV11',
+        'tls_v12' => 'getTlsV12',
+        'tls_v13' => 'getTlsV13',
+        'edge_requests' => 'getEdgeRequests',
+        'edge_resp_header_bytes' => 'getEdgeRespHeaderBytes',
+        'edge_resp_body_bytes' => 'getEdgeRespBodyBytes',
+        'edge_hit_requests' => 'getEdgeHitRequests',
+        'edge_miss_requests' => 'getEdgeMissRequests',
+        'origin_fetches' => 'getOriginFetches',
+        'origin_fetch_header_bytes' => 'getOriginFetchHeaderBytes',
+        'origin_fetch_body_bytes' => 'getOriginFetchBodyBytes',
+        'origin_fetch_resp_header_bytes' => 'getOriginFetchRespHeaderBytes',
+        'origin_fetch_resp_body_bytes' => 'getOriginFetchRespBodyBytes',
+        'origin_revalidations' => 'getOriginRevalidations',
+        'origin_cache_fetches' => 'getOriginCacheFetches',
+        'shield' => 'getShield',
+        'shield_resp_body_bytes' => 'getShieldRespBodyBytes',
+        'shield_resp_header_bytes' => 'getShieldRespHeaderBytes',
+        'shield_fetches' => 'getShieldFetches',
+        'shield_fetch_header_bytes' => 'getShieldFetchHeaderBytes',
+        'shield_fetch_body_bytes' => 'getShieldFetchBodyBytes',
+        'shield_fetch_resp_header_bytes' => 'getShieldFetchRespHeaderBytes',
+        'shield_fetch_resp_body_bytes' => 'getShieldFetchRespBodyBytes',
+        'shield_revalidations' => 'getShieldRevalidations',
+        'shield_cache_fetches' => 'getShieldCacheFetches',
+        'ipv6' => 'getIpv6',
+        'otfp' => 'getOtfp',
+        'otfp_resp_body_bytes' => 'getOtfpRespBodyBytes',
+        'otfp_resp_header_bytes' => 'getOtfpRespHeaderBytes',
+        'otfp_shield_resp_body_bytes' => 'getOtfpShieldRespBodyBytes',
+        'otfp_shield_resp_header_bytes' => 'getOtfpShieldRespHeaderBytes',
+        'otfp_manifests' => 'getOtfpManifests',
+        'otfp_deliver_time' => 'getOtfpDeliverTime',
+        'otfp_shield_time' => 'getOtfpShieldTime',
+        'video' => 'getVideo',
+        'pci' => 'getPci',
+        'log' => 'getLog',
+        'log_bytes' => 'getLogBytes',
+        'http2' => 'getHttp2',
+        'http3' => 'getHttp3',
+        'attack_req_body_bytes' => 'getAttackReqBodyBytes',
+        'attack_req_header_bytes' => 'getAttackReqHeaderBytes',
+        'attack_logged_req_body_bytes' => 'getAttackLoggedReqBodyBytes',
+        'attack_logged_req_header_bytes' => 'getAttackLoggedReqHeaderBytes',
+        'attack_blocked_req_body_bytes' => 'getAttackBlockedReqBodyBytes',
+        'attack_blocked_req_header_bytes' => 'getAttackBlockedReqHeaderBytes',
+        'attack_passed_req_body_bytes' => 'getAttackPassedReqBodyBytes',
+        'attack_passed_req_header_bytes' => 'getAttackPassedReqHeaderBytes',
+        'attack_resp_synth_bytes' => 'getAttackRespSynthBytes',
+        'imgopto' => 'getImgopto',
+        'imgopto_input_image_bytes' => 'getImgoptoInputImageBytes',
+        'imgopto_output_image_bytes' => 'getImgoptoOutputImageBytes',
+        'imgopto_resp_body_bytes' => 'getImgoptoRespBodyBytes',
+        'imgopto_resp_header_bytes' => 'getImgoptoRespHeaderBytes',
+        'imgopto_shield' => 'getImgoptoShield',
+        'imgopto_shield_resp_body_bytes' => 'getImgoptoShieldRespBodyBytes',
+        'imgopto_shield_resp_header_bytes' => 'getImgoptoShieldRespHeaderBytes',
+        'imgopto_transforms' => 'getImgoptoTransforms',
+        'imgvideo' => 'getImgvideo',
+        'imgvideo_frames' => 'getImgvideoFrames',
+        'imgvideo_resp_header_bytes' => 'getImgvideoRespHeaderBytes',
+        'imgvideo_resp_body_bytes' => 'getImgvideoRespBodyBytes',
+        'imgvideo_shield_resp_header_bytes' => 'getImgvideoShieldRespHeaderBytes',
+        'imgvideo_shield_resp_body_bytes' => 'getImgvideoShieldRespBodyBytes',
+        'imgvideo_shield' => 'getImgvideoShield',
+        'imgvideo_shield_frames' => 'getImgvideoShieldFrames',
+        'status_200' => 'getStatus200',
+        'status_204' => 'getStatus204',
+        'status_206' => 'getStatus206',
+        'status_301' => 'getStatus301',
+        'status_302' => 'getStatus302',
+        'status_304' => 'getStatus304',
+        'status_400' => 'getStatus400',
+        'status_401' => 'getStatus401',
+        'status_403' => 'getStatus403',
+        'status_404' => 'getStatus404',
+        'status_406' => 'getStatus406',
+        'status_416' => 'getStatus416',
+        'status_429' => 'getStatus429',
+        'status_500' => 'getStatus500',
+        'status_501' => 'getStatus501',
+        'status_502' => 'getStatus502',
+        'status_503' => 'getStatus503',
+        'status_504' => 'getStatus504',
+        'status_505' => 'getStatus505',
+        'status_530' => 'getStatus530',
+        'status_1xx' => 'getStatus1xx',
+        'status_2xx' => 'getStatus2xx',
+        'status_3xx' => 'getStatus3xx',
+        'status_4xx' => 'getStatus4xx',
+        'status_5xx' => 'getStatus5xx',
+        'object_size_1k' => 'getObjectSize1k',
+        'object_size_10k' => 'getObjectSize10k',
+        'object_size_100k' => 'getObjectSize100k',
+        'object_size_1m' => 'getObjectSize1m',
+        'object_size_10m' => 'getObjectSize10m',
+        'object_size_100m' => 'getObjectSize100m',
+        'object_size_1g' => 'getObjectSize1g',
+        'recv_sub_time' => 'getRecvSubTime',
+        'recv_sub_count' => 'getRecvSubCount',
+        'hash_sub_time' => 'getHashSubTime',
+        'hash_sub_count' => 'getHashSubCount',
+        'miss_sub_time' => 'getMissSubTime',
+        'miss_sub_count' => 'getMissSubCount',
+        'fetch_sub_time' => 'getFetchSubTime',
+        'fetch_sub_count' => 'getFetchSubCount',
+        'pass_sub_time' => 'getPassSubTime',
+        'pass_sub_count' => 'getPassSubCount',
+        'pipe_sub_time' => 'getPipeSubTime',
+        'pipe_sub_count' => 'getPipeSubCount',
+        'deliver_sub_time' => 'getDeliverSubTime',
+        'deliver_sub_count' => 'getDeliverSubCount',
+        'error_sub_time' => 'getErrorSubTime',
+        'error_sub_count' => 'getErrorSubCount',
+        'hit_sub_time' => 'getHitSubTime',
+        'hit_sub_count' => 'getHitSubCount',
+        'prehash_sub_time' => 'getPrehashSubTime',
+        'prehash_sub_count' => 'getPrehashSubCount',
+        'predeliver_sub_time' => 'getPredeliverSubTime',
+        'predeliver_sub_count' => 'getPredeliverSubCount',
+        'tls_handshake_sent_bytes' => 'getTlsHandshakeSentBytes',
+        'hit_resp_body_bytes' => 'getHitRespBodyBytes',
+        'miss_resp_body_bytes' => 'getMissRespBodyBytes',
+        'pass_resp_body_bytes' => 'getPassRespBodyBytes',
+        'segblock_origin_fetches' => 'getSegblockOriginFetches',
+        'segblock_shield_fetches' => 'getSegblockShieldFetches',
+        'compute_requests' => 'getComputeRequests',
+        'compute_request_time_ms' => 'getComputeRequestTimeMs',
+        'compute_request_time_billed_ms' => 'getComputeRequestTimeBilledMs',
+        'compute_ram_used' => 'getComputeRamUsed',
+        'compute_execution_time_ms' => 'getComputeExecutionTimeMs',
+        'compute_req_header_bytes' => 'getComputeReqHeaderBytes',
+        'compute_req_body_bytes' => 'getComputeReqBodyBytes',
+        'compute_resp_header_bytes' => 'getComputeRespHeaderBytes',
+        'compute_resp_body_bytes' => 'getComputeRespBodyBytes',
+        'compute_resp_status_1xx' => 'getComputeRespStatus1xx',
+        'compute_resp_status_2xx' => 'getComputeRespStatus2xx',
+        'compute_resp_status_3xx' => 'getComputeRespStatus3xx',
+        'compute_resp_status_4xx' => 'getComputeRespStatus4xx',
+        'compute_resp_status_5xx' => 'getComputeRespStatus5xx',
+        'compute_bereq_header_bytes' => 'getComputeBereqHeaderBytes',
+        'compute_bereq_body_bytes' => 'getComputeBereqBodyBytes',
+        'compute_beresp_header_bytes' => 'getComputeBerespHeaderBytes',
+        'compute_beresp_body_bytes' => 'getComputeBerespBodyBytes',
+        'compute_bereqs' => 'getComputeBereqs',
+        'compute_service_bereq_error' => 'getComputeServiceBereqError',
+        'compute_service_memory_exceeded_error' => 'getComputeServiceMemoryExceededError',
+        'edge_hit_resp_body_bytes' => 'getEdgeHitRespBodyBytes',
+        'edge_hit_resp_header_bytes' => 'getEdgeHitRespHeaderBytes',
+        'edge_miss_resp_body_bytes' => 'getEdgeMissRespBodyBytes',
+        'edge_miss_resp_header_bytes' => 'getEdgeMissRespHeaderBytes',
+        'origin_cache_fetch_resp_body_bytes' => 'getOriginCacheFetchRespBodyBytes',
+        'origin_cache_fetch_resp_header_bytes' => 'getOriginCacheFetchRespHeaderBytes',
+        'shield_hit_requests' => 'getShieldHitRequests',
+        'shield_miss_requests' => 'getShieldMissRequests',
+        'shield_hit_resp_header_bytes' => 'getShieldHitRespHeaderBytes',
+        'shield_hit_resp_body_bytes' => 'getShieldHitRespBodyBytes',
+        'shield_miss_resp_header_bytes' => 'getShieldMissRespHeaderBytes',
+        'shield_miss_resp_body_bytes' => 'getShieldMissRespBodyBytes',
+        'websocket_req_header_bytes' => 'getWebsocketReqHeaderBytes',
+        'websocket_req_body_bytes' => 'getWebsocketReqBodyBytes',
+        'websocket_resp_header_bytes' => 'getWebsocketRespHeaderBytes',
+        'websocket_resp_body_bytes' => 'getWebsocketRespBodyBytes',
+        'websocket_bereq_header_bytes' => 'getWebsocketBereqHeaderBytes',
+        'websocket_bereq_body_bytes' => 'getWebsocketBereqBodyBytes',
+        'websocket_beresp_header_bytes' => 'getWebsocketBerespHeaderBytes',
+        'websocket_beresp_body_bytes' => 'getWebsocketBerespBodyBytes',
+        'websocket_conn_time_ms' => 'getWebsocketConnTimeMs',
+        'fanout_recv_publishes' => 'getFanoutRecvPublishes',
+        'fanout_send_publishes' => 'getFanoutSendPublishes',
+        'kv_store_class_a_operations' => 'getKvStoreClassAOperations',
+        'kv_store_class_b_operations' => 'getKvStoreClassBOperations',
+        'fanout_req_header_bytes' => 'getFanoutReqHeaderBytes',
+        'fanout_req_body_bytes' => 'getFanoutReqBodyBytes',
+        'fanout_resp_header_bytes' => 'getFanoutRespHeaderBytes',
+        'fanout_resp_body_bytes' => 'getFanoutRespBodyBytes',
+        'fanout_bereq_header_bytes' => 'getFanoutBereqHeaderBytes',
+        'fanout_bereq_body_bytes' => 'getFanoutBereqBodyBytes',
+        'fanout_beresp_header_bytes' => 'getFanoutBerespHeaderBytes',
+        'fanout_beresp_body_bytes' => 'getFanoutBerespBodyBytes',
+        'fanout_conn_time_ms' => 'getFanoutConnTimeMs',
+        'ddos_action_limit_streams_connections' => 'getDdosActionLimitStreamsConnections',
+        'ddos_action_limit_streams_requests' => 'getDdosActionLimitStreamsRequests',
+        'ddos_action_tarpit_accept' => 'getDdosActionTarpitAccept',
+        'ddos_action_tarpit' => 'getDdosActionTarpit',
+        'ddos_action_close' => 'getDdosActionClose',
+        'ddos_action_blackhole' => 'getDdosActionBlackhole',
+        'bot_challenge_starts' => 'getBotChallengeStarts',
+        'bot_challenge_complete_tokens_passed' => 'getBotChallengeCompleteTokensPassed',
+        'bot_challenge_complete_tokens_failed' => 'getBotChallengeCompleteTokensFailed',
+        'bot_challenge_complete_tokens_checked' => 'getBotChallengeCompleteTokensChecked',
+        'bot_challenge_complete_tokens_disabled' => 'getBotChallengeCompleteTokensDisabled',
+        'bot_challenge_complete_tokens_issued' => 'getBotChallengeCompleteTokensIssued',
+        'bot_challenges_issued' => 'getBotChallengesIssued',
+        'bot_challenges_succeeded' => 'getBotChallengesSucceeded',
+        'bot_challenges_failed' => 'getBotChallengesFailed',
+        'ddos_action_downgrade' => 'getDdosActionDowngrade',
+        'ddos_action_downgraded_connections' => 'getDdosActionDowngradedConnections',
+        'all_hit_requests' => 'getAllHitRequests',
+        'all_miss_requests' => 'getAllMissRequests',
+        'all_pass_requests' => 'getAllPassRequests',
+        'all_error_requests' => 'getAllErrorRequests',
+        'all_synth_requests' => 'getAllSynthRequests',
+        'all_edge_hit_requests' => 'getAllEdgeHitRequests',
+        'all_edge_miss_requests' => 'getAllEdgeMissRequests',
+        'all_status_1xx' => 'getAllStatus1xx',
+        'all_status_2xx' => 'getAllStatus2xx',
+        'all_status_3xx' => 'getAllStatus3xx',
+        'all_status_4xx' => 'getAllStatus4xx',
+        'all_status_5xx' => 'getAllStatus5xx',
+        'origin_offload' => 'getOriginOffload',
+        'request_denied_get_head_body' => 'getRequestDeniedGetHeadBody',
+        'ddos_protection_requests_detect_count' => 'getDdosProtectionRequestsDetectCount',
+        'ddos_protection_requests_mitigate_count' => 'getDdosProtectionRequestsMitigateCount',
+        'ddos_protection_requests_allow_count' => 'getDdosProtectionRequestsAllowCount',
+        'object_storage_class_a_operations_count' => 'getObjectStorageClassAOperationsCount',
+        'object_storage_class_b_operations_count' => 'getObjectStorageClassBOperationsCount',
+        'aia_requests' => 'getAiaRequests',
+        'aia_status_1xx' => 'getAiaStatus1xx',
+        'aia_status_2xx' => 'getAiaStatus2xx',
+        'aia_status_3xx' => 'getAiaStatus3xx',
+        'aia_status_4xx' => 'getAiaStatus4xx',
+        'aia_status_5xx' => 'getAiaStatus5xx',
+        'aia_response_usage_tokens' => 'getAiaResponseUsageTokens',
+        'aia_origin_usage_tokens' => 'getAiaOriginUsageTokens',
+        'aia_estimated_time_saved_ms' => 'getAiaEstimatedTimeSavedMs',
+        'request_collapse_usable_count' => 'getRequestCollapseUsableCount',
+        'request_collapse_unusable_count' => 'getRequestCollapseUnusableCount',
+        'compute_cache_operations_count' => 'getComputeCacheOperationsCount',
+        'ngwaf_requests_total_count' => 'getNgwafRequestsTotalCount',
+        'ngwaf_requests_unknown_count' => 'getNgwafRequestsUnknownCount',
+        'ngwaf_requests_allowed_count' => 'getNgwafRequestsAllowedCount',
+        'ngwaf_requests_logged_count' => 'getNgwafRequestsLoggedCount',
+        'ngwaf_requests_blocked_count' => 'getNgwafRequestsBlockedCount',
+        'ngwaf_requests_timeout_count' => 'getNgwafRequestsTimeoutCount',
+        'ngwaf_requests_challenged_count' => 'getNgwafRequestsChallengedCount',
+        'api_discovery_requests_count' => 'getApiDiscoveryRequestsCount',
+        'compute_resp_status_103' => 'getComputeRespStatus103',
+        'compute_resp_status_200' => 'getComputeRespStatus200',
+        'compute_resp_status_204' => 'getComputeRespStatus204',
+        'compute_resp_status_206' => 'getComputeRespStatus206',
+        'compute_resp_status_301' => 'getComputeRespStatus301',
+        'compute_resp_status_302' => 'getComputeRespStatus302',
+        'compute_resp_status_304' => 'getComputeRespStatus304',
+        'compute_resp_status_400' => 'getComputeRespStatus400',
+        'compute_resp_status_401' => 'getComputeRespStatus401',
+        'compute_resp_status_403' => 'getComputeRespStatus403',
+        'compute_resp_status_404' => 'getComputeRespStatus404',
+        'compute_resp_status_416' => 'getComputeRespStatus416',
+        'compute_resp_status_429' => 'getComputeRespStatus429',
+        'compute_resp_status_500' => 'getComputeRespStatus500',
+        'compute_resp_status_501' => 'getComputeRespStatus501',
+        'compute_resp_status_502' => 'getComputeRespStatus502',
+        'compute_resp_status_503' => 'getComputeRespStatus503',
+        'compute_resp_status_504' => 'getComputeRespStatus504',
+        'compute_resp_status_505' => 'getComputeRespStatus505',
+        'compute_resp_status_530' => 'getComputeRespStatus530',
+        'imgopto_compute_requests' => 'getImgoptoComputeRequests',
+        'dns_billable_responses_count' => 'getDnsBillableResponsesCount',
+        'dns_nonbillable_responses_count' => 'getDnsNonbillableResponsesCount',
+        'upgrade' => 'getUpgrade',
+        'ngwaf_bot_analysis_request_count' => 'getNgwafBotAnalysisRequestCount',
+        'imgopto_avif_count' => 'getImgoptoAvifCount',
+        'imgopto_jpeg_count' => 'getImgoptoJpegCount',
+        'imgopto_png_count' => 'getImgoptoPngCount',
+        'imgopto_gif_count' => 'getImgoptoGifCount',
+        'imgopto_webp_count' => 'getImgoptoWebpCount',
+        'imgopto_jpegxl_count' => 'getImgoptoJpegxlCount',
+        'imgopto_svg_count' => 'getImgoptoSvgCount',
+        'imgopto_mp4_count' => 'getImgoptoMp4Count',
+        'compute_service_resource_limits_error' => 'getComputeServiceResourceLimitsError',
+        'compute_service_runtime_error' => 'getComputeServiceRuntimeError',
+        'compute_service_chain_error' => 'getComputeServiceChainError',
+        'compute_platform_internal_error' => 'getComputePlatformInternalError',
+        'compute_service_timeout_error' => 'getComputeServiceTimeoutError',
+        'compute_service_vcpu_exceeded_error' => 'getComputeServiceVcpuExceededError',
+        'compute_service_limits_error' => 'getComputeServiceLimitsError',
+        'compute_platform_invalid_request_error' => 'getComputePlatformInvalidRequestError',
+        'compute_sandboxes' => 'getComputeSandboxes',
+        'bot_requests_total_count' => 'getBotRequestsTotalCount',
+        'bot_edge_requests_analyzed_count' => 'getBotEdgeRequestsAnalyzedCount',
+        'bot_edge_requests_detected_count' => 'getBotEdgeRequestsDetectedCount',
+        'bot_edge_requests_verified_count' => 'getBotEdgeRequestsVerifiedCount',
+        'bot_edge_requests_ai_crawler_count' => 'getBotEdgeRequestsAiCrawlerCount',
+        'bot_edge_requests_ai_fetcher_count' => 'getBotEdgeRequestsAiFetcherCount',
+        'bot_edge_requests_accessibility_count' => 'getBotEdgeRequestsAccessibilityCount',
+        'bot_edge_requests_content_fetcher_count' => 'getBotEdgeRequestsContentFetcherCount',
+        'bot_edge_requests_monitoring_count' => 'getBotEdgeRequestsMonitoringCount',
+        'bot_edge_requests_online_marketing_count' => 'getBotEdgeRequestsOnlineMarketingCount',
+        'bot_edge_requests_page_preview_count' => 'getBotEdgeRequestsPagePreviewCount',
+        'bot_edge_requests_platform_integrations_count' => 'getBotEdgeRequestsPlatformIntegrationsCount',
+        'bot_edge_requests_research_count' => 'getBotEdgeRequestsResearchCount',
+        'bot_edge_requests_search_engine_crawler_count' => 'getBotEdgeRequestsSearchEngineCrawlerCount',
+        'bot_edge_requests_search_engine_optimization_count' => 'getBotEdgeRequestsSearchEngineOptimizationCount',
+        'bot_edge_requests_security_tools_count' => 'getBotEdgeRequestsSecurityToolsCount',
+        'compute_handoff' => 'getComputeHandoff',
+        'compute_service_bereq_dns_error' => 'getComputeServiceBereqDnsError',
+        'compute_service_bereq_conn_timeout_error' => 'getComputeServiceBereqConnTimeoutError',
+        'compute_service_bereq_conn_refused_error' => 'getComputeServiceBereqConnRefusedError',
+        'compute_service_bereq_conn_other_error' => 'getComputeServiceBereqConnOtherError',
+        'compute_service_bereq_tls_server_cert_error' => 'getComputeServiceBereqTlsServerCertError',
+        'compute_service_bereq_tls_other_error' => 'getComputeServiceBereqTlsOtherError',
+        'compute_service_bereq_http_proto_v1_error' => 'getComputeServiceBereqHttpProtoV1Error',
+        'compute_service_bereq_http_proto_v2_error' => 'getComputeServiceBereqHttpProtoV2Error',
+        'compute_service_bereq_http_incomplete_error' => 'getComputeServiceBereqHttpIncompleteError',
+        'compute_service_bereq_http_timeout_error' => 'getComputeServiceBereqHttpTimeoutError',
+        'compute_service_bereq_http_other_error' => 'getComputeServiceBereqHttpOtherError',
+        'compute_service_bereq_other_error' => 'getComputeServiceBereqOtherError',
+        'compute_service_bereq_5xx_error' => 'getComputeServiceBereq5xxError',
+        'compute_service_bereq_conn_error' => 'getComputeServiceBereqConnError',
+        'compute_service_bereq_tls_error' => 'getComputeServiceBereqTlsError',
+        'compute_service_bereq_http_error' => 'getComputeServiceBereqHttpError',
+        'bot_challenges_pats_issued' => 'getBotChallengesPatsIssued',
+        'bot_challenges_pats_succeeded' => 'getBotChallengesPatsSucceeded',
+        'bot_edge_requests_headless_count' => 'getBotEdgeRequestsHeadlessCount',
+        'status_499' => 'getStatus499',
+        'arc_requests' => 'getArcRequests',
+        'ddos_challenge_complete_tokens_checked' => 'getDdosChallengeCompleteTokensChecked',
+        'ddos_challenge_complete_tokens_passed' => 'getDdosChallengeCompleteTokensPassed',
+        'ddos_challenge_complete_tokens_failed' => 'getDdosChallengeCompleteTokensFailed',
+        'ddos_challenge_starts' => 'getDdosChallengeStarts',
+        'ddos_challenge_complete_tokens_issued' => 'getDdosChallengeCompleteTokensIssued',
+        'ddos_challenges_issued' => 'getDdosChallengesIssued',
+        'ddos_challenges_succeeded' => 'getDdosChallengesSucceeded',
+        'ddos_challenges_failed' => 'getDdosChallengesFailed',
+        'ddos_challenges_pats_issued' => 'getDdosChallengesPatsIssued',
+        'ddos_challenges_pats_succeeded' => 'getDdosChallengesPatsSucceeded',
+        'csp_pages_gauge' => 'getCspPagesGauge',
+        'ngwaf_account_rules_gauge' => 'getNgwafAccountRulesGauge',
+        'ngwaf_account_workspaces' => 'getNgwafAccountWorkspaces',
+        'ngwaf_workspace_rules_gauge' => 'getNgwafWorkspaceRulesGauge',
+        'ngwaf_workspace_thresholds_gauge' => 'getNgwafWorkspaceThresholdsGauge',
+        'object_storage_buckets_count' => 'getObjectStorageBucketsCount',
+        'object_storage_bytes_count' => 'getObjectStorageBytesCount'
     ];
 
     /**
@@ -249,21 +1964,364 @@ class PlatformValues implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->container['timestamp'] = $data['timestamp'] ?? null;
-        $this->container['ttfb_origin_p25_us'] = $data['ttfb_origin_p25_us'] ?? null;
-        $this->container['ttfb_origin_p50_us'] = $data['ttfb_origin_p50_us'] ?? null;
-        $this->container['ttfb_origin_p75_us'] = $data['ttfb_origin_p75_us'] ?? null;
-        $this->container['ttfb_origin_p95_us'] = $data['ttfb_origin_p95_us'] ?? null;
-        $this->container['ttfb_origin_p99_us'] = $data['ttfb_origin_p99_us'] ?? null;
-        $this->container['ttfb_shield_p25_us'] = $data['ttfb_shield_p25_us'] ?? null;
-        $this->container['ttfb_shield_p50_us'] = $data['ttfb_shield_p50_us'] ?? null;
-        $this->container['ttfb_shield_p75_us'] = $data['ttfb_shield_p75_us'] ?? null;
-        $this->container['ttfb_shield_p95_us'] = $data['ttfb_shield_p95_us'] ?? null;
-        $this->container['ttfb_shield_p99_us'] = $data['ttfb_shield_p99_us'] ?? null;
-        $this->container['ttfb_edge_p25_us'] = $data['ttfb_edge_p25_us'] ?? null;
-        $this->container['ttfb_edge_p50_us'] = $data['ttfb_edge_p50_us'] ?? null;
-        $this->container['ttfb_edge_p75_us'] = $data['ttfb_edge_p75_us'] ?? null;
-        $this->container['ttfb_edge_p95_us'] = $data['ttfb_edge_p95_us'] ?? null;
-        $this->container['ttfb_edge_p99_us'] = $data['ttfb_edge_p99_us'] ?? null;
+        $this->container['datacenter'] = $data['datacenter'] ?? null;
+        $this->container['region'] = $data['region'] ?? null;
+        $this->container['requests'] = $data['requests'] ?? null;
+        $this->container['hits'] = $data['hits'] ?? null;
+        $this->container['hits_time'] = $data['hits_time'] ?? null;
+        $this->container['miss'] = $data['miss'] ?? null;
+        $this->container['miss_time'] = $data['miss_time'] ?? null;
+        $this->container['pass'] = $data['pass'] ?? null;
+        $this->container['pass_time'] = $data['pass_time'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['restarts'] = $data['restarts'] ?? null;
+        $this->container['hit_ratio'] = $data['hit_ratio'] ?? null;
+        $this->container['bandwidth'] = $data['bandwidth'] ?? null;
+        $this->container['req_body_bytes'] = $data['req_body_bytes'] ?? null;
+        $this->container['req_header_bytes'] = $data['req_header_bytes'] ?? null;
+        $this->container['resp_body_bytes'] = $data['resp_body_bytes'] ?? null;
+        $this->container['resp_header_bytes'] = $data['resp_header_bytes'] ?? null;
+        $this->container['bereq_body_bytes'] = $data['bereq_body_bytes'] ?? null;
+        $this->container['bereq_header_bytes'] = $data['bereq_header_bytes'] ?? null;
+        $this->container['uncacheable'] = $data['uncacheable'] ?? null;
+        $this->container['pipe'] = $data['pipe'] ?? null;
+        $this->container['synth'] = $data['synth'] ?? null;
+        $this->container['tls'] = $data['tls'] ?? null;
+        $this->container['tls_v10'] = $data['tls_v10'] ?? null;
+        $this->container['tls_v11'] = $data['tls_v11'] ?? null;
+        $this->container['tls_v12'] = $data['tls_v12'] ?? null;
+        $this->container['tls_v13'] = $data['tls_v13'] ?? null;
+        $this->container['edge_requests'] = $data['edge_requests'] ?? null;
+        $this->container['edge_resp_header_bytes'] = $data['edge_resp_header_bytes'] ?? null;
+        $this->container['edge_resp_body_bytes'] = $data['edge_resp_body_bytes'] ?? null;
+        $this->container['edge_hit_requests'] = $data['edge_hit_requests'] ?? null;
+        $this->container['edge_miss_requests'] = $data['edge_miss_requests'] ?? null;
+        $this->container['origin_fetches'] = $data['origin_fetches'] ?? null;
+        $this->container['origin_fetch_header_bytes'] = $data['origin_fetch_header_bytes'] ?? null;
+        $this->container['origin_fetch_body_bytes'] = $data['origin_fetch_body_bytes'] ?? null;
+        $this->container['origin_fetch_resp_header_bytes'] = $data['origin_fetch_resp_header_bytes'] ?? null;
+        $this->container['origin_fetch_resp_body_bytes'] = $data['origin_fetch_resp_body_bytes'] ?? null;
+        $this->container['origin_revalidations'] = $data['origin_revalidations'] ?? null;
+        $this->container['origin_cache_fetches'] = $data['origin_cache_fetches'] ?? null;
+        $this->container['shield'] = $data['shield'] ?? null;
+        $this->container['shield_resp_body_bytes'] = $data['shield_resp_body_bytes'] ?? null;
+        $this->container['shield_resp_header_bytes'] = $data['shield_resp_header_bytes'] ?? null;
+        $this->container['shield_fetches'] = $data['shield_fetches'] ?? null;
+        $this->container['shield_fetch_header_bytes'] = $data['shield_fetch_header_bytes'] ?? null;
+        $this->container['shield_fetch_body_bytes'] = $data['shield_fetch_body_bytes'] ?? null;
+        $this->container['shield_fetch_resp_header_bytes'] = $data['shield_fetch_resp_header_bytes'] ?? null;
+        $this->container['shield_fetch_resp_body_bytes'] = $data['shield_fetch_resp_body_bytes'] ?? null;
+        $this->container['shield_revalidations'] = $data['shield_revalidations'] ?? null;
+        $this->container['shield_cache_fetches'] = $data['shield_cache_fetches'] ?? null;
+        $this->container['ipv6'] = $data['ipv6'] ?? null;
+        $this->container['otfp'] = $data['otfp'] ?? null;
+        $this->container['otfp_resp_body_bytes'] = $data['otfp_resp_body_bytes'] ?? null;
+        $this->container['otfp_resp_header_bytes'] = $data['otfp_resp_header_bytes'] ?? null;
+        $this->container['otfp_shield_resp_body_bytes'] = $data['otfp_shield_resp_body_bytes'] ?? null;
+        $this->container['otfp_shield_resp_header_bytes'] = $data['otfp_shield_resp_header_bytes'] ?? null;
+        $this->container['otfp_manifests'] = $data['otfp_manifests'] ?? null;
+        $this->container['otfp_deliver_time'] = $data['otfp_deliver_time'] ?? null;
+        $this->container['otfp_shield_time'] = $data['otfp_shield_time'] ?? null;
+        $this->container['video'] = $data['video'] ?? null;
+        $this->container['pci'] = $data['pci'] ?? null;
+        $this->container['log'] = $data['log'] ?? null;
+        $this->container['log_bytes'] = $data['log_bytes'] ?? null;
+        $this->container['http2'] = $data['http2'] ?? null;
+        $this->container['http3'] = $data['http3'] ?? null;
+        $this->container['attack_req_body_bytes'] = $data['attack_req_body_bytes'] ?? null;
+        $this->container['attack_req_header_bytes'] = $data['attack_req_header_bytes'] ?? null;
+        $this->container['attack_logged_req_body_bytes'] = $data['attack_logged_req_body_bytes'] ?? null;
+        $this->container['attack_logged_req_header_bytes'] = $data['attack_logged_req_header_bytes'] ?? null;
+        $this->container['attack_blocked_req_body_bytes'] = $data['attack_blocked_req_body_bytes'] ?? null;
+        $this->container['attack_blocked_req_header_bytes'] = $data['attack_blocked_req_header_bytes'] ?? null;
+        $this->container['attack_passed_req_body_bytes'] = $data['attack_passed_req_body_bytes'] ?? null;
+        $this->container['attack_passed_req_header_bytes'] = $data['attack_passed_req_header_bytes'] ?? null;
+        $this->container['attack_resp_synth_bytes'] = $data['attack_resp_synth_bytes'] ?? null;
+        $this->container['imgopto'] = $data['imgopto'] ?? null;
+        $this->container['imgopto_input_image_bytes'] = $data['imgopto_input_image_bytes'] ?? null;
+        $this->container['imgopto_output_image_bytes'] = $data['imgopto_output_image_bytes'] ?? null;
+        $this->container['imgopto_resp_body_bytes'] = $data['imgopto_resp_body_bytes'] ?? null;
+        $this->container['imgopto_resp_header_bytes'] = $data['imgopto_resp_header_bytes'] ?? null;
+        $this->container['imgopto_shield'] = $data['imgopto_shield'] ?? null;
+        $this->container['imgopto_shield_resp_body_bytes'] = $data['imgopto_shield_resp_body_bytes'] ?? null;
+        $this->container['imgopto_shield_resp_header_bytes'] = $data['imgopto_shield_resp_header_bytes'] ?? null;
+        $this->container['imgopto_transforms'] = $data['imgopto_transforms'] ?? null;
+        $this->container['imgvideo'] = $data['imgvideo'] ?? null;
+        $this->container['imgvideo_frames'] = $data['imgvideo_frames'] ?? null;
+        $this->container['imgvideo_resp_header_bytes'] = $data['imgvideo_resp_header_bytes'] ?? null;
+        $this->container['imgvideo_resp_body_bytes'] = $data['imgvideo_resp_body_bytes'] ?? null;
+        $this->container['imgvideo_shield_resp_header_bytes'] = $data['imgvideo_shield_resp_header_bytes'] ?? null;
+        $this->container['imgvideo_shield_resp_body_bytes'] = $data['imgvideo_shield_resp_body_bytes'] ?? null;
+        $this->container['imgvideo_shield'] = $data['imgvideo_shield'] ?? null;
+        $this->container['imgvideo_shield_frames'] = $data['imgvideo_shield_frames'] ?? null;
+        $this->container['status_200'] = $data['status_200'] ?? null;
+        $this->container['status_204'] = $data['status_204'] ?? null;
+        $this->container['status_206'] = $data['status_206'] ?? null;
+        $this->container['status_301'] = $data['status_301'] ?? null;
+        $this->container['status_302'] = $data['status_302'] ?? null;
+        $this->container['status_304'] = $data['status_304'] ?? null;
+        $this->container['status_400'] = $data['status_400'] ?? null;
+        $this->container['status_401'] = $data['status_401'] ?? null;
+        $this->container['status_403'] = $data['status_403'] ?? null;
+        $this->container['status_404'] = $data['status_404'] ?? null;
+        $this->container['status_406'] = $data['status_406'] ?? null;
+        $this->container['status_416'] = $data['status_416'] ?? null;
+        $this->container['status_429'] = $data['status_429'] ?? null;
+        $this->container['status_500'] = $data['status_500'] ?? null;
+        $this->container['status_501'] = $data['status_501'] ?? null;
+        $this->container['status_502'] = $data['status_502'] ?? null;
+        $this->container['status_503'] = $data['status_503'] ?? null;
+        $this->container['status_504'] = $data['status_504'] ?? null;
+        $this->container['status_505'] = $data['status_505'] ?? null;
+        $this->container['status_530'] = $data['status_530'] ?? null;
+        $this->container['status_1xx'] = $data['status_1xx'] ?? null;
+        $this->container['status_2xx'] = $data['status_2xx'] ?? null;
+        $this->container['status_3xx'] = $data['status_3xx'] ?? null;
+        $this->container['status_4xx'] = $data['status_4xx'] ?? null;
+        $this->container['status_5xx'] = $data['status_5xx'] ?? null;
+        $this->container['object_size_1k'] = $data['object_size_1k'] ?? null;
+        $this->container['object_size_10k'] = $data['object_size_10k'] ?? null;
+        $this->container['object_size_100k'] = $data['object_size_100k'] ?? null;
+        $this->container['object_size_1m'] = $data['object_size_1m'] ?? null;
+        $this->container['object_size_10m'] = $data['object_size_10m'] ?? null;
+        $this->container['object_size_100m'] = $data['object_size_100m'] ?? null;
+        $this->container['object_size_1g'] = $data['object_size_1g'] ?? null;
+        $this->container['recv_sub_time'] = $data['recv_sub_time'] ?? null;
+        $this->container['recv_sub_count'] = $data['recv_sub_count'] ?? null;
+        $this->container['hash_sub_time'] = $data['hash_sub_time'] ?? null;
+        $this->container['hash_sub_count'] = $data['hash_sub_count'] ?? null;
+        $this->container['miss_sub_time'] = $data['miss_sub_time'] ?? null;
+        $this->container['miss_sub_count'] = $data['miss_sub_count'] ?? null;
+        $this->container['fetch_sub_time'] = $data['fetch_sub_time'] ?? null;
+        $this->container['fetch_sub_count'] = $data['fetch_sub_count'] ?? null;
+        $this->container['pass_sub_time'] = $data['pass_sub_time'] ?? null;
+        $this->container['pass_sub_count'] = $data['pass_sub_count'] ?? null;
+        $this->container['pipe_sub_time'] = $data['pipe_sub_time'] ?? null;
+        $this->container['pipe_sub_count'] = $data['pipe_sub_count'] ?? null;
+        $this->container['deliver_sub_time'] = $data['deliver_sub_time'] ?? null;
+        $this->container['deliver_sub_count'] = $data['deliver_sub_count'] ?? null;
+        $this->container['error_sub_time'] = $data['error_sub_time'] ?? null;
+        $this->container['error_sub_count'] = $data['error_sub_count'] ?? null;
+        $this->container['hit_sub_time'] = $data['hit_sub_time'] ?? null;
+        $this->container['hit_sub_count'] = $data['hit_sub_count'] ?? null;
+        $this->container['prehash_sub_time'] = $data['prehash_sub_time'] ?? null;
+        $this->container['prehash_sub_count'] = $data['prehash_sub_count'] ?? null;
+        $this->container['predeliver_sub_time'] = $data['predeliver_sub_time'] ?? null;
+        $this->container['predeliver_sub_count'] = $data['predeliver_sub_count'] ?? null;
+        $this->container['tls_handshake_sent_bytes'] = $data['tls_handshake_sent_bytes'] ?? null;
+        $this->container['hit_resp_body_bytes'] = $data['hit_resp_body_bytes'] ?? null;
+        $this->container['miss_resp_body_bytes'] = $data['miss_resp_body_bytes'] ?? null;
+        $this->container['pass_resp_body_bytes'] = $data['pass_resp_body_bytes'] ?? null;
+        $this->container['segblock_origin_fetches'] = $data['segblock_origin_fetches'] ?? null;
+        $this->container['segblock_shield_fetches'] = $data['segblock_shield_fetches'] ?? null;
+        $this->container['compute_requests'] = $data['compute_requests'] ?? null;
+        $this->container['compute_request_time_ms'] = $data['compute_request_time_ms'] ?? null;
+        $this->container['compute_request_time_billed_ms'] = $data['compute_request_time_billed_ms'] ?? null;
+        $this->container['compute_ram_used'] = $data['compute_ram_used'] ?? null;
+        $this->container['compute_execution_time_ms'] = $data['compute_execution_time_ms'] ?? null;
+        $this->container['compute_req_header_bytes'] = $data['compute_req_header_bytes'] ?? null;
+        $this->container['compute_req_body_bytes'] = $data['compute_req_body_bytes'] ?? null;
+        $this->container['compute_resp_header_bytes'] = $data['compute_resp_header_bytes'] ?? null;
+        $this->container['compute_resp_body_bytes'] = $data['compute_resp_body_bytes'] ?? null;
+        $this->container['compute_resp_status_1xx'] = $data['compute_resp_status_1xx'] ?? null;
+        $this->container['compute_resp_status_2xx'] = $data['compute_resp_status_2xx'] ?? null;
+        $this->container['compute_resp_status_3xx'] = $data['compute_resp_status_3xx'] ?? null;
+        $this->container['compute_resp_status_4xx'] = $data['compute_resp_status_4xx'] ?? null;
+        $this->container['compute_resp_status_5xx'] = $data['compute_resp_status_5xx'] ?? null;
+        $this->container['compute_bereq_header_bytes'] = $data['compute_bereq_header_bytes'] ?? null;
+        $this->container['compute_bereq_body_bytes'] = $data['compute_bereq_body_bytes'] ?? null;
+        $this->container['compute_beresp_header_bytes'] = $data['compute_beresp_header_bytes'] ?? null;
+        $this->container['compute_beresp_body_bytes'] = $data['compute_beresp_body_bytes'] ?? null;
+        $this->container['compute_bereqs'] = $data['compute_bereqs'] ?? null;
+        $this->container['compute_service_bereq_error'] = $data['compute_service_bereq_error'] ?? null;
+        $this->container['compute_service_memory_exceeded_error'] = $data['compute_service_memory_exceeded_error'] ?? null;
+        $this->container['edge_hit_resp_body_bytes'] = $data['edge_hit_resp_body_bytes'] ?? null;
+        $this->container['edge_hit_resp_header_bytes'] = $data['edge_hit_resp_header_bytes'] ?? null;
+        $this->container['edge_miss_resp_body_bytes'] = $data['edge_miss_resp_body_bytes'] ?? null;
+        $this->container['edge_miss_resp_header_bytes'] = $data['edge_miss_resp_header_bytes'] ?? null;
+        $this->container['origin_cache_fetch_resp_body_bytes'] = $data['origin_cache_fetch_resp_body_bytes'] ?? null;
+        $this->container['origin_cache_fetch_resp_header_bytes'] = $data['origin_cache_fetch_resp_header_bytes'] ?? null;
+        $this->container['shield_hit_requests'] = $data['shield_hit_requests'] ?? null;
+        $this->container['shield_miss_requests'] = $data['shield_miss_requests'] ?? null;
+        $this->container['shield_hit_resp_header_bytes'] = $data['shield_hit_resp_header_bytes'] ?? null;
+        $this->container['shield_hit_resp_body_bytes'] = $data['shield_hit_resp_body_bytes'] ?? null;
+        $this->container['shield_miss_resp_header_bytes'] = $data['shield_miss_resp_header_bytes'] ?? null;
+        $this->container['shield_miss_resp_body_bytes'] = $data['shield_miss_resp_body_bytes'] ?? null;
+        $this->container['websocket_req_header_bytes'] = $data['websocket_req_header_bytes'] ?? null;
+        $this->container['websocket_req_body_bytes'] = $data['websocket_req_body_bytes'] ?? null;
+        $this->container['websocket_resp_header_bytes'] = $data['websocket_resp_header_bytes'] ?? null;
+        $this->container['websocket_resp_body_bytes'] = $data['websocket_resp_body_bytes'] ?? null;
+        $this->container['websocket_bereq_header_bytes'] = $data['websocket_bereq_header_bytes'] ?? null;
+        $this->container['websocket_bereq_body_bytes'] = $data['websocket_bereq_body_bytes'] ?? null;
+        $this->container['websocket_beresp_header_bytes'] = $data['websocket_beresp_header_bytes'] ?? null;
+        $this->container['websocket_beresp_body_bytes'] = $data['websocket_beresp_body_bytes'] ?? null;
+        $this->container['websocket_conn_time_ms'] = $data['websocket_conn_time_ms'] ?? null;
+        $this->container['fanout_recv_publishes'] = $data['fanout_recv_publishes'] ?? null;
+        $this->container['fanout_send_publishes'] = $data['fanout_send_publishes'] ?? null;
+        $this->container['kv_store_class_a_operations'] = $data['kv_store_class_a_operations'] ?? null;
+        $this->container['kv_store_class_b_operations'] = $data['kv_store_class_b_operations'] ?? null;
+        $this->container['fanout_req_header_bytes'] = $data['fanout_req_header_bytes'] ?? null;
+        $this->container['fanout_req_body_bytes'] = $data['fanout_req_body_bytes'] ?? null;
+        $this->container['fanout_resp_header_bytes'] = $data['fanout_resp_header_bytes'] ?? null;
+        $this->container['fanout_resp_body_bytes'] = $data['fanout_resp_body_bytes'] ?? null;
+        $this->container['fanout_bereq_header_bytes'] = $data['fanout_bereq_header_bytes'] ?? null;
+        $this->container['fanout_bereq_body_bytes'] = $data['fanout_bereq_body_bytes'] ?? null;
+        $this->container['fanout_beresp_header_bytes'] = $data['fanout_beresp_header_bytes'] ?? null;
+        $this->container['fanout_beresp_body_bytes'] = $data['fanout_beresp_body_bytes'] ?? null;
+        $this->container['fanout_conn_time_ms'] = $data['fanout_conn_time_ms'] ?? null;
+        $this->container['ddos_action_limit_streams_connections'] = $data['ddos_action_limit_streams_connections'] ?? null;
+        $this->container['ddos_action_limit_streams_requests'] = $data['ddos_action_limit_streams_requests'] ?? null;
+        $this->container['ddos_action_tarpit_accept'] = $data['ddos_action_tarpit_accept'] ?? null;
+        $this->container['ddos_action_tarpit'] = $data['ddos_action_tarpit'] ?? null;
+        $this->container['ddos_action_close'] = $data['ddos_action_close'] ?? null;
+        $this->container['ddos_action_blackhole'] = $data['ddos_action_blackhole'] ?? null;
+        $this->container['bot_challenge_starts'] = $data['bot_challenge_starts'] ?? null;
+        $this->container['bot_challenge_complete_tokens_passed'] = $data['bot_challenge_complete_tokens_passed'] ?? null;
+        $this->container['bot_challenge_complete_tokens_failed'] = $data['bot_challenge_complete_tokens_failed'] ?? null;
+        $this->container['bot_challenge_complete_tokens_checked'] = $data['bot_challenge_complete_tokens_checked'] ?? null;
+        $this->container['bot_challenge_complete_tokens_disabled'] = $data['bot_challenge_complete_tokens_disabled'] ?? null;
+        $this->container['bot_challenge_complete_tokens_issued'] = $data['bot_challenge_complete_tokens_issued'] ?? null;
+        $this->container['bot_challenges_issued'] = $data['bot_challenges_issued'] ?? null;
+        $this->container['bot_challenges_succeeded'] = $data['bot_challenges_succeeded'] ?? null;
+        $this->container['bot_challenges_failed'] = $data['bot_challenges_failed'] ?? null;
+        $this->container['ddos_action_downgrade'] = $data['ddos_action_downgrade'] ?? null;
+        $this->container['ddos_action_downgraded_connections'] = $data['ddos_action_downgraded_connections'] ?? null;
+        $this->container['all_hit_requests'] = $data['all_hit_requests'] ?? null;
+        $this->container['all_miss_requests'] = $data['all_miss_requests'] ?? null;
+        $this->container['all_pass_requests'] = $data['all_pass_requests'] ?? null;
+        $this->container['all_error_requests'] = $data['all_error_requests'] ?? null;
+        $this->container['all_synth_requests'] = $data['all_synth_requests'] ?? null;
+        $this->container['all_edge_hit_requests'] = $data['all_edge_hit_requests'] ?? null;
+        $this->container['all_edge_miss_requests'] = $data['all_edge_miss_requests'] ?? null;
+        $this->container['all_status_1xx'] = $data['all_status_1xx'] ?? null;
+        $this->container['all_status_2xx'] = $data['all_status_2xx'] ?? null;
+        $this->container['all_status_3xx'] = $data['all_status_3xx'] ?? null;
+        $this->container['all_status_4xx'] = $data['all_status_4xx'] ?? null;
+        $this->container['all_status_5xx'] = $data['all_status_5xx'] ?? null;
+        $this->container['origin_offload'] = $data['origin_offload'] ?? null;
+        $this->container['request_denied_get_head_body'] = $data['request_denied_get_head_body'] ?? null;
+        $this->container['ddos_protection_requests_detect_count'] = $data['ddos_protection_requests_detect_count'] ?? null;
+        $this->container['ddos_protection_requests_mitigate_count'] = $data['ddos_protection_requests_mitigate_count'] ?? null;
+        $this->container['ddos_protection_requests_allow_count'] = $data['ddos_protection_requests_allow_count'] ?? null;
+        $this->container['object_storage_class_a_operations_count'] = $data['object_storage_class_a_operations_count'] ?? null;
+        $this->container['object_storage_class_b_operations_count'] = $data['object_storage_class_b_operations_count'] ?? null;
+        $this->container['aia_requests'] = $data['aia_requests'] ?? null;
+        $this->container['aia_status_1xx'] = $data['aia_status_1xx'] ?? null;
+        $this->container['aia_status_2xx'] = $data['aia_status_2xx'] ?? null;
+        $this->container['aia_status_3xx'] = $data['aia_status_3xx'] ?? null;
+        $this->container['aia_status_4xx'] = $data['aia_status_4xx'] ?? null;
+        $this->container['aia_status_5xx'] = $data['aia_status_5xx'] ?? null;
+        $this->container['aia_response_usage_tokens'] = $data['aia_response_usage_tokens'] ?? null;
+        $this->container['aia_origin_usage_tokens'] = $data['aia_origin_usage_tokens'] ?? null;
+        $this->container['aia_estimated_time_saved_ms'] = $data['aia_estimated_time_saved_ms'] ?? null;
+        $this->container['request_collapse_usable_count'] = $data['request_collapse_usable_count'] ?? null;
+        $this->container['request_collapse_unusable_count'] = $data['request_collapse_unusable_count'] ?? null;
+        $this->container['compute_cache_operations_count'] = $data['compute_cache_operations_count'] ?? null;
+        $this->container['ngwaf_requests_total_count'] = $data['ngwaf_requests_total_count'] ?? null;
+        $this->container['ngwaf_requests_unknown_count'] = $data['ngwaf_requests_unknown_count'] ?? null;
+        $this->container['ngwaf_requests_allowed_count'] = $data['ngwaf_requests_allowed_count'] ?? null;
+        $this->container['ngwaf_requests_logged_count'] = $data['ngwaf_requests_logged_count'] ?? null;
+        $this->container['ngwaf_requests_blocked_count'] = $data['ngwaf_requests_blocked_count'] ?? null;
+        $this->container['ngwaf_requests_timeout_count'] = $data['ngwaf_requests_timeout_count'] ?? null;
+        $this->container['ngwaf_requests_challenged_count'] = $data['ngwaf_requests_challenged_count'] ?? null;
+        $this->container['api_discovery_requests_count'] = $data['api_discovery_requests_count'] ?? null;
+        $this->container['compute_resp_status_103'] = $data['compute_resp_status_103'] ?? null;
+        $this->container['compute_resp_status_200'] = $data['compute_resp_status_200'] ?? null;
+        $this->container['compute_resp_status_204'] = $data['compute_resp_status_204'] ?? null;
+        $this->container['compute_resp_status_206'] = $data['compute_resp_status_206'] ?? null;
+        $this->container['compute_resp_status_301'] = $data['compute_resp_status_301'] ?? null;
+        $this->container['compute_resp_status_302'] = $data['compute_resp_status_302'] ?? null;
+        $this->container['compute_resp_status_304'] = $data['compute_resp_status_304'] ?? null;
+        $this->container['compute_resp_status_400'] = $data['compute_resp_status_400'] ?? null;
+        $this->container['compute_resp_status_401'] = $data['compute_resp_status_401'] ?? null;
+        $this->container['compute_resp_status_403'] = $data['compute_resp_status_403'] ?? null;
+        $this->container['compute_resp_status_404'] = $data['compute_resp_status_404'] ?? null;
+        $this->container['compute_resp_status_416'] = $data['compute_resp_status_416'] ?? null;
+        $this->container['compute_resp_status_429'] = $data['compute_resp_status_429'] ?? null;
+        $this->container['compute_resp_status_500'] = $data['compute_resp_status_500'] ?? null;
+        $this->container['compute_resp_status_501'] = $data['compute_resp_status_501'] ?? null;
+        $this->container['compute_resp_status_502'] = $data['compute_resp_status_502'] ?? null;
+        $this->container['compute_resp_status_503'] = $data['compute_resp_status_503'] ?? null;
+        $this->container['compute_resp_status_504'] = $data['compute_resp_status_504'] ?? null;
+        $this->container['compute_resp_status_505'] = $data['compute_resp_status_505'] ?? null;
+        $this->container['compute_resp_status_530'] = $data['compute_resp_status_530'] ?? null;
+        $this->container['imgopto_compute_requests'] = $data['imgopto_compute_requests'] ?? null;
+        $this->container['dns_billable_responses_count'] = $data['dns_billable_responses_count'] ?? null;
+        $this->container['dns_nonbillable_responses_count'] = $data['dns_nonbillable_responses_count'] ?? null;
+        $this->container['upgrade'] = $data['upgrade'] ?? null;
+        $this->container['ngwaf_bot_analysis_request_count'] = $data['ngwaf_bot_analysis_request_count'] ?? null;
+        $this->container['imgopto_avif_count'] = $data['imgopto_avif_count'] ?? null;
+        $this->container['imgopto_jpeg_count'] = $data['imgopto_jpeg_count'] ?? null;
+        $this->container['imgopto_png_count'] = $data['imgopto_png_count'] ?? null;
+        $this->container['imgopto_gif_count'] = $data['imgopto_gif_count'] ?? null;
+        $this->container['imgopto_webp_count'] = $data['imgopto_webp_count'] ?? null;
+        $this->container['imgopto_jpegxl_count'] = $data['imgopto_jpegxl_count'] ?? null;
+        $this->container['imgopto_svg_count'] = $data['imgopto_svg_count'] ?? null;
+        $this->container['imgopto_mp4_count'] = $data['imgopto_mp4_count'] ?? null;
+        $this->container['compute_service_resource_limits_error'] = $data['compute_service_resource_limits_error'] ?? null;
+        $this->container['compute_service_runtime_error'] = $data['compute_service_runtime_error'] ?? null;
+        $this->container['compute_service_chain_error'] = $data['compute_service_chain_error'] ?? null;
+        $this->container['compute_platform_internal_error'] = $data['compute_platform_internal_error'] ?? null;
+        $this->container['compute_service_timeout_error'] = $data['compute_service_timeout_error'] ?? null;
+        $this->container['compute_service_vcpu_exceeded_error'] = $data['compute_service_vcpu_exceeded_error'] ?? null;
+        $this->container['compute_service_limits_error'] = $data['compute_service_limits_error'] ?? null;
+        $this->container['compute_platform_invalid_request_error'] = $data['compute_platform_invalid_request_error'] ?? null;
+        $this->container['compute_sandboxes'] = $data['compute_sandboxes'] ?? null;
+        $this->container['bot_requests_total_count'] = $data['bot_requests_total_count'] ?? null;
+        $this->container['bot_edge_requests_analyzed_count'] = $data['bot_edge_requests_analyzed_count'] ?? null;
+        $this->container['bot_edge_requests_detected_count'] = $data['bot_edge_requests_detected_count'] ?? null;
+        $this->container['bot_edge_requests_verified_count'] = $data['bot_edge_requests_verified_count'] ?? null;
+        $this->container['bot_edge_requests_ai_crawler_count'] = $data['bot_edge_requests_ai_crawler_count'] ?? null;
+        $this->container['bot_edge_requests_ai_fetcher_count'] = $data['bot_edge_requests_ai_fetcher_count'] ?? null;
+        $this->container['bot_edge_requests_accessibility_count'] = $data['bot_edge_requests_accessibility_count'] ?? null;
+        $this->container['bot_edge_requests_content_fetcher_count'] = $data['bot_edge_requests_content_fetcher_count'] ?? null;
+        $this->container['bot_edge_requests_monitoring_count'] = $data['bot_edge_requests_monitoring_count'] ?? null;
+        $this->container['bot_edge_requests_online_marketing_count'] = $data['bot_edge_requests_online_marketing_count'] ?? null;
+        $this->container['bot_edge_requests_page_preview_count'] = $data['bot_edge_requests_page_preview_count'] ?? null;
+        $this->container['bot_edge_requests_platform_integrations_count'] = $data['bot_edge_requests_platform_integrations_count'] ?? null;
+        $this->container['bot_edge_requests_research_count'] = $data['bot_edge_requests_research_count'] ?? null;
+        $this->container['bot_edge_requests_search_engine_crawler_count'] = $data['bot_edge_requests_search_engine_crawler_count'] ?? null;
+        $this->container['bot_edge_requests_search_engine_optimization_count'] = $data['bot_edge_requests_search_engine_optimization_count'] ?? null;
+        $this->container['bot_edge_requests_security_tools_count'] = $data['bot_edge_requests_security_tools_count'] ?? null;
+        $this->container['compute_handoff'] = $data['compute_handoff'] ?? null;
+        $this->container['compute_service_bereq_dns_error'] = $data['compute_service_bereq_dns_error'] ?? null;
+        $this->container['compute_service_bereq_conn_timeout_error'] = $data['compute_service_bereq_conn_timeout_error'] ?? null;
+        $this->container['compute_service_bereq_conn_refused_error'] = $data['compute_service_bereq_conn_refused_error'] ?? null;
+        $this->container['compute_service_bereq_conn_other_error'] = $data['compute_service_bereq_conn_other_error'] ?? null;
+        $this->container['compute_service_bereq_tls_server_cert_error'] = $data['compute_service_bereq_tls_server_cert_error'] ?? null;
+        $this->container['compute_service_bereq_tls_other_error'] = $data['compute_service_bereq_tls_other_error'] ?? null;
+        $this->container['compute_service_bereq_http_proto_v1_error'] = $data['compute_service_bereq_http_proto_v1_error'] ?? null;
+        $this->container['compute_service_bereq_http_proto_v2_error'] = $data['compute_service_bereq_http_proto_v2_error'] ?? null;
+        $this->container['compute_service_bereq_http_incomplete_error'] = $data['compute_service_bereq_http_incomplete_error'] ?? null;
+        $this->container['compute_service_bereq_http_timeout_error'] = $data['compute_service_bereq_http_timeout_error'] ?? null;
+        $this->container['compute_service_bereq_http_other_error'] = $data['compute_service_bereq_http_other_error'] ?? null;
+        $this->container['compute_service_bereq_other_error'] = $data['compute_service_bereq_other_error'] ?? null;
+        $this->container['compute_service_bereq_5xx_error'] = $data['compute_service_bereq_5xx_error'] ?? null;
+        $this->container['compute_service_bereq_conn_error'] = $data['compute_service_bereq_conn_error'] ?? null;
+        $this->container['compute_service_bereq_tls_error'] = $data['compute_service_bereq_tls_error'] ?? null;
+        $this->container['compute_service_bereq_http_error'] = $data['compute_service_bereq_http_error'] ?? null;
+        $this->container['bot_challenges_pats_issued'] = $data['bot_challenges_pats_issued'] ?? null;
+        $this->container['bot_challenges_pats_succeeded'] = $data['bot_challenges_pats_succeeded'] ?? null;
+        $this->container['bot_edge_requests_headless_count'] = $data['bot_edge_requests_headless_count'] ?? null;
+        $this->container['status_499'] = $data['status_499'] ?? null;
+        $this->container['arc_requests'] = $data['arc_requests'] ?? null;
+        $this->container['ddos_challenge_complete_tokens_checked'] = $data['ddos_challenge_complete_tokens_checked'] ?? null;
+        $this->container['ddos_challenge_complete_tokens_passed'] = $data['ddos_challenge_complete_tokens_passed'] ?? null;
+        $this->container['ddos_challenge_complete_tokens_failed'] = $data['ddos_challenge_complete_tokens_failed'] ?? null;
+        $this->container['ddos_challenge_starts'] = $data['ddos_challenge_starts'] ?? null;
+        $this->container['ddos_challenge_complete_tokens_issued'] = $data['ddos_challenge_complete_tokens_issued'] ?? null;
+        $this->container['ddos_challenges_issued'] = $data['ddos_challenges_issued'] ?? null;
+        $this->container['ddos_challenges_succeeded'] = $data['ddos_challenges_succeeded'] ?? null;
+        $this->container['ddos_challenges_failed'] = $data['ddos_challenges_failed'] ?? null;
+        $this->container['ddos_challenges_pats_issued'] = $data['ddos_challenges_pats_issued'] ?? null;
+        $this->container['ddos_challenges_pats_succeeded'] = $data['ddos_challenges_pats_succeeded'] ?? null;
+        $this->container['csp_pages_gauge'] = $data['csp_pages_gauge'] ?? null;
+        $this->container['ngwaf_account_rules_gauge'] = $data['ngwaf_account_rules_gauge'] ?? null;
+        $this->container['ngwaf_account_workspaces'] = $data['ngwaf_account_workspaces'] ?? null;
+        $this->container['ngwaf_workspace_rules_gauge'] = $data['ngwaf_workspace_rules_gauge'] ?? null;
+        $this->container['ngwaf_workspace_thresholds_gauge'] = $data['ngwaf_workspace_thresholds_gauge'] ?? null;
+        $this->container['object_storage_buckets_count'] = $data['object_storage_buckets_count'] ?? null;
+        $this->container['object_storage_bytes_count'] = $data['object_storage_bytes_count'] ?? null;
     }
 
     /**
@@ -303,7 +2361,7 @@ class PlatformValues implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets timestamp
      *
-     * @param \DateTime|null $timestamp Timestamp of the metrics data point.
+     * @param \DateTime|null $timestamp Timestamp for the start of the time period being reported
      *
      * @return self
      */
@@ -315,361 +2373,8593 @@ class PlatformValues implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets ttfb_origin_p25_us
+     * Gets datacenter
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getTtfbOriginP25Us()
+    public function getDatacenter()
     {
-        return $this->container['ttfb_origin_p25_us'];
+        return $this->container['datacenter'];
     }
 
     /**
-     * Sets ttfb_origin_p25_us
+     * Sets datacenter
      *
-     * @param float|null $ttfb_origin_p25_us 25th percentile of time to first byte from origin, in microseconds.
+     * @param string|null $datacenter Datacenter for this data point. Only present if the request was made with `group_by=datacenter`.
      *
      * @return self
      */
-    public function setTtfbOriginP25Us($ttfb_origin_p25_us)
+    public function setDatacenter($datacenter)
     {
-        $this->container['ttfb_origin_p25_us'] = $ttfb_origin_p25_us;
+        $this->container['datacenter'] = $datacenter;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_origin_p50_us
+     * Gets region
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getTtfbOriginP50Us()
+    public function getRegion()
     {
-        return $this->container['ttfb_origin_p50_us'];
+        return $this->container['region'];
     }
 
     /**
-     * Sets ttfb_origin_p50_us
+     * Sets region
      *
-     * @param float|null $ttfb_origin_p50_us 50th percentile of time to first byte from origin, in microseconds.
+     * @param string|null $region Region for this data point. Only present if the request was made with `group_by=region`.
      *
      * @return self
      */
-    public function setTtfbOriginP50Us($ttfb_origin_p50_us)
+    public function setRegion($region)
     {
-        $this->container['ttfb_origin_p50_us'] = $ttfb_origin_p50_us;
+        $this->container['region'] = $region;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_origin_p75_us
+     * Gets requests
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTtfbOriginP75Us()
+    public function getRequests()
     {
-        return $this->container['ttfb_origin_p75_us'];
+        return $this->container['requests'];
     }
 
     /**
-     * Sets ttfb_origin_p75_us
+     * Sets requests
      *
-     * @param float|null $ttfb_origin_p75_us 75th percentile of time to first byte from origin, in microseconds.
+     * @param int|null $requests Number of requests processed.
      *
      * @return self
      */
-    public function setTtfbOriginP75Us($ttfb_origin_p75_us)
+    public function setRequests($requests)
     {
-        $this->container['ttfb_origin_p75_us'] = $ttfb_origin_p75_us;
+        $this->container['requests'] = $requests;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_origin_p95_us
+     * Gets hits
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTtfbOriginP95Us()
+    public function getHits()
     {
-        return $this->container['ttfb_origin_p95_us'];
+        return $this->container['hits'];
     }
 
     /**
-     * Sets ttfb_origin_p95_us
+     * Sets hits
      *
-     * @param float|null $ttfb_origin_p95_us 95th percentile of time to first byte from origin, in microseconds.
+     * @param int|null $hits Number of cache hits.
      *
      * @return self
      */
-    public function setTtfbOriginP95Us($ttfb_origin_p95_us)
+    public function setHits($hits)
     {
-        $this->container['ttfb_origin_p95_us'] = $ttfb_origin_p95_us;
+        $this->container['hits'] = $hits;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_origin_p99_us
+     * Gets hits_time
      *
      * @return float|null
      */
-    public function getTtfbOriginP99Us()
+    public function getHitsTime()
     {
-        return $this->container['ttfb_origin_p99_us'];
+        return $this->container['hits_time'];
     }
 
     /**
-     * Sets ttfb_origin_p99_us
+     * Sets hits_time
      *
-     * @param float|null $ttfb_origin_p99_us 99th percentile of time to first byte from origin, in microseconds.
+     * @param float|null $hits_time Total amount of time spent processing cache hits (in seconds).
      *
      * @return self
      */
-    public function setTtfbOriginP99Us($ttfb_origin_p99_us)
+    public function setHitsTime($hits_time)
     {
-        $this->container['ttfb_origin_p99_us'] = $ttfb_origin_p99_us;
+        $this->container['hits_time'] = $hits_time;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_shield_p25_us
+     * Gets miss
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTtfbShieldP25Us()
+    public function getMiss()
     {
-        return $this->container['ttfb_shield_p25_us'];
+        return $this->container['miss'];
     }
 
     /**
-     * Sets ttfb_shield_p25_us
+     * Sets miss
      *
-     * @param float|null $ttfb_shield_p25_us 25th percentile of time to first byte from shield, in microseconds.
+     * @param int|null $miss Number of cache misses.
      *
      * @return self
      */
-    public function setTtfbShieldP25Us($ttfb_shield_p25_us)
+    public function setMiss($miss)
     {
-        $this->container['ttfb_shield_p25_us'] = $ttfb_shield_p25_us;
+        $this->container['miss'] = $miss;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_shield_p50_us
+     * Gets miss_time
      *
      * @return float|null
      */
-    public function getTtfbShieldP50Us()
+    public function getMissTime()
     {
-        return $this->container['ttfb_shield_p50_us'];
+        return $this->container['miss_time'];
     }
 
     /**
-     * Sets ttfb_shield_p50_us
+     * Sets miss_time
      *
-     * @param float|null $ttfb_shield_p50_us 50th percentile of time to first byte from shield, in microseconds.
+     * @param float|null $miss_time Total amount of time spent processing cache misses (in seconds).
      *
      * @return self
      */
-    public function setTtfbShieldP50Us($ttfb_shield_p50_us)
+    public function setMissTime($miss_time)
     {
-        $this->container['ttfb_shield_p50_us'] = $ttfb_shield_p50_us;
+        $this->container['miss_time'] = $miss_time;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_shield_p75_us
+     * Gets pass
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTtfbShieldP75Us()
+    public function getPass()
     {
-        return $this->container['ttfb_shield_p75_us'];
+        return $this->container['pass'];
     }
 
     /**
-     * Sets ttfb_shield_p75_us
+     * Sets pass
      *
-     * @param float|null $ttfb_shield_p75_us 75th percentile of time to first byte from shield, in microseconds.
+     * @param int|null $pass Number of requests that passed through the CDN without being cached.
      *
      * @return self
      */
-    public function setTtfbShieldP75Us($ttfb_shield_p75_us)
+    public function setPass($pass)
     {
-        $this->container['ttfb_shield_p75_us'] = $ttfb_shield_p75_us;
+        $this->container['pass'] = $pass;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_shield_p95_us
+     * Gets pass_time
      *
      * @return float|null
      */
-    public function getTtfbShieldP95Us()
+    public function getPassTime()
     {
-        return $this->container['ttfb_shield_p95_us'];
+        return $this->container['pass_time'];
     }
 
     /**
-     * Sets ttfb_shield_p95_us
+     * Sets pass_time
      *
-     * @param float|null $ttfb_shield_p95_us 95th percentile of time to first byte from shield, in microseconds.
+     * @param float|null $pass_time Total amount of time spent processing cache passes (in seconds).
      *
      * @return self
      */
-    public function setTtfbShieldP95Us($ttfb_shield_p95_us)
+    public function setPassTime($pass_time)
     {
-        $this->container['ttfb_shield_p95_us'] = $ttfb_shield_p95_us;
+        $this->container['pass_time'] = $pass_time;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_shield_p99_us
+     * Gets errors
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTtfbShieldP99Us()
+    public function getErrors()
     {
-        return $this->container['ttfb_shield_p99_us'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets ttfb_shield_p99_us
+     * Sets errors
      *
-     * @param float|null $ttfb_shield_p99_us 99th percentile of time to first byte from shield, in microseconds.
+     * @param int|null $errors Number of cache errors.
      *
      * @return self
      */
-    public function setTtfbShieldP99Us($ttfb_shield_p99_us)
+    public function setErrors($errors)
     {
-        $this->container['ttfb_shield_p99_us'] = $ttfb_shield_p99_us;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_edge_p25_us
+     * Gets restarts
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTtfbEdgeP25Us()
+    public function getRestarts()
     {
-        return $this->container['ttfb_edge_p25_us'];
+        return $this->container['restarts'];
     }
 
     /**
-     * Sets ttfb_edge_p25_us
+     * Sets restarts
      *
-     * @param float|null $ttfb_edge_p25_us 25th percentile of time to first byte from edge, in microseconds.
+     * @param int|null $restarts Number of restarts performed.
      *
      * @return self
      */
-    public function setTtfbEdgeP25Us($ttfb_edge_p25_us)
+    public function setRestarts($restarts)
     {
-        $this->container['ttfb_edge_p25_us'] = $ttfb_edge_p25_us;
+        $this->container['restarts'] = $restarts;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_edge_p50_us
+     * Gets hit_ratio
      *
      * @return float|null
      */
-    public function getTtfbEdgeP50Us()
+    public function getHitRatio()
     {
-        return $this->container['ttfb_edge_p50_us'];
+        return $this->container['hit_ratio'];
     }
 
     /**
-     * Sets ttfb_edge_p50_us
+     * Sets hit_ratio
      *
-     * @param float|null $ttfb_edge_p50_us 50th percentile of time to first byte from edge, in microseconds.
+     * @param float|null $hit_ratio Ratio of cache hits to cache misses (between 0 and 1).
      *
      * @return self
      */
-    public function setTtfbEdgeP50Us($ttfb_edge_p50_us)
+    public function setHitRatio($hit_ratio)
     {
-        $this->container['ttfb_edge_p50_us'] = $ttfb_edge_p50_us;
+        $this->container['hit_ratio'] = $hit_ratio;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_edge_p75_us
+     * Gets bandwidth
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTtfbEdgeP75Us()
+    public function getBandwidth()
     {
-        return $this->container['ttfb_edge_p75_us'];
+        return $this->container['bandwidth'];
     }
 
     /**
-     * Sets ttfb_edge_p75_us
+     * Sets bandwidth
      *
-     * @param float|null $ttfb_edge_p75_us 75th percentile of time to first byte from edge, in microseconds.
+     * @param int|null $bandwidth Total bytes delivered (`resp_header_bytes` + `resp_body_bytes` + `bereq_header_bytes` + `bereq_body_bytes` + `compute_resp_header_bytes` + `compute_resp_body_bytes` + `compute_bereq_header_bytes` + `compute_bereq_body_bytes` + `websocket_resp_header_bytes` + `websocket_resp_body_bytes` + `websocket_bereq_header_bytes` + `websocket_bereq_body_bytes` + `fanout_resp_header_bytes` + `fanout_resp_body_bytes` + `fanout_bereq_header_bytes` + `fanout_bereq_body_bytes`).
      *
      * @return self
      */
-    public function setTtfbEdgeP75Us($ttfb_edge_p75_us)
+    public function setBandwidth($bandwidth)
     {
-        $this->container['ttfb_edge_p75_us'] = $ttfb_edge_p75_us;
+        $this->container['bandwidth'] = $bandwidth;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_edge_p95_us
+     * Gets req_body_bytes
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTtfbEdgeP95Us()
+    public function getReqBodyBytes()
     {
-        return $this->container['ttfb_edge_p95_us'];
+        return $this->container['req_body_bytes'];
     }
 
     /**
-     * Sets ttfb_edge_p95_us
+     * Sets req_body_bytes
      *
-     * @param float|null $ttfb_edge_p95_us 95th percentile of time to first byte from edge, in microseconds.
+     * @param int|null $req_body_bytes Total body bytes received.
      *
      * @return self
      */
-    public function setTtfbEdgeP95Us($ttfb_edge_p95_us)
+    public function setReqBodyBytes($req_body_bytes)
     {
-        $this->container['ttfb_edge_p95_us'] = $ttfb_edge_p95_us;
+        $this->container['req_body_bytes'] = $req_body_bytes;
 
         return $this;
     }
 
     /**
-     * Gets ttfb_edge_p99_us
+     * Gets req_header_bytes
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTtfbEdgeP99Us()
+    public function getReqHeaderBytes()
     {
-        return $this->container['ttfb_edge_p99_us'];
+        return $this->container['req_header_bytes'];
     }
 
     /**
-     * Sets ttfb_edge_p99_us
+     * Sets req_header_bytes
      *
-     * @param float|null $ttfb_edge_p99_us 99th percentile of time to first byte from edge, in microseconds.
+     * @param int|null $req_header_bytes Total header bytes received.
      *
      * @return self
      */
-    public function setTtfbEdgeP99Us($ttfb_edge_p99_us)
+    public function setReqHeaderBytes($req_header_bytes)
     {
-        $this->container['ttfb_edge_p99_us'] = $ttfb_edge_p99_us;
+        $this->container['req_header_bytes'] = $req_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getRespBodyBytes()
+    {
+        return $this->container['resp_body_bytes'];
+    }
+
+    /**
+     * Sets resp_body_bytes
+     *
+     * @param int|null $resp_body_bytes Total body bytes delivered (edge_resp_body_bytes + shield_resp_body_bytes).
+     *
+     * @return self
+     */
+    public function setRespBodyBytes($resp_body_bytes)
+    {
+        $this->container['resp_body_bytes'] = $resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getRespHeaderBytes()
+    {
+        return $this->container['resp_header_bytes'];
+    }
+
+    /**
+     * Sets resp_header_bytes
+     *
+     * @param int|null $resp_header_bytes Total header bytes delivered (edge_resp_header_bytes + shield_resp_header_bytes).
+     *
+     * @return self
+     */
+    public function setRespHeaderBytes($resp_header_bytes)
+    {
+        $this->container['resp_header_bytes'] = $resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets bereq_body_bytes
+     *
+     * @return int|null
+     */
+    public function getBereqBodyBytes()
+    {
+        return $this->container['bereq_body_bytes'];
+    }
+
+    /**
+     * Sets bereq_body_bytes
+     *
+     * @param int|null $bereq_body_bytes Total body bytes sent to origin.
+     *
+     * @return self
+     */
+    public function setBereqBodyBytes($bereq_body_bytes)
+    {
+        $this->container['bereq_body_bytes'] = $bereq_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets bereq_header_bytes
+     *
+     * @return int|null
+     */
+    public function getBereqHeaderBytes()
+    {
+        return $this->container['bereq_header_bytes'];
+    }
+
+    /**
+     * Sets bereq_header_bytes
+     *
+     * @param int|null $bereq_header_bytes Total header bytes sent to origin.
+     *
+     * @return self
+     */
+    public function setBereqHeaderBytes($bereq_header_bytes)
+    {
+        $this->container['bereq_header_bytes'] = $bereq_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets uncacheable
+     *
+     * @return int|null
+     */
+    public function getUncacheable()
+    {
+        return $this->container['uncacheable'];
+    }
+
+    /**
+     * Sets uncacheable
+     *
+     * @param int|null $uncacheable Number of requests that were designated uncachable.
+     *
+     * @return self
+     */
+    public function setUncacheable($uncacheable)
+    {
+        $this->container['uncacheable'] = $uncacheable;
+
+        return $this;
+    }
+
+    /**
+     * Gets pipe
+     *
+     * @return int|null
+     */
+    public function getPipe()
+    {
+        return $this->container['pipe'];
+    }
+
+    /**
+     * Sets pipe
+     *
+     * @param int|null $pipe Optional. Pipe operations performed (legacy feature).
+     *
+     * @return self
+     */
+    public function setPipe($pipe)
+    {
+        $this->container['pipe'] = $pipe;
+
+        return $this;
+    }
+
+    /**
+     * Gets synth
+     *
+     * @return int|null
+     */
+    public function getSynth()
+    {
+        return $this->container['synth'];
+    }
+
+    /**
+     * Sets synth
+     *
+     * @param int|null $synth Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement).
+     *
+     * @return self
+     */
+    public function setSynth($synth)
+    {
+        $this->container['synth'] = $synth;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls
+     *
+     * @return int|null
+     */
+    public function getTls()
+    {
+        return $this->container['tls'];
+    }
+
+    /**
+     * Sets tls
+     *
+     * @param int|null $tls Number of requests that were received over TLS.
+     *
+     * @return self
+     */
+    public function setTls($tls)
+    {
+        $this->container['tls'] = $tls;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_v10
+     *
+     * @return int|null
+     */
+    public function getTlsV10()
+    {
+        return $this->container['tls_v10'];
+    }
+
+    /**
+     * Sets tls_v10
+     *
+     * @param int|null $tls_v10 Number of requests received over TLS 1.0.
+     *
+     * @return self
+     */
+    public function setTlsV10($tls_v10)
+    {
+        $this->container['tls_v10'] = $tls_v10;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_v11
+     *
+     * @return int|null
+     */
+    public function getTlsV11()
+    {
+        return $this->container['tls_v11'];
+    }
+
+    /**
+     * Sets tls_v11
+     *
+     * @param int|null $tls_v11 Number of requests received over TLS 1.1.
+     *
+     * @return self
+     */
+    public function setTlsV11($tls_v11)
+    {
+        $this->container['tls_v11'] = $tls_v11;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_v12
+     *
+     * @return int|null
+     */
+    public function getTlsV12()
+    {
+        return $this->container['tls_v12'];
+    }
+
+    /**
+     * Sets tls_v12
+     *
+     * @param int|null $tls_v12 Number of requests received over TLS 1.2.
+     *
+     * @return self
+     */
+    public function setTlsV12($tls_v12)
+    {
+        $this->container['tls_v12'] = $tls_v12;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_v13
+     *
+     * @return int|null
+     */
+    public function getTlsV13()
+    {
+        return $this->container['tls_v13'];
+    }
+
+    /**
+     * Sets tls_v13
+     *
+     * @param int|null $tls_v13 Number of requests received over TLS 1.3.
+     *
+     * @return self
+     */
+    public function setTlsV13($tls_v13)
+    {
+        $this->container['tls_v13'] = $tls_v13;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_requests
+     *
+     * @return int|null
+     */
+    public function getEdgeRequests()
+    {
+        return $this->container['edge_requests'];
+    }
+
+    /**
+     * Sets edge_requests
+     *
+     * @param int|null $edge_requests Number of requests sent by end users to Fastly.
+     *
+     * @return self
+     */
+    public function setEdgeRequests($edge_requests)
+    {
+        $this->container['edge_requests'] = $edge_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getEdgeRespHeaderBytes()
+    {
+        return $this->container['edge_resp_header_bytes'];
+    }
+
+    /**
+     * Sets edge_resp_header_bytes
+     *
+     * @param int|null $edge_resp_header_bytes Total header bytes delivered from Fastly to the end user.
+     *
+     * @return self
+     */
+    public function setEdgeRespHeaderBytes($edge_resp_header_bytes)
+    {
+        $this->container['edge_resp_header_bytes'] = $edge_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getEdgeRespBodyBytes()
+    {
+        return $this->container['edge_resp_body_bytes'];
+    }
+
+    /**
+     * Sets edge_resp_body_bytes
+     *
+     * @param int|null $edge_resp_body_bytes Total body bytes delivered from Fastly to the end user.
+     *
+     * @return self
+     */
+    public function setEdgeRespBodyBytes($edge_resp_body_bytes)
+    {
+        $this->container['edge_resp_body_bytes'] = $edge_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_hit_requests
+     *
+     * @return int|null
+     */
+    public function getEdgeHitRequests()
+    {
+        return $this->container['edge_hit_requests'];
+    }
+
+    /**
+     * Sets edge_hit_requests
+     *
+     * @param int|null $edge_hit_requests Number of requests sent by end users to Fastly that resulted in a hit at the edge.
+     *
+     * @return self
+     */
+    public function setEdgeHitRequests($edge_hit_requests)
+    {
+        $this->container['edge_hit_requests'] = $edge_hit_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_miss_requests
+     *
+     * @return int|null
+     */
+    public function getEdgeMissRequests()
+    {
+        return $this->container['edge_miss_requests'];
+    }
+
+    /**
+     * Sets edge_miss_requests
+     *
+     * @param int|null $edge_miss_requests Number of requests sent by end users to Fastly that resulted in a miss at the edge.
+     *
+     * @return self
+     */
+    public function setEdgeMissRequests($edge_miss_requests)
+    {
+        $this->container['edge_miss_requests'] = $edge_miss_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_fetches
+     *
+     * @return int|null
+     */
+    public function getOriginFetches()
+    {
+        return $this->container['origin_fetches'];
+    }
+
+    /**
+     * Sets origin_fetches
+     *
+     * @param int|null $origin_fetches Number of requests sent to origin.
+     *
+     * @return self
+     */
+    public function setOriginFetches($origin_fetches)
+    {
+        $this->container['origin_fetches'] = $origin_fetches;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_fetch_header_bytes
+     *
+     * @return int|null
+     */
+    public function getOriginFetchHeaderBytes()
+    {
+        return $this->container['origin_fetch_header_bytes'];
+    }
+
+    /**
+     * Sets origin_fetch_header_bytes
+     *
+     * @param int|null $origin_fetch_header_bytes Total request header bytes sent to origin.
+     *
+     * @return self
+     */
+    public function setOriginFetchHeaderBytes($origin_fetch_header_bytes)
+    {
+        $this->container['origin_fetch_header_bytes'] = $origin_fetch_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_fetch_body_bytes
+     *
+     * @return int|null
+     */
+    public function getOriginFetchBodyBytes()
+    {
+        return $this->container['origin_fetch_body_bytes'];
+    }
+
+    /**
+     * Sets origin_fetch_body_bytes
+     *
+     * @param int|null $origin_fetch_body_bytes Total request body bytes sent to origin.
+     *
+     * @return self
+     */
+    public function setOriginFetchBodyBytes($origin_fetch_body_bytes)
+    {
+        $this->container['origin_fetch_body_bytes'] = $origin_fetch_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_fetch_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getOriginFetchRespHeaderBytes()
+    {
+        return $this->container['origin_fetch_resp_header_bytes'];
+    }
+
+    /**
+     * Sets origin_fetch_resp_header_bytes
+     *
+     * @param int|null $origin_fetch_resp_header_bytes Total header bytes received from origin.
+     *
+     * @return self
+     */
+    public function setOriginFetchRespHeaderBytes($origin_fetch_resp_header_bytes)
+    {
+        $this->container['origin_fetch_resp_header_bytes'] = $origin_fetch_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_fetch_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getOriginFetchRespBodyBytes()
+    {
+        return $this->container['origin_fetch_resp_body_bytes'];
+    }
+
+    /**
+     * Sets origin_fetch_resp_body_bytes
+     *
+     * @param int|null $origin_fetch_resp_body_bytes Total body bytes received from origin.
+     *
+     * @return self
+     */
+    public function setOriginFetchRespBodyBytes($origin_fetch_resp_body_bytes)
+    {
+        $this->container['origin_fetch_resp_body_bytes'] = $origin_fetch_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_revalidations
+     *
+     * @return int|null
+     */
+    public function getOriginRevalidations()
+    {
+        return $this->container['origin_revalidations'];
+    }
+
+    /**
+     * Sets origin_revalidations
+     *
+     * @param int|null $origin_revalidations Number of responses received from origin with a `304` status code in response to an `If-Modified-Since` or `If-None-Match` request. Under regular scenarios, a revalidation will imply a cache hit. However, if using Fastly Image Optimizer or segmented caching this may result in a cache miss.
+     *
+     * @return self
+     */
+    public function setOriginRevalidations($origin_revalidations)
+    {
+        $this->container['origin_revalidations'] = $origin_revalidations;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_cache_fetches
+     *
+     * @return int|null
+     */
+    public function getOriginCacheFetches()
+    {
+        return $this->container['origin_cache_fetches'];
+    }
+
+    /**
+     * Sets origin_cache_fetches
+     *
+     * @param int|null $origin_cache_fetches The total number of completed requests made to backends (origins) that returned cacheable content.
+     *
+     * @return self
+     */
+    public function setOriginCacheFetches($origin_cache_fetches)
+    {
+        $this->container['origin_cache_fetches'] = $origin_cache_fetches;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield
+     *
+     * @return int|null
+     */
+    public function getShield()
+    {
+        return $this->container['shield'];
+    }
+
+    /**
+     * Sets shield
+     *
+     * @param int|null $shield Number of requests from edge to the shield POP.
+     *
+     * @return self
+     */
+    public function setShield($shield)
+    {
+        $this->container['shield'] = $shield;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldRespBodyBytes()
+    {
+        return $this->container['shield_resp_body_bytes'];
+    }
+
+    /**
+     * Sets shield_resp_body_bytes
+     *
+     * @param int|null $shield_resp_body_bytes Total body bytes delivered via a shield.
+     *
+     * @return self
+     */
+    public function setShieldRespBodyBytes($shield_resp_body_bytes)
+    {
+        $this->container['shield_resp_body_bytes'] = $shield_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldRespHeaderBytes()
+    {
+        return $this->container['shield_resp_header_bytes'];
+    }
+
+    /**
+     * Sets shield_resp_header_bytes
+     *
+     * @param int|null $shield_resp_header_bytes Total header bytes delivered via a shield.
+     *
+     * @return self
+     */
+    public function setShieldRespHeaderBytes($shield_resp_header_bytes)
+    {
+        $this->container['shield_resp_header_bytes'] = $shield_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_fetches
+     *
+     * @return int|null
+     */
+    public function getShieldFetches()
+    {
+        return $this->container['shield_fetches'];
+    }
+
+    /**
+     * Sets shield_fetches
+     *
+     * @param int|null $shield_fetches Number of requests made from one Fastly POP to another, as part of shielding.
+     *
+     * @return self
+     */
+    public function setShieldFetches($shield_fetches)
+    {
+        $this->container['shield_fetches'] = $shield_fetches;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_fetch_header_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldFetchHeaderBytes()
+    {
+        return $this->container['shield_fetch_header_bytes'];
+    }
+
+    /**
+     * Sets shield_fetch_header_bytes
+     *
+     * @param int|null $shield_fetch_header_bytes Total request header bytes sent to a shield.
+     *
+     * @return self
+     */
+    public function setShieldFetchHeaderBytes($shield_fetch_header_bytes)
+    {
+        $this->container['shield_fetch_header_bytes'] = $shield_fetch_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_fetch_body_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldFetchBodyBytes()
+    {
+        return $this->container['shield_fetch_body_bytes'];
+    }
+
+    /**
+     * Sets shield_fetch_body_bytes
+     *
+     * @param int|null $shield_fetch_body_bytes Total request body bytes sent to a shield.
+     *
+     * @return self
+     */
+    public function setShieldFetchBodyBytes($shield_fetch_body_bytes)
+    {
+        $this->container['shield_fetch_body_bytes'] = $shield_fetch_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_fetch_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldFetchRespHeaderBytes()
+    {
+        return $this->container['shield_fetch_resp_header_bytes'];
+    }
+
+    /**
+     * Sets shield_fetch_resp_header_bytes
+     *
+     * @param int|null $shield_fetch_resp_header_bytes Total response header bytes sent from a shield to the edge.
+     *
+     * @return self
+     */
+    public function setShieldFetchRespHeaderBytes($shield_fetch_resp_header_bytes)
+    {
+        $this->container['shield_fetch_resp_header_bytes'] = $shield_fetch_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_fetch_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldFetchRespBodyBytes()
+    {
+        return $this->container['shield_fetch_resp_body_bytes'];
+    }
+
+    /**
+     * Sets shield_fetch_resp_body_bytes
+     *
+     * @param int|null $shield_fetch_resp_body_bytes Total response body bytes sent from a shield to the edge.
+     *
+     * @return self
+     */
+    public function setShieldFetchRespBodyBytes($shield_fetch_resp_body_bytes)
+    {
+        $this->container['shield_fetch_resp_body_bytes'] = $shield_fetch_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_revalidations
+     *
+     * @return int|null
+     */
+    public function getShieldRevalidations()
+    {
+        return $this->container['shield_revalidations'];
+    }
+
+    /**
+     * Sets shield_revalidations
+     *
+     * @param int|null $shield_revalidations Number of responses received from origin with a `304` status code, in response to an `If-Modified-Since` or `If-None-Match` request to a shield. Under regular scenarios, a revalidation will imply a cache hit. However, if using segmented caching this may result in a cache miss.
+     *
+     * @return self
+     */
+    public function setShieldRevalidations($shield_revalidations)
+    {
+        $this->container['shield_revalidations'] = $shield_revalidations;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_cache_fetches
+     *
+     * @return int|null
+     */
+    public function getShieldCacheFetches()
+    {
+        return $this->container['shield_cache_fetches'];
+    }
+
+    /**
+     * Sets shield_cache_fetches
+     *
+     * @param int|null $shield_cache_fetches The total number of completed requests made to shields that returned cacheable content.
+     *
+     * @return self
+     */
+    public function setShieldCacheFetches($shield_cache_fetches)
+    {
+        $this->container['shield_cache_fetches'] = $shield_cache_fetches;
+
+        return $this;
+    }
+
+    /**
+     * Gets ipv6
+     *
+     * @return int|null
+     */
+    public function getIpv6()
+    {
+        return $this->container['ipv6'];
+    }
+
+    /**
+     * Sets ipv6
+     *
+     * @param int|null $ipv6 Number of requests that were received over IPv6.
+     *
+     * @return self
+     */
+    public function setIpv6($ipv6)
+    {
+        $this->container['ipv6'] = $ipv6;
+
+        return $this;
+    }
+
+    /**
+     * Gets otfp
+     *
+     * @return int|null
+     */
+    public function getOtfp()
+    {
+        return $this->container['otfp'];
+    }
+
+    /**
+     * Sets otfp
+     *
+     * @param int|null $otfp Number of responses that came from the Fastly On-the-Fly Packaging service for video-on-demand.
+     *
+     * @return self
+     */
+    public function setOtfp($otfp)
+    {
+        $this->container['otfp'] = $otfp;
+
+        return $this;
+    }
+
+    /**
+     * Gets otfp_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getOtfpRespBodyBytes()
+    {
+        return $this->container['otfp_resp_body_bytes'];
+    }
+
+    /**
+     * Sets otfp_resp_body_bytes
+     *
+     * @param int|null $otfp_resp_body_bytes Total body bytes delivered from the Fastly On-the-Fly Packaging service for video-on-demand.
+     *
+     * @return self
+     */
+    public function setOtfpRespBodyBytes($otfp_resp_body_bytes)
+    {
+        $this->container['otfp_resp_body_bytes'] = $otfp_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets otfp_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getOtfpRespHeaderBytes()
+    {
+        return $this->container['otfp_resp_header_bytes'];
+    }
+
+    /**
+     * Sets otfp_resp_header_bytes
+     *
+     * @param int|null $otfp_resp_header_bytes Total header bytes delivered from the Fastly On-the-Fly Packaging service for video-on-demand.
+     *
+     * @return self
+     */
+    public function setOtfpRespHeaderBytes($otfp_resp_header_bytes)
+    {
+        $this->container['otfp_resp_header_bytes'] = $otfp_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets otfp_shield_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getOtfpShieldRespBodyBytes()
+    {
+        return $this->container['otfp_shield_resp_body_bytes'];
+    }
+
+    /**
+     * Sets otfp_shield_resp_body_bytes
+     *
+     * @param int|null $otfp_shield_resp_body_bytes Total body bytes delivered via a shield for the Fastly On-the-Fly Packaging service for video-on-demand.
+     *
+     * @return self
+     */
+    public function setOtfpShieldRespBodyBytes($otfp_shield_resp_body_bytes)
+    {
+        $this->container['otfp_shield_resp_body_bytes'] = $otfp_shield_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets otfp_shield_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getOtfpShieldRespHeaderBytes()
+    {
+        return $this->container['otfp_shield_resp_header_bytes'];
+    }
+
+    /**
+     * Sets otfp_shield_resp_header_bytes
+     *
+     * @param int|null $otfp_shield_resp_header_bytes Total header bytes delivered via a shield for the Fastly On-the-Fly Packaging service for video-on-demand.
+     *
+     * @return self
+     */
+    public function setOtfpShieldRespHeaderBytes($otfp_shield_resp_header_bytes)
+    {
+        $this->container['otfp_shield_resp_header_bytes'] = $otfp_shield_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets otfp_manifests
+     *
+     * @return int|null
+     */
+    public function getOtfpManifests()
+    {
+        return $this->container['otfp_manifests'];
+    }
+
+    /**
+     * Sets otfp_manifests
+     *
+     * @param int|null $otfp_manifests Number of responses that were manifest files from the Fastly On-the-Fly Packaging service for video-on-demand.
+     *
+     * @return self
+     */
+    public function setOtfpManifests($otfp_manifests)
+    {
+        $this->container['otfp_manifests'] = $otfp_manifests;
+
+        return $this;
+    }
+
+    /**
+     * Gets otfp_deliver_time
+     *
+     * @return float|null
+     */
+    public function getOtfpDeliverTime()
+    {
+        return $this->container['otfp_deliver_time'];
+    }
+
+    /**
+     * Sets otfp_deliver_time
+     *
+     * @param float|null $otfp_deliver_time Total amount of time spent delivering a response from the Fastly On-the-Fly Packaging service for video-on-demand (in seconds).
+     *
+     * @return self
+     */
+    public function setOtfpDeliverTime($otfp_deliver_time)
+    {
+        $this->container['otfp_deliver_time'] = $otfp_deliver_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets otfp_shield_time
+     *
+     * @return float|null
+     */
+    public function getOtfpShieldTime()
+    {
+        return $this->container['otfp_shield_time'];
+    }
+
+    /**
+     * Sets otfp_shield_time
+     *
+     * @param float|null $otfp_shield_time Total amount of time spent delivering a response via a shield from the Fastly On-the-Fly Packaging service for video-on-demand (in seconds).
+     *
+     * @return self
+     */
+    public function setOtfpShieldTime($otfp_shield_time)
+    {
+        $this->container['otfp_shield_time'] = $otfp_shield_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets video
+     *
+     * @return int|null
+     */
+    public function getVideo()
+    {
+        return $this->container['video'];
+    }
+
+    /**
+     * Sets video
+     *
+     * @param int|null $video Number of responses with the video segment or video manifest MIME type (i.e., application/x-mpegurl, application/vnd.apple.mpegurl, application/f4m, application/dash+xml, application/vnd.ms-sstr+xml, ideo/mp2t, audio/aac, video/f4f, video/x-flv, video/mp4, audio/mp4).
+     *
+     * @return self
+     */
+    public function setVideo($video)
+    {
+        $this->container['video'] = $video;
+
+        return $this;
+    }
+
+    /**
+     * Gets pci
+     *
+     * @return int|null
+     */
+    public function getPci()
+    {
+        return $this->container['pci'];
+    }
+
+    /**
+     * Sets pci
+     *
+     * @param int|null $pci Number of responses with the PCI flag turned on.
+     *
+     * @return self
+     */
+    public function setPci($pci)
+    {
+        $this->container['pci'] = $pci;
+
+        return $this;
+    }
+
+    /**
+     * Gets log
+     *
+     * @return int|null
+     */
+    public function getLog()
+    {
+        return $this->container['log'];
+    }
+
+    /**
+     * Sets log
+     *
+     * @param int|null $log Number of log lines sent.
+     *
+     * @return self
+     */
+    public function setLog($log)
+    {
+        $this->container['log'] = $log;
+
+        return $this;
+    }
+
+    /**
+     * Gets log_bytes
+     *
+     * @return int|null
+     */
+    public function getLogBytes()
+    {
+        return $this->container['log_bytes'];
+    }
+
+    /**
+     * Sets log_bytes
+     *
+     * @param int|null $log_bytes Total log bytes sent.
+     *
+     * @return self
+     */
+    public function setLogBytes($log_bytes)
+    {
+        $this->container['log_bytes'] = $log_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets http2
+     *
+     * @return int|null
+     */
+    public function getHttp2()
+    {
+        return $this->container['http2'];
+    }
+
+    /**
+     * Sets http2
+     *
+     * @param int|null $http2 Number of requests received over HTTP/2.
+     *
+     * @return self
+     */
+    public function setHttp2($http2)
+    {
+        $this->container['http2'] = $http2;
+
+        return $this;
+    }
+
+    /**
+     * Gets http3
+     *
+     * @return int|null
+     */
+    public function getHttp3()
+    {
+        return $this->container['http3'];
+    }
+
+    /**
+     * Sets http3
+     *
+     * @param int|null $http3 Number of requests received over HTTP/3.
+     *
+     * @return self
+     */
+    public function setHttp3($http3)
+    {
+        $this->container['http3'] = $http3;
+
+        return $this;
+    }
+
+    /**
+     * Gets attack_req_body_bytes
+     *
+     * @return int|null
+     */
+    public function getAttackReqBodyBytes()
+    {
+        return $this->container['attack_req_body_bytes'];
+    }
+
+    /**
+     * Sets attack_req_body_bytes
+     *
+     * @param int|null $attack_req_body_bytes Total body bytes received from requests that triggered a WAF rule.
+     *
+     * @return self
+     */
+    public function setAttackReqBodyBytes($attack_req_body_bytes)
+    {
+        $this->container['attack_req_body_bytes'] = $attack_req_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets attack_req_header_bytes
+     *
+     * @return int|null
+     */
+    public function getAttackReqHeaderBytes()
+    {
+        return $this->container['attack_req_header_bytes'];
+    }
+
+    /**
+     * Sets attack_req_header_bytes
+     *
+     * @param int|null $attack_req_header_bytes Total header bytes received from requests that triggered a WAF rule.
+     *
+     * @return self
+     */
+    public function setAttackReqHeaderBytes($attack_req_header_bytes)
+    {
+        $this->container['attack_req_header_bytes'] = $attack_req_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets attack_logged_req_body_bytes
+     *
+     * @return int|null
+     */
+    public function getAttackLoggedReqBodyBytes()
+    {
+        return $this->container['attack_logged_req_body_bytes'];
+    }
+
+    /**
+     * Sets attack_logged_req_body_bytes
+     *
+     * @param int|null $attack_logged_req_body_bytes Total body bytes received from requests that triggered a WAF rule that was logged.
+     *
+     * @return self
+     */
+    public function setAttackLoggedReqBodyBytes($attack_logged_req_body_bytes)
+    {
+        $this->container['attack_logged_req_body_bytes'] = $attack_logged_req_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets attack_logged_req_header_bytes
+     *
+     * @return int|null
+     */
+    public function getAttackLoggedReqHeaderBytes()
+    {
+        return $this->container['attack_logged_req_header_bytes'];
+    }
+
+    /**
+     * Sets attack_logged_req_header_bytes
+     *
+     * @param int|null $attack_logged_req_header_bytes Total header bytes received from requests that triggered a WAF rule that was logged.
+     *
+     * @return self
+     */
+    public function setAttackLoggedReqHeaderBytes($attack_logged_req_header_bytes)
+    {
+        $this->container['attack_logged_req_header_bytes'] = $attack_logged_req_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets attack_blocked_req_body_bytes
+     *
+     * @return int|null
+     */
+    public function getAttackBlockedReqBodyBytes()
+    {
+        return $this->container['attack_blocked_req_body_bytes'];
+    }
+
+    /**
+     * Sets attack_blocked_req_body_bytes
+     *
+     * @param int|null $attack_blocked_req_body_bytes Total body bytes received from requests that triggered a WAF rule that was blocked.
+     *
+     * @return self
+     */
+    public function setAttackBlockedReqBodyBytes($attack_blocked_req_body_bytes)
+    {
+        $this->container['attack_blocked_req_body_bytes'] = $attack_blocked_req_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets attack_blocked_req_header_bytes
+     *
+     * @return int|null
+     */
+    public function getAttackBlockedReqHeaderBytes()
+    {
+        return $this->container['attack_blocked_req_header_bytes'];
+    }
+
+    /**
+     * Sets attack_blocked_req_header_bytes
+     *
+     * @param int|null $attack_blocked_req_header_bytes Total header bytes received from requests that triggered a WAF rule that was blocked.
+     *
+     * @return self
+     */
+    public function setAttackBlockedReqHeaderBytes($attack_blocked_req_header_bytes)
+    {
+        $this->container['attack_blocked_req_header_bytes'] = $attack_blocked_req_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets attack_passed_req_body_bytes
+     *
+     * @return int|null
+     */
+    public function getAttackPassedReqBodyBytes()
+    {
+        return $this->container['attack_passed_req_body_bytes'];
+    }
+
+    /**
+     * Sets attack_passed_req_body_bytes
+     *
+     * @param int|null $attack_passed_req_body_bytes Total body bytes received from requests that triggered a WAF rule that was passed.
+     *
+     * @return self
+     */
+    public function setAttackPassedReqBodyBytes($attack_passed_req_body_bytes)
+    {
+        $this->container['attack_passed_req_body_bytes'] = $attack_passed_req_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets attack_passed_req_header_bytes
+     *
+     * @return int|null
+     */
+    public function getAttackPassedReqHeaderBytes()
+    {
+        return $this->container['attack_passed_req_header_bytes'];
+    }
+
+    /**
+     * Sets attack_passed_req_header_bytes
+     *
+     * @param int|null $attack_passed_req_header_bytes Total header bytes received from requests that triggered a WAF rule that was passed.
+     *
+     * @return self
+     */
+    public function setAttackPassedReqHeaderBytes($attack_passed_req_header_bytes)
+    {
+        $this->container['attack_passed_req_header_bytes'] = $attack_passed_req_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets attack_resp_synth_bytes
+     *
+     * @return int|null
+     */
+    public function getAttackRespSynthBytes()
+    {
+        return $this->container['attack_resp_synth_bytes'];
+    }
+
+    /**
+     * Sets attack_resp_synth_bytes
+     *
+     * @param int|null $attack_resp_synth_bytes Total bytes delivered for requests that triggered a WAF rule and returned a synthetic response.
+     *
+     * @return self
+     */
+    public function setAttackRespSynthBytes($attack_resp_synth_bytes)
+    {
+        $this->container['attack_resp_synth_bytes'] = $attack_resp_synth_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto
+     *
+     * @return int|null
+     */
+    public function getImgopto()
+    {
+        return $this->container['imgopto'];
+    }
+
+    /**
+     * Sets imgopto
+     *
+     * @param int|null $imgopto Number of responses that came from the Fastly Image Optimizer service. If the service receives 10 requests for an image, this stat will be 10 regardless of how many times the image was transformed.
+     *
+     * @return self
+     */
+    public function setImgopto($imgopto)
+    {
+        $this->container['imgopto'] = $imgopto;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_input_image_bytes
+     *
+     * @return int|null
+     */
+    public function getImgoptoInputImageBytes()
+    {
+        return $this->container['imgopto_input_image_bytes'];
+    }
+
+    /**
+     * Sets imgopto_input_image_bytes
+     *
+     * @param int|null $imgopto_input_image_bytes The total image bytes that would have been delivered if the images had not been transformed by the Fastly Image Optimizer. Bytes are counted once per client request. Byte counts exclude shield traffic and requests where Fastly Image Optimizer proxied a request without attempting to transform it (e.g., file types that are not supported by Image Optimizer).
+     *
+     * @return self
+     */
+    public function setImgoptoInputImageBytes($imgopto_input_image_bytes)
+    {
+        $this->container['imgopto_input_image_bytes'] = $imgopto_input_image_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_output_image_bytes
+     *
+     * @return int|null
+     */
+    public function getImgoptoOutputImageBytes()
+    {
+        return $this->container['imgopto_output_image_bytes'];
+    }
+
+    /**
+     * Sets imgopto_output_image_bytes
+     *
+     * @param int|null $imgopto_output_image_bytes The total image bytes delivered that have been transformed by the Fastly Image Optimizer. Bytes are counted once per client request. Byte counts exclude shield traffic and requests where Fastly Image Optimizer proxied a request without attempting to transform it (e.g., file types that are not supported by Image Optimizer).
+     *
+     * @return self
+     */
+    public function setImgoptoOutputImageBytes($imgopto_output_image_bytes)
+    {
+        $this->container['imgopto_output_image_bytes'] = $imgopto_output_image_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getImgoptoRespBodyBytes()
+    {
+        return $this->container['imgopto_resp_body_bytes'];
+    }
+
+    /**
+     * Sets imgopto_resp_body_bytes
+     *
+     * @param int|null $imgopto_resp_body_bytes Total body bytes delivered from the Fastly Image Optimizer service, including shield traffic.
+     *
+     * @return self
+     */
+    public function setImgoptoRespBodyBytes($imgopto_resp_body_bytes)
+    {
+        $this->container['imgopto_resp_body_bytes'] = $imgopto_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getImgoptoRespHeaderBytes()
+    {
+        return $this->container['imgopto_resp_header_bytes'];
+    }
+
+    /**
+     * Sets imgopto_resp_header_bytes
+     *
+     * @param int|null $imgopto_resp_header_bytes Total header bytes delivered from the Fastly Image Optimizer service, including shield traffic.
+     *
+     * @return self
+     */
+    public function setImgoptoRespHeaderBytes($imgopto_resp_header_bytes)
+    {
+        $this->container['imgopto_resp_header_bytes'] = $imgopto_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_shield
+     *
+     * @return int|null
+     */
+    public function getImgoptoShield()
+    {
+        return $this->container['imgopto_shield'];
+    }
+
+    /**
+     * Sets imgopto_shield
+     *
+     * @param int|null $imgopto_shield Number of responses that came from the Fastly Image Optimizer service via a shield.
+     *
+     * @return self
+     */
+    public function setImgoptoShield($imgopto_shield)
+    {
+        $this->container['imgopto_shield'] = $imgopto_shield;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_shield_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getImgoptoShieldRespBodyBytes()
+    {
+        return $this->container['imgopto_shield_resp_body_bytes'];
+    }
+
+    /**
+     * Sets imgopto_shield_resp_body_bytes
+     *
+     * @param int|null $imgopto_shield_resp_body_bytes Total body bytes delivered via a shield from the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgoptoShieldRespBodyBytes($imgopto_shield_resp_body_bytes)
+    {
+        $this->container['imgopto_shield_resp_body_bytes'] = $imgopto_shield_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_shield_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getImgoptoShieldRespHeaderBytes()
+    {
+        return $this->container['imgopto_shield_resp_header_bytes'];
+    }
+
+    /**
+     * Sets imgopto_shield_resp_header_bytes
+     *
+     * @param int|null $imgopto_shield_resp_header_bytes Total header bytes delivered via a shield from the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgoptoShieldRespHeaderBytes($imgopto_shield_resp_header_bytes)
+    {
+        $this->container['imgopto_shield_resp_header_bytes'] = $imgopto_shield_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_transforms
+     *
+     * @return int|null
+     */
+    public function getImgoptoTransforms()
+    {
+        return $this->container['imgopto_transforms'];
+    }
+
+    /**
+     * Sets imgopto_transforms
+     *
+     * @param int|null $imgopto_transforms Number of transforms performed by the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgoptoTransforms($imgopto_transforms)
+    {
+        $this->container['imgopto_transforms'] = $imgopto_transforms;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgvideo
+     *
+     * @return int|null
+     */
+    public function getImgvideo()
+    {
+        return $this->container['imgvideo'];
+    }
+
+    /**
+     * Sets imgvideo
+     *
+     * @param int|null $imgvideo Number of video responses that came from the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgvideo($imgvideo)
+    {
+        $this->container['imgvideo'] = $imgvideo;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgvideo_frames
+     *
+     * @return int|null
+     */
+    public function getImgvideoFrames()
+    {
+        return $this->container['imgvideo_frames'];
+    }
+
+    /**
+     * Sets imgvideo_frames
+     *
+     * @param int|null $imgvideo_frames Number of video frames that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
+     *
+     * @return self
+     */
+    public function setImgvideoFrames($imgvideo_frames)
+    {
+        $this->container['imgvideo_frames'] = $imgvideo_frames;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgvideo_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getImgvideoRespHeaderBytes()
+    {
+        return $this->container['imgvideo_resp_header_bytes'];
+    }
+
+    /**
+     * Sets imgvideo_resp_header_bytes
+     *
+     * @param int|null $imgvideo_resp_header_bytes Total header bytes of video delivered from the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgvideoRespHeaderBytes($imgvideo_resp_header_bytes)
+    {
+        $this->container['imgvideo_resp_header_bytes'] = $imgvideo_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgvideo_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getImgvideoRespBodyBytes()
+    {
+        return $this->container['imgvideo_resp_body_bytes'];
+    }
+
+    /**
+     * Sets imgvideo_resp_body_bytes
+     *
+     * @param int|null $imgvideo_resp_body_bytes Total body bytes of video delivered from the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgvideoRespBodyBytes($imgvideo_resp_body_bytes)
+    {
+        $this->container['imgvideo_resp_body_bytes'] = $imgvideo_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgvideo_shield_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getImgvideoShieldRespHeaderBytes()
+    {
+        return $this->container['imgvideo_shield_resp_header_bytes'];
+    }
+
+    /**
+     * Sets imgvideo_shield_resp_header_bytes
+     *
+     * @param int|null $imgvideo_shield_resp_header_bytes Total header bytes of video delivered via a shield from the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgvideoShieldRespHeaderBytes($imgvideo_shield_resp_header_bytes)
+    {
+        $this->container['imgvideo_shield_resp_header_bytes'] = $imgvideo_shield_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgvideo_shield_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getImgvideoShieldRespBodyBytes()
+    {
+        return $this->container['imgvideo_shield_resp_body_bytes'];
+    }
+
+    /**
+     * Sets imgvideo_shield_resp_body_bytes
+     *
+     * @param int|null $imgvideo_shield_resp_body_bytes Total body bytes of video delivered via a shield from the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgvideoShieldRespBodyBytes($imgvideo_shield_resp_body_bytes)
+    {
+        $this->container['imgvideo_shield_resp_body_bytes'] = $imgvideo_shield_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgvideo_shield
+     *
+     * @return int|null
+     */
+    public function getImgvideoShield()
+    {
+        return $this->container['imgvideo_shield'];
+    }
+
+    /**
+     * Sets imgvideo_shield
+     *
+     * @param int|null $imgvideo_shield Number of video responses delivered via a shield that came from the Fastly Image Optimizer service.
+     *
+     * @return self
+     */
+    public function setImgvideoShield($imgvideo_shield)
+    {
+        $this->container['imgvideo_shield'] = $imgvideo_shield;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgvideo_shield_frames
+     *
+     * @return int|null
+     */
+    public function getImgvideoShieldFrames()
+    {
+        return $this->container['imgvideo_shield_frames'];
+    }
+
+    /**
+     * Sets imgvideo_shield_frames
+     *
+     * @param int|null $imgvideo_shield_frames Number of video frames delivered via a shield that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video.
+     *
+     * @return self
+     */
+    public function setImgvideoShieldFrames($imgvideo_shield_frames)
+    {
+        $this->container['imgvideo_shield_frames'] = $imgvideo_shield_frames;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_200
+     *
+     * @return int|null
+     */
+    public function getStatus200()
+    {
+        return $this->container['status_200'];
+    }
+
+    /**
+     * Sets status_200
+     *
+     * @param int|null $status_200 Number of responses sent with status code 200 (Success).
+     *
+     * @return self
+     */
+    public function setStatus200($status_200)
+    {
+        $this->container['status_200'] = $status_200;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_204
+     *
+     * @return int|null
+     */
+    public function getStatus204()
+    {
+        return $this->container['status_204'];
+    }
+
+    /**
+     * Sets status_204
+     *
+     * @param int|null $status_204 Number of responses sent with status code 204 (No Content).
+     *
+     * @return self
+     */
+    public function setStatus204($status_204)
+    {
+        $this->container['status_204'] = $status_204;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_206
+     *
+     * @return int|null
+     */
+    public function getStatus206()
+    {
+        return $this->container['status_206'];
+    }
+
+    /**
+     * Sets status_206
+     *
+     * @param int|null $status_206 Number of responses sent with status code 206 (Partial Content).
+     *
+     * @return self
+     */
+    public function setStatus206($status_206)
+    {
+        $this->container['status_206'] = $status_206;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_301
+     *
+     * @return int|null
+     */
+    public function getStatus301()
+    {
+        return $this->container['status_301'];
+    }
+
+    /**
+     * Sets status_301
+     *
+     * @param int|null $status_301 Number of responses sent with status code 301 (Moved Permanently).
+     *
+     * @return self
+     */
+    public function setStatus301($status_301)
+    {
+        $this->container['status_301'] = $status_301;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_302
+     *
+     * @return int|null
+     */
+    public function getStatus302()
+    {
+        return $this->container['status_302'];
+    }
+
+    /**
+     * Sets status_302
+     *
+     * @param int|null $status_302 Number of responses sent with status code 302 (Found).
+     *
+     * @return self
+     */
+    public function setStatus302($status_302)
+    {
+        $this->container['status_302'] = $status_302;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_304
+     *
+     * @return int|null
+     */
+    public function getStatus304()
+    {
+        return $this->container['status_304'];
+    }
+
+    /**
+     * Sets status_304
+     *
+     * @param int|null $status_304 Number of responses sent with status code 304 (Not Modified).
+     *
+     * @return self
+     */
+    public function setStatus304($status_304)
+    {
+        $this->container['status_304'] = $status_304;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_400
+     *
+     * @return int|null
+     */
+    public function getStatus400()
+    {
+        return $this->container['status_400'];
+    }
+
+    /**
+     * Sets status_400
+     *
+     * @param int|null $status_400 Number of responses sent with status code 400 (Bad Request).
+     *
+     * @return self
+     */
+    public function setStatus400($status_400)
+    {
+        $this->container['status_400'] = $status_400;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_401
+     *
+     * @return int|null
+     */
+    public function getStatus401()
+    {
+        return $this->container['status_401'];
+    }
+
+    /**
+     * Sets status_401
+     *
+     * @param int|null $status_401 Number of responses sent with status code 401 (Unauthorized).
+     *
+     * @return self
+     */
+    public function setStatus401($status_401)
+    {
+        $this->container['status_401'] = $status_401;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_403
+     *
+     * @return int|null
+     */
+    public function getStatus403()
+    {
+        return $this->container['status_403'];
+    }
+
+    /**
+     * Sets status_403
+     *
+     * @param int|null $status_403 Number of responses sent with status code 403 (Forbidden).
+     *
+     * @return self
+     */
+    public function setStatus403($status_403)
+    {
+        $this->container['status_403'] = $status_403;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_404
+     *
+     * @return int|null
+     */
+    public function getStatus404()
+    {
+        return $this->container['status_404'];
+    }
+
+    /**
+     * Sets status_404
+     *
+     * @param int|null $status_404 Number of responses sent with status code 404 (Not Found).
+     *
+     * @return self
+     */
+    public function setStatus404($status_404)
+    {
+        $this->container['status_404'] = $status_404;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_406
+     *
+     * @return int|null
+     */
+    public function getStatus406()
+    {
+        return $this->container['status_406'];
+    }
+
+    /**
+     * Sets status_406
+     *
+     * @param int|null $status_406 Number of responses sent with status code 406 (Not Acceptable).
+     *
+     * @return self
+     */
+    public function setStatus406($status_406)
+    {
+        $this->container['status_406'] = $status_406;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_416
+     *
+     * @return int|null
+     */
+    public function getStatus416()
+    {
+        return $this->container['status_416'];
+    }
+
+    /**
+     * Sets status_416
+     *
+     * @param int|null $status_416 Number of responses sent with status code 416 (Range Not Satisfiable).
+     *
+     * @return self
+     */
+    public function setStatus416($status_416)
+    {
+        $this->container['status_416'] = $status_416;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_429
+     *
+     * @return int|null
+     */
+    public function getStatus429()
+    {
+        return $this->container['status_429'];
+    }
+
+    /**
+     * Sets status_429
+     *
+     * @param int|null $status_429 Number of responses sent with status code 429 (Too Many Requests).
+     *
+     * @return self
+     */
+    public function setStatus429($status_429)
+    {
+        $this->container['status_429'] = $status_429;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_500
+     *
+     * @return int|null
+     */
+    public function getStatus500()
+    {
+        return $this->container['status_500'];
+    }
+
+    /**
+     * Sets status_500
+     *
+     * @param int|null $status_500 Number of responses sent with status code 500 (Internal Server Error).
+     *
+     * @return self
+     */
+    public function setStatus500($status_500)
+    {
+        $this->container['status_500'] = $status_500;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_501
+     *
+     * @return int|null
+     */
+    public function getStatus501()
+    {
+        return $this->container['status_501'];
+    }
+
+    /**
+     * Sets status_501
+     *
+     * @param int|null $status_501 Number of responses sent with status code 501 (Not Implemented).
+     *
+     * @return self
+     */
+    public function setStatus501($status_501)
+    {
+        $this->container['status_501'] = $status_501;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_502
+     *
+     * @return int|null
+     */
+    public function getStatus502()
+    {
+        return $this->container['status_502'];
+    }
+
+    /**
+     * Sets status_502
+     *
+     * @param int|null $status_502 Number of responses sent with status code 502 (Bad Gateway).
+     *
+     * @return self
+     */
+    public function setStatus502($status_502)
+    {
+        $this->container['status_502'] = $status_502;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_503
+     *
+     * @return int|null
+     */
+    public function getStatus503()
+    {
+        return $this->container['status_503'];
+    }
+
+    /**
+     * Sets status_503
+     *
+     * @param int|null $status_503 Number of responses sent with status code 503 (Service Unavailable).
+     *
+     * @return self
+     */
+    public function setStatus503($status_503)
+    {
+        $this->container['status_503'] = $status_503;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_504
+     *
+     * @return int|null
+     */
+    public function getStatus504()
+    {
+        return $this->container['status_504'];
+    }
+
+    /**
+     * Sets status_504
+     *
+     * @param int|null $status_504 Number of responses sent with status code 504 (Gateway Timeout).
+     *
+     * @return self
+     */
+    public function setStatus504($status_504)
+    {
+        $this->container['status_504'] = $status_504;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_505
+     *
+     * @return int|null
+     */
+    public function getStatus505()
+    {
+        return $this->container['status_505'];
+    }
+
+    /**
+     * Sets status_505
+     *
+     * @param int|null $status_505 Number of responses sent with status code 505 (HTTP Version Not Supported).
+     *
+     * @return self
+     */
+    public function setStatus505($status_505)
+    {
+        $this->container['status_505'] = $status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_530
+     *
+     * @return int|null
+     */
+    public function getStatus530()
+    {
+        return $this->container['status_530'];
+    }
+
+    /**
+     * Sets status_530
+     *
+     * @param int|null $status_530 Number of responses sent with status code 530.
+     *
+     * @return self
+     */
+    public function setStatus530($status_530)
+    {
+        $this->container['status_530'] = $status_530;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_1xx
+     *
+     * @return int|null
+     */
+    public function getStatus1xx()
+    {
+        return $this->container['status_1xx'];
+    }
+
+    /**
+     * Sets status_1xx
+     *
+     * @param int|null $status_1xx Number of \"Informational\" category status codes delivered.
+     *
+     * @return self
+     */
+    public function setStatus1xx($status_1xx)
+    {
+        $this->container['status_1xx'] = $status_1xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_2xx
+     *
+     * @return int|null
+     */
+    public function getStatus2xx()
+    {
+        return $this->container['status_2xx'];
+    }
+
+    /**
+     * Sets status_2xx
+     *
+     * @param int|null $status_2xx Number of \"Success\" status codes delivered.
+     *
+     * @return self
+     */
+    public function setStatus2xx($status_2xx)
+    {
+        $this->container['status_2xx'] = $status_2xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_3xx
+     *
+     * @return int|null
+     */
+    public function getStatus3xx()
+    {
+        return $this->container['status_3xx'];
+    }
+
+    /**
+     * Sets status_3xx
+     *
+     * @param int|null $status_3xx Number of \"Redirection\" codes delivered.
+     *
+     * @return self
+     */
+    public function setStatus3xx($status_3xx)
+    {
+        $this->container['status_3xx'] = $status_3xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_4xx
+     *
+     * @return int|null
+     */
+    public function getStatus4xx()
+    {
+        return $this->container['status_4xx'];
+    }
+
+    /**
+     * Sets status_4xx
+     *
+     * @param int|null $status_4xx Number of \"Client Error\" codes delivered.
+     *
+     * @return self
+     */
+    public function setStatus4xx($status_4xx)
+    {
+        $this->container['status_4xx'] = $status_4xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_5xx
+     *
+     * @return int|null
+     */
+    public function getStatus5xx()
+    {
+        return $this->container['status_5xx'];
+    }
+
+    /**
+     * Sets status_5xx
+     *
+     * @param int|null $status_5xx Number of \"Server Error\" codes delivered.
+     *
+     * @return self
+     */
+    public function setStatus5xx($status_5xx)
+    {
+        $this->container['status_5xx'] = $status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_size_1k
+     *
+     * @return int|null
+     */
+    public function getObjectSize1k()
+    {
+        return $this->container['object_size_1k'];
+    }
+
+    /**
+     * Sets object_size_1k
+     *
+     * @param int|null $object_size_1k Number of objects served that were under 1KB in size.
+     *
+     * @return self
+     */
+    public function setObjectSize1k($object_size_1k)
+    {
+        $this->container['object_size_1k'] = $object_size_1k;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_size_10k
+     *
+     * @return int|null
+     */
+    public function getObjectSize10k()
+    {
+        return $this->container['object_size_10k'];
+    }
+
+    /**
+     * Sets object_size_10k
+     *
+     * @param int|null $object_size_10k Number of objects served that were between 1KB and 10KB in size.
+     *
+     * @return self
+     */
+    public function setObjectSize10k($object_size_10k)
+    {
+        $this->container['object_size_10k'] = $object_size_10k;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_size_100k
+     *
+     * @return int|null
+     */
+    public function getObjectSize100k()
+    {
+        return $this->container['object_size_100k'];
+    }
+
+    /**
+     * Sets object_size_100k
+     *
+     * @param int|null $object_size_100k Number of objects served that were between 10KB and 100KB in size.
+     *
+     * @return self
+     */
+    public function setObjectSize100k($object_size_100k)
+    {
+        $this->container['object_size_100k'] = $object_size_100k;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_size_1m
+     *
+     * @return int|null
+     */
+    public function getObjectSize1m()
+    {
+        return $this->container['object_size_1m'];
+    }
+
+    /**
+     * Sets object_size_1m
+     *
+     * @param int|null $object_size_1m Number of objects served that were between 100KB and 1MB in size.
+     *
+     * @return self
+     */
+    public function setObjectSize1m($object_size_1m)
+    {
+        $this->container['object_size_1m'] = $object_size_1m;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_size_10m
+     *
+     * @return int|null
+     */
+    public function getObjectSize10m()
+    {
+        return $this->container['object_size_10m'];
+    }
+
+    /**
+     * Sets object_size_10m
+     *
+     * @param int|null $object_size_10m Number of objects served that were between 1MB and 10MB in size.
+     *
+     * @return self
+     */
+    public function setObjectSize10m($object_size_10m)
+    {
+        $this->container['object_size_10m'] = $object_size_10m;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_size_100m
+     *
+     * @return int|null
+     */
+    public function getObjectSize100m()
+    {
+        return $this->container['object_size_100m'];
+    }
+
+    /**
+     * Sets object_size_100m
+     *
+     * @param int|null $object_size_100m Number of objects served that were between 10MB and 100MB in size.
+     *
+     * @return self
+     */
+    public function setObjectSize100m($object_size_100m)
+    {
+        $this->container['object_size_100m'] = $object_size_100m;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_size_1g
+     *
+     * @return int|null
+     */
+    public function getObjectSize1g()
+    {
+        return $this->container['object_size_1g'];
+    }
+
+    /**
+     * Sets object_size_1g
+     *
+     * @param int|null $object_size_1g Number of objects served that were between 100MB and 1GB in size.
+     *
+     * @return self
+     */
+    public function setObjectSize1g($object_size_1g)
+    {
+        $this->container['object_size_1g'] = $object_size_1g;
+
+        return $this;
+    }
+
+    /**
+     * Gets recv_sub_time
+     *
+     * @return float|null
+     */
+    public function getRecvSubTime()
+    {
+        return $this->container['recv_sub_time'];
+    }
+
+    /**
+     * Sets recv_sub_time
+     *
+     * @param float|null $recv_sub_time Time spent inside the `vcl_recv` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setRecvSubTime($recv_sub_time)
+    {
+        $this->container['recv_sub_time'] = $recv_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets recv_sub_count
+     *
+     * @return int|null
+     */
+    public function getRecvSubCount()
+    {
+        return $this->container['recv_sub_count'];
+    }
+
+    /**
+     * Sets recv_sub_count
+     *
+     * @param int|null $recv_sub_count Number of executions of the `vcl_recv` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setRecvSubCount($recv_sub_count)
+    {
+        $this->container['recv_sub_count'] = $recv_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets hash_sub_time
+     *
+     * @return float|null
+     */
+    public function getHashSubTime()
+    {
+        return $this->container['hash_sub_time'];
+    }
+
+    /**
+     * Sets hash_sub_time
+     *
+     * @param float|null $hash_sub_time Time spent inside the `vcl_hash` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setHashSubTime($hash_sub_time)
+    {
+        $this->container['hash_sub_time'] = $hash_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets hash_sub_count
+     *
+     * @return int|null
+     */
+    public function getHashSubCount()
+    {
+        return $this->container['hash_sub_count'];
+    }
+
+    /**
+     * Sets hash_sub_count
+     *
+     * @param int|null $hash_sub_count Number of executions of the `vcl_hash` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setHashSubCount($hash_sub_count)
+    {
+        $this->container['hash_sub_count'] = $hash_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets miss_sub_time
+     *
+     * @return float|null
+     */
+    public function getMissSubTime()
+    {
+        return $this->container['miss_sub_time'];
+    }
+
+    /**
+     * Sets miss_sub_time
+     *
+     * @param float|null $miss_sub_time Time spent inside the `vcl_miss` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setMissSubTime($miss_sub_time)
+    {
+        $this->container['miss_sub_time'] = $miss_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets miss_sub_count
+     *
+     * @return int|null
+     */
+    public function getMissSubCount()
+    {
+        return $this->container['miss_sub_count'];
+    }
+
+    /**
+     * Sets miss_sub_count
+     *
+     * @param int|null $miss_sub_count Number of executions of the `vcl_miss` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setMissSubCount($miss_sub_count)
+    {
+        $this->container['miss_sub_count'] = $miss_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets fetch_sub_time
+     *
+     * @return float|null
+     */
+    public function getFetchSubTime()
+    {
+        return $this->container['fetch_sub_time'];
+    }
+
+    /**
+     * Sets fetch_sub_time
+     *
+     * @param float|null $fetch_sub_time Time spent inside the `vcl_fetch` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setFetchSubTime($fetch_sub_time)
+    {
+        $this->container['fetch_sub_time'] = $fetch_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets fetch_sub_count
+     *
+     * @return int|null
+     */
+    public function getFetchSubCount()
+    {
+        return $this->container['fetch_sub_count'];
+    }
+
+    /**
+     * Sets fetch_sub_count
+     *
+     * @param int|null $fetch_sub_count Number of executions of the `vcl_fetch` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setFetchSubCount($fetch_sub_count)
+    {
+        $this->container['fetch_sub_count'] = $fetch_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets pass_sub_time
+     *
+     * @return float|null
+     */
+    public function getPassSubTime()
+    {
+        return $this->container['pass_sub_time'];
+    }
+
+    /**
+     * Sets pass_sub_time
+     *
+     * @param float|null $pass_sub_time Time spent inside the `vcl_pass` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setPassSubTime($pass_sub_time)
+    {
+        $this->container['pass_sub_time'] = $pass_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets pass_sub_count
+     *
+     * @return int|null
+     */
+    public function getPassSubCount()
+    {
+        return $this->container['pass_sub_count'];
+    }
+
+    /**
+     * Sets pass_sub_count
+     *
+     * @param int|null $pass_sub_count Number of executions of the `vcl_pass` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setPassSubCount($pass_sub_count)
+    {
+        $this->container['pass_sub_count'] = $pass_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets pipe_sub_time
+     *
+     * @return float|null
+     */
+    public function getPipeSubTime()
+    {
+        return $this->container['pipe_sub_time'];
+    }
+
+    /**
+     * Sets pipe_sub_time
+     *
+     * @param float|null $pipe_sub_time Time spent inside the `vcl_pipe` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setPipeSubTime($pipe_sub_time)
+    {
+        $this->container['pipe_sub_time'] = $pipe_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets pipe_sub_count
+     *
+     * @return int|null
+     */
+    public function getPipeSubCount()
+    {
+        return $this->container['pipe_sub_count'];
+    }
+
+    /**
+     * Sets pipe_sub_count
+     *
+     * @param int|null $pipe_sub_count Number of executions of the `vcl_pipe` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setPipeSubCount($pipe_sub_count)
+    {
+        $this->container['pipe_sub_count'] = $pipe_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliver_sub_time
+     *
+     * @return float|null
+     */
+    public function getDeliverSubTime()
+    {
+        return $this->container['deliver_sub_time'];
+    }
+
+    /**
+     * Sets deliver_sub_time
+     *
+     * @param float|null $deliver_sub_time Time spent inside the `vcl_deliver` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setDeliverSubTime($deliver_sub_time)
+    {
+        $this->container['deliver_sub_time'] = $deliver_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliver_sub_count
+     *
+     * @return int|null
+     */
+    public function getDeliverSubCount()
+    {
+        return $this->container['deliver_sub_count'];
+    }
+
+    /**
+     * Sets deliver_sub_count
+     *
+     * @param int|null $deliver_sub_count Number of executions of the `vcl_deliver` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setDeliverSubCount($deliver_sub_count)
+    {
+        $this->container['deliver_sub_count'] = $deliver_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_sub_time
+     *
+     * @return float|null
+     */
+    public function getErrorSubTime()
+    {
+        return $this->container['error_sub_time'];
+    }
+
+    /**
+     * Sets error_sub_time
+     *
+     * @param float|null $error_sub_time Time spent inside the `vcl_error` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setErrorSubTime($error_sub_time)
+    {
+        $this->container['error_sub_time'] = $error_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_sub_count
+     *
+     * @return int|null
+     */
+    public function getErrorSubCount()
+    {
+        return $this->container['error_sub_count'];
+    }
+
+    /**
+     * Sets error_sub_count
+     *
+     * @param int|null $error_sub_count Number of executions of the `vcl_error` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setErrorSubCount($error_sub_count)
+    {
+        $this->container['error_sub_count'] = $error_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets hit_sub_time
+     *
+     * @return float|null
+     */
+    public function getHitSubTime()
+    {
+        return $this->container['hit_sub_time'];
+    }
+
+    /**
+     * Sets hit_sub_time
+     *
+     * @param float|null $hit_sub_time Time spent inside the `vcl_hit` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setHitSubTime($hit_sub_time)
+    {
+        $this->container['hit_sub_time'] = $hit_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets hit_sub_count
+     *
+     * @return int|null
+     */
+    public function getHitSubCount()
+    {
+        return $this->container['hit_sub_count'];
+    }
+
+    /**
+     * Sets hit_sub_count
+     *
+     * @param int|null $hit_sub_count Number of executions of the `vcl_hit` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setHitSubCount($hit_sub_count)
+    {
+        $this->container['hit_sub_count'] = $hit_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets prehash_sub_time
+     *
+     * @return float|null
+     */
+    public function getPrehashSubTime()
+    {
+        return $this->container['prehash_sub_time'];
+    }
+
+    /**
+     * Sets prehash_sub_time
+     *
+     * @param float|null $prehash_sub_time Time spent inside the `vcl_prehash` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setPrehashSubTime($prehash_sub_time)
+    {
+        $this->container['prehash_sub_time'] = $prehash_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets prehash_sub_count
+     *
+     * @return int|null
+     */
+    public function getPrehashSubCount()
+    {
+        return $this->container['prehash_sub_count'];
+    }
+
+    /**
+     * Sets prehash_sub_count
+     *
+     * @param int|null $prehash_sub_count Number of executions of the `vcl_prehash` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setPrehashSubCount($prehash_sub_count)
+    {
+        $this->container['prehash_sub_count'] = $prehash_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets predeliver_sub_time
+     *
+     * @return float|null
+     */
+    public function getPredeliverSubTime()
+    {
+        return $this->container['predeliver_sub_time'];
+    }
+
+    /**
+     * Sets predeliver_sub_time
+     *
+     * @param float|null $predeliver_sub_time Time spent inside the `vcl_predeliver` Varnish subroutine (in seconds).
+     *
+     * @return self
+     */
+    public function setPredeliverSubTime($predeliver_sub_time)
+    {
+        $this->container['predeliver_sub_time'] = $predeliver_sub_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets predeliver_sub_count
+     *
+     * @return int|null
+     */
+    public function getPredeliverSubCount()
+    {
+        return $this->container['predeliver_sub_count'];
+    }
+
+    /**
+     * Sets predeliver_sub_count
+     *
+     * @param int|null $predeliver_sub_count Number of executions of the `vcl_predeliver` Varnish subroutine.
+     *
+     * @return self
+     */
+    public function setPredeliverSubCount($predeliver_sub_count)
+    {
+        $this->container['predeliver_sub_count'] = $predeliver_sub_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets tls_handshake_sent_bytes
+     *
+     * @return int|null
+     */
+    public function getTlsHandshakeSentBytes()
+    {
+        return $this->container['tls_handshake_sent_bytes'];
+    }
+
+    /**
+     * Sets tls_handshake_sent_bytes
+     *
+     * @param int|null $tls_handshake_sent_bytes Number of bytes transferred during TLS handshake.
+     *
+     * @return self
+     */
+    public function setTlsHandshakeSentBytes($tls_handshake_sent_bytes)
+    {
+        $this->container['tls_handshake_sent_bytes'] = $tls_handshake_sent_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets hit_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getHitRespBodyBytes()
+    {
+        return $this->container['hit_resp_body_bytes'];
+    }
+
+    /**
+     * Sets hit_resp_body_bytes
+     *
+     * @param int|null $hit_resp_body_bytes Total body bytes delivered for cache hits.
+     *
+     * @return self
+     */
+    public function setHitRespBodyBytes($hit_resp_body_bytes)
+    {
+        $this->container['hit_resp_body_bytes'] = $hit_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets miss_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getMissRespBodyBytes()
+    {
+        return $this->container['miss_resp_body_bytes'];
+    }
+
+    /**
+     * Sets miss_resp_body_bytes
+     *
+     * @param int|null $miss_resp_body_bytes Total body bytes delivered for cache misses.
+     *
+     * @return self
+     */
+    public function setMissRespBodyBytes($miss_resp_body_bytes)
+    {
+        $this->container['miss_resp_body_bytes'] = $miss_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets pass_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getPassRespBodyBytes()
+    {
+        return $this->container['pass_resp_body_bytes'];
+    }
+
+    /**
+     * Sets pass_resp_body_bytes
+     *
+     * @param int|null $pass_resp_body_bytes Total body bytes delivered for cache passes.
+     *
+     * @return self
+     */
+    public function setPassRespBodyBytes($pass_resp_body_bytes)
+    {
+        $this->container['pass_resp_body_bytes'] = $pass_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets segblock_origin_fetches
+     *
+     * @return int|null
+     */
+    public function getSegblockOriginFetches()
+    {
+        return $this->container['segblock_origin_fetches'];
+    }
+
+    /**
+     * Sets segblock_origin_fetches
+     *
+     * @param int|null $segblock_origin_fetches Number of `Range` requests to origin for segments of resources when using segmented caching.
+     *
+     * @return self
+     */
+    public function setSegblockOriginFetches($segblock_origin_fetches)
+    {
+        $this->container['segblock_origin_fetches'] = $segblock_origin_fetches;
+
+        return $this;
+    }
+
+    /**
+     * Gets segblock_shield_fetches
+     *
+     * @return int|null
+     */
+    public function getSegblockShieldFetches()
+    {
+        return $this->container['segblock_shield_fetches'];
+    }
+
+    /**
+     * Sets segblock_shield_fetches
+     *
+     * @param int|null $segblock_shield_fetches Number of `Range` requests to a shield for segments of resources when using segmented caching.
+     *
+     * @return self
+     */
+    public function setSegblockShieldFetches($segblock_shield_fetches)
+    {
+        $this->container['segblock_shield_fetches'] = $segblock_shield_fetches;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_requests
+     *
+     * @return int|null
+     */
+    public function getComputeRequests()
+    {
+        return $this->container['compute_requests'];
+    }
+
+    /**
+     * Sets compute_requests
+     *
+     * @param int|null $compute_requests The total number of requests that were received for your service by Fastly.
+     *
+     * @return self
+     */
+    public function setComputeRequests($compute_requests)
+    {
+        $this->container['compute_requests'] = $compute_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_request_time_ms
+     *
+     * @return float|null
+     */
+    public function getComputeRequestTimeMs()
+    {
+        return $this->container['compute_request_time_ms'];
+    }
+
+    /**
+     * Sets compute_request_time_ms
+     *
+     * @param float|null $compute_request_time_ms The total, actual amount of time used to process your requests, including active CPU time (in milliseconds).
+     *
+     * @return self
+     */
+    public function setComputeRequestTimeMs($compute_request_time_ms)
+    {
+        $this->container['compute_request_time_ms'] = $compute_request_time_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_request_time_billed_ms
+     *
+     * @return float|null
+     */
+    public function getComputeRequestTimeBilledMs()
+    {
+        return $this->container['compute_request_time_billed_ms'];
+    }
+
+    /**
+     * Sets compute_request_time_billed_ms
+     *
+     * @param float|null $compute_request_time_billed_ms The total amount of request processing time you will be billed for, measured in 50 millisecond increments.
+     *
+     * @return self
+     */
+    public function setComputeRequestTimeBilledMs($compute_request_time_billed_ms)
+    {
+        $this->container['compute_request_time_billed_ms'] = $compute_request_time_billed_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_ram_used
+     *
+     * @return int|null
+     */
+    public function getComputeRamUsed()
+    {
+        return $this->container['compute_ram_used'];
+    }
+
+    /**
+     * Sets compute_ram_used
+     *
+     * @param int|null $compute_ram_used The amount of RAM used for your service by Fastly (in bytes).
+     *
+     * @return self
+     */
+    public function setComputeRamUsed($compute_ram_used)
+    {
+        $this->container['compute_ram_used'] = $compute_ram_used;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_execution_time_ms
+     *
+     * @return float|null
+     */
+    public function getComputeExecutionTimeMs()
+    {
+        return $this->container['compute_execution_time_ms'];
+    }
+
+    /**
+     * Sets compute_execution_time_ms
+     *
+     * @param float|null $compute_execution_time_ms The amount of active CPU time used to process your requests (in milliseconds).
+     *
+     * @return self
+     */
+    public function setComputeExecutionTimeMs($compute_execution_time_ms)
+    {
+        $this->container['compute_execution_time_ms'] = $compute_execution_time_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_req_header_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeReqHeaderBytes()
+    {
+        return $this->container['compute_req_header_bytes'];
+    }
+
+    /**
+     * Sets compute_req_header_bytes
+     *
+     * @param int|null $compute_req_header_bytes Total header bytes received by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeReqHeaderBytes($compute_req_header_bytes)
+    {
+        $this->container['compute_req_header_bytes'] = $compute_req_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_req_body_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeReqBodyBytes()
+    {
+        return $this->container['compute_req_body_bytes'];
+    }
+
+    /**
+     * Sets compute_req_body_bytes
+     *
+     * @param int|null $compute_req_body_bytes Total body bytes received by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeReqBodyBytes($compute_req_body_bytes)
+    {
+        $this->container['compute_req_body_bytes'] = $compute_req_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeRespHeaderBytes()
+    {
+        return $this->container['compute_resp_header_bytes'];
+    }
+
+    /**
+     * Sets compute_resp_header_bytes
+     *
+     * @param int|null $compute_resp_header_bytes Total header bytes sent from Compute to end user.
+     *
+     * @return self
+     */
+    public function setComputeRespHeaderBytes($compute_resp_header_bytes)
+    {
+        $this->container['compute_resp_header_bytes'] = $compute_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeRespBodyBytes()
+    {
+        return $this->container['compute_resp_body_bytes'];
+    }
+
+    /**
+     * Sets compute_resp_body_bytes
+     *
+     * @param int|null $compute_resp_body_bytes Total body bytes sent from Compute to end user.
+     *
+     * @return self
+     */
+    public function setComputeRespBodyBytes($compute_resp_body_bytes)
+    {
+        $this->container['compute_resp_body_bytes'] = $compute_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_1xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus1xx()
+    {
+        return $this->container['compute_resp_status_1xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_1xx
+     *
+     * @param int|null $compute_resp_status_1xx Number of \"Informational\" category status codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus1xx($compute_resp_status_1xx)
+    {
+        $this->container['compute_resp_status_1xx'] = $compute_resp_status_1xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_2xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus2xx()
+    {
+        return $this->container['compute_resp_status_2xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_2xx
+     *
+     * @param int|null $compute_resp_status_2xx Number of \"Success\" category status codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus2xx($compute_resp_status_2xx)
+    {
+        $this->container['compute_resp_status_2xx'] = $compute_resp_status_2xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_3xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus3xx()
+    {
+        return $this->container['compute_resp_status_3xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_3xx
+     *
+     * @param int|null $compute_resp_status_3xx Number of \"Redirection\" category status codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus3xx($compute_resp_status_3xx)
+    {
+        $this->container['compute_resp_status_3xx'] = $compute_resp_status_3xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_4xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus4xx()
+    {
+        return $this->container['compute_resp_status_4xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_4xx
+     *
+     * @param int|null $compute_resp_status_4xx Number of \"Client Error\" category status codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus4xx($compute_resp_status_4xx)
+    {
+        $this->container['compute_resp_status_4xx'] = $compute_resp_status_4xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_5xx
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus5xx()
+    {
+        return $this->container['compute_resp_status_5xx'];
+    }
+
+    /**
+     * Sets compute_resp_status_5xx
+     *
+     * @param int|null $compute_resp_status_5xx Number of \"Server Error\" category status codes delivered by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus5xx($compute_resp_status_5xx)
+    {
+        $this->container['compute_resp_status_5xx'] = $compute_resp_status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_bereq_header_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeBereqHeaderBytes()
+    {
+        return $this->container['compute_bereq_header_bytes'];
+    }
+
+    /**
+     * Sets compute_bereq_header_bytes
+     *
+     * @param int|null $compute_bereq_header_bytes Total header bytes sent to backends (origins) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBereqHeaderBytes($compute_bereq_header_bytes)
+    {
+        $this->container['compute_bereq_header_bytes'] = $compute_bereq_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_bereq_body_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeBereqBodyBytes()
+    {
+        return $this->container['compute_bereq_body_bytes'];
+    }
+
+    /**
+     * Sets compute_bereq_body_bytes
+     *
+     * @param int|null $compute_bereq_body_bytes Total body bytes sent to backends (origins) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBereqBodyBytes($compute_bereq_body_bytes)
+    {
+        $this->container['compute_bereq_body_bytes'] = $compute_bereq_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_beresp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeBerespHeaderBytes()
+    {
+        return $this->container['compute_beresp_header_bytes'];
+    }
+
+    /**
+     * Sets compute_beresp_header_bytes
+     *
+     * @param int|null $compute_beresp_header_bytes Total header bytes received from backends (origins) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBerespHeaderBytes($compute_beresp_header_bytes)
+    {
+        $this->container['compute_beresp_header_bytes'] = $compute_beresp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_beresp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getComputeBerespBodyBytes()
+    {
+        return $this->container['compute_beresp_body_bytes'];
+    }
+
+    /**
+     * Sets compute_beresp_body_bytes
+     *
+     * @param int|null $compute_beresp_body_bytes Total body bytes received from backends (origins) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeBerespBodyBytes($compute_beresp_body_bytes)
+    {
+        $this->container['compute_beresp_body_bytes'] = $compute_beresp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_bereqs
+     *
+     * @return int|null
+     */
+    public function getComputeBereqs()
+    {
+        return $this->container['compute_bereqs'];
+    }
+
+    /**
+     * Sets compute_bereqs
+     *
+     * @param int|null $compute_bereqs Number of backend requests started.
+     *
+     * @return self
+     */
+    public function setComputeBereqs($compute_bereqs)
+    {
+        $this->container['compute_bereqs'] = $compute_bereqs;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqError()
+    {
+        return $this->container['compute_service_bereq_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_error
+     *
+     * @param int|null $compute_service_bereq_error Number of backend request errors, including timeouts.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqError($compute_service_bereq_error)
+    {
+        $this->container['compute_service_bereq_error'] = $compute_service_bereq_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_memory_exceeded_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceMemoryExceededError()
+    {
+        return $this->container['compute_service_memory_exceeded_error'];
+    }
+
+    /**
+     * Sets compute_service_memory_exceeded_error
+     *
+     * @param int|null $compute_service_memory_exceeded_error Number of times a guest exceeded its heap limit.
+     *
+     * @return self
+     */
+    public function setComputeServiceMemoryExceededError($compute_service_memory_exceeded_error)
+    {
+        $this->container['compute_service_memory_exceeded_error'] = $compute_service_memory_exceeded_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_hit_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getEdgeHitRespBodyBytes()
+    {
+        return $this->container['edge_hit_resp_body_bytes'];
+    }
+
+    /**
+     * Sets edge_hit_resp_body_bytes
+     *
+     * @param int|null $edge_hit_resp_body_bytes Body bytes delivered for edge hits.
+     *
+     * @return self
+     */
+    public function setEdgeHitRespBodyBytes($edge_hit_resp_body_bytes)
+    {
+        $this->container['edge_hit_resp_body_bytes'] = $edge_hit_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_hit_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getEdgeHitRespHeaderBytes()
+    {
+        return $this->container['edge_hit_resp_header_bytes'];
+    }
+
+    /**
+     * Sets edge_hit_resp_header_bytes
+     *
+     * @param int|null $edge_hit_resp_header_bytes Header bytes delivered for edge hits.
+     *
+     * @return self
+     */
+    public function setEdgeHitRespHeaderBytes($edge_hit_resp_header_bytes)
+    {
+        $this->container['edge_hit_resp_header_bytes'] = $edge_hit_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_miss_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getEdgeMissRespBodyBytes()
+    {
+        return $this->container['edge_miss_resp_body_bytes'];
+    }
+
+    /**
+     * Sets edge_miss_resp_body_bytes
+     *
+     * @param int|null $edge_miss_resp_body_bytes Body bytes delivered for edge misses.
+     *
+     * @return self
+     */
+    public function setEdgeMissRespBodyBytes($edge_miss_resp_body_bytes)
+    {
+        $this->container['edge_miss_resp_body_bytes'] = $edge_miss_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_miss_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getEdgeMissRespHeaderBytes()
+    {
+        return $this->container['edge_miss_resp_header_bytes'];
+    }
+
+    /**
+     * Sets edge_miss_resp_header_bytes
+     *
+     * @param int|null $edge_miss_resp_header_bytes Header bytes delivered for edge misses.
+     *
+     * @return self
+     */
+    public function setEdgeMissRespHeaderBytes($edge_miss_resp_header_bytes)
+    {
+        $this->container['edge_miss_resp_header_bytes'] = $edge_miss_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_cache_fetch_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getOriginCacheFetchRespBodyBytes()
+    {
+        return $this->container['origin_cache_fetch_resp_body_bytes'];
+    }
+
+    /**
+     * Sets origin_cache_fetch_resp_body_bytes
+     *
+     * @param int|null $origin_cache_fetch_resp_body_bytes Body bytes received from origin for cacheable content.
+     *
+     * @return self
+     */
+    public function setOriginCacheFetchRespBodyBytes($origin_cache_fetch_resp_body_bytes)
+    {
+        $this->container['origin_cache_fetch_resp_body_bytes'] = $origin_cache_fetch_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_cache_fetch_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getOriginCacheFetchRespHeaderBytes()
+    {
+        return $this->container['origin_cache_fetch_resp_header_bytes'];
+    }
+
+    /**
+     * Sets origin_cache_fetch_resp_header_bytes
+     *
+     * @param int|null $origin_cache_fetch_resp_header_bytes Header bytes received from an origin for cacheable content.
+     *
+     * @return self
+     */
+    public function setOriginCacheFetchRespHeaderBytes($origin_cache_fetch_resp_header_bytes)
+    {
+        $this->container['origin_cache_fetch_resp_header_bytes'] = $origin_cache_fetch_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_hit_requests
+     *
+     * @return int|null
+     */
+    public function getShieldHitRequests()
+    {
+        return $this->container['shield_hit_requests'];
+    }
+
+    /**
+     * Sets shield_hit_requests
+     *
+     * @param int|null $shield_hit_requests Number of requests that resulted in a hit at a shield.
+     *
+     * @return self
+     */
+    public function setShieldHitRequests($shield_hit_requests)
+    {
+        $this->container['shield_hit_requests'] = $shield_hit_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_miss_requests
+     *
+     * @return int|null
+     */
+    public function getShieldMissRequests()
+    {
+        return $this->container['shield_miss_requests'];
+    }
+
+    /**
+     * Sets shield_miss_requests
+     *
+     * @param int|null $shield_miss_requests Number of requests that resulted in a miss at a shield.
+     *
+     * @return self
+     */
+    public function setShieldMissRequests($shield_miss_requests)
+    {
+        $this->container['shield_miss_requests'] = $shield_miss_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_hit_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldHitRespHeaderBytes()
+    {
+        return $this->container['shield_hit_resp_header_bytes'];
+    }
+
+    /**
+     * Sets shield_hit_resp_header_bytes
+     *
+     * @param int|null $shield_hit_resp_header_bytes Header bytes delivered for shield hits.
+     *
+     * @return self
+     */
+    public function setShieldHitRespHeaderBytes($shield_hit_resp_header_bytes)
+    {
+        $this->container['shield_hit_resp_header_bytes'] = $shield_hit_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_hit_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldHitRespBodyBytes()
+    {
+        return $this->container['shield_hit_resp_body_bytes'];
+    }
+
+    /**
+     * Sets shield_hit_resp_body_bytes
+     *
+     * @param int|null $shield_hit_resp_body_bytes Body bytes delivered for shield hits.
+     *
+     * @return self
+     */
+    public function setShieldHitRespBodyBytes($shield_hit_resp_body_bytes)
+    {
+        $this->container['shield_hit_resp_body_bytes'] = $shield_hit_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_miss_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldMissRespHeaderBytes()
+    {
+        return $this->container['shield_miss_resp_header_bytes'];
+    }
+
+    /**
+     * Sets shield_miss_resp_header_bytes
+     *
+     * @param int|null $shield_miss_resp_header_bytes Header bytes delivered for shield misses.
+     *
+     * @return self
+     */
+    public function setShieldMissRespHeaderBytes($shield_miss_resp_header_bytes)
+    {
+        $this->container['shield_miss_resp_header_bytes'] = $shield_miss_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shield_miss_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getShieldMissRespBodyBytes()
+    {
+        return $this->container['shield_miss_resp_body_bytes'];
+    }
+
+    /**
+     * Sets shield_miss_resp_body_bytes
+     *
+     * @param int|null $shield_miss_resp_body_bytes Body bytes delivered for shield misses.
+     *
+     * @return self
+     */
+    public function setShieldMissRespBodyBytes($shield_miss_resp_body_bytes)
+    {
+        $this->container['shield_miss_resp_body_bytes'] = $shield_miss_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket_req_header_bytes
+     *
+     * @return int|null
+     */
+    public function getWebsocketReqHeaderBytes()
+    {
+        return $this->container['websocket_req_header_bytes'];
+    }
+
+    /**
+     * Sets websocket_req_header_bytes
+     *
+     * @param int|null $websocket_req_header_bytes Total header bytes received from end users over passthrough WebSocket connections.
+     *
+     * @return self
+     */
+    public function setWebsocketReqHeaderBytes($websocket_req_header_bytes)
+    {
+        $this->container['websocket_req_header_bytes'] = $websocket_req_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket_req_body_bytes
+     *
+     * @return int|null
+     */
+    public function getWebsocketReqBodyBytes()
+    {
+        return $this->container['websocket_req_body_bytes'];
+    }
+
+    /**
+     * Sets websocket_req_body_bytes
+     *
+     * @param int|null $websocket_req_body_bytes Total message content bytes received from end users over passthrough WebSocket connections.
+     *
+     * @return self
+     */
+    public function setWebsocketReqBodyBytes($websocket_req_body_bytes)
+    {
+        $this->container['websocket_req_body_bytes'] = $websocket_req_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getWebsocketRespHeaderBytes()
+    {
+        return $this->container['websocket_resp_header_bytes'];
+    }
+
+    /**
+     * Sets websocket_resp_header_bytes
+     *
+     * @param int|null $websocket_resp_header_bytes Total header bytes sent to end users over passthrough WebSocket connections.
+     *
+     * @return self
+     */
+    public function setWebsocketRespHeaderBytes($websocket_resp_header_bytes)
+    {
+        $this->container['websocket_resp_header_bytes'] = $websocket_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getWebsocketRespBodyBytes()
+    {
+        return $this->container['websocket_resp_body_bytes'];
+    }
+
+    /**
+     * Sets websocket_resp_body_bytes
+     *
+     * @param int|null $websocket_resp_body_bytes Total message content bytes sent to end users over passthrough WebSocket connections.
+     *
+     * @return self
+     */
+    public function setWebsocketRespBodyBytes($websocket_resp_body_bytes)
+    {
+        $this->container['websocket_resp_body_bytes'] = $websocket_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket_bereq_header_bytes
+     *
+     * @return int|null
+     */
+    public function getWebsocketBereqHeaderBytes()
+    {
+        return $this->container['websocket_bereq_header_bytes'];
+    }
+
+    /**
+     * Sets websocket_bereq_header_bytes
+     *
+     * @param int|null $websocket_bereq_header_bytes Total header bytes sent to backends over passthrough WebSocket connections.
+     *
+     * @return self
+     */
+    public function setWebsocketBereqHeaderBytes($websocket_bereq_header_bytes)
+    {
+        $this->container['websocket_bereq_header_bytes'] = $websocket_bereq_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket_bereq_body_bytes
+     *
+     * @return int|null
+     */
+    public function getWebsocketBereqBodyBytes()
+    {
+        return $this->container['websocket_bereq_body_bytes'];
+    }
+
+    /**
+     * Sets websocket_bereq_body_bytes
+     *
+     * @param int|null $websocket_bereq_body_bytes Total message content bytes sent to backends over passthrough WebSocket connections.
+     *
+     * @return self
+     */
+    public function setWebsocketBereqBodyBytes($websocket_bereq_body_bytes)
+    {
+        $this->container['websocket_bereq_body_bytes'] = $websocket_bereq_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket_beresp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getWebsocketBerespHeaderBytes()
+    {
+        return $this->container['websocket_beresp_header_bytes'];
+    }
+
+    /**
+     * Sets websocket_beresp_header_bytes
+     *
+     * @param int|null $websocket_beresp_header_bytes Total header bytes received from backends over passthrough WebSocket connections.
+     *
+     * @return self
+     */
+    public function setWebsocketBerespHeaderBytes($websocket_beresp_header_bytes)
+    {
+        $this->container['websocket_beresp_header_bytes'] = $websocket_beresp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket_beresp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getWebsocketBerespBodyBytes()
+    {
+        return $this->container['websocket_beresp_body_bytes'];
+    }
+
+    /**
+     * Sets websocket_beresp_body_bytes
+     *
+     * @param int|null $websocket_beresp_body_bytes Total message content bytes received from backends over passthrough WebSocket connections.
+     *
+     * @return self
+     */
+    public function setWebsocketBerespBodyBytes($websocket_beresp_body_bytes)
+    {
+        $this->container['websocket_beresp_body_bytes'] = $websocket_beresp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket_conn_time_ms
+     *
+     * @return int|null
+     */
+    public function getWebsocketConnTimeMs()
+    {
+        return $this->container['websocket_conn_time_ms'];
+    }
+
+    /**
+     * Sets websocket_conn_time_ms
+     *
+     * @param int|null $websocket_conn_time_ms Total duration of passthrough WebSocket connections with end users.
+     *
+     * @return self
+     */
+    public function setWebsocketConnTimeMs($websocket_conn_time_ms)
+    {
+        $this->container['websocket_conn_time_ms'] = $websocket_conn_time_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_recv_publishes
+     *
+     * @return int|null
+     */
+    public function getFanoutRecvPublishes()
+    {
+        return $this->container['fanout_recv_publishes'];
+    }
+
+    /**
+     * Sets fanout_recv_publishes
+     *
+     * @param int|null $fanout_recv_publishes Total published messages received from the publish API endpoint.
+     *
+     * @return self
+     */
+    public function setFanoutRecvPublishes($fanout_recv_publishes)
+    {
+        $this->container['fanout_recv_publishes'] = $fanout_recv_publishes;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_send_publishes
+     *
+     * @return int|null
+     */
+    public function getFanoutSendPublishes()
+    {
+        return $this->container['fanout_send_publishes'];
+    }
+
+    /**
+     * Sets fanout_send_publishes
+     *
+     * @param int|null $fanout_send_publishes Total published messages sent to end users.
+     *
+     * @return self
+     */
+    public function setFanoutSendPublishes($fanout_send_publishes)
+    {
+        $this->container['fanout_send_publishes'] = $fanout_send_publishes;
+
+        return $this;
+    }
+
+    /**
+     * Gets kv_store_class_a_operations
+     *
+     * @return int|null
+     */
+    public function getKvStoreClassAOperations()
+    {
+        return $this->container['kv_store_class_a_operations'];
+    }
+
+    /**
+     * Sets kv_store_class_a_operations
+     *
+     * @param int|null $kv_store_class_a_operations The total number of class a operations for the KV store.
+     *
+     * @return self
+     */
+    public function setKvStoreClassAOperations($kv_store_class_a_operations)
+    {
+        $this->container['kv_store_class_a_operations'] = $kv_store_class_a_operations;
+
+        return $this;
+    }
+
+    /**
+     * Gets kv_store_class_b_operations
+     *
+     * @return int|null
+     */
+    public function getKvStoreClassBOperations()
+    {
+        return $this->container['kv_store_class_b_operations'];
+    }
+
+    /**
+     * Sets kv_store_class_b_operations
+     *
+     * @param int|null $kv_store_class_b_operations The total number of class b operations for the KV store.
+     *
+     * @return self
+     */
+    public function setKvStoreClassBOperations($kv_store_class_b_operations)
+    {
+        $this->container['kv_store_class_b_operations'] = $kv_store_class_b_operations;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_req_header_bytes
+     *
+     * @return int|null
+     */
+    public function getFanoutReqHeaderBytes()
+    {
+        return $this->container['fanout_req_header_bytes'];
+    }
+
+    /**
+     * Sets fanout_req_header_bytes
+     *
+     * @param int|null $fanout_req_header_bytes Total header bytes received from end users over Fanout connections.
+     *
+     * @return self
+     */
+    public function setFanoutReqHeaderBytes($fanout_req_header_bytes)
+    {
+        $this->container['fanout_req_header_bytes'] = $fanout_req_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_req_body_bytes
+     *
+     * @return int|null
+     */
+    public function getFanoutReqBodyBytes()
+    {
+        return $this->container['fanout_req_body_bytes'];
+    }
+
+    /**
+     * Sets fanout_req_body_bytes
+     *
+     * @param int|null $fanout_req_body_bytes Total body or message content bytes received from end users over Fanout connections.
+     *
+     * @return self
+     */
+    public function setFanoutReqBodyBytes($fanout_req_body_bytes)
+    {
+        $this->container['fanout_req_body_bytes'] = $fanout_req_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_resp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getFanoutRespHeaderBytes()
+    {
+        return $this->container['fanout_resp_header_bytes'];
+    }
+
+    /**
+     * Sets fanout_resp_header_bytes
+     *
+     * @param int|null $fanout_resp_header_bytes Total header bytes sent to end users over Fanout connections.
+     *
+     * @return self
+     */
+    public function setFanoutRespHeaderBytes($fanout_resp_header_bytes)
+    {
+        $this->container['fanout_resp_header_bytes'] = $fanout_resp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_resp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getFanoutRespBodyBytes()
+    {
+        return $this->container['fanout_resp_body_bytes'];
+    }
+
+    /**
+     * Sets fanout_resp_body_bytes
+     *
+     * @param int|null $fanout_resp_body_bytes Total body or message content bytes sent to end users over Fanout connections, excluding published message content.
+     *
+     * @return self
+     */
+    public function setFanoutRespBodyBytes($fanout_resp_body_bytes)
+    {
+        $this->container['fanout_resp_body_bytes'] = $fanout_resp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_bereq_header_bytes
+     *
+     * @return int|null
+     */
+    public function getFanoutBereqHeaderBytes()
+    {
+        return $this->container['fanout_bereq_header_bytes'];
+    }
+
+    /**
+     * Sets fanout_bereq_header_bytes
+     *
+     * @param int|null $fanout_bereq_header_bytes Total header bytes sent to backends over Fanout connections.
+     *
+     * @return self
+     */
+    public function setFanoutBereqHeaderBytes($fanout_bereq_header_bytes)
+    {
+        $this->container['fanout_bereq_header_bytes'] = $fanout_bereq_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_bereq_body_bytes
+     *
+     * @return int|null
+     */
+    public function getFanoutBereqBodyBytes()
+    {
+        return $this->container['fanout_bereq_body_bytes'];
+    }
+
+    /**
+     * Sets fanout_bereq_body_bytes
+     *
+     * @param int|null $fanout_bereq_body_bytes Total body or message content bytes sent to backends over Fanout connections.
+     *
+     * @return self
+     */
+    public function setFanoutBereqBodyBytes($fanout_bereq_body_bytes)
+    {
+        $this->container['fanout_bereq_body_bytes'] = $fanout_bereq_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_beresp_header_bytes
+     *
+     * @return int|null
+     */
+    public function getFanoutBerespHeaderBytes()
+    {
+        return $this->container['fanout_beresp_header_bytes'];
+    }
+
+    /**
+     * Sets fanout_beresp_header_bytes
+     *
+     * @param int|null $fanout_beresp_header_bytes Total header bytes received from backends over Fanout connections.
+     *
+     * @return self
+     */
+    public function setFanoutBerespHeaderBytes($fanout_beresp_header_bytes)
+    {
+        $this->container['fanout_beresp_header_bytes'] = $fanout_beresp_header_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_beresp_body_bytes
+     *
+     * @return int|null
+     */
+    public function getFanoutBerespBodyBytes()
+    {
+        return $this->container['fanout_beresp_body_bytes'];
+    }
+
+    /**
+     * Sets fanout_beresp_body_bytes
+     *
+     * @param int|null $fanout_beresp_body_bytes Total body or message content bytes received from backends over Fanout connections.
+     *
+     * @return self
+     */
+    public function setFanoutBerespBodyBytes($fanout_beresp_body_bytes)
+    {
+        $this->container['fanout_beresp_body_bytes'] = $fanout_beresp_body_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets fanout_conn_time_ms
+     *
+     * @return int|null
+     */
+    public function getFanoutConnTimeMs()
+    {
+        return $this->container['fanout_conn_time_ms'];
+    }
+
+    /**
+     * Sets fanout_conn_time_ms
+     *
+     * @param int|null $fanout_conn_time_ms Total duration of Fanout connections with end users.
+     *
+     * @return self
+     */
+    public function setFanoutConnTimeMs($fanout_conn_time_ms)
+    {
+        $this->container['fanout_conn_time_ms'] = $fanout_conn_time_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_limit_streams_connections
+     *
+     * @return int|null
+     */
+    public function getDdosActionLimitStreamsConnections()
+    {
+        return $this->container['ddos_action_limit_streams_connections'];
+    }
+
+    /**
+     * Sets ddos_action_limit_streams_connections
+     *
+     * @param int|null $ddos_action_limit_streams_connections For HTTP/2, the number of connections the limit-streams action was applied to. The limit-streams action caps the allowed number of concurrent streams in a connection.
+     *
+     * @return self
+     */
+    public function setDdosActionLimitStreamsConnections($ddos_action_limit_streams_connections)
+    {
+        $this->container['ddos_action_limit_streams_connections'] = $ddos_action_limit_streams_connections;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_limit_streams_requests
+     *
+     * @return int|null
+     */
+    public function getDdosActionLimitStreamsRequests()
+    {
+        return $this->container['ddos_action_limit_streams_requests'];
+    }
+
+    /**
+     * Sets ddos_action_limit_streams_requests
+     *
+     * @param int|null $ddos_action_limit_streams_requests For HTTP/2, the number of requests made on a connection for which the limit-streams action was taken. The limit-streams action caps the allowed number of concurrent streams in a connection.
+     *
+     * @return self
+     */
+    public function setDdosActionLimitStreamsRequests($ddos_action_limit_streams_requests)
+    {
+        $this->container['ddos_action_limit_streams_requests'] = $ddos_action_limit_streams_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_tarpit_accept
+     *
+     * @return int|null
+     */
+    public function getDdosActionTarpitAccept()
+    {
+        return $this->container['ddos_action_tarpit_accept'];
+    }
+
+    /**
+     * Sets ddos_action_tarpit_accept
+     *
+     * @param int|null $ddos_action_tarpit_accept The number of times the tarpit-accept action was taken. The tarpit-accept action adds a delay when accepting future connections.
+     *
+     * @return self
+     */
+    public function setDdosActionTarpitAccept($ddos_action_tarpit_accept)
+    {
+        $this->container['ddos_action_tarpit_accept'] = $ddos_action_tarpit_accept;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_tarpit
+     *
+     * @return int|null
+     */
+    public function getDdosActionTarpit()
+    {
+        return $this->container['ddos_action_tarpit'];
+    }
+
+    /**
+     * Sets ddos_action_tarpit
+     *
+     * @param int|null $ddos_action_tarpit The number of times the tarpit action was taken. The tarpit action delays writing the response to the client.
+     *
+     * @return self
+     */
+    public function setDdosActionTarpit($ddos_action_tarpit)
+    {
+        $this->container['ddos_action_tarpit'] = $ddos_action_tarpit;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_close
+     *
+     * @return int|null
+     */
+    public function getDdosActionClose()
+    {
+        return $this->container['ddos_action_close'];
+    }
+
+    /**
+     * Sets ddos_action_close
+     *
+     * @param int|null $ddos_action_close The number of times the close action was taken. The close action aborts the connection as soon as possible. The close action takes effect either right after accept, right after the client hello, or right after the response was sent.
+     *
+     * @return self
+     */
+    public function setDdosActionClose($ddos_action_close)
+    {
+        $this->container['ddos_action_close'] = $ddos_action_close;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_blackhole
+     *
+     * @return int|null
+     */
+    public function getDdosActionBlackhole()
+    {
+        return $this->container['ddos_action_blackhole'];
+    }
+
+    /**
+     * Sets ddos_action_blackhole
+     *
+     * @param int|null $ddos_action_blackhole The number of times the blackhole action was taken. The blackhole action quietly closes a TCP connection without sending a reset. The blackhole action quietly closes a TCP connection without notifying its peer (all TCP state is dropped).
+     *
+     * @return self
+     */
+    public function setDdosActionBlackhole($ddos_action_blackhole)
+    {
+        $this->container['ddos_action_blackhole'] = $ddos_action_blackhole;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_starts
+     *
+     * @return int|null
+     */
+    public function getBotChallengeStarts()
+    {
+        return $this->container['bot_challenge_starts'];
+    }
+
+    /**
+     * Sets bot_challenge_starts
+     *
+     * @param int|null $bot_challenge_starts The number of challenge-start tokens created.
+     *
+     * @return self
+     */
+    public function setBotChallengeStarts($bot_challenge_starts)
+    {
+        $this->container['bot_challenge_starts'] = $bot_challenge_starts;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_passed
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensPassed()
+    {
+        return $this->container['bot_challenge_complete_tokens_passed'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_passed
+     *
+     * @param int|null $bot_challenge_complete_tokens_passed The number of challenge-complete tokens that passed validation.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensPassed($bot_challenge_complete_tokens_passed)
+    {
+        $this->container['bot_challenge_complete_tokens_passed'] = $bot_challenge_complete_tokens_passed;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_failed
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensFailed()
+    {
+        return $this->container['bot_challenge_complete_tokens_failed'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_failed
+     *
+     * @param int|null $bot_challenge_complete_tokens_failed The number of challenge-complete tokens that failed validation.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensFailed($bot_challenge_complete_tokens_failed)
+    {
+        $this->container['bot_challenge_complete_tokens_failed'] = $bot_challenge_complete_tokens_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_checked
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensChecked()
+    {
+        return $this->container['bot_challenge_complete_tokens_checked'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_checked
+     *
+     * @param int|null $bot_challenge_complete_tokens_checked The number of challenge-complete tokens checked.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensChecked($bot_challenge_complete_tokens_checked)
+    {
+        $this->container['bot_challenge_complete_tokens_checked'] = $bot_challenge_complete_tokens_checked;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_disabled
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensDisabled()
+    {
+        return $this->container['bot_challenge_complete_tokens_disabled'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_disabled
+     *
+     * @param int|null $bot_challenge_complete_tokens_disabled The number of challenge-complete tokens not checked because the feature was disabled.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensDisabled($bot_challenge_complete_tokens_disabled)
+    {
+        $this->container['bot_challenge_complete_tokens_disabled'] = $bot_challenge_complete_tokens_disabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenge_complete_tokens_issued
+     *
+     * @return int|null
+     */
+    public function getBotChallengeCompleteTokensIssued()
+    {
+        return $this->container['bot_challenge_complete_tokens_issued'];
+    }
+
+    /**
+     * Sets bot_challenge_complete_tokens_issued
+     *
+     * @param int|null $bot_challenge_complete_tokens_issued The number of challenge-complete tokens issued. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success.
+     *
+     * @return self
+     */
+    public function setBotChallengeCompleteTokensIssued($bot_challenge_complete_tokens_issued)
+    {
+        $this->container['bot_challenge_complete_tokens_issued'] = $bot_challenge_complete_tokens_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_issued
+     *
+     * @return int|null
+     */
+    public function getBotChallengesIssued()
+    {
+        return $this->container['bot_challenges_issued'];
+    }
+
+    /**
+     * Sets bot_challenges_issued
+     *
+     * @param int|null $bot_challenges_issued The number of challenges issued. For example, the issuance of a CAPTCHA challenge.
+     *
+     * @return self
+     */
+    public function setBotChallengesIssued($bot_challenges_issued)
+    {
+        $this->container['bot_challenges_issued'] = $bot_challenges_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_succeeded
+     *
+     * @return int|null
+     */
+    public function getBotChallengesSucceeded()
+    {
+        return $this->container['bot_challenges_succeeded'];
+    }
+
+    /**
+     * Sets bot_challenges_succeeded
+     *
+     * @param int|null $bot_challenges_succeeded The number of successful challenge solutions processed. For example, a correct CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setBotChallengesSucceeded($bot_challenges_succeeded)
+    {
+        $this->container['bot_challenges_succeeded'] = $bot_challenges_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_failed
+     *
+     * @return int|null
+     */
+    public function getBotChallengesFailed()
+    {
+        return $this->container['bot_challenges_failed'];
+    }
+
+    /**
+     * Sets bot_challenges_failed
+     *
+     * @param int|null $bot_challenges_failed The number of failed challenge solutions processed. For example, an incorrect CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setBotChallengesFailed($bot_challenges_failed)
+    {
+        $this->container['bot_challenges_failed'] = $bot_challenges_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_downgrade
+     *
+     * @return int|null
+     */
+    public function getDdosActionDowngrade()
+    {
+        return $this->container['ddos_action_downgrade'];
+    }
+
+    /**
+     * Sets ddos_action_downgrade
+     *
+     * @param int|null $ddos_action_downgrade The number of times the downgrade action was taken. The downgrade action restricts the client to http1.
+     *
+     * @return self
+     */
+    public function setDdosActionDowngrade($ddos_action_downgrade)
+    {
+        $this->container['ddos_action_downgrade'] = $ddos_action_downgrade;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_action_downgraded_connections
+     *
+     * @return int|null
+     */
+    public function getDdosActionDowngradedConnections()
+    {
+        return $this->container['ddos_action_downgraded_connections'];
+    }
+
+    /**
+     * Sets ddos_action_downgraded_connections
+     *
+     * @param int|null $ddos_action_downgraded_connections The number of connections the downgrade action was applied to. The downgrade action restricts the connection to http1.
+     *
+     * @return self
+     */
+    public function setDdosActionDowngradedConnections($ddos_action_downgraded_connections)
+    {
+        $this->container['ddos_action_downgraded_connections'] = $ddos_action_downgraded_connections;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_hit_requests
+     *
+     * @return int|null
+     */
+    public function getAllHitRequests()
+    {
+        return $this->container['all_hit_requests'];
+    }
+
+    /**
+     * Sets all_hit_requests
+     *
+     * @param int|null $all_hit_requests Number of cache hits for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllHitRequests($all_hit_requests)
+    {
+        $this->container['all_hit_requests'] = $all_hit_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_miss_requests
+     *
+     * @return int|null
+     */
+    public function getAllMissRequests()
+    {
+        return $this->container['all_miss_requests'];
+    }
+
+    /**
+     * Sets all_miss_requests
+     *
+     * @param int|null $all_miss_requests Number of cache misses for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllMissRequests($all_miss_requests)
+    {
+        $this->container['all_miss_requests'] = $all_miss_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_pass_requests
+     *
+     * @return int|null
+     */
+    public function getAllPassRequests()
+    {
+        return $this->container['all_pass_requests'];
+    }
+
+    /**
+     * Sets all_pass_requests
+     *
+     * @param int|null $all_pass_requests Number of requests that passed through the CDN without being cached for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllPassRequests($all_pass_requests)
+    {
+        $this->container['all_pass_requests'] = $all_pass_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_error_requests
+     *
+     * @return int|null
+     */
+    public function getAllErrorRequests()
+    {
+        return $this->container['all_error_requests'];
+    }
+
+    /**
+     * Sets all_error_requests
+     *
+     * @param int|null $all_error_requests Number of cache errors for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllErrorRequests($all_error_requests)
+    {
+        $this->container['all_error_requests'] = $all_error_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_synth_requests
+     *
+     * @return int|null
+     */
+    public function getAllSynthRequests()
+    {
+        return $this->container['all_synth_requests'];
+    }
+
+    /**
+     * Sets all_synth_requests
+     *
+     * @param int|null $all_synth_requests Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement) for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllSynthRequests($all_synth_requests)
+    {
+        $this->container['all_synth_requests'] = $all_synth_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_edge_hit_requests
+     *
+     * @return int|null
+     */
+    public function getAllEdgeHitRequests()
+    {
+        return $this->container['all_edge_hit_requests'];
+    }
+
+    /**
+     * Sets all_edge_hit_requests
+     *
+     * @param int|null $all_edge_hit_requests Number of requests sent by end users to Fastly that resulted in a hit at the edge for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllEdgeHitRequests($all_edge_hit_requests)
+    {
+        $this->container['all_edge_hit_requests'] = $all_edge_hit_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_edge_miss_requests
+     *
+     * @return int|null
+     */
+    public function getAllEdgeMissRequests()
+    {
+        return $this->container['all_edge_miss_requests'];
+    }
+
+    /**
+     * Sets all_edge_miss_requests
+     *
+     * @param int|null $all_edge_miss_requests Number of requests sent by end users to Fastly that resulted in a miss at the edge for a VCL service.
+     *
+     * @return self
+     */
+    public function setAllEdgeMissRequests($all_edge_miss_requests)
+    {
+        $this->container['all_edge_miss_requests'] = $all_edge_miss_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_1xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus1xx()
+    {
+        return $this->container['all_status_1xx'];
+    }
+
+    /**
+     * Sets all_status_1xx
+     *
+     * @param int|null $all_status_1xx Number of \"Informational\" category status codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus1xx($all_status_1xx)
+    {
+        $this->container['all_status_1xx'] = $all_status_1xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_2xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus2xx()
+    {
+        return $this->container['all_status_2xx'];
+    }
+
+    /**
+     * Sets all_status_2xx
+     *
+     * @param int|null $all_status_2xx Number of \"Success\" status codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus2xx($all_status_2xx)
+    {
+        $this->container['all_status_2xx'] = $all_status_2xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_3xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus3xx()
+    {
+        return $this->container['all_status_3xx'];
+    }
+
+    /**
+     * Sets all_status_3xx
+     *
+     * @param int|null $all_status_3xx Number of \"Redirection\" codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus3xx($all_status_3xx)
+    {
+        $this->container['all_status_3xx'] = $all_status_3xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_4xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus4xx()
+    {
+        return $this->container['all_status_4xx'];
+    }
+
+    /**
+     * Sets all_status_4xx
+     *
+     * @param int|null $all_status_4xx Number of \"Client Error\" codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus4xx($all_status_4xx)
+    {
+        $this->container['all_status_4xx'] = $all_status_4xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_status_5xx
+     *
+     * @return int|null
+     */
+    public function getAllStatus5xx()
+    {
+        return $this->container['all_status_5xx'];
+    }
+
+    /**
+     * Sets all_status_5xx
+     *
+     * @param int|null $all_status_5xx Number of \"Server Error\" codes delivered for all sources.
+     *
+     * @return self
+     */
+    public function setAllStatus5xx($all_status_5xx)
+    {
+        $this->container['all_status_5xx'] = $all_status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_offload
+     *
+     * @return float|null
+     */
+    public function getOriginOffload()
+    {
+        return $this->container['origin_offload'];
+    }
+
+    /**
+     * Sets origin_offload
+     *
+     * @param float|null $origin_offload Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((`edge_resp_body_bytes` + `edge_resp_header_bytes`) - (`origin_fetch_resp_body_bytes` + `origin_fetch_resp_header_bytes`)) / (`edge_resp_body_bytes` + `edge_resp_header_bytes`).
+     *
+     * @return self
+     */
+    public function setOriginOffload($origin_offload)
+    {
+        $this->container['origin_offload'] = $origin_offload;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_denied_get_head_body
+     *
+     * @return int|null
+     */
+    public function getRequestDeniedGetHeadBody()
+    {
+        return $this->container['request_denied_get_head_body'];
+    }
+
+    /**
+     * Sets request_denied_get_head_body
+     *
+     * @param int|null $request_denied_get_head_body Number of requests where Fastly responded with 400 due to the request being a GET or HEAD request containing a body.
+     *
+     * @return self
+     */
+    public function setRequestDeniedGetHeadBody($request_denied_get_head_body)
+    {
+        $this->container['request_denied_get_head_body'] = $request_denied_get_head_body;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_protection_requests_detect_count
+     *
+     * @return int|null
+     */
+    public function getDdosProtectionRequestsDetectCount()
+    {
+        return $this->container['ddos_protection_requests_detect_count'];
+    }
+
+    /**
+     * Sets ddos_protection_requests_detect_count
+     *
+     * @param int|null $ddos_protection_requests_detect_count Number of requests classified as a DDoS attack against a customer origin or service.
+     *
+     * @return self
+     */
+    public function setDdosProtectionRequestsDetectCount($ddos_protection_requests_detect_count)
+    {
+        $this->container['ddos_protection_requests_detect_count'] = $ddos_protection_requests_detect_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_protection_requests_mitigate_count
+     *
+     * @return int|null
+     */
+    public function getDdosProtectionRequestsMitigateCount()
+    {
+        return $this->container['ddos_protection_requests_mitigate_count'];
+    }
+
+    /**
+     * Sets ddos_protection_requests_mitigate_count
+     *
+     * @param int|null $ddos_protection_requests_mitigate_count Number of requests classified as a DDoS attack against a customer origin or service that were mitigated by the Fastly platform.
+     *
+     * @return self
+     */
+    public function setDdosProtectionRequestsMitigateCount($ddos_protection_requests_mitigate_count)
+    {
+        $this->container['ddos_protection_requests_mitigate_count'] = $ddos_protection_requests_mitigate_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_protection_requests_allow_count
+     *
+     * @return int|null
+     */
+    public function getDdosProtectionRequestsAllowCount()
+    {
+        return $this->container['ddos_protection_requests_allow_count'];
+    }
+
+    /**
+     * Sets ddos_protection_requests_allow_count
+     *
+     * @param int|null $ddos_protection_requests_allow_count Number of requests analyzed for DDoS attacks against a customer origin or service, but with no DDoS detected.
+     *
+     * @return self
+     */
+    public function setDdosProtectionRequestsAllowCount($ddos_protection_requests_allow_count)
+    {
+        $this->container['ddos_protection_requests_allow_count'] = $ddos_protection_requests_allow_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_storage_class_a_operations_count
+     *
+     * @return int|null
+     */
+    public function getObjectStorageClassAOperationsCount()
+    {
+        return $this->container['object_storage_class_a_operations_count'];
+    }
+
+    /**
+     * Sets object_storage_class_a_operations_count
+     *
+     * @param int|null $object_storage_class_a_operations_count A count of the number of Class A Object Storage operations.
+     *
+     * @return self
+     */
+    public function setObjectStorageClassAOperationsCount($object_storage_class_a_operations_count)
+    {
+        $this->container['object_storage_class_a_operations_count'] = $object_storage_class_a_operations_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_storage_class_b_operations_count
+     *
+     * @return int|null
+     */
+    public function getObjectStorageClassBOperationsCount()
+    {
+        return $this->container['object_storage_class_b_operations_count'];
+    }
+
+    /**
+     * Sets object_storage_class_b_operations_count
+     *
+     * @param int|null $object_storage_class_b_operations_count A count of the number of Class B Object Storage operations.
+     *
+     * @return self
+     */
+    public function setObjectStorageClassBOperationsCount($object_storage_class_b_operations_count)
+    {
+        $this->container['object_storage_class_b_operations_count'] = $object_storage_class_b_operations_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_requests
+     *
+     * @return int|null
+     */
+    public function getAiaRequests()
+    {
+        return $this->container['aia_requests'];
+    }
+
+    /**
+     * Sets aia_requests
+     *
+     * @param int|null $aia_requests Number of requests received by AI Accelerator.
+     *
+     * @return self
+     */
+    public function setAiaRequests($aia_requests)
+    {
+        $this->container['aia_requests'] = $aia_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_1xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus1xx()
+    {
+        return $this->container['aia_status_1xx'];
+    }
+
+    /**
+     * Sets aia_status_1xx
+     *
+     * @param int|null $aia_status_1xx Number of \"Informational\" category status codes received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus1xx($aia_status_1xx)
+    {
+        $this->container['aia_status_1xx'] = $aia_status_1xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_2xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus2xx()
+    {
+        return $this->container['aia_status_2xx'];
+    }
+
+    /**
+     * Sets aia_status_2xx
+     *
+     * @param int|null $aia_status_2xx Number of \"Success\" status codes received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus2xx($aia_status_2xx)
+    {
+        $this->container['aia_status_2xx'] = $aia_status_2xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_3xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus3xx()
+    {
+        return $this->container['aia_status_3xx'];
+    }
+
+    /**
+     * Sets aia_status_3xx
+     *
+     * @param int|null $aia_status_3xx Number of \"Redirection\" received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus3xx($aia_status_3xx)
+    {
+        $this->container['aia_status_3xx'] = $aia_status_3xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_4xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus4xx()
+    {
+        return $this->container['aia_status_4xx'];
+    }
+
+    /**
+     * Sets aia_status_4xx
+     *
+     * @param int|null $aia_status_4xx Number of \"Client Error\" received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus4xx($aia_status_4xx)
+    {
+        $this->container['aia_status_4xx'] = $aia_status_4xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_status_5xx
+     *
+     * @return int|null
+     */
+    public function getAiaStatus5xx()
+    {
+        return $this->container['aia_status_5xx'];
+    }
+
+    /**
+     * Sets aia_status_5xx
+     *
+     * @param int|null $aia_status_5xx Number of \"Server Error\" received from AI provider.
+     *
+     * @return self
+     */
+    public function setAiaStatus5xx($aia_status_5xx)
+    {
+        $this->container['aia_status_5xx'] = $aia_status_5xx;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_response_usage_tokens
+     *
+     * @return int|null
+     */
+    public function getAiaResponseUsageTokens()
+    {
+        return $this->container['aia_response_usage_tokens'];
+    }
+
+    /**
+     * Sets aia_response_usage_tokens
+     *
+     * @param int|null $aia_response_usage_tokens The usage tokens associated with the response returned from the AI Accelerator cache.
+     *
+     * @return self
+     */
+    public function setAiaResponseUsageTokens($aia_response_usage_tokens)
+    {
+        $this->container['aia_response_usage_tokens'] = $aia_response_usage_tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_origin_usage_tokens
+     *
+     * @return int|null
+     */
+    public function getAiaOriginUsageTokens()
+    {
+        return $this->container['aia_origin_usage_tokens'];
+    }
+
+    /**
+     * Sets aia_origin_usage_tokens
+     *
+     * @param int|null $aia_origin_usage_tokens The number of usage tokens reported by the request to the origin from AI Accelerator.
+     *
+     * @return self
+     */
+    public function setAiaOriginUsageTokens($aia_origin_usage_tokens)
+    {
+        $this->container['aia_origin_usage_tokens'] = $aia_origin_usage_tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets aia_estimated_time_saved_ms
+     *
+     * @return int|null
+     */
+    public function getAiaEstimatedTimeSavedMs()
+    {
+        return $this->container['aia_estimated_time_saved_ms'];
+    }
+
+    /**
+     * Sets aia_estimated_time_saved_ms
+     *
+     * @param int|null $aia_estimated_time_saved_ms The estimated amount of time saved by responses served from the AI Accelerator semantic cache.
+     *
+     * @return self
+     */
+    public function setAiaEstimatedTimeSavedMs($aia_estimated_time_saved_ms)
+    {
+        $this->container['aia_estimated_time_saved_ms'] = $aia_estimated_time_saved_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_collapse_usable_count
+     *
+     * @return int|null
+     */
+    public function getRequestCollapseUsableCount()
+    {
+        return $this->container['request_collapse_usable_count'];
+    }
+
+    /**
+     * Sets request_collapse_usable_count
+     *
+     * @param int|null $request_collapse_usable_count Number of requests that were collapsed and satisfied by a usable cache object.
+     *
+     * @return self
+     */
+    public function setRequestCollapseUsableCount($request_collapse_usable_count)
+    {
+        $this->container['request_collapse_usable_count'] = $request_collapse_usable_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_collapse_unusable_count
+     *
+     * @return int|null
+     */
+    public function getRequestCollapseUnusableCount()
+    {
+        return $this->container['request_collapse_unusable_count'];
+    }
+
+    /**
+     * Sets request_collapse_unusable_count
+     *
+     * @param int|null $request_collapse_unusable_count Number of requests that were collapsed and unable to be satisfied by the resulting cache object.
+     *
+     * @return self
+     */
+    public function setRequestCollapseUnusableCount($request_collapse_unusable_count)
+    {
+        $this->container['request_collapse_unusable_count'] = $request_collapse_unusable_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_cache_operations_count
+     *
+     * @return int|null
+     */
+    public function getComputeCacheOperationsCount()
+    {
+        return $this->container['compute_cache_operations_count'];
+    }
+
+    /**
+     * Sets compute_cache_operations_count
+     *
+     * @param int|null $compute_cache_operations_count Number of cache operations executed by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeCacheOperationsCount($compute_cache_operations_count)
+    {
+        $this->container['compute_cache_operations_count'] = $compute_cache_operations_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_total_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsTotalCount()
+    {
+        return $this->container['ngwaf_requests_total_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_total_count
+     *
+     * @param int|null $ngwaf_requests_total_count Total number of Next-Gen WAF (Edge WAF & Core WAF) requests.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsTotalCount($ngwaf_requests_total_count)
+    {
+        $this->container['ngwaf_requests_total_count'] = $ngwaf_requests_total_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_unknown_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsUnknownCount()
+    {
+        return $this->container['ngwaf_requests_unknown_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_unknown_count
+     *
+     * @param int|null $ngwaf_requests_unknown_count Count of Edge WAF requests with an unknown outcome.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsUnknownCount($ngwaf_requests_unknown_count)
+    {
+        $this->container['ngwaf_requests_unknown_count'] = $ngwaf_requests_unknown_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_allowed_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsAllowedCount()
+    {
+        return $this->container['ngwaf_requests_allowed_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_allowed_count
+     *
+     * @param int|null $ngwaf_requests_allowed_count Count of Next-Gen WAF (Edge WAF & Core WAF) requests allowed.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsAllowedCount($ngwaf_requests_allowed_count)
+    {
+        $this->container['ngwaf_requests_allowed_count'] = $ngwaf_requests_allowed_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_logged_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsLoggedCount()
+    {
+        return $this->container['ngwaf_requests_logged_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_logged_count
+     *
+     * @param int|null $ngwaf_requests_logged_count Count of Edge WAF requests logged.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsLoggedCount($ngwaf_requests_logged_count)
+    {
+        $this->container['ngwaf_requests_logged_count'] = $ngwaf_requests_logged_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_blocked_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsBlockedCount()
+    {
+        return $this->container['ngwaf_requests_blocked_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_blocked_count
+     *
+     * @param int|null $ngwaf_requests_blocked_count Count of Next-Gen WAF (Edge WAF & Core WAF) requests blocked.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsBlockedCount($ngwaf_requests_blocked_count)
+    {
+        $this->container['ngwaf_requests_blocked_count'] = $ngwaf_requests_blocked_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_timeout_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsTimeoutCount()
+    {
+        return $this->container['ngwaf_requests_timeout_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_timeout_count
+     *
+     * @param int|null $ngwaf_requests_timeout_count Count of Edge WAF requests timed outcome.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsTimeoutCount($ngwaf_requests_timeout_count)
+    {
+        $this->container['ngwaf_requests_timeout_count'] = $ngwaf_requests_timeout_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_requests_challenged_count
+     *
+     * @return int|null
+     */
+    public function getNgwafRequestsChallengedCount()
+    {
+        return $this->container['ngwaf_requests_challenged_count'];
+    }
+
+    /**
+     * Sets ngwaf_requests_challenged_count
+     *
+     * @param int|null $ngwaf_requests_challenged_count Count of Edge WAF requests challenged.
+     *
+     * @return self
+     */
+    public function setNgwafRequestsChallengedCount($ngwaf_requests_challenged_count)
+    {
+        $this->container['ngwaf_requests_challenged_count'] = $ngwaf_requests_challenged_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets api_discovery_requests_count
+     *
+     * @return int|null
+     */
+    public function getApiDiscoveryRequestsCount()
+    {
+        return $this->container['api_discovery_requests_count'];
+    }
+
+    /**
+     * Sets api_discovery_requests_count
+     *
+     * @param int|null $api_discovery_requests_count Number of requests processed by the API Discovery engine.
+     *
+     * @return self
+     */
+    public function setApiDiscoveryRequestsCount($api_discovery_requests_count)
+    {
+        $this->container['api_discovery_requests_count'] = $api_discovery_requests_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_103
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus103()
+    {
+        return $this->container['compute_resp_status_103'];
+    }
+
+    /**
+     * Sets compute_resp_status_103
+     *
+     * @param int|null $compute_resp_status_103 Number of responses delivered with status code 103 (Early Hints) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus103($compute_resp_status_103)
+    {
+        $this->container['compute_resp_status_103'] = $compute_resp_status_103;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_200
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus200()
+    {
+        return $this->container['compute_resp_status_200'];
+    }
+
+    /**
+     * Sets compute_resp_status_200
+     *
+     * @param int|null $compute_resp_status_200 Number of responses delivered with status code 200 (Success) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus200($compute_resp_status_200)
+    {
+        $this->container['compute_resp_status_200'] = $compute_resp_status_200;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_204
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus204()
+    {
+        return $this->container['compute_resp_status_204'];
+    }
+
+    /**
+     * Sets compute_resp_status_204
+     *
+     * @param int|null $compute_resp_status_204 Number of responses delivered with status code 204 (No Content) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus204($compute_resp_status_204)
+    {
+        $this->container['compute_resp_status_204'] = $compute_resp_status_204;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_206
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus206()
+    {
+        return $this->container['compute_resp_status_206'];
+    }
+
+    /**
+     * Sets compute_resp_status_206
+     *
+     * @param int|null $compute_resp_status_206 Number of responses delivered with status code 206 (Partial Content) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus206($compute_resp_status_206)
+    {
+        $this->container['compute_resp_status_206'] = $compute_resp_status_206;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_301
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus301()
+    {
+        return $this->container['compute_resp_status_301'];
+    }
+
+    /**
+     * Sets compute_resp_status_301
+     *
+     * @param int|null $compute_resp_status_301 Number of responses delivered with status code 301 (Moved Permanently) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus301($compute_resp_status_301)
+    {
+        $this->container['compute_resp_status_301'] = $compute_resp_status_301;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_302
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus302()
+    {
+        return $this->container['compute_resp_status_302'];
+    }
+
+    /**
+     * Sets compute_resp_status_302
+     *
+     * @param int|null $compute_resp_status_302 Number of responses delivered with status code 302 (Found) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus302($compute_resp_status_302)
+    {
+        $this->container['compute_resp_status_302'] = $compute_resp_status_302;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_304
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus304()
+    {
+        return $this->container['compute_resp_status_304'];
+    }
+
+    /**
+     * Sets compute_resp_status_304
+     *
+     * @param int|null $compute_resp_status_304 Number of responses delivered with status code 304 (Not Modified) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus304($compute_resp_status_304)
+    {
+        $this->container['compute_resp_status_304'] = $compute_resp_status_304;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_400
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus400()
+    {
+        return $this->container['compute_resp_status_400'];
+    }
+
+    /**
+     * Sets compute_resp_status_400
+     *
+     * @param int|null $compute_resp_status_400 Number of responses delivered with status code 400 (Bad Request) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus400($compute_resp_status_400)
+    {
+        $this->container['compute_resp_status_400'] = $compute_resp_status_400;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_401
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus401()
+    {
+        return $this->container['compute_resp_status_401'];
+    }
+
+    /**
+     * Sets compute_resp_status_401
+     *
+     * @param int|null $compute_resp_status_401 Number of responses delivered with status code 401 (Unauthorized) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus401($compute_resp_status_401)
+    {
+        $this->container['compute_resp_status_401'] = $compute_resp_status_401;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_403
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus403()
+    {
+        return $this->container['compute_resp_status_403'];
+    }
+
+    /**
+     * Sets compute_resp_status_403
+     *
+     * @param int|null $compute_resp_status_403 Number of responses delivered with status code 403 (Forbidden) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus403($compute_resp_status_403)
+    {
+        $this->container['compute_resp_status_403'] = $compute_resp_status_403;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_404
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus404()
+    {
+        return $this->container['compute_resp_status_404'];
+    }
+
+    /**
+     * Sets compute_resp_status_404
+     *
+     * @param int|null $compute_resp_status_404 Number of responses delivered with status code 404 (Not Found) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus404($compute_resp_status_404)
+    {
+        $this->container['compute_resp_status_404'] = $compute_resp_status_404;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_416
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus416()
+    {
+        return $this->container['compute_resp_status_416'];
+    }
+
+    /**
+     * Sets compute_resp_status_416
+     *
+     * @param int|null $compute_resp_status_416 Number of responses delivered with status code 416 (Range Not Satisfiable) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus416($compute_resp_status_416)
+    {
+        $this->container['compute_resp_status_416'] = $compute_resp_status_416;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_429
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus429()
+    {
+        return $this->container['compute_resp_status_429'];
+    }
+
+    /**
+     * Sets compute_resp_status_429
+     *
+     * @param int|null $compute_resp_status_429 Number of responses delivered with status code 429 (Too Many Requests) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus429($compute_resp_status_429)
+    {
+        $this->container['compute_resp_status_429'] = $compute_resp_status_429;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_500
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus500()
+    {
+        return $this->container['compute_resp_status_500'];
+    }
+
+    /**
+     * Sets compute_resp_status_500
+     *
+     * @param int|null $compute_resp_status_500 Number of responses delivered with status code 500 (Internal Server Error) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus500($compute_resp_status_500)
+    {
+        $this->container['compute_resp_status_500'] = $compute_resp_status_500;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_501
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus501()
+    {
+        return $this->container['compute_resp_status_501'];
+    }
+
+    /**
+     * Sets compute_resp_status_501
+     *
+     * @param int|null $compute_resp_status_501 Number of responses delivered with status code 501 (Not Implemented) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus501($compute_resp_status_501)
+    {
+        $this->container['compute_resp_status_501'] = $compute_resp_status_501;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_502
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus502()
+    {
+        return $this->container['compute_resp_status_502'];
+    }
+
+    /**
+     * Sets compute_resp_status_502
+     *
+     * @param int|null $compute_resp_status_502 Number of responses delivered with status code 502 (Bad Gateway) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus502($compute_resp_status_502)
+    {
+        $this->container['compute_resp_status_502'] = $compute_resp_status_502;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_503
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus503()
+    {
+        return $this->container['compute_resp_status_503'];
+    }
+
+    /**
+     * Sets compute_resp_status_503
+     *
+     * @param int|null $compute_resp_status_503 Number of responses delivered with status code 503 (Service Unavailable) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus503($compute_resp_status_503)
+    {
+        $this->container['compute_resp_status_503'] = $compute_resp_status_503;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_504
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus504()
+    {
+        return $this->container['compute_resp_status_504'];
+    }
+
+    /**
+     * Sets compute_resp_status_504
+     *
+     * @param int|null $compute_resp_status_504 Number of responses delivered with status code 504 (Gateway Timeout) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus504($compute_resp_status_504)
+    {
+        $this->container['compute_resp_status_504'] = $compute_resp_status_504;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_505
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus505()
+    {
+        return $this->container['compute_resp_status_505'];
+    }
+
+    /**
+     * Sets compute_resp_status_505
+     *
+     * @param int|null $compute_resp_status_505 Number of responses delivered with status code 505 (HTTP Version Not Supported) by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus505($compute_resp_status_505)
+    {
+        $this->container['compute_resp_status_505'] = $compute_resp_status_505;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_resp_status_530
+     *
+     * @return int|null
+     */
+    public function getComputeRespStatus530()
+    {
+        return $this->container['compute_resp_status_530'];
+    }
+
+    /**
+     * Sets compute_resp_status_530
+     *
+     * @param int|null $compute_resp_status_530 Number of responses delivered with status code 530 by the Compute platform.
+     *
+     * @return self
+     */
+    public function setComputeRespStatus530($compute_resp_status_530)
+    {
+        $this->container['compute_resp_status_530'] = $compute_resp_status_530;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_compute_requests
+     *
+     * @return int|null
+     */
+    public function getImgoptoComputeRequests()
+    {
+        return $this->container['imgopto_compute_requests'];
+    }
+
+    /**
+     * Sets imgopto_compute_requests
+     *
+     * @param int|null $imgopto_compute_requests The number of Image Optimizer requests made from Compute services.
+     *
+     * @return self
+     */
+    public function setImgoptoComputeRequests($imgopto_compute_requests)
+    {
+        $this->container['imgopto_compute_requests'] = $imgopto_compute_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets dns_billable_responses_count
+     *
+     * @return int|null
+     */
+    public function getDnsBillableResponsesCount()
+    {
+        return $this->container['dns_billable_responses_count'];
+    }
+
+    /**
+     * Sets dns_billable_responses_count
+     *
+     * @param int|null $dns_billable_responses_count Number of billable DNS responses (e.g., A, CNAME).
+     *
+     * @return self
+     */
+    public function setDnsBillableResponsesCount($dns_billable_responses_count)
+    {
+        $this->container['dns_billable_responses_count'] = $dns_billable_responses_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets dns_nonbillable_responses_count
+     *
+     * @return int|null
+     */
+    public function getDnsNonbillableResponsesCount()
+    {
+        return $this->container['dns_nonbillable_responses_count'];
+    }
+
+    /**
+     * Sets dns_nonbillable_responses_count
+     *
+     * @param int|null $dns_nonbillable_responses_count Number of non-billable DNS responses (e.g., NODATA, NXDOMAIN).
+     *
+     * @return self
+     */
+    public function setDnsNonbillableResponsesCount($dns_nonbillable_responses_count)
+    {
+        $this->container['dns_nonbillable_responses_count'] = $dns_nonbillable_responses_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets upgrade
+     *
+     * @return int|null
+     */
+    public function getUpgrade()
+    {
+        return $this->container['upgrade'];
+    }
+
+    /**
+     * Sets upgrade
+     *
+     * @param int|null $upgrade Number of requests that resulted in a WebSocket upgrade.
+     *
+     * @return self
+     */
+    public function setUpgrade($upgrade)
+    {
+        $this->container['upgrade'] = $upgrade;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_bot_analysis_request_count
+     *
+     * @return int|null
+     */
+    public function getNgwafBotAnalysisRequestCount()
+    {
+        return $this->container['ngwaf_bot_analysis_request_count'];
+    }
+
+    /**
+     * Sets ngwaf_bot_analysis_request_count
+     *
+     * @param int|null $ngwaf_bot_analysis_request_count Count of Next-Gen WAF Bot Management requests.
+     *
+     * @return self
+     */
+    public function setNgwafBotAnalysisRequestCount($ngwaf_bot_analysis_request_count)
+    {
+        $this->container['ngwaf_bot_analysis_request_count'] = $ngwaf_bot_analysis_request_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_avif_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoAvifCount()
+    {
+        return $this->container['imgopto_avif_count'];
+    }
+
+    /**
+     * Sets imgopto_avif_count
+     *
+     * @param int|null $imgopto_avif_count Count of AVIF images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoAvifCount($imgopto_avif_count)
+    {
+        $this->container['imgopto_avif_count'] = $imgopto_avif_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_jpeg_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoJpegCount()
+    {
+        return $this->container['imgopto_jpeg_count'];
+    }
+
+    /**
+     * Sets imgopto_jpeg_count
+     *
+     * @param int|null $imgopto_jpeg_count Count of JPEG images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoJpegCount($imgopto_jpeg_count)
+    {
+        $this->container['imgopto_jpeg_count'] = $imgopto_jpeg_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_png_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoPngCount()
+    {
+        return $this->container['imgopto_png_count'];
+    }
+
+    /**
+     * Sets imgopto_png_count
+     *
+     * @param int|null $imgopto_png_count Count of PNG images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoPngCount($imgopto_png_count)
+    {
+        $this->container['imgopto_png_count'] = $imgopto_png_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_gif_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoGifCount()
+    {
+        return $this->container['imgopto_gif_count'];
+    }
+
+    /**
+     * Sets imgopto_gif_count
+     *
+     * @param int|null $imgopto_gif_count Count of GIF images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoGifCount($imgopto_gif_count)
+    {
+        $this->container['imgopto_gif_count'] = $imgopto_gif_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_webp_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoWebpCount()
+    {
+        return $this->container['imgopto_webp_count'];
+    }
+
+    /**
+     * Sets imgopto_webp_count
+     *
+     * @param int|null $imgopto_webp_count Count of WebP images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoWebpCount($imgopto_webp_count)
+    {
+        $this->container['imgopto_webp_count'] = $imgopto_webp_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_jpegxl_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoJpegxlCount()
+    {
+        return $this->container['imgopto_jpegxl_count'];
+    }
+
+    /**
+     * Sets imgopto_jpegxl_count
+     *
+     * @param int|null $imgopto_jpegxl_count Count of JPEGXL images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoJpegxlCount($imgopto_jpegxl_count)
+    {
+        $this->container['imgopto_jpegxl_count'] = $imgopto_jpegxl_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_svg_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoSvgCount()
+    {
+        return $this->container['imgopto_svg_count'];
+    }
+
+    /**
+     * Sets imgopto_svg_count
+     *
+     * @param int|null $imgopto_svg_count Count of SVG images delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoSvgCount($imgopto_svg_count)
+    {
+        $this->container['imgopto_svg_count'] = $imgopto_svg_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets imgopto_mp4_count
+     *
+     * @return int|null
+     */
+    public function getImgoptoMp4Count()
+    {
+        return $this->container['imgopto_mp4_count'];
+    }
+
+    /**
+     * Sets imgopto_mp4_count
+     *
+     * @param int|null $imgopto_mp4_count Count of MP4s delivered to end user by Image Optimizer.
+     *
+     * @return self
+     */
+    public function setImgoptoMp4Count($imgopto_mp4_count)
+    {
+        $this->container['imgopto_mp4_count'] = $imgopto_mp4_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_resource_limits_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceResourceLimitsError()
+    {
+        return $this->container['compute_service_resource_limits_error'];
+    }
+
+    /**
+     * Sets compute_service_resource_limits_error
+     *
+     * @param int|null $compute_service_resource_limits_error Aggregate of fatal errors caused by exceeding allocated resource limits, specifically runtime duration, vCPU usage, and heap memory limits.
+     *
+     * @return self
+     */
+    public function setComputeServiceResourceLimitsError($compute_service_resource_limits_error)
+    {
+        $this->container['compute_service_resource_limits_error'] = $compute_service_resource_limits_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_runtime_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceRuntimeError()
+    {
+        return $this->container['compute_service_runtime_error'];
+    }
+
+    /**
+     * Sets compute_service_runtime_error
+     *
+     * @param int|null $compute_service_runtime_error Fatal errors caused by service logic faults, including stack overflows, unreachable code traps, illegal memory access, or attempts to send multiple responses.
+     *
+     * @return self
+     */
+    public function setComputeServiceRuntimeError($compute_service_runtime_error)
+    {
+        $this->container['compute_service_runtime_error'] = $compute_service_runtime_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_chain_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceChainError()
+    {
+        return $this->container['compute_service_chain_error'];
+    }
+
+    /**
+     * Sets compute_service_chain_error
+     *
+     * @param int|null $compute_service_chain_error Fatal errors caused by the service path exceeding hop or service limits, or where a forwarding loop is detected via CDN-Loop headers.
+     *
+     * @return self
+     */
+    public function setComputeServiceChainError($compute_service_chain_error)
+    {
+        $this->container['compute_service_chain_error'] = $compute_service_chain_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_platform_internal_error
+     *
+     * @return int|null
+     */
+    public function getComputePlatformInternalError()
+    {
+        return $this->container['compute_platform_internal_error'];
+    }
+
+    /**
+     * Sets compute_platform_internal_error
+     *
+     * @param int|null $compute_platform_internal_error Fatal errors caused by internal errors in Fastly’s Compute platform.
+     *
+     * @return self
+     */
+    public function setComputePlatformInternalError($compute_platform_internal_error)
+    {
+        $this->container['compute_platform_internal_error'] = $compute_platform_internal_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_timeout_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceTimeoutError()
+    {
+        return $this->container['compute_service_timeout_error'];
+    }
+
+    /**
+     * Sets compute_service_timeout_error
+     *
+     * @param int|null $compute_service_timeout_error Fatal errors caused by exceeding the per-request runtime limit.
+     *
+     * @return self
+     */
+    public function setComputeServiceTimeoutError($compute_service_timeout_error)
+    {
+        $this->container['compute_service_timeout_error'] = $compute_service_timeout_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_vcpu_exceeded_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceVcpuExceededError()
+    {
+        return $this->container['compute_service_vcpu_exceeded_error'];
+    }
+
+    /**
+     * Sets compute_service_vcpu_exceeded_error
+     *
+     * @param int|null $compute_service_vcpu_exceeded_error Fatal errors caused by exceeding the per-request vCPU time limit.
+     *
+     * @return self
+     */
+    public function setComputeServiceVcpuExceededError($compute_service_vcpu_exceeded_error)
+    {
+        $this->container['compute_service_vcpu_exceeded_error'] = $compute_service_vcpu_exceeded_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_limits_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceLimitsError()
+    {
+        return $this->container['compute_service_limits_error'];
+    }
+
+    /**
+     * Sets compute_service_limits_error
+     *
+     * @param int|null $compute_service_limits_error Non-fatal errors caused by attempts to exceed defined operational limits, such as simultaneous backend requests or cache transactions.
+     *
+     * @return self
+     */
+    public function setComputeServiceLimitsError($compute_service_limits_error)
+    {
+        $this->container['compute_service_limits_error'] = $compute_service_limits_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_platform_invalid_request_error
+     *
+     * @return int|null
+     */
+    public function getComputePlatformInvalidRequestError()
+    {
+        return $this->container['compute_platform_invalid_request_error'];
+    }
+
+    /**
+     * Sets compute_platform_invalid_request_error
+     *
+     * @param int|null $compute_platform_invalid_request_error Fatal errors caused by unprocessable requests to the service, such as requests with malformed CDN-Loop headers or invalid purge credentials.
+     *
+     * @return self
+     */
+    public function setComputePlatformInvalidRequestError($compute_platform_invalid_request_error)
+    {
+        $this->container['compute_platform_invalid_request_error'] = $compute_platform_invalid_request_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_sandboxes
+     *
+     * @return int|null
+     */
+    public function getComputeSandboxes()
+    {
+        return $this->container['compute_sandboxes'];
+    }
+
+    /**
+     * Sets compute_sandboxes
+     *
+     * @param int|null $compute_sandboxes Number of WebAssembly (Wasm) sandboxes created.
+     *
+     * @return self
+     */
+    public function setComputeSandboxes($compute_sandboxes)
+    {
+        $this->container['compute_sandboxes'] = $compute_sandboxes;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_requests_total_count
+     *
+     * @return int|null
+     */
+    public function getBotRequestsTotalCount()
+    {
+        return $this->container['bot_requests_total_count'];
+    }
+
+    /**
+     * Sets bot_requests_total_count
+     *
+     * @param int|null $bot_requests_total_count Total number of Bot Management requests across all deployments.
+     *
+     * @return self
+     */
+    public function setBotRequestsTotalCount($bot_requests_total_count)
+    {
+        $this->container['bot_requests_total_count'] = $bot_requests_total_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_analyzed_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsAnalyzedCount()
+    {
+        return $this->container['bot_edge_requests_analyzed_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_analyzed_count
+     *
+     * @param int|null $bot_edge_requests_analyzed_count Count of edge requests where bot detection analysis was performed.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsAnalyzedCount($bot_edge_requests_analyzed_count)
+    {
+        $this->container['bot_edge_requests_analyzed_count'] = $bot_edge_requests_analyzed_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_detected_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsDetectedCount()
+    {
+        return $this->container['bot_edge_requests_detected_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_detected_count
+     *
+     * @param int|null $bot_edge_requests_detected_count Count of edge requests where a bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsDetectedCount($bot_edge_requests_detected_count)
+    {
+        $this->container['bot_edge_requests_detected_count'] = $bot_edge_requests_detected_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_verified_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsVerifiedCount()
+    {
+        return $this->container['bot_edge_requests_verified_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_verified_count
+     *
+     * @param int|null $bot_edge_requests_verified_count Count of edge requests where a verified bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsVerifiedCount($bot_edge_requests_verified_count)
+    {
+        $this->container['bot_edge_requests_verified_count'] = $bot_edge_requests_verified_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_ai_crawler_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsAiCrawlerCount()
+    {
+        return $this->container['bot_edge_requests_ai_crawler_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_ai_crawler_count
+     *
+     * @param int|null $bot_edge_requests_ai_crawler_count Count of edge requests where an AI crawler was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsAiCrawlerCount($bot_edge_requests_ai_crawler_count)
+    {
+        $this->container['bot_edge_requests_ai_crawler_count'] = $bot_edge_requests_ai_crawler_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_ai_fetcher_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsAiFetcherCount()
+    {
+        return $this->container['bot_edge_requests_ai_fetcher_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_ai_fetcher_count
+     *
+     * @param int|null $bot_edge_requests_ai_fetcher_count Count of edge requests where an AI fetcher was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsAiFetcherCount($bot_edge_requests_ai_fetcher_count)
+    {
+        $this->container['bot_edge_requests_ai_fetcher_count'] = $bot_edge_requests_ai_fetcher_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_accessibility_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsAccessibilityCount()
+    {
+        return $this->container['bot_edge_requests_accessibility_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_accessibility_count
+     *
+     * @param int|null $bot_edge_requests_accessibility_count Count of edge requests where an accessibility bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsAccessibilityCount($bot_edge_requests_accessibility_count)
+    {
+        $this->container['bot_edge_requests_accessibility_count'] = $bot_edge_requests_accessibility_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_content_fetcher_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsContentFetcherCount()
+    {
+        return $this->container['bot_edge_requests_content_fetcher_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_content_fetcher_count
+     *
+     * @param int|null $bot_edge_requests_content_fetcher_count Count of edge requests where a content fetcher was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsContentFetcherCount($bot_edge_requests_content_fetcher_count)
+    {
+        $this->container['bot_edge_requests_content_fetcher_count'] = $bot_edge_requests_content_fetcher_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_monitoring_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsMonitoringCount()
+    {
+        return $this->container['bot_edge_requests_monitoring_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_monitoring_count
+     *
+     * @param int|null $bot_edge_requests_monitoring_count Count of edge requests where a monitoring and site tool was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsMonitoringCount($bot_edge_requests_monitoring_count)
+    {
+        $this->container['bot_edge_requests_monitoring_count'] = $bot_edge_requests_monitoring_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_online_marketing_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsOnlineMarketingCount()
+    {
+        return $this->container['bot_edge_requests_online_marketing_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_online_marketing_count
+     *
+     * @param int|null $bot_edge_requests_online_marketing_count Count of edge requests where an online marketing bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsOnlineMarketingCount($bot_edge_requests_online_marketing_count)
+    {
+        $this->container['bot_edge_requests_online_marketing_count'] = $bot_edge_requests_online_marketing_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_page_preview_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsPagePreviewCount()
+    {
+        return $this->container['bot_edge_requests_page_preview_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_page_preview_count
+     *
+     * @param int|null $bot_edge_requests_page_preview_count Count of edge requests where a page preview bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsPagePreviewCount($bot_edge_requests_page_preview_count)
+    {
+        $this->container['bot_edge_requests_page_preview_count'] = $bot_edge_requests_page_preview_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_platform_integrations_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsPlatformIntegrationsCount()
+    {
+        return $this->container['bot_edge_requests_platform_integrations_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_platform_integrations_count
+     *
+     * @param int|null $bot_edge_requests_platform_integrations_count Count of edge requests where a platform integration was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsPlatformIntegrationsCount($bot_edge_requests_platform_integrations_count)
+    {
+        $this->container['bot_edge_requests_platform_integrations_count'] = $bot_edge_requests_platform_integrations_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_research_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsResearchCount()
+    {
+        return $this->container['bot_edge_requests_research_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_research_count
+     *
+     * @param int|null $bot_edge_requests_research_count Count of edge requests where a research bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsResearchCount($bot_edge_requests_research_count)
+    {
+        $this->container['bot_edge_requests_research_count'] = $bot_edge_requests_research_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_search_engine_crawler_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsSearchEngineCrawlerCount()
+    {
+        return $this->container['bot_edge_requests_search_engine_crawler_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_search_engine_crawler_count
+     *
+     * @param int|null $bot_edge_requests_search_engine_crawler_count Count of edge requests where a search engine crawler was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsSearchEngineCrawlerCount($bot_edge_requests_search_engine_crawler_count)
+    {
+        $this->container['bot_edge_requests_search_engine_crawler_count'] = $bot_edge_requests_search_engine_crawler_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_search_engine_optimization_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsSearchEngineOptimizationCount()
+    {
+        return $this->container['bot_edge_requests_search_engine_optimization_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_search_engine_optimization_count
+     *
+     * @param int|null $bot_edge_requests_search_engine_optimization_count Count of edge requests where a search engine optimization bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsSearchEngineOptimizationCount($bot_edge_requests_search_engine_optimization_count)
+    {
+        $this->container['bot_edge_requests_search_engine_optimization_count'] = $bot_edge_requests_search_engine_optimization_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_security_tools_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsSecurityToolsCount()
+    {
+        return $this->container['bot_edge_requests_security_tools_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_security_tools_count
+     *
+     * @param int|null $bot_edge_requests_security_tools_count Count of edge requests where a security tool was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsSecurityToolsCount($bot_edge_requests_security_tools_count)
+    {
+        $this->container['bot_edge_requests_security_tools_count'] = $bot_edge_requests_security_tools_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_handoff
+     *
+     * @return int|null
+     */
+    public function getComputeHandoff()
+    {
+        return $this->container['compute_handoff'];
+    }
+
+    /**
+     * Sets compute_handoff
+     *
+     * @param int|null $compute_handoff The number of times Compute has handed off a request to the Fanout proxy or WebSocket proxy.
+     *
+     * @return self
+     */
+    public function setComputeHandoff($compute_handoff)
+    {
+        $this->container['compute_handoff'] = $compute_handoff;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_dns_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqDnsError()
+    {
+        return $this->container['compute_service_bereq_dns_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_dns_error
+     *
+     * @param int|null $compute_service_bereq_dns_error Number of backend requests from a Compute service that failed during DNS resolution.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqDnsError($compute_service_bereq_dns_error)
+    {
+        $this->container['compute_service_bereq_dns_error'] = $compute_service_bereq_dns_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_conn_timeout_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqConnTimeoutError()
+    {
+        return $this->container['compute_service_bereq_conn_timeout_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_conn_timeout_error
+     *
+     * @param int|null $compute_service_bereq_conn_timeout_error Number of backend requests from a Compute service where the connection to the origin timed out before being established.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqConnTimeoutError($compute_service_bereq_conn_timeout_error)
+    {
+        $this->container['compute_service_bereq_conn_timeout_error'] = $compute_service_bereq_conn_timeout_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_conn_refused_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqConnRefusedError()
+    {
+        return $this->container['compute_service_bereq_conn_refused_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_conn_refused_error
+     *
+     * @param int|null $compute_service_bereq_conn_refused_error Number of backend requests from a Compute service where the origin actively refused the connection.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqConnRefusedError($compute_service_bereq_conn_refused_error)
+    {
+        $this->container['compute_service_bereq_conn_refused_error'] = $compute_service_bereq_conn_refused_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_conn_other_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqConnOtherError()
+    {
+        return $this->container['compute_service_bereq_conn_other_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_conn_other_error
+     *
+     * @param int|null $compute_service_bereq_conn_other_error Number of backend requests from a Compute service that failed due to a connection error not classified as a timeout or refusal.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqConnOtherError($compute_service_bereq_conn_other_error)
+    {
+        $this->container['compute_service_bereq_conn_other_error'] = $compute_service_bereq_conn_other_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_tls_server_cert_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqTlsServerCertError()
+    {
+        return $this->container['compute_service_bereq_tls_server_cert_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_tls_server_cert_error
+     *
+     * @param int|null $compute_service_bereq_tls_server_cert_error Number of backend requests from a Compute service that failed due to a TLS certificate validation error (e.g., expired, untrusted CA, hostname mismatch).
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqTlsServerCertError($compute_service_bereq_tls_server_cert_error)
+    {
+        $this->container['compute_service_bereq_tls_server_cert_error'] = $compute_service_bereq_tls_server_cert_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_tls_other_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqTlsOtherError()
+    {
+        return $this->container['compute_service_bereq_tls_other_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_tls_other_error
+     *
+     * @param int|null $compute_service_bereq_tls_other_error Number of backend requests from a Compute service that failed due to a TLS error not classified as a certificate error.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqTlsOtherError($compute_service_bereq_tls_other_error)
+    {
+        $this->container['compute_service_bereq_tls_other_error'] = $compute_service_bereq_tls_other_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_proto_v1_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpProtoV1Error()
+    {
+        return $this->container['compute_service_bereq_http_proto_v1_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_proto_v1_error
+     *
+     * @param int|null $compute_service_bereq_http_proto_v1_error Number of backend requests from a Compute service that failed due to an HTTP/1.x protocol violation after the request was transmitted.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpProtoV1Error($compute_service_bereq_http_proto_v1_error)
+    {
+        $this->container['compute_service_bereq_http_proto_v1_error'] = $compute_service_bereq_http_proto_v1_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_proto_v2_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpProtoV2Error()
+    {
+        return $this->container['compute_service_bereq_http_proto_v2_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_proto_v2_error
+     *
+     * @param int|null $compute_service_bereq_http_proto_v2_error Number of backend requests from a Compute service that failed due to an HTTP/2 protocol error, typically a `RST_STREAM` or `GO_AWAY` from the origin.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpProtoV2Error($compute_service_bereq_http_proto_v2_error)
+    {
+        $this->container['compute_service_bereq_http_proto_v2_error'] = $compute_service_bereq_http_proto_v2_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_incomplete_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpIncompleteError()
+    {
+        return $this->container['compute_service_bereq_http_incomplete_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_incomplete_error
+     *
+     * @param int|null $compute_service_bereq_http_incomplete_error Number of backend requests from a Compute service where the origin sent an incomplete HTTP response.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpIncompleteError($compute_service_bereq_http_incomplete_error)
+    {
+        $this->container['compute_service_bereq_http_incomplete_error'] = $compute_service_bereq_http_incomplete_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_timeout_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpTimeoutError()
+    {
+        return $this->container['compute_service_bereq_http_timeout_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_timeout_error
+     *
+     * @param int|null $compute_service_bereq_http_timeout_error Number of backend requests from a Compute service where the origin did not respond within the configured timeout period.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpTimeoutError($compute_service_bereq_http_timeout_error)
+    {
+        $this->container['compute_service_bereq_http_timeout_error'] = $compute_service_bereq_http_timeout_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_other_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpOtherError()
+    {
+        return $this->container['compute_service_bereq_http_other_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_other_error
+     *
+     * @param int|null $compute_service_bereq_http_other_error Number of backend requests from a Compute service that failed due to an HTTP-level error not classified in any category.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpOtherError($compute_service_bereq_http_other_error)
+    {
+        $this->container['compute_service_bereq_http_other_error'] = $compute_service_bereq_http_other_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_other_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqOtherError()
+    {
+        return $this->container['compute_service_bereq_other_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_other_error
+     *
+     * @param int|null $compute_service_bereq_other_error Number of backend requests from a Compute service that failed due to an error not classified into the DNS, connection, TLS, or HTTP categories.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqOtherError($compute_service_bereq_other_error)
+    {
+        $this->container['compute_service_bereq_other_error'] = $compute_service_bereq_other_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_5xx_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereq5xxError()
+    {
+        return $this->container['compute_service_bereq_5xx_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_5xx_error
+     *
+     * @param int|null $compute_service_bereq_5xx_error Number of backend requests from a Compute service where the origin returned a 5xx status code.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereq5xxError($compute_service_bereq_5xx_error)
+    {
+        $this->container['compute_service_bereq_5xx_error'] = $compute_service_bereq_5xx_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_conn_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqConnError()
+    {
+        return $this->container['compute_service_bereq_conn_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_conn_error
+     *
+     * @param int|null $compute_service_bereq_conn_error Number of backend requests from a Compute service that failed at the TCP connection level. Sum of `compute_service_bereq_conn_timeout_error`, `compute_service_bereq_conn_refused_error`, and `compute_service_bereq_conn_other_error`.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqConnError($compute_service_bereq_conn_error)
+    {
+        $this->container['compute_service_bereq_conn_error'] = $compute_service_bereq_conn_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_tls_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqTlsError()
+    {
+        return $this->container['compute_service_bereq_tls_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_tls_error
+     *
+     * @param int|null $compute_service_bereq_tls_error Number of backend requests from a Compute service that failed during the TLS handshake or session with the origin. Sum of `compute_service_bereq_tls_server_cert_error` and `compute_service_bereq_tls_other_error`.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqTlsError($compute_service_bereq_tls_error)
+    {
+        $this->container['compute_service_bereq_tls_error'] = $compute_service_bereq_tls_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets compute_service_bereq_http_error
+     *
+     * @return int|null
+     */
+    public function getComputeServiceBereqHttpError()
+    {
+        return $this->container['compute_service_bereq_http_error'];
+    }
+
+    /**
+     * Sets compute_service_bereq_http_error
+     *
+     * @param int|null $compute_service_bereq_http_error Number of backend requests from a Compute service that failed at the HTTP protocol level. Sum of `compute_service_bereq_http_proto_v1_error`, `compute_service_bereq_http_proto_v2_error`, `compute_service_bereq_http_incomplete_error`, `compute_service_bereq_http_timeout_error`, and `compute_service_bereq_http_other_error`.
+     *
+     * @return self
+     */
+    public function setComputeServiceBereqHttpError($compute_service_bereq_http_error)
+    {
+        $this->container['compute_service_bereq_http_error'] = $compute_service_bereq_http_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_pats_issued
+     *
+     * @return int|null
+     */
+    public function getBotChallengesPatsIssued()
+    {
+        return $this->container['bot_challenges_pats_issued'];
+    }
+
+    /**
+     * Sets bot_challenges_pats_issued
+     *
+     * @param int|null $bot_challenges_pats_issued Number of Private Access Token challenges issued.
+     *
+     * @return self
+     */
+    public function setBotChallengesPatsIssued($bot_challenges_pats_issued)
+    {
+        $this->container['bot_challenges_pats_issued'] = $bot_challenges_pats_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_challenges_pats_succeeded
+     *
+     * @return int|null
+     */
+    public function getBotChallengesPatsSucceeded()
+    {
+        return $this->container['bot_challenges_pats_succeeded'];
+    }
+
+    /**
+     * Sets bot_challenges_pats_succeeded
+     *
+     * @param int|null $bot_challenges_pats_succeeded Number of successful Private Access Token challenge solutions processed.
+     *
+     * @return self
+     */
+    public function setBotChallengesPatsSucceeded($bot_challenges_pats_succeeded)
+    {
+        $this->container['bot_challenges_pats_succeeded'] = $bot_challenges_pats_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_edge_requests_headless_count
+     *
+     * @return int|null
+     */
+    public function getBotEdgeRequestsHeadlessCount()
+    {
+        return $this->container['bot_edge_requests_headless_count'];
+    }
+
+    /**
+     * Sets bot_edge_requests_headless_count
+     *
+     * @param int|null $bot_edge_requests_headless_count Number of edge requests where a headless bot was detected.
+     *
+     * @return self
+     */
+    public function setBotEdgeRequestsHeadlessCount($bot_edge_requests_headless_count)
+    {
+        $this->container['bot_edge_requests_headless_count'] = $bot_edge_requests_headless_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_499
+     *
+     * @return int|null
+     */
+    public function getStatus499()
+    {
+        return $this->container['status_499'];
+    }
+
+    /**
+     * Sets status_499
+     *
+     * @param int|null $status_499 Number of responses sent with status code 499 (Client Disconnected).
+     *
+     * @return self
+     */
+    public function setStatus499($status_499)
+    {
+        $this->container['status_499'] = $status_499;
+
+        return $this;
+    }
+
+    /**
+     * Gets arc_requests
+     *
+     * @return int|null
+     */
+    public function getArcRequests()
+    {
+        return $this->container['arc_requests'];
+    }
+
+    /**
+     * Sets arc_requests
+     *
+     * @param int|null $arc_requests Number of requests received by AI Runtime Control.
+     *
+     * @return self
+     */
+    public function setArcRequests($arc_requests)
+    {
+        $this->container['arc_requests'] = $arc_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_complete_tokens_checked
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeCompleteTokensChecked()
+    {
+        return $this->container['ddos_challenge_complete_tokens_checked'];
+    }
+
+    /**
+     * Sets ddos_challenge_complete_tokens_checked
+     *
+     * @param int|null $ddos_challenge_complete_tokens_checked The number of challenge-complete tokens checked while enforcing DDoS protection rules.
+     *
+     * @return self
+     */
+    public function setDdosChallengeCompleteTokensChecked($ddos_challenge_complete_tokens_checked)
+    {
+        $this->container['ddos_challenge_complete_tokens_checked'] = $ddos_challenge_complete_tokens_checked;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_complete_tokens_passed
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeCompleteTokensPassed()
+    {
+        return $this->container['ddos_challenge_complete_tokens_passed'];
+    }
+
+    /**
+     * Sets ddos_challenge_complete_tokens_passed
+     *
+     * @param int|null $ddos_challenge_complete_tokens_passed The number of challenge-complete tokens that passed validation while enforcing DDoS protection rules.
+     *
+     * @return self
+     */
+    public function setDdosChallengeCompleteTokensPassed($ddos_challenge_complete_tokens_passed)
+    {
+        $this->container['ddos_challenge_complete_tokens_passed'] = $ddos_challenge_complete_tokens_passed;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_complete_tokens_failed
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeCompleteTokensFailed()
+    {
+        return $this->container['ddos_challenge_complete_tokens_failed'];
+    }
+
+    /**
+     * Sets ddos_challenge_complete_tokens_failed
+     *
+     * @param int|null $ddos_challenge_complete_tokens_failed The number of challenge-complete tokens that failed validation while enforcing DDoS protection rules.
+     *
+     * @return self
+     */
+    public function setDdosChallengeCompleteTokensFailed($ddos_challenge_complete_tokens_failed)
+    {
+        $this->container['ddos_challenge_complete_tokens_failed'] = $ddos_challenge_complete_tokens_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_starts
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeStarts()
+    {
+        return $this->container['ddos_challenge_starts'];
+    }
+
+    /**
+     * Sets ddos_challenge_starts
+     *
+     * @param int|null $ddos_challenge_starts The number of challenge-start tokens created while enforcing DDoS protection rules.
+     *
+     * @return self
+     */
+    public function setDdosChallengeStarts($ddos_challenge_starts)
+    {
+        $this->container['ddos_challenge_starts'] = $ddos_challenge_starts;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenge_complete_tokens_issued
+     *
+     * @return int|null
+     */
+    public function getDdosChallengeCompleteTokensIssued()
+    {
+        return $this->container['ddos_challenge_complete_tokens_issued'];
+    }
+
+    /**
+     * Sets ddos_challenge_complete_tokens_issued
+     *
+     * @param int|null $ddos_challenge_complete_tokens_issued Number of challenge-complete tokens issued as a result of a DDoS action. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success.
+     *
+     * @return self
+     */
+    public function setDdosChallengeCompleteTokensIssued($ddos_challenge_complete_tokens_issued)
+    {
+        $this->container['ddos_challenge_complete_tokens_issued'] = $ddos_challenge_complete_tokens_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_issued
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesIssued()
+    {
+        return $this->container['ddos_challenges_issued'];
+    }
+
+    /**
+     * Sets ddos_challenges_issued
+     *
+     * @param int|null $ddos_challenges_issued Number of challenges issued from a DDoS action.
+     *
+     * @return self
+     */
+    public function setDdosChallengesIssued($ddos_challenges_issued)
+    {
+        $this->container['ddos_challenges_issued'] = $ddos_challenges_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_succeeded
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesSucceeded()
+    {
+        return $this->container['ddos_challenges_succeeded'];
+    }
+
+    /**
+     * Sets ddos_challenges_succeeded
+     *
+     * @param int|null $ddos_challenges_succeeded Number of successful challenge solutions processed as a result of a DDoS action. For example, a correct CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setDdosChallengesSucceeded($ddos_challenges_succeeded)
+    {
+        $this->container['ddos_challenges_succeeded'] = $ddos_challenges_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_failed
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesFailed()
+    {
+        return $this->container['ddos_challenges_failed'];
+    }
+
+    /**
+     * Sets ddos_challenges_failed
+     *
+     * @param int|null $ddos_challenges_failed Number of failed challenge solutions processed as a result of a DDoS action. For example, an incorrect CAPTCHA solution.
+     *
+     * @return self
+     */
+    public function setDdosChallengesFailed($ddos_challenges_failed)
+    {
+        $this->container['ddos_challenges_failed'] = $ddos_challenges_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_pats_issued
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesPatsIssued()
+    {
+        return $this->container['ddos_challenges_pats_issued'];
+    }
+
+    /**
+     * Sets ddos_challenges_pats_issued
+     *
+     * @param int|null $ddos_challenges_pats_issued Number of Private Access Token challenges issued as a result of a DDoS action.
+     *
+     * @return self
+     */
+    public function setDdosChallengesPatsIssued($ddos_challenges_pats_issued)
+    {
+        $this->container['ddos_challenges_pats_issued'] = $ddos_challenges_pats_issued;
+
+        return $this;
+    }
+
+    /**
+     * Gets ddos_challenges_pats_succeeded
+     *
+     * @return int|null
+     */
+    public function getDdosChallengesPatsSucceeded()
+    {
+        return $this->container['ddos_challenges_pats_succeeded'];
+    }
+
+    /**
+     * Sets ddos_challenges_pats_succeeded
+     *
+     * @param int|null $ddos_challenges_pats_succeeded Number of successful Private Access Token challenge solutions processed as a result of a DDoS action.
+     *
+     * @return self
+     */
+    public function setDdosChallengesPatsSucceeded($ddos_challenges_pats_succeeded)
+    {
+        $this->container['ddos_challenges_pats_succeeded'] = $ddos_challenges_pats_succeeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets csp_pages_gauge
+     *
+     * @return int|null
+     */
+    public function getCspPagesGauge()
+    {
+        return $this->container['csp_pages_gauge'];
+    }
+
+    /**
+     * Sets csp_pages_gauge
+     *
+     * @param int|null $csp_pages_gauge **Gauge.** The number of pages monitored by Content Security Policy.
+     *
+     * @return self
+     */
+    public function setCspPagesGauge($csp_pages_gauge)
+    {
+        $this->container['csp_pages_gauge'] = $csp_pages_gauge;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_account_rules_gauge
+     *
+     * @return int|null
+     */
+    public function getNgwafAccountRulesGauge()
+    {
+        return $this->container['ngwaf_account_rules_gauge'];
+    }
+
+    /**
+     * Sets ngwaf_account_rules_gauge
+     *
+     * @param int|null $ngwaf_account_rules_gauge **Gauge.** The number of Next-Gen WAF rules defined at the account level.
+     *
+     * @return self
+     */
+    public function setNgwafAccountRulesGauge($ngwaf_account_rules_gauge)
+    {
+        $this->container['ngwaf_account_rules_gauge'] = $ngwaf_account_rules_gauge;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_account_workspaces
+     *
+     * @return int|null
+     */
+    public function getNgwafAccountWorkspaces()
+    {
+        return $this->container['ngwaf_account_workspaces'];
+    }
+
+    /**
+     * Sets ngwaf_account_workspaces
+     *
+     * @param int|null $ngwaf_account_workspaces **Gauge.** The number of Next-Gen WAF workspaces in the account.
+     *
+     * @return self
+     */
+    public function setNgwafAccountWorkspaces($ngwaf_account_workspaces)
+    {
+        $this->container['ngwaf_account_workspaces'] = $ngwaf_account_workspaces;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_workspace_rules_gauge
+     *
+     * @return int|null
+     */
+    public function getNgwafWorkspaceRulesGauge()
+    {
+        return $this->container['ngwaf_workspace_rules_gauge'];
+    }
+
+    /**
+     * Sets ngwaf_workspace_rules_gauge
+     *
+     * @param int|null $ngwaf_workspace_rules_gauge **Gauge.** The number of Next-Gen WAF rules defined in a workspace.
+     *
+     * @return self
+     */
+    public function setNgwafWorkspaceRulesGauge($ngwaf_workspace_rules_gauge)
+    {
+        $this->container['ngwaf_workspace_rules_gauge'] = $ngwaf_workspace_rules_gauge;
+
+        return $this;
+    }
+
+    /**
+     * Gets ngwaf_workspace_thresholds_gauge
+     *
+     * @return int|null
+     */
+    public function getNgwafWorkspaceThresholdsGauge()
+    {
+        return $this->container['ngwaf_workspace_thresholds_gauge'];
+    }
+
+    /**
+     * Sets ngwaf_workspace_thresholds_gauge
+     *
+     * @param int|null $ngwaf_workspace_thresholds_gauge **Gauge.** The number of Next-Gen WAF thresholds defined in a workspace.
+     *
+     * @return self
+     */
+    public function setNgwafWorkspaceThresholdsGauge($ngwaf_workspace_thresholds_gauge)
+    {
+        $this->container['ngwaf_workspace_thresholds_gauge'] = $ngwaf_workspace_thresholds_gauge;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_storage_buckets_count
+     *
+     * @return int|null
+     */
+    public function getObjectStorageBucketsCount()
+    {
+        return $this->container['object_storage_buckets_count'];
+    }
+
+    /**
+     * Sets object_storage_buckets_count
+     *
+     * @param int|null $object_storage_buckets_count **Gauge.** The number of Object Storage buckets.
+     *
+     * @return self
+     */
+    public function setObjectStorageBucketsCount($object_storage_buckets_count)
+    {
+        $this->container['object_storage_buckets_count'] = $object_storage_buckets_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_storage_bytes_count
+     *
+     * @return int|null
+     */
+    public function getObjectStorageBytesCount()
+    {
+        return $this->container['object_storage_bytes_count'];
+    }
+
+    /**
+     * Sets object_storage_bytes_count
+     *
+     * @param int|null $object_storage_bytes_count **Gauge.** The number of bytes stored in Object Storage.
+     *
+     * @return self
+     */
+    public function setObjectStorageBytesCount($object_storage_bytes_count)
+    {
+        $this->container['object_storage_bytes_count'] = $object_storage_bytes_count;
 
         return $this;
     }

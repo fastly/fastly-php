@@ -1,6 +1,6 @@
 <?php
 /**
- * AutomationTokenCreateRequestAttributes
+ * BotManagementNotAuthenticatedError
  *
  * PHP version 8.0
  *
@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \Fastly\ObjectSerializer;
 
 /**
- * AutomationTokenCreateRequestAttributes Class Doc Comment
+ * BotManagementNotAuthenticatedError Class Doc Comment
  *
  * @category Class
  * @package  Fastly
@@ -36,7 +36,7 @@ use \Fastly\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
+class BotManagementNotAuthenticatedError implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -45,7 +45,7 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $fastlyModelName = 'automation_token_create_request_attributes';
+    protected static $fastlyModelName = 'bot_management_not_authenticated_error';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -53,12 +53,9 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $fastlyTypes = [
-        'name' => 'string',
-        'role' => 'string',
-        'services' => 'string[]',
-        'scope' => 'string',
-        'expires_at' => '\DateTime',
-        'tls_access' => 'bool'
+        'title' => 'string',
+        'status' => 'int',
+        'detail' => 'string'
     ];
 
     /**
@@ -69,12 +66,9 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $fastlyFormats = [
-        'name' => null,
-        'role' => null,
-        'services' => null,
-        'scope' => null,
-        'expires_at' => 'date-time',
-        'tls_access' => null
+        'title' => null,
+        'status' => null,
+        'detail' => null
     ];
 
     /**
@@ -104,12 +98,9 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'role' => 'role',
-        'services' => 'services',
-        'scope' => 'scope',
-        'expires_at' => 'expires_at',
-        'tls_access' => 'tls_access'
+        'title' => 'title',
+        'status' => 'status',
+        'detail' => 'detail'
     ];
 
     /**
@@ -118,12 +109,9 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'role' => 'setRole',
-        'services' => 'setServices',
-        'scope' => 'setScope',
-        'expires_at' => 'setExpiresAt',
-        'tls_access' => 'setTlsAccess'
+        'title' => 'setTitle',
+        'status' => 'setStatus',
+        'detail' => 'setDetail'
     ];
 
     /**
@@ -132,12 +120,9 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'role' => 'getRole',
-        'services' => 'getServices',
-        'scope' => 'getScope',
-        'expires_at' => 'getExpiresAt',
-        'tls_access' => 'getTlsAccess'
+        'title' => 'getTitle',
+        'status' => 'getStatus',
+        'detail' => 'getDetail'
     ];
 
     /**
@@ -181,40 +166,17 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
         return self::$fastlyModelName;
     }
 
-    const ROLE_ENGINEER = 'engineer';
-    const ROLE_BILLING = 'billing';
-    const ROLE_USER = 'user';
-    const SCOPE__GLOBAL = 'global';
-    const SCOPE_GLOBALREAD = 'global:read';
-    const SCOPE_PURGE_ALL = 'purge_all';
-    const SCOPE_PURGE_SELECT = 'purge_select';
+    const STATUS_401 = 401;
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getRoleAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::ROLE_ENGINEER,
-            self::ROLE_BILLING,
-            self::ROLE_USER,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getScopeAllowableValues()
-    {
-        return [
-            self::SCOPE__GLOBAL,
-            self::SCOPE_GLOBALREAD,
-            self::SCOPE_PURGE_ALL,
-            self::SCOPE_PURGE_SELECT,
+            self::STATUS_401,
         ];
     }
 
@@ -233,12 +195,9 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
      */
     public function __construct(?array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['role'] = $data['role'] ?? null;
-        $this->container['services'] = $data['services'] ?? null;
-        $this->container['scope'] = $data['scope'] ?? 'global';
-        $this->container['expires_at'] = $data['expires_at'] ?? null;
-        $this->container['tls_access'] = $data['tls_access'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['detail'] = $data['detail'] ?? null;
     }
 
     /**
@@ -250,20 +209,17 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getRoleAllowableValues();
-        if (!is_null($this->container['role']) && !in_array($this->container['role'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'role', must be one of '%s'",
-                $this->container['role'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
-
-        $allowedValues = $this->getScopeAllowableValues();
-        if (!is_null($this->container['scope']) && !in_array($this->container['scope'], $allowedValues, true)) {
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'scope', must be one of '%s'",
-                $this->container['scope'],
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -284,165 +240,83 @@ class AutomationTokenCreateRequestAttributes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets name
+     * Gets title
      *
-     * @return string|null
+     * @return string
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->container['name'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets name
+     * Sets title
      *
-     * @param string|null $name name of the token
+     * @param string $title title
      *
      * @return self
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->container['name'] = $name;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets role
+     * Gets status
      *
-     * @return string|null
+     * @return int
      */
-    public function getRole()
+    public function getStatus()
     {
-        return $this->container['role'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets role
+     * Sets status
      *
-     * @param string|null $role role
+     * @param int $status status
      *
      * @return self
      */
-    public function setRole($role)
+    public function setStatus($status)
     {
-        $allowedValues = $this->getRoleAllowableValues();
-        if (!is_null($role) && !in_array($role, $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'role', must be one of '%s'",
-                    $role,
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['role'] = $role;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets services
-     *
-     * @return string[]|null
-     */
-    public function getServices()
-    {
-        return $this->container['services'];
-    }
-
-    /**
-     * Sets services
-     *
-     * @param string[]|null $services List of service ids to limit the token
-     *
-     * @return self
-     */
-    public function setServices($services)
-    {
-        $this->container['services'] = $services;
-
-        return $this;
-    }
-
-    /**
-     * Gets scope
+     * Gets detail
      *
      * @return string|null
      */
-    public function getScope()
+    public function getDetail()
     {
-        return $this->container['scope'];
+        return $this->container['detail'];
     }
 
     /**
-     * Sets scope
+     * Sets detail
      *
-     * @param string|null $scope scope
+     * @param string|null $detail An explanation of the problem, specific to this occurrence.
      *
      * @return self
      */
-    public function setScope($scope)
+    public function setDetail($detail)
     {
-        $allowedValues = $this->getScopeAllowableValues();
-        if (!is_null($scope) && !in_array($scope, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'scope', must be one of '%s'",
-                    $scope,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['scope'] = $scope;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at
-     *
-     * @return \DateTime|null
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param \DateTime|null $expires_at A UTC timestamp of when the token will expire.
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets tls_access
-     *
-     * @return bool|null
-     */
-    public function getTlsAccess()
-    {
-        return $this->container['tls_access'];
-    }
-
-    /**
-     * Sets tls_access
-     *
-     * @param bool|null $tls_access Indicates whether TLS access is enabled for the token.
-     *
-     * @return self
-     */
-    public function setTlsAccess($tls_access)
-    {
-        $this->container['tls_access'] = $tls_access;
+        $this->container['detail'] = $detail;
 
         return $this;
     }

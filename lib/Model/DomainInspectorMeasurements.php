@@ -186,7 +186,8 @@ class DomainInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'tls_v10' => 'int',
         'tls_v11' => 'int',
         'tls_v12' => 'int',
-        'tls_v13' => 'int'
+        'tls_v13' => 'int',
+        'status_499' => 'int'
     ];
 
     /**
@@ -329,7 +330,8 @@ class DomainInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'tls_v10' => 'int64',
         'tls_v11' => 'int64',
         'tls_v12' => 'int64',
-        'tls_v13' => 'int64'
+        'tls_v13' => 'int64',
+        'status_499' => 'int64'
     ];
 
     /**
@@ -491,7 +493,8 @@ class DomainInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'tls_v10' => 'tls_v10',
         'tls_v11' => 'tls_v11',
         'tls_v12' => 'tls_v12',
-        'tls_v13' => 'tls_v13'
+        'tls_v13' => 'tls_v13',
+        'status_499' => 'status_499'
     ];
 
     /**
@@ -632,7 +635,8 @@ class DomainInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'tls_v10' => 'setTlsV10',
         'tls_v11' => 'setTlsV11',
         'tls_v12' => 'setTlsV12',
-        'tls_v13' => 'setTlsV13'
+        'tls_v13' => 'setTlsV13',
+        'status_499' => 'setStatus499'
     ];
 
     /**
@@ -773,7 +777,8 @@ class DomainInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         'tls_v10' => 'getTlsV10',
         'tls_v11' => 'getTlsV11',
         'tls_v12' => 'getTlsV12',
-        'tls_v13' => 'getTlsV13'
+        'tls_v13' => 'getTlsV13',
+        'status_499' => 'getStatus499'
     ];
 
     /**
@@ -966,6 +971,7 @@ class DomainInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
         $this->container['tls_v11'] = $data['tls_v11'] ?? null;
         $this->container['tls_v12'] = $data['tls_v12'] ?? null;
         $this->container['tls_v13'] = $data['tls_v13'] ?? null;
+        $this->container['status_499'] = $data['status_499'] ?? null;
     }
 
     /**
@@ -4180,6 +4186,30 @@ class DomainInspectorMeasurements implements ModelInterface, ArrayAccess, \JsonS
     public function setTlsV13($tls_v13)
     {
         $this->container['tls_v13'] = $tls_v13;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_499
+     *
+     * @return int|null
+     */
+    public function getStatus499()
+    {
+        return $this->container['status_499'];
+    }
+
+    /**
+     * Sets status_499
+     *
+     * @param int|null $status_499 Number of responses sent with status code 499 (Client Disconnected).
+     *
+     * @return self
+     */
+    public function setStatus499($status_499)
+    {
+        $this->container['status_499'] = $status_499;
 
         return $this;
     }

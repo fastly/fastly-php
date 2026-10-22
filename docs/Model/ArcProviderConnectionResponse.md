@@ -1,0 +1,18 @@
+# # ArcProviderConnectionResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** | The unique identifier of the provider connection. | [readonly] 
+**secret_id** | **string** | An opaque identifier for the secret material backing this connection. Not the secret itself. | [readonly] 
+**name** | **string** | The display name of the provider connection. | 
+**models** | **string[]** | The AI model identifiers this connection is allowed to use. | 
+**auth_type** | **string** | The authentication type for this connection. |  [one of: 'api-key', 'aws-iam']
+**created_at** | **\DateTime** | The date and time the connection was created, in RFC 3339 format. | [readonly] 
+**updated_at** | **\DateTime** | The date and time the connection was last updated, in RFC 3339 format. | [readonly] 
+**base_url** | **string** | The base URL of the provider&#39;s API. Present only for `api-key` connections. | [optional] 
+**region** | **string** | The AWS region for Bedrock API requests. Present only for `aws-iam` connections. | [optional] 
+
+
+[[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

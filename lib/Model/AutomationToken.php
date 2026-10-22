@@ -55,7 +55,11 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyTypes = [
         'name' => 'string',
         'role' => 'string',
+        'roles' => '\Fastly\Model\AutomationTokenRole[]',
         'services' => 'string[]',
+        'limit_services' => 'bool',
+        'limit_workspaces' => 'bool',
+        'workspaces' => 'string[]',
         'scope' => 'string',
         'expires_at' => 'string'
     ];
@@ -70,7 +74,11 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $fastlyFormats = [
         'name' => null,
         'role' => null,
+        'roles' => null,
         'services' => null,
+        'limit_services' => null,
+        'limit_workspaces' => null,
+        'workspaces' => null,
         'scope' => null,
         'expires_at' => null
     ];
@@ -104,7 +112,11 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'name' => 'name',
         'role' => 'role',
+        'roles' => 'roles',
         'services' => 'services',
+        'limit_services' => 'limit_services',
+        'limit_workspaces' => 'limit_workspaces',
+        'workspaces' => 'workspaces',
         'scope' => 'scope',
         'expires_at' => 'expires_at'
     ];
@@ -117,7 +129,11 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'name' => 'setName',
         'role' => 'setRole',
+        'roles' => 'setRoles',
         'services' => 'setServices',
+        'limit_services' => 'setLimitServices',
+        'limit_workspaces' => 'setLimitWorkspaces',
+        'workspaces' => 'setWorkspaces',
         'scope' => 'setScope',
         'expires_at' => 'setExpiresAt'
     ];
@@ -130,7 +146,11 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'name' => 'getName',
         'role' => 'getRole',
+        'roles' => 'getRoles',
         'services' => 'getServices',
+        'limit_services' => 'getLimitServices',
+        'limit_workspaces' => 'getLimitWorkspaces',
+        'workspaces' => 'getWorkspaces',
         'scope' => 'getScope',
         'expires_at' => 'getExpiresAt'
     ];
@@ -179,6 +199,12 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     const ROLE_BILLING = 'billing';
     const ROLE_ENGINEER = 'engineer';
     const ROLE_USER = 'user';
+    const ROLE_NGWAF_USER_IMPORTED = 'ngwaf_user_imported';
+    const ROLE_NGWAF_ADMIN_IMPORTED = 'ngwaf_admin_imported';
+    const ROLE_NGWAF_OWNER_IMPORTED = 'ngwaf_owner_imported';
+    const ROLE_NGWAF_OBSERVER_IMPORTED = 'ngwaf_observer_imported';
+    const ROLE_TLS_ADMIN = 'tls_admin';
+    const ROLE_TLS_VIEWER = 'tls_viewer';
     const SCOPE__GLOBAL = 'global';
     const SCOPE_PURGE_SELECT = 'purge_select';
     const SCOPE_PURGE_ALL = 'purge_all';
@@ -195,6 +221,12 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ROLE_BILLING,
             self::ROLE_ENGINEER,
             self::ROLE_USER,
+            self::ROLE_NGWAF_USER_IMPORTED,
+            self::ROLE_NGWAF_ADMIN_IMPORTED,
+            self::ROLE_NGWAF_OWNER_IMPORTED,
+            self::ROLE_NGWAF_OBSERVER_IMPORTED,
+            self::ROLE_TLS_ADMIN,
+            self::ROLE_TLS_VIEWER,
         ];
     }
 
@@ -230,7 +262,11 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['role'] = $data['role'] ?? null;
+        $this->container['roles'] = $data['roles'] ?? null;
         $this->container['services'] = $data['services'] ?? null;
+        $this->container['limit_services'] = $data['limit_services'] ?? null;
+        $this->container['limit_workspaces'] = $data['limit_workspaces'] ?? null;
+        $this->container['workspaces'] = $data['workspaces'] ?? null;
         $this->container['scope'] = $data['scope'] ?? 'global';
         $this->container['expires_at'] = $data['expires_at'] ?? null;
     }
@@ -314,7 +350,7 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets role
      *
-     * @param string|null $role The role on the token.
+     * @param string|null $role The primary role on the token. For tokens with multiple roles, this returns the highest-priority role for backwards compatibility.
      *
      * @return self
      */
@@ -336,6 +372,30 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets roles
+     *
+     * @return \Fastly\Model\AutomationTokenRole[]|null
+     */
+    public function getRoles()
+    {
+        return $this->container['roles'];
+    }
+
+    /**
+     * Sets roles
+     *
+     * @param \Fastly\Model\AutomationTokenRole[]|null $roles All roles assigned to the token. Each role includes an `id` and `name`.
+     *
+     * @return self
+     */
+    public function setRoles($roles)
+    {
+        $this->container['roles'] = $roles;
+
+        return $this;
+    }
+
+    /**
      * Gets services
      *
      * @return string[]|null
@@ -348,13 +408,85 @@ class AutomationToken implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets services
      *
-     * @param string[]|null $services (Optional) The service IDs of the services the token will have access to. Separate service IDs with a space. If no services are specified, the token will have access to all services on the account.
+     * @param string[]|null $services The service IDs of the services the token has access to. Empty when `limit_services` is `false` (full access) or when the token has no service access.
      *
      * @return self
      */
     public function setServices($services)
     {
         $this->container['services'] = $services;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_services
+     *
+     * @return bool|null
+     */
+    public function getLimitServices()
+    {
+        return $this->container['limit_services'];
+    }
+
+    /**
+     * Sets limit_services
+     *
+     * @param bool|null $limit_services When `true`, the token is restricted to only the services in the `services` array. When `false`, the token has access to all services.
+     *
+     * @return self
+     */
+    public function setLimitServices($limit_services)
+    {
+        $this->container['limit_services'] = $limit_services;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_workspaces
+     *
+     * @return bool|null
+     */
+    public function getLimitWorkspaces()
+    {
+        return $this->container['limit_workspaces'];
+    }
+
+    /**
+     * Sets limit_workspaces
+     *
+     * @param bool|null $limit_workspaces When `true`, the token is restricted to only the workspaces in the `workspaces` array. When `false`, the token has access to all workspaces. Only applies to roles that support workspace access.
+     *
+     * @return self
+     */
+    public function setLimitWorkspaces($limit_workspaces)
+    {
+        $this->container['limit_workspaces'] = $limit_workspaces;
+
+        return $this;
+    }
+
+    /**
+     * Gets workspaces
+     *
+     * @return string[]|null
+     */
+    public function getWorkspaces()
+    {
+        return $this->container['workspaces'];
+    }
+
+    /**
+     * Sets workspaces
+     *
+     * @param string[]|null $workspaces The workspace IDs of the workspaces the token has access to. Returns an empty array for tokens without workspace access.
+     *
+     * @return self
+     */
+    public function setWorkspaces($workspaces)
+    {
+        $this->container['workspaces'] = $workspaces;
 
         return $this;
     }

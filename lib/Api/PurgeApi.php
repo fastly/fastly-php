@@ -120,6 +120,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified. (optional)
      * @param  \Fastly\Model\PurgeResponse $purge_response purge_response (optional)
@@ -145,6 +146,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified. (optional)
      * @param  \Fastly\Model\PurgeResponse $purge_response (optional)
@@ -258,6 +260,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified. (optional)
      * @param  \Fastly\Model\PurgeResponse $purge_response (optional)
@@ -286,6 +289,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified. (optional)
      * @param  \Fastly\Model\PurgeResponse $purge_response (optional)
@@ -340,6 +344,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified. (optional)
      * @param  \Fastly\Model\PurgeResponse $purge_response (optional)
@@ -351,6 +356,7 @@ class PurgeApi
     {
         // unbox the parameters from the associative array
         $fastly_soft_purge = array_key_exists('fastly_soft_purge', $options) ? $options['fastly_soft_purge'] : null;
+        $fastly_purge_environment = array_key_exists('fastly_purge_environment', $options) ? $options['fastly_purge_environment'] : null;
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $surrogate_key = array_key_exists('surrogate_key', $options) ? $options['surrogate_key'] : null;
         $purge_response = array_key_exists('purge_response', $options) ? $options['purge_response'] : null;
@@ -373,6 +379,10 @@ class PurgeApi
         // header params
         if ($fastly_soft_purge !== null) {
             $headerParams['fastly-soft-purge'] = ObjectSerializer::toHeaderValue($fastly_soft_purge);
+        }
+        // header params
+        if ($fastly_purge_environment !== null) {
+            $headerParams['fastly-purge-environment'] = ObjectSerializer::toHeaderValue($fastly_purge_environment);
         }
         // header params
         if ($surrogate_key !== null) {
@@ -474,6 +484,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -496,6 +507,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -606,6 +618,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -631,6 +644,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -682,6 +696,7 @@ class PurgeApi
      * URL: https://api.fastly.com
      *
      * @param  string $service_id Alphanumeric string identifying the service. (required)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -690,6 +705,7 @@ class PurgeApi
     {
         // unbox the parameters from the associative array
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
+        $fastly_purge_environment = array_key_exists('fastly_purge_environment', $options) ? $options['fastly_purge_environment'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -706,6 +722,10 @@ class PurgeApi
         $multipart = false;
 
 
+        // header params
+        if ($fastly_purge_environment !== null) {
+            $headerParams['fastly-purge-environment'] = ObjectSerializer::toHeaderValue($fastly_purge_environment);
+        }
 
         // path params
         if ($service_id !== null) {
@@ -1130,6 +1150,7 @@ class PurgeApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. (required)
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1154,6 +1175,7 @@ class PurgeApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. (required)
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \Fastly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1266,6 +1288,7 @@ class PurgeApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. (required)
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1293,6 +1316,7 @@ class PurgeApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. (required)
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1346,6 +1370,7 @@ class PurgeApi
      * @param  string $service_id Alphanumeric string identifying the service. (required)
      * @param  string $surrogate_key Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. (required)
      * @param  int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+     * @param  string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1356,6 +1381,7 @@ class PurgeApi
         $service_id = array_key_exists('service_id', $options) ? $options['service_id'] : null;
         $surrogate_key = array_key_exists('surrogate_key', $options) ? $options['surrogate_key'] : null;
         $fastly_soft_purge = array_key_exists('fastly_soft_purge', $options) ? $options['fastly_soft_purge'] : null;
+        $fastly_purge_environment = array_key_exists('fastly_purge_environment', $options) ? $options['fastly_purge_environment'] : null;
 
         // verify the required parameter 'service_id' is set
         if ($service_id === null || (is_array($service_id) && count($service_id) === 0)) {
@@ -1381,6 +1407,10 @@ class PurgeApi
         // header params
         if ($fastly_soft_purge !== null) {
             $headerParams['fastly-soft-purge'] = ObjectSerializer::toHeaderValue($fastly_soft_purge);
+        }
+        // header params
+        if ($fastly_purge_environment !== null) {
+            $headerParams['fastly-purge-environment'] = ObjectSerializer::toHeaderValue($fastly_purge_environment);
         }
 
         // path params

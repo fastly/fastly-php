@@ -212,7 +212,7 @@ class DdosProtectionRulePatch implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets action
      *
-     * @param string|null $action Action types for a rule. Supported action values are default, block, log, off. The default action value follows the current protection mode of the associated service.
+     * @param string|null $action Action types for a rule. Supported action values are default, block, log, off, client_challenge. The default action value follows the current protection mode of the associated service.
      *
      * @return self
      */

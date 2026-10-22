@@ -38,7 +38,7 @@ $config = Fastly\Configuration::getDefaultConfiguration()->setApiToken('YOUR_API
 // Alternatively, set the FASTLY_API_TOKEN environment variable:
 // $config = Fastly\Configuration::getDefaultConfiguration();
 
-$apiInstance = new Fastly\Api\(
+$apiInstance = new Fastly\Api\AclApi(
     // Optionally, pass a custom client that implements `GuzzleHttp\ClientInterface`.
     // `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -102,6 +102,25 @@ Class | Method | Description
 [*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclListAclsSAclId**](docs/Api/AclsInComputeApi.md#computeacllistaclssaclid) | Describe an ACL
 [*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclLookupAcls**](docs/Api/AclsInComputeApi.md#computeacllookupacls) | Lookup an ACL
 [*AclsInComputeApi*](docs/Api/AclsInComputeApi.md) | [**computeAclUpdateAcls**](docs/Api/AclsInComputeApi.md#computeaclupdateacls) | Update an ACL
+[*AiRuntimeControlProviderConnectionsApi*](docs/Api/AiRuntimeControlProviderConnectionsApi.md) | [**arcCreateProviderConnection**](docs/Api/AiRuntimeControlProviderConnectionsApi.md#arccreateproviderconnection) | Create a provider connection
+[*AiRuntimeControlProviderConnectionsApi*](docs/Api/AiRuntimeControlProviderConnectionsApi.md) | [**arcDeleteProviderConnection**](docs/Api/AiRuntimeControlProviderConnectionsApi.md#arcdeleteproviderconnection) | Delete a provider connection
+[*AiRuntimeControlProviderConnectionsApi*](docs/Api/AiRuntimeControlProviderConnectionsApi.md) | [**arcGetProviderConnection**](docs/Api/AiRuntimeControlProviderConnectionsApi.md#arcgetproviderconnection) | Get a provider connection
+[*AiRuntimeControlProviderConnectionsApi*](docs/Api/AiRuntimeControlProviderConnectionsApi.md) | [**arcListProviderConnections**](docs/Api/AiRuntimeControlProviderConnectionsApi.md#arclistproviderconnections) | List provider connections
+[*AiRuntimeControlProviderConnectionsApi*](docs/Api/AiRuntimeControlProviderConnectionsApi.md) | [**arcUpdateProviderConnection**](docs/Api/AiRuntimeControlProviderConnectionsApi.md#arcupdateproviderconnection) | Update a provider connection
+[*AiRuntimeControlProvidersApi*](docs/Api/AiRuntimeControlProvidersApi.md) | [**arcGetBedrockSetup**](docs/Api/AiRuntimeControlProvidersApi.md#arcgetbedrocksetup) | Get Bedrock setup information
+[*AiRuntimeControlProvidersApi*](docs/Api/AiRuntimeControlProvidersApi.md) | [**arcGetModelsForProvider**](docs/Api/AiRuntimeControlProvidersApi.md#arcgetmodelsforprovider) | Get models for a provider
+[*AiRuntimeControlProvidersApi*](docs/Api/AiRuntimeControlProvidersApi.md) | [**arcGetSupportedProviders**](docs/Api/AiRuntimeControlProvidersApi.md#arcgetsupportedproviders) | Get supported providers
+[*AiRuntimeControlSessionsApi*](docs/Api/AiRuntimeControlSessionsApi.md) | [**arcGetSessionLogs**](docs/Api/AiRuntimeControlSessionsApi.md#arcgetsessionlogs) | Get session logs
+[*AiRuntimeControlUsageMetricsApi*](docs/Api/AiRuntimeControlUsageMetricsApi.md) | [**arcExportUsageMetrics**](docs/Api/AiRuntimeControlUsageMetricsApi.md#arcexportusagemetrics) | Export usage metrics
+[*AiRuntimeControlUsageMetricsApi*](docs/Api/AiRuntimeControlUsageMetricsApi.md) | [**arcGetUsageMetrics**](docs/Api/AiRuntimeControlUsageMetricsApi.md#arcgetusagemetrics) | Get usage metrics
+[*AiRuntimeControlVirtualKeysApi*](docs/Api/AiRuntimeControlVirtualKeysApi.md) | [**arcCreateVirtualKey**](docs/Api/AiRuntimeControlVirtualKeysApi.md#arccreatevirtualkey) | Create a virtual key
+[*AiRuntimeControlVirtualKeysApi*](docs/Api/AiRuntimeControlVirtualKeysApi.md) | [**arcDeleteVirtualKey**](docs/Api/AiRuntimeControlVirtualKeysApi.md#arcdeletevirtualkey) | Delete a virtual key
+[*AiRuntimeControlVirtualKeysApi*](docs/Api/AiRuntimeControlVirtualKeysApi.md) | [**arcGetVirtualKey**](docs/Api/AiRuntimeControlVirtualKeysApi.md#arcgetvirtualkey) | Get a virtual key
+[*AiRuntimeControlVirtualKeysApi*](docs/Api/AiRuntimeControlVirtualKeysApi.md) | [**arcGetVirtualKeyFailover**](docs/Api/AiRuntimeControlVirtualKeysApi.md#arcgetvirtualkeyfailover) | Get a virtual key&#39;s failover policy
+[*AiRuntimeControlVirtualKeysApi*](docs/Api/AiRuntimeControlVirtualKeysApi.md) | [**arcListVirtualKeys**](docs/Api/AiRuntimeControlVirtualKeysApi.md#arclistvirtualkeys) | List virtual keys
+[*AiRuntimeControlVirtualKeysApi*](docs/Api/AiRuntimeControlVirtualKeysApi.md) | [**arcRotateVirtualKey**](docs/Api/AiRuntimeControlVirtualKeysApi.md#arcrotatevirtualkey) | Rotate a virtual key
+[*AiRuntimeControlVirtualKeysApi*](docs/Api/AiRuntimeControlVirtualKeysApi.md) | [**arcUpdateVirtualKey**](docs/Api/AiRuntimeControlVirtualKeysApi.md#arcupdatevirtualkey) | Update a virtual key
+[*AiRuntimeControlVirtualKeysApi*](docs/Api/AiRuntimeControlVirtualKeysApi.md) | [**arcUpdateVirtualKeyFailover**](docs/Api/AiRuntimeControlVirtualKeysApi.md#arcupdatevirtualkeyfailover) | Update a virtual key&#39;s failover policy
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**createApexRedirect**](docs/Api/ApexRedirectApi.md#createapexredirect) | Create an apex redirect
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**deleteApexRedirect**](docs/Api/ApexRedirectApi.md#deleteapexredirect) | Delete an apex redirect
 [*ApexRedirectApi*](docs/Api/ApexRedirectApi.md) | [**getApexRedirect**](docs/Api/ApexRedirectApi.md#getapexredirect) | Get an apex redirect
@@ -124,6 +143,7 @@ Class | Method | Description
 [*AutomationTokensApi*](docs/Api/AutomationTokensApi.md) | [**createAutomationToken**](docs/Api/AutomationTokensApi.md#createautomationtoken) | Create Automation Token
 [*AutomationTokensApi*](docs/Api/AutomationTokensApi.md) | [**getAutomationTokenId**](docs/Api/AutomationTokensApi.md#getautomationtokenid) | Retrieve an Automation Token by ID
 [*AutomationTokensApi*](docs/Api/AutomationTokensApi.md) | [**getAutomationTokensIdServices**](docs/Api/AutomationTokensApi.md#getautomationtokensidservices) | List Automation Token Services
+[*AutomationTokensApi*](docs/Api/AutomationTokensApi.md) | [**getAutomationTokensIdWorkspaces**](docs/Api/AutomationTokensApi.md#getautomationtokensidworkspaces) | List Automation Token Workspaces
 [*AutomationTokensApi*](docs/Api/AutomationTokensApi.md) | [**listAutomationTokens**](docs/Api/AutomationTokensApi.md#listautomationtokens) | List Customer Automation Tokens
 [*AutomationTokensApi*](docs/Api/AutomationTokensApi.md) | [**revokeAutomationTokenId**](docs/Api/AutomationTokensApi.md#revokeautomationtokenid) | Revoke an Automation Token by ID
 [*BackendApi*](docs/Api/BackendApi.md) | [**createBackend**](docs/Api/BackendApi.md#createbackend) | Create a backend
@@ -140,6 +160,17 @@ Class | Method | Description
 [*BillingInvoicesApi*](docs/Api/BillingInvoicesApi.md) | [**listInvoices**](docs/Api/BillingInvoicesApi.md#listinvoices) | List of invoices.
 [*BillingUsageMetricsApi*](docs/Api/BillingUsageMetricsApi.md) | [**getServiceLevelUsage**](docs/Api/BillingUsageMetricsApi.md#getservicelevelusage) | Retrieve service-level usage metrics for services with non-zero usage units.
 [*BillingUsageMetricsApi*](docs/Api/BillingUsageMetricsApi.md) | [**getUsageMetrics**](docs/Api/BillingUsageMetricsApi.md#getusagemetrics) | Get monthly usage metrics
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementGetBot**](docs/Api/BotManagementApi.md#botmanagementgetbot) | Get a bot
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementGetCategory**](docs/Api/BotManagementApi.md#botmanagementgetcategory) | Get a category
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementGetWorkspace**](docs/Api/BotManagementApi.md#botmanagementgetworkspace) | Get a workspace
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementListBots**](docs/Api/BotManagementApi.md#botmanagementlistbots) | List all bots in a workspace
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementListCategories**](docs/Api/BotManagementApi.md#botmanagementlistcategories) | List categories
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementListCategoryBots**](docs/Api/BotManagementApi.md#botmanagementlistcategorybots) | List bots in a category
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementListWorkspaces**](docs/Api/BotManagementApi.md#botmanagementlistworkspaces) | List workspaces
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementUpdateBot**](docs/Api/BotManagementApi.md#botmanagementupdatebot) | Set a bot action
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementUpdateCategory**](docs/Api/BotManagementApi.md#botmanagementupdatecategory) | Set a category action
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementUpdateWorkspace**](docs/Api/BotManagementApi.md#botmanagementupdateworkspace) | Update a workspace
+[*BotRequestsMetricsApi*](docs/Api/BotRequestsMetricsApi.md) | [**getBotRequestMetricsServiceHistorical**](docs/Api/BotRequestsMetricsApi.md#getbotrequestmetricsservicehistorical) | Get per-service historical time series metrics for bot requests broken down by bot-type.
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**createCacheSettings**](docs/Api/CacheSettingsApi.md#createcachesettings) | Create a cache settings object
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**deleteCacheSettings**](docs/Api/CacheSettingsApi.md#deletecachesettings) | Delete a cache settings object
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**getCacheSettings**](docs/Api/CacheSettingsApi.md#getcachesettings) | Get a cache settings object
@@ -476,12 +507,33 @@ Class | Method | Description
 [*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**getLogSyslog**](docs/Api/LoggingSyslogApi.md#getlogsyslog) | Get a syslog log endpoint
 [*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**listLogSyslog**](docs/Api/LoggingSyslogApi.md#listlogsyslog) | List Syslog log endpoints
 [*LoggingSyslogApi*](docs/Api/LoggingSyslogApi.md) | [**updateLogSyslog**](docs/Api/LoggingSyslogApi.md#updatelogsyslog) | Update a syslog log endpoint
-[*MetricsPlatformApi*](docs/Api/MetricsPlatformApi.md) | [**getPlatformMetricsServiceHistorical**](docs/Api/MetricsPlatformApi.md#getplatformmetricsservicehistorical) | Get historical time series metrics for a single service
+[*MetricsPlatformApi*](docs/Api/MetricsPlatformApi.md) | [**getPlatformMetricsAggregateHistorical**](docs/Api/MetricsPlatformApi.md#getplatformmetricsaggregatehistorical) | Get aggregated historical time series metrics for all entities
+[*MetricsPlatformApi*](docs/Api/MetricsPlatformApi.md) | [**getPlatformMetricsEntityHistorical**](docs/Api/MetricsPlatformApi.md#getplatformmetricsentityhistorical) | Get historical time series metrics for a single entity.
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**createMutualTlsAuthentication**](docs/Api/MutualAuthenticationApi.md#createmutualtlsauthentication) | Create a Mutual Authentication
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**deleteMutualTls**](docs/Api/MutualAuthenticationApi.md#deletemutualtls) | Delete a Mutual TLS
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**getMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#getmutualauthentication) | Get a Mutual Authentication
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**listMutualAuthentications**](docs/Api/MutualAuthenticationApi.md#listmutualauthentications) | List Mutual Authentications
 [*MutualAuthenticationApi*](docs/Api/MutualAuthenticationApi.md) | [**patchMutualAuthentication**](docs/Api/MutualAuthenticationApi.md#patchmutualauthentication) | Update a Mutual Authentication
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**createNetworkProtectEndpoint**](docs/Api/NetworkProtectApi.md#createnetworkprotectendpoint) | Create a Network Protect endpoint
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**createNetworkProtectNetwork**](docs/Api/NetworkProtectApi.md#createnetworkprotectnetwork) | Create a Network Protect network
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**createNetworkProtectPrefixList**](docs/Api/NetworkProtectApi.md#createnetworkprotectprefixlist) | Create a Network Protect prefix list
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**createNetworkProtectRuleSet**](docs/Api/NetworkProtectApi.md#createnetworkprotectruleset) | Create a Network Protect rule set
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**deleteNetworkProtectEndpoint**](docs/Api/NetworkProtectApi.md#deletenetworkprotectendpoint) | Delete a Network Protect endpoint
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**deleteNetworkProtectNetwork**](docs/Api/NetworkProtectApi.md#deletenetworkprotectnetwork) | Delete a Network Protect network
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**deleteNetworkProtectPrefixList**](docs/Api/NetworkProtectApi.md#deletenetworkprotectprefixlist) | Delete a Network Protect prefix list
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**deleteNetworkProtectRuleSet**](docs/Api/NetworkProtectApi.md#deletenetworkprotectruleset) | Delete a Network Protect rule set
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**getNetworkProtectEndpoint**](docs/Api/NetworkProtectApi.md#getnetworkprotectendpoint) | Get a Network Protect endpoint
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**getNetworkProtectNetwork**](docs/Api/NetworkProtectApi.md#getnetworkprotectnetwork) | Get a Network Protect network
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**getNetworkProtectPrefixList**](docs/Api/NetworkProtectApi.md#getnetworkprotectprefixlist) | Get a Network Protect prefix list
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**getNetworkProtectRuleSet**](docs/Api/NetworkProtectApi.md#getnetworkprotectruleset) | Get a Network Protect rule set
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**listNetworkProtectEndpoints**](docs/Api/NetworkProtectApi.md#listnetworkprotectendpoints) | List Network Protect endpoints
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**listNetworkProtectNetworks**](docs/Api/NetworkProtectApi.md#listnetworkprotectnetworks) | List Network Protect networks
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**listNetworkProtectPrefixLists**](docs/Api/NetworkProtectApi.md#listnetworkprotectprefixlists) | List Network Protect prefix lists
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**listNetworkProtectRuleSets**](docs/Api/NetworkProtectApi.md#listnetworkprotectrulesets) | List Network Protect rule sets
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**updateNetworkProtectEndpoint**](docs/Api/NetworkProtectApi.md#updatenetworkprotectendpoint) | Update a Network Protect endpoint
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**updateNetworkProtectNetwork**](docs/Api/NetworkProtectApi.md#updatenetworkprotectnetwork) | Update a Network Protect network
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**updateNetworkProtectPrefixList**](docs/Api/NetworkProtectApi.md#updatenetworkprotectprefixlist) | Update a Network Protect prefix list
+[*NetworkProtectApi*](docs/Api/NetworkProtectApi.md) | [**updateNetworkProtectRuleSet**](docs/Api/NetworkProtectApi.md#updatenetworkprotectruleset) | Update a Network Protect rule set
 [*NgwafAgentKeysApi*](docs/Api/NgwafAgentKeysApi.md) | [**ngwafListAgentKeys**](docs/Api/NgwafAgentKeysApi.md#ngwaflistagentkeys) | List agent keys for a workspace
 [*NgwafReportsApi*](docs/Api/NgwafReportsApi.md) | [**getAttacksReport**](docs/Api/NgwafReportsApi.md#getattacksreport) | Get attacks report
 [*NgwafReportsApi*](docs/Api/NgwafReportsApi.md) | [**getSignalsReport**](docs/Api/NgwafReportsApi.md#getsignalsreport) | Get signals report
@@ -512,6 +564,9 @@ Class | Method | Description
 [*ProductAiAcceleratorApi*](docs/Api/ProductAiAcceleratorApi.md) | [**disableProductAiAccelerator**](docs/Api/ProductAiAcceleratorApi.md#disableproductaiaccelerator) | Disable product
 [*ProductAiAcceleratorApi*](docs/Api/ProductAiAcceleratorApi.md) | [**enableAiAccelerator**](docs/Api/ProductAiAcceleratorApi.md#enableaiaccelerator) | Enable product
 [*ProductAiAcceleratorApi*](docs/Api/ProductAiAcceleratorApi.md) | [**getAiAccelerator**](docs/Api/ProductAiAcceleratorApi.md#getaiaccelerator) | Get product enablement status
+[*ProductAiRuntimeControlApi*](docs/Api/ProductAiRuntimeControlApi.md) | [**disableProductAiRuntimeControl**](docs/Api/ProductAiRuntimeControlApi.md#disableproductairuntimecontrol) | Disable product
+[*ProductAiRuntimeControlApi*](docs/Api/ProductAiRuntimeControlApi.md) | [**enableProductAiRuntimeControl**](docs/Api/ProductAiRuntimeControlApi.md#enableproductairuntimecontrol) | Enable product
+[*ProductAiRuntimeControlApi*](docs/Api/ProductAiRuntimeControlApi.md) | [**getProductAiRuntimeControl**](docs/Api/ProductAiRuntimeControlApi.md#getproductairuntimecontrol) | Get product enablement status
 [*ProductApiDiscoveryApi*](docs/Api/ProductApiDiscoveryApi.md) | [**disableProductApiDiscovery**](docs/Api/ProductApiDiscoveryApi.md#disableproductapidiscovery) | Disable product
 [*ProductApiDiscoveryApi*](docs/Api/ProductApiDiscoveryApi.md) | [**enableProductApiDiscovery**](docs/Api/ProductApiDiscoveryApi.md#enableproductapidiscovery) | Enable product
 [*ProductApiDiscoveryApi*](docs/Api/ProductApiDiscoveryApi.md) | [**getProductApiDiscovery**](docs/Api/ProductApiDiscoveryApi.md#getproductapidiscovery) | Get product enablement status
@@ -737,6 +792,14 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/dns/v1/tsig-keys`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/dns/v1/zones/{zone_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/v1/zones`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/iam/v1/organizations/{organization_id}/accounts`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/iam/v1/organizations/{organization_id}/invitations/{invitation_id}/notifications`](https://www.fastly.com/documentation/reference/api/) (POST)
+- [`/iam/v1/organizations/{organization_id}/invitations/{invitation_id}`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
+- [`/iam/v1/organizations/{organization_id}/invitations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/iam/v1/organizations/{organization_id}/options`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
+- [`/iam/v1/organizations/{organization_id}`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
+- [`/model/{modelId}/invoke-with-response-stream`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (POST)
+- [`/model/{modelId}/invoke`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (POST)
 - [`/ngwaf/v1/default-dashboards`](https://www.fastly.com/documentation/reference/api/ngwaf/custom-dashboards) (GET)
 - [`/ngwaf/v1/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/lists) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/lists`](https://www.fastly.com/documentation/reference/api/ngwaf/lists) (GET, POST)
@@ -754,6 +817,7 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}/test`](https://www.fastly.com/documentation/reference/api/ngwaf/workspace-alerts/) (POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/workspace-alerts/) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts`](https://www.fastly.com/documentation/reference/api/ngwaf/workspace-alerts/) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/challenge-settings`](https://www.fastly.com/documentation/reference/api/ngwaf/challenge-settings) (GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/dashboards/{dashboard_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/custom-dashboards) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/dashboards`](https://www.fastly.com/documentation/reference/api/ngwaf/custom-dashboards) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/default-dashboard`](https://www.fastly.com/documentation/reference/api/ngwaf/custom-dashboards) (GET, PUT)
@@ -799,9 +863,16 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/tls/activations`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET)
 - [`/tls/configurations/{tls_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/tls/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/v1/audio/speech`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (POST)
+- [`/v1/audio/transcriptions`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (POST)
 - [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
 - [`/v1/channel/{service_id}/ts/h`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
 - [`/v1/channel/{service_id}/ts/{start_timestamp}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
+- [`/v1/chat/completions`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (POST)
+- [`/v1/messages/count_tokens`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (POST)
+- [`/v1/messages`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (POST)
+- [`/v1/models`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (GET)
+- [`/v1/responses`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (POST)
 
 
 If you encounter any non-security-related bug or unexpected behavior, please [file an issue][bug]

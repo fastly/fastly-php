@@ -76,7 +76,7 @@ Create DictionaryItem given service, dictionary ID, item key, and item value.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
-$options['item_key'] = 'item_key_example'; // string | Item key, maximum 256 characters.
+$options['item_key'] = 'item_key_example'; // string | Item key, maximum 255 characters.
 $options['item_value'] = 'item_value_example'; // string | Item value, maximum 8000 characters.
 
 try {
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
-**item_key** | **string** | Item key, maximum 256 characters. | [optional]
+**item_key** | **string** | Item key, maximum 255 characters. | [optional]
 **item_value** | **string** | Item value, maximum 8000 characters. | [optional]
 
 ### Return type
@@ -116,7 +116,7 @@ Delete DictionaryItem given service, dictionary ID, and item key.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
-$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 256 characters.
+$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 255 characters.
 
 try {
     $result = $apiInstance->deleteDictionaryItem($options);
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
-**dictionary_item_key** | **string** | Item key, maximum 256 characters. |
+**dictionary_item_key** | **string** | Item key, maximum 255 characters. |
 
 ### Return type
 
@@ -154,7 +154,7 @@ Retrieve a single DictionaryItem given service, dictionary ID and item key.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
-$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 256 characters.
+$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 255 characters.
 
 try {
     $result = $apiInstance->getDictionaryItem($options);
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
-**dictionary_item_key** | **string** | Item key, maximum 256 characters. |
+**dictionary_item_key** | **string** | Item key, maximum 255 characters. |
 
 ### Return type
 
@@ -236,8 +236,8 @@ Update DictionaryItem given service, dictionary ID, item key, and item value.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
-$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 256 characters.
-$options['item_key'] = 'item_key_example'; // string | Item key, maximum 256 characters.
+$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 255 characters.
+$options['item_key'] = 'item_key_example'; // string | Item key, maximum 255 characters.
 $options['item_value'] = 'item_value_example'; // string | Item value, maximum 8000 characters.
 
 try {
@@ -255,8 +255,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
-**dictionary_item_key** | **string** | Item key, maximum 256 characters. |
-**item_key** | **string** | Item key, maximum 256 characters. | [optional]
+**dictionary_item_key** | **string** | Item key, maximum 255 characters. |
+**item_key** | **string** | Item key, maximum 255 characters. | [optional]
 **item_value** | **string** | Item value, maximum 8000 characters. | [optional]
 
 ### Return type
@@ -278,8 +278,8 @@ Upsert DictionaryItem given service, dictionary ID, item key, and item value.
 ```php
     $options['service_id'] = 'service_id_example'; // string | Alphanumeric string identifying the service.
 $options['dictionary_id'] = 'dictionary_id_example'; // string | Alphanumeric string identifying a Dictionary.
-$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 256 characters.
-$options['item_key'] = 'item_key_example'; // string | Item key, maximum 256 characters.
+$options['dictionary_item_key'] = 'dictionary_item_key_example'; // string | Item key, maximum 255 characters.
+$options['item_key'] = 'item_key_example'; // string | Item key, maximum 255 characters.
 $options['item_value'] = 'item_value_example'; // string | Item value, maximum 8000 characters.
 
 try {
@@ -297,8 +297,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **service_id** | **string** | Alphanumeric string identifying the service. |
 **dictionary_id** | **string** | Alphanumeric string identifying a Dictionary. |
-**dictionary_item_key** | **string** | Item key, maximum 256 characters. |
-**item_key** | **string** | Item key, maximum 256 characters. | [optional]
+**dictionary_item_key** | **string** | Item key, maximum 255 characters. |
+**item_key** | **string** | Item key, maximum 255 characters. | [optional]
 **item_value** | **string** | Item value, maximum 8000 characters. | [optional]
 
 ### Return type

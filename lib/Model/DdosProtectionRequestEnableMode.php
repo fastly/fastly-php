@@ -159,6 +159,7 @@ class DdosProtectionRequestEnableMode implements ModelInterface, ArrayAccess, \J
     const MODE_FALSE = 'false';
     const MODE_LOG = 'log';
     const MODE_BLOCK = 'block';
+    const MODE_CLIENT_CHALLENGE = 'client_challenge';
 
     /**
      * Gets allowable values of the enum
@@ -171,6 +172,7 @@ class DdosProtectionRequestEnableMode implements ModelInterface, ArrayAccess, \J
             self::MODE_FALSE,
             self::MODE_LOG,
             self::MODE_BLOCK,
+            self::MODE_CLIENT_CHALLENGE,
         ];
     }
 

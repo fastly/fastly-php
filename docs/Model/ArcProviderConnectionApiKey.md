@@ -1,0 +1,14 @@
+# # ArcProviderConnectionApiKey
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **string** | A display name for the provider connection. Cannot match a name reserved by a built-in provider. | 
+**models** | **string[]** | The AI model identifiers this connection is allowed to use. | 
+**base_url** | **string** | The base URL of the provider&#39;s API. Must be an absolute `http` or `https` URL and must not end in `/v1`. | 
+**api_key** | **string** | The provider&#39;s secret API key. | 
+**auth_type** | **string** | The authentication type for this connection. Omit for the default `api-key` behavior. | [optional]  [one of: 'api-key'] [defaults to 'api-key']
+
+
+[[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

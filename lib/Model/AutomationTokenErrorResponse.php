@@ -30,6 +30,7 @@ use \Fastly\ObjectSerializer;
  * AutomationTokenErrorResponse Class Doc Comment
  *
  * @category Class
+ * @description Error response format used by automation token endpoints.
  * @package  Fastly
  * @author   oss@fastly.com
  * @implements \ArrayAccess<TKey, TValue>
