@@ -169,6 +169,7 @@ Class | Method | Description
 [*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementListWorkspaces**](docs/Api/BotManagementApi.md#botmanagementlistworkspaces) | List workspaces
 [*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementUpdateBot**](docs/Api/BotManagementApi.md#botmanagementupdatebot) | Set a bot action
 [*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementUpdateCategory**](docs/Api/BotManagementApi.md#botmanagementupdatecategory) | Set a category action
+[*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementUpdateCategoryBots**](docs/Api/BotManagementApi.md#botmanagementupdatecategorybots) | Set the action for all bots in a category
 [*BotManagementApi*](docs/Api/BotManagementApi.md) | [**botManagementUpdateWorkspace**](docs/Api/BotManagementApi.md#botmanagementupdateworkspace) | Update a workspace
 [*BotRequestsMetricsApi*](docs/Api/BotRequestsMetricsApi.md) | [**getBotRequestMetricsServiceHistorical**](docs/Api/BotRequestsMetricsApi.md#getbotrequestmetricsservicehistorical) | Get per-service historical time series metrics for bot requests broken down by bot-type.
 [*CacheSettingsApi*](docs/Api/CacheSettingsApi.md) | [**createCacheSettings**](docs/Api/CacheSettingsApi.md#createcachesettings) | Create a cache settings object
@@ -796,6 +797,8 @@ The fastly-php API client currently does not support the following endpoints:
 - [`/iam/v1/organizations/{organization_id}/invitations/{invitation_id}/notifications`](https://www.fastly.com/documentation/reference/api/) (POST)
 - [`/iam/v1/organizations/{organization_id}/invitations/{invitation_id}`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
 - [`/iam/v1/organizations/{organization_id}/invitations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/iam/v1/organizations/{organization_id}/memberships/{membership_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/iam/v1/organizations/{organization_id}/memberships`](https://www.fastly.com/documentation/reference/api/) (GET)
 - [`/iam/v1/organizations/{organization_id}/options`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
 - [`/iam/v1/organizations/{organization_id}`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
 - [`/model/{modelId}/invoke-with-response-stream`](https://www.fastly.com/documentation/reference/api/ai-runtime-control/gateway) (POST)

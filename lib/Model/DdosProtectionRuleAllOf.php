@@ -63,6 +63,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
         'host' => 'string',
         'asn' => 'string',
         'source_ip_prefix' => 'string',
+        'path' => 'string',
         'additional_attributes' => 'string[]'
     ];
 
@@ -84,6 +85,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
         'host' => null,
         'asn' => null,
         'source_ip_prefix' => null,
+        'path' => null,
         'additional_attributes' => null
     ];
 
@@ -124,6 +126,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
         'host' => 'host',
         'asn' => 'asn',
         'source_ip_prefix' => 'source_ip_prefix',
+        'path' => 'path',
         'additional_attributes' => 'additional_attributes'
     ];
 
@@ -143,6 +146,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
         'host' => 'setHost',
         'asn' => 'setAsn',
         'source_ip_prefix' => 'setSourceIpPrefix',
+        'path' => 'setPath',
         'additional_attributes' => 'setAdditionalAttributes'
     ];
 
@@ -162,6 +166,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
         'host' => 'getHost',
         'asn' => 'getAsn',
         'source_ip_prefix' => 'getSourceIpPrefix',
+        'path' => 'getPath',
         'additional_attributes' => 'getAdditionalAttributes'
     ];
 
@@ -232,6 +237,7 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['host'] = $data['host'] ?? null;
         $this->container['asn'] = $data['asn'] ?? null;
         $this->container['source_ip_prefix'] = $data['source_ip_prefix'] ?? null;
+        $this->container['path'] = $data['path'] ?? null;
         $this->container['additional_attributes'] = $data['additional_attributes'] ?? null;
     }
 
@@ -495,6 +501,30 @@ class DdosProtectionRuleAllOf implements ModelInterface, ArrayAccess, \JsonSeria
     public function setSourceIpPrefix($source_ip_prefix)
     {
         $this->container['source_ip_prefix'] = $source_ip_prefix;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string|null
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string|null $path URL path attribute.
+     *
+     * @return self
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }

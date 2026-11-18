@@ -197,6 +197,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
     const REGION_EU_CENTRAL = 'EU-Central';
     const REGION_EU_EAST = 'EU-East';
     const REGION_EU_WEST = 'EU-West';
+    const REGION_KSA_CENTRAL = 'KSA-Central';
     const REGION_MX_NORTH = 'MX-North';
     const REGION_MX_CENTRAL = 'MX-Central';
     const REGION_MX_SOUTH = 'MX-South';
@@ -221,6 +222,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATS_REGION_ASIA_INDIA = 'asia_india';
     const STATS_REGION_ASIA_SOUTHKOREA = 'asia_southkorea';
     const STATS_REGION_MEXICO = 'mexico';
+    const STATS_REGION_SAUDI_ARABIA = 'saudi_arabia';
     const BILLING_REGION_AFRICA = 'Africa';
     const BILLING_REGION_AUSTRALIA = 'Australia';
     const BILLING_REGION_ASIA = 'Asia';
@@ -228,6 +230,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
     const BILLING_REGION_INDIA = 'India';
     const BILLING_REGION_MEXICO = 'Mexico';
     const BILLING_REGION_NORTH_AMERICA = 'North America';
+    const BILLING_REGION_SAUDI_ARABIA = 'Saudi Arabia';
     const BILLING_REGION_SOUTH_KOREA = 'South Korea';
     const BILLING_REGION_SOUTH_AMERICA = 'South America';
 
@@ -245,6 +248,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
             self::REGION_EU_CENTRAL,
             self::REGION_EU_EAST,
             self::REGION_EU_WEST,
+            self::REGION_KSA_CENTRAL,
             self::REGION_MX_NORTH,
             self::REGION_MX_CENTRAL,
             self::REGION_MX_SOUTH,
@@ -280,6 +284,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATS_REGION_ASIA_INDIA,
             self::STATS_REGION_ASIA_SOUTHKOREA,
             self::STATS_REGION_MEXICO,
+            self::STATS_REGION_SAUDI_ARABIA,
         ];
     }
 
@@ -298,6 +303,7 @@ class Pop implements ModelInterface, ArrayAccess, \JsonSerializable
             self::BILLING_REGION_INDIA,
             self::BILLING_REGION_MEXICO,
             self::BILLING_REGION_NORTH_AMERICA,
+            self::BILLING_REGION_SAUDI_ARABIA,
             self::BILLING_REGION_SOUTH_KOREA,
             self::BILLING_REGION_SOUTH_AMERICA,
         ];

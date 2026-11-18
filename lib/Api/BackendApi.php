@@ -131,6 +131,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -193,6 +198,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -343,6 +353,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -408,6 +423,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -499,6 +519,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -547,6 +572,11 @@ class BackendApi
         $fetch_timeout = array_key_exists('fetch_timeout', $options) ? $options['fetch_timeout'] : null;
         $healthcheck = array_key_exists('healthcheck', $options) ? $options['healthcheck'] : null;
         $hostname = array_key_exists('hostname', $options) ? $options['hostname'] : null;
+        $iam_external_id = array_key_exists('iam_external_id', $options) ? $options['iam_external_id'] : null;
+        $iam_product = array_key_exists('iam_product', $options) ? $options['iam_product'] : null;
+        $iam_region = array_key_exists('iam_region', $options) ? $options['iam_region'] : null;
+        $iam_role = array_key_exists('iam_role', $options) ? $options['iam_role'] : null;
+        $iam_vendor = array_key_exists('iam_vendor', $options) ? $options['iam_vendor'] : null;
         $ipv4 = array_key_exists('ipv4', $options) ? $options['ipv4'] : null;
         $ipv6 = array_key_exists('ipv6', $options) ? $options['ipv6'] : null;
         $keepalive_time = array_key_exists('keepalive_time', $options) ? $options['keepalive_time'] : null;
@@ -659,6 +689,26 @@ class BackendApi
         // form params
         if ($hostname !== null) {
             $formParams['hostname'] = ObjectSerializer::toFormValue($hostname);
+        }
+        // form params
+        if ($iam_external_id !== null) {
+            $formParams['iam_external_id'] = ObjectSerializer::toFormValue($iam_external_id);
+        }
+        // form params
+        if ($iam_product !== null) {
+            $formParams['iam_product'] = ObjectSerializer::toFormValue($iam_product);
+        }
+        // form params
+        if ($iam_region !== null) {
+            $formParams['iam_region'] = ObjectSerializer::toFormValue($iam_region);
+        }
+        // form params
+        if ($iam_role !== null) {
+            $formParams['iam_role'] = ObjectSerializer::toFormValue($iam_role);
+        }
+        // form params
+        if ($iam_vendor !== null) {
+            $formParams['iam_vendor'] = ObjectSerializer::toFormValue($iam_vendor);
         }
         // form params
         if ($ipv4 !== null) {
@@ -1934,6 +1984,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -1997,6 +2052,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -2148,6 +2208,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -2214,6 +2279,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -2306,6 +2376,11 @@ class BackendApi
      * @param  int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
      * @param  string $healthcheck The name of the healthcheck to use with this backend. (optional)
      * @param  string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+     * @param  string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+     * @param  string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+     * @param  string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+     * @param  string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+     * @param  string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
      * @param  string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
      * @param  int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -2355,6 +2430,11 @@ class BackendApi
         $fetch_timeout = array_key_exists('fetch_timeout', $options) ? $options['fetch_timeout'] : null;
         $healthcheck = array_key_exists('healthcheck', $options) ? $options['healthcheck'] : null;
         $hostname = array_key_exists('hostname', $options) ? $options['hostname'] : null;
+        $iam_external_id = array_key_exists('iam_external_id', $options) ? $options['iam_external_id'] : null;
+        $iam_product = array_key_exists('iam_product', $options) ? $options['iam_product'] : null;
+        $iam_region = array_key_exists('iam_region', $options) ? $options['iam_region'] : null;
+        $iam_role = array_key_exists('iam_role', $options) ? $options['iam_role'] : null;
+        $iam_vendor = array_key_exists('iam_vendor', $options) ? $options['iam_vendor'] : null;
         $ipv4 = array_key_exists('ipv4', $options) ? $options['ipv4'] : null;
         $ipv6 = array_key_exists('ipv6', $options) ? $options['ipv6'] : null;
         $keepalive_time = array_key_exists('keepalive_time', $options) ? $options['keepalive_time'] : null;
@@ -2481,6 +2561,26 @@ class BackendApi
         // form params
         if ($hostname !== null) {
             $formParams['hostname'] = ObjectSerializer::toFormValue($hostname);
+        }
+        // form params
+        if ($iam_external_id !== null) {
+            $formParams['iam_external_id'] = ObjectSerializer::toFormValue($iam_external_id);
+        }
+        // form params
+        if ($iam_product !== null) {
+            $formParams['iam_product'] = ObjectSerializer::toFormValue($iam_product);
+        }
+        // form params
+        if ($iam_region !== null) {
+            $formParams['iam_region'] = ObjectSerializer::toFormValue($iam_region);
+        }
+        // form params
+        if ($iam_role !== null) {
+            $formParams['iam_role'] = ObjectSerializer::toFormValue($iam_role);
+        }
+        // form params
+        if ($iam_vendor !== null) {
+            $formParams['iam_vendor'] = ObjectSerializer::toFormValue($iam_vendor);
         }
         // form params
         if ($ipv4 !== null) {

@@ -63,6 +63,11 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'fetch_timeout' => 'int',
         'healthcheck' => 'string',
         'hostname' => 'string',
+        'iam_external_id' => 'string',
+        'iam_product' => 'string',
+        'iam_region' => 'string',
+        'iam_role' => 'string',
+        'iam_vendor' => 'string',
         'ipv4' => 'string',
         'ipv6' => 'string',
         'keepalive_time' => 'int',
@@ -112,6 +117,11 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'fetch_timeout' => null,
         'healthcheck' => null,
         'hostname' => null,
+        'iam_external_id' => null,
+        'iam_product' => null,
+        'iam_region' => null,
+        'iam_role' => null,
+        'iam_vendor' => null,
         'ipv4' => null,
         'ipv6' => null,
         'keepalive_time' => null,
@@ -180,6 +190,11 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'fetch_timeout' => 'fetch_timeout',
         'healthcheck' => 'healthcheck',
         'hostname' => 'hostname',
+        'iam_external_id' => 'iam_external_id',
+        'iam_product' => 'iam_product',
+        'iam_region' => 'iam_region',
+        'iam_role' => 'iam_role',
+        'iam_vendor' => 'iam_vendor',
         'ipv4' => 'ipv4',
         'ipv6' => 'ipv6',
         'keepalive_time' => 'keepalive_time',
@@ -227,6 +242,11 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'fetch_timeout' => 'setFetchTimeout',
         'healthcheck' => 'setHealthcheck',
         'hostname' => 'setHostname',
+        'iam_external_id' => 'setIamExternalId',
+        'iam_product' => 'setIamProduct',
+        'iam_region' => 'setIamRegion',
+        'iam_role' => 'setIamRole',
+        'iam_vendor' => 'setIamVendor',
         'ipv4' => 'setIpv4',
         'ipv6' => 'setIpv6',
         'keepalive_time' => 'setKeepaliveTime',
@@ -274,6 +294,11 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         'fetch_timeout' => 'getFetchTimeout',
         'healthcheck' => 'getHealthcheck',
         'hostname' => 'getHostname',
+        'iam_external_id' => 'getIamExternalId',
+        'iam_product' => 'getIamProduct',
+        'iam_region' => 'getIamRegion',
+        'iam_role' => 'getIamRole',
+        'iam_vendor' => 'getIamVendor',
         'ipv4' => 'getIpv4',
         'ipv6' => 'getIpv6',
         'keepalive_time' => 'getKeepaliveTime',
@@ -346,6 +371,19 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$fastlyModelName;
     }
 
+    const IAM_VENDOR_AWS = 'aws';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIamVendorAllowableValues()
+    {
+        return [
+            self::IAM_VENDOR_AWS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -372,6 +410,11 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['fetch_timeout'] = $data['fetch_timeout'] ?? null;
         $this->container['healthcheck'] = $data['healthcheck'] ?? null;
         $this->container['hostname'] = $data['hostname'] ?? null;
+        $this->container['iam_external_id'] = $data['iam_external_id'] ?? null;
+        $this->container['iam_product'] = $data['iam_product'] ?? null;
+        $this->container['iam_region'] = $data['iam_region'] ?? null;
+        $this->container['iam_role'] = $data['iam_role'] ?? null;
+        $this->container['iam_vendor'] = $data['iam_vendor'] ?? null;
         $this->container['ipv4'] = $data['ipv4'] ?? null;
         $this->container['ipv6'] = $data['ipv6'] ?? null;
         $this->container['keepalive_time'] = $data['keepalive_time'] ?? null;
@@ -411,6 +454,15 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getIamVendorAllowableValues();
+        if (!is_null($this->container['iam_vendor']) && !in_array($this->container['iam_vendor'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'iam_vendor', must be one of '%s'",
+                $this->container['iam_vendor'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         if (!is_null($this->container['share_key']) && !preg_match("/^[A-Za-z0-9]+$/", $this->container['share_key'])) {
             $invalidProperties[] = "invalid value for 'share_key', must be conform to the pattern /^[A-Za-z0-9]+$/.";
@@ -667,6 +719,136 @@ class Backend implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHostname($hostname)
     {
         $this->container['hostname'] = $hostname;
+
+        return $this;
+    }
+
+    /**
+     * Gets iam_external_id
+     *
+     * @return string|null
+     */
+    public function getIamExternalId()
+    {
+        return $this->container['iam_external_id'];
+    }
+
+    /**
+     * Sets iam_external_id
+     *
+     * @param string|null $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set.
+     *
+     * @return self
+     */
+    public function setIamExternalId($iam_external_id)
+    {
+        $this->container['iam_external_id'] = $iam_external_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets iam_product
+     *
+     * @return string|null
+     */
+    public function getIamProduct()
+    {
+        return $this->container['iam_product'];
+    }
+
+    /**
+     * Sets iam_product
+     *
+     * @param string|null $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element.
+     *
+     * @return self
+     */
+    public function setIamProduct($iam_product)
+    {
+        $this->container['iam_product'] = $iam_product;
+
+        return $this;
+    }
+
+    /**
+     * Gets iam_region
+     *
+     * @return string|null
+     */
+    public function getIamRegion()
+    {
+        return $this->container['iam_region'];
+    }
+
+    /**
+     * Sets iam_region
+     *
+     * @param string|null $iam_region If the backend is using IAM authentication, this region will be used for signing and access.
+     *
+     * @return self
+     */
+    public function setIamRegion($iam_region)
+    {
+        $this->container['iam_region'] = $iam_region;
+
+        return $this;
+    }
+
+    /**
+     * Gets iam_role
+     *
+     * @return string|null
+     */
+    public function getIamRole()
+    {
+        return $this->container['iam_role'];
+    }
+
+    /**
+     * Sets iam_role
+     *
+     * @param string|null $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor.
+     *
+     * @return self
+     */
+    public function setIamRole($iam_role)
+    {
+        $this->container['iam_role'] = $iam_role;
+
+        return $this;
+    }
+
+    /**
+     * Gets iam_vendor
+     *
+     * @return string|null
+     */
+    public function getIamVendor()
+    {
+        return $this->container['iam_vendor'];
+    }
+
+    /**
+     * Sets iam_vendor
+     *
+     * @param string|null $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value.
+     *
+     * @return self
+     */
+    public function setIamVendor($iam_vendor)
+    {
+        $allowedValues = $this->getIamVendorAllowableValues();
+        if (!is_null($iam_vendor) && !in_array($iam_vendor, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'iam_vendor', must be one of '%s'",
+                    $iam_vendor,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['iam_vendor'] = $iam_vendor;
 
         return $this;
     }

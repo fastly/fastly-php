@@ -430,6 +430,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'netprotect_firewall_dropped_packets' => 'int',
         'api_enforcement_allowed_requests_count' => 'int',
         'api_enforcement_flagged_requests_count' => 'int',
+        'origin_fetch_iam_success_count' => 'int',
+        'origin_fetch_iam_failure_count' => 'int',
         'service_id' => 'string',
         'start_time' => 'int'
     ];
@@ -818,6 +820,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'netprotect_firewall_dropped_packets' => null,
         'api_enforcement_allowed_requests_count' => null,
         'api_enforcement_flagged_requests_count' => null,
+        'origin_fetch_iam_success_count' => null,
+        'origin_fetch_iam_failure_count' => null,
         'service_id' => null,
         'start_time' => 'int64'
     ];
@@ -1225,6 +1229,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'netprotect_firewall_dropped_packets' => 'netprotect_firewall_dropped_packets',
         'api_enforcement_allowed_requests_count' => 'api_enforcement_allowed_requests_count',
         'api_enforcement_flagged_requests_count' => 'api_enforcement_flagged_requests_count',
+        'origin_fetch_iam_success_count' => 'origin_fetch_iam_success_count',
+        'origin_fetch_iam_failure_count' => 'origin_fetch_iam_failure_count',
         'service_id' => 'service_id',
         'start_time' => 'start_time'
     ];
@@ -1611,6 +1617,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'netprotect_firewall_dropped_packets' => 'setNetprotectFirewallDroppedPackets',
         'api_enforcement_allowed_requests_count' => 'setApiEnforcementAllowedRequestsCount',
         'api_enforcement_flagged_requests_count' => 'setApiEnforcementFlaggedRequestsCount',
+        'origin_fetch_iam_success_count' => 'setOriginFetchIamSuccessCount',
+        'origin_fetch_iam_failure_count' => 'setOriginFetchIamFailureCount',
         'service_id' => 'setServiceId',
         'start_time' => 'setStartTime'
     ];
@@ -1997,6 +2005,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         'netprotect_firewall_dropped_packets' => 'getNetprotectFirewallDroppedPackets',
         'api_enforcement_allowed_requests_count' => 'getApiEnforcementAllowedRequestsCount',
         'api_enforcement_flagged_requests_count' => 'getApiEnforcementFlaggedRequestsCount',
+        'origin_fetch_iam_success_count' => 'getOriginFetchIamSuccessCount',
+        'origin_fetch_iam_failure_count' => 'getOriginFetchIamFailureCount',
         'service_id' => 'getServiceId',
         'start_time' => 'getStartTime'
     ];
@@ -2434,6 +2444,8 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['netprotect_firewall_dropped_packets'] = $data['netprotect_firewall_dropped_packets'] ?? null;
         $this->container['api_enforcement_allowed_requests_count'] = $data['api_enforcement_allowed_requests_count'] ?? null;
         $this->container['api_enforcement_flagged_requests_count'] = $data['api_enforcement_flagged_requests_count'] ?? null;
+        $this->container['origin_fetch_iam_success_count'] = $data['origin_fetch_iam_success_count'] ?? null;
+        $this->container['origin_fetch_iam_failure_count'] = $data['origin_fetch_iam_failure_count'] ?? null;
         $this->container['service_id'] = $data['service_id'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
     }
@@ -11500,6 +11512,54 @@ class Results implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setApiEnforcementFlaggedRequestsCount($api_enforcement_flagged_requests_count)
     {
         $this->container['api_enforcement_flagged_requests_count'] = $api_enforcement_flagged_requests_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_fetch_iam_success_count
+     *
+     * @return int|null
+     */
+    public function getOriginFetchIamSuccessCount()
+    {
+        return $this->container['origin_fetch_iam_success_count'];
+    }
+
+    /**
+     * Sets origin_fetch_iam_success_count
+     *
+     * @param int|null $origin_fetch_iam_success_count Count of successful IAM authenticated backend requests.
+     *
+     * @return self
+     */
+    public function setOriginFetchIamSuccessCount($origin_fetch_iam_success_count)
+    {
+        $this->container['origin_fetch_iam_success_count'] = $origin_fetch_iam_success_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_fetch_iam_failure_count
+     *
+     * @return int|null
+     */
+    public function getOriginFetchIamFailureCount()
+    {
+        return $this->container['origin_fetch_iam_failure_count'];
+    }
+
+    /**
+     * Sets origin_fetch_iam_failure_count
+     *
+     * @param int|null $origin_fetch_iam_failure_count Count of failed IAM authenticated backend requests.
+     *
+     * @return self
+     */
+    public function setOriginFetchIamFailureCount($origin_fetch_iam_failure_count)
+    {
+        $this->container['origin_fetch_iam_failure_count'] = $origin_fetch_iam_failure_count;
 
         return $this;
     }

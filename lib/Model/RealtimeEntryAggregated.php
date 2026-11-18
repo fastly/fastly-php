@@ -422,7 +422,9 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'netprotect_firewall_dropped_bytes' => 'int',
         'netprotect_firewall_dropped_packets' => 'int',
         'api_enforcement_allowed_requests_count' => 'int',
-        'api_enforcement_flagged_requests_count' => 'int'
+        'api_enforcement_flagged_requests_count' => 'int',
+        'origin_fetch_iam_success_count' => 'int',
+        'origin_fetch_iam_failure_count' => 'int'
     ];
 
     /**
@@ -801,7 +803,9 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'netprotect_firewall_dropped_bytes' => null,
         'netprotect_firewall_dropped_packets' => null,
         'api_enforcement_allowed_requests_count' => null,
-        'api_enforcement_flagged_requests_count' => null
+        'api_enforcement_flagged_requests_count' => null,
+        'origin_fetch_iam_success_count' => null,
+        'origin_fetch_iam_failure_count' => null
     ];
 
     /**
@@ -1199,7 +1203,9 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'netprotect_firewall_dropped_bytes' => 'netprotect_firewall_dropped_bytes',
         'netprotect_firewall_dropped_packets' => 'netprotect_firewall_dropped_packets',
         'api_enforcement_allowed_requests_count' => 'api_enforcement_allowed_requests_count',
-        'api_enforcement_flagged_requests_count' => 'api_enforcement_flagged_requests_count'
+        'api_enforcement_flagged_requests_count' => 'api_enforcement_flagged_requests_count',
+        'origin_fetch_iam_success_count' => 'origin_fetch_iam_success_count',
+        'origin_fetch_iam_failure_count' => 'origin_fetch_iam_failure_count'
     ];
 
     /**
@@ -1576,7 +1582,9 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'netprotect_firewall_dropped_bytes' => 'setNetprotectFirewallDroppedBytes',
         'netprotect_firewall_dropped_packets' => 'setNetprotectFirewallDroppedPackets',
         'api_enforcement_allowed_requests_count' => 'setApiEnforcementAllowedRequestsCount',
-        'api_enforcement_flagged_requests_count' => 'setApiEnforcementFlaggedRequestsCount'
+        'api_enforcement_flagged_requests_count' => 'setApiEnforcementFlaggedRequestsCount',
+        'origin_fetch_iam_success_count' => 'setOriginFetchIamSuccessCount',
+        'origin_fetch_iam_failure_count' => 'setOriginFetchIamFailureCount'
     ];
 
     /**
@@ -1953,7 +1961,9 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         'netprotect_firewall_dropped_bytes' => 'getNetprotectFirewallDroppedBytes',
         'netprotect_firewall_dropped_packets' => 'getNetprotectFirewallDroppedPackets',
         'api_enforcement_allowed_requests_count' => 'getApiEnforcementAllowedRequestsCount',
-        'api_enforcement_flagged_requests_count' => 'getApiEnforcementFlaggedRequestsCount'
+        'api_enforcement_flagged_requests_count' => 'getApiEnforcementFlaggedRequestsCount',
+        'origin_fetch_iam_success_count' => 'getOriginFetchIamSuccessCount',
+        'origin_fetch_iam_failure_count' => 'getOriginFetchIamFailureCount'
     ];
 
     /**
@@ -2382,6 +2392,8 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['netprotect_firewall_dropped_packets'] = $data['netprotect_firewall_dropped_packets'] ?? null;
         $this->container['api_enforcement_allowed_requests_count'] = $data['api_enforcement_allowed_requests_count'] ?? null;
         $this->container['api_enforcement_flagged_requests_count'] = $data['api_enforcement_flagged_requests_count'] ?? null;
+        $this->container['origin_fetch_iam_success_count'] = $data['origin_fetch_iam_success_count'] ?? null;
+        $this->container['origin_fetch_iam_failure_count'] = $data['origin_fetch_iam_failure_count'] ?? null;
     }
 
     /**
@@ -11278,6 +11290,54 @@ class RealtimeEntryAggregated implements ModelInterface, ArrayAccess, \JsonSeria
     public function setApiEnforcementFlaggedRequestsCount($api_enforcement_flagged_requests_count)
     {
         $this->container['api_enforcement_flagged_requests_count'] = $api_enforcement_flagged_requests_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_fetch_iam_success_count
+     *
+     * @return int|null
+     */
+    public function getOriginFetchIamSuccessCount()
+    {
+        return $this->container['origin_fetch_iam_success_count'];
+    }
+
+    /**
+     * Sets origin_fetch_iam_success_count
+     *
+     * @param int|null $origin_fetch_iam_success_count Count of successful IAM authenticated backend requests.
+     *
+     * @return self
+     */
+    public function setOriginFetchIamSuccessCount($origin_fetch_iam_success_count)
+    {
+        $this->container['origin_fetch_iam_success_count'] = $origin_fetch_iam_success_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_fetch_iam_failure_count
+     *
+     * @return int|null
+     */
+    public function getOriginFetchIamFailureCount()
+    {
+        return $this->container['origin_fetch_iam_failure_count'];
+    }
+
+    /**
+     * Sets origin_fetch_iam_failure_count
+     *
+     * @param int|null $origin_fetch_iam_failure_count Count of failed IAM authenticated backend requests.
+     *
+     * @return self
+     */
+    public function setOriginFetchIamFailureCount($origin_fetch_iam_failure_count)
+    {
+        $this->container['origin_fetch_iam_failure_count'] = $origin_fetch_iam_failure_count;
 
         return $this;
     }

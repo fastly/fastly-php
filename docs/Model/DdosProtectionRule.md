@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **host** | **string** | Host attribute. | [optional] 
 **asn** | **string** | ASN attribute. | [optional] 
 **source_ip_prefix** | **string** | Source IP prefix attribute. | [optional] 
+**path** | **string** | URL path attribute. | [optional] 
 **additional_attributes** | **string[]** | Attribute category for additional, unlisted attributes used in a rule. | [optional] 
 
 
